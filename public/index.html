@@ -1,0 +1,618 @@
+
+<!DOCTYPE html>
+<html class="js no-touchevents" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DK Ding Dong Percent Reference</title>
+    <meta name="description" content="A progressive web app for calculating Donkey Kong Ding Dong Percents in Super Smash Bros. for Wii U." />
+
+    <link rel="stylesheet" href="css/style.min.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,500,700" rel="stylesheet" type="text/css">
+    <link rel="manifest" href="./manifest.json">
+    <meta name="theme-color" content="#ffd54f">
+    <link rel="icon" sizes="32x32" href="./images/icons/launcher-icon-32x32.png">
+    <link rel="icon" sizes="96x96" href="./images/icons/launcher-icon-96x96.png">
+    <link rel="icon" sizes="128x128" href="./images/icons/launcher-icon-128x128.png">
+    <link rel="icon" sizes="144x144" href="./images/icons/launcher-icon-144x144.png">
+    <link rel="icon" sizes="152x152" href="./images/icons/launcher-icon-152x152.png">
+    <link rel="icon" sizes="192x192" href="./images/icons/launcher-icon-192x192.png">
+    <link rel="icon" sizes="256x256" href="./images/icons/launcher-icon-256x256.png">
+    <link rel="icon" sizes="512x512" href="./images/icons/launcher-icon-512x512.png">
+    <link rel="icon" href="./images/icons/favicon.png" type="x-icon" />
+
+	<!-- Add to home screen for Safari on iOS -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-title" content="Ding Dong Calculator">
+	<link rel="apple-touch-icon" href="./images/icons/launcher-icon-152x152.png">
+	<meta name="msapplication-TileImage" content="./images/icons/launcher-icon-144x144.png">
+	<meta name="msapplication-TileColor" content="#ffd54f">
+
+	<!--<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		
+		ga('create', 'UA-103249351-1', 'auto');
+
+		// The following line sets the dimension to the pageview request.
+		ga('set', 'Your Dimension Name', navigator.onLine); 
+		ga('send', 'pageview');
+
+		// Setup a listener to track Add to Homescreen events.
+		window.addEventListener('beforeinstallprompt', e => {
+		  e.userChoice.then(choiceResult => {
+		    ga('send', 'event', 'A2H', choiceResult.outcome);      
+		  });
+		});
+	</script>-->
+</head>
+
+<body id="body" class="loading">
+	<img class="loader" src="images/spinner.svg" />
+	<header id="header">
+
+		<div class="content">
+			<div class="header-title">
+				<a class="sidedrawer-toggle">
+        			<svg id="icon-menu" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 23" width="17" height="23">
+	        			<path class="st0" d="M0 10.5h17v2H0zM0 5h17v2H0zM0 16h17v2H0z"></path>
+        			</svg>
+      			</a>
+      			<span><span class="desktop-lg">Donkey Kong - </span>Ding Dong Percents</span>
+			</div>
+			<button class="btn filter-toggle mobile">
+				<span>Sort</span>
+				<svg id="icon-filter" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+				    <path d="M14 5h8v2h-8zm0 5.5h8v2h-8zm0 5.5h8v2h-8zM2 11.5C2 15.08 4.92 18 8.5 18H9v2l3-3-3-3v2h-.5C6.02 16 4 13.98 4 11.5S6.02 7 8.5 7H12V5H8.5C4.92 5 2 7.92 2 11.5z"/>
+				    <path d="M0 0h24v24H0z" fill="none"/>
+				</svg>
+			</button>
+			<div class="btn-group mobile">
+				<button data-bind="click:sortName" class="btn filter-btn active">Name <span class="caret"></span></button>
+				<button data-bind="click:sortWeight" class="btn filter-btn">Weight <span class="caret"></span></button>
+				<button data-bind="click:sortDifficulty" class="btn filter-btn">Difficulty <span class="caret"></span></button>
+				<button data-bind="click:sortFallspeed" class="btn filter-btn">Fallspeed <span class="caret"></span></button>
+				<button data-bind="click:sortGravity" class="btn filter-btn">Gravity <span class="caret"></span></button>
+				<button class="add-info-grid add-extra-info btn filter-btn">
+				<span class="checkbox">
+					<svg class="icon-cross" xmlns="http://www.w3.org/2000/svg" fill="#333" height="16" viewBox="0 0 24 24" width="16">
+					    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+					    <path d="M0 0h24v24H0z" fill="none"/>
+					</svg>
+					<svg class="icon-check" xmlns="http://www.w3.org/2000/svg" fill="#333" height="16" viewBox="0 0 24 24" width="16">
+					    <path d="M0 0h24v24H0z" fill="none"/>
+					    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+					</svg>
+				</span>
+				Show In Grid
+				</button>
+				<button class="add-ledgeFsmash-grid add-extra-info btn filter-btn">
+				<span class="checkbox">
+					<svg class="icon-cross" xmlns="http://www.w3.org/2000/svg" fill="#333" height="16" viewBox="0 0 24 24" width="16">
+					    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+					    <path d="M0 0h24v24H0z" fill="none"/>
+					</svg>
+					<svg class="icon-check" xmlns="http://www.w3.org/2000/svg" fill="#333" height="16" viewBox="0 0 24 24" width="16">
+					    <path d="M0 0h24v24H0z" fill="none"/>
+					    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+					</svg>
+				</span>
+				Fsmash at Ledge?</button>
+			</div>
+			<div class="header-filters desktop">
+				<div class="btn-group">
+					<button data-bind="click:sortName" class="btn filter-btn active">Name <span class="caret"></span></button>
+					<button data-bind="click:sortWeight" class="btn filter-btn">Weight <span class="caret"></span></button>
+					<button data-bind="click:sortDifficulty" class="btn filter-btn">Difficulty <span class="caret"></span></button>
+					<button id="filter-dropdown-btn" class="btn filter-btn">
+						<svg xmlns="http://www.w3.org/2000/svg" fill="#fff" height="14" viewBox="5 4 14 10" width="14">
+	    					<path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z"></path>
+	    					<path d="M0-.75h24v24H0z" fill="none"></path>
+						</svg>
+					</button>
+					<ul class="dropdown-menu">
+						<li><button data-bind="click:sortFallspeed" class="btn filter-btn">Fallspeed <span class="caret"></span></button></li>
+						<li><button data-bind="click:sortGravity" class="btn filter-btn">Gravity <span class="caret"></span></button></li>
+						<li><button class="add-info-grid add-extra-info btn">View In Grid 
+						<span class="checkbox">
+							<svg class="icon-cross" xmlns="http://www.w3.org/2000/svg" fill="#333" height="16" viewBox="0 0 24 24" width="16">
+							    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+							    <path d="M0 0h24v24H0z" fill="none"/>
+							</svg>
+							<svg class="icon-check" xmlns="http://www.w3.org/2000/svg" fill="#333" height="16" viewBox="0 0 24 24" width="16">
+							    <path d="M0 0h24v24H0z" fill="none"/>
+							    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+							</svg>
+						</span></button></li>
+
+						<li class="li-separater"><button class="add-ledgeFsmash-grid add-extra-info btn">Can Fsmash at ledge?
+						<span class="checkbox">
+							<svg class="icon-cross" xmlns="http://www.w3.org/2000/svg" fill="#333" height="16" viewBox="0 0 24 24" width="16">
+							    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+							    <path d="M0 0h24v24H0z" fill="none"/>
+							</svg>
+							<svg class="icon-check" xmlns="http://www.w3.org/2000/svg" fill="#333" height="16" viewBox="0 0 24 24" width="16">
+							    <path d="M0 0h24v24H0z" fill="none"/>
+							    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+							</svg>
+						</span></button></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</header>
+	<div id="sidedrawer-underlay" class="modalUnderlay" style="background-color: transparent;" hidden></div>
+	<div id="sidedrawer">
+		<div id="sidedrawer-contents">
+			<div id="sidedrawer-brand">
+				Winning With DK
+			</div>
+			<div class="divider"></div>
+			<ul>
+		    	<li>
+			     	<a href="#/about" id="about">
+			       		<strong>About</strong>
+			      	</a>
+		    	</li>
+		    	<li>
+			     	<a href="#/credits" id="credits">
+			       		<strong>Credits</strong>
+			      	</a>
+		    	</li>
+		  	</ul>
+	  	</div>
+	</div>
+	<div id="content-wrapper" class="container">
+
+		<div id="menuBackButton" class="backButton">
+			<svg class="icon-arrowback" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			    <path d="M0 0h24v24H0z" fill="none"/>
+			    <path class="pathfill" d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+			</svg>
+		</div>
+
+		<div class="menu-page" hidden>
+
+			<div id="page-about" hidden>
+				<div class="desktop">
+					<h2>Using the Calculator</h2>
+					<div class="panel" style="margin-top:20px;">
+						<div class="panel-heading">
+							<h3 class="panel-title">Keyboard Shortcuts - For Desktop</h3>
+						</div>
+						<div class="panel-body">
+							<p><span class="input-type">ESC</span>Open/Close Menu</p>
+							<div class="panel">
+
+								<div class="panel-body">
+									
+									<h4 class="panel-label">Upon selecting a character</h4>
+									<p><span class="input-type">ESC</span>Close Character</p>
+									<p>
+										<span class="input-type">⇐</span>Previous Character<br>
+									    <span class="input-type">⇒</span>Next Character
+									</p>
+
+									<p>
+										<span class="input-type">Shift + ⇐</span>Cycle Rage Modifier Backwards<br>
+									    <span class="input-type">Shift + ⇒</span>Cycle Rage Modifier Forwards
+									</p>
+
+									<p>
+										<span class="input-type">1</span> - <span class="input-type">7</span>Select Rage Modifier Amount
+									</p>
+								</div>
+							</div>
+						</div> <!-- panel-body -->
+					</div> <!-- panel -->
+				</div>
+
+				<h2>What Is This?</h2>
+				<p>This is a personal project developed to help Super Smash Bros. for Wii U (SSBU) players better understand the character Donkey Kong. On July 30, 2015, patch 1.1.0 was released and Donkey Kong's cargo upthrow was buffed, allowing it to work as a combo starter. This turned DK into a grappler-like character, and allowed him to quickly build damage on his opponents via grabs.</p>
+
+				<p>Within certain percent thresholds, it also functions as a kill confirm into his up air attack. This confirm is known among Donkey Kong specialists as <strong>Aerial Cargo Up Toss up air (ACUT)</strong>, the <strong>DKO</strong>, or to most Western players, simply as the <strong>Ding Dong</strong>.</p>
+
+				<p>Historically within Super Smash Bros. and especially with the release of SSBU, it's been difficult for players to accurately determine exact percent thresholds that confirms will cease to connect or kill, due to the opponent's weight, percentage, DI, stage blastzones, and most recently, their own character's current rage.</p>
+
+				<p>Many dedicated players have recorded and labbed their character's confirms and setups against various opponents with differing DI and rage, and recorded them into spreadsheets for the community. Although useful, many of these spreadsheets still require that the player memorise specific base percent values and recalculate based on the above variable dependencies. This could be harmful to a less experienced Donkey Kong player if they're unfamiliar with the kill percent range against certain characters, or to their opponent, who would be expected to already know these values if they were facing off against an optimal DK player.</p>
+
+				<h2>Why Build This?</h2>
+				<p>To attempt to fill the disconnect, this calculator was developed to help players determine Donkey Kong's kill confirm percent thresholds instantly, rather than relying on memory, retrieving online community spreadsheets, or manually calculating values. As of July 2017, this Web App is only to determine Ding Dong percent thresholds, but this could be later expanded to include all of his percent dependent confirms.</p>
+
+				<p>This is a development build of an open-source <a href="https://developers.google.com/web/progressive-web-apps/" target="_blank" rel="noopener">Progressive Web App (PWA)</a>, an emerging web technology that allows users to download a website to their mobile or tablet device for offline use. This is not a native mobile app that can be downloaded from an App Store, but contains similar functions and provides the same user experience and benefits.</p>
+
+				<p>Right now, only Android devices running Google Chrome are confirmed to be able to utilise the 'Add to Home' feature and download this web page for instant access, but other browsers and Operating Systems may also support this. All users running modern browsers can still connect online and use the calculator.</p>
+
+				<p>All raw percent values and formulas have been adopted from the <a href="https://docs.google.com/spreadsheets/d/1OvUy2gsTrUj96cAHSkSIZHGnUaaS-UrX6SdFKyctNmU/edit#gid=932844731" target="_blank" rel="noopener">DK Doc</a> labbed by <a href="https://twitter.com/thevondk" target="_blank" rel="noopener">Poke</a>.</p>
+
+				<div class="panel">
+					<div class="panel-body">
+
+						<p>The raw percent values for the calculator were recorded under optimal conditions, assuming poor DI on the opponent's part, and the Ding Dong executed perfectly. For tournament conditions, it's recommended to<br><strong>add 5% to the minimum percent</strong>, and <strong>subtract 5% from the maximum percent</strong>.</p>
+
+					</div>
+
+				</div>
+
+				<h2>Feedback / Bug Reports</h2>
+
+				<p>This application is currently under development, and the latest builds are pushed to the <a href="https://github.com/Jollus88/DingDong-PWA" target="_blank" rel="noopener">Github repo</a>. Any development issues should be submitted through <a href="https://github.com/Jollus88/DingDong-PWA/issues" target="_blank" rel="noopener">Github's ticketing system</a>.</p>
+
+				<p>If there's any other feedback, feel free to contact me via <a href="https://twitter.com/JollusSSB" target="_blank" rel="noopener">Twitter</a>, or PM me on Discord at <strong>Jollus#6199</strong>.</p>
+
+			</div> <!-- page-about -->
+
+			<div id="page-credits" hidden>
+				<h2>Credits</h2>
+				<p>Thanks to <a href="https://twitter.com/TheVonDk" target="_blank" rel="noopener">Poke</a> for labbing the Ding Dong percents in the <a href="https://docs.google.com/spreadsheets/d/1OvUy2gsTrUj96cAHSkSIZHGnUaaS-UrX6SdFKyctNmU/edit#gid=932844731" target="_blank" rel="noopener">DK Doc</a>, and the rest of the Smash4 Donkey Kong community.</p>
+
+				<p>A huge thanks to all the Stack Overflow community for a near endless supply of development resources and answers.</p>
+
+				<p>Credit to <a href="https://twitter.com/LittleZ_SSB">Little Z</a> for creating his Little Book of Ding Dong and inspiring the idea of the online calculator to begin with.</p>
+
+				<p>Thanks to <a href="https://twitter.com/KuroganeHammer" target="_blank" rel="noopener">Kurogane Hammer</a> for cataloguing the frame data for every character, <a href="https://twitter.com/Ruben_dal" target_"blank">Ruben</a> for creating the Android app, and <a href="https://twitter.com/franndotexe" target="_blank" rel="noopener">FrannSoft</a> for developing the KH API.</p>
+
+				<p>Shoutouts to <a href="https://twitter.com/likeacyansunday">Shiva</a> for helping out with the images, and <a href="https://twitter.com/lhc_maribro?lang=en">Maribro</a> for Friday night Ganon dittos and keeping me sane.</p>
+
+				<p>Thanks to Nintendo, Namco Bandai, and Sora for developing Super Smash Bros. for Wii U.</p><br>
+
+				<img src="images/dk-credits.jpg" alt="Donkey Kong Credits" />
+
+			</div>
+
+		</div> <!-- menu-page -->
+		<div id="main" class="content">
+
+			<div class="search-box">
+				<input id="search" placeholder="Filter..." type="search" name="filter" autocomplete="off">
+				<button class="btn clear-input">
+					<svg fill="#333" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+					    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+					    <path d="M0 0h24v24H0z" fill="none"/>
+					</svg>
+				</button>
+			</div>
+
+			<ul id="character-list" class="character-list clearfix" data-bind="foreach: character">
+				<li class="character-box clearfix" data-bind="attr: {'data-url': url, 'data-index': id}">
+					<div class="characterBorder clearfix">
+						<div class="characterImageContainer" data-bind="style: {backgroundColor: bgColour}, css: imageProperties">
+							<div class="characterImage"><div class="characterImageContainer-lightOverlay"></div></div>
+							
+							<div class="grid-difficulty">
+								<span data-bind="attr: {class: difficulty}" class="easy"><span data-bind="text: difficulty">easy</span> - <span data-bind="text: percRange">28</span>%</span>
+							</div>
+							<div class="grid-index">
+								<span data-bind="text: (id + 1)"></span>
+							</div>
+							<div class="grid-percRange">
+								<span><span data-bind="text: minPercent">83</span> - <span data-bind="text: maxPercent">111</span>%</span>
+							</div>
+							<div hidden="" class="extra-info grid-fallspeed">
+								<span>Fallspeed - <span style="font-weight:700;" data-bind="text: fallspeed">1.65</span></span>
+							</div>
+							<div hidden="" class="extra-info grid-gravity">
+								<span>Gravity - <span style="font-weight:700;" data-bind="text: gravity">0.10784</span></span>
+							</div>
+							<!--<span data-bind="attr: {class: difficulty}" class="easy">-->
+							<div data-bind="css: ledgeFsmash" class="grid-ledgeFsmash">
+								<span>Ledge Fsmash - <span style="font-weight:700;" data-bind="text: ledgeFsmash"></span></span>
+							</div>
+
+							<div class="characterName">
+								<span data-bind="text:name">Ganondorf</span>
+							</div>
+							<div class="characterOverview">
+								<ul>
+									<li>Weight <span class="value" data-bind="text: weight">113</span></li>
+									<li>Fallspeed<span class="value" data-bind="text: fallspeed">1.65</span></li>
+									<li>Airdodge <span class="value"><span data-bind="text: airdodgeStart">4</span> - <span data-bind="text: airdodgeEnd">29</span></span></li>
+									<li>Gravity <span class="value" data-bind="text: gravity">0.10784</span></li>
+								</ul>
+							</div>
+							<div class="characterTitleBar">
+								<span class="name" data-bind="text: name">Ganondorf</span>
+							</div>
+						</div>
+
+					</div> <!-- characterContainer -->
+				</li>
+					
+			</ul>
+			
+		</div>
+
+		<!-- new character box -->
+		<div id="characterModal" hidden>
+
+			<div id="character-underlay" class="modalUnderlay" style="background-color: transparent;" hidden></div>
+
+			<div id="characterBackButton" class="backButton">
+				<svg class="icon-arrowback" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+				    <path d="M0 0h24v24H0z" fill="none"/>
+				    <path class="pathfill" d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+				</svg>
+			</div>
+
+			<svg id="icon-prev" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			    <path class="pathfill" d="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z"></path>
+			    <path d="M0-.5h24v24H0z" fill="none"></path>
+			</svg>
+			<svg id="icon-next" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			    <path class="pathfill" d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path>
+			    <path d="M0-.25h24v24H0z" fill="none"></path>
+			</svg>
+
+			<div class="characterContainer clearfix">
+				<div class="characterImageContainer">
+					<div id="characterModalImage" class="characterImage"></div>
+
+					<div class="grid-percRange">
+						<span><span class="minPerc">83</span> - <span class="maxPerc">111</span>%</span>
+					</div>
+
+					<div class="grid-difficulty">
+						<span class="easy"><span>easy</span> - <span class="percRange">28</span>%</span>
+					</div>
+					<div class="characterName">
+						<span data-ref="name"></span>
+					</div>
+
+					<div class="characterOverview">
+						<ul>
+							<li data-ref="weight">Weight <span class="value">113</span></li>
+							<li data-ref="fallspeed">Fallspeed<span class="value">1.65</span></li>
+							<li data-ref="airdodge">Airdodge <span class="value">3 - 28</span></li>
+							<li data-ref="gravity">Gravity <span class="value">0.10784</span></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="characterDetails">
+					<div class="sticky">
+						<div class="stickyName" data-ref="name"></div>
+						<div class="rageModifier">
+							<h3>Donkey Kong Rage Modifier</h3>
+							<div class="btn-group">
+								<button class="btn rageBtn resetBtn active" data-rage="0">0%</button>
+								<button class="btn rageBtn" data-rage="50">50%</button>
+								<button class="btn rageBtn" data-rage="60">60%</button>
+								<button class="btn rageBtn" data-rage="80">80%</button>
+								<button class="btn rageBtn" data-rage="100">100%</button>
+								<button class="btn rageBtn" data-rage="125">125%</button>
+								<button class="btn rageBtn maxRageBtn" data-rage="150">150%</button>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="stages">
+
+						<div class="stage stage-fd col-1 clearfix">
+							<h3>Final Destination</h3>
+							<div class="stage-content clearfix">
+								<div class="stageImage clearfix"></div>
+								<div class="stageTables clearfix">
+									<table class="stagePercents table table-bordered table-sm 1-col" cellpadding="0" cellspacing="0" border="0">
+										<tr>
+											<th colspan="3">FD Normal</th>
+										</tr>
+										<tr class="table-descs">
+											<td>Min DD %</td>
+											<td>Max DD %</td>
+											<td>Window</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="minPerc" data-ref="minPerc">0</span></p>
+											</td>
+											<td>
+												<p><span class="maxPerc" data-ref="maxPerc">0</span></p>
+											</td>
+											<td class="percRange-cell">
+												<p><span class="percRange"></span></p>
+											</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+						</div>
+
+
+						<div class="stage stage-bf clearfix col-3">
+							<h3>Battlefield</h3>
+							<div class="stage-content clearfix">
+								<div class="stageImage clearfix"></div>
+								<div class="stageTables clearfix">
+									<table class="stagePercents table table-bordered table-sm" cellpadding="0" cellspacing="0" border="0">
+										<tr>
+											<th colspan="3">BF Normal</th>
+										</tr>
+										<tr>
+											<td><p><span class="minPerc" data-ref="bfNormalMin">0</span></p></td>
+											<td><p><span class="maxPerc" data-ref="bfNormalMax">0</span></p></td>
+											<td class="percRange-cell"><p><span class="percRange"></span></p></td>
+										</tr>
+									</table>
+									<table class="stagePercents table table-bordered table-sm" cellpadding="0" cellspacing="0" border="0">
+										<tr>
+											<th colspan="3">BF Low Plat<span class="desktop">form</span></th>
+										</tr>
+										<tr>
+											<td><p><span class="minPerc" data-ref="bfLowPlatMin">0</span></p></td>
+											<td><p><span class="maxPerc" data-ref="bfLowPlatMax">0</span></p></td>
+											<td class="percRange-cell"><p><span class="percRange"></span></p></td>
+										</tr>
+									</table>
+									<table class="stagePercents table table-bordered table-sm" cellpadding="0" cellspacing="0" border="0">
+										<tr>
+											<th colspan="3">BF Top Plat<span class="desktop">form</span></th>
+										</tr>
+										<tr>
+											<td><p><span class="minPerc" data-ref="bfTopPlatMin">0</span></p></td>
+											<td><p><span class="maxPerc" data-ref="bfTopPlatMax">0</span></p></td>
+											<td class="percRange-cell"><p><span class="percRange"></span></p></td>
+										</tr>
+									</table>
+								</div>
+							</div>
+						</div>
+
+						<div class="stage stage-dl col-3 clearfix">
+							<h3>Dreamland</h3>
+							<div class="stage-content clearfix">
+								<div class="stageImage clearfix"></div>
+								<div class="stageTables clearfix">
+									<table class="stagePercents table table-bordered table-sm" cellpadding="0" cellspacing="0" border="0">
+										<tr>
+											<th colspan="3">DL Normal</th>
+										</tr>
+										<tr>
+											<td><p><span class="minPerc" data-ref="dlNormalMin"></span></p></td>
+											<td><p><span class="maxPerc" data-ref="dlNormalMax"></span></p></td>
+											<td class="percRange-cell"><p><span class="percRange"></span></p></td>
+										</tr>
+									</table>
+									<table class="stagePercents table table-bordered table-sm" cellpadding="0" cellspacing="0" border="0">
+										<tr>
+											<th colspan="3">DL Low Plat<span class="desktop">form</span></th>
+										</tr>
+										<tr>
+											<td><p><span class="minPerc" data-ref="dlLowPlatMin">0</span></p></td>
+											<td><p><span class="maxPerc" data-ref="dlLowPlatMax">0</span></p></td>
+											<td class="percRange-cell"><p><span class="percRange"></span></p></td>
+										</tr>
+									</table>
+									<table class="stagePercents table table-bordered table-sm" cellpadding="0" cellspacing="0" border="0">
+										<tr>
+											<th colspan="3">DL Top Plat<span class="desktop">form</span></th>
+										</tr>
+										<tr>
+											<td><p><span class="minPerc" data-ref="dlTopPlatMin">0</span></p></td>
+											<td><p><span class="maxPerc" data-ref="dlTopPlatMax">0</span></p></td>
+											<td class="percRange-cell"><p><span class="percRange"></span></p></td>
+										</tr>
+									</table>
+								</div>
+							</div>
+						</div>
+
+						<div class="stage stage-sv col-2 clearfix">
+							<h3>Smashville</h3>
+							<div class="stage-content clearfix">
+								<div class="stageImage clearfix"></div>
+								<div class="stageTables clearfix">
+									<table class="stagePercents table table-bordered table-sm" cellpadding="0" cellspacing="0" border="0">
+										<tr>
+											<th colspan="3">SV Normal</th>
+										</tr>
+										<tr>
+											<td><p><span class="minPerc" data-ref="svNormalMin"></span></p></td>
+											<td><p><span class="maxPerc" data-ref="svNormalMax"></span></p></td>
+											<td class="percRange-cell"><p><span class="percRange"></span></p></td>
+										</tr>
+									</table>
+									<table class="stagePercents table table-bordered table-sm" cellpadding="0" cellspacing="0" border="0">
+										<tr>
+											<th colspan="3">SV Plat<span class="desktop">form</span></th>
+										</tr>
+										<tr>
+											<td><p><span class="minPerc" data-ref="svPlatMin"></span></p></td>
+											<td><p><span class="maxPerc" data-ref="svPlatMax"></span></p></td>
+											<td class="percRange-cell"><p><span class="percRange"></span></p></td>
+										</tr>
+									</table>
+								</div>
+							</div>
+						</div>
+
+						<div class="stage stage-tc col-2 clearfix">
+							<h3>Town &amp; City</h3>
+							<div class="stage-content clearfix">
+								<div class="stageImage clearfix"></div>
+								<div class="stageTables clearfix">
+									<table class="stagePercents table table-bordered table-sm" cellpadding="0" cellspacing="0" border="0">
+										<tr>
+											<th colspan="3">TC Normal</th>
+										</tr>
+										<tr>
+											<td><p><span class="minPerc" data-ref="tcNormalMin"></span></p></td>
+											<td><p><span class="maxPerc" data-ref="tcNormalMax"></span></p></td>
+											<td class="percRange-cell"><p><span class="percRange"></span></p></td>
+										</tr>
+									</table>
+									<table class="stagePercents table table-bordered table-sm" cellpadding="0" cellspacing="0" border="0">
+										<tr>
+											<th colspan="3">TC Low Plat<span class="desktop">form</span></th>
+										</tr>
+										<tr>
+											<td><p><span class="minPerc" data-ref="tcLowPlatMin"></span></p></td>
+											<td><p><span class="maxPerc" data-ref="tcLowPlatMax"></span></p></td>
+											<td class="percRange-cell"><p><span class="percRange"></span></p></td>
+										</tr>
+									</table>
+									<table class="stagePercents table table-bordered table-sm" cellpadding="0" cellspacing="0" border="0">
+										<tr>
+											<th colspan="3">TC Side Plat<span class="desktop">form</span></th>
+										</tr>
+										<tr>
+											<td><p><span class="minPerc" data-ref="tcSidePlatMin"></span></p></td>
+											<td><p><span class="maxPerc" data-ref="tcSidePlatMax"></span></p></td>
+											<td class="percRange-cell"><p><span class="percRange"></span></p></td>
+										</tr>
+									</table>
+									<table class="stagePercents table table-bordered table-sm" cellpadding="0" cellspacing="0" border="0">
+										<tr>
+											<th colspan="3">TC Top Plat<span class="desktop">form</span></th>
+										</tr>
+										<tr>
+											<td><p><span class="minPerc" data-ref="tcTopPlatMin"></span></p></td>
+											<td><p><span class="maxPerc" data-ref="tcTopPlatMax"></span></p></td>
+											<td class="percRange-cell"><p><span class="percRange"></span></p></td>
+										</tr>
+									</table>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+				</div> <!-- characterDetails -->
+			</div> <!-- characterContainer -->
+		</div> <!-- characterModal -->
+
+		<!-- /new character box -->
+
+
+		<div id="notification"></div>
+		
+	</div>
+
+
+	<script src="js/main.min.js"></script>
+	
+
+	<!-- Moving the Firebase initialisation codes to bottom, as they break all the JS scripts in Microsoft Edge browser -->
+	<!--<script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.1.3/firebase-app.js"></script>
+	<script>
+	  // Initialize Firebase
+	  var config = {
+	    apiKey: "AIzaSyA6XBopat0ka9TMeqYJrj7fFuRCjj8E3UU",
+	    authDomain: "dingdong-pwa.firebaseapp.com",
+	    databaseURL: "https://dingdong-pwa.firebaseio.com",
+	    projectId: "dingdong-pwa",
+	    storageBucket: "",
+	    messagingSenderId: "77024238100"
+	  };
+	  firebase.initializeApp(config);
+	</script>-->
+
+</body>
+
+</html>

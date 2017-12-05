@@ -1,0 +1,55 @@
+[{
+    "id": "0",
+    "name": "Bayonetta",
+    "url": "bayonetta",
+    "bgColour": "#a79fe5",
+    "weight": "84",
+    "minPercent": "72",
+    "maxPercent": "104",
+    "fallspeed": "1.77",
+    "gravity": "0.12",
+    "airdodgeStart": "1",
+    "airdodgeEnd": "27",
+    "imagePosition": "rightImage",
+    "confirms": {
+        "bowser": {
+            "upthrowUpair": {
+                "buttonText": "Up Throw <span>Arrow</span> Up Air",
+                "minPercent": "20",
+                "maxPercent": "50"
+            },
+            "backThrowBackair": {
+                "buttonText": "Back Throw <span>Arrow</span> Back Air",
+                "minPercent": "50",
+                "maxPercent": "80"
+            }
+        }
+    }
+}, {
+    "id": "1",
+    "name": "Bowser",
+    "url": "bowser",
+    "weight": "130",
+    "bgColour": "#32765c",
+    "minPercent": "84",
+    "maxPercent": "96",
+    "fallspeed": "1.39",
+    "gravity": "0.11",
+    "airdodgeStart": "4",
+    "airdodgeEnd": "29",
+    "imagePosition": "rightImage",
+    "confirms": {
+        "bowser": {
+            "upthrowUpair": {
+                "buttonText": "Up Throw <span>Arrow</span> Up Air",
+                "minPercent": "20",
+                "maxPercent": "50"
+            },
+            "backThrowBackair": {
+                "buttonText": "Back Throw <span>Arrow</span> Back Air",
+                "minPercent": "50",
+                "maxPercent": "80"
+            }
+        }
+    }
+}]
