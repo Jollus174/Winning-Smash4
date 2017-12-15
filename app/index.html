@@ -70,7 +70,7 @@
 			<ul class="nav" id="side-menu">
 
 		        <li class="sidebar-header">
-		            <h3>Winning at Smash4</h3>
+		            <h3>Winning</h3>
 		        </li>
 
 		        <!-- Sidebar Links -->
@@ -95,11 +95,11 @@
 	</nav> <!-- sidebar -->
 
 	<div id="page-wrapper" class="hidden-md-up">
-		<div class="row border-bottom">
+		<div class="row border-bottom nav-wrapper">
 			<nav class="navbar navbar-light navbar-static-top">
 
 				<div class="navbar-header">
-					<a class="navbar-minimalize btn btn-primary float-left" href="#"><i class="fa fa-bars" aria-hidden="true"></i></a>
+					<button class="navbar-toggler navbar-toggler-left" href="#"><i class="fa fa-bars" aria-hidden="true"></i></button>
 					<a class="navbar-brand --white" href="#">Navbar</a>
 					<!--<div class="header-title">
 						<a class="sidedrawer-toggle hidden-md-up">
@@ -116,7 +116,7 @@
 
 					<li>
 						<a href="#" data-bind="click:sortName" class="btn filter-btn active">Name <span class="caret"></span></a>
-						<a href="#"" data-bind="click:sortWeight" class="btn filter-btn">Weight <span class="caret"></span></a>
+						<a href="#" data-bind="click:sortWeight" class="btn filter-btn">Weight <span class="caret"></span></a>
 					</li>
 							<!--<ul class="dropdown-menu">
 								<li><button data-bind="click:sortFallspeed" class="btn filter-btn">Fallspeed <span class="caret"></span></button></li>
@@ -161,7 +161,7 @@
 
 			<div id="characterSelection" class="row" data-bind="foreach: killConfirm">
 
-				<div class="col-12 col-lg-6 col-xl-4" data-bind="css: url">
+				<div class="col-12 col-lg-6 col-xl-4" data-bind="css: url, attr: {'data-index': index}">
 					<div class="card">
 						<div class="card-image-top">
 							<div class="characterImage"></div>
@@ -170,8 +170,10 @@
 							</div>
 						</div>
 						<div class="card-body">
-							<div class="btn-group" role="group" data-bind="foreach: moves">
-								<button class="btn btn-sm" data-bind="text: moveName, attr: {href: '#/' + $parent.url + '/' + moveUrl}">Up Throw <span>-></span> Up Air</button>
+							<div class="btn-group" role="group" data-bind="foreach: { data: moves, as: 'move' }">
+								<!-- <button class="btn btn-sm moveBtn" data-bind="text: moveName, attr: {href: '#/' + $parent.url + '/' + moveUrl, 'data-moveurl': moveUrl, 'data-moveid': moveId}">Up Throw <span>-></span> Up Air</button> -->
+
+								<button class="btn btn-sm moveBtn" data-bind="text: percents">Up Throw <span>-></span> Up Air</button>
 							</div>							
 						</div>
 							
@@ -187,56 +189,312 @@
 						</section>-->
 					</div>
 				</div>
-			</div> <!-- row -->
+			</div> <!-- row --><br>
 
+			<div class="row" data-bind="foreach: character">
 
-			<div class="row">
+				<div id="character-list" class="character-box col-12 col-sm-6 col-md-4 col-lg-3" data-bind="attr: {'data-url': url, 'data-index': id}">
+					<div class="characterBorder clearfix">
+						<div class="characterImageContainer" data-bind="style: {backgroundColor: bgColour}, css: imageProperties">
+							<div class="characterImage"><div class="characterImageContainer-lightOverlay"></div></div>
+							
+							<div class="grid-difficulty">
+								<span data-bind="attr: {class: difficulty}"><span data-bind="text: difficulty">easy</span> - <span data-bind="text: percRange">28</span>%</span>
+							</div>
+							<div class="grid-index">
+								<span data-bind="text: (id + 1)"></span>
+							</div>
+							<div class="grid-percRange">
+								<span><span data-bind="text: minPercent">83</span> - <span data-bind="text: maxPercent">111</span>%</span>
+							</div>
+							<div hidden class="extra-info grid-fallspeed">
+								<span>Fallspeed - <span style="font-weight:700;" data-bind="text: fallspeed">1.65</span></span>
+							</div>
+							<div hidden class="extra-info grid-gravity">
+								<span>Gravity - <span style="font-weight:700;" data-bind="text: gravity">0.10784</span></span>
+							</div>
+							<!--<div data-bind="css: ledgeFsmash" class="grid-ledgeFsmash">
+								<span>Ledge Fsmash - <span style="font-weight:700;" data-bind="text: ledgeFsmash"></span></span>
+							</div>-->
 
-				<ul id="character-list" class="character-list clearfix" data-bind="foreach: character">
-					<li class="character-box clearfix" data-bind="attr: {'data-url': url, 'data-index': id}">
-						<div class="characterBorder clearfix">
-							<div class="characterImageContainer" data-bind="style: {backgroundColor: bgColour}, css: imageProperties">
-								<div class="characterImage"><div class="characterImageContainer-lightOverlay"></div></div>
-								
-								<div class="grid-difficulty">
-									<span data-bind="attr: {class: difficulty}"><span data-bind="text: difficulty">easy</span> - <span data-bind="text: percRange">28</span>%</span>
-								</div>
-								<div class="grid-index">
-									<span data-bind="text: (id + 1)"></span>
-								</div>
-								<div class="grid-percRange">
-									<span><span data-bind="text: minPercent">83</span> - <span data-bind="text: maxPercent">111</span>%</span>
-								</div>
-								<div hidden="" class="extra-info grid-fallspeed">
-									<span>Fallspeed - <span style="font-weight:700;" data-bind="text: fallspeed">1.65</span></span>
-								</div>
-								<div hidden="" class="extra-info grid-gravity">
-									<span>Gravity - <span style="font-weight:700;" data-bind="text: gravity">0.10784</span></span>
-								</div>
-								<!--<div data-bind="css: ledgeFsmash" class="grid-ledgeFsmash">
-									<span>Ledge Fsmash - <span style="font-weight:700;" data-bind="text: ledgeFsmash"></span></span>
-								</div>-->
+							<div class="characterName">
+								<span data-bind="text:name">Ganondorf</span>
+							</div>
+							<div class="characterOverview">
+								<ul>
+									<li>Weight <span class="value" data-bind="text: weight">113</span></li>
+									<li>Fallspeed<span class="value" data-bind="text: fallspeed">1.65</span></li>
+									<li>Airdodge <span class="value"><span data-bind="text: airdodgeStart">4</span> - <span data-bind="text: airdodgeEnd">29</span></span></li>
+									<li>Gravity <span class="value" data-bind="text: gravity">0.10784</span></li>
+								</ul>
+							</div>
+							<div class="characterTitleBar">
+								<span class="name" data-bind="text: name">Ganondorf</span>
+							</div>
+						</div>
 
-								<div class="characterName">
-									<span data-bind="text:name">Ganondorf</span>
-								</div>
-								<div class="characterOverview">
-									<ul>
-										<li>Weight <span class="value" data-bind="text: weight">113</span></li>
-										<li>Fallspeed<span class="value" data-bind="text: fallspeed">1.65</span></li>
-										<li>Airdodge <span class="value"><span data-bind="text: airdodgeStart">4</span> - <span data-bind="text: airdodgeEnd">29</span></span></li>
-										<li>Gravity <span class="value" data-bind="text: gravity">0.10784</span></li>
-									</ul>
-								</div>
-								<div class="characterTitleBar">
-									<span class="name" data-bind="text: name">Ganondorf</span>
-								</div>
+					</div> <!-- characterContainer -->
+						
+				</div>
+
+				<!-- new character box -->
+				<div id="characterModal" hidden>
+
+					<div id="character-underlay" class="modalUnderlay" style="background-color: transparent;" hidden></div>
+
+					<div id="characterBackButton" class="backButton">
+						<svg class="icon-arrowback" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+						    <path d="M0 0h24v24H0z" fill="none"/>
+						    <path class="pathfill" d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+						</svg>
+					</div>
+
+					<svg id="icon-prev" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+					    <path class="pathfill" d="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z"></path>
+					    <path d="M0-.5h24v24H0z" fill="none"></path>
+					</svg>
+					<svg id="icon-next" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+					    <path class="pathfill" d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path>
+					    <path d="M0-.25h24v24H0z" fill="none"></path>
+					</svg>
+
+					<div class="characterContainer clearfix">
+						<div class="characterImageContainer">
+							<div id="characterModalImage" class="characterImage"></div>
+
+							<div class="grid-percRange">
+								<span><span class="minPerc">83</span> - <span class="maxPerc">111</span>%</span>
 							</div>
 
-						</div> <!-- characterContainer -->
-					</li>
-						
-				</ul>
+							<div class="grid-difficulty">
+								<span class="easy"><span>easy</span> - <span class="percRange">28</span>%</span>
+							</div>
+							<div class="characterName">
+								<span data-ref="name"></span>
+							</div>
+
+							<div class="characterOverview">
+								<ul>
+									<li data-ref="weight">Weight <span class="value">113</span></li>
+									<li data-ref="fallspeed">Fallspeed<span class="value">1.65</span></li>
+									<li data-ref="airdodge">Airdodge <span class="value">3 - 28</span></li>
+									<li data-ref="gravity">Gravity <span class="value">0.10784</span></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="characterDetails">
+							<div class="sticky">
+								<div class="stickyName" data-ref="name"></div>
+								<div class="rageModifier">
+									<h3>Donkey Kong Rage Modifier</h3>
+									<div class="btn-group">
+										<button class="btn rageBtn resetBtn active" data-rage="0">0%</button>
+										<button class="btn rageBtn" data-rage="50">50%</button>
+										<button class="btn rageBtn" data-rage="60">60%</button>
+										<button class="btn rageBtn" data-rage="80">80%</button>
+										<button class="btn rageBtn" data-rage="100">100%</button>
+										<button class="btn rageBtn" data-rage="125">125%</button>
+										<button class="btn rageBtn maxRageBtn" data-rage="150">150%</button>
+									</div>
+								</div>
+
+							</div>
+
+							<div class="stages">
+
+								<div class="stage stage-fd col-1 clearfix">
+									<h3>Final Destination</h3>
+									<div class="stage-content clearfix">
+										<div class="stageImage clearfix"></div>
+										<div class="stageTables clearfix">
+											<table class="stagePercents table table-bordered table-sm 1-col" cellpadding="0" cellspacing="0" border="0">
+												<tr>
+													<th colspan="3">FD Normal</th>
+												</tr>
+												<tr class="table-descs">
+													<td>Min DD %</td>
+													<td>Max DD %</td>
+													<td>Window</td>
+												</tr>
+												<tr>
+													<td>
+														<p><span class="minPerc" data-ref="minPerc">0</span></p>
+													</td>
+													<td>
+														<p><span class="maxPerc" data-ref="maxPerc">0</span></p>
+													</td>
+													<td class="percRange-cell">
+														<p><span class="percRange"></span></p>
+													</td>
+												</tr>
+											</table>
+										</div>
+									</div>
+								</div>
+
+
+								<div class="stage stage-bf clearfix col-3">
+									<h3>Battlefield</h3>
+									<div class="stage-content clearfix">
+										<div class="stageImage clearfix"></div>
+										<div class="stageTables clearfix">
+											<table class="stagePercents table table-bordered table-sm" cellpadding="0" cellspacing="0" border="0">
+												<tr>
+													<th colspan="3">BF Normal</th>
+												</tr>
+												<tr>
+													<td><p><span class="minPerc" data-ref="bfNormalMin">0</span></p></td>
+													<td><p><span class="maxPerc" data-ref="bfNormalMax">0</span></p></td>
+													<td class="percRange-cell"><p><span class="percRange"></span></p></td>
+												</tr>
+											</table>
+											<table class="stagePercents table table-bordered table-sm" cellpadding="0" cellspacing="0" border="0">
+												<tr>
+													<th colspan="3">BF Low Plat<span class="desktop">form</span></th>
+												</tr>
+												<tr>
+													<td><p><span class="minPerc" data-ref="bfLowPlatMin">0</span></p></td>
+													<td><p><span class="maxPerc" data-ref="bfLowPlatMax">0</span></p></td>
+													<td class="percRange-cell"><p><span class="percRange"></span></p></td>
+												</tr>
+											</table>
+											<table class="stagePercents table table-bordered table-sm" cellpadding="0" cellspacing="0" border="0">
+												<tr>
+													<th colspan="3">BF Top Plat<span class="desktop">form</span></th>
+												</tr>
+												<tr>
+													<td><p><span class="minPerc" data-ref="bfTopPlatMin">0</span></p></td>
+													<td><p><span class="maxPerc" data-ref="bfTopPlatMax">0</span></p></td>
+													<td class="percRange-cell"><p><span class="percRange"></span></p></td>
+												</tr>
+											</table>
+										</div>
+									</div>
+								</div>
+
+								<div class="stage stage-dl col-3 clearfix">
+									<h3>Dreamland</h3>
+									<div class="stage-content clearfix">
+										<div class="stageImage clearfix"></div>
+										<div class="stageTables clearfix">
+											<table class="stagePercents table table-bordered table-sm" cellpadding="0" cellspacing="0" border="0">
+												<tr>
+													<th colspan="3">DL Normal</th>
+												</tr>
+												<tr>
+													<td><p><span class="minPerc" data-ref="dlNormalMin"></span></p></td>
+													<td><p><span class="maxPerc" data-ref="dlNormalMax"></span></p></td>
+													<td class="percRange-cell"><p><span class="percRange"></span></p></td>
+												</tr>
+											</table>
+											<table class="stagePercents table table-bordered table-sm" cellpadding="0" cellspacing="0" border="0">
+												<tr>
+													<th colspan="3">DL Low Plat<span class="desktop">form</span></th>
+												</tr>
+												<tr>
+													<td><p><span class="minPerc" data-ref="dlLowPlatMin">0</span></p></td>
+													<td><p><span class="maxPerc" data-ref="dlLowPlatMax">0</span></p></td>
+													<td class="percRange-cell"><p><span class="percRange"></span></p></td>
+												</tr>
+											</table>
+											<table class="stagePercents table table-bordered table-sm" cellpadding="0" cellspacing="0" border="0">
+												<tr>
+													<th colspan="3">DL Top Plat<span class="desktop">form</span></th>
+												</tr>
+												<tr>
+													<td><p><span class="minPerc" data-ref="dlTopPlatMin">0</span></p></td>
+													<td><p><span class="maxPerc" data-ref="dlTopPlatMax">0</span></p></td>
+													<td class="percRange-cell"><p><span class="percRange"></span></p></td>
+												</tr>
+											</table>
+										</div>
+									</div>
+								</div>
+
+								<div class="stage stage-sv col-2 clearfix">
+									<h3>Smashville</h3>
+									<div class="stage-content clearfix">
+										<div class="stageImage clearfix"></div>
+										<div class="stageTables clearfix">
+											<table class="stagePercents table table-bordered table-sm" cellpadding="0" cellspacing="0" border="0">
+												<tr>
+													<th colspan="3">SV Normal</th>
+												</tr>
+												<tr>
+													<td><p><span class="minPerc" data-ref="svNormalMin"></span></p></td>
+													<td><p><span class="maxPerc" data-ref="svNormalMax"></span></p></td>
+													<td class="percRange-cell"><p><span class="percRange"></span></p></td>
+												</tr>
+											</table>
+											<table class="stagePercents table table-bordered table-sm" cellpadding="0" cellspacing="0" border="0">
+												<tr>
+													<th colspan="3">SV Plat<span class="desktop">form</span></th>
+												</tr>
+												<tr>
+													<td><p><span class="minPerc" data-ref="svPlatMin"></span></p></td>
+													<td><p><span class="maxPerc" data-ref="svPlatMax"></span></p></td>
+													<td class="percRange-cell"><p><span class="percRange"></span></p></td>
+												</tr>
+											</table>
+										</div>
+									</div>
+								</div>
+
+								<div class="stage stage-tc col-2 clearfix">
+									<h3>Town &amp; City</h3>
+									<div class="stage-content clearfix">
+										<div class="stageImage clearfix"></div>
+										<div class="stageTables clearfix">
+											<table class="stagePercents table table-bordered table-sm" cellpadding="0" cellspacing="0" border="0">
+												<tr>
+													<th colspan="3">TC Normal</th>
+												</tr>
+												<tr>
+													<td><p><span class="minPerc" data-ref="tcNormalMin"></span></p></td>
+													<td><p><span class="maxPerc" data-ref="tcNormalMax"></span></p></td>
+													<td class="percRange-cell"><p><span class="percRange"></span></p></td>
+												</tr>
+											</table>
+											<table class="stagePercents table table-bordered table-sm" cellpadding="0" cellspacing="0" border="0">
+												<tr>
+													<th colspan="3">TC Low Plat<span class="desktop">form</span></th>
+												</tr>
+												<tr>
+													<td><p><span class="minPerc" data-ref="tcLowPlatMin"></span></p></td>
+													<td><p><span class="maxPerc" data-ref="tcLowPlatMax"></span></p></td>
+													<td class="percRange-cell"><p><span class="percRange"></span></p></td>
+												</tr>
+											</table>
+											<table class="stagePercents table table-bordered table-sm" cellpadding="0" cellspacing="0" border="0">
+												<tr>
+													<th colspan="3">TC Side Plat<span class="desktop">form</span></th>
+												</tr>
+												<tr>
+													<td><p><span class="minPerc" data-ref="tcSidePlatMin"></span></p></td>
+													<td><p><span class="maxPerc" data-ref="tcSidePlatMax"></span></p></td>
+													<td class="percRange-cell"><p><span class="percRange"></span></p></td>
+												</tr>
+											</table>
+											<table class="stagePercents table table-bordered table-sm" cellpadding="0" cellspacing="0" border="0">
+												<tr>
+													<th colspan="3">TC Top Plat<span class="desktop">form</span></th>
+												</tr>
+												<tr>
+													<td><p><span class="minPerc" data-ref="tcTopPlatMin"></span></p></td>
+													<td><p><span class="maxPerc" data-ref="tcTopPlatMax"></span></p></td>
+													<td class="percRange-cell"><p><span class="percRange"></span></p></td>
+												</tr>
+											</table>
+										</div>
+									</div>
+								</div>
+
+							</div>
+
+						</div> <!-- characterDetails -->
+					</div> <!-- characterContainer -->
+				</div> <!-- characterModal -->
 
 				<!-- /new character box -->
 

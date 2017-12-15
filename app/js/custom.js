@@ -1,5 +1,5 @@
 var Custom = (function() {
-	var myjson;
+	var charAttrJSON;
 	function defer(method) {
 	    if (window.jQuery) {
 	    	// Service Worker seems to want to try and call this script before jQuery is ready
@@ -11,8 +11,8 @@ var Custom = (function() {
 			// https://stackoverflow.com/questions/15764844/jquery-getjson-save-result-into-variable
 			
 			// This is the characterAttrs file, this is good
-			$.getJSON("./api/char-attrs.json", function(jsonCallback){
-			    myjson = jsonCallback;
+			$.getJSON("api/char-attrs.json", function(jsonCallback){
+			    charAttrJSON = jsonCallback;
 			    method();
 			})
 			.fail(function(){
@@ -183,6 +183,15 @@ var Custom = (function() {
 
 
 
+		/* --- Trigger charAttr layout to render --- */
+
+		$('.moveBtn').click(function(){
+			console.log('button is clicked!');
+		})
+
+
+		/* --- */
+
 
 		function activateCharacter(self){
 
@@ -210,17 +219,17 @@ var Custom = (function() {
 			// This is referring to the JSON var created earlier
 
 			// Begin the mapping
-			var name = myjson[$index].name;
-			var urlName = myjson[$index].url;
-			var bgColour = myjson[$index].bgColour;
-			var weight = myjson[$index].weight;
-			var minPercent = parseInt(myjson[$index].minPercent);
-			var maxPercent = parseInt(myjson[$index].maxPercent);
-			var fallspeed = myjson[$index].fallspeed;
-			var gravity = myjson[$index].gravity;
-			var airdodgeStart = myjson[$index].airdodgeStart;
-			var airdodgeEnd = myjson[$index].airdodgeEnd;
-			var textContrast = myjson[$index].textContrast;
+			var name = charAttrJSON[$index].name;
+			var urlName = charAttrJSON[$index].url;
+			var bgColour = charAttrJSON[$index].bgColour;
+			var weight = charAttrJSON[$index].weight;
+			var minPercent = parseInt(charAttrJSON[$index].minPercent);
+			var maxPercent = parseInt(charAttrJSON[$index].maxPercent);
+			var fallspeed = charAttrJSON[$index].fallspeed;
+			var gravity = charAttrJSON[$index].gravity;
+			var airdodgeStart = charAttrJSON[$index].airdodgeStart;
+			var airdodgeEnd = charAttrJSON[$index].airdodgeEnd;
+			var textContrast = charAttrJSON[$index].textContrast;
 
 			var airdodge = airdodgeStart + ' - ' + airdodgeEnd;
 			var percRange = (maxPercent - minPercent) + 1;
@@ -613,6 +622,8 @@ var Custom = (function() {
 
 
 		/* --- */
+
+
 
 
 		$('#icon-next').click(function(){

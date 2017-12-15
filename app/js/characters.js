@@ -89,15 +89,40 @@ var characters = (function() {
             if(data){
 
                 var vm = new killConfirmsViewModel();
-                
+            
                 vm.name = data.name;
                 vm.url = data.url;
                 vm.hashUrl = ko.observable('#' + vm.url);
+                vm.index = data.index;
 
+                // Deeper
                 // https://jsfiddle.net/wfs569gf/
                 vm.moves = data.moves;
                 vm.moveName = data.moveName;
                 vm.moveUrl = data.moveUrl;
+                vm.moveId = data.moveId;
+                //console.log(vm.moveId);
+
+                //vm.percents = data.percents;
+                //console.log(data.percents);
+                /* need to search for object name though... */
+
+                vm.bayonetta = data.bayonetta;
+                //vm.bowser = data.bowser;
+
+
+
+                /* --- Parsey things for killConfirm value generation to go here --- */
+
+                vm.buildData = ko.computed(function(){
+                    return ko.utils.arrayMap(vm.moves, function(item){
+                        //return { moves.percents.}
+                    })
+                    //var $element = $(event.target);
+
+                });
+
+
                 //vm.hashMoveUrl = ko.observable('#' + vm.moveUrl);
                 // http://digitalbush.com/2013/12/11/knockout-js-href-binding/
                 /*vm.hashFullUrl = ko.computed(function(){

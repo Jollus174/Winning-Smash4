@@ -7,7 +7,10 @@ var Page = (function(){
 		var self = this;
 		self.character = ko.observableArray([]);
 		self.killConfirm = ko.observableArray([]);
-		self.moves = ko.observableArray([]);
+		
+		// This is new!
+		//self.moves = ko.observableArray([]);
+		//self.percents = ko.obserableArray([]);
 
 		// !!!
 		// This could also be important in allowing the Moves to be iterated
@@ -19,6 +22,24 @@ var Page = (function(){
 		/*var moves = function(moveName){
 			this.moveName = moveName;
 		}*/
+
+
+		// Filter is finally bloody working. Ty based 'super cool'
+		// https://stackoverflow.com/questions/36283070/search-filter-with-knockoutjs
+		// Can't use this after all, as Knockout doesn't store the index numbers
+		// Refactored code is in custom.js
+		/*self.query = ko.observable('');
+
+		self.filterCharacters = ko.computed(function(){
+			var search = self.query().toLowerCase();
+			if(!search){
+				return self.character();
+			} else {
+				return ko.utils.arrayFilter(self.character(), function(item){
+					return item.name.toLowerCase().indexOf(search) !== -1;
+				});
+			}
+		})*/
 
 		function reassignIndexes(){
 			console.log('reindexing!');
@@ -32,8 +53,16 @@ var Page = (function(){
 		// Initialise the reindexing
 		reassignIndexes();
 
+
+		self.generateCharacters = function(event){
+			var $element = $(event.target);
+
+			// GET CHARACTER NAME FROM BUTTON, THEN...
+			console.log(name);
+		};
+
 		// Sorting arrays within Knockout --> http://www.c-sharpcorner.com/UploadFile/cd7c2e/apply-sort-function-on-observable-array-using-knockoutjs/
-		self.sortName = function(item, event){;
+		self.sortName = function(event){
 			var $filterButtons = $('.filter-btn').not('#filter-dropdown-btn.filter-btn');
 			var $element = $(event.target);
 
@@ -60,8 +89,8 @@ var Page = (function(){
 		}
 
 		// Sorting tables
-		// http://develothink.com/sorting-tables-using-knockoutjs/
-		self.sortWeight = function(item, event){
+		// https://develothink.com/Blog/sorting-tables-using-knockoutjs
+		self.sortWeight = function(event){
 			var $filterButtons = $('.filter-btn').not('#filter-dropdown-btn.filter-btn');
 			var $element = $(event.target);
 
@@ -87,7 +116,7 @@ var Page = (function(){
 			}
 		}
 
-		self.sortDifficulty = function(item, event){
+		self.sortDifficulty = function(event){
 			var $filterButtons = $('.filter-btn').not('#filter-dropdown-btn.filter-btn');
 			var $element = $(event.target);
 
@@ -113,7 +142,7 @@ var Page = (function(){
 			}
 		}
 
-		self.sortFallspeed = function(item, event){
+		self.sortFallspeed = function(event){
 			var $filterButtons = $('.filter-btn').not('#filter-dropdown-btn.filter-btn');
 			var $element = $(event.target);
 
@@ -186,7 +215,7 @@ var Page = (function(){
 			// document.querySelector('body').classList.add('loading')
 			// load html template informing the user they are offline
 			var request = new XMLHttpRequest();
-			request.open('GET', './offline.html', true);
+			request.open('GET', '/offline.html', true);
 
 			request.onload = function(){
 				if(request.status === 200){
@@ -205,7 +234,7 @@ var Page = (function(){
                 }
             };
 
-            request.onerror = function() {
+            request.onerror = function(){
                 // network errors
                 console.error('Connection error');
             };

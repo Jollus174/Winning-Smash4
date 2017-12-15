@@ -1,31 +1,26 @@
 [{
+    "index": 0,
     "name": "Bowser",
     "url": "bowser",
     "moves": [
         {
+            "moveId": "0",
             "moveName": "Up Throw - Up Air",
             "moveUrl": "upthrow-upair",
             "percents": {
                 "bayonetta": ["20", "50"],
                 "bowser": ["50", "80"]
             }
-        },
-        {
-            "moveName": "Up Throw - Back Air",
-            "moveUrl": "upthrow-bair",
-            "percents": {
-                "bayonetta": ["40", "70"],
-                "bowser": ["30", "90"]
-            }
         }
     ]
-
 }, 
 {
+    "index": 1,
     "name": "Donkey Kong",
     "url": "donkey-kong",
     "moves": [
         {
+            "moveId": "0",
             "moveName": "Cargo Up Throw - Up Air (bell)",
             "moveUrl": "cargoupthrow-upair",
             "percents": {
@@ -36,10 +31,12 @@
     ]
 },
 {
+    "index": 2,
     "name": "Mr. Game & Watch",
     "url": "game-and-watch",
     "moves": [
         {
+            "moveId": "0",
             "moveName": "Up Throw - Up Air",
             "moveUrl": "upthrow-upair",
             "percents": {
@@ -50,10 +47,12 @@
     ]
 },
 {
+    "index": 3,
     "name": "Robin",
     "url": "robin",
     "moves": [
         {
+            "moveId": "0",
             "moveName": "Down Throw - Up Air",
             "moveUrl": "dthrow-upair",
             "percents": {

@@ -13,4 +13,5 @@ Then install Gulp to the project `npm install gulp --save-dev`
 
 ## Download dependencies
 
-`npm install gulp-sass browser-sync gulp-useref gulp-if gulp-cache gulp-uglify gulp-cssnano gulp-uncss gulp-imagemin gulp-cache del run-sequence gulp-jsonminify --save-dev`
+`npm install gulp-sass browser-sync gulp-useref gulp-if gulp-cache gulp-uglify gulp-sourcemaps --save-dev`
+`npm-install gulp-cssnano gulp-uncss gulp-imagemin gulp-cache del run-sequence gulp-jsonminify --save-dev`
