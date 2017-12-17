@@ -60,12 +60,9 @@ var Custom = (function() {
 
 			$.each(killConfirmJSON[characterId]['moves'][moveId]['percents'], function(index, value){
 
-				//console.log('index: ' + index + ', value: ' + value);
-
 				// this is good!
 				// https://stackoverflow.com/questions/4329092/multi-dimensional-associative-arrays-in-javascript
 				var $character = $('.' + index);
-				console.log($character);
 				var minPercent = value[0];
 				var maxPercent = value[1];
 
@@ -74,39 +71,14 @@ var Custom = (function() {
 				// IT WOOOOOORKS!!!
 
 				// Map that difficulty
-				// working
-				console.log(parseInt(maxPercent) - parseInt(minPercent));
-				
-				// $charModal.find('.characterImageContainer').attr('class', 'characterImageContainer');
 				var $difficulty = $character.find('.difficulty');
-				//console.log(computeDifficulty(minPercent, maxPercent));
 
 				$difficulty.attr('class', 'difficulty').addClass(computeDifficulty(minPercent, maxPercent));
 				$difficulty.find('.text-difficulty').text(computeDifficulty(minPercent, maxPercent));
 				$difficulty.find('.text-percRange').text(parseInt(maxPercent) - parseInt(minPercent));
-
 				
 			});
 		});
-
-
-			//return //min and max percents?
-		//}
-		//changeMinMaxPercents
-		// $.each(killConfirmJSON[0], function(index, value){
-		// 	console.log('index: ' + index + ', value: ' + value);	
-		// 	//$.each(value, function(index, value){
-		// 	$.each('moves', function(index2, value2){
-		// 		console.log('index2: ' + index2 + ', value2: ' + value2);
-		// 	}) // must search through 'index: moves'
-				
-		// 	//});
-		// 	// var $character = $('.characterImageContainer' /*character*/);
-		// 	// $character.find('.grid-minPercent').text('charPercent[0]');
-		// 	// $character.find('grid-maxPercent').text('charPercent[1]');
-			
-		// });
-
 
 
 		// The URL constructers/deconstructers are back to haunt me
@@ -379,8 +351,8 @@ var Custom = (function() {
 			// Map those mf-ing values
 			// Ideally these should all be pushed to an array and mapped all at once, but eh
 			var $fd = $charModal.find('.stage-fd');
-			$fd.find('span[data-ref="minPerc"]').text(minPercent).attr('data-defaultmin', minPercent);
-			$fd.find('span[data-ref="maxPerc"]').text(maxPercent).attr('data-defaultmax', maxPercent);
+			$fd.find('span[data-ref="fdNormalMin"]').text(minPercent).attr('data-defaultmin', minPercent);
+			$fd.find('span[data-ref="fdNormalMax"]').text(maxPercent).attr('data-defaultmax', maxPercent);
 
 			var $bf = $charModal.find('.stage-bf');
 			$bf.find('span[data-ref="bfNormalMin"]').text(minPercent+7).attr('data-defaultmin', minPercent+7);
@@ -751,41 +723,50 @@ var Custom = (function() {
 		$('#filter-dropdown-btn').click(function(){
 			$this = $(this);
 			$this.toggleClass('active');
-			$this.closest('.btn-group').toggleClass('open');
+			$this.closest('.navbar-top-links').toggleClass('open');
 		});
 
 
 		$('.add-extra-info').click(function(){
 			$this = $(this);
 
-			// Need to see if these are the MOBILE toggles, or the DESKTOP toggles. They'll function slightly differently
-			if($this.closest('.btn-group').hasClass('mobile')){
-				// Need to make it that only one 'toggle extra info' button on mobile can be active at a time
-				// Otherwise the design starts to break down and look poopoo
-
-				if(!$this.hasClass('checked')){
-					$('.mobile .add-extra-info').removeClass('checked');
-					$this.addClass('checked');
-					if($this.hasClass('add-info-grid')){
-						$('body').addClass('show-extra-info').removeClass('show-ledgeFsmash');
-					}
-					if($this.hasClass('add-ledgeFsmash-grid')){
-						$('body').addClass('show-ledgeFsmash').removeClass('show-extra-info');
-					}
+			function toggleCheck(self){
+				$checkbox = self.find('.checkbox');
+				if($checkbox.hasClass('fa-check')){
+					$checkbox.removeClass('fa-check').addClass('fa-times');
 				} else {
-					$this.removeClass('checked');
-					$('body').removeClass('show-ledgeFsmash show-extra-info');
-				}
+					$checkbox.removeClass('fa-times').addClass('fa-check');
+				};
+			};
 
-			} else {
-				if($this.hasClass('add-info-grid')){
-					$this.toggleClass('checked');
-					$('body').toggleClass('show-extra-info');
-				}
-				if($this.hasClass('add-ledgeFsmash-grid')){
-					$this.toggleClass('checked');
-					$('body').toggleClass('show-ledgeFsmash');
-				}
+			// Need to see if these are the MOBILE toggles, or the DESKTOP toggles. They'll function slightly differently
+			// if($this.closest('.btn-group').hasClass('mobile')){
+			// 	// Need to make it that only one 'toggle extra info' button on mobile can be active at a time
+			// 	// Otherwise the design starts to break down and look poopoo
+
+			// 	// if(!$this.hasClass('active')){
+			// 	// 	$('.mobile .add-extra-info checkbox').removeClass('fa-times').addClass('fa-check');
+			// 	// 	$this.addClass('active');
+			// 	// 	if($this.hasClass('add-info-grid')){
+			// 	// 		$('body').addClass('show-extra-info').removeClass('show-ledgeFsmash');
+			// 	// 	}
+			// 	// 	if($this.hasClass('add-ledgeFsmash-grid')){
+			// 	// 		$('body').addClass('show-ledgeFsmash').removeClass('show-extra-info');
+			// 	// 	}
+			// 	// } else {
+			// 	// 	$this.removeClass('active');
+			// 	// 	$('body').removeClass('show-ledgeFsmash show-extra-info');
+			// 	// }
+
+			// } else {
+
+			if($this.hasClass('add-info-grid')){
+				// $this.toggleClass('active');
+				// $this.find('.checkbox').removeClass;
+				toggleCheck($this);
+
+				$('body').toggleClass('show-extra-info');
+
 			}
 		})
 

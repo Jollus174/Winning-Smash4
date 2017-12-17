@@ -8,8 +8,10 @@ var characters = (function() {
     function killConfirmsViewModel(){
         var self = this;
     }
-
     function characterAttrsViewModel(){
+        var self = this;
+    }
+    function stageListViewModel(){
         var self = this;
     }
 
@@ -41,7 +43,6 @@ var characters = (function() {
             });
         };
 
-        // retrieves all character attrs from the API
         self.getCharAttrs = function(){
             return new Promise(function(resolve, reject){
 
@@ -66,6 +67,33 @@ var characters = (function() {
                 };
 
                 charAttrsRequest.send();
+            });
+        };
+
+        self.getStageList = function(){
+            return new Promise(function(resolve, reject){
+
+                var stageListRequest = new XMLHttpRequest();
+                stageListRequest.open('GET', 'api/stage-list.json');
+
+                stageListRequest.onload = function(){
+                    // success
+                    if (stageListRequest.status === 200){
+                        // resolve the promise with the parsed response text (assumes JSON)
+                        var stageListJSON = "";
+                        stageListJSON = JSON.parse(stageListRequest.response);
+                        resolve(stageListJSON);
+                    } else {
+                        // error retrieving file
+                        console.log('missing stage list file');
+                    }
+                };
+                stageListRequest.onerror = function(){
+                    // network errors
+                    reject(Error("Network Error"));
+                };
+
+                stageListRequest.send();
             });
         };
     }
@@ -149,22 +177,6 @@ var characters = (function() {
                     return percRange;
                 }, this);
 
-                //vm.difficulty = computeDifficulty(vm.minPercent, vm.maxPercent);
-
-
-                // TO DO - DIFFICULTY CALCULATOR SHOULD EXIST ONLY IN KNOCKOUT
-                //
-                // var percent = maxPercent - minPercent;
-                // var diff = "";
-                // if(0 <= percent && percent <= 6){diff = 'very-hard'};
-                // if(7 <= percent && percent <= 11){diff = 'hard'};
-                // if(12 <= percent && percent <= 22){diff = 'average'};
-                // if(23 <= percent && percent <= 30){diff = 'easy'};
-                // if(31 <= percent){diff = 'very-easy'};
-                // return diff;
-
-
-
                 vm.difficultyValue = ko.computed(function(){
                     var floatiness = vm.fallspeed * vm.gravity;
                     var diffValue = vm.weight / floatiness;
@@ -200,12 +212,37 @@ var characters = (function() {
             };
             return null;
         };
-
         // This block maps them out. Will repeat the functions for each element being called.
         self.toCharacterAttrsViewModels = function(data){
-            if (data && data.length > 0) {
+            if(data && data.length > 0) {
                 return data.map(function(character){
                     return self.toCharacterAttrsViewModel(character);
+                });
+            }
+            return [];
+        };
+
+        self.toStageListViewModel = function(data){
+            if(data){
+                var vm = new stageListViewModel();
+
+                vm.name = data.name;
+                vm.className = data.className;
+                vm.imageFile = data.imageFile;
+                vm.colour = data.colour;
+                vm.tables = data.tables;
+
+                vm.stagePartName = data.stagePartName;
+                vm.stagePartRef = data.stagePartRef;
+
+                return vm;
+            }
+            return null;
+        };
+        self.toStageListViewModels = function(data){
+            if(data && data.length > 0){
+                return data.map(function(character){
+                    return self.toStageListViewModel(character);
                 });
             }
             return [];
@@ -221,17 +258,15 @@ var characters = (function() {
                 return CharacterAdapter.toKillConfirmsViewModels(response);
             });
         };
-        self.getMoves = function(){
-            return characterApiService.getKillConfirms().then(function(response){
-                return CharacterAdapter.toMovesViewModels(response);
-            });
-
-        };
-
         self.getCharAttrs = function(){
             // retrieve all the character attrs from the API
             return characterApiService.getCharAttrs().then(function(response){
                 return CharacterAdapter.toCharacterAttrsViewModels(response);
+            });
+        };
+        self.getStageList = function(){
+            return characterApiService.getStageList().then(function(response){
+               return CharacterAdapter.toStageListViewModels(response);
             });
         };
     }
@@ -252,6 +287,10 @@ var characters = (function() {
                 Page.vm.killConfirm(response);
                 console.log('kill confirms loaded');
             });
+            characterController.getStageList().then(function(response){
+                Page.vm.stage(response);
+                console.log('stage list loaded');
+            })
             characterController.getCharAttrs().then(function(response){
                 // bind the characters to the UI
                 Page.vm.character(response);

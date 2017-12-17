@@ -7,6 +7,7 @@ var Page = (function(){
 		var self = this;
 		self.character = ko.observableArray([]);
 		self.killConfirm = ko.observableArray([]);
+		self.stage = ko.observableArray([]);
 		
 		// This is new!
 		//self.moves = ko.observableArray([]);
@@ -62,7 +63,7 @@ var Page = (function(){
 		};
 
 		// Sorting arrays within Knockout --> http://www.c-sharpcorner.com/UploadFile/cd7c2e/apply-sort-function-on-observable-array-using-knockoutjs/
-		self.sortName = function(event){
+		self.sortName = function(item, event){
 			var $filterButtons = $('.filter-btn').not('#filter-dropdown-btn.filter-btn');
 			var $element = $(event.target);
 
@@ -90,7 +91,7 @@ var Page = (function(){
 
 		// Sorting tables
 		// https://develothink.com/Blog/sorting-tables-using-knockoutjs
-		self.sortWeight = function(event){
+		self.sortWeight = function(item, event){
 			var $filterButtons = $('.filter-btn').not('#filter-dropdown-btn.filter-btn');
 			var $element = $(event.target);
 
@@ -101,7 +102,6 @@ var Page = (function(){
 				$element.addClass('active');
 			};
 
-			// Create conditional to sort the characters A-Z or Z-A
 			if($element.hasClass('asc')){
 				// Ascending order (default)
 				self.character.sort(function(lower, higher){
@@ -116,7 +116,7 @@ var Page = (function(){
 			}
 		}
 
-		self.sortDifficulty = function(event){
+		self.sortDifficulty = function(item, event){
 			var $filterButtons = $('.filter-btn').not('#filter-dropdown-btn.filter-btn');
 			var $element = $(event.target);
 
@@ -142,7 +142,7 @@ var Page = (function(){
 			}
 		}
 
-		self.sortFallspeed = function(event){
+		self.sortFallspeed = function(item, event){
 			var $filterButtons = $('.filter-btn').not('#filter-dropdown-btn.filter-btn');
 			var $element = $(event.target);
 
