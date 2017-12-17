@@ -11,24 +11,109 @@ var Custom = (function() {
 			// https://stackoverflow.com/questions/15764844/jquery-getjson-save-result-into-variable
 			
 			// This is the characterAttrs file, this is good
-			$.getJSON("api/char-attrs.json", function(jsonCallback){
+			/*$.getJSON("api/char-attrs.json", function(jsonCallback){
 			    charAttrJSON = jsonCallback;
 			    method();
 			})
 			.fail(function(){
 				console.log('error retrieving data');
+			});*/
+
+			$.getJSON("api/kill-confirms.json", function(jsonCallback){
+			    //charAttrJSON = jsonCallback;
+			    killConfirmJSON = jsonCallback;
+			    method();
+			})
+			.fail(function(){
+				console.log('error retrieving data');
 			});
+
 	    } else {
 	        setTimeout(function() { defer(method()) }, 50);
 	    }
 	}
 
+
 	defer(function(){
+
+
+
+		// Compute difficulty per character
+		// TO DO - Need to set differing values since multiple chars and confirms now
+		function computeDifficulty(minPercent, maxPercent){
+			var percent = maxPercent - minPercent;
+			var diff = "";
+			if(0 <= percent && percent <= 6){diff = 'very-hard'};
+			if(7 <= percent && percent <= 11){diff = 'hard'};
+			if(12 <= percent && percent <= 22){diff = 'average'};
+			if(23 <= percent && percent <= 30){diff = 'easy'};
+			if(31 <= percent){diff = 'very-easy'};
+			return diff;
+		}
+		//
+
+		// Need to trigger this on button click now
+		$('.moveBtn').click(function(){
+			var characterId = $(this).closest('.card-container').data('index');
+			var moveId = $(this).data('moveid');
+			//console.log('card-container: ' + characterId + ' moveId: ' + moveId);
+
+			$.each(killConfirmJSON[characterId]['moves'][moveId]['percents'], function(index, value){
+
+				//console.log('index: ' + index + ', value: ' + value);
+
+				// this is good!
+				// https://stackoverflow.com/questions/4329092/multi-dimensional-associative-arrays-in-javascript
+				var $character = $('.' + index);
+				console.log($character);
+				var minPercent = value[0];
+				var maxPercent = value[1];
+
+				$character.find('.grid-minPercent').text(minPercent);
+				$character.find('.grid-maxPercent').text(maxPercent);
+				// IT WOOOOOORKS!!!
+
+				// Map that difficulty
+				// working
+				console.log(parseInt(maxPercent) - parseInt(minPercent));
+				
+				// $charModal.find('.characterImageContainer').attr('class', 'characterImageContainer');
+				var $difficulty = $character.find('.difficulty');
+				//console.log(computeDifficulty(minPercent, maxPercent));
+
+				$difficulty.attr('class', 'difficulty').addClass(computeDifficulty(minPercent, maxPercent));
+				$difficulty.find('.text-difficulty').text(computeDifficulty(minPercent, maxPercent));
+				$difficulty.find('.text-percRange').text(parseInt(maxPercent) - parseInt(minPercent));
+
+				
+			});
+		});
+
+
+			//return //min and max percents?
+		//}
+		//changeMinMaxPercents
+		// $.each(killConfirmJSON[0], function(index, value){
+		// 	console.log('index: ' + index + ', value: ' + value);	
+		// 	//$.each(value, function(index, value){
+		// 	$.each('moves', function(index2, value2){
+		// 		console.log('index2: ' + index2 + ', value2: ' + value2);
+		// 	}) // must search through 'index: moves'
+				
+		// 	//});
+		// 	// var $character = $('.characterImageContainer' /*character*/);
+		// 	// $character.find('.grid-minPercent').text('charPercent[0]');
+		// 	// $character.find('grid-maxPercent').text('charPercent[1]');
+			
+		// });
+
+
+
 		// The URL constructers/deconstructers are back to haunt me
 		function constructUrl(self){
 			var locationHost = window.location.host;
 			var baseUrl = window.location.protocol + "//" + locationHost;
-			var dataUrl = self.attr('data-url');
+			var dataUrl = self.data('url');
 			//var rageAmount = self.find('.rageBtn.active').attr('data-rage');
 			//console.log('current rage is ' + rageAmount);
 			/*if(rageAmount != '0' && rageAmount != 'undefined' && locationHost != 'dev.glideagency.com/'){
@@ -185,9 +270,9 @@ var Custom = (function() {
 
 		/* --- Trigger charAttr layout to render --- */
 
-		$('.moveBtn').click(function(){
-			console.log('button is clicked!');
-		})
+		// $('.moveBtn').click(function(){
+		// 	console.log('button is clicked!');
+		// })
 
 
 		/* --- */
@@ -219,19 +304,38 @@ var Custom = (function() {
 			// This is referring to the JSON var created earlier
 
 			// Begin the mapping
-			var name = charAttrJSON[$index].name;
-			var urlName = charAttrJSON[$index].url;
-			var bgColour = charAttrJSON[$index].bgColour;
-			var weight = charAttrJSON[$index].weight;
-			var minPercent = parseInt(charAttrJSON[$index].minPercent);
-			var maxPercent = parseInt(charAttrJSON[$index].maxPercent);
-			var fallspeed = charAttrJSON[$index].fallspeed;
-			var gravity = charAttrJSON[$index].gravity;
-			var airdodgeStart = charAttrJSON[$index].airdodgeStart;
-			var airdodgeEnd = charAttrJSON[$index].airdodgeEnd;
-			var textContrast = charAttrJSON[$index].textContrast;
 
+			// I don't agree with this method. There's no reason to re-reference the JSON file when the data is already on the page
+			// var name = charAttrJSON[$index].name;
+			// var urlName = charAttrJSON[$index].url;
+			// var bgColour = charAttrJSON[$index].bgColour;
+			// var weight = charAttrJSON[$index].weight;
+			// var minPercent = parseInt(charAttrJSON[$index].minPercent);
+			// var maxPercent = parseInt(charAttrJSON[$index].maxPercent);
+			// var fallspeed = charAttrJSON[$index].fallspeed;
+			// var gravity = charAttrJSON[$index].gravity;
+			// var airdodgeStart = charAttrJSON[$index].airdodgeStart;
+			// var airdodgeEnd = charAttrJSON[$index].airdodgeEnd;
+			// var textContrast = charAttrJSON[$index].textContrast;
+
+			var name = self.data('name');
+			var urlName = self.data('url');
+			var bgColour = self.data('bgcolour');
+			var weight = self.data('weight');
+			var fallspeed = self.data('fallspeed');
+			var gravity = self.data('gravity');
+			var airdodgeStart = self.data('airdodgestart');
+			var airdodgeEnd = self.data('airdodgeend');
+			var minPercent = self.data('minpercent');
+			var maxPercent = self.data('maxpercent');
+			var textContrast = self.data('textcontrast');
 			var airdodge = airdodgeStart + ' - ' + airdodgeEnd;
+			console.log(airdodge);
+
+
+
+			
+
 			var percRange = (maxPercent - minPercent) + 1;
 
 			// Time to activate the Character Modal
@@ -258,6 +362,7 @@ var Custom = (function() {
 
 			$charModal.find('.grid-percRange .minPerc').text(minPercent);
 			$charModal.find('.grid-percRange .maxPerc').text(maxPercent);
+
 			$charModal.find('span[data-ref="name"], .stickyName').text(name);
 
 			// Generating the difficulty text via the global function in characters.js
@@ -390,8 +495,8 @@ var Custom = (function() {
 				var $minPerc = $this.find('.minPerc');
 				var $maxPerc = $this.find('.maxPerc');
 				var $percRange = $this.find('.percRange');
-				var defaultMinPercent = $minPerc.attr('data-defaultmin');
-				var defaultMaxPercent = $maxPerc.attr('data-defaultmax');
+				var defaultMinPercent = $minPerc.data('defaultmin');
+				var defaultMaxPercent = $maxPerc.data('defaultmax');
 
 				var adjustedMinPercent = parseInt(defaultMinPercent) + rageAdjMin;
 				var adjustedMaxPercent = parseInt(defaultMaxPercent) + rageAdjMax;
@@ -613,7 +718,7 @@ var Custom = (function() {
 
 		// Using traditional 'click()' bindings will not work on dynamically generated character boxes!
 		// https://stackoverflow.com/questions/6658752/click-event-doesnt-work-on-dynamically-generated-elements
-		$('#main').on('click', '#character-list .character-box', function(){
+		$('#characterGrid').on('click', '.character-box', function(){
 			activateCharacter($(this));
 		})
 		$('#characterModal').on('click', '.rageBtn', function(){

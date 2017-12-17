@@ -4,12 +4,21 @@
     "url": "bowser",
     "moves": [
         {
-            "moveId": "0",
+            "moveId": 0,
             "moveName": "Up Throw - Up Air",
             "moveUrl": "upthrow-upair",
             "percents": {
-                "bayonetta": ["20", "50"],
-                "bowser": ["50", "80"]
+                "bayonetta": [1, 2],
+                "bowser": [3, 10]
+            }
+        },
+        {
+            "moveId": 1,
+            "moveName": "Up Throw - Back Air",
+            "moveUrl": "upthrow-backair",
+            "percents": {
+                "bayonetta": [5, 6],
+                "bowser": [7, 8]
             }
         }
     ]
@@ -20,12 +29,12 @@
     "url": "donkey-kong",
     "moves": [
         {
-            "moveId": "0",
+            "moveId": 0,
             "moveName": "Cargo Up Throw - Up Air (bell)",
             "moveUrl": "cargoupthrow-upair",
             "percents": {
-                "bayonetta": ["40", "60"],
-                "bowser": ["70", "80"]
+                "bayonetta": [20, 30],
+                "bowser": [40, 50]
             }
         }
     ]
@@ -36,12 +45,12 @@
     "url": "game-and-watch",
     "moves": [
         {
-            "moveId": "0",
+            "moveId": 0,
             "moveName": "Up Throw - Up Air",
             "moveUrl": "upthrow-upair",
             "percents": {
-                "bayonetta": ["40", "60"],
-                "bowser": ["70", "80"]
+                "bayonetta": [10, 30],
+                "bowser": [300, 320]
             }
         }
     ]
@@ -52,12 +61,12 @@
     "url": "robin",
     "moves": [
         {
-            "moveId": "0",
+            "moveId": 0,
             "moveName": "Down Throw - Up Air",
             "moveUrl": "dthrow-upair",
             "percents": {
-                "bayonetta": ["40", "60"],
-                "bowser": ["70", "80"]
+                "bayonetta": [30, 60],
+                "bowser": [20, 670]
             }
         }
     ]

@@ -1,17 +1,6 @@
 // This function is also used in custom.js to determine difficulty, so I'm moving it outside the toCharacterViewModel() function
 
-// THIS WILL NEED TO BE ADJUSTED, AS THERE ARE NOW - MULTIPLE - CHARACTERS AND CONFIRMS
-function computeDifficulty(minPercent, maxPercent){
-    var percent = maxPercent - minPercent;
-    var diff = "";
-    if(0 <= percent && percent <= 6){diff = 'very-hard'};
-    if(7 <= percent && percent <= 11){diff = 'hard'};
-    if(12 <= percent && percent <= 22){diff = 'average'};
-    if(23 <= percent && percent <= 30){diff = 'easy'};
-    if(31 <= percent){diff = 'very-easy'};
-    return diff;
-}
-//
+
 
 // Sort out character boxes
 var characters = (function() {
@@ -107,20 +96,16 @@ var characters = (function() {
                 //console.log(data.percents);
                 /* need to search for object name though... */
 
-                vm.bayonetta = data.bayonetta;
-                //vm.bowser = data.bowser;
-
-
 
                 /* --- Parsey things for killConfirm value generation to go here --- */
 
-                vm.buildData = ko.computed(function(){
-                    return ko.utils.arrayMap(vm.moves, function(item){
-                        //return { moves.percents.}
-                    })
-                    //var $element = $(event.target);
+                // vm.buildData = ko.computed(function(){
+                //     return ko.utils.arrayMap(vm.moves, function(item){
+                //         //return { moves.percents.}
+                //     })
+                //     //var $element = $(event.target);
 
-                });
+                // });
 
 
                 //vm.hashMoveUrl = ko.observable('#' + vm.moveUrl);
@@ -164,7 +149,21 @@ var characters = (function() {
                     return percRange;
                 }, this);
 
-                vm.difficulty = computeDifficulty(vm.minPercent, vm.maxPercent);
+                //vm.difficulty = computeDifficulty(vm.minPercent, vm.maxPercent);
+
+
+                // TO DO - DIFFICULTY CALCULATOR SHOULD EXIST ONLY IN KNOCKOUT
+                //
+                // var percent = maxPercent - minPercent;
+                // var diff = "";
+                // if(0 <= percent && percent <= 6){diff = 'very-hard'};
+                // if(7 <= percent && percent <= 11){diff = 'hard'};
+                // if(12 <= percent && percent <= 22){diff = 'average'};
+                // if(23 <= percent && percent <= 30){diff = 'easy'};
+                // if(31 <= percent){diff = 'very-easy'};
+                // return diff;
+
+
 
                 vm.difficultyValue = ko.computed(function(){
                     var floatiness = vm.fallspeed * vm.gravity;
@@ -187,7 +186,15 @@ var characters = (function() {
                 }
 
                 // Generating image properties
-                vm.imageProperties = ko.observable(vm.url + ' ' + vm.imagePosition + ' ' + vm.textContrast);
+                vm.imageProperties = ko.observable(vm.imagePosition + ' ' + vm.textContrast);
+
+                // GENERATING CHARACTER MODAL BOX
+                // vm.log = function(data, event){
+                //     // Working!
+                //     console.log('you clicked me!');
+                //     var element = event.target;
+                //     //var dataUrl = 
+                // };
 
                 return vm;
             };
