@@ -1224,19 +1224,10 @@ body.show-ledgeFsmash .grid-ledgeFsmash{display:block;}
 
 /* TO DO - MOVE THESE STAGE STYLES TO A DEDICATED STYLESHEET SO THEY CAN BE CACHED AWAY FROM THE CRITICAL COMPONENTS IN CASE THE STAGE LISTS CHANGE */
 
-.stage{border: 1px solid;}
-// .stage-fd{border: 1px solid #424d98;}
-// .stage-bf{border: 1px solid #698b9c;}
-// .stage-dl{border: 1px solid #2ab156;}
-// .stage-sv{border: 1px solid #eeb463;}
-// .stage-tc{border: 1px solid #ad7252;}
-
-// .stage-fd h3{background-color:#424d98;}
-// .stage-bf h3{background-color:#698b9c;}
-// .stage-dl h3{background-color:#2ab156;}
-// .stage-sv h3{background-color:#eeb463;}
-// .stage-tc h3{background-color:#ad7252;}
-
+.stage{
+    border:1px solid;
+    margin-bottom:20px;
+}
 
 .stageImage{
     height:100px;
@@ -1245,6 +1236,9 @@ body.show-ledgeFsmash .grid-ledgeFsmash{display:block;}
     margin:0 0 1%;
     // width: 100%;
     height: 50px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .stage h3{
@@ -1264,7 +1258,7 @@ body.show-ledgeFsmash .grid-ledgeFsmash{display:block;}
 /* To position the stages in a manner that compensates for the sticky Rage bar */
 .stages{
     position: relative;
-    top: 80px;
+    top: 85px;
     padding:5px;
 }
 
@@ -1549,6 +1543,13 @@ tr.table-descs td{
 
 
     .filtersText{display:inline;}
+
+    .stageImage{
+        height:100px;
+    }
+    .stage-content > .row{
+        padding:1em;
+    }
 
     .stageImage{
         // width:22%;

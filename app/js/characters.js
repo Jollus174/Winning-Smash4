@@ -115,10 +115,19 @@ var characters = (function() {
                 // Deeper
                 // https://jsfiddle.net/wfs569gf/
                 vm.moves = data.moves;
-                vm.moveName = data.moveName;
-                vm.moveUrl = data.moveUrl;
-                vm.moveId = data.moveId;
+
+                // WTF HOW IS THIS WORKING WITH THESE LINES COMMENTED OUT?!
+                //vm.moveName = data.moveName;
+                //vm.moveUrl = data.moveUrl;
+                //vm.moveId = data.moveId;
                 //console.log(vm.moveId);
+
+                // vm.rageZero = data.rageZero;
+                // vm.rage50 = data.rage50;
+                // vm.rage80 = data.rage80;
+                // vm.rage100 = data.rage100;
+                // vm.rage125 = data.rage125;
+                // vm.rage150 = data.rage150;
 
                 //vm.percents = data.percents;
                 //console.log(data.percents);

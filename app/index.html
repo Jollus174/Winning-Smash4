@@ -170,7 +170,30 @@
 						</div>
 						<div class="card-body">
 							<div class="btn-group" role="group" data-bind="foreach: { data: moves, as: 'move' }">
-								<button class="btn btn-sm moveBtn" data-bind="text: moveName, attr: {href: '#/' + $parent.url + '/' + moveUrl, 'data-moveurl': moveUrl, 'data-moveid': moveId}">Up Throw <span>-></span> Up Air</button>
+								<button class="btn btn-sm moveBtn" data-bind="text: moveName, attr: {
+									href: '#/' + $parent.url + '/' + moveUrl,
+									'data-moveurl': moveUrl,
+									'data-moveid': moveId,
+									'data-rage0': rage0,
+						            'data-rage50': rage50,
+						            'data-rage80': rage80,
+						            'data-rage100': rage100,
+						            'data-rage125': rage125,
+						            'data-rage150': rage150,
+
+						            'data-bfnormalmin': bfNormalMin,
+						            'data-lowplatmin': bfLowPlatMin,
+						            'data-bftopplatmin': bfTopPlatMin,
+						            'data-dllowplatmin': dlLowPlatMin,
+						            'data-dltopplatmin': dlTopPlatMin,
+						            'data-svnormalmin': svNormalMin,
+						            'data-svplatmin': svPlatMin,
+						            'data-tcnormalmin': tcNormalMin,
+						            'data-tclowplatmin': tcLowPlatMin,
+						            'data-tcsideplatmin': tcSidePlatMin,
+						            'data-tctopplatmin': tcTopPlatMin
+
+								}">Up Throw <span>-></span> Up Air</button>
 								<!-- <button class="btn btn-sm moveBtn" data-bind="text: percents.bayonetta[0]">Up Throw <span>-></span> Up Air</button> -->
 							</div>							
 						</div>
@@ -205,6 +228,7 @@
 					'data-name': name,
 					'data-index': id,
 					'data-bgcolour': bgColour,
+					'data-weight': weight,
 					'data-fallspeed': fallspeed,
 					'data-gravity': gravity,
 					'data-airdodgestart': airdodgeStart,
@@ -212,14 +236,13 @@
 					'data-minpercent': minPercent,
 					'data-maxpercent': maxPercent,
 					'data-textcontrast': textContrast
-					}"
-				>
+				}">
 					<div class="characterImageContainer" data-bind="style: {backgroundColor: bgColour}, css: imageProperties">
 						<div class="characterImage"><div class="characterImageContainer-lightOverlay"></div></div>
 						
 						<div class="grid-difficulty">
 							<!-- <span data-bind="attr: {class: difficulty}"><span data-bind="text: difficulty">easy</span> - <span data-bind="text: percRange">28</span>%</span> -->
-							<span class="difficulty"><span class="text-difficulty">easy</span> - <span class="text-percRange">28</span>%</span>
+							<span class="difficulty easy"><span class="text-difficulty">easy</span> - <span class="text-percRange">28</span>%</span>
 						</div>
 						<div class="grid-index">
 							<span data-bind="text: (id + 1)"></span>
@@ -288,13 +311,13 @@
 						</div>
 
 						<div class="grid-difficulty">
-							<span class="easy"><span>easy</span> - <span class="percRange">28</span>%</span>
+							<span class="difficulty easy"><span>easy</span> - <span class="percRange">28</span>%</span>
 						</div>
 						<div class="characterName">
 							<span data-ref="name"></span>
 						</div>
 
-						<div class="charactervOerview">
+						<div class="characterOverview">
 							<ul>
 								<li data-ref="weight">Weight <span class="value">113</span></li>
 								<li data-ref="fallspeed">Fallspeed<span class="value">1.65</span></li>
@@ -323,7 +346,7 @@
 						</div>
 
 						<div class="stages">
-							<div class="row" data-bind="foreach: stage">
+							<div data-bind="foreach: stage">
 								<div class="col-12">
 									<div class="stage" data-bind="css: className, style: {borderColor: colour}">
 										<h3 data-bind="text: name, style: {backgroundColor: colour}">Stage Name</h3>

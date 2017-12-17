@@ -417,7 +417,7 @@ var Custom = (function() {
 				$charModal.removeClass();
 				$charModal.find('.rageModifier').removeClass('stuck');
 				$charModal.find('.characterBorder').css('height', 'auto');
-				$('#character-list li.selected').removeClass('selected');
+				$('#characterGrid .character-box.selected').removeClass('selected');
 				$body.removeClass('character-active');
 			} else {
 				$('.menu-page > div').hide();
@@ -436,7 +436,7 @@ var Custom = (function() {
 		function transitionCharacter(){
 			var $charModal = $('#characterModal');
 			$charModal.attr('class', 'active');
-			$('#character-list li.selected').removeClass('selected');
+			$('#characterGrid .character-box.selected').removeClass('selected');
 		}
 
 

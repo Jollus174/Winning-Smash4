@@ -9352,13 +9352,17 @@ body.show-ledgeFsmash .grid-ledgeFsmash {
 
 /* TO DO - MOVE THESE STAGE STYLES TO A DEDICATED STYLESHEET SO THEY CAN BE CACHED AWAY FROM THE CRITICAL COMPONENTS IN CASE THE STAGE LISTS CHANGE */
 .stage {
-  border: 1px solid; }
+  border: 1px solid;
+  margin-bottom: 20px; }
 
 .stageImage {
   height: 100px;
   background-color: #cacaca;
   margin: 0 0 1%;
-  height: 50px; }
+  height: 50px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center; }
 
 .stage h3 {
   margin: 0;
@@ -9376,7 +9380,7 @@ body.show-ledgeFsmash .grid-ledgeFsmash {
 /* To position the stages in a manner that compensates for the sticky Rage bar */
 .stages {
   position: relative;
-  top: 80px;
+  top: 85px;
   padding: 5px; }
 
 .stagePercents {
@@ -9577,6 +9581,10 @@ tr.table-descs td {
     font-size: 12px; }
   .filtersText {
     display: inline; }
+  .stageImage {
+    height: 100px; }
+  .stage-content > .row {
+    padding: 1em; }
   .characterImageContainer .characterImage {
     opacity: 1; }
   .table-sm td, .table-sm th {
