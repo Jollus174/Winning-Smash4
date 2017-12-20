@@ -1335,6 +1335,12 @@ body.show-ledgeFsmash .grid-ledgeFsmash{display:block;}
     background-color:rgba(0,0,0,.05);
     font-size:14px;
 }
+tr.table-descs{
+    display:none;
+}
+.stage-fd tr.table-descs{
+    display:table-row;
+}
 tr.table-descs td{
     font-size: 12px;
     text-transform: uppercase;

@@ -54,6 +54,8 @@ var Custom = (function() {
 
 		// Need to trigger this on button click now
 		$('.moveBtn').click(function(){
+			$('.moveBtn').removeClass('active');
+			$(this).addClass('active');
 			var characterId = $(this).closest('.card-container').data('index');
 			var moveId = $(this).data('moveid');
 			//console.log('card-container: ' + characterId + ' moveId: ' + moveId);
@@ -68,6 +70,8 @@ var Custom = (function() {
 
 				$character.find('.grid-minPercent').text(minPercent);
 				$character.find('.grid-maxPercent').text(maxPercent);
+				$character.attr('data-minpercent', minPercent);
+				$character.attr('data-maxpercent', maxPercent);
 				// IT WOOOOOORKS!!!
 
 				// Map that difficulty
@@ -249,6 +253,9 @@ var Custom = (function() {
 
 		/* --- */
 
+		// For debugging only!
+		//$('.game-and-watch[data-url="upthrow-upair"]').addClass('selected').trigger();
+
 
 		function activateCharacter(self){
 
@@ -293,21 +300,34 @@ var Custom = (function() {
 			var name = self.data('name');
 			var urlName = self.data('url');
 			var bgColour = self.data('bgcolour');
-			var weight = self.data('weight');
-			var fallspeed = self.data('fallspeed');
-			var gravity = self.data('gravity');
-			var airdodgeStart = self.data('airdodgestart');
-			var airdodgeEnd = self.data('airdodgeend');
-			var minPercent = self.data('minpercent');
-			var maxPercent = self.data('maxpercent');
+			var weight = parseInt(self.data('weight'));
+			var fallspeed = parseInt(self.data('fallspeed'));
+			var gravity = parseInt(self.data('gravity'));
+			var airdodgeStart = parseInt(self.data('airdodgestart'));
+			var airdodgeEnd = parseInt(self.data('airdodgeend'));
+			var minPercent = parseInt(self.data('minpercent'));
+			var maxPercent = parseInt(self.data('maxpercent'));
+
+			console.log('min perc is:' + minPercent + ' and max perc is: ' + maxPercent);
 			var textContrast = self.data('textcontrast');
 			var airdodge = airdodgeStart + ' - ' + airdodgeEnd;
-			console.log(airdodge);
 
+			var $moveBtnActive = $('.moveBtn.active');
 
+			var bfNormalMin = parseInt($moveBtnActive.data('bfnormalmin'));
+			var bfLowPlatMin = parseInt($moveBtnActive.data('bflowplatmin'));
+			var bfTopPlatMin = parseInt($moveBtnActive.data('bftopplatmin'));
+			var dlLowPlatMin = parseInt($moveBtnActive.data('dllowplatmin'));
+			var dlTopPlatMin = parseInt($moveBtnActive.data('dltopplatmin'));
 
+			var svNormalMin = parseInt($moveBtnActive.data('svnormalmin'));
+			var svPlatMin = parseInt($moveBtnActive.data('svplatmin'));
+
+			var tcNormalMin = parseInt($moveBtnActive.data('tcnormalmin'));
+			var tcLowPlatMin = parseInt($moveBtnActive.data('tclowplatmin'));
+			var tcSidePlatMin = parseInt($moveBtnActive.data('tcsideplatmin'));
+			var tcTopPlatMin = parseInt($moveBtnActive.data('tctopplatmin'));
 			
-
 			var percRange = (maxPercent - minPercent) + 1;
 
 			// Time to activate the Character Modal
@@ -350,47 +370,66 @@ var Custom = (function() {
 
 			// Map those mf-ing values
 			// Ideally these should all be pushed to an array and mapped all at once, but eh
+
+			
+			// var bfNormalMin = $moveBtnActive.data('bfnormalmin');
+			// var bfLowPlatMin = $moveBtnActive.data('bflowplatmin');
+			// var bfTopPlatMin = $moveBtnActive.data('bftopplatmin');
+			// var dlLowPlatMin = $moveBtnActive.data('dllowplatmin');
+			// var dlTopPlatMin = $moveBtnActive.data('dltopplatmin');
+
+			// var svPlatMin = $moveBtnActive.data('svplatmin');
+
+			// var tcNormalMin = $moveBtnActive.data('tcnormalmin');
+			// var tcLowPlatMin = $moveBtnActive.data('tclowplatmin');
+			// var tcSidePlatMin = $moveBtnActive.data('tcsideplatmin');
+			// var tcTopPlatMin = $moveBtnActive.data('tctopplatmin');
+
 			var $fd = $charModal.find('.stage-fd');
 			$fd.find('span[data-ref="fdNormalMin"]').text(minPercent).attr('data-defaultmin', minPercent);
 			$fd.find('span[data-ref="fdNormalMax"]').text(maxPercent).attr('data-defaultmax', maxPercent);
 
 			var $bf = $charModal.find('.stage-bf');
-			$bf.find('span[data-ref="bfNormalMin"]').text(minPercent+7).attr('data-defaultmin', minPercent+7);
+			$bf.find('span[data-ref="bfNormalMin"]').text(minPercent + bfNormalMin).attr('data-defaultmin', minPercent + bfNormalMin);
 			$bf.find('span[data-ref="bfNormalMax"]').text(maxPercent).attr('data-defaultmax', maxPercent);
-			$bf.find('span[data-ref="bfLowPlatMin"]').text(minPercent-7).attr('data-defaultmin', minPercent-7);
+			$bf.find('span[data-ref="bfLowPlatMin"]').text(minPercent + bfLowPlatMin).attr('data-defaultmin', minPercent + bfLowPlatMin);
 			$bf.find('span[data-ref="bfLowPlatMax"]').text(maxPercent).attr('data-defaultmax', maxPercent);
-			$bf.find('span[data-ref="bfTopPlatMin"]').text(minPercent-20).attr('data-defaultmin', minPercent-20);
+			$bf.find('span[data-ref="bfTopPlatMin"]').text(minPercent + bfTopPlatMin).attr('data-defaultmin', minPercent + bfTopPlatMin);
 			$bf.find('span[data-ref="bfTopPlatMax"]').text(maxPercent).attr('data-defaultmax', maxPercent);
 
 			var $dl = $charModal.find('.stage-dl');
 			$dl.find('span[data-ref="dlNormalMin"]').text(minPercent).attr('data-defaultmin', minPercent);
 			$dl.find('span[data-ref="dlNormalMax"]').text(maxPercent).attr('data-defaultmax', maxPercent);
-			$dl.find('span[data-ref="dlLowPlatMin"]').text(minPercent-15).attr('data-defaultmin', minPercent-15);
+			$dl.find('span[data-ref="dlLowPlatMin"]').text(minPercent + dlLowPlatMin).attr('data-defaultmin', minPercent + dlLowPlatMin);
 			$dl.find('span[data-ref="dlLowPlatMax"]').text(maxPercent).attr('data-defaultmax', maxPercent);
-			$dl.find('span[data-ref="dlTopPlatMin"]').text(minPercent-26).attr('data-defaultmin', minPercent-26);
+			$dl.find('span[data-ref="dlTopPlatMin"]').text(minPercent + dlTopPlatMin).attr('data-defaultmin', minPercent + dlTopPlatMin);
 			$dl.find('span[data-ref="dlTopPlatMax"]').text(maxPercent).attr('data-defaultmax', maxPercent);
 
 			var $sv = $charModal.find('.stage-sv');
-			$sv.find('span[data-ref="svNormalMin"]').text(minPercent+1).attr('data-defaultmin', minPercent+1);
+			$sv.find('span[data-ref="svNormalMin"]').text(minPercent + svNormalMin).attr('data-defaultmin', minPercent + svNormalMin);
 			$sv.find('span[data-ref="svNormalMax"]').text(maxPercent).attr('data-defaultmax', maxPercent);
-			$sv.find('span[data-ref="svPlatMin"]').text(minPercent-14).attr('data-defaultmin', minPercent-14);
+			$sv.find('span[data-ref="svPlatMin"]').text(minPercent + svPlatMin).attr('data-defaultmin', minPercent + svPlatMin);
 			$sv.find('span[data-ref="svPlatMax"]').text(maxPercent).attr('data-defaultmax', maxPercent);
 
 			var $tc = $charModal.find('.stage-tc');
-			$tc.find('span[data-ref="tcNormalMin"]').text(minPercent-4).attr('data-defaultmin', minPercent-4);
+			$tc.find('span[data-ref="tcNormalMin"]').text(minPercent + tcNormalMin).attr('data-defaultmin', minPercent + tcNormalMin);
 			$tc.find('span[data-ref="tcNormalMax"]').text(maxPercent).attr('data-defaultmax', maxPercent);
-			$tc.find('span[data-ref="tcLowPlatMin"]').text(minPercent-20).attr('data-defaultmin', minPercent-20);
+			$tc.find('span[data-ref="tcLowPlatMin"]').text(minPercent + tcLowPlatMin).attr('data-defaultmin', minPercent + tcLowPlatMin);
 			$tc.find('span[data-ref="tcLowPlatMax"]').text(maxPercent).attr('data-defaultmax', maxPercent);
-			$tc.find('span[data-ref="tcSidePlatMin"]').text(minPercent-25).attr('data-defaultmin', minPercent-25);
+			$tc.find('span[data-ref="tcSidePlatMin"]').text(minPercent + tcSidePlatMin).attr('data-defaultmin', minPercent + tcSidePlatMin);
 			$tc.find('span[data-ref="tcSidePlatMax"]').text(maxPercent).attr('data-defaultmax', maxPercent);
-			$tc.find('span[data-ref="tcTopPlatMin"]').text(minPercent-41).attr('data-defaultmin', minPercent-41);
+			$tc.find('span[data-ref="tcTopPlatMin"]').text(minPercent + tcTopPlatMin).attr('data-defaultmin', minPercent + tcTopPlatMin);
 			$tc.find('span[data-ref="tcTopPlatMax"]').text(maxPercent).attr('data-defaultmax', maxPercent);
 
 			// Now to render % differences... Better to take care of them all in one loop
-			// I want to see if rage button is not at default first though, two avoid double-handling the percent range calculations
+			// I want to see if rage button is not at default first though, to avoid double-handling the percent range calculations
 			// This causes the code to loop through twice - once for rendering the numbers and another for animating them. Is inefficent, really
 			// This could probably be optimised later
-			rageAdjustment($charModal.find('.rageBtn.active'));
+
+			// This thing is causing problems between transitions!
+			// rageAdjustment($charModal.find('.rageBtn.active'));
+
+
 			/*if($charModal.find('.btn[data-rage="0"]').hasClass('active')){
 				//console.log('default rage');
 			} else {
@@ -440,26 +479,42 @@ var Custom = (function() {
 		}
 
 
-		function rageAdjustment(self){
+		function rageAdjustment(self, rageValues){
 			var rageAmount = self.attr("data-rage");
 			
 			self.siblings('.rageBtn').removeClass('active');
 			self.addClass('active');
-			var rageAdjMin = "";
-			var rageAdjMax = "";
+			var rageAdjMin = parseInt("");
+			var rageAdjMax = parseInt("");
+
+			var $moveBtnActive = $('.moveBtn.active');
+			var rage50 = $moveBtnActive.data('rage50');
+			var rage60 = $moveBtnActive.data('rage60');
+			var rage80 = $moveBtnActive.data('rage80');
+			var rage100 = $moveBtnActive.data('rage100');
+			var rage125 = $moveBtnActive.data('rage125');
+			var rage150 = $moveBtnActive.data('rage150');
 
 			// According to the data, characters with ... dunno, I got nothing
 			// There seems to be no distinct pattern of how rage causes the min and max% windows to decay
-			// Earlier, a rough spreadsheet was put together to try and measure the variance of decay relative to DK's rage between characters --> https://docs.google.com/spreadsheets/d/10YmEZihWk6oPPXnynnfIpyEApfl0ANPRlCq4WnHv3Ls/edit#gid=0
+			// Earlier, I put a rough spreadsheet was put together to try and measure the variance of decay relative to DK's rage between characters --> https://docs.google.com/spreadsheets/d/10YmEZihWk6oPPXnynnfIpyEApfl0ANPRlCq4WnHv3Ls/edit#gid=0
 			// The stuff in red measures accumulated decay. Doesn't seem to be a pattern, so an average value is taken
 
 			// Calculate amount to adjust min-percent based on rage
-			if(rageAmount == "50"){rageAdjMin = -2; rageAdjMax = -5 }
+			/*if(rageAmount == "50"){rageAdjMin = -2; rageAdjMax = -5 }
 			if(rageAmount == "60"){rageAdjMin = -5; rageAdjMax = -9 }
 			if(rageAmount == "80"){rageAdjMin = -9; rageAdjMax = -16 }
 			if(rageAmount == "100"){rageAdjMin = -12; rageAdjMax = -22 }
 			if(rageAmount == "125"){rageAdjMin = -14; rageAdjMax = -27 }
-			if(rageAmount == "150"){rageAdjMin = -18; rageAdjMax = -33 }
+			if(rageAmount == "150"){rageAdjMin = -18; rageAdjMax = -33 }*/
+
+			if(rageAmount == "0"){rageAdjMin = 0; rageAdjMax = 0 }
+			if(rageAmount == "50"){rageAdjMin = rage50[0]; rageAdjMax = rage50[1] }
+			if(rageAmount == "60"){rageAdjMin = rage60[0]; rageAdjMax = rage60[1] }
+			if(rageAmount == "80"){rageAdjMin = rage80[0]; rageAdjMax = rage80[1] }
+			if(rageAmount == "100"){rageAdjMin = rage100[0]; rageAdjMax = rage100[1] }
+			if(rageAmount == "125"){rageAdjMin = rage125[0]; rageAdjMax = rage125[1] }
+			if(rageAmount == "150"){rageAdjMin = rage150[0]; rageAdjMax = rage150[1] }
 
 			$('#characterModal .stagePercents').each(function(){
 				var $this = $(this);
@@ -490,6 +545,9 @@ var Custom = (function() {
 					$maxPerc.removeClass('nosymbol');
 					$percRange.removeClass('nosymbol');
 
+					// $minPerc.text(adjustedMinPercent);
+					// $maxPerc.text(adjustedMaxPercent);
+					// $percRange.text(percRange);
 					$minPerc
 						.prop('number', $minPerc.text())
 						.animateNumber({ number : adjustedMinPercent }, 200);
@@ -768,7 +826,12 @@ var Custom = (function() {
 				$('body').toggleClass('show-extra-info');
 
 			}
-		})
+		});
+
+		$('#side-menu .components a').click(function(){
+			var dataref = $(this).data('ref');
+			$('.card-container #' + dataref).trigger('click');
+		});
 
 	});
 });

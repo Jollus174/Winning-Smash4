@@ -84,7 +84,9 @@
 			            <li>
 			                <span data-bind="text: name"></span>
 			                <ul class="list-unstyled show" data-bind="attr: {id: hashUrl}, foreach: moves">
-			                    <li><a href="#" data-bind="text: moveName + ' %\'s', attr: {href: '#/' + $parent.url + '/' + moveUrl}">Page</a></li>
+			                    <li><a href="#" data-bind="text: moveName + ' %\'s', attr: {
+			                    	'data-ref': $parent.url + '-' + moveUrl
+			                    }">Page</a></li>
 			                    <!--<li><a href="#" data-bind="text: moveName, attr: {href: hashFullUrl}">Page</a></li>-->
 			                </ul>
 			            </li>
@@ -174,18 +176,19 @@
 						<div class="card-body">
 							<div class="btn-group" role="group" data-bind="foreach: { data: moves, as: 'move' }">
 								<button class="btn btn-sm moveBtn" data-bind="text: moveName, attr: {
+									id: $parent.url + '-' + moveUrl,
 									href: '#/' + $parent.url + '/' + moveUrl,
 									'data-moveurl': moveUrl,
 									'data-moveid': moveId,
-									'data-rage0': rage0,
 						            'data-rage50': rage50,
+						            'data-rage60': rage60,
 						            'data-rage80': rage80,
 						            'data-rage100': rage100,
 						            'data-rage125': rage125,
 						            'data-rage150': rage150,
 
 						            'data-bfnormalmin': bfNormalMin,
-						            'data-lowplatmin': bfLowPlatMin,
+						            'data-bflowplatmin': bfLowPlatMin,
 						            'data-bftopplatmin': bfTopPlatMin,
 						            'data-dllowplatmin': dlLowPlatMin,
 						            'data-dltopplatmin': dlTopPlatMin,
