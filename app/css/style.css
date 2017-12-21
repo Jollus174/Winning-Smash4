@@ -8220,7 +8220,11 @@ a.text-dark:focus, a.text-dark:hover {
   padding: 0.75rem 1.25rem; }
 
 .card .card-body button {
-  margin-right: 5px; }
+  margin-right: 5px;
+  border: 2px solid; }
+
+.moveBtn.active {
+  border-color: rgba(213, 0, 0, 0.5) !important; }
 
 #characterSelection .card {
   margin-bottom: 15px; }
@@ -8228,7 +8232,7 @@ a.text-dark:focus, a.text-dark:hover {
 /* --- CAAAARDS --- */
 .bowser .btn {
   background-color: #235240 !important;
-  border: 1px solid #235240 !important; }
+  border-color: #235240; }
 
 .bowser .card-image-top {
   background-color: #32765c; }
@@ -8238,7 +8242,7 @@ a.text-dark:focus, a.text-dark:hover {
 
 .donkey-kong .btn {
   background-color: #9c840e !important;
-  border: 1px solid #9c840e !important; }
+  border-color: #9c840e; }
 
 .donkey-kong .card-image-top {
   background-color: #feda00; }
@@ -8251,7 +8255,7 @@ a.text-dark:focus, a.text-dark:hover {
 
 .game-and-watch .btn {
   background-color: #706f6a !important;
-  border: 1px solid #706f6a !important; }
+  border-color: #706f6a; }
 
 .game-and-watch .card-image-top {
   background-color: #8a8983; }
@@ -8261,7 +8265,7 @@ a.text-dark:focus, a.text-dark:hover {
 
 .robin .btn {
   background-color: #be5ad3 !important;
-  border: 1px solid #be5ad3 !important; }
+  border-color: #be5ad3; }
 
 .robin .card-image-top {
   background-color: #ce82de; }
@@ -8636,6 +8640,10 @@ body.toggle-sidedrawer {
   display: inline-block;
   text-align: center; }
 
+.card-body .btn-group {
+  display: flex;
+  flex-wrap: wrap; }
+
 /* --- */
 /* --- CONTENT CONTAINERS --- */
 .search-box .clear-input {
@@ -8803,6 +8811,9 @@ a[aria-expanded="true"]::before {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.175); }
+
+.secondarynav {
+  background-color: #8a8983 !important; }
 
 /* --- */
 /* --- TYPOGRAPHY --- */

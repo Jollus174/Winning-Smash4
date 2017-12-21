@@ -105,15 +105,7 @@
 
 				<div class="navbar-header">
 					<button class="navbar-toggler navbar-toggler-left" href="#"><i class="fa fa-bars" aria-hidden="true"></i></button>
-					<a class="navbar-brand --white" href="#">Navbar</a>
-					<!--<div class="header-title">
-						<a class="sidedrawer-toggle hidden-md-up">
-		        			<svg id="icon-menu" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 23" width="17" height="23">
-			        			<path class="st0" d="M0 10.5h17v2H0zM0 5h17v2H0zM0 16h17v2H0z"></path>
-		        			</svg>
-		      			</a>
-		      			
-					</div>-->
+					<span id="nav-title" class="navbar-brand --white" href="#">Navbar</span>
 				</div>
 
 				<!--<div class="content">-->
@@ -143,6 +135,38 @@
 			</nav>
 		</div> <!-- row -->
 
+		<!-- secondary nav -->
+		<div class="row border-bottom nav-wrapper">
+			<nav id="secondarynav" class="navbar navbar-light navbar-static-top secondarynav">
+
+				<div class="navbar-header">
+					<div class="navbar-brand --white" style="font-size:100%;">
+						wefwefe
+					</div>
+					<div class="dropdown show">
+						<a class="btn btn-secondary dropdown-toggle" href="#" id="secondarynav-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Dropdown link
+						</a>
+
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+							<a class="dropdown-item" href="#">Action</a>
+							<a class="dropdown-item" href="#">Another action</a>
+							<a class="dropdown-item" href="#">Something else here</a>
+						</div>
+					</div>
+				</div>
+
+				<!--<div class="content">-->
+				<ul class="nav navbar-top-links navbar-right desktop">
+
+					<li>
+						<a href="#" class="btn filter-btn"><i class="fa fa-info-circle" aria-hidden="true"></i><span style="padding-left:10px; text-transform: none;" class="hidden-md-down">More Information</span></a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+		<!-- !secondary nav -->
+
 		<div class="container-fluid">
 
 			<div class="row">
@@ -165,7 +189,10 @@
 
 			<div id="characterSelection" class="row" data-bind="foreach: killConfirm">
 
-				<div class="card-container col-12 col-lg-6 col-xl-4" data-bind="css: url, attr: {'data-index': index}">
+				<div class="card-container col-12 col-lg-6 col-xl-4" data-bind="css: url, attr: {
+				'data-index': index,
+				'data-name': name
+			}">
 					<div class="card">
 						<div class="card-image-top">
 							<div class="characterImage"></div>

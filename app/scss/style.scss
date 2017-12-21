@@ -67,6 +67,10 @@ $robin-button-primary-active:#d82800;
 }
 .card .card-body button{
     margin-right:5px;
+    border:2px solid;
+}
+.moveBtn.active{
+    border-color:rgba(213, 0, 0, 0.5) !important;
 }
 #characterSelection .card{
     margin-bottom:15px;
@@ -77,14 +81,14 @@ $robin-button-primary-active:#d82800;
 
 .bowser .btn{
     background-color:$bowser-button-homepage !important;
-    border:1px solid $bowser-button-homepage !important;
+    border-color:$bowser-button-homepage;
 }
 .bowser .card-image-top{background-color:$bowser;}
 .bowser .card-image-top, .bowser .btn{color:$text-light;}
 
 .donkey-kong .btn{
     background-color:$donkey-kong-button-primary !important;
-    border:1px solid $donkey-kong-button-primary !important;   
+    border-color:$donkey-kong-button-primary;
 }
 .donkey-kong .card-image-top{background-color:$donkey-kong;}
 .donkey-kong .card-image-top{color:$text-dark;}
@@ -92,14 +96,14 @@ $robin-button-primary-active:#d82800;
 
 .game-and-watch .btn{
     background-color:$gnw-button-homepage !important;
-    border:1px solid $gnw-button-homepage !important;   
+    border-color:$gnw-button-homepage;
 }
 .game-and-watch .card-image-top{background-color:$gnw;}
 .game-and-watch .card-image-top, .game-and-watch .btn{color:$text-light;}
 
 .robin .btn{
     background-color:$robin-button-homepage !important;
-    border:1px solid $robin-button-homepage !important;   
+    border-color:$robin-button-homepage;
 }
 .robin .card-image-top{background-color:$robin;}
 .robin .card-image-top, .robin .btn{color:$text-light;}
@@ -476,6 +480,10 @@ body.toggle-sidedrawer{
     display:inline-block;
     text-align:center;
 }
+.card-body .btn-group{
+    display:flex;
+    flex-wrap:wrap;
+}
 
 /* --- */
 
@@ -666,6 +674,10 @@ a[aria-expanded="true"]::before {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     box-shadow: 0 3px 3px rgba(0,0,0,.175);
+}
+
+.secondarynav{
+    background-color:#8a8983 !important;
 }
 /* --- */
 

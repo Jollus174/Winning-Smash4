@@ -54,11 +54,46 @@ var Custom = (function() {
 
 		// Need to trigger this on button click now
 		$('.moveBtn').click(function(){
+			$this = $(this);
 			$('.moveBtn').removeClass('active');
-			$(this).addClass('active');
-			var characterId = $(this).closest('.card-container').data('index');
-			var moveId = $(this).data('moveid');
+			$this.addClass('active');
+			var characterId = $this.closest('.card-container').data('index');
+			var moveId = $this.data('moveid');
 			//console.log('card-container: ' + characterId + ' moveId: ' + moveId);
+			$('#nav-title').text($this.closest('.card-container').data('name'));
+
+
+			var moveName = $this.html();
+
+			//var btnCount = $('.moveBtn.siblings().andSelf().length;
+
+			// Check for how many buttons in the card
+			// If more than one, then display the move-switcher dropdown in secondarynav
+			var btnCount = $this.parent().find('.moveBtn').length;
+			if(btnCount > 1){
+				$('#secondarynav .navbar-brand').hide();
+				var $dropdown = $('#secondarynav .dropdown');
+				$dropdown.show();
+				// adjust the dropdown title
+				$dropdown.find('#secondarynav-dropdown').text(moveName);
+
+				// nuke the existing contents of the dropdown menu
+				$('#secondarynav .dropdown-menu').empty()
+
+				// generate those dropdown items
+				$this.parent().find('.moveBtn').each(function(){
+					$button = $(this);
+					var name = $button.html();
+					var href = $button.attr('href');
+					var moveUrl = $button.data('moveurl');
+					$dropdown.find('.dropdown-menu').append('<a class="dropdown-item" data-moveurl=' + moveUrl + '>' + name + '</a>');
+				});
+
+			} else {
+				$('#secondarynav .navbar-brand').html(moveName).show();
+				$('#secondarynav .dropdown').hide();
+
+			}
 
 			$.each(killConfirmJSON[characterId]['moves'][moveId]['percents'], function(index, value){
 
@@ -83,6 +118,16 @@ var Custom = (function() {
 				
 			});
 		});
+
+		// NEED TO WORK ON THIS MORE
+		$('#secondarynav .dropdown-item').click(function(){
+			console.log('clicked!');
+			var $this = $(this);
+			var moveUrl = $this.data('moveurl');
+			console.log(moveUrl);
+			$('.moveBtn[data-moveurl').data(moveUrl).hide();
+
+		})
 
 
 		// The URL constructers/deconstructers are back to haunt me
@@ -154,7 +199,7 @@ var Custom = (function() {
 				}
 			}
 		}
-		deconstructUrl();
+		//deconstructUrl();
 
 
 		// Filter box functions
@@ -308,7 +353,7 @@ var Custom = (function() {
 			var minPercent = parseInt(self.data('minpercent'));
 			var maxPercent = parseInt(self.data('maxpercent'));
 
-			console.log('min perc is:' + minPercent + ' and max perc is: ' + maxPercent);
+			// console.log('min perc is:' + minPercent + ' and max perc is: ' + maxPercent);
 			var textContrast = self.data('textcontrast');
 			var airdodge = airdodgeStart + ' - ' + airdodgeEnd;
 
@@ -442,7 +487,7 @@ var Custom = (function() {
 				fixedRagebar($charContainer);
 			})
 
-			constructUrl(self);
+			//constructUrl(self);
 
 		}
 
