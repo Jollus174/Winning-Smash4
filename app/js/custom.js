@@ -57,15 +57,14 @@ var Custom = (function() {
 			$this = $(this);
 			$('.moveBtn').removeClass('active');
 			$this.addClass('active');
-			var characterId = $this.closest('.card-container').data('index');
+			var characterId = $this.closest('.card-deck').data('index');
 			var moveId = $this.data('moveid');
-			//console.log('card-container: ' + characterId + ' moveId: ' + moveId);
-			$('#nav-title').text($this.closest('.card-container').data('name'));
-
+			console.log('card-deck: ' + characterId + ' moveId: ' + moveId);
+			var characterName = $this.closest('.card-deck').data('name');
+			$('#nav-title').text(characterName);
+			$('.rageModifier h3').text(characterName + ' Rage Modifier');
 
 			var moveName = $this.html();
-
-			//var btnCount = $('.moveBtn.siblings().andSelf().length;
 
 			// Check for how many buttons in the card
 			// If more than one, then display the move-switcher dropdown in secondarynav
@@ -92,7 +91,6 @@ var Custom = (function() {
 			} else {
 				$('#secondarynav .navbar-brand').html(moveName).show();
 				$('#secondarynav .dropdown').hide();
-
 			}
 
 			$.each(killConfirmJSON[characterId]['moves'][moveId]['percents'], function(index, value){
@@ -117,16 +115,17 @@ var Custom = (function() {
 				$difficulty.find('.text-percRange').text(parseInt(maxPercent) - parseInt(minPercent));
 				
 			});
+			$('#page-info div').hide();
+			$('#page-info .' + $this.attr('id')).show();
 		});
 
 		// NEED TO WORK ON THIS MORE
-		$('#secondarynav .dropdown-item').click(function(){
-			console.log('clicked!');
+		//$('#secondarynav .dropdown-item').click(function(){
+		$('#secondarynav').on('click', '.dropdown-item', function(){
 			var $this = $(this);
 			var moveUrl = $this.data('moveurl');
-			console.log(moveUrl);
-			$('.moveBtn[data-moveurl').data(moveUrl).hide();
-
+			$('.moveBtn[data-moveurl=' + moveUrl + ']').trigger('click');
+			console.log('clicked the dropdown item!');
 		})
 
 
@@ -822,6 +821,9 @@ var Custom = (function() {
 		$('#credits').click(function(){
 			activateMenuBox('page-credits');
 		})
+		$('#info').click(function(){
+			activateMenuBox('page-info');
+		})
 
 		$('#filter-dropdown-btn').click(function(){
 			$this = $(this);
@@ -873,9 +875,9 @@ var Custom = (function() {
 			}
 		});
 
-		$('#side-menu .components a').click(function(){
+		$('#side-menu').on('click', '.componetsn a', function(){
 			var dataref = $(this).data('ref');
-			$('.card-container #' + dataref).trigger('click');
+			$('.card-deck #' + dataref).trigger('click');
 		});
 
 	});

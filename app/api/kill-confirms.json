@@ -8,6 +8,9 @@
             "moveName": "Up Throw - Up Air",
             "moveUrl": "upthrow-upair",
 
+            "info": "",
+            "giphy": "https://giphy.com/embed/xT1R9YAchWK3aiJAhq",
+
             "rage50": "[-2, -2]",
             "rage60": "[-5, -5]",
             "rage80": "[-8, -8]",
@@ -109,6 +112,9 @@
             "moveName": "Cargo Up Throw - Up Air (bell)",
             "moveUrl": "cargoupthrow-upair",
 
+            "info": "Within certain percent thresholds, it also functions as a kill confirm into his up air attack. This confirm is known among Donkey Kong specialists as <strong>Aerial Cargo Up Toss up air (ACUT)</strong>, the <strong>DKO</strong>, or to most Western players, simply as the <strong>Ding Dong</strong>.",
+            "giphy": "https://giphy.com/embed/xT1R9YAchWK3aiJAhq",
+
             "rage50": "[-2, -5]",
             "rage60": "[-5, -9]",
             "rage80": "[-9, -16]",
@@ -209,6 +215,9 @@
             "moveName": "Up Throw - Up Air",
             "moveUrl": "upthrow-upair",
 
+            "info": "",
+            "giphy": "https://giphy.com/embed/xT1R9YAchWK3aiJAhq",
+
             "rage50": "[-4, -4]",
             "rage60": "[-6, -6]",
             "rage80": "[-13, -13]",
@@ -307,6 +316,9 @@
             "moveName": "Up Throw - Up Air (DI in throw)",
             "moveUrl": "upthrow-upair-di-in-throw",
 
+            "info": "",
+            "giphy": "https://giphy.com/embed/xT1R9YAchWK3aiJAhq",
+
             "rage50": "[-4, -4]",
             "rage60": "[-6, -6]",
             "rage80": "[-13, -13]",
@@ -404,6 +416,9 @@
             "moveId": 2,
             "moveName": "Up Throw - Up Air (DI out throw)",
             "moveUrl": "upthrow-upair-di-out-throw",
+
+            "info": "",
+            "giphy": "https://giphy.com/embed/xT1R9YAchWK3aiJAhq",
 
             "rage50": "[-4, -4]",
             "rage60": "[-6, -6]",
@@ -509,6 +524,9 @@
             "moveId": 0,
             "moveName": "Down Throw - Up Air",
             "moveUrl": "dthrow-upair",
+
+            "info": "",
+            "giphy": "https://giphy.com/embed/xT1R9YAchWK3aiJAhq",
 
             "rage50": [],
             "rage60": [],
