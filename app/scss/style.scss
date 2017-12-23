@@ -567,46 +567,43 @@ a[aria-expanded="true"]::before {
     /* don't forget to add all the previously mentioned styles here too */
     color: #fff;
     transition: all 0.3s;
-}
+    .sidebar-header {
+        width:100%;
+        padding: 20px;
+        background: #d50000;
+    }
+    ul.components {
+        padding: 20px 0;
+        border-bottom: 1px solid #47748b;
+        flex-direction:column;
+    }
+    .list-unstyled.components.nav > li{
+        padding-bottom:10px;
+    }
+    .list-unstyled.components.nav > li:last-child{
+        padding-bottom:0;
+    }
+    span, a{
+        display: block;
+        padding: .25rem 1.5rem;
+        font-weight: 500;
+        color: rgba(0,0,0,.65);
+    }
+    li.active{
+        color: rgba(0,0,0,.85);
+    }
 
-#side-menu .sidebar-header {
-    width:100%;
-    padding: 20px;
-    background: #d50000;
-}
-
-#side-menu ul.components {
-    padding: 20px 0;
-    border-bottom: 1px solid #47748b;
-    flex-direction:column;
-}
-#side-menu .list-unstyled.components.nav > li{
-    padding-bottom:10px;
-}
-#side-menu .list-unstyled.components.nav > li:last-child{
-    padding-bottom:0;
-}
-
-#side-menu span, #side-menu a{
-    display: block;
-    padding: .25rem 1.5rem;
-    font-weight: 500;
-    color: rgba(0,0,0,.65);
-}
-#side-menu li.active{
-    color: rgba(0,0,0,.85);
-}
-
-#side-menu ul li li > a{
-    display: block;
-    padding: .25rem 0.5rem .25rem 2.5rem;
-    font-size: 90%;
-    color: rgba(0,0,0,.65);
-}
-#side-menu li > a:hover{
-    color: rgba(0,0,0,.85);
-    text-decoration: none;
-    background-color: transparent;
+    ul li li > a{
+        display: block;
+        padding: .25rem 0.5rem .25rem 2.5rem;
+        font-size: 90%;
+        color: rgba(0,0,0,.65);
+    }
+    li > a:hover{
+        color: rgba(0,0,0,.85);
+        text-decoration: none;
+        background-color: transparent;
+    }
 }
 
 //
@@ -678,11 +675,31 @@ a[aria-expanded="true"]::before {
     box-shadow: 0 3px 3px rgba(0,0,0,.175);
 }
 
+
+.character-grid-active .secondarynav{display:flex;}
+
 .secondarynav{
     background-color:#8a8983 !important;
     display:none;
+    .dropdown-menu{
+        text-align:left;
+        background-color:#757573;
+        color:#FFF;
+        min-width:280px;
+        .dropdown-item{
+            &:hover{
+                background-color:#8e8e8e;
+                cursor:pointer;
+            }
+            &:active{
+                background-color:#5a5a5a;
+            }
+        }
+    }
 }
-.character-grid-active .secondarynav{display:flex;}
+
+
+
 /* --- */
 
 /* --- TYPOGRAPHY --- */
@@ -895,7 +912,7 @@ a[aria-expanded="true"]::before {
 .character-box {
     text-align: left;
     position:relative;
-    margin-bottom:15px;
+    margin-bottom:10px;
 }
 
 .characterTitleBar{
