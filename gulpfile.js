@@ -5,6 +5,7 @@ var uncss = require('gulp-uncss');
 var browserSync = require('browser-sync').create();
 var useref = require('gulp-useref');
 var sourcemaps = require('gulp-sourcemaps');
+var autoprefixer = require('gulp-autoprefixer');
 
 // Other requires...
 var uglify = require('gulp-uglify');
@@ -16,17 +17,6 @@ var runSequence = require('run-sequence');
 var del = require('del');
 var jsonminify = require('gulp-jsonminify');
 
-gulp.task('sass', function(){
-	//return gulp.src('app/scss/style.scss')
-	return gulp.src('app/scss/**/*.scss')
-		//.pipe(sourcemaps.init())
-		.pipe(sass()) // Converts Sass to CSS with gulp-sass
-		//.pipe(sourcemaps.write('app/css'))
-		.pipe(gulp.dest('app/css'))
-		.pipe(browserSync.reload({
-			stream: true
-		}))
-});
 
 // Development Tasks
 gulp.task('watch', ['browserSync', 'sass'], function(){
@@ -43,6 +33,20 @@ gulp.task('browserSync', function(){
 		}
 	})
 });
+
+gulp.task('sass', function(){
+	//return gulp.src('app/scss/style.scss')
+	return gulp.src('app/scss/**/*.scss')
+		.pipe(sourcemaps.init())
+			.pipe(sass()) // Converts Sass to CSS with gulp-sass
+			.pipe(autoprefixer())
+		.pipe(sourcemaps.write('.'))
+		.pipe(gulp.dest('app/css'))
+		.pipe(browserSync.reload({
+			stream: true
+		}))
+});
+
 //
 
 // Optimisation Tasks

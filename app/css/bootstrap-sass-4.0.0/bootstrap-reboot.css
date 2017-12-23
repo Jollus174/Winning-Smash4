@@ -8,7 +8,8 @@
 *,
 *::before,
 *::after {
-  box-sizing: border-box; }
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; }
 
 html {
   font-family: sans-serif;
@@ -38,7 +39,8 @@ body {
   outline: none !important; }
 
 hr {
-  box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
   height: 0;
   overflow: visible; }
 
@@ -53,7 +55,8 @@ p {
 abbr[title],
 abbr[data-original-title] {
   text-decoration: underline;
-  text-decoration: underline dotted;
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
   cursor: help;
   border-bottom: 0; }
 
@@ -157,7 +160,8 @@ label,
 select,
 summary,
 textarea {
-  touch-action: manipulation; }
+  -ms-touch-action: manipulation;
+      touch-action: manipulation; }
 
 table {
   border-collapse: collapse; }
@@ -216,7 +220,8 @@ button::-moz-focus-inner,
 
 input[type="radio"],
 input[type="checkbox"] {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   padding: 0; }
 
 input[type="date"],
@@ -276,3 +281,5 @@ template {
 
 [hidden] {
   display: none; }
+
+/*# sourceMappingURL=bootstrap-reboot.css.map */

@@ -63,6 +63,8 @@ var Custom = (function() {
 			var characterName = $this.closest('.card-deck').data('name');
 			$('#nav-title').text(characterName);
 			$('.rageModifier h3').text(characterName + ' Rage Modifier');
+			$('body').addClass('character-grid-active');
+			//$('#secondarynav').css('display', 'flex');
 
 			var moveName = $this.html();
 
@@ -74,7 +76,7 @@ var Custom = (function() {
 				var $dropdown = $('#secondarynav .dropdown');
 				$dropdown.show();
 				// adjust the dropdown title
-				$dropdown.find('#secondarynav-dropdown').text(moveName);
+				$dropdown.find('#secondarynav-dropdown').html(moveName);
 
 				// nuke the existing contents of the dropdown menu
 				$('#secondarynav .dropdown-menu').empty()
@@ -345,8 +347,8 @@ var Custom = (function() {
 			var urlName = self.data('url');
 			var bgColour = self.data('bgcolour');
 			var weight = parseInt(self.data('weight'));
-			var fallspeed = parseInt(self.data('fallspeed'));
-			var gravity = parseInt(self.data('gravity'));
+			var fallspeed = self.data('fallspeed');
+			var gravity = self.data('gravity');
 			var airdodgeStart = parseInt(self.data('airdodgestart'));
 			var airdodgeEnd = parseInt(self.data('airdodgeend'));
 			var minPercent = parseInt(self.data('minpercent'));
@@ -415,20 +417,6 @@ var Custom = (function() {
 			// Map those mf-ing values
 			// Ideally these should all be pushed to an array and mapped all at once, but eh
 
-			
-			// var bfNormalMin = $moveBtnActive.data('bfnormalmin');
-			// var bfLowPlatMin = $moveBtnActive.data('bflowplatmin');
-			// var bfTopPlatMin = $moveBtnActive.data('bftopplatmin');
-			// var dlLowPlatMin = $moveBtnActive.data('dllowplatmin');
-			// var dlTopPlatMin = $moveBtnActive.data('dltopplatmin');
-
-			// var svPlatMin = $moveBtnActive.data('svplatmin');
-
-			// var tcNormalMin = $moveBtnActive.data('tcnormalmin');
-			// var tcLowPlatMin = $moveBtnActive.data('tclowplatmin');
-			// var tcSidePlatMin = $moveBtnActive.data('tcsideplatmin');
-			// var tcTopPlatMin = $moveBtnActive.data('tctopplatmin');
-
 			var $fd = $charModal.find('.stage-fd');
 			$fd.find('span[data-ref="fdNormalMin"]').text(minPercent).attr('data-defaultmin', minPercent);
 			$fd.find('span[data-ref="fdNormalMax"]').text(maxPercent).attr('data-defaultmax', maxPercent);
@@ -471,7 +459,7 @@ var Custom = (function() {
 			// This could probably be optimised later
 
 			// This thing is causing problems between transitions!
-			// rageAdjustment($charModal.find('.rageBtn.active'));
+			rageAdjustment($charModal.find('.rageBtn.active'));
 
 
 			/*if($charModal.find('.btn[data-rage="0"]').hasClass('active')){
@@ -875,10 +863,112 @@ var Custom = (function() {
 			}
 		});
 
-		$('#side-menu').on('click', '.componetsn a', function(){
+		$('#side-menu').on('click', '.components a', function(){
 			var dataref = $(this).data('ref');
 			$('.card-deck #' + dataref).trigger('click');
 		});
 
 	});
+
+	// SVG Transitions
+	// https://tympanus.net/codrops/2017/10/17/dynamic-shape-overlays-with-svg/
+
+	//
+	// these easing functions are based on the code of glsl-easing module.
+	// https://github.com/glslify/glsl-easings
+	//
+
+/*	const ease = {
+	  exponentialIn: (t) => {
+	    return t == 0.0 ? t : Math.pow(2.0, 10.0 * (t - 1.0));
+	  },
+	  exponentialOut: (t) => {
+	    return t == 1.0 ? t : 1.0 - Math.pow(2.0, -10.0 * t);
+	  },
+	  exponentialInOut: (t) => {
+	    return t == 0.0 || t == 1.0
+	      ? t
+	      : t < 0.5
+	        ? +0.5 * Math.pow(2.0, (20.0 * t) - 10.0)
+	        : -0.5 * Math.pow(2.0, 10.0 - (t * 20.0)) + 1.0;
+	  },
+	  sineOut: (t) => {
+	    const HALF_PI = 1.5707963267948966;
+	    return Math.sin(t * HALF_PI);
+	  },
+	  circularInOut: (t) => {
+	    return t < 0.5
+	        ? 0.5 * (1.0 - Math.sqrt(1.0 - 4.0 * t * t))
+	        : 0.5 * (Math.sqrt((3.0 - 2.0 * t) * (2.0 * t - 1.0)) + 1.0);
+	  },
+	  cubicIn: (t) => {
+	    return t * t * t;
+	  },
+	  cubicOut: (t) => {
+	    const f = t - 1.0;
+	    return f * f * f + 1.0;
+	  },
+	  cubicInOut: (t) => {
+	    return t < 0.5
+	      ? 4.0 * t * t * t
+	      : 0.5 * Math.pow(2.0 * t - 2.0, 3.0) + 1.0;
+	  },
+	  quadraticOut: (t) => {
+	    return -t * (t - 2.0);
+	  },
+	  quarticOut: (t) => {
+	    return Math.pow(t - 1.0, 3.0) * (1.0 - t) + 1.0;
+	  },
+	}
+
+	class ShapeOverlays {
+		constructor(elm) {
+			this.elm = elm; // Parent SVG element.
+			this.path = elm.querySelectorAll('path'); // Path elements in parent SVG. These are the layers of the overlay.
+			this.numPoints = 18; // Number of control points for Bezier Curve.
+			this.duration = 600; // Animation duration of one path element.
+			this.delayPointsArray = []; // Array of control points for Bezier Curve.
+			this.delayPointsMax = 300; // Max of delay value in all control points.
+			this.delayPerPath = 60; // Delay value per path.
+			this.timeStart = Date.now();
+			this.isOpened = false;
+		}
+		toggle(){
+			const range = 4 * Math.random() + 6;
+			for(var i=0; i < this.numPoints; i++){
+				const radian = i / (this.numPoints - 1) * Math.PI;
+				this.delayPointsArray[i] = (Math.sin(-radian) + Math.sin(-radian * range) + 2) / 4 * this.delayPointsMax;
+			}
+		}
+		updatePath(time) {
+			const points = [];
+			for (var i = 0; i < this.numPoints; i++) {
+				points[i] = ease.cubicInOut(Math.min(Math.max(time - this.delayPointsArray[i], 0) / this.duration, 1)) * 100
+			}
+		}
+	}
+	const elmOverlay = document.querySelector('.shape-overlays');
+	const overlay = new ShapeOverlays(elmOverlay);
+	const elmHamburger = document.querySelector('.hamburger');
+
+  elmHamburger.addEventListener('click', () => {
+  	console.log('hamburger clicked!');
+    if (overlay.isAnimating) {
+      return false;
+    }
+    overlay.toggle();
+
+    if (overlay.isOpened === true) {
+      elmHamburger.classList.add('is-opened-navi');
+      // for (var i = 0; i < gNavItems.length; i++) {
+      //   gNavItems[i].classList.add('is-opened');
+      // }
+    } else {
+      elmHamburger.classList.remove('is-opened-navi');
+      // for (var i = 0; i < gNavItems.length; i++) {
+      //   gNavItems[i].classList.remove('is-opened');
+      // }
+    }
+  });*/
+
 });

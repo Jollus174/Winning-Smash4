@@ -5,11 +5,11 @@
     "moves": [
         {
             "moveId": 0,
-            "moveName": "Up Throw - Up Air",
+            "moveName": "Up Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air",
             "moveUrl": "upthrow-upair",
 
             "info": "",
-            "giphy": "https://giphy.com/embed/xT1R9YAchWK3aiJAhq",
+            "giphy": ["https://giphy.com/embed/3oFzm4XhnWq9vSZtIc", "https://www.youtube.com/watch?v=W3sgCRc13sk"],
 
             "rage50": "[-2, -2]",
             "rage60": "[-5, -5]",
@@ -109,11 +109,11 @@
     "moves": [
         {
             "moveId": 0,
-            "moveName": "Cargo Up Throw - Up Air (bell)",
+            "moveName": "Cargo Up Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air (bell)",
             "moveUrl": "cargoupthrow-upair",
 
             "info": "Within certain percent thresholds, it also functions as a kill confirm into his up air attack. This confirm is known among Donkey Kong specialists as <strong>Aerial Cargo Up Toss up air (ACUT)</strong>, the <strong>DKO</strong>, or to most Western players, simply as the <strong>Ding Dong</strong>.",
-            "giphy": "https://giphy.com/embed/xT1R9YAchWK3aiJAhq",
+            "giphy": ["https://giphy.com/embed/xT1R9YAchWK3aiJAhq", "https://www.youtube.com/watch?v=JlcIN-MKGCk"],
 
             "rage50": "[-2, -5]",
             "rage60": "[-5, -9]",
@@ -212,11 +212,11 @@
     "moves": [
         {
             "moveId": 0,
-            "moveName": "Up Throw - Up Air",
+            "moveName": "Up Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air",
             "moveUrl": "upthrow-upair",
 
-            "info": "",
-            "giphy": "https://giphy.com/embed/xT1R9YAchWK3aiJAhq",
+            "info": "https://www.youtube.com/watch?v=AXeykQaviE4",
+            "giphy": ["https://giphy.com/embed/xULW8n9ACGvGXbE3ok", "https://www.youtube.com/watch?v=AXeykQaviE4"],
 
             "rage50": "[-4, -4]",
             "rage60": "[-6, -6]",
@@ -313,11 +313,11 @@
 
         {
             "moveId": 1,
-            "moveName": "Up Throw - Up Air (DI in throw)",
+            "moveName": "Up Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air (DI in throw)",
             "moveUrl": "upthrow-upair-di-in-throw",
 
-            "info": "",
-            "giphy": "https://giphy.com/embed/xT1R9YAchWK3aiJAhq",
+            "info": "https://www.youtube.com/watch?v=AXeykQaviE4",
+            "giphy": ["https://giphy.com/embed/xULW8n9ACGvGXbE3ok", "https://www.youtube.com/watch?v=AXeykQaviE4"],
 
             "rage50": "[-4, -4]",
             "rage60": "[-6, -6]",
@@ -414,11 +414,11 @@
 
         {
             "moveId": 2,
-            "moveName": "Up Throw - Up Air (DI out throw)",
+            "moveName": "Up Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air (DI out throw)",
             "moveUrl": "upthrow-upair-di-out-throw",
 
-            "info": "",
-            "giphy": "https://giphy.com/embed/xT1R9YAchWK3aiJAhq",
+            "info": "https://www.youtube.com/watch?v=AXeykQaviE4",
+            "giphy": ["https://giphy.com/embed/xULW8n9ACGvGXbE3ok", "https://www.youtube.com/watch?v=AXeykQaviE4"],
 
             "rage50": "[-4, -4]",
             "rage60": "[-6, -6]",
@@ -522,11 +522,11 @@
     "moves": [
         {
             "moveId": 0,
-            "moveName": "Down Throw - Up Air",
+            "moveName": "Down Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air",
             "moveUrl": "dthrow-upair",
 
             "info": "",
-            "giphy": "https://giphy.com/embed/xT1R9YAchWK3aiJAhq",
+            "giphy": ["https://giphy.com/embed/l0HUmuMwBtdOQdZrG", "https://www.youtube.com/watch?v=MuYO0LM_4ac"],
 
             "rage50": [],
             "rage60": [],
