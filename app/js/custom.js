@@ -58,15 +58,20 @@ var Custom = (function() {
 			$('.moveBtn').removeClass('active');
 			$this.addClass('active');
 			var characterId = $this.closest('.card-deck').data('index');
-			var moveId = $this.data('moveid');
-			console.log('card-deck: ' + characterId + ' moveId: ' + moveId);
+			var moveId = $this.data('moveid'); // Needed for each loop below
+			// console.log('card-deck: ' + characterId + ' moveId: ' + moveId);
 			var characterName = $this.closest('.card-deck').data('name');
 			$('#nav-title').text(characterName);
 			$('.rageModifier h3').text(characterName + ' Rage Modifier');
 			$('body').addClass('character-grid-active');
-			//$('#secondarynav').css('display', 'flex');
 
 			var moveName = $this.html();
+
+			var id = $this.attr('id');
+			console.log(id);
+			$('#side-menu .nav-moves a').removeClass('active');
+			$('#side-menu a[data-ref=' + id + ']').addClass('active');
+
 
 			// Check for how many buttons in the card
 			// If more than one, then display the move-switcher dropdown in secondarynav
@@ -89,7 +94,6 @@ var Custom = (function() {
 					var moveUrl = $button.data('moveurl');
 					$dropdown.find('.dropdown-menu').append('<a class="dropdown-item" data-moveurl=' + moveUrl + '>' + name + '</a>');
 				});
-
 			} else {
 				$('#secondarynav .navbar-brand').html(moveName).show();
 				$('#secondarynav .dropdown').hide();

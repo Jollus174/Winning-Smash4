@@ -87,26 +87,46 @@
 
 		        <!-- Sidebar Links -->
 		        <li>
-			        <ul class="list-unstyled components nav">
-			            <li class="active"><a href="#">Home</a></li>
-			            <li><a id="about" href="#">About</a></li>
-			        </ul>
-			        <ul class="list-unstyled components nav" data-bind="foreach: killConfirm">
 
+			        <!-- ko foreach: killConfirm -->
+			        <ul class="list-unstyled components nav nav-characters" data-bind="css: url">
 			            <li>
 			                <span data-bind="text: name"></span>
-			                <ul class="list-unstyled show" data-bind="attr: {id: hashUrl}, foreach: moves">
+			                <ul class="list-unstyled nav-moves" data-bind="attr: {id: hashUrl}, foreach: moves">
 			                    <li><a href="#" data-bind="html: moveName, attr: {
 			                    	'data-ref': $parent.url + '-' + moveUrl
 			                    }">Page</a></li>
-			                    <!--<li><a href="#" data-bind="text: moveName, attr: {href: hashFullUrl}">Page</a></li>-->
 			                </ul>
 			            </li>
 			        </ul>
+			        <!-- /ko -->
 		    	</li>
 	    	</ul>
     	</div>
+
+		<ul class="sidebar-bottom-links">
+			<li><a id="about" href="#">About</a></li>
+			<li><a id="credits" href="#">Credits</a></li>
+			<li><a id="feedback" href="https://github.com/Jollus88/Winning-Smash4/issues" target="_blank">Feedback</a></li>
+		</ul>
+
 	</nav> <!-- sidebar -->
+
+
+<!-- 				
+				<div data-bind="attr: {class: $parent.url + '-' + moveUrl}" hidden>
+					<p data-bind="html: info">
+
+
+					</p>
+
+					<div class="giphy">
+						<iframe data-bind="attr: {'src': giphy[0]}" width='100%' height='100%' style='position:absolute' frameBorder='0' class='giphy-embed' allowFullScreen></iframe>
+						<a target="_blank" data-bind="attr: {href: giphy[1]}">Video Source</a>
+					</div>
+				</div>
+
+				 -->
 
 
 	<!-- G & W Twitter - https://twitter.com/houseoffastfood -->
@@ -182,7 +202,6 @@
 		<div class="container-fluid">
 
 			<div class="row">
-					<!--<div id="main" class="content">-->
 				<div class="col">
 
 					<div class="search-box">

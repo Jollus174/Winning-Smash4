@@ -9112,9 +9112,14 @@ a.text-dark:focus, a.text-dark:hover {
   margin-bottom: 15px; }
 
 /* --- CAAAARDS --- */
+.bowser:hover.nav-characters li > span {
+  background: #32765c !important; }
+
 .bowser .btn {
   background-color: #235240 !important;
   border-color: #235240; }
+  .bowser .btn:hover {
+    background-color: #142e24 !important; }
 
 .bowser .card-image-top {
   background-color: #32765c; }
@@ -9122,9 +9127,27 @@ a.text-dark:focus, a.text-dark:hover {
 .bowser .card-image-top, .bowser .btn {
   color: #FFF; }
 
+.bowser.nav-characters:before {
+  background: #32765c; }
+
+.bowser li > span {
+  background: rgba(50, 118, 92, 0.8) !important;
+  color: #FFF !important; }
+
+.bowser .nav-moves a {
+  position: relative; }
+  .bowser .nav-moves a:before {
+    background: rgba(50, 118, 92, 0.5) !important; }
+
+.donkey-kong:hover.nav-characters li > span {
+  background: #feda00 !important; }
+
 .donkey-kong .btn {
   background-color: #9c840e !important;
-  border-color: #9c840e; }
+  border-color: #9c840e;
+  color: #FFF; }
+  .donkey-kong .btn:hover {
+    background-color: #6d5c0a !important; }
 
 .donkey-kong .card-image-top {
   background-color: #feda00; }
@@ -9132,12 +9155,26 @@ a.text-dark:focus, a.text-dark:hover {
 .donkey-kong .card-image-top {
   color: #431c0b; }
 
-.donkey-kong .btn {
-  color: #FFF; }
+.donkey-kong.nav-characters:before {
+  background: #feda00; }
+
+.donkey-kong.nav-characters li > span {
+  background: rgba(254, 218, 0, 0.8) !important;
+  color: #431c0b !important; }
+
+.donkey-kong.nav-characters .nav-moves a {
+  position: relative; }
+  .donkey-kong.nav-characters .nav-moves a:before {
+    background: rgba(254, 218, 0, 0.5) !important; }
+
+.game-and-watch:hover.nav-characters li > span {
+  background: #8a8983 !important; }
 
 .game-and-watch .btn {
   background-color: #706f6a !important;
   border-color: #706f6a; }
+  .game-and-watch .btn:hover {
+    background-color: #565551 !important; }
 
 .game-and-watch .card-image-top {
   background-color: #8a8983; }
@@ -9145,15 +9182,45 @@ a.text-dark:focus, a.text-dark:hover {
 .game-and-watch .card-image-top, .game-and-watch .btn {
   color: #FFF; }
 
+.game-and-watch.nav-characters li > span {
+  background: rgba(138, 137, 131, 0.8) !important;
+  color: #FFF !important; }
+
+.game-and-watch.nav-characters .nav-moves a {
+  position: relative; }
+  .game-and-watch.nav-characters .nav-moves a:before {
+    background: rgba(138, 137, 131, 0.5) !important; }
+
+.robin:hover.nav-characters li > span {
+  background: #ce82de !important; }
+
 .robin .btn {
   background-color: #be5ad3 !important;
   border-color: #be5ad3; }
+  .robin .btn:hover {
+    background-color: #ac34c6 !important; }
 
 .robin .card-image-top {
   background-color: #ce82de; }
 
 .robin .card-image-top, .robin .btn {
   color: #FFF; }
+
+.robin.nav-characters:before {
+  background: rgba(206, 130, 222, 0.5) !important; }
+
+.robin.nav-characters li > span {
+  background: rgba(206, 130, 222, 0.8) !important;
+  color: #FFF !important; }
+
+.robin.nav-characters .nav-moves a {
+  position: relative; }
+  .robin.nav-characters .nav-moves a:before {
+    background: rgba(206, 130, 222, 0.5) !important; }
+
+.nav-characters li > span {
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease; }
 
 /* --- */
 /* Normalise */
@@ -9572,11 +9639,31 @@ body.toggle-sidedrawer {
   background: #ff5131; }
 
 #page-wrapper .nav-wrapper {
-  margin-left: -15.5px;
-  margin-right: -15.5px; }
+  margin-left: -15px;
+  margin-right: -15px; }
 
 .navbar-static-side {
-  display: none; }
+  display: none;
+  z-index: 5;
+  position: absolute;
+  width: 220px;
+  height: 100%;
+  background: #FFF;
+  overflow-x: hidden; }
+  .navbar-static-side .sidebar-bottom-links {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 5px 0 10px;
+    margin: 0;
+    background: #FFF; }
+    .navbar-static-side .sidebar-bottom-links li {
+      display: inline-block; }
+      .navbar-static-side .sidebar-bottom-links li a {
+        font-size: 0.75rem;
+        margin: 0 0.3rem;
+        color: #333; }
 
 .--white {
   color: #FFF !important; }
@@ -9607,7 +9694,6 @@ a[aria-expanded="true"]::before {
     content: '\e260';
 }*/
 #side-menu {
-  /* don't forget to add all the previously mentioned styles here too */
   color: #fff;
   -webkit-transition: all 0.3s;
   transition: all 0.3s; }
@@ -9616,28 +9702,55 @@ a[aria-expanded="true"]::before {
     padding: 20px;
     background: #d50000; }
   #side-menu ul.components {
-    padding: 20px 0;
-    border-bottom: 1px solid #47748b;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column; }
-  #side-menu .list-unstyled.components.nav > li {
-    padding-bottom: 10px; }
-  #side-menu .list-unstyled.components.nav > li:last-child {
-    padding-bottom: 0; }
+    #side-menu ul.components.nav-characters > li {
+      border-bottom: 1px solid #cccccc; }
+      #side-menu ul.components.nav-characters > li a {
+        -webkit-transition: all 0.2s ease;
+        transition: all 0.2s ease; }
+      #side-menu ul.components.nav-characters > li a:hover {
+        background: #efefef; }
+    #side-menu ul.components li > a, #side-menu ul.components li > span {
+      width: 225px;
+      padding: 15px 0 15px 20px;
+      display: block;
+      overflow: hidden;
+      position: relative;
+      text-decoration: none;
+      font-size: 14px;
+      line-height: 24px;
+      color: #686868; }
+    #side-menu ul.components li > span {
+      background: #efefef;
+      text-transform: uppercase;
+      font-weight: 700; }
+    #side-menu ul.components .nav-moves a {
+      padding: 10px 0 10px 30px;
+      position: relative; }
+      #side-menu ul.components .nav-moves a:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 3px;
+        height: 100%;
+        z-index: 5;
+        -webkit-transition: width 0.2s ease;
+        transition: width 0.2s ease; }
+      #side-menu ul.components .nav-moves a:hover:before {
+        width: 6px; }
+      #side-menu ul.components .nav-moves a.active:before {
+        width: 6px; }
   #side-menu span, #side-menu a {
     display: block;
-    padding: .25rem 1.5rem;
+    padding: 0.2rem 1.5rem;
     font-weight: 500;
     color: rgba(0, 0, 0, 0.65); }
   #side-menu li.active {
     color: rgba(0, 0, 0, 0.85); }
-  #side-menu ul li li > a {
-    display: block;
-    padding: .25rem 0.5rem .25rem 2.5rem;
-    font-size: 90%;
-    color: rgba(0, 0, 0, 0.65); }
   #side-menu li > a:hover {
     color: rgba(0, 0, 0, 0.85);
     text-decoration: none;
@@ -10323,7 +10436,8 @@ body.show-ledgeFsmash .grid-ledgeFsmash {
 /* TO DO - MOVE THESE STAGE STYLES TO A DEDICATED STYLESHEET SO THEY CAN BE CACHED AWAY FROM THE CRITICAL COMPONENTS IN CASE THE STAGE LISTS CHANGE */
 .stage {
   border: 1px solid;
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+  border-radius: 3px; }
 
 .stageImage {
   height: 100px;
@@ -10492,11 +10606,7 @@ tr.table-descs td {
     padding: 0 15px;
     position: relative !important; }
   .navbar-static-side {
-    z-index: 5;
-    position: absolute;
-    width: 220px;
-    display: block;
-    height: 100%; }
+    display: block; }
   .navbar-header {
     float: left; }
   /*#header{

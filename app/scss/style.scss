@@ -79,34 +79,131 @@ $robin-button-primary-active:#d82800;
 
 /* --- CAAAARDS --- */
 
-.bowser .btn{
-    background-color:$bowser-button-homepage !important;
-    border-color:$bowser-button-homepage;
-}
-.bowser .card-image-top{background-color:$bowser;}
-.bowser .card-image-top, .bowser .btn{color:$text-light;}
+// https://stackoverflow.com/questions/10929458/sass-converting-hex-to-rgba-for-background-opacity
+// @mixin background-opacity($color, $opacity:0.3){
+//     background:
+// }
 
-.donkey-kong .btn{
-    background-color:$donkey-kong-button-primary !important;
-    border-color:$donkey-kong-button-primary;
-}
-.donkey-kong .card-image-top{background-color:$donkey-kong;}
-.donkey-kong .card-image-top{color:$text-dark;}
-.donkey-kong .btn{color:$text-light;}
+// babeh's first mix-in :)
+// not yet
+//@mixin
 
-.game-and-watch .btn{
-    background-color:$gnw-button-homepage !important;
-    border-color:$gnw-button-homepage;
-}
-.game-and-watch .card-image-top{background-color:$gnw;}
-.game-and-watch .card-image-top, .game-and-watch .btn{color:$text-light;}
 
-.robin .btn{
-    background-color:$robin-button-homepage !important;
-    border-color:$robin-button-homepage;
+
+.bowser{
+    &:hover{
+        &.nav-characters li > span{
+            background:$bowser !important;
+        }
+    }
+    .btn{
+        background-color:$bowser-button-homepage !important;
+        border-color:$bowser-button-homepage;
+        &:hover{background-color:darken($bowser-button-homepage, 10%) !important;}
+    }
+    .card-image-top{background-color:$bowser;}
+    .card-image-top, .btn{color:$text-light;}
+    &.nav-characters:before{background:$bowser;}
+    li > span{
+        background:transparentize($bowser, 0.2) !important;
+        color: $text-light !important;
+    }
+    .nav-moves a{
+        position:relative;
+        &:before{background:transparentize($bowser, 0.5) !important;}
+    }
 }
-.robin .card-image-top{background-color:$robin;}
-.robin .card-image-top, .robin .btn{color:$text-light;}
+
+.donkey-kong{
+    &:hover{
+        &.nav-characters li > span{
+            background:$donkey-kong !important;
+        }
+    }
+    .btn{
+        background-color:$donkey-kong-button-primary !important;
+        border-color:$donkey-kong-button-primary;
+        color:$text-light;
+        &:hover{background-color:darken($donkey-kong-button-primary, 10%) !important;}
+    }
+    .card-image-top{background-color:$donkey-kong;}
+    .card-image-top{color:$text-dark;}
+    &.nav-characters{
+        &:before{background:$donkey-kong;}
+        li > span{
+            background:transparentize($donkey-kong, 0.2) !important;
+            color: $text-dark !important;
+        }
+        .nav-moves a{
+            position:relative;
+            &:before{background:transparentize($donkey-kong, 0.5) !important;}
+        }
+    }
+}
+
+.game-and-watch{
+    &:hover{
+        &.nav-characters li > span{
+            background:$gnw !important;
+        }
+    }
+    .btn{
+        background-color:$gnw-button-homepage !important;
+        border-color:$gnw-button-homepage;
+        &:hover{background-color:darken($gnw-button-homepage, 10%) !important;}
+    }
+    .card-image-top{background-color:$gnw;}
+    .card-image-top, .btn{color:$text-light;}
+    &.nav-characters{
+        //
+
+        li > span{
+            background:transparentize($gnw, 0.2) !important;
+            color: $text-light !important;
+        }
+        .nav-moves a{
+            position:relative;
+            &:before{background:transparentize($gnw, 0.5) !important;}
+        }
+    }
+}
+
+.robin{
+    &:hover{
+        &.nav-characters li > span{
+            background:$robin !important;
+        }
+    }
+    .btn{
+        background-color:$robin-button-homepage !important;
+        border-color:$robin-button-homepage;
+        &:hover{background-color:darken($robin-button-homepage, 10%) !important;}
+    }
+    .card-image-top{background-color:$robin;}
+    .card-image-top, .btn{color:$text-light;}
+    &.nav-characters{
+        &:before{background:transparentize($robin, 0.5) !important;}
+        li > span{
+            background:transparentize($robin, 0.2) !important;
+            color: $text-light !important;
+        }
+        .nav-moves a{
+            position:relative;
+            &:before{background:transparentize($robin, 0.5) !important;}
+        }
+        // .nav-moves a{
+        //     background:transparentize($robin, 0.4);
+        //     color: $text-light !important;
+        // }
+    }
+}
+
+.nav-characters li > span{
+    transition:all 0.2s ease;
+}
+
+
+// nav-characters bowser
 
 /* --- */
 
@@ -521,11 +618,34 @@ body.toggle-sidedrawer{
     background:$primary-colour;
 }
 #page-wrapper .nav-wrapper{
-    margin-left:-15.5px;
-    margin-right:-15.5px;
+    margin-left:-15px;
+    margin-right:-15px;
 }
 .navbar-static-side {
     display:none;
+    z-index: 5;
+    position: absolute;
+    width: 220px;
+    height:100%;
+    background:#FFF;
+    overflow-x:hidden;
+    .sidebar-bottom-links{
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        padding: 5px 0 10px;
+        margin: 0;
+        background: #FFF;
+        li{
+            display:inline-block;
+            a{
+                font-size: 0.75rem;
+                margin: 0 0.3rem;
+                color: #333;
+            }
+        }
+    }
 }
 
 .--white{
@@ -564,7 +684,6 @@ a[aria-expanded="true"]::before {
 
 
 #side-menu {
-    /* don't forget to add all the previously mentioned styles here too */
     color: #fff;
     transition: all 0.3s;
     .sidebar-header {
@@ -573,19 +692,76 @@ a[aria-expanded="true"]::before {
         background: #d50000;
     }
     ul.components {
-        padding: 20px 0;
-        border-bottom: 1px solid #47748b;
+        // padding: 20px 0;
         flex-direction:column;
+        &.nav-characters{
+            > li{
+                border-bottom: 1px solid #cccccc;
+                &:last-child{
+                    // border-bottom: 1px solid #cccccc;
+                }
+                a{
+                    transition:all 0.2s ease;
+                }
+                a:hover{
+                    background:#efefef;
+                }
+            }
+        }
+        li > a, li > span{
+            width: 225px;
+            // padding-left: 20px;
+            // // height: 50px;
+            padding: 15px 0 15px 20px;
+            display: block;
+            overflow: hidden;
+            position: relative;
+            text-decoration: none;
+            font-size: 14px;
+            line-height: 24px;
+            color: #686868;
+        }
+        li > span{
+            background: #efefef;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+        .nav-moves{
+            a{
+                padding: 10px 0 10px 30px;
+                position:relative;
+                &:before{
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 3px;
+                    height: 100%;
+                    z-index: 5;
+                    transition: width 0.2s ease;
+                }
+                &:hover{
+                    &:before{
+                        width:6px;
+                    }
+                }
+                &.active{
+                    &:before{
+                        width:6px;
+                    }
+                }
+            }
+        }
     }
-    .list-unstyled.components.nav > li{
-        padding-bottom:10px;
-    }
-    .list-unstyled.components.nav > li:last-child{
-        padding-bottom:0;
-    }
+    // .list-unstyled.components.nav > li{
+    //     padding-bottom:10px;
+    // }
+    // .list-unstyled.components.nav > li:last-child{
+    //     padding-bottom:0;
+    // }
     span, a{
         display: block;
-        padding: .25rem 1.5rem;
+        padding: 0.2rem 1.5rem;
         font-weight: 500;
         color: rgba(0,0,0,.65);
     }
@@ -593,12 +769,7 @@ a[aria-expanded="true"]::before {
         color: rgba(0,0,0,.85);
     }
 
-    ul li li > a{
-        display: block;
-        padding: .25rem 0.5rem .25rem 2.5rem;
-        font-size: 90%;
-        color: rgba(0,0,0,.65);
-    }
+
     li > a:hover{
         color: rgba(0,0,0,.85);
         text-decoration: none;
@@ -1279,6 +1450,7 @@ body.show-ledgeFsmash .grid-ledgeFsmash{display:block;}
 .stage{
     border:1px solid;
     margin-bottom:20px;
+    border-radius:3px;
 }
 
 .stageImage{
@@ -1514,12 +1686,7 @@ tr.table-descs td{
         position:relative !important;
     }
     .navbar-static-side {
-        z-index: 5;
-        position: absolute;
-        width: 220px;
         display:block;
-        height:100%;
-
     }
     .navbar-header{float:left;}
 
