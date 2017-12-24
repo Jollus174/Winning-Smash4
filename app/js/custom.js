@@ -64,7 +64,7 @@ var Custom = (function() {
 
 		// Need to trigger this on button click now
 		// Needs to be done via callback so I can control exactly WHEN the data switches over. It'll be transitioning now, see - it can be changed mid-transition
-		function switchCharacterData(self){
+		function activateCharacterGrid(self){
 			$this = self;
 			$('.moveBtn').removeClass('active');
 			$this.addClass('active');
@@ -109,7 +109,8 @@ var Custom = (function() {
 					var name = $button.html();
 					var href = $button.attr('href');
 					var moveUrl = $button.data('moveurl');
-					$dropdown.find('.dropdown-menu').append('<a class="dropdown-item" data-moveurl=' + moveUrl + '>' + name + '</a>');
+					var id = $button.attr('id');
+					$dropdown.find('.dropdown-menu').append('<a class="dropdown-item" data-ident=' + id + '>' + name + '</a>');
 				});
 			} else {
 				$('#secondarynav .navbar-brand').html(moveName).show();
@@ -142,6 +143,17 @@ var Custom = (function() {
 			$('#page-info .' + $this.attr('id')).show();
 		};
 
+
+		function retrieveCharUrl(self){
+			// Place the character's name in #page-wrapper so I can do and target things with it
+			var charUrl = self.closest('.card-deck').data('url');
+			//if(!$('#page-wrapper').hasClass()){
+				$('#page-wrapper').attr('class', charUrl);
+
+			/*} else {
+				$('#page-wrapper').removeClass();
+			}*/
+		};
 		function pageTransition(self, transitionToAnotherGrid){
 			/* --- Animate the navigation transition -- */
 
@@ -159,11 +171,13 @@ var Custom = (function() {
 				// support css animations
 				support = Modernizr.cssanimations;
 
-			// Need to delay function in case it's already animating? Someone might hit ESC twice quickly
+
+			// Need to delay open/close function in case it's already animating. Some spastic might hit ESC twice quickly
 			// Add class of 'animating' to body and remove when the animation is finished
 			$('body').addClass('animating');
+
 			if(!$('body').hasClass('character-grid-active')){
-				$('body').addClass('character-grid-active');
+				$(('body')).addClass('character-grid-active');
 				// transition it forwards
 				outClass = 'pt-page-scaleDown',
 				inClass = 'pt-page-moveFromRight pt-page-ontop';
@@ -181,26 +195,41 @@ var Custom = (function() {
 					// transition it backwards
 					outClass = 'pt-page-moveToRight pt-page-ontop';
 					inClass = 'pt-page-scaleUp';
-
 				}
-
 			}
 			// If we're transitioning to another character grid, the switchCharacter function needs to be invoked midway between transitions
 			if(transitionToAnotherGrid == true){
-				$currPage.addClass(outClass).on(animEndEventName, function() {
-					$(this).removeClass().addClass('pt-page');
-					$currPage.off( animEndEventName );
-					$('body').removeClass('animating');
-					switchCharacterData(self);
-					$nonCurrPage.removeClass().addClass('pt-page pt-page-current').addClass(inClass).on(animEndEventName, function() {
-
-						var $this = $(this);
-						$this.attr('class', 'pt-page pt-page-current');
-						$nonCurrPage.off( animEndEventName );
+				// Need to ALSO check if we're just transitioning to a different move of the same character. Different transition for that (just a fade)
+				var charUrl = self.closest('.card-deck').data('url');
+				if(charUrl == $('#page-wrapper').attr('class')){
+					console.log('we have a match!');
+					$('#characterGrid').fadeOut('fast', function(){
+						activateCharacterGrid(self);
+						$('#characterGrid').fadeIn('fast');
+						$('body').removeClass('animating');
 					});
-				});
 
+
+				} else {
+
+					//console.log('button group is from: ' + charUrl );
+					// Initiate transition forward
+					$currPage.addClass(outClass).on(animEndEventName, function() {
+						$(this).removeClass().addClass('pt-page');
+						$currPage.off( animEndEventName );
+						$('body').removeClass('animating');
+						retrieveCharUrl(self);
+						activateCharacterGrid(self);
+						$nonCurrPage.removeClass().addClass('pt-page pt-page-current').addClass(inClass).on(animEndEventName, function() {
+
+							var $this = $(this);
+							$this.attr('class', 'pt-page pt-page-current');
+							$nonCurrPage.off( animEndEventName );
+						});
+					});
+				}
 			} else {
+				// Initiate transition backward
 				$currPage.addClass(outClass).on(animEndEventName, function() {
 
 					$(this).removeClass().addClass('pt-page');
@@ -209,7 +238,8 @@ var Custom = (function() {
 
 				});
 				if($('body').hasClass('character-grid-active')){
-					switchCharacterData(self);
+					retrieveCharUrl(self);
+					activateCharacterGrid(self);
 				};
 				$nonCurrPage.removeClass().addClass('pt-page pt-page-current').addClass(inClass).on(animEndEventName, function() {
 
@@ -219,26 +249,36 @@ var Custom = (function() {
 				});
 
 			}
-
 		};
+
+		function deactivateCharacterGrid(){
+			if(!$('body').hasClass('animating')){
+				pageTransition();
+				$('#page-wrapper').removeClass();
+			};
+		}
 
 		// THIS IS THE CHARACTER DATA CONTROLLER, RIGHT HERE!
 		$('.moveBtn').click(function(){
 			// Check if the grid is already out
 			// If the grid is out and the moveBtn is clicked, that means we're just transitioning between character grids and need a different kind of transition
-			if($('body').hasClass('character-grid-active')){
-				pageTransition($(this), characterGridActive = true);
-			} else {
-				pageTransition($(this));
-			}
+
+			// check to see if it already has a class of 'active' first. Don't want people clicking the same button twice
+			if(!$(this).hasClass('active')){
+				if($('body').hasClass('character-grid-active')){
+					pageTransition($(this), characterGridActive = true);
+				} else {
+					pageTransition($(this));
+				}
+			};
 		});
 
 		// NEED TO WORK ON THIS MORE
 		//$('#secondarynav .dropdown-item').click(function(){
 		$('#secondarynav').on('click', '.dropdown-item', function(){
 			var $this = $(this);
-			var moveUrl = $this.data('moveurl');
-			$('.moveBtn[data-moveurl=' + moveUrl + ']').trigger('click');
+			var ident = $this.data('ident');
+			$('.moveBtn[id=' + ident + ']').trigger('click');
 			console.log('clicked the dropdown item!');
 		})
 
@@ -617,6 +657,9 @@ var Custom = (function() {
 			window.location.replace(baseUrl);
 			// This seems to cause problems with the PWA side of things, and forces some kind of reload anyway.
 		};
+
+
+
 		function transitionCharacter(){
 			var $charModal = $('#characterModal');
 			$charModal.attr('class', 'active');
@@ -818,10 +861,7 @@ var Custom = (function() {
 				if($('body').hasClass('no-scroll')){
 					deactivateCharacter();
 				} else if ($('body').hasClass('character-grid-active')){
-					//$('body').removeClass('character-grid-active');
-					if(!$('body').hasClass('animating')){
-						pageTransition();
-					};
+					deactivateCharacterGrid(self);
 				} else {
 					// else toggle the sidemenu instead
 					$('body').toggleClass('toggle-sidedrawer');

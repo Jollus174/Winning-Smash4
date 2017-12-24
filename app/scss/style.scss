@@ -6,6 +6,7 @@
 @import "bootstrap-sass-4.0.0/bootstrap";
 @import "font-awesome-4.7.0/font-awesome.scss";
 @import "animations.scss";
+@import "character-icons.scss";
 
 /* --- VARIABLES - BECAUSE BROWSERSYNC KEEPS CRASHING --- */
 
@@ -74,7 +75,7 @@ $robin-button-primary-active:#d82800;
     border-color:rgba(213, 0, 0, 0.5) !important;
 }
 #characterSelection .card{
-    margin-bottom:15px;
+    margin-bottom:10px;
 }
 
 
@@ -102,8 +103,13 @@ $robin-button-primary-active:#d82800;
         border-color:$bowser-button-homepage;
         &:hover{background-color:darken($bowser-button-homepage, 10%) !important;}
     }
-    .card-image-top{background-color:$bowser;}
-    .card-image-top, .btn{color:$text-light;}
+    &.card-deck{
+        .card-image-top{
+            background-color:$bowser;
+            color:$text-light;
+        }
+    }
+    .btn{color:$text-light;}
     &.nav-characters:before{background:$bowser;}
     li > span{
         background:transparentize($bowser, 0.2) !important;
@@ -127,8 +133,12 @@ $robin-button-primary-active:#d82800;
         color:$text-light;
         &:hover{background-color:darken($donkey-kong-button-primary, 10%) !important;}
     }
-    .card-image-top{background-color:$donkey-kong;}
-    .card-image-top{color:$text-dark;}
+    &.card-deck{
+        .card-image-top{
+            background-color:$donkey-kong;
+            color:$text-dark;
+        }
+    }
     &.nav-characters{
         &:before{background:$donkey-kong;}
         li > span{
@@ -153,8 +163,13 @@ $robin-button-primary-active:#d82800;
         border-color:$gnw-button-homepage;
         &:hover{background-color:darken($gnw-button-homepage, 10%) !important;}
     }
-    .card-image-top{background-color:$gnw;}
-    .card-image-top, .btn{color:$text-light;}
+    &.card-deck{
+        .card-image-top{
+            background-color:$gnw;
+            color:$text-light;
+        }
+    }
+    .btn{color:$text-light;}
     &.nav-characters{
         //
 
@@ -180,8 +195,13 @@ $robin-button-primary-active:#d82800;
         border-color:$robin-button-homepage;
         &:hover{background-color:darken($robin-button-homepage, 10%) !important;}
     }
-    .card-image-top{background-color:$robin;}
-    .card-image-top, .btn{color:$text-light;}
+    &.card-deck{
+        .card-image-top{
+            background-color:$robin;
+            color:$text-light;
+        }
+    }
+    .btn{color:$text-light;}
     &.nav-characters{
         &:before{background:transparentize($robin, 0.5) !important;}
         li > span{
@@ -851,7 +871,7 @@ a[aria-expanded="true"]::before {
     position: absolute;
     top: 42px;
     right: 0;
-    z-index: 2;
+    z-index: 10;
     display: none;
     float: left;
     min-width: 230px;
@@ -1182,6 +1202,7 @@ a[aria-expanded="true"]::before {
     height:120px;
     position:relative;
     overflow:hidden;
+    cursor:initial !important;
 }
 .characterImageContainer ul{margin:0;}
 .characterImageContainer .characterImage{
