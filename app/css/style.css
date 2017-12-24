@@ -9396,8 +9396,19 @@ span.mobile {
 .icon-arrowback .pathfill, #icon-prev .pathfill, #icon-next .pathfill {
   fill: #FFF; }
 
-.text-dark .icon-arrowback .pathfill {
-  fill: #333; }
+.legend-keys .icon-keyboard {
+  fill: #FFF;
+  width: 45px; }
+
+.text-dark #character-underlay .legend-keys > div {
+  background: rgba(51, 51, 51, 0.1);
+  color: #333; }
+
+.text-dark .icon-keyboard {
+  fill: #333 !important; }
+
+.text-dark .legend-keys--shift, .text-dark .legend-keys--escape {
+  background: #333 !important; }
 
 #notification {
   display: none;
@@ -9634,16 +9645,16 @@ body.toggle-sidedrawer {
 .wrapper {
   width: 100%; }
 
-#page-wrapper .navbar {
-  width: 100%;
-  background: #ff5131; }
-
-#page-wrapper .nav-wrapper {
-  margin-left: -15px;
-  margin-right: -15px; }
+#page-wrapper {
+  overflow-x: hidden; }
+  #page-wrapper .navbar {
+    width: 100%;
+    background: #ff5131; }
+  #page-wrapper .nav-wrapper {
+    margin-left: -15px;
+    margin-right: -15px; }
 
 .navbar-static-side {
-  display: none;
   z-index: 5;
   position: absolute;
   width: 220px;
@@ -9841,6 +9852,49 @@ a[aria-expanded="true"]::before {
       cursor: pointer; }
     .secondarynav .dropdown-menu .dropdown-item:active {
       background-color: #5a5a5a; }
+
+#character-underlay .legend-keys {
+  width: 160px;
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  text-align: right;
+  color: #FFF; }
+  #character-underlay .legend-keys > div {
+    margin-top: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    display: inline-block;
+    float: right;
+    clear: both;
+    padding: 2px 6px 0;
+    border-radius: 6px; }
+  #character-underlay .legend-keys .legend-keys--text {
+    position: relative;
+    bottom: 9px; }
+  #character-underlay .legend-keys .legend-keys--divider {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 40px;
+    font-weight: 300;
+    position: relative;
+    bottom: 4px; }
+  #character-underlay .legend-keys .legend-keys--shift {
+    background: #FFF;
+    color: #cfce37;
+    border-radius: 3px;
+    font-weight: 700;
+    padding: 0px 4px 1px;
+    font-size: 12px; }
+  #character-underlay .legend-keys .legend-keys--escape {
+    background: #FFF;
+    color: #cfce37;
+    border-radius: 3px;
+    font-weight: 700;
+    padding: 0px 10px 7px 3px;
+    font-size: 11px;
+    display: block;
+    margin: 5px 0; }
+  #character-underlay .legend-keys svg {
+    fill: #FFF; }
 
 /* --- */
 /* --- TYPOGRAPHY --- */
@@ -10353,6 +10407,14 @@ body.show-ledgeFsmash .grid-ledgeFsmash {
   background: rgba(0, 0, 0, 0.5);
   cursor: pointer; }
 
+.icon-nextprev-container {
+  position: absolute;
+  width: 675px;
+  height: 100%;
+  margin: 0 auto;
+  left: 10px;
+  right: 10px; }
+
 #icon-next, #icon-prev {
   position: fixed;
   z-index: 20;
@@ -10605,8 +10667,6 @@ tr.table-descs td {
     min-height: 100vh;
     padding: 0 15px;
     position: relative !important; }
-  .navbar-static-side {
-    display: block; }
   .navbar-header {
     float: left; }
   /*#header{
@@ -10626,6 +10686,8 @@ tr.table-descs td {
     margin-left: 200px; }
   body.toggle-sidedrawer #content-wrapper, body.toggle-sidedrawer #footer {
     margin-left: 0; }
+  #icon-next, #icon-prev {
+    position: absolute; }
   #sidedrawer-overlay {
     display: none !important; }
   #sidedrawer-contents {
@@ -10644,11 +10706,7 @@ tr.table-descs td {
     padding: 5px 10px; }
   .text-dark #icon-prev .pathfill, .text-dark #icon-next .pathfill {
     fill: #333; }
-  .characterImageContainer .characterImage:hover {
-    background-position: center -7px; }
-  .leftImage .characterImage:hover {
-    background-position: center -7px; }
-  .rightImage .characterImage:hover {
+  .characterImageContainer .characterImage:hover, .leftImage .characterImage:hover, .rightImage .characterImage:hover {
     background-position: center -7px; }
   @-webkit-keyframes animateBG {
     0% {
@@ -10733,9 +10791,11 @@ tr.table-descs td {
 .shape-overlays {
   width: 100vw;
   height: 100vh;
-  position: fixed;
+  position: absolute;
   top: 0;
-  left: 0; }
+  left: 0;
+  z-index: 101;
+  display: none; }
 
 .shape-overlays path:nth-of-type(1) {
   fill: #c4dbea; }

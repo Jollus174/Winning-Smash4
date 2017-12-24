@@ -390,6 +390,7 @@ var Custom = (function() {
 
 			$('#character-underlay').css('backgroundColor', bgColour);
 			$charModal.find('.characterImageContainer, .stickyName').css('backgroundColor', bgColour);
+			$charModal.find('.legend-keys--shift, .legend-keys--escape').css('color', bgColour);
 
 
 			// Trick to restart the CSS animation for the characterImage slideIn. What a headache.
@@ -872,8 +873,6 @@ var Custom = (function() {
 			$('.card-deck #' + dataref).trigger('click');
 		});
 
-	});
-
 	// SVG Transitions
 	// https://tympanus.net/codrops/2017/10/17/dynamic-shape-overlays-with-svg/
 
@@ -882,7 +881,7 @@ var Custom = (function() {
 	// https://github.com/glslify/glsl-easings
 	//
 
-/*	const ease = {
+	const ease = {
 	  exponentialIn: (t) => {
 	    return t == 0.0 ? t : Math.pow(2.0, 10.0 * (t - 1.0));
 	  },
@@ -926,53 +925,105 @@ var Custom = (function() {
 	}
 
 	class ShapeOverlays {
-		constructor(elm) {
-			this.elm = elm; // Parent SVG element.
-			this.path = elm.querySelectorAll('path'); // Path elements in parent SVG. These are the layers of the overlay.
-			this.numPoints = 18; // Number of control points for Bezier Curve.
-			this.duration = 600; // Animation duration of one path element.
-			this.delayPointsArray = []; // Array of control points for Bezier Curve.
-			this.delayPointsMax = 300; // Max of delay value in all control points.
-			this.delayPerPath = 60; // Delay value per path.
-			this.timeStart = Date.now();
-			this.isOpened = false;
-		}
-		toggle(){
-			const range = 4 * Math.random() + 6;
-			for(var i=0; i < this.numPoints; i++){
-				const radian = i / (this.numPoints - 1) * Math.PI;
-				this.delayPointsArray[i] = (Math.sin(-radian) + Math.sin(-radian * range) + 2) / 4 * this.delayPointsMax;
-			}
-		}
-		updatePath(time) {
-			const points = [];
-			for (var i = 0; i < this.numPoints; i++) {
-				points[i] = ease.cubicInOut(Math.min(Math.max(time - this.delayPointsArray[i], 0) / this.duration, 1)) * 100
-			}
-		}
+	  constructor(elm) {
+	    this.elm = elm;
+	    this.path = elm.querySelectorAll('path');
+	    this.numPoints = 2;
+	    this.duration = 500;
+	    this.delayPointsArray = [];
+	    this.delayPointsMax = 0;
+	    this.delayPerPath = 200;
+	    this.timeStart = Date.now();
+	    this.isOpened = false;
+	    this.isAnimating = false;
+	  }
+	  toggle() {
+	    this.isAnimating = true;
+	    for (var i = 0; i < this.numPoints; i++) {
+	      this.delayPointsArray[i] = 0;
+	    }
+	    if (this.isOpened === false) {
+	      this.open();
+	      //setTimeout(this.close(), 1000);
+	    } else {
+	      this.close();
+	    }
+	  }
+	  open() {
+	    this.isOpened = true;
+	    this.elm.classList.add('is-opened');
+	    this.timeStart = Date.now();
+	    this.renderLoop();
+	  }
+	  close() {
+	    this.isOpened = false;
+	    this.elm.classList.remove('is-opened');
+	    this.timeStart = Date.now();
+	    this.renderLoop();
+	  }
+	  updatePath(time) {
+	    const points = [];
+	    for (var i = 0; i < this.numPoints; i++) {
+	      const thisEase = (i % 2 === 1) ? ease.sineOut : ease.exponentialInOut;
+	      points[i] = (1 - thisEase(Math.min(Math.max(time - this.delayPointsArray[i], 0) / this.duration, 1))) * 100
+	    }
+
+	    let str = '';
+	    str += (this.isOpened) ? `M 0 0 H ${points[0]}` : `M ${points[0]} 0`;
+	    for (var i = 0; i < this.numPoints - 1; i++) {
+	      const p = (i + 1) / (this.numPoints - 1) * 100;
+	      const cp = p - (1 / (this.numPoints - 1) * 100) / 2;
+	      str += `C ${points[i]} ${cp} ${points[i + 1]} ${cp} ${points[i + 1]} ${p} `;
+	    }
+	    str += (this.isOpened) ? `H 100 V 0` : `H 0 V 0`;
+	    return str;
+	  }
+	  render() {
+	    if (this.isOpened) {
+	      for (var i = 0; i < this.path.length; i++) {
+	        this.path[i].setAttribute('d', this.updatePath(Date.now() - (this.timeStart + this.delayPerPath * i)));
+	      }
+	    } else {
+	      for (var i = 0; i < this.path.length; i++) {
+	        this.path[i].setAttribute('d', this.updatePath(Date.now() - (this.timeStart + this.delayPerPath * (this.path.length - i - 1))));
+	      }
+	    }
+	  }
+	  renderLoop() {
+	    this.render();
+	    if (Date.now() - this.timeStart < this.duration + this.delayPerPath * (this.path.length - 1) + this.delayPointsMax) {
+	      requestAnimationFrame(() => {
+	        this.renderLoop();
+	      });
+	    }
+	    else {
+	      this.isAnimating = false;
+	    }
+	  }
 	}
+
 	const elmOverlay = document.querySelector('.shape-overlays');
 	const overlay = new ShapeOverlays(elmOverlay);
 	const elmHamburger = document.querySelector('.hamburger');
+  	$('.hamburger').click(function(){
+  		$('.shape-overlays').show();
+	    if (overlay.isAnimating) {
+	      return false;
+	    }
+	    overlay.toggle();
 
-  elmHamburger.addEventListener('click', () => {
-  	console.log('hamburger clicked!');
-    if (overlay.isAnimating) {
-      return false;
-    }
-    overlay.toggle();
-
-    if (overlay.isOpened === true) {
-      elmHamburger.classList.add('is-opened-navi');
-      // for (var i = 0; i < gNavItems.length; i++) {
-      //   gNavItems[i].classList.add('is-opened');
-      // }
-    } else {
-      elmHamburger.classList.remove('is-opened-navi');
-      // for (var i = 0; i < gNavItems.length; i++) {
-      //   gNavItems[i].classList.remove('is-opened');
-      // }
-    }
-  });*/
+	    if (overlay.isOpened === true) {
+	      elmHamburger.classList.add('is-opened-navi');
+	      // for (var i = 0; i < gNavItems.length; i++) {
+	      //   gNavItems[i].classList.add('is-opened');
+	      // }
+	    } else {
+	      elmHamburger.classList.remove('is-opened-navi');
+	      // for (var i = 0; i < gNavItems.length; i++) {
+	      //   gNavItems[i].classList.remove('is-opened');
+	      // }
+	    }
+	});
+  });
 
 });
