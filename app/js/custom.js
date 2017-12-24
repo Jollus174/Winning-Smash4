@@ -36,8 +36,6 @@ var Custom = (function() {
 
 	defer(function(){
 
-
-
 		// Compute difficulty per character
 		// TO DO - Need to set differing values since multiple chars and confirms now
 		function computeDifficulty(minPercent, maxPercent){
@@ -52,9 +50,22 @@ var Custom = (function() {
 		}
 		//
 
+		function onEndAnimation( $outpage, $inpage ) {
+			endCurrPage = false;
+			endNextPage = false;
+			resetPage( $outpage, $inpage );
+			isAnimating = false;
+		}
+		function resetPage( $outpage, $inpage ) {
+			// $outpage.attr( 'class', $outpage.data( 'originalClassList' ) );
+			// $inpage.attr( 'class', $inpage.data( 'originalClassList' ) + ' pt-page-current' );
+		}
+
+
 		// Need to trigger this on button click now
-		$('.moveBtn').click(function(){
-			$this = $(this);
+		// Needs to be done via callback so I can control exactly WHEN the data switches over. It'll be transitioning now, see - it can be changed mid-transition
+		function switchCharacterData(self){
+			$this = self;
 			$('.moveBtn').removeClass('active');
 			$this.addClass('active');
 			var characterId = $this.closest('.card-deck').data('index');
@@ -63,14 +74,20 @@ var Custom = (function() {
 			var characterName = $this.closest('.card-deck').data('name');
 			$('#nav-title').text(characterName);
 			$('.rageModifier h3').text(characterName + ' Rage Modifier');
-			$('body').addClass('character-grid-active');
+			//$('body').addClass('character-grid-active');
 
 			var moveName = $this.html();
 
 			var id = $this.attr('id');
-			console.log(id);
 			$('#side-menu .nav-moves a').removeClass('active');
 			$('#side-menu a[data-ref=' + id + ']').addClass('active');
+
+			// pageTransition();
+
+			// $('#card-wrapper').removeClass('pt-page-current').addClass(outClass);
+			// $('#character-wrapper').addClass('pt-page-current, pt-page-ontop').addClass(inClass);
+
+			/* --- */
 
 
 			// Check for how many buttons in the card
@@ -123,6 +140,97 @@ var Custom = (function() {
 			});
 			$('#page-info div').hide();
 			$('#page-info .' + $this.attr('id')).show();
+		};
+
+		function pageTransition(self, transitionToAnotherGrid){
+			/* --- Animate the navigation transition -- */
+
+			var	$wrapper = $('#page-wrapper'),
+				$currPage = $wrapper.children('div.pt-page-current'),
+				$nonCurrPage = $wrapper.children('div.pt-page').not('div.pt-page-current'),
+				animEndEventNames = {
+					'WebkitAnimation' : 'webkitAnimationEnd',
+					'OAnimation' : 'oAnimationEnd',
+					'msAnimation' : 'MSAnimationEnd',
+					'animation' : 'animationend'
+				},
+				// animation end event name
+				animEndEventName = animEndEventNames[ Modernizr.prefixed( 'animation' ) ],
+				// support css animations
+				support = Modernizr.cssanimations;
+
+			// Need to delay function in case it's already animating? Someone might hit ESC twice quickly
+			// Add class of 'animating' to body and remove when the animation is finished
+			$('body').addClass('animating');
+			if(!$('body').hasClass('character-grid-active')){
+				$('body').addClass('character-grid-active');
+				// transition it forwards
+				outClass = 'pt-page-scaleDown',
+				inClass = 'pt-page-moveFromRight pt-page-ontop';
+
+			} else {
+				if(transitionToAnotherGrid == true){
+					// transition it to the same screen
+					// The only way this is gonna happen is if the grid is on screen and a sidemenu button is clicked, which in turn is like a card button click
+					$nonCurrPage = $currPage;
+					outClass = 'pt-page-scaleDownCenter';
+					inClass = 'pt-page-scaleUpCenter pt-page-delay100';
+				} else {
+					$('body').removeClass('character-grid-active');
+
+					// transition it backwards
+					outClass = 'pt-page-moveToRight pt-page-ontop';
+					inClass = 'pt-page-scaleUp';
+
+				}
+
+			}
+			// If we're transitioning to another character grid, the switchCharacter function needs to be invoked midway between transitions
+			if(transitionToAnotherGrid == true){
+				$currPage.addClass(outClass).on(animEndEventName, function() {
+					$(this).removeClass().addClass('pt-page');
+					$currPage.off( animEndEventName );
+					$('body').removeClass('animating');
+					switchCharacterData(self);
+					$nonCurrPage.removeClass().addClass('pt-page pt-page-current').addClass(inClass).on(animEndEventName, function() {
+
+						var $this = $(this);
+						$this.attr('class', 'pt-page pt-page-current');
+						$nonCurrPage.off( animEndEventName );
+					});
+				});
+
+			} else {
+				$currPage.addClass(outClass).on(animEndEventName, function() {
+
+					$(this).removeClass().addClass('pt-page');
+					$currPage.off( animEndEventName );
+					$('body').removeClass('animating');
+
+				});
+				if($('body').hasClass('character-grid-active')){
+					switchCharacterData(self);
+				};
+				$nonCurrPage.removeClass().addClass('pt-page pt-page-current').addClass(inClass).on(animEndEventName, function() {
+
+					var $this = $(this);
+					$this.attr('class', 'pt-page pt-page-current');
+					$nonCurrPage.off( animEndEventName );
+				});
+
+			}
+
+		};
+
+		// THIS IS THE CHARACTER DATA CONTROLLER, RIGHT HERE!
+		$('.moveBtn').click(function(){
+			// Check if the grid is already out
+			// If the grid is out and the moveBtn is clicked, that means we're just transitioning between character grids and need a different kind of transition
+			if($('body').hasClass('character-grid-active')){
+				pageTransition($(this), characterGridActive = true);
+			} else {
+				pageTransition($(this));
+			}
 		});
 
 		// NEED TO WORK ON THIS MORE
@@ -709,6 +817,11 @@ var Custom = (function() {
 				// if character is active, deactivate it
 				if($('body').hasClass('no-scroll')){
 					deactivateCharacter();
+				} else if ($('body').hasClass('character-grid-active')){
+					//$('body').removeClass('character-grid-active');
+					if(!$('body').hasClass('animating')){
+						pageTransition();
+					};
 				} else {
 					// else toggle the sidemenu instead
 					$('body').toggleClass('toggle-sidedrawer');
@@ -873,157 +986,7 @@ var Custom = (function() {
 			$('.card-deck #' + dataref).trigger('click');
 		});
 
-	// SVG Transitions
-	// https://tympanus.net/codrops/2017/10/17/dynamic-shape-overlays-with-svg/
 
-	//
-	// these easing functions are based on the code of glsl-easing module.
-	// https://github.com/glslify/glsl-easings
-	//
-
-	const ease = {
-	  exponentialIn: (t) => {
-	    return t == 0.0 ? t : Math.pow(2.0, 10.0 * (t - 1.0));
-	  },
-	  exponentialOut: (t) => {
-	    return t == 1.0 ? t : 1.0 - Math.pow(2.0, -10.0 * t);
-	  },
-	  exponentialInOut: (t) => {
-	    return t == 0.0 || t == 1.0
-	      ? t
-	      : t < 0.5
-	        ? +0.5 * Math.pow(2.0, (20.0 * t) - 10.0)
-	        : -0.5 * Math.pow(2.0, 10.0 - (t * 20.0)) + 1.0;
-	  },
-	  sineOut: (t) => {
-	    const HALF_PI = 1.5707963267948966;
-	    return Math.sin(t * HALF_PI);
-	  },
-	  circularInOut: (t) => {
-	    return t < 0.5
-	        ? 0.5 * (1.0 - Math.sqrt(1.0 - 4.0 * t * t))
-	        : 0.5 * (Math.sqrt((3.0 - 2.0 * t) * (2.0 * t - 1.0)) + 1.0);
-	  },
-	  cubicIn: (t) => {
-	    return t * t * t;
-	  },
-	  cubicOut: (t) => {
-	    const f = t - 1.0;
-	    return f * f * f + 1.0;
-	  },
-	  cubicInOut: (t) => {
-	    return t < 0.5
-	      ? 4.0 * t * t * t
-	      : 0.5 * Math.pow(2.0 * t - 2.0, 3.0) + 1.0;
-	  },
-	  quadraticOut: (t) => {
-	    return -t * (t - 2.0);
-	  },
-	  quarticOut: (t) => {
-	    return Math.pow(t - 1.0, 3.0) * (1.0 - t) + 1.0;
-	  },
-	}
-
-	class ShapeOverlays {
-	  constructor(elm) {
-	    this.elm = elm;
-	    this.path = elm.querySelectorAll('path');
-	    this.numPoints = 2;
-	    this.duration = 500;
-	    this.delayPointsArray = [];
-	    this.delayPointsMax = 0;
-	    this.delayPerPath = 200;
-	    this.timeStart = Date.now();
-	    this.isOpened = false;
-	    this.isAnimating = false;
-	  }
-	  toggle() {
-	    this.isAnimating = true;
-	    for (var i = 0; i < this.numPoints; i++) {
-	      this.delayPointsArray[i] = 0;
-	    }
-	    if (this.isOpened === false) {
-	      this.open();
-	      //setTimeout(this.close(), 1000);
-	    } else {
-	      this.close();
-	    }
-	  }
-	  open() {
-	    this.isOpened = true;
-	    this.elm.classList.add('is-opened');
-	    this.timeStart = Date.now();
-	    this.renderLoop();
-	  }
-	  close() {
-	    this.isOpened = false;
-	    this.elm.classList.remove('is-opened');
-	    this.timeStart = Date.now();
-	    this.renderLoop();
-	  }
-	  updatePath(time) {
-	    const points = [];
-	    for (var i = 0; i < this.numPoints; i++) {
-	      const thisEase = (i % 2 === 1) ? ease.sineOut : ease.exponentialInOut;
-	      points[i] = (1 - thisEase(Math.min(Math.max(time - this.delayPointsArray[i], 0) / this.duration, 1))) * 100
-	    }
-
-	    let str = '';
-	    str += (this.isOpened) ? `M 0 0 H ${points[0]}` : `M ${points[0]} 0`;
-	    for (var i = 0; i < this.numPoints - 1; i++) {
-	      const p = (i + 1) / (this.numPoints - 1) * 100;
-	      const cp = p - (1 / (this.numPoints - 1) * 100) / 2;
-	      str += `C ${points[i]} ${cp} ${points[i + 1]} ${cp} ${points[i + 1]} ${p} `;
-	    }
-	    str += (this.isOpened) ? `H 100 V 0` : `H 0 V 0`;
-	    return str;
-	  }
-	  render() {
-	    if (this.isOpened) {
-	      for (var i = 0; i < this.path.length; i++) {
-	        this.path[i].setAttribute('d', this.updatePath(Date.now() - (this.timeStart + this.delayPerPath * i)));
-	      }
-	    } else {
-	      for (var i = 0; i < this.path.length; i++) {
-	        this.path[i].setAttribute('d', this.updatePath(Date.now() - (this.timeStart + this.delayPerPath * (this.path.length - i - 1))));
-	      }
-	    }
-	  }
-	  renderLoop() {
-	    this.render();
-	    if (Date.now() - this.timeStart < this.duration + this.delayPerPath * (this.path.length - 1) + this.delayPointsMax) {
-	      requestAnimationFrame(() => {
-	        this.renderLoop();
-	      });
-	    }
-	    else {
-	      this.isAnimating = false;
-	    }
-	  }
-	}
-
-	const elmOverlay = document.querySelector('.shape-overlays');
-	const overlay = new ShapeOverlays(elmOverlay);
-	const elmHamburger = document.querySelector('.hamburger');
-  	$('.hamburger').click(function(){
-  		$('.shape-overlays').show();
-	    if (overlay.isAnimating) {
-	      return false;
-	    }
-	    overlay.toggle();
-
-	    if (overlay.isOpened === true) {
-	      elmHamburger.classList.add('is-opened-navi');
-	      // for (var i = 0; i < gNavItems.length; i++) {
-	      //   gNavItems[i].classList.add('is-opened');
-	      // }
-	    } else {
-	      elmHamburger.classList.remove('is-opened-navi');
-	      // for (var i = 0; i < gNavItems.length; i++) {
-	      //   gNavItems[i].classList.remove('is-opened');
-	      // }
-	    }
-	});
   });
 
 });

@@ -5,6 +5,7 @@
 @import "_stages";
 @import "bootstrap-sass-4.0.0/bootstrap";
 @import "font-awesome-4.7.0/font-awesome.scss";
+@import "animations.scss";
 
 /* --- VARIABLES - BECAUSE BROWSERSYNC KEEPS CRASHING --- */
 
@@ -872,9 +873,15 @@ a[aria-expanded="true"]::before {
 
 .character-grid-active .secondarynav{display:flex;}
 
+#card-wrapper, #character-wrapper{
+    // position: absolute;
+    top: 56px;
+    // background:#eee;
+}
 .secondarynav{
     background-color:#8a8983 !important;
     display:none;
+    margin-bottom:10px;
     .dropdown-menu{
         text-align:left;
         background-color:#757573;
@@ -1153,7 +1160,7 @@ a[aria-expanded="true"]::before {
     margin-right:1%;
 }
 
-#characterGrid{display:none;}
+// #characterGrid{display:none;}
 .character-grid-active #characterGrid{display:flex;}
 
 .character-box {
@@ -1704,6 +1711,36 @@ tr.table-descs td{
     padding:5px 0 10px;
 }
 
+
+#page-wrapper{
+    perspective: 1200px;
+}
+.pt-page{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    overflow: hidden;
+    backface-visibility: hidden;
+    transform: translate3d(0, 0, 0);
+    transform-style: preserve-3d;
+}
+.pt-page-current, .no-js .pt-page{
+    visibility: visible;
+    z-index: 1;
+}
+
+.pt-page-ontop {
+    z-index: 999;
+}
+
+
+/* --- */
+
+
+
 @media screen and (min-width:260px){
     .stagePercents td span.percRange:before{
         content: '±';
@@ -1766,7 +1803,7 @@ tr.table-descs td{
         position: inherit;
         margin: 0 0 0 220px;
         min-height: 100vh;
-        padding: 0 15px;
+        // padding: 0 15px;
         position:relative !important;
     }
     .navbar-header{float:left;}
