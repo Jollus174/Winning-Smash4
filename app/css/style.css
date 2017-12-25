@@ -10478,12 +10478,14 @@ body.toggle-sidedrawer #sidedrawer {
 
 #sidedrawer-overlay {
   display: none;
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   z-index: 5;
+  width: 100%;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.2);
   overflow: auto; }
 
@@ -10653,10 +10655,13 @@ body.toggle-sidedrawer #page-wrapper {
   width: 100%; }
   .navbar#primarynav {
     background: #ff5131; }
-  .navbar #navbar-toggler:hover {
-    cursor: pointer; }
-  .navbar #navbar-toggler:focus {
-    outline: inherit; }
+  .navbar #navbar-toggler {
+    transition: background 0.2s ease; }
+    .navbar #navbar-toggler:hover {
+      cursor: pointer;
+      background: #ff674b; }
+    .navbar #navbar-toggler:focus {
+      outline: inherit; }
 
 .nav-wrapper {
   margin-left: -15px;
@@ -11153,6 +11158,9 @@ a[aria-expanded="true"]::before {
   background-position: center; }
 
 .characterImageContainer:hover {
+  cursor: pointer; }
+
+#characterGrid .character-box .characterImageContainer .characterImage {
   cursor: pointer; }
 
 .characterImageContainer-lightOverlay {
@@ -11671,7 +11679,22 @@ tr.table-descs td {
   #secondarynav .dropdown {
     overflow: hidden; }
   #secondarynav .dropdown-menu {
-    width: 93%; } }
+    width: 93%; }
+  .navbar-static-side {
+    display: none; }
+  body.toggle-sidedrawer {
+    overflow-y: hidden; }
+    body.toggle-sidedrawer .navbar-static-side {
+      display: block !important;
+      position: fixed;
+      overflow-y: scroll;
+      top: 56px;
+      padding-bottom: 56px; }
+    body.toggle-sidedrawer #sidedrawer-overlay {
+      display: block !important;
+      top: 56px; }
+      body.toggle-sidedrawer #sidedrawer-overlay:hover {
+        cursor: pointer; } }
 
 @media screen and (min-width: 600px) {
   #character-list li.active .characterImage {
@@ -11803,8 +11826,6 @@ tr.table-descs td {
     #main{
         margin:3em 10px 10px;
     }*/
-  #search {
-    margin: 15px 0; }
   .leftImage .characterImage {
     background-position: center; } }
 

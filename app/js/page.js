@@ -205,7 +205,7 @@ var Page = (function(){
 
 		hideOfflineWarning: function(){
 			// enable the live data
-			document.querySelector('body').classList.remove('loading')
+			//document.querySelector('body').classList.remove('loading')
 			// remove the offline message
 			document.getElementById('notification').style.display = 'none';
 			// load the live data

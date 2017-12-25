@@ -75,8 +75,8 @@
 
 <body id="body" class="loading wrapper">
 
-
-	<nav class="navbar-default navbar-static-side d-none d-md-block" role="navigation">
+	<div id="sidedrawer-overlay"></div>
+	<nav class="navbar-default navbar-static-side" role="navigation">
 		<div class="sidebar-collapse">
 			<ul class="nav" id="side-menu">
 
@@ -103,11 +103,11 @@
 	    	</ul>
     	</div>
 
-		<ul class="sidebar-bottom-links">
-			<!-- <li><a id="about" href="#">About</a></li>
+		<!-- <ul class="sidebar-bottom-links">
+			<li><a id="about" href="#">About</a></li>
 			<li><a id="credits" href="#">Credits</a></li>
-			<li><a id="feedback" href="https://github.com/Jollus88/Winning-Smash4/issues" target="_blank">Feedback</a></li> -->
-		</ul>
+			<li><a id="feedback" href="https://github.com/Jollus88/Winning-Smash4/issues" target="_blank">Feedback</a></li>
+		</ul> -->
 
 	</nav> <!-- sidebar -->
 
@@ -135,16 +135,16 @@
 		<div class="border-bottom row"> <!-- nav-wrapper -->
 			<nav id="primarynav" class="navbar navbar-light navbar-static-top">
 
-			<div class="navbar-header">
-				<button id="navbar-toggler" class="navbar-toggler navbar-toggler-left" href="#"><i class="fa fa-bars" aria-hidden="true"></i></button>
-				<span id="nav-title" class="navbar-brand --white" href="#">Select a Kill Confirm</span>
-			</div>
+				<div class="navbar-header">
+					<button id="navbar-toggler" class="navbar-toggler navbar-toggler-left" href="#"><i class="fa fa-bars" aria-hidden="true"></i></button>
+					<span id="nav-title" class="navbar-brand --white" href="#">Select a Kill Confirm</span>
+				</div>
 
-			<ul class="navbar-nav flex-row d-none d-md-flex">
-				<li class="nav-item"><a class="navbar-link small ml-3 --white" id="about" href="#">About</a></li>
-				<li class="nav-item"><a class="navbar-link small ml-3 --white" id="credits" href="#">Credits</a></li>
-				<li class="nav-item"><a class="navbar-link small ml-3 --white" id="feedback" href="https://github.com/Jollus88/Winning-Smash4/issues" target="_blank">Feedback <i class="fa fa-external-link ml-1" aria-hidden="true"></i></a></li>
-			</ul>
+				<ul class="navbar-nav flex-row d-none d-md-flex">
+					<li class="nav-item"><a class="navbar-link small ml-3 --white" id="about" href="#">About</a></li>
+					<li class="nav-item"><a class="navbar-link small ml-3 --white" id="credits" href="#">Credits</a></li>
+					<li class="nav-item"><a class="navbar-link small ml-3 --white" id="feedback" href="https://github.com/Jollus88/Winning-Smash4/issues" target="_blank">Feedback <i class="fa fa-external-link ml-1" aria-hidden="true"></i></a></li>
+				</ul>
 
 
 			</nav>
@@ -233,7 +233,7 @@
 										    <path class="pathfill" d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path>
 										</svg>
 						</button>
-						<div id="moveName" class="navbar-brand --white" style="font-size:100%;">
+						<div id="moveName" class="navbar-brand --white" style="font-size:100%;top: 1px;position: relative;">
 							Move Name
 						</div>
 						<div class="navbar-header">
@@ -387,7 +387,7 @@
 
 	<div class="menu-page" hidden>
 
-		<div id="sidedrawer-underlay" class="modalUnderlay" style="background-color: transparent;" hidden></div>
+		<div id="sidedrawer-underlay" class="modalUnderlay" hidden></div>
 
 		<div id="menuBackButton" class="backButton">
 			<svg class="icon-arrowback" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -471,15 +471,15 @@
 
 
 			<div class="giphy">
+				<a href="#" target="_blank" style="display:block;">Video Source</a>
 				<iframe width='100%' height='100%' style='position:absolute' frameBorder='0' class='giphy-embed' allowFullScreen></iframe>
-				<a href="#" target="_blank">Video Source</a>
 			</div>
 
 			<!-- ko foreach: killConfirm -->
 			
 				<!-- ko foreach: moves -->
 
-					<div class="detailed-info" data-bind="attr: {class: $parent.url + '-' + moveUrl}" hidden>
+					<div class="detailed-info" data-bind="css: $parent.url + '-' + moveUrl" hidden>
 						<p data-bind="html: info">
 
 						</p>

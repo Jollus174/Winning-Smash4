@@ -558,14 +558,16 @@ body.toggle-sidedrawer #sidedrawer{
     left:0px;
 }
 #sidedrawer-overlay{
-    display:none;
-    position: absolute;
+    display: none;
+    position: fixed;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
     z-index: 5;
-    background-color: rgba(0,0,0,.2);
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
     overflow: auto;
 }
 #sidedrawer-contents{
@@ -740,8 +742,11 @@ body.toggle-sidedrawer{
         background:$primary-colour;
     }
     #navbar-toggler{
+        transition:background 0.2s ease;
         &:hover{
             cursor:pointer;
+            // background:rgba(255,255,255,0.1);
+            background:lighten($primary-colour, 5%);
         }
         &:focus{
             outline:inherit;
@@ -1366,6 +1371,12 @@ a[aria-expanded="true"]::before {
 .rightImage .characterImage{background-position:center;}
 .characterImageContainer:hover{cursor:pointer;}
 
+#characterGrid{
+    .character-box .characterImageContainer .characterImage{
+        cursor:pointer;
+    }
+}
+
 .characterImageContainer-lightOverlay{
     background-color: transparent;
     position: absolute;
@@ -1953,6 +1964,28 @@ tr.table-descs td{
         }
     }
 
+    .navbar-static-side{display:none;}
+
+    body.toggle-sidedrawer{
+        overflow-y:hidden;
+        .navbar-static-side{
+            display:block !important;
+            position:fixed;
+            overflow-y:scroll;
+            top:56px;
+            padding-bottom:56px;
+        }
+        #sidedrawer-overlay{
+            display:block !important;
+            top:56px;
+            &:hover{
+                cursor:pointer;
+            }
+        }
+    }
+
+
+
 }
 
 @media screen and (min-width:600px){
@@ -2149,9 +2182,6 @@ tr.table-descs td{
     #main{
         margin:3em 10px 10px;
     }*/
-    #search{
-        margin: 15px 0;
-    }
 
     .leftImage .characterImage{
         background-position:center;

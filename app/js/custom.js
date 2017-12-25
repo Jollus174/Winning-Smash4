@@ -152,6 +152,13 @@ var Custom = (function() {
 			$pagewrapper.addClass(charUrl);
 		};
 		function pageTransition(self, transitionToAnotherGrid){
+
+
+			// Need to turn off sidemenu on mobile first if a grid button is clicked!
+			if($(window).width() < 768){
+				$('body').removeClass('toggle-sidedrawer');
+			};
+
 			/* --- Animate the navigation transition -- */
 			var	$wrapper = $('#page-wrapper'),
 				$currPage = $wrapper.children('div.pt-page-current'),
@@ -646,9 +653,11 @@ var Custom = (function() {
 				$('#characterGrid .character-box.selected').removeClass('selected');
 				$body.removeClass('character-active');
 			} else {
-				$('.menu-page > div').hide();
+				// Hide any info/about boxes
+				//$('.menu-page > div').hide();
 				$('#sidedrawer-underlay').css('backgroundColor', 'transparent');
 				$('#menuBackButton').removeClass('active');
+				$('#page-info .giphy iframe').attr('src', '');
 			}
 			
 			// Page does not force reload if '#' is in the URL
@@ -938,10 +947,6 @@ var Custom = (function() {
 	    $('#sidebarCollapse').on('click', function () {
 	        $('#sidebar').toggleClass('active');
 	    });
-		/*$('.sidedrawer-toggle, #sidedrawer-overlay').click(function(){
-			//$('body').toggleClass('toggle-sidedrawer');
-			$('#sidebar').toggleClass('active');
-		});*/
 
 		// Using traditional 'click()' bindings will not work on dynamically generated character boxes!
 		// https://stackoverflow.com/questions/6658752/click-event-doesnt-work-on-dynamically-generated-elements
@@ -957,13 +962,16 @@ var Custom = (function() {
 
 		function toggleSidebar(){
 			$('body').toggleClass('toggle-sidedrawer');
-			//$('.sidebar-collapse').slideToggle();
 		}
 
 		$('#navbar-toggler').click(function(){
-			//console.log('toggler clicked!');
+			toggleSidebar();
+		})
+		$('html').on('click', '.toggle-sidedrawer #sidedrawer-overlay', function(){
+			console.log('toggler clicked!');
 			toggleSidebar();
 		});
+
 		$('#character-wrapper-back').click(function(){
 			deactivateCharacterGrid();
 		});
@@ -987,7 +995,15 @@ var Custom = (function() {
 		$('#info').click(function(){
 			$('#page-info .detailed-info').hide();
 			activateMenuBox('page-info');
-			var currentMove = $('.moveBtn.active').attr('id');
+			var $moveBtnActive = $('.moveBtn.active');
+			var currentMove = $moveBtnActive.attr('id');
+			var giphyVid = $moveBtnActive.data('giphy');
+			var giphySource = $moveBtnActive.data('giphy-source');
+
+			// Giphy stuff here
+			//console.log(giphyVid);
+			$('#page-info iframe').attr('src', giphyVid);
+			$('#page-info .giphy a').attr('href', giphySource);
 			$('#page-info .' + currentMove).show();
 		});
 
