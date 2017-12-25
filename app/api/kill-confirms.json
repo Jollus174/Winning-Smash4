@@ -18,20 +18,20 @@
             "rage125": "[-17, -17]",
             "rage150": "[-19, -19]",
 
-            "bfNormalMin": "",
-            "bfLowPlatMin": "",
-            "bfTopPlatMin": "",
+            "bfNormalMin": 7,
+            "bfLowPlatMin": -7,
+            "bfTopPlatMin": -20,
 
-            "dlLowPlatMin": "",
-            "dlTopPlatMin": "",
+            "dlLowPlatMin": -15,
+            "dlTopPlatMin": -26,
 
-            "svNormalMin": "",
-            "svPlatMin": "",
+            "svNormalMin": 1,
+            "svPlatMin": -14,
 
-            "tcNormalMin": "",
-            "tcLowPlatMin": "",
-            "tcSidePlatMin": "",
-            "tcTopPlatMin": "",
+            "tcNormalMin": -4,
+            "tcLowPlatMin": -20,
+            "tcSidePlatMin": -25,
+            "tcTopPlatMin": -41,
 
             "percents": {
                 "bayonetta": [85, 107],
@@ -207,13 +207,117 @@
 },
 {
     "index": 2,
+    "name": "Lucas",
+    "url": "lucas",
+    "moves": [
+        {
+            "moveId": 0,
+            "moveName": "Down Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air",
+            "moveUrl": "downthrow-upair",
+
+            "info": "",
+            "giphy": ["https://giphy.com/embed/3ohc0PUZMNWWHEWKmA", "https://www.youtube.com/watch?v=QP2hMnR66eg"],
+
+            "rage50": "[-2, -2]",
+            "rage60": "[-5, -5]",
+            "rage80": "[-8, -8]",
+            "rage100": "[-11, -11]",
+            "rage125": "[-17, -17]",
+            "rage150": "[-19, -19]",
+
+            "bfNormalMin": 7,
+            "bfLowPlatMin": -7,
+            "bfTopPlatMin": -20,
+
+            "dlLowPlatMin": -15,
+            "dlTopPlatMin": -26,
+
+            "svNormalMin": 1,
+            "svPlatMin": -14,
+
+            "tcNormalMin": -4,
+            "tcLowPlatMin": -20,
+            "tcSidePlatMin": -25,
+            "tcTopPlatMin": -41,
+
+            "percents": {
+                "bayonetta": [106, 149],
+                "bowser": [127, 163],
+                "bowser-jr": [116, 166],
+                "captain-falcon": [121, 178],
+                "charizard": [118, 152],
+                "cloud": [117, 151],
+                "cloud-limit": [120, 161],
+                "corrin": [114, 160],
+                "dark-pit": [111, 150],
+                "diddy-kong": [112, 154],
+                "donkey-kong": [129, 179],
+                "dr-mario": [112, 149],
+                "duck-hunt": [112, 150],
+                "falco": [104, 144],
+                "fox": [101, 145],
+                "ganondorf": [92, 121],
+                "game-and-watch": [121, 163],
+                "greninja": [105, 144],
+                "ike": [121, 164],
+                "jigglypuff": [85, 102],
+                "king-dedede": [136, 191],
+                "kirby": [95, 123],
+                "link": [116, 158],
+                "little-mac": [108, 159],
+                "lucario": [117, 158],
+                "lucas": [106, 141],
+                "lucina": [110, 155],
+                "luigi": [107, 131],
+                "mario": [112, 149],
+                "marth": [110, 155],
+                "mega-man": [121, 175],
+                "meta-knight": [100, 145],
+                "mewtwo": [96, 132],
+                "mii-brawler": [],
+                "mii-gunner": [],
+                "mii-swordfighter": [],
+                "ness": [106, 138],
+                "olimar": [99, 130],
+                "pacman": [108, 139],
+                "palutena": [103, 134],
+                "peach": [101, 126],
+                "pikachu": [99, 134],
+                "pit": [111, 150],
+                "rob": [119, 167],
+                "robin": [110, 154],
+                "rosalina-and-luma": [94, 125],
+                "roy": [115, 167],
+                "ryu": [114, 162],
+                "samus": [115, 150],
+                "sheik": [99, 136],
+                "shulk": [115, 156],
+                "shulk-buster": [112, 154],
+                "shulk-jump": [117, 175],
+                "shulk-shield": [175, 281],
+                "shulk-smash": [101, 125],
+                "sonic": [108, 139],
+                "toon-link": [105, 136],
+                "villager": [109, 134],
+                "wario": [119, 163],
+                "wii-fit-trainer": [106, 133],
+                "yoshi": [111, 141],
+                "zelda": [102, 132],
+                "zero-suit-samus": [103, 141]
+            }
+        }
+    ]
+},
+
+{
+    "index": 3,
     "name": "Mr. Game & Watch",
     "url": "game-and-watch",
     "moves": [
         {
             "moveId": 0,
-            "moveName": "Up Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air",
-            "moveUrl": "upthrow-upair",
+            "moveName": "Down Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air",
+            "moveUrl": "downthrow-upair",
 
             "info": "https://www.youtube.com/watch?v=AXeykQaviE4",
             "giphy": ["https://giphy.com/embed/xULW8n9ACGvGXbE3ok", "https://www.youtube.com/watch?v=AXeykQaviE4"],
@@ -313,8 +417,8 @@
 
         {
             "moveId": 1,
-            "moveName": "Up Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air (DI in throw)",
-            "moveUrl": "upthrow-upair-di-in-throw",
+            "moveName": "Down Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air (DI in throw)",
+            "moveUrl": "downthrow-upair-di-in-throw",
 
             "info": "https://www.youtube.com/watch?v=AXeykQaviE4",
             "giphy": ["https://giphy.com/embed/xULW8n9ACGvGXbE3ok", "https://www.youtube.com/watch?v=AXeykQaviE4"],
@@ -414,8 +518,8 @@
 
         {
             "moveId": 2,
-            "moveName": "Up Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air (DI out throw)",
-            "moveUrl": "upthrow-upair-di-out-throw",
+            "moveName": "Down Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air (DI out throw)",
+            "moveUrl": "downthrow-upair-di-out-throw",
 
             "info": "https://www.youtube.com/watch?v=AXeykQaviE4",
             "giphy": ["https://giphy.com/embed/xULW8n9ACGvGXbE3ok", "https://www.youtube.com/watch?v=AXeykQaviE4"],
@@ -516,7 +620,7 @@
 },
 
 {
-    "index": 3,
+    "index": 4,
     "name": "Robin",
     "url": "robin",
     "moves": [
@@ -528,12 +632,12 @@
             "info": "",
             "giphy": ["https://giphy.com/embed/l0HUmuMwBtdOQdZrG", "https://www.youtube.com/watch?v=MuYO0LM_4ac"],
 
-            "rage50": [],
-            "rage60": [],
-            "rage80": [],
-            "rage100": [],
-            "rage125": [],
-            "rage150": [],
+            "rage50": "[-4, -4]",
+            "rage60": "[-6, -6]",
+            "rage80": "[-13, -13]",
+            "rage100": "[-16, -16]",
+            "rage125": "[-22, -22]",
+            "rage150": "[-28, -28]",
 
             "bfNormalMin": 7,
             "bfLowPlatMin": -7,

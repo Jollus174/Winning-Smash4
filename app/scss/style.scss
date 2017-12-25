@@ -38,6 +38,12 @@ $gnw-button-primary:#ff7043;
 $gnw-button-primary-hover:darken($gnw-button-primary, 10%);
 $gnw-button-primary-active:#d82800;
 
+$lucas:#f05f1b;
+$lucas-button-homepage:darken($lucas, 10%);
+$lucas-button-primary:#9c840e;
+$lucas-button-primary-hover:darken($lucas-button-primary, 10%);
+$lucas-button-primary-active:#9c840e;
+
 $robin:#ce82de;
 $robin-button-homepage:darken($robin, 10%);
 $robin-button-primary:#ce82de;
@@ -45,6 +51,187 @@ $robin-button-primary-hover:darken($robin-button-primary, 10%);
 $robin-button-primary-active:#d82800;
 
 /* --- */
+
+.bowser{
+    &:hover{
+        &.nav-characters li > span{
+            background:$bowser !important;
+        }
+    }
+    .secondarynav{
+        background-color:$bowser;
+        .dropdown-menu{
+            background-color:$bowser;
+        }
+    }
+    .btn{
+        background-color:darken($bowser, 10%) !important;
+        &:hover, &.active{background-color:darken($bowser-button-homepage, 10%) !important;}
+    }
+    &.card-deck{
+        .card-image-top{
+            background-color:$bowser;
+            color:$text-light;
+        }
+    }
+    .btn{color:$text-light;}
+    &.nav-characters:before{background:$bowser;}
+    li > span{
+        background:transparentize($bowser, 0.2) !important;
+        color: $text-light !important;
+    }
+    .nav-moves a{
+        position:relative;
+        &:before{background:transparentize($bowser, 0.5) !important;}
+    }
+}
+
+
+.donkey-kong{
+    &:hover{
+        &.nav-characters li > span{
+            background:$donkey-kong !important;
+        }
+    }
+    .secondarynav{
+        background-color:$donkey-kong;
+        .dropdown-menu{
+            background-color:$donkey-kong;
+        }
+        .navbar-brand{
+            color:$text-dark !important;
+            .pathfill{
+                fill:$text-dark;
+            }
+        }
+    }
+    .btn{
+        background-color:$donkey-kong-button-primary !important;
+        border-color:$donkey-kong-button-primary;
+        color:$text-light;
+        &:hover, &.active{background-color:darken($donkey-kong-button-primary, 10%) !important;}
+    }
+    &.card-deck{
+        .card-image-top{
+            background-color:$donkey-kong;
+            color:$text-dark;
+        }
+    }
+    &.nav-characters{
+        &:before{background:$donkey-kong;}
+        li > span{
+            background:transparentize($donkey-kong, 0.2) !important;
+            color: $text-dark !important;
+        }
+        .nav-moves a{
+            position:relative;
+            &:before{background:transparentize($donkey-kong, 0.5) !important;}
+        }
+    }
+}
+
+.game-and-watch{
+    &:hover{
+        &.nav-characters li > span{
+            background:$gnw !important;
+        }
+    }
+    .secondarynav{background-color:$gnw;}
+    .btn{
+        background-color:$gnw-button-homepage !important;
+        border-color:$gnw-button-homepage;
+        &:hover, &.active{background-color:darken($gnw-button-homepage, 10%) !important;}
+    }
+    &.card-deck{
+        .card-image-top{
+            background-color:$gnw;
+            color:$text-light;
+        }
+    }
+    .btn{color:$text-light;}
+    &.nav-characters{
+        //
+
+        li > span{
+            background:transparentize($gnw, 0.2) !important;
+            color: $text-light !important;
+        }
+        .nav-moves a{
+            position:relative;
+            &:before{background:transparentize($gnw, 0.5) !important;}
+        }
+    }
+}
+
+.lucas{
+    &:hover{
+        &.nav-characters li > span{
+            background:$lucas !important;
+        }
+    }
+    .secondarynav{background-color:$lucas;}
+    .btn{
+        background-color:$lucas-button-homepage !important;
+        border-color:$lucas-button-homepage;
+        &:hover, &.active{background-color:darken($lucas-button-homepage, 10%) !important;}
+    }
+    &.card-deck{
+        .card-image-top{
+            background-color:$lucas;
+            color:$text-light;
+        }
+    }
+    .btn{color:$text-light;}
+    &.nav-characters{
+        //
+
+        li > span{
+            background:transparentize($lucas, 0.2) !important;
+            color: $text-light !important;
+        }
+        .nav-moves a{
+            position:relative;
+            &:before{background:transparentize($lucas, 0.5) !important;}
+        }
+    }
+}
+
+.robin{
+    &:hover{
+        &.nav-characters li > span{
+            background:$robin !important;
+        }
+    }
+    .secondarynav{background-color:$robin;}
+    .btn{
+        background-color:$robin-button-homepage !important;
+        border-color:$robin-button-homepage;
+        &:hover, &.active{background-color:darken($robin-button-homepage, 10%) !important;}
+    }
+    &.card-deck{
+        .card-image-top{
+            background-color:$robin;
+            color:$text-light;
+        }
+    }
+    .btn{color:$text-light;}
+    &.nav-characters{
+        &:before{background:transparentize($robin, 0.5) !important;}
+        li > span{
+            background:transparentize($robin, 0.2) !important;
+            color: $text-light !important;
+        }
+        .nav-moves a{
+            position:relative;
+            &:before{background:transparentize($robin, 0.5) !important;}
+        }
+        // .nav-moves a{
+        //     background:transparentize($robin, 0.4);
+        //     color: $text-light !important;
+        // }
+    }
+}
+
 
 
 /* Cards */
@@ -92,132 +279,6 @@ $robin-button-primary-active:#d82800;
 
 
 
-.bowser{
-    &:hover{
-        &.nav-characters li > span{
-            background:$bowser !important;
-        }
-    }
-    .btn{
-        background-color:$bowser-button-homepage !important;
-        border-color:$bowser-button-homepage;
-        &:hover{background-color:darken($bowser-button-homepage, 10%) !important;}
-    }
-    &.card-deck{
-        .card-image-top{
-            background-color:$bowser;
-            color:$text-light;
-        }
-    }
-    .btn{color:$text-light;}
-    &.nav-characters:before{background:$bowser;}
-    li > span{
-        background:transparentize($bowser, 0.2) !important;
-        color: $text-light !important;
-    }
-    .nav-moves a{
-        position:relative;
-        &:before{background:transparentize($bowser, 0.5) !important;}
-    }
-}
-
-.donkey-kong{
-    &:hover{
-        &.nav-characters li > span{
-            background:$donkey-kong !important;
-        }
-    }
-    .btn{
-        background-color:$donkey-kong-button-primary !important;
-        border-color:$donkey-kong-button-primary;
-        color:$text-light;
-        &:hover{background-color:darken($donkey-kong-button-primary, 10%) !important;}
-    }
-    &.card-deck{
-        .card-image-top{
-            background-color:$donkey-kong;
-            color:$text-dark;
-        }
-    }
-    &.nav-characters{
-        &:before{background:$donkey-kong;}
-        li > span{
-            background:transparentize($donkey-kong, 0.2) !important;
-            color: $text-dark !important;
-        }
-        .nav-moves a{
-            position:relative;
-            &:before{background:transparentize($donkey-kong, 0.5) !important;}
-        }
-    }
-}
-
-.game-and-watch{
-    &:hover{
-        &.nav-characters li > span{
-            background:$gnw !important;
-        }
-    }
-    .btn{
-        background-color:$gnw-button-homepage !important;
-        border-color:$gnw-button-homepage;
-        &:hover{background-color:darken($gnw-button-homepage, 10%) !important;}
-    }
-    &.card-deck{
-        .card-image-top{
-            background-color:$gnw;
-            color:$text-light;
-        }
-    }
-    .btn{color:$text-light;}
-    &.nav-characters{
-        //
-
-        li > span{
-            background:transparentize($gnw, 0.2) !important;
-            color: $text-light !important;
-        }
-        .nav-moves a{
-            position:relative;
-            &:before{background:transparentize($gnw, 0.5) !important;}
-        }
-    }
-}
-
-.robin{
-    &:hover{
-        &.nav-characters li > span{
-            background:$robin !important;
-        }
-    }
-    .btn{
-        background-color:$robin-button-homepage !important;
-        border-color:$robin-button-homepage;
-        &:hover{background-color:darken($robin-button-homepage, 10%) !important;}
-    }
-    &.card-deck{
-        .card-image-top{
-            background-color:$robin;
-            color:$text-light;
-        }
-    }
-    .btn{color:$text-light;}
-    &.nav-characters{
-        &:before{background:transparentize($robin, 0.5) !important;}
-        li > span{
-            background:transparentize($robin, 0.2) !important;
-            color: $text-light !important;
-        }
-        .nav-moves a{
-            position:relative;
-            &:before{background:transparentize($robin, 0.5) !important;}
-        }
-        // .nav-moves a{
-        //     background:transparentize($robin, 0.4);
-        //     color: $text-light !important;
-        // }
-    }
-}
 
 .nav-characters li > span{
     transition:all 0.2s ease;
@@ -278,7 +339,7 @@ $robin-button-primary-active:#d82800;
     padding: 0;
     box-shadow: none;
     border-radius: 0;
-    margin:15px 0;
+    // margin:15px 0;
 }
 #search:focus{
     border-color: #333;
@@ -417,6 +478,11 @@ span.mobile{display:inline;}
     }
     .legend-keys--shift, .legend-keys--escape{
         background:#333 !important;
+    }
+    .icon-arrowback{
+        .pathfill{
+            fill:#333;
+        }
     }
 }
 
@@ -572,6 +638,16 @@ body.toggle-sidedrawer{
 }
 .sidedrawer-toggle svg{vertical-align:middle;}
 
+
+body.toggle-sidedrawer{
+    .navbar-static-side{
+        display:none !important;
+    }
+    #page-wrapper{
+        margin:0;
+    }
+}
+
 .filtersText{display:none;}
 
 .filter-toggle{
@@ -657,15 +733,25 @@ body.toggle-sidedrawer{
 
 #page-wrapper{
     overflow-x:hidden;
-    .navbar{
-        width:100%;
+}
+.navbar{
+    width:100%;
+    &#primarynav{
         background:$primary-colour;
     }
-    .nav-wrapper{
-        margin-left:-15px;
-        margin-right:-15px;
+    #navbar-toggler{
+        &:hover{
+            cursor:pointer;
+        }
+        &:focus{
+            outline:inherit;
+        }
     }
 }
+.nav-wrapper{
+    margin-left:-15px;
+    margin-right:-15px;
+};
 .navbar-static-side {
     z-index: 5;
     position: absolute;
@@ -753,7 +839,7 @@ a[aria-expanded="true"]::before {
             }
         }
         li > a, li > span{
-            width: 225px;
+            // width: 225px;
             // padding-left: 20px;
             // // height: 50px;
             padding: 15px 0 15px 20px;
@@ -772,7 +858,7 @@ a[aria-expanded="true"]::before {
         }
         .nav-moves{
             a{
-                padding: 10px 0 10px 30px;
+                padding: 10px 0 10px 20px;
                 position:relative;
                 &:before{
                     content: '';
@@ -889,24 +975,46 @@ a[aria-expanded="true"]::before {
     border-top-right-radius: 0;
     box-shadow: 0 3px 3px rgba(0,0,0,.175);
 }
-
-
-.character-grid-active .secondarynav{display:flex;}
-
-#card-wrapper, #character-wrapper{
-    // position: absolute;
-    top: 56px;
-    // background:#eee;
+.dropdown-toggle::after{
+    margin-left: 0.55em;
+    vertical-align: 0.155em;
 }
-.secondarynav{
-    background-color:#8a8983 !important;
-    display:none;
-    margin-bottom:10px;
+
+
+
+#secondarynav{
+    display:block;
+    transition:background-color 0.2s ease;
+
+    #character-wrapper-back{
+        float:left;
+        padding: 0.3125rem 0.45rem;
+        transition:background 0.2s ease;
+        cursor:pointer;
+        position:relative;
+        z-index:5;
+        &:hover{
+            background:rgba(0, 0, 0, 0.08);
+        }
+        &:focus{
+            outline:inherit;
+        }
+    }
+    .navbar-top-links{
+        float:right;
+        padding-top: 0.3125rem;
+        padding-bottom: 0.3125rem;
+    }
+
     .dropdown-menu{
         text-align:left;
         background-color:#757573;
         color:#FFF;
         min-width:280px;
+        display:none;
+        &.show{
+            display:block;
+        }
         .dropdown-item{
             &:hover{
                 background-color:#8e8e8e;
@@ -918,6 +1026,39 @@ a[aria-expanded="true"]::before {
         }
     }
 }
+
+
+
+#card-wrapper, #character-wrapper{
+    top: 66px;
+}
+#character-wrapper{
+    top: 56px;
+    background:#eee;
+    .container-fluid{
+        background:#eee;
+    }
+}
+.secondarynav{
+    background-color:#8a8983;
+    display:none;
+}
+
+
+// Here be mobile-only styles //
+
+#character-wrapper-back{
+    // margin:0;
+}
+#secondarynav{
+    .navbar-header{
+        position:relative;
+        // width:100%;
+        /* overflow:hidden; */
+    }
+}
+
+// //
 
 #character-underlay{
     .legend-keys{
@@ -1733,9 +1874,9 @@ tr.table-descs td{
 }
 
 
-#page-wrapper{
+/* #page-wrapper{
     perspective: 1200px;
-}
+} */
 .pt-page{
     width: 100%;
     height: 100%;
@@ -1743,7 +1884,7 @@ tr.table-descs td{
     top: 0;
     left: 0;
     visibility: hidden;
-    overflow: hidden;
+    /* overflow: hidden; */
     backface-visibility: hidden;
     transform: translate3d(0, 0, 0);
     transform-style: preserve-3d;
@@ -1799,9 +1940,19 @@ tr.table-descs td{
 
 }
 
-@media screen and (min-width:300px) and (max-width:768px){
+@media screen and (max-width:768px){
     /*.character-box:nth-of-type(even){margin-right:0;}*/
     .character-box:nth-of-type(odd){margin-left:0;}
+
+    #secondarynav{
+        .dropdown{
+            overflow:hidden;
+        }
+        .dropdown-menu{
+            width:93%;
+        }
+    }
+
 }
 
 @media screen and (min-width:600px){
@@ -1876,7 +2027,7 @@ tr.table-descs td{
     }
 
     .text-dark{
-        #icon-prev, #icon-next{
+        #icon-prev, #icon-next, #characterBackButton{
             .pathfill{
                 fill:#333;
             }

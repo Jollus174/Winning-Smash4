@@ -50,16 +50,11 @@ var Custom = (function() {
 		}
 		//
 
-		function onEndAnimation( $outpage, $inpage ) {
-			endCurrPage = false;
-			endNextPage = false;
-			resetPage( $outpage, $inpage );
-			isAnimating = false;
-		}
-		function resetPage( $outpage, $inpage ) {
-			// $outpage.attr( 'class', $outpage.data( 'originalClassList' ) );
-			// $inpage.attr( 'class', $inpage.data( 'originalClassList' ) + ' pt-page-current' );
-		}
+
+		$('#secondarynav-dropdown').click(function(){
+			console.log('dropdown button clicked!');
+			$('#secondarynav .navbar-header .dropdown-menu').toggleClass('show');	
+		});
 
 
 		// Need to trigger this on button click now
@@ -94,14 +89,16 @@ var Custom = (function() {
 			// If more than one, then display the move-switcher dropdown in secondarynav
 			var btnCount = $this.parent().find('.moveBtn').length;
 			if(btnCount > 1){
-				$('#secondarynav .navbar-brand').hide();
-				var $dropdown = $('#secondarynav .dropdown');
-				$dropdown.show();
+				$('#secondarynav #moveName').hide();
+				var $dropdown = $('#secondarynav-dropdown');
+				var $dropdownMenu = $('#secondarynav-dropdown-menu');
+				$('#secondarynav .dropdown').show();
+				//$dropdownMenu.show();
 				// adjust the dropdown title
-				$dropdown.find('#secondarynav-dropdown').html(moveName);
+				$dropdown.html(moveName);
 
 				// nuke the existing contents of the dropdown menu
-				$('#secondarynav .dropdown-menu').empty()
+				$dropdownMenu.empty()
 
 				// generate those dropdown items
 				$this.parent().find('.moveBtn').each(function(){
@@ -110,10 +107,10 @@ var Custom = (function() {
 					var href = $button.attr('href');
 					var moveUrl = $button.data('moveurl');
 					var id = $button.attr('id');
-					$dropdown.find('.dropdown-menu').append('<a class="dropdown-item" data-ident=' + id + '>' + name + '</a>');
+					$dropdownMenu.append('<a class="dropdown-item" data-ident=' + id + '>' + name + '</a>');
 				});
 			} else {
-				$('#secondarynav .navbar-brand').html(moveName).show();
+				$('#secondarynav #moveName').html(moveName).show();
 				$('#secondarynav .dropdown').hide();
 			}
 
@@ -124,6 +121,7 @@ var Custom = (function() {
 				var $character = $('.' + index);
 				var minPercent = value[0];
 				var maxPercent = value[1];
+				//console.log('min percent is: ' + minPercent + ' and max percent is: ' + maxPercent);
 
 				$character.find('.grid-minPercent').text(minPercent);
 				$character.find('.grid-maxPercent').text(maxPercent);
@@ -139,24 +137,22 @@ var Custom = (function() {
 				$difficulty.find('.text-percRange').text(parseInt(maxPercent) - parseInt(minPercent));
 				
 			});
-			$('#page-info div').hide();
-			$('#page-info .' + $this.attr('id')).show();
+			// $('#page-info div').hide();
+			// var $pageInfo = $('#page-info .' + $this.attr('id'));
+			// $pageInfo.show();
+
 		};
 
 
 		function retrieveCharUrl(self){
 			// Place the character's name in #page-wrapper so I can do and target things with it
+			var $pagewrapper = $('#page-wrapper');
 			var charUrl = self.closest('.card-deck').data('url');
-			//if(!$('#page-wrapper').hasClass()){
-				$('#page-wrapper').attr('class', charUrl);
-
-			/*} else {
-				$('#page-wrapper').removeClass();
-			}*/
+			//$pagewrapper.attr('class', charUrl);
+			$pagewrapper.addClass(charUrl);
 		};
 		function pageTransition(self, transitionToAnotherGrid){
 			/* --- Animate the navigation transition -- */
-
 			var	$wrapper = $('#page-wrapper'),
 				$currPage = $wrapper.children('div.pt-page-current'),
 				$nonCurrPage = $wrapper.children('div.pt-page').not('div.pt-page-current'),
@@ -172,89 +168,114 @@ var Custom = (function() {
 				support = Modernizr.cssanimations;
 
 
+			// Grab the id of the existing character for class addition/removal to relevant containers
+			// This will only work on activation though...
+			// Why can't I use the #page-wrapper, again?
+			//var charUrl = self.closest('.card-deck').data('url');
+
 			// Need to delay open/close function in case it's already animating. Some spastic might hit ESC twice quickly
 			// Add class of 'animating' to body and remove when the animation is finished
 			$('body').addClass('animating');
 
 			if(!$('body').hasClass('character-grid-active')){
 				$(('body')).addClass('character-grid-active');
-				// transition it forwards
+				activateCharacterGrid(self);
+				retrieveCharUrl(self);
+				// variables for transition it forwards
 				outClass = 'pt-page-scaleDown',
 				inClass = 'pt-page-moveFromRight pt-page-ontop';
 
 			} else {
 				if(transitionToAnotherGrid == true){
-					// transition it to the same screen
+					// variables for transition it to the same screen
 					// The only way this is gonna happen is if the grid is on screen and a sidemenu button is clicked, which in turn is like a card button click
 					$nonCurrPage = $currPage;
 					outClass = 'pt-page-scaleDownCenter';
 					inClass = 'pt-page-scaleUpCenter pt-page-delay100';
 				} else {
-					$('body').removeClass('character-grid-active');
 
-					// transition it backwards
+					// variables for transition it backwards
+					// Remember this!
+					$('body').removeClass('character-grid-active');
+					//
+
 					outClass = 'pt-page-moveToRight pt-page-ontop';
 					inClass = 'pt-page-scaleUp';
 				}
 			}
+			// Now execute the transition with those variables from earlier
 			// If we're transitioning to another character grid, the switchCharacter function needs to be invoked midway between transitions
 			if(transitionToAnotherGrid == true){
 				// Need to ALSO check if we're just transitioning to a different move of the same character. Different transition for that (just a fade)
 				var charUrl = self.closest('.card-deck').data('url');
 				if(charUrl == $('#page-wrapper').attr('class')){
 					console.log('we have a match!');
+
+					// Initiate transition between MOVES OF SAME CHARACTER
+					$('#secondarynav-dropdown-menu').removeClass('show');
 					$('#characterGrid').fadeOut('fast', function(){
 						activateCharacterGrid(self);
+						console.log('transitioning between same character!');
 						$('#characterGrid').fadeIn('fast');
 						$('body').removeClass('animating');
 					});
 
-
 				} else {
 
-					//console.log('button group is from: ' + charUrl );
-					// Initiate transition forward
+					// Initiate transition BETWEEN DIFFERENT CHARACTERS
 					$currPage.addClass(outClass).on(animEndEventName, function() {
-						$(this).removeClass().addClass('pt-page');
+
+						// This needs work since class is switching at wrong time
+
+						$(this).attr('class', 'pt-page');
 						$currPage.off( animEndEventName );
 						$('body').removeClass('animating');
-						retrieveCharUrl(self);
+
+						console.log('transitioning between different characters!');
+						
 						activateCharacterGrid(self);
+						$('#page-wrapper').removeClass();
+						retrieveCharUrl(self);
 						$nonCurrPage.removeClass().addClass('pt-page pt-page-current').addClass(inClass).on(animEndEventName, function() {
 
 							var $this = $(this);
 							$this.attr('class', 'pt-page pt-page-current');
+
 							$nonCurrPage.off( animEndEventName );
 						});
 					});
 				}
 			} else {
-				// Initiate transition backward
+				// Initiate STANDARD transition 
 				$currPage.addClass(outClass).on(animEndEventName, function() {
 
 					$(this).removeClass().addClass('pt-page');
 					$currPage.off( animEndEventName );
 					$('body').removeClass('animating');
 
-				});
-				if($('body').hasClass('character-grid-active')){
-					retrieveCharUrl(self);
-					activateCharacterGrid(self);
-				};
-				$nonCurrPage.removeClass().addClass('pt-page pt-page-current').addClass(inClass).on(animEndEventName, function() {
+					console.log('transitioning standard!');
 
+					// Nuke that character class from the page-wrapper AFTER the 'transition-out'
+					if(!$('body').hasClass('character-grid-active')){
+						$('#page-wrapper').removeClass();
+					}
+				});
+				$nonCurrPage.removeClass().addClass('pt-page pt-page-current').addClass(inClass).on(animEndEventName, function() {
+					
 					var $this = $(this);
 					$this.attr('class', 'pt-page pt-page-current');
 					$nonCurrPage.off( animEndEventName );
 				});
-
 			}
 		};
 
 		function deactivateCharacterGrid(){
 			if(!$('body').hasClass('animating')){
 				pageTransition();
-				$('#page-wrapper').removeClass();
+				$('#nav-title').text('Select a Kill Confirm');
+				$('.moveBtn.active').removeClass('active');
+				$('.nav-moves a.active').removeClass('active');
+				$('#secondarynav-dropdown .dropdown-item.active').removeClass('active');
 			};
 		}
 
@@ -273,14 +294,7 @@ var Custom = (function() {
 			};
 		});
 
-		// NEED TO WORK ON THIS MORE
-		//$('#secondarynav .dropdown-item').click(function(){
-		$('#secondarynav').on('click', '.dropdown-item', function(){
-			var $this = $(this);
-			var ident = $this.data('ident');
-			$('.moveBtn[id=' + ident + ']').trigger('click');
-			console.log('clicked the dropdown item!');
-		})
+
 
 
 		// The URL constructers/deconstructers are back to haunt me
@@ -482,19 +496,6 @@ var Custom = (function() {
 
 			// Begin the mapping
 
-			// I don't agree with this method. There's no reason to re-reference the JSON file when the data is already on the page
-			// var name = charAttrJSON[$index].name;
-			// var urlName = charAttrJSON[$index].url;
-			// var bgColour = charAttrJSON[$index].bgColour;
-			// var weight = charAttrJSON[$index].weight;
-			// var minPercent = parseInt(charAttrJSON[$index].minPercent);
-			// var maxPercent = parseInt(charAttrJSON[$index].maxPercent);
-			// var fallspeed = charAttrJSON[$index].fallspeed;
-			// var gravity = charAttrJSON[$index].gravity;
-			// var airdodgeStart = charAttrJSON[$index].airdodgeStart;
-			// var airdodgeEnd = charAttrJSON[$index].airdodgeEnd;
-			// var textContrast = charAttrJSON[$index].textContrast;
-
 			var name = self.data('name');
 			var urlName = self.data('url');
 			var bgColour = self.data('bgcolour');
@@ -612,6 +613,7 @@ var Custom = (function() {
 			// This could probably be optimised later
 
 			// This thing is causing problems between transitions!
+			
 			rageAdjustment($charModal.find('.rageBtn.active'));
 
 
@@ -667,13 +669,13 @@ var Custom = (function() {
 		}
 
 
-		function rageAdjustment(self, rageValues){
+		function rageAdjustment(self){
 			var rageAmount = self.attr("data-rage");
 			
 			self.siblings('.rageBtn').removeClass('active');
 			self.addClass('active');
-			var rageAdjMin = parseInt("");
-			var rageAdjMax = parseInt("");
+			var rageAdjMin = 0;
+			var rageAdjMax = 0;
 
 			var $moveBtnActive = $('.moveBtn.active');
 			var rage50 = $moveBtnActive.data('rage50');
@@ -704,6 +706,8 @@ var Custom = (function() {
 			if(rageAmount == "125"){rageAdjMin = rage125[0]; rageAdjMax = rage125[1] }
 			if(rageAmount == "150"){rageAdjMin = rage150[0]; rageAdjMax = rage150[1] }
 
+			console.log('rageAdjMin is: ' + rageAdjMin + ' and rageAdjMax is: ' + rageAdjMax);
+
 			$('#characterModal .stagePercents').each(function(){
 				var $this = $(this);
 
@@ -713,6 +717,8 @@ var Custom = (function() {
 				var defaultMinPercent = $minPerc.data('defaultmin');
 				var defaultMaxPercent = $maxPerc.data('defaultmax');
 
+				console.log('defaultMinPercent is: ' + defaultMinPercent + ' and defaultMaxPercent is: ' + defaultMaxPercent);
+
 				var adjustedMinPercent = parseInt(defaultMinPercent) + rageAdjMin;
 				var adjustedMaxPercent = parseInt(defaultMaxPercent) + rageAdjMax;
 
@@ -720,6 +726,7 @@ var Custom = (function() {
 				// Adjusting min percent last in case it goes below zero and fucks the percRange var
 				adjustedMinPercent = Math.max(0, adjustedMinPercent);
 				var percRange = (adjustedMaxPercent - adjustedMinPercent) + 1;
+				// console.log(percRange);
 
 				if(adjustedMaxPercent < adjustedMinPercent ){
 					// On some stages, DingDong is impossible to kill with on some characters (like Satan on Battlefield)
@@ -733,18 +740,18 @@ var Custom = (function() {
 					$maxPerc.removeClass('nosymbol');
 					$percRange.removeClass('nosymbol');
 
-					// $minPerc.text(adjustedMinPercent);
-					// $maxPerc.text(adjustedMaxPercent);
-					// $percRange.text(percRange);
-					$minPerc
-						.prop('number', $minPerc.text())
-						.animateNumber({ number : adjustedMinPercent }, 200);
-					$maxPerc
-						.prop('number', $maxPerc.text())
-						.animateNumber({ number : adjustedMaxPercent }, 200);
-					$percRange
-						.prop('number', $percRange.text())
-						.animateNumber({ number : percRange }, 200);
+					$minPerc.text(adjustedMinPercent);
+					$maxPerc.text(adjustedMaxPercent);
+					$percRange.text(percRange);
+					// $minPerc
+					// 	.prop('number', $minPerc.text())
+					// 	.animateNumber({ number : adjustedMinPercent }, 200);
+					// $maxPerc
+					// 	.prop('number', $maxPerc.text())
+					// 	.animateNumber({ number : adjustedMaxPercent }, 200);
+					// $percRange
+					// 	.prop('number', $percRange.text())
+					// 	.animateNumber({ number : percRange }, 200);
 
 				}
 
@@ -758,11 +765,11 @@ var Custom = (function() {
 
 		function activateMenuBox(target){
 			// check to see if a character is currently active
+			// realisitically this will probably never be executed...
 			if($('body').hasClass('active-character')){
 				deactivateCharacter();	
 			}
 			$('body').addClass('no-scroll').removeClass('text-dark');
-			//$('.modalUnderlay').css('backgroundColor', 'rgb(136,136,136)');
 			$('#sidedrawer-underlay').css('backgroundColor', 'rgb(136,136,136)');
 			$('#menuBackButton').addClass('active');
 			$('#' + target).show();
@@ -840,7 +847,6 @@ var Custom = (function() {
 		var key6 = 54;
 		var key7 = 55;
 
-
 		$(document).keyup(function(e){
 
 			if(e.which == shiftKey) isShiftActive = false;
@@ -861,13 +867,14 @@ var Custom = (function() {
 				if($('body').hasClass('no-scroll')){
 					deactivateCharacter();
 				} else if ($('body').hasClass('character-grid-active')){
-					deactivateCharacterGrid(self);
+					deactivateCharacterGrid();
 				} else {
 					// else toggle the sidemenu instead
-					$('body').toggleClass('toggle-sidedrawer');
+					//$('body').toggleClass('toggle-sidedrawer');
 
 				   
-				    $('#sidebar').toggleClass('active');
+				    //$('#sidebar').toggleClass('active');
+				    toggleSidebar();
 				}
 				
 			}
@@ -940,7 +947,7 @@ var Custom = (function() {
 		// https://stackoverflow.com/questions/6658752/click-event-doesnt-work-on-dynamically-generated-elements
 		$('#characterGrid').on('click', '.character-box', function(){
 			activateCharacter($(this));
-		})
+		});
 		$('#characterModal').on('click', '.rageBtn', function(){
 			rageAdjustment($(this));
 		});
@@ -948,8 +955,18 @@ var Custom = (function() {
 
 		/* --- */
 
+		function toggleSidebar(){
+			$('body').toggleClass('toggle-sidedrawer');
+			//$('.sidebar-collapse').slideToggle();
+		}
 
-
+		$('#navbar-toggler').click(function(){
+			//console.log('toggler clicked!');
+			toggleSidebar();
+		});
+		$('#character-wrapper-back').click(function(){
+			deactivateCharacterGrid();
+		});
 
 		$('#icon-next').click(function(){
 			transitionCharacterForward($('.character-box.selected'));
@@ -963,13 +980,16 @@ var Custom = (function() {
 
 		$('#about').click(function(){
 			activateMenuBox('page-about');
-		})
+		});
 		$('#credits').click(function(){
 			activateMenuBox('page-credits');
-		})
+		});
 		$('#info').click(function(){
+			$('#page-info .detailed-info').hide();
 			activateMenuBox('page-info');
-		})
+			var currentMove = $('.moveBtn.active').attr('id');
+			$('#page-info .' + currentMove).show();
+		});
 
 		$('#filter-dropdown-btn').click(function(){
 			$this = $(this);
@@ -1025,6 +1045,13 @@ var Custom = (function() {
 			var dataref = $(this).data('ref');
 			$('.card-deck #' + dataref).trigger('click');
 		});
+
+		// NEED TO WORK ON THIS MORE
+		$('#secondarynav').on('click', '.dropdown-item', function(){
+			var $this = $(this);
+			var ident = $this.data('ident');
+			$('.moveBtn[id=' + ident + ']').trigger('click');
+		})
 
 
   });

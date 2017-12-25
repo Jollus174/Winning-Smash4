@@ -81,7 +81,7 @@
 			<ul class="nav" id="side-menu">
 
 		        <li class="sidebar-header">
-		            <h3>Winning</h3>
+		            <h3>Winning at Smash4</h3>
 		        </li>
 
 		        <!-- Sidebar Links -->
@@ -104,9 +104,9 @@
     	</div>
 
 		<ul class="sidebar-bottom-links">
-			<li><a id="about" href="#">About</a></li>
+			<!-- <li><a id="about" href="#">About</a></li>
 			<li><a id="credits" href="#">Credits</a></li>
-			<li><a id="feedback" href="https://github.com/Jollus88/Winning-Smash4/issues" target="_blank">Feedback</a></li>
+			<li><a id="feedback" href="https://github.com/Jollus88/Winning-Smash4/issues" target="_blank">Feedback</a></li> -->
 		</ul>
 
 	</nav> <!-- sidebar -->
@@ -132,62 +132,27 @@
 
 	<div id="page-wrapper">
 		<img class="loader" src="images/spinner.svg" />
-		<div class="row border-bottom nav-wrapper">
-			<nav class="navbar navbar-light navbar-static-top">
+		<div class="border-bottom row"> <!-- nav-wrapper -->
+			<nav id="primarynav" class="navbar navbar-light navbar-static-top">
 
-				<div class="navbar-header">
-					<button class="navbar-toggler navbar-toggler-left" href="#"><i class="fa fa-bars" aria-hidden="true"></i></button>
-					<span id="nav-title" class="navbar-brand --white" href="#">Navbar</span>
-				</div>
+			<div class="navbar-header">
+				<button id="navbar-toggler" class="navbar-toggler navbar-toggler-left" href="#"><i class="fa fa-bars" aria-hidden="true"></i></button>
+				<span id="nav-title" class="navbar-brand --white" href="#">Select a Kill Confirm</span>
+			</div>
 
-				<!--<div class="content">-->
-				<ul class="nav navbar-top-links navbar-right d-none d-md-flex">
+			<ul class="navbar-nav flex-row d-none d-md-flex">
+				<li class="nav-item"><a class="navbar-link small ml-3 --white" id="about" href="#">About</a></li>
+				<li class="nav-item"><a class="navbar-link small ml-3 --white" id="credits" href="#">Credits</a></li>
+				<li class="nav-item"><a class="navbar-link small ml-3 --white" id="feedback" href="https://github.com/Jollus88/Winning-Smash4/issues" target="_blank">Feedback <i class="fa fa-external-link ml-1" aria-hidden="true"></i></a></li>
+			</ul>
 
-					<li>
-						<a href="#" data-bind="click:sortName" class="btn filter-btn active">Name <span class="caret"></span></a>
-					</li>
-					<li>
-						<a href="#" data-bind="click:sortWeight" class="btn filter-btn">Weight <span class="caret"></span></a>
-					</li>
-					<li>
-						<a href="#" data-bind="click:sortDifficulty" class="btn filter-btn">Difficulty <span class="caret"></span></a>
-					</li>
-					<li>
-						<a href="#" id="filter-dropdown-btn" class="btn filter-btn"><i class="fa fa-chevron-down" aria-hidden="true"></i></a>
-					</li>
-					<li>
-						<ul class="dropdown-menu">
-							<li><a href="#" data-bind="click:sortFallspeed" class="btn filter-btn">Fallspeed <span class="caret"></span></a></li>
-							<li><a href="#" data-bind="click:sortGravity" class="btn filter-btn">Gravity <span class="caret"></span></a></li>
-							<li><a href="#" class="btn add-info-grid add-extra-info filter-btn">View In Grid <i class="checkbox fa fa-times" aria-hidden="true"></i></a></li>
 
-						</ul>
-					</li>
-				</ul>
 			</nav>
 		</div> <!-- row -->
 
 		<div id="card-wrapper" class="pt-page pt-page-current">
 
 			<div class="container-fluid">
-
-
-				<div class="row">
-					<div class="col">
-
-						<div class="search-box">
-							<input id="search" placeholder="Filter..." type="search" name="filter" autocomplete="off">
-							<button class="btn clear-input">
-								<svg fill="#333" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-								    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
-								    <path d="M0 0h24v24H0z" fill="none"/>
-								</svg>
-							</button>
-						</div>
-
-					</div>
-				</div> <!-- row -->
-
 
 				<div id="characterSelection" class="row" data-bind="foreach: killConfirm">
 
@@ -228,7 +193,10 @@
 										'data-tcnormalmin': tcNormalMin,
 										'data-tclowplatmin': tcLowPlatMin,
 										'data-tcsideplatmin': tcSidePlatMin,
-										'data-tctopplatmin': tcTopPlatMin
+										'data-tctopplatmin': tcTopPlatMin,
+
+										'data-giphy': giphy[0],
+										'data-giphy-source': giphy[1]
 
 									}">Up Throw <span>-></span> Up Air</button>
 								</div>							
@@ -237,11 +205,6 @@
 						</div>
 					</div>
 				</div> <!-- row -->
-
-
-
-
-
 
 
 				<!-- /new character box -->
@@ -256,7 +219,7 @@
 			</div>
 		</div> <!-- card-wrapper -->
 
-		<div id="character-wrapper" class="container-fluid pt-page">
+		<div id="character-wrapper" class="pt-page">
 
 			<div class="container-fluid">
 
@@ -264,33 +227,97 @@
 				<div class="row border-bottom"> <!-- .nav-wrapper -->
 					<nav id="secondarynav" class="navbar navbar-light navbar-static-top secondarynav">
 
+						<button id="character-wrapper-back" class="navbar-toggler navbar-toggler-left navbar-brand --white" href="#">
+							<svg class="icon-arrowback" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+										    <path d="M0 0h24v24H0z" fill="none"></path>
+										    <path class="pathfill" d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path>
+										</svg>
+						</button>
+						<div id="moveName" class="navbar-brand --white" style="font-size:100%;">
+							Move Name
+						</div>
 						<div class="navbar-header">
-							<div class="navbar-brand --white" style="font-size:100%;">
-								Character Name
-							</div>
 							<div class="dropdown show">
-								<a class="btn btn-secondary dropdown-toggle" href="#" id="secondarynav-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<button class="btn btn-secondary btn-sm dropdown-toggle" id="secondarynav-dropdown" aria-haspopup="true" aria-expanded="false" style="font-size:0.95rem;margin-top:3px;">
 									Dropdown link
-								</a>
+								</button>
 
-								<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-									<a class="dropdown-item" href="#">Action</a>
-									<a class="dropdown-item" href="#">Another action</a>
-									<a class="dropdown-item" href="#">Something else here</a>
-								</div>
+							</div>
+							<div id="secondarynav-dropdown-menu" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+								<a class="dropdown-item" href="#">Action</a>
+								<a class="dropdown-item" href="#">Another action</a>
+								<a class="dropdown-item" href="#">Something else here</a>
 							</div>
 						</div>
 
+
 						<!--<div class="content">-->
-						<ul class="nav navbar-top-links navbar-right">
+						<ul class="nav navbar-top-links navbar-right d-none d-md-flex">
+
+							<li>
+								<a href="#" data-bind="click:sortName" class="btn filter-btn active">Name <span class="caret"></span></a>
+							</li>
+							<li>
+								<a href="#" data-bind="click:sortWeight" class="btn filter-btn">Weight <span class="caret"></span></a>
+							</li>
+							<li>
+								<a href="#" data-bind="click:sortDifficulty" class="btn filter-btn">Difficulty <span class="caret"></span></a>
+							</li>
+							<li>
+								<a href="#" id="filter-dropdown-btn" class="btn filter-btn"><i class="fa fa-chevron-down" aria-hidden="true"></i></a>
+							</li>
+							<li>
+								<ul class="dropdown-menu">
+									<li><a href="#" data-bind="click:sortFallspeed" class="btn filter-btn">Fallspeed <span class="caret"></span></a></li>
+									<li><a href="#" data-bind="click:sortGravity" class="btn filter-btn">Gravity <span class="caret"></span></a></li>
+									<li><a href="#" class="btn add-info-grid add-extra-info filter-btn">View In Grid <i class="checkbox fa fa-times" aria-hidden="true"></i></a></li>
+
+								</ul>
+							</li>
+						</ul>
+
+						<!--<div class="content">-->
+<!-- 						<ul class="nav navbar-top-links navbar-right">
 
 							<li>
 								<a id="info" href="#" class="btn filter-btn"><i class="fa fa-info-circle" aria-hidden="true"></i><span style="padding-left:10px; text-transform: none;" class="d-none d-md-inline">More Information</span></a>
 							</li>
-						</ul>
+						</ul> -->
 					</nav>
 				</div>
 				<!-- !secondary nav -->
+
+
+				<!-- https://stackoverflow.com/questions/6487085/two-divs-one-fixed-width-the-other-the-rest -->
+				<!-- getting fancy now for the filter + info button section. Need filter to have dynamic responsive width while button is fixed width -->
+				<div style="margin-top:15px;margin-bottom:15px;">
+					<button id="info" class="btn btn-sm float-right" style="margin-left:10px;"><i class="fa fa-info-circle" aria-hidden="true"></i><span style="padding-left:10px; text-transform: none;" class="d-none d-md-inline">More Information</span></button>
+					<div class="search-box" style="overflow:hidden;">
+						<input id="search" placeholder="Filter..." type="search" name="filter" autocomplete="off">
+						<button class="btn clear-input">
+							<svg fill="#333" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+							    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+							    <path d="M0 0h24v24H0z" fill="none"/>
+							</svg>
+						</button>
+					</div>
+				</div>
+
+				<div class="row" style="align-items:center;">
+					<div class="col-10">
+
+					</div>
+					<div class="col-2">
+						<!-- <a id="info" href="#" class="btn filter-btn"><i class="fa fa-info-circle" aria-hidden="true"></i><span style="padding-left:10px; text-transform: none;" class="d-none d-md-inline">More Information</span></a> -->
+					</div>
+
+<!-- 						<ul class="nav navbar-top-links navbar-right">
+
+							<li>
+								
+							</li>
+						</ul> -->
+				</div> <!-- row -->
 
 				<div id="characterGrid" class="row" data-bind="foreach: character" hidden>
 
@@ -319,7 +346,7 @@
 								<span data-bind="text: (id + 1)"></span>
 							</div>
 							<div class="grid-percRange">
-								<span><span class="grid-minPercent" data-bind="text: minPercent">83</span> - <span class="grid-maxPercent" data-bind="text: maxPercent">111</span>%</span>
+								<span><span class="grid-minPercent" data-bind="text: minPercent"></span> - <span class="grid-maxPercent" data-bind="text: maxPercent"></span>%</span>
 							</div>
 							<div hidden class="extra-info grid-fallspeed">
 								<span>Fallspeed - <span style="font-weight:700;" data-bind="text: fallspeed">1.65</span></span>
@@ -355,25 +382,19 @@
 
 		</div> <!-- character-wrapper -->
 
-
-
 	</div> <!-- page-wrapper -->
-
-
-
-	<div id="sidedrawer-underlay" class="modalUnderlay" style="background-color: transparent;" hidden></div>
-
-	<div id="menuBackButton" class="backButton">
-		<svg class="icon-arrowback" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-		    <path d="M0 0h24v24H0z" fill="none"/>
-		    <path class="pathfill" d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
-		</svg>
-	</div>
-
 
 
 	<div class="menu-page" hidden>
 
+		<div id="sidedrawer-underlay" class="modalUnderlay" style="background-color: transparent;" hidden></div>
+
+		<div id="menuBackButton" class="backButton">
+			<svg class="icon-arrowback" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			    <path d="M0 0h24v24H0z" fill="none"/>
+			    <path class="pathfill" d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+			</svg>
+		</div>
 
 		<div id="page-about" hidden>
 			<div class="desktop">
@@ -446,18 +467,26 @@
 
 		</div> <!-- page-about -->
 
-		<div id="page-info" data-bind="foreach: killConfirm">
-			<!-- ko foreach: moves -->
-			<div data-bind="attr: {class: $parent.url + '-' + moveUrl}" hidden>
-				<p data-bind="html: info">
+		<div id="page-info">
 
-				</p>
 
-				<div class="giphy">
-					<!-- <iframe data-bind="attr: {'src': giphy[0]}" width='100%' height='100%' style='position:absolute' frameBorder='0' class='giphy-embed' allowFullScreen></iframe> -->
-					<a target="_blank" data-bind="attr: {href: giphy[1]}">Video Source</a>
-				</div>
+			<div class="giphy">
+				<iframe width='100%' height='100%' style='position:absolute' frameBorder='0' class='giphy-embed' allowFullScreen></iframe>
+				<a href="#" target="_blank">Video Source</a>
 			</div>
+
+			<!-- ko foreach: killConfirm -->
+			
+				<!-- ko foreach: moves -->
+
+					<div class="detailed-info" data-bind="attr: {class: $parent.url + '-' + moveUrl}" hidden>
+						<p data-bind="html: info">
+
+						</p>
+
+					</div>
+
+				<!-- /ko -->
 
 			<!-- /ko -->
 
@@ -580,13 +609,13 @@
 													<td>
 														<p><span class="minPerc" data-bind="attr: {
 															'data-ref': stagePartRef + 'Min',
-															'data-defaultmin': '10'
+															'data-defaultmin': ''
 														}">5</span></p>
 													</td>
 													<td>
 														<p><span class="maxPerc" data-bind="attr: {
 															'data-ref': stagePartRef + 'Max',
-															'data-defaultmax': '25'
+															'data-defaultmax': ''
 														}">20</span></p>
 													</td>
 													<td class="percRange-cell">
