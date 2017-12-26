@@ -1,6 +1,7 @@
 // This function is also used in custom.js to determine difficulty, so I'm moving it outside the toCharacterViewModel() function
 
 
+var killConfirmsJSON = '';
 
 // Sort out character boxes
 var characters = (function() {
@@ -27,7 +28,7 @@ var characters = (function() {
                 killConfirmsRequest.onload = function(){
                     // success
                     if(killConfirmsRequest.status === 200){
-                        var killConfirmsJSON = "";
+                        //var killConfirmsJSON = "";
                         killConfirmsJSON = JSON.parse(killConfirmsRequest.response);
                         resolve(killConfirmsJSON);
                     } else {
@@ -294,6 +295,7 @@ var characters = (function() {
             //document.querySelector("#main").classList.add('loading')
             characterController.getKillConfirms().then(function(response){
                 Page.vm.killConfirm(response);
+                //console.log(Page.vm.killConfirm(response));
                 console.log('kill confirms loaded');
             });
             characterController.getStageList().then(function(response){
@@ -306,7 +308,7 @@ var characters = (function() {
                 document.getElementById("body").classList.remove('loading')
                 // displays the grid now that shiz is loaded
                 //document.getElementById('main').style.display = "block";
-                Custom();
+                //Custom();
             });
         }
     }

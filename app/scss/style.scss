@@ -1007,6 +1007,7 @@ a[aria-expanded="true"]::before {
         cursor:pointer;
         position:relative;
         z-index:5;
+        margin-right:0.7rem;
         &:hover{
             background:rgba(0, 0, 0, 0.08);
         }
