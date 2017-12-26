@@ -51,11 +51,6 @@ var Custom = (function() {
 		//
 
 
-		$('#secondarynav-dropdown').click(function(){
-			console.log('dropdown button clicked!');
-			$('#secondarynav .navbar-header .dropdown-menu').toggleClass('show');	
-		});
-
 
 		// Need to trigger this on button click now
 		// Needs to be done via callback so I can control exactly WHEN the data switches over. It'll be transitioning now, see - it can be changed mid-transition
@@ -189,7 +184,9 @@ var Custom = (function() {
 				activateCharacterGrid(self);
 				retrieveCharUrl(self);
 				// variables for transition it forwards
-				outClass = 'pt-page-scaleDown',
+				// outClass = 'pt-page-scaleDown',
+				// inClass = 'pt-page-moveFromRight pt-page-ontop';
+				outClass = 'pt-page-moveToLeft';
 				inClass = 'pt-page-moveFromRight pt-page-ontop';
 
 			} else {
@@ -206,8 +203,11 @@ var Custom = (function() {
 					$('body').removeClass('character-grid-active');
 					//
 
-					outClass = 'pt-page-moveToRight pt-page-ontop';
-					inClass = 'pt-page-scaleUp';
+					// outClass = 'pt-page-moveToRight pt-page-ontop';
+					// inClass = 'pt-page-scaleUp';
+					inClass = 'pt-page-moveFromLeft pt-page-ontop';
+					outClass = 'pt-page-moveToRight';
+
 				}
 			}
 			// Now execute the transition with those variables from earlier
@@ -253,7 +253,10 @@ var Custom = (function() {
 					});
 				}
 			} else {
-				// Initiate STANDARD transition 
+				// Initiate STANDARD transition
+				// $nonCurrPage.removeClass('pt-page-current');
+				// $currPage.addClass('pt-page-current');
+				//$('#card-wrapper').removeClass('pt-page-current');
 				$currPage.addClass(outClass).on(animEndEventName, function() {
 
 					$(this).removeClass().addClass('pt-page');
@@ -920,28 +923,28 @@ var Custom = (function() {
 
 		});
 
-		$('.filter-toggle').click(function(){
+		$('#filter-toggle').click(function(){
 			var $this = $(this);
 			$this.toggleClass('active');
 			$this.next('.btn-group.mobile').toggleClass('active');
-			$('#main').toggleClass('filtersActive');
+			$('body').toggleClass('filtersActive');
 
 			// If on mobile and at top of screen, the filter row covers the content! Not good.
 			// This detects if the user is partly down the page, and if not will offset the grid by the height of header + height of filter row
 
-			if($('#main').hasClass('filtersActive')){
-				// First check to see if the filters are active. If they aren't, then proceed
-				var scrollTop = $(window).scrollTop();
-				var headerHeight = $('header').height() + $('.btn-group.mobile.active').innerHeight();
-				if(scrollTop < 140){
-					$('#main').css('margin-top', headerHeight);
-				} else {
-					$('#main').css('margin-top', '');
-				}
-				// If they aren't active and the button is clicked, remove the jQuery offset if present
-			} else {
-				$('#main').css('margin-top', '');
-			}
+			// if($('body').hasClass('filtersActive')){
+			// 	// First check to see if the filters are active. If they aren't, then proceed
+			// 	var scrollTop = $(window).scrollTop();
+			// 	var headerHeight = $('header').height() + $('.btn-group.mobile.active').innerHeight();
+			// 	if(scrollTop < 140){
+			// 		$('#main').css('margin-top', headerHeight);
+			// 	} else {
+			// 		$('#main').css('margin-top', '');
+			// 	}
+			// 	// If they aren't active and the button is clicked, remove the jQuery offset if present
+			// } else {
+			// 	$('#main').css('margin-top', '');
+			// }
 		});
 
 	    $('#sidebarCollapse').on('click', function () {
@@ -1013,6 +1016,11 @@ var Custom = (function() {
 			$this.closest('.navbar-top-links').toggleClass('open');
 		});
 
+		$('#secondarynav-dropdown').click(function(){
+			console.log('dropdown button clicked!');
+			$('#secondarynav .navbar-header .dropdown-menu').toggleClass('show');	
+		});
+
 
 		$('.add-extra-info').click(function(){
 			$this = $(this);
@@ -1062,13 +1070,28 @@ var Custom = (function() {
 			$('.card-deck #' + dataref).trigger('click');
 		});
 
-		// NEED TO WORK ON THIS MORE
 		$('#secondarynav').on('click', '.dropdown-item', function(){
 			var $this = $(this);
 			var ident = $this.data('ident');
 			$('.moveBtn[id=' + ident + ']').trigger('click');
-		})
+		});
 
+		$('#about-menu-toggler').click(function(){
+			$('body').toggleClass('toggle-aboutmenu');
+		});
+		// Need to close About menu if item is clicked
+		$('#primarynav .nav-item').click(function(){
+			if($('body').hasClass('toggle-aboutmenu')){
+				$('body').removeClass('toggle-aboutmenu');
+			}
+		})
+		// $('body.toggle-aboutmenu #primarynav').click(function(){
+		// 	console.log('primary nav clicked!');
+		// })
+
+		// $('body.toggle-aboutmenu #primarynav .nav-item').click(function(){
+		// 	$('body').toggleClass('toggle-aboutmenu');
+		// });
 
   });
 

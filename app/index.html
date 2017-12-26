@@ -112,43 +112,36 @@
 	</nav> <!-- sidebar -->
 
 
-<!-- 				
-				<div data-bind="attr: {class: $parent.url + '-' + moveUrl}" hidden>
-					<p data-bind="html: info">
-
-
-					</p>
-
-					<div class="giphy">
-						<iframe data-bind="attr: {'src': giphy[0]}" width='100%' height='100%' style='position:absolute' frameBorder='0' class='giphy-embed' allowFullScreen></iframe>
-						<a target="_blank" data-bind="attr: {href: giphy[1]}">Video Source</a>
-					</div>
-				</div>
-
-				 -->
 
 
 	<!-- G & W Twitter - https://twitter.com/houseoffastfood -->
 
 	<div id="page-wrapper">
 		<img class="loader" src="images/spinner.svg" />
-		<div class="border-bottom row"> <!-- nav-wrapper -->
-			<nav id="primarynav" class="navbar navbar-light navbar-static-top">
+		<nav id="primarynav" class="navbar navbar-light navbar-static-top" style="align-items:center;">
 
-				<div class="navbar-header">
-					<button id="navbar-toggler" class="navbar-toggler navbar-toggler-left" href="#"><i class="fa fa-bars" aria-hidden="true"></i></button>
-					<span id="nav-title" class="navbar-brand --white" href="#">Select a Kill Confirm</span>
-				</div>
+			<div class="navbar-header">
+				<button id="navbar-toggler" class="navbar-toggler navbar-toggler-left mr-1" href="#"><i class="fa fa-bars" aria-hidden="true"></i></button>
+				<span id="nav-title" class="navbar-brand --white" href="#">Select a Kill Confirm</span>
+			</div>
 
-				<ul class="navbar-nav flex-row d-none d-md-flex">
-					<li class="nav-item"><a class="navbar-link small ml-3 --white" id="about" href="#">About</a></li>
-					<li class="nav-item"><a class="navbar-link small ml-3 --white" id="credits" href="#">Credits</a></li>
-					<li class="nav-item"><a class="navbar-link small ml-3 --white" id="feedback" href="https://github.com/Jollus88/Winning-Smash4/issues" target="_blank">Feedback <i class="fa fa-external-link ml-1" aria-hidden="true"></i></a></li>
-				</ul>
+			<div id="about-menu-toggler" class="--white d-inline-block d-md-none">
+				menu<i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+			</div>
+
+			<ul class="navbar-nav flex-column d-none flex-md-row d-md-flex">
+				<li class="nav-item"><a class="navbar-link small ml-3 --white" id="about" href="#">About</a></li>
+				<li class="nav-item"><a class="navbar-link small ml-3 --white" id="credits" href="#">Credits</a></li>
+				<li class="nav-item">
+					<a class="navbar-link small ml-3 --white" id="feedback" href="https://github.com/Jollus88/Winning-Smash4/issues" target="_blank">
+						Feedback 
+						<i class="fa fa-external-link ml-1" style="font-size:75%;" aria-hidden="true"></i>
+					</a>
+				</li>
+			</ul>
 
 
-			</nav>
-		</div> <!-- row -->
+		</nav>
 
 		<div id="card-wrapper" class="pt-page pt-page-current">
 
@@ -207,14 +200,7 @@
 				</div> <!-- row -->
 
 
-				<!-- /new character box -->
-
-				<!-- <button class="hamburger" style="position:relative;z-index:50;">Hamburger!</button> -->
-
-
-
-
-				<div id="notification"></div>
+				
 
 			</div>
 		</div> <!-- card-wrapper -->
@@ -250,9 +236,44 @@
 							</div>
 						</div>
 
-
 						<!--<div class="content">-->
-						<ul class="nav navbar-top-links navbar-right d-none d-md-flex">
+<!-- 						<ul class="nav navbar-top-links navbar-right d-none d-md-flex">
+
+							<li>
+								<a href="#" data-bind="click:sortName" class="btn filter-btn active">Name <span class="caret"></span></a>
+							</li>
+							<li>
+								<a href="#" data-bind="click:sortWeight" class="btn filter-btn">Weight <span class="caret"></span></a>
+							</li>
+							<li>
+								<a href="#" data-bind="click:sortDifficulty" class="btn filter-btn">Difficulty <span class="caret"></span></a>
+							</li>
+							<li>
+								<a href="#" id="filter-dropdown-btn" class="btn filter-btn"><i class="fa fa-chevron-down" aria-hidden="true"></i></a>
+							</li>
+							<li>
+								<ul class="dropdown-menu">
+									<li><a href="#" data-bind="click:sortFallspeed" class="btn filter-btn">Fallspeed <span class="caret"></span></a></li>
+									<li><a href="#" data-bind="click:sortGravity" class="btn filter-btn">Gravity <span class="caret"></span></a></li>
+									<li><a href="#" class="btn add-info-grid add-extra-info filter-btn">View In Grid <i class="checkbox fa fa-times" aria-hidden="true"></i></a></li>
+
+								</ul>
+							</li>
+						</ul> -->
+
+						<button id="info" class="btn btn-sm float-right" style="margin-left:10px;margin-top:3px;"><i class="fa fa-info-circle" aria-hidden="true"></i><span style="padding-left:10px; text-transform: none;" class="d-none d-md-inline">More Information</span></button>
+
+						</ul>
+					</nav>
+				</div>
+				<!-- !secondary nav -->
+
+
+				<!-- https://stackoverflow.com/questions/6487085/two-divs-one-fixed-width-the-other-the-rest -->
+				<!-- getting fancy now for the filter + info button section. Need filter to have dynamic responsive width while button is fixed width -->
+				<div class="row">
+					<div id="filters-bar" class="navbar d-block">
+						<ul id="sort" class="nav navbar-top-links navbar-right d-none d-md-flex float-right">
 
 							<li>
 								<a href="#" data-bind="click:sortName" class="btn filter-btn active">Name <span class="caret"></span></a>
@@ -275,49 +296,24 @@
 								</ul>
 							</li>
 						</ul>
-
-						<!--<div class="content">-->
-<!-- 						<ul class="nav navbar-top-links navbar-right">
-
-							<li>
-								<a id="info" href="#" class="btn filter-btn"><i class="fa fa-info-circle" aria-hidden="true"></i><span style="padding-left:10px; text-transform: none;" class="d-none d-md-inline">More Information</span></a>
-							</li>
-						</ul> -->
-					</nav>
-				</div>
-				<!-- !secondary nav -->
-
-
-				<!-- https://stackoverflow.com/questions/6487085/two-divs-one-fixed-width-the-other-the-rest -->
-				<!-- getting fancy now for the filter + info button section. Need filter to have dynamic responsive width while button is fixed width -->
-				<div style="margin-top:15px;margin-bottom:15px;">
-					<button id="info" class="btn btn-sm float-right" style="margin-left:10px;"><i class="fa fa-info-circle" aria-hidden="true"></i><span style="padding-left:10px; text-transform: none;" class="d-none d-md-inline">More Information</span></button>
-					<div class="search-box" style="overflow:hidden;">
-						<input id="search" placeholder="Filter..." type="search" name="filter" autocomplete="off">
-						<button class="btn clear-input">
-							<svg fill="#333" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-							    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+						<button id="filter-toggle" class="btn float-right d-block d-md-none">
+							<span>Sort</span>
+							<svg id="icon-filter" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+							    <path d="M14 5h8v2h-8zm0 5.5h8v2h-8zm0 5.5h8v2h-8zM2 11.5C2 15.08 4.92 18 8.5 18H9v2l3-3-3-3v2h-.5C6.02 16 4 13.98 4 11.5S6.02 7 8.5 7H12V5H8.5C4.92 5 2 7.92 2 11.5z"/>
 							    <path d="M0 0h24v24H0z" fill="none"/>
 							</svg>
 						</button>
+						<div class="search-box" style="overflow:hidden;">
+							<input id="search" placeholder="Filter..." type="search" name="filter" autocomplete="off">
+							<button class="btn clear-input">
+								<svg fill="#333" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+								    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+								    <path d="M0 0h24v24H0z" fill="none"/>
+								</svg>
+							</button>
+						</div>
 					</div>
 				</div>
-
-				<div class="row" style="align-items:center;">
-					<div class="col-10">
-
-					</div>
-					<div class="col-2">
-						<!-- <a id="info" href="#" class="btn filter-btn"><i class="fa fa-info-circle" aria-hidden="true"></i><span style="padding-left:10px; text-transform: none;" class="d-none d-md-inline">More Information</span></a> -->
-					</div>
-
-<!-- 						<ul class="nav navbar-top-links navbar-right">
-
-							<li>
-								
-							</li>
-						</ul> -->
-				</div> <!-- row -->
 
 				<div id="characterGrid" class="row" data-bind="foreach: character" hidden>
 
@@ -635,6 +631,8 @@
 			</div> <!-- characterDetails -->
 		</div> <!-- characterContainer -->
 	</div> <!-- characterModal -->
+
+	<div id="notification"></div>
 
 	<!-- build:js js/main.min.js -->
 
