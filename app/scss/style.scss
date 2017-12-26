@@ -2015,11 +2015,14 @@ tr.table-descs td{
         position:fixed;
         z-index:5;
         #about-menu-toggler{
-            padding: 2px 15px;
+            padding: 2px 14px;
             border-radius: 50%;
+            position: absolute;
+            right: 6px;
+            top: 15px;
             &:hover{
                 cursor:pointer;
-                background:rgba(255,255,255,0.1);
+                // background:rgba(255,255,255,0.1);
             }
         }
         .navbar-nav{
@@ -2052,7 +2055,7 @@ tr.table-descs td{
         }
     }
     body.toggle-aboutmenu{
-        #primarynav .navbar-nav{display:block;}
+        #primarynav .navbar-nav{display:block !important;}
     }
     #page-wrapper{overflow:visible;} // Need this for collapsible nav in top-right
 

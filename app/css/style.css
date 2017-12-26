@@ -11714,8 +11714,11 @@ tr.table-descs td {
     position: fixed;
     z-index: 5; }
     #primarynav #about-menu-toggler {
-      padding: 2px 15px;
-      border-radius: 50%; }
+      padding: 2px 14px;
+      border-radius: 50%;
+      position: absolute;
+      right: 6px;
+      top: 15px; }
       #primarynav #about-menu-toggler:hover {
         cursor: pointer;
         background: rgba(255, 255, 255, 0.1); }
@@ -11743,7 +11746,7 @@ tr.table-descs td {
             margin-bottom: 0;
             padding-bottom: 10px; }
   body.toggle-aboutmenu #primarynav .navbar-nav {
-    display: block; }
+    display: block !important; }
   #page-wrapper {
     overflow: visible; } }
 
