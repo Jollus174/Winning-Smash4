@@ -285,15 +285,20 @@ var Page = (function(){
 
 				// this is good!
 				// https://stackoverflow.com/questions/4329092/multi-dimensional-associative-arrays-in-javascript
-				var $character = $('.' + index);
+				var $character = $('.' + index + '.character-box');
+				// console.log(index);
 				var minPercent = value[0];
 				var maxPercent = value[1];
-				//console.log('min percent is: ' + minPercent + ' and max percent is: ' + maxPercent);
+				//console.log(index + 's attrs are: min percent is: ' + minPercent + ' and max percent is: ' + maxPercent);
 
 				$character.find('.grid-minPercent').text(minPercent);
 				$character.find('.grid-maxPercent').text(maxPercent);
 				$character.attr('data-minpercent', minPercent);
 				$character.attr('data-maxpercent', maxPercent);
+
+
+				// $character.find('.grid-minPercent').text(minPercent).attr('data-minpercent', minPercent);
+				// $character.find('.grid-maxPercent').text(maxPercent).attr('data-maxpercent', maxPercent);
 				// IT WOOOOOORKS!!!
 
 				// Map that difficulty
@@ -339,11 +344,6 @@ var Page = (function(){
 				support = Modernizr.cssanimations;
 
 
-			// Grab the id of the existing character for class addition/removal to relevant containers
-			// This will only work on activation though...
-			// Why can't I use the #page-wrapper, again?
-			//var charUrl = self.closest('.card-deck').data('url');
-
 			// Need to delay open/close function in case it's already animating. Some spastic might hit ESC twice quickly
 			// Add class of 'animating' to body and remove when the animation is finished
 			$('body').addClass('animating');
@@ -353,8 +353,10 @@ var Page = (function(){
 				activateCharacterGrid(self);
 				retrieveCharUrl(self);
 				// variables for transition it forwards
-				// outClass = 'pt-page-scaleDown',
-				// inClass = 'pt-page-moveFromRight pt-page-ontop';
+				/* FANCIER TRANSITIONS
+				outClass = 'pt-page-scaleDown',
+				inClass = 'pt-page-moveFromRight pt-page-ontop';
+				*/
 				outClass = 'pt-page-moveToLeft';
 				inClass = 'pt-page-moveFromRight pt-page-ontop';
 
@@ -372,8 +374,10 @@ var Page = (function(){
 					$('body').removeClass('character-grid-active');
 					//
 
-					// outClass = 'pt-page-moveToRight pt-page-ontop';
-					// inClass = 'pt-page-scaleUp';
+				 	/*FANCIER TRANSITIONS
+					outClass = 'pt-page-moveToRight pt-page-ontop';
+					inClass = 'pt-page-scaleUp';
+					*/
 					inClass = 'pt-page-moveFromLeft pt-page-ontop';
 					outClass = 'pt-page-moveToRight';
 
@@ -457,14 +461,8 @@ var Page = (function(){
 				$('.nav-moves a.active').removeClass('active');
 				$('#secondarynav-dropdown .dropdown-item.active').removeClass('active');
 
-				// Deactivate the filter toggle
-				if($('body').hasClass('filtersActive')){
-					$('body').removeClass('filtersActive');
-					$('#filter-toggle').removeClass('active');
-				}
-				$('#secondarynav .dropdown').removeClass('show');
-				$('#secondarynav #secondarynav-dropdown-menu').removeClass('show');
-
+				$('body').removeClass('filtersActive');
+				$('#filter-toggle').removeClass('active');
 			};
 		}
 
@@ -473,6 +471,7 @@ var Page = (function(){
 
 			// Check if the grid is already out
 			// If the grid is out and the moveBtn is clicked, that means we're just transitioning between character grids and need a different kind of transition
+			// This is for the side menu, which has buttons that trigger a click for its counterpart .moveBtn in card grid
 
 			// check to see if it already has a class of 'active' first. Don't want people clicking the same button twice
 			if(!$(this).hasClass('active')){
@@ -759,6 +758,9 @@ var Page = (function(){
 			// setTimeout(function(){
 			rageAdjustment($charModal.find('.rageBtn.active'));
 			// }, 500);
+
+			var $activeMoveBtn = $('.moveBtn.active');
+			$('#modalTitle span').html($activeMoveBtn.closest('.card-deck').data('name') + ' - ' + $activeMoveBtn.html());
 			
 
 
@@ -1106,8 +1108,8 @@ var Page = (function(){
 
 		/* --- */
 
-		$('#filter-toggle').click(function(){
-			//console.log('filter toggle clicked!');
+		$('#filter-toggle').click(function(e){
+			e.stopPropagation();
 			var $this = $(this);
 			$this.toggleClass('active');
 			//$this.next('.btn-group.mobile').toggleClass('active');
@@ -1168,18 +1170,51 @@ var Page = (function(){
 			$('#page-info .' + currentMove).show();
 		});
 
-		$('#filter-dropdown-btn').click(function(){
+		$('#filter-dropdown-btn').click(function(e){
+			e.stopPropagation();
 			$this = $(this);
 			$this.toggleClass('active');
 			$this.closest('.navbar-top-links').toggleClass('open');
 		});
 
-		$('#secondarynav-dropdown').click(function(){
-			console.log('dropdown button clicked!');
-			$('#secondarynav .navbar-header .dropdown-menu').toggleClass('show');	
+		$('#secondarynav-dropdown').click(function(e){
+			e.stopPropagation();
+			$('#secondarynav-dropdown-menu').toggleClass('show');	
 		});
 
+		$('#secondarynav').on('click', '.dropdown-item', function(){
+			var $this = $(this);
+			var ident = $this.data('ident');
+			$('.moveBtn[id=' + ident + ']').trigger('click');
+		});
 
+		$('#about-menu-toggler').click(function(e){
+			e.stopPropagation();
+			$('body').toggleClass('toggle-aboutmenu');
+		});
+		// Need to close About menu if item is clicked
+		// $('#primarynav .nav-item').click(function(){
+		// 	$('body').removeClass('toggle-aboutmenu');
+		// });
+
+
+		/////////////////////////////////////////////////////////////////////////////
+		// Reset dropdowns on document click
+		// https://craigmdennis.com/articles/close-dropdowns-clicking-outside-jquery/
+		/////////////////////////////////////////////////////////////////////////////
+
+		$(document).click(function(){
+			$('#secondarynav-dropdown-menu').removeClass('show');
+			$('#filter-dropdown-btn').removeClass('active');
+			$('#sort').removeClass('open');
+
+
+			// Deactivate the filter toggle
+			$('#secondarynav .dropdown').removeClass('show');
+			$('#secondarynav #secondarynav-dropdown-menu').removeClass('show');
+		});
+
+		//////////////////////////////////////////////////////////////////////////////
 
 
 		$('.add-extra-info').click(function(){
@@ -1230,21 +1265,7 @@ var Page = (function(){
 			$('.card-deck #' + dataref).trigger('click');
 		});
 
-		$('#secondarynav').on('click', '.dropdown-item', function(){
-			var $this = $(this);
-			var ident = $this.data('ident');
-			$('.moveBtn[id=' + ident + ']').trigger('click');
-		});
 
-		$('#about-menu-toggler').click(function(){
-			$('body').toggleClass('toggle-aboutmenu');
-		});
-		// Need to close About menu if item is clicked
-		$('#primarynav .nav-item').click(function(){
-			if($('body').hasClass('toggle-aboutmenu')){
-				$('body').removeClass('toggle-aboutmenu');
-			}
-		});
 		// $('body.toggle-aboutmenu #primarynav').click(function(){
 		// 	console.log('primary nav clicked!');
 		// })

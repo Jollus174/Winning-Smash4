@@ -520,13 +520,16 @@
 			
 		</div>
 
-		<div id="characterBackButton" class="backButton">
-			<svg class="icon-arrowback" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			    <path d="M0 0h24v24H0z" fill="none"/>
-			    <path class="pathfill" d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
-			</svg>
-		</div>
 		<div class="icon-nextprev-container">
+			<div id="modalTitle">
+				<span></span>
+			</div>
+			<div id="characterBackButton" class="backButton">
+				<svg class="icon-arrowback" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+				    <path d="M0 0h24v24H0z" fill="none"/>
+				    <path class="pathfill" d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+				</svg>
+			</div>
 			<svg id="icon-prev" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
 			    <path class="pathfill" d="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z"></path>
 			    <path d="M0-.5h24v24H0z" fill="none"></path>
@@ -566,7 +569,7 @@
 				<div class="sticky">
 					<div class="stickyName" data-ref="name"></div>
 					<div class="rageModifier">
-						<h3>Donkey Kong Rage Modifier</h3>
+						<h3>Rage Modifier</h3>
 						<!-- <div class="btn-group"> -->
 							<button type="button" class="btn rageBtn resetBtn active" data-rage="0">0%</button>
 							<button type="button" class="btn rageBtn" data-rage="50">50%</button>
@@ -596,8 +599,8 @@
 													<th class="stage-part-name" colspan="3" data-bind="html: stagePartName"></th>
 												</tr>
 												<tr class="table-descs">
-													<td>Min DD %</td>
-													<td>Max DD %</td>
+													<td>Min %</td>
+													<td>Max %</td>
 													<td>Window</td>
 												</tr>
 												<tr>
