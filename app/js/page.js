@@ -50,19 +50,15 @@ var Page = (function(){
 				$this.find('.grid-index span').text(theIndex + 1);
 			})
 		}
-
 		// Initialise the reindexing
 		reassignIndexes();
 
 
-		// self.generateCharacters = function(event){
-		// 	var $element = $(event.target);
+		// These sort buttons are now done via jQuery rather than Knockout
+		// Reason being that the troublesome difficulty sort function won't work with Knockout, due to the values being derived dynamically through JSON loaded via jQuery
+		// Need to redo all sort functions to work with jQuery, since Knockout and jQuery sort functions don't play nice together
+		// http://trentrichardson.com/2013/12/16/sort-dom-elements-jquery/
 
-		// 	// GET CHARACTER NAME FROM BUTTON, THEN...
-		// 	console.log(name);
-		// };
-
-		// Sorting arrays within Knockout --> http://www.c-sharpcorner.com/UploadFile/cd7c2e/apply-sort-function-on-observable-array-using-knockoutjs/
 		self.sortName = function(item, event){
 			var $filterButtons = $('.filter-btn').not('#filter-dropdown-btn.filter-btn');
 			var $element = $(event.target);
@@ -74,23 +70,24 @@ var Page = (function(){
 				$element.addClass('active');
 			};
 
-			// Create conditional to sort the characters A-Z or Z-A
+			var $grid = $('#characterGrid');
+			var $gridItem = $grid.children('.character-box');
+
 			if($element.hasClass('asc')){
-				// Ascending order
-				self.character.sort(function(left, right){
-					return right.name == left.name ? 0 : (right.name < left.name ? -1 : 1)
+				$gridItem.sort(function(left, right){
+					// Ascending order
+					return $(right).data('name') == $(left).data('name') ? 0 : ($(right).data('name') < $(left).data('name') ? -1 : 1)
 				});
 			} else {
-				// Descending order (default)
-				self.character.sort(function(left, right){
-					return left.name == right.name ? 0 : (left.name < right.name ? -1 : 1)
+				$gridItem.sort(function(left, right){
+					return $(left).data('name') == $(right).data('name') ? 0 : ($(left).data('name') < $(right).data('name') ? -1 : 1)
 				});
-				reassignIndexes();
+				
 			}
-		}
+			$gridItem.detach().appendTo($grid);
+			reassignIndexes();
+		};
 
-		// Sorting tables
-		// https://develothink.com/Blog/sorting-tables-using-knockoutjs
 		self.sortWeight = function(item, event){
 			var $filterButtons = $('.filter-btn').not('#filter-dropdown-btn.filter-btn');
 			var $element = $(event.target);
@@ -102,19 +99,21 @@ var Page = (function(){
 				$element.addClass('active');
 			};
 
+			var $grid = $('#characterGrid');
+			var $gridItem = $grid.children('.character-box');
+
 			if($element.hasClass('asc')){
-				// Ascending order (default)
-				self.character.sort(function(lower, higher){
-					return higher.weight - lower.weight;
+				$gridItem.sort(function(lower, higher){
+					return $(higher).data('weight') - $(lower).data('weight');
 				});
 			} else {
-				// Descending order (default)
-				self.character.sort(function(lower, higher){
-					return lower.weight - higher.weight;
+				$gridItem.sort(function(lower, higher){
+					return $(lower).data('weight') - $(higher).data('weight');
 				});
-				reassignIndexes();
 			}
-		}
+			$gridItem.detach().appendTo($grid);
+			reassignIndexes();
+		};
 
 		self.sortDifficulty = function(item, event){
 			var $filterButtons = $('.filter-btn').not('#filter-dropdown-btn.filter-btn');
@@ -127,20 +126,22 @@ var Page = (function(){
 				$element.addClass('active');
 			};
 
-			// Create conditional to sort the characters Easy-Hard or Hard-Easy
+			var $grid = $('#characterGrid');
+			var $gridItem = $grid.children('.character-box');
+
 			if($element.hasClass('asc')){
-				// Ascending order
-				self.character.sort(function(lower, higher){
-					return (lower.maxPercent - lower.minPercent) - (higher.maxPercent - higher.minPercent);
+				$gridItem.sort(function(lower, higher){
+					return $(higher).find('.text-percRange').text() - $(lower).find('.text-percRange').text();
 				});
 			} else {
-				// Descending order (default)
-				self.character.sort(function(lower, higher){
-					return (higher.maxPercent - higher.minPercent) - (lower.maxPercent - lower.minPercent);
+				$gridItem.sort(function(lower, higher){
+					return $(lower).find('.text-percRange').text() - $(higher).find('.text-percRange').text();
 				});
-				reassignIndexes();
 			}
-		}
+			$gridItem.detach().appendTo($grid);
+			reassignIndexes();
+		};
+
 
 		self.sortFallspeed = function(item, event){
 			var $filterButtons = $('.filter-btn').not('#filter-dropdown-btn.filter-btn');
@@ -153,20 +154,21 @@ var Page = (function(){
 				$element.addClass('active');
 			};
 
-			// Create conditional to sort the characters low-fallspeed to high-fallspeed or high-fallspeed to low-fallspeed
+			var $grid = $('#characterGrid');
+			var $gridItem = $grid.children('.character-box');
+
 			if($element.hasClass('asc')){
-				// Ascending order (default)
-				self.character.sort(function(lower, higher){
-					return higher.fallspeed - lower.fallspeed;
+				$gridItem.sort(function(lower, higher){
+					return $(higher).data('fallspeed') - $(lower).data('fallspeed');
 				});
 			} else {
-				// Descending order (default)
-				self.character.sort(function(lower, higher){
-					return lower.fallspeed - higher.fallspeed;
+				$gridItem.sort(function(lower, higher){
+					return $(lower).data('fallspeed') - $(higher).data('fallspeed');
 				});
-				reassignIndexes();
 			}
-		}
+			$gridItem.detach().appendTo($grid);
+			reassignIndexes();
+		};
 
 		self.sortGravity = function(item, event){
 			var $filterButtons = $('.filter-btn').not('#filter-dropdown-btn.filter-btn');
@@ -179,41 +181,25 @@ var Page = (function(){
 				$element.addClass('active');
 			};
 
-			// Create conditional to sort the characters low-grav to high-grav or high-grab to low-grav
+			var $grid = $('#characterGrid');
+			var $gridItem = $grid.children('.character-box');
+
 			if($element.hasClass('asc')){
-				// Ascending order (default)
-				self.character.sort(function(lower, higher){
-					return higher.gravity - lower.gravity;
+				$gridItem.sort(function(lower, higher){
+					return $(higher).data('gravity') - $(lower).data('gravity');
 				});
 			} else {
-				// Descending order (default)
-				self.character.sort(function(lower, higher){
-					return lower.gravity - higher.gravity;
+				$gridItem.sort(function(lower, higher){
+					return $(lower).data('gravity') - $(higher).data('gravity');
 				});
-				reassignIndexes();
 			}
-		}
-
-		// Using traditional jQuery 'click()' bindings will not work on dynamically generated character boxes!
-		// https://stackoverflow.com/questions/6658752/click-event-doesnt-work-on-dynamically-generated-elements
-
-
+			$gridItem.detach().appendTo($grid);
+			reassignIndexes();
+		};
 
 		// All BELOW MIGRATED OVER FROM custom.js
 		// Now no more BS with the JSON being loaded twice
 
-		// Compute difficulty per character
-		// TO DO - Need to set differing values since multiple chars and confirms now
-		function computeDifficulty(minPercent, maxPercent){
-			var percent = maxPercent - minPercent;
-			var diff = "";
-			if(0 <= percent && percent <= 6){diff = 'very-hard'};
-			if(7 <= percent && percent <= 11){diff = 'hard'};
-			if(12 <= percent && percent <= 22){diff = 'average'};
-			if(23 <= percent && percent <= 30){diff = 'easy'};
-			if(31 <= percent){diff = 'very-easy'};
-			return diff;
-		}
 
 		// Need to trigger this on button click now
 		// Needs to be done via callback so I can control exactly WHEN the data switches over. It'll be transitioning now, see - it can be changed mid-transition
@@ -234,11 +220,6 @@ var Page = (function(){
 			var id = $this.attr('id');
 			$('#side-menu .nav-moves a').removeClass('active');
 			$('#side-menu a[data-ref=' + id + ']').addClass('active');
-
-			// pageTransition();
-
-			// $('#card-wrapper').removeClass('pt-page-current').addClass(outClass);
-			// $('#character-wrapper').addClass('pt-page-current, pt-page-ontop').addClass(inClass);
 
 			/* --- */
 
@@ -281,6 +262,23 @@ var Page = (function(){
 				$('#secondarynav .dropdown').hide();
 			}
 
+			var percentDifferences = [];
+			var percentSum = 0;
+			var minPercentSum = 0;
+			var maxPercentSum = 0
+
+			$.each(killConfirmsJSON[characterId]['moves'][moveId]['percents'], function(index, value){
+				// Push these min/max percent values to an array so I can calculate an average between all of them
+				// Need this to calculate difficulties in a uniform manner
+				var minPercent = value[0];
+				var maxPercent = value[1];
+
+				percentDifferences.push(maxPercent - minPercent);
+				percentSum += ((maxPercent + 1) - minPercent);
+				minPercentSum += minPercent;
+				maxPercentSum += maxPercent;
+			});
+
 			$.each(killConfirmsJSON[characterId]['moves'][moveId]['percents'], function(index, value){
 
 				// this is good!
@@ -300,33 +298,48 @@ var Page = (function(){
 				// $character.find('.grid-minPercent').text(minPercent).attr('data-minpercent', minPercent);
 				// $character.find('.grid-maxPercent').text(maxPercent).attr('data-maxpercent', maxPercent);
 				// IT WOOOOOORKS!!!
+				
+				var percentAverage = percentSum/percentDifferences.length;
+
+				// Now calculate the percents to iterate by. Assuming there are 5 difficulty levels, take sum and divide by midway for average. So sum/2.5.
+				// This calculates how much to iterate each percent by
+				var diffIterator = Math.floor(percentAverage/2.5);
+				//console.log(difficultyIterator);
+
+				var diff = "";
+				var percentDiff = (maxPercent - minPercent) + 1;
+
+				// Now compute that difficulty
+				if(0 <= percentDiff && percentDiff <= diffIterator){diff = 'very-hard'};
+				if(diffIterator <= percentDiff && percentDiff <= diffIterator*2){diff = 'hard'};
+				if(diffIterator*2 <= percentDiff && percentDiff <= diffIterator*3){diff = 'average'};
+				if(diffIterator*3 <= percentDiff && percentDiff <= diffIterator*4){diff = 'easy'};
+				if(diffIterator*4 <= percentDiff){diff = 'very-easy'};
 
 				// Map that difficulty
+				// Regretably I'll need to run through the JSON twice now, because gotta calculate an average from all values, THEN apply based off those values
 				var $difficulty = $character.find('.difficulty');
 
-				$difficulty.attr('class', 'difficulty').addClass(computeDifficulty(minPercent, maxPercent));
-				$difficulty.find('.text-difficulty').text(computeDifficulty(minPercent, maxPercent));
-				$difficulty.find('.text-percRange').text(parseInt(maxPercent) - parseInt(minPercent));
-				
+				$difficulty.attr('class', 'difficulty').addClass(diff);
+				$difficulty.find('.text-difficulty').text(diff);
+				$difficulty.find('.text-percRange').text(parseInt(maxPercent) - parseInt(minPercent) + 1);
 			});
 
 		};
 
 
 		function retrieveCharUrl(self){
-			// Place the character's name in #page-wrapper so I can do and target things with it
+			// Place the character's name in #page-wrapper so I can target and do things with it
 			var $pagewrapper = $('#page-wrapper');
 			var charUrl = self.closest('.card-deck').data('url');
-			//$pagewrapper.attr('class', charUrl);
 			$pagewrapper.addClass(charUrl);
 		};
 		function pageTransition(self, transitionToAnotherGrid){
 
-
 			// Need to turn off sidemenu on mobile first if a grid button is clicked!
-			if($(window).width() < 768){
-				$('body').removeClass('toggle-sidedrawer');
-			};
+			// if($(window).width() < 768){
+			// 	$('body').removeClass('toggle-sidedrawer');
+			// };
 
 			/* --- Animate the navigation transition -- */
 			var	$wrapper = $('#page-wrapper'),
@@ -365,8 +378,10 @@ var Page = (function(){
 					// variables for transition it to the same screen
 					// The only way this is gonna happen is if the grid is on screen and a sidemenu button is clicked, which in turn is like a card button click
 					$nonCurrPage = $currPage;
-					outClass = 'pt-page-scaleDownCenter';
-					inClass = 'pt-page-scaleUpCenter pt-page-delay100';
+					// outClass = 'pt-page-scaleDownCenter';
+					// inClass = 'pt-page-scaleUpCenter pt-page-delay100';
+					// outClass = 'pt-page-fade';
+					// inClass = 'pt-page-fade';
 				} else {
 
 					// variables for transition it backwards
@@ -402,7 +417,24 @@ var Page = (function(){
 
 				} else {
 
+
 					// Initiate transition BETWEEN DIFFERENT CHARACTERS
+
+
+					
+					// Initiate transition between MOVES OF SAME CHARACTER
+					$('#secondarynav-dropdown-menu').removeClass('show');
+					$('#character-wrapper').fadeOut('fast', function(){
+						activateCharacterGrid(self);
+						console.log('transitioning between different characters!');
+						$('#page-wrapper').removeClass();
+						retrieveCharUrl(self);
+						$('#character-wrapper').fadeIn('fast');
+						$('body').removeClass('animating');
+					});
+
+
+/*
 					$currPage.addClass(outClass).on(animEndEventName, function() {
 
 						// This needs work since class is switching at wrong time
@@ -416,14 +448,14 @@ var Page = (function(){
 						activateCharacterGrid(self);
 						$('#page-wrapper').removeClass();
 						retrieveCharUrl(self);
+					});
 						$nonCurrPage.removeClass().addClass('pt-page pt-page-current').addClass(inClass).on(animEndEventName, function() {
 
 							var $this = $(this);
 							$this.attr('class', 'pt-page pt-page-current');
 
 							$nonCurrPage.off( animEndEventName );
-						});
-					});
+						});*/
 				}
 			} else {
 				// Initiate STANDARD transition
@@ -512,6 +544,9 @@ var Page = (function(){
 		// http://joji.me/en-us/blog/how-to-develop-high-performance-onscroll-event
 		var scroll = function(){
 			fixedRagebar($charContainer);
+
+			// Need secondary nav scroll functions here!
+			////////////////////////////////////////////
 		}
 		var raf = window.requestAnimationFrame ||
 		    window.webkitRequestAnimationFrame ||
@@ -621,7 +656,8 @@ var Page = (function(){
 			$('body').addClass('no-scroll character-active');
 
 			// Grab the data-index attr added by Knockout for each box. This is used to link the box to the JSON data that's generated in the modal
-			var $index = self.closest('.character-box.selected').data('index');
+			var $charBox = self.closest('.character-box.selected');
+			var $index = $charBox.data('index');
 
 			// Character Modal initialisers
 			// I want these outside the 'getJSON' request so they're loaded before the JSON is, otherwise there is NO IMAGE for a brief moment.
@@ -669,8 +705,6 @@ var Page = (function(){
 			var tcLowPlatMin = parseInt($moveBtnActive.data('tclowplatmin'));
 			var tcSidePlatMin = parseInt($moveBtnActive.data('tcsideplatmin'));
 			var tcTopPlatMin = parseInt($moveBtnActive.data('tctopplatmin'));
-			
-			var percRange = (maxPercent - minPercent) + 1;
 
 			// Time to activate the Character Modal
 			$charModal.addClass('active');
@@ -701,8 +735,11 @@ var Page = (function(){
 			$charModal.find('span[data-ref="name"], .stickyName').text(name);
 
 			// Generating the difficulty text via the global function in characters.js
-			var difficultyAmount = computeDifficulty(minPercent, maxPercent);
-			$charModal.find('.grid-difficulty').html('<span class="' + difficultyAmount + '">' + difficultyAmount + ' - ' + percRange + '%</span>');
+			//var difficultyAmount = computeDifficulty(minPercent, maxPercent);
+			// Fuck calculating difficulty again, just grab it from the charBox HTML like a good chap
+			
+			//$charModal.find('.grid-difficulty').html('<span class="' + difficultyAmount + '">' + difficultyAmount + ' - ' + percRange + '%</span>');
+			$charModal.find('.grid-difficulty').html($charBox.find('.grid-difficulty').html());
 			$charModal.find('.characterName').text(name);
 
 			var $charOverviewItem = $charModal.find('.characterOverview');
@@ -1206,7 +1243,7 @@ var Page = (function(){
 		$(document).click(function(){
 			$('#secondarynav-dropdown-menu').removeClass('show');
 			$('#filter-dropdown-btn').removeClass('active');
-			$('#sort').removeClass('open');
+			//$('#sort').removeClass('open');
 
 
 			// Deactivate the filter toggle
@@ -1289,7 +1326,7 @@ var Page = (function(){
 		},
 		showOfflineWarning: function(){
 			// disable the live data
-			// document.querySelector('body').classList.add('loading')
+			document.querySelector('body').classList.add('loading')
 			// load html template informing the user they are offline
 			var request = new XMLHttpRequest();
 			request.open('GET', '/offline.html', true);

@@ -117,7 +117,9 @@
 	<!-- G & W Twitter - https://twitter.com/houseoffastfood -->
 
 	<div id="page-wrapper">
-		<img class="loader" src="images/spinner.svg" />
+		<div class="loader-container">
+			<img class="loader" src="images/spinner.svg" />
+		</div>
 		<nav id="primarynav" class="navbar navbar-light navbar-static-top" style="align-items:center;">
 
 			<div class="navbar-header">
@@ -334,7 +336,6 @@
 							<div class="characterImage"><div class="characterImageContainer-lightOverlay"></div></div>
 							
 							<div class="grid-difficulty">
-								<!-- <span data-bind="attr: {class: difficulty}"><span data-bind="text: difficulty">easy</span> - <span data-bind="text: percRange">28</span>%</span> -->
 								<span class="difficulty easy"><span class="text-difficulty">easy</span> - <span class="text-percRange">28</span>%</span>
 							</div>
 							<div class="grid-index">
@@ -349,9 +350,6 @@
 							<div hidden class="extra-info grid-gravity">
 								<span>Gravity - <span style="font-weight:700;" data-bind="text: gravity">0.10784</span></span>
 							</div>
-							<!--<div data-bind="css: ledgeFsmash" class="grid-ledgeFsmash">
-								<span>Ledge Fsmash - <span style="font-weight:700;" data-bind="text: ledgeFsmash"></span></span>
-							</div>-->
 
 							<div class="characterName">
 								<span data-bind="text:name">Ganondorf</span>
@@ -384,11 +382,13 @@
 
 		<div id="sidedrawer-underlay" class="modalUnderlay" hidden></div>
 
-		<div id="menuBackButton" class="backButton">
-			<svg class="icon-arrowback" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			    <path d="M0 0h24v24H0z" fill="none"/>
-			    <path class="pathfill" d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
-			</svg>
+		<div class="icon-nextprev-container">
+			<div id="menuBackButton" class="backButton">
+				<svg class="icon-arrowback" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+				    <path d="M0 0h24v24H0z" fill="none"/>
+				    <path class="pathfill" d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+				</svg>
+			</div>
 		</div>
 
 		<div id="page-about" hidden>

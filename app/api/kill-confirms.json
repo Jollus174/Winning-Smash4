@@ -49,8 +49,8 @@
                 "duck-hunt": [89, 108],
                 "falco": [83, 103],
                 "fox": [80, 101],
-                "ganondorf": [98, 85],
-                "game-and-watch": [71, 127],
+                "ganondorf": [71, 85],
+                "game-and-watch": [98, 127],
                 "greninja": [83, 100],
                 "ike": [96, 122],
                 "jigglypuff": [70, 105],
@@ -67,9 +67,9 @@
                 "mega-man": [95, 116],
                 "meta-knight": [78, 96],
                 "mewtwo": [76, 97],
-                "mii-brawler": [],
-                "mii-gunner": [],
-                "mii-swordfighter": [],
+                "mii-brawler": [0, 0],
+                "mii-gunner": [0, 0],
+                "mii-swordfighter": [0, 0],
                 "ness": [83, 102],
                 "olimar": [77, 91],
                 "pacman": [85, 103],
@@ -99,9 +99,10 @@
                 "zero-suit-samus": [82, 98]
             }
 
+
         }
     ]
-}, 
+},
 {
     "index": 1,
     "name": "Donkey Kong",
@@ -109,7 +110,7 @@
     "moves": [
         {
             "moveId": 0,
-            "moveName": "Cargo Up Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air (bell)",
+            "moveName": "Cargo Up Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air",
             "moveUrl": "cargoupthrow-upair",
 
             "info": "Within certain percent thresholds, it also functions as a kill confirm into his up air attack. This confirm is known among Donkey Kong specialists as <strong>Aerial Cargo Up Toss up air (ACUT)</strong>, the <strong>DKO</strong>, or to most Western players, simply as the <strong>Ding Dong</strong>.",
@@ -274,9 +275,9 @@
                 "mega-man": [121, 175],
                 "meta-knight": [100, 145],
                 "mewtwo": [96, 132],
-                "mii-brawler": [],
-                "mii-gunner": [],
-                "mii-swordfighter": [],
+                "mii-brawler": [0, 0],
+                "mii-gunner": [0, 0],
+                "mii-swordfighter": [0, 0],
                 "ness": [106, 138],
                 "olimar": [99, 130],
                 "pacman": [108, 139],
