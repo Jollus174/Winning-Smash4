@@ -74,6 +74,9 @@ $robin-button-primary-active:#d82800;
             background-color:$bowser;
             color:$text-light;
         }
+        .btn{
+            background-color:darken($bowser, 10%) !important;
+        }
     }
     &.nav-characters:before{background:$bowser;}
     li > span{
@@ -117,6 +120,9 @@ $robin-button-primary-active:#d82800;
             background-color:$donkey-kong;
             color:$text-dark;
         }
+        .btn{
+            background-color:darken($donkey-kong, 10%) !important;
+        }
     }
     &.nav-characters{
         &:before{background:$donkey-kong;}
@@ -149,6 +155,9 @@ $robin-button-primary-active:#d82800;
         .card-image-top{
             background-color:$gnw;
             color:$text-light;
+        }
+        .btn{
+            background-color:darken($gnw, 10%) !important;
         }
     }
     &.nav-characters{
@@ -183,11 +192,12 @@ $robin-button-primary-active:#d82800;
             background-color:$lucas;
             color:$text-light;
         }
+        .btn{
+            background-color:darken($lucas, 10%) !important;
+        }
     }
     .btn{color:$text-light;}
     &.nav-characters{
-        //
-
         li > span{
             background:transparentize($lucas, 0.2) !important;
             color: $text-light !important;
@@ -209,6 +219,7 @@ $robin-button-primary-active:#d82800;
     .secondarynav{background-color:$robin;}
     .btn, .dropdown-item{
         background-color:$robin-button-homepage !important;
+        color:$text-light;
         //border-color:$robin-button-homepage;
         &:hover, &.active{background-color:darken($robin-button-homepage, 10%) !important;}
     }
@@ -217,8 +228,10 @@ $robin-button-primary-active:#d82800;
             background-color:$robin;
             color:$text-light;
         }
+        .btn{
+            background-color:darken($robin, 10%) !important;
+        }
     }
-    .btn{color:$text-light;}
     &.nav-characters{
         &:before{background:transparentize($robin, 0.5) !important;}
         li > span{
@@ -229,10 +242,6 @@ $robin-button-primary-active:#d82800;
             position:relative;
             &:before{background:transparentize($robin, 0.5) !important;}
         }
-        // .nav-moves a{
-        //     background:transparentize($robin, 0.4);
-        //     color: $text-light !important;
-        // }
     }
     .dropdown-menu, #sort{background-color:$robin}
 }
@@ -242,26 +251,31 @@ $robin-button-primary-active:#d82800;
 /* Cards */
 
 /* --- Temporary style, the BG colour will normally be auto-generated --- */
-.card .characterImage{
-    background-repeat: no-repeat;
-    background-position: right center;
-    opacity:0.5;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    right: 0;
-}
-.card .card-image-top{
-    position:relative;
-}
-.card-image-top .card-body{
-    position:relative;
-    padding:0.75rem 1.25rem;
-}
-.card .card-body button{
-    margin-right:5px;
-    border:2px solid;
+.card{
+    .characterImage{
+        background-repeat: no-repeat;
+        background-position: right center;
+        opacity:0.5;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+    .card-image-top{
+        position:relative;
+    }
+    .card-body{
+        position:relative;
+        // padding:0.75rem 1.25rem;
+        .btn-group > .btn{
+            margin-left:0;
+        }
+        button{
+            margin-right:5px;
+            border:2px solid;
+        }
+    }
 }
 .moveBtn.active{
     border-color:rgba(213, 0, 0, 0.5) !important;

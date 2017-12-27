@@ -232,7 +232,6 @@ var Page = (function(){
 			var moveName = $this.html();
 
 			var id = $this.attr('id');
-			console.log('id is: ' + id);
 			$('#side-menu .nav-moves a').removeClass('active');
 			$('#side-menu a[data-ref=' + id + ']').addClass('active');
 
@@ -264,7 +263,6 @@ var Page = (function(){
 					var className = "";
 					if(moveId == buttonId){
 						className = "active";
-						console.log('id and moveid match!');
 					}
 					return className;
 				}
@@ -473,7 +471,6 @@ var Page = (function(){
 		// THIS IS THE CHARACTER DATA CONTROLLER, RIGHT HERE!
 		$('body').on('click', '.moveBtn', function(){
 
-			console.log('clicked!');
 			// Check if the grid is already out
 			// If the grid is out and the moveBtn is clicked, that means we're just transitioning between character grids and need a different kind of transition
 
@@ -817,7 +814,7 @@ var Page = (function(){
 			$('#characterGrid .character-box.selected').removeClass('selected');
 		}
 
-		function rageAdjustment(self){
+		function rageAdjustment(self, animateNumbers){
 			var rageAmount = self.attr("data-rage");
 			
 			self.siblings('.rageBtn').removeClass('active');
@@ -885,18 +882,21 @@ var Page = (function(){
 					$maxPerc.removeClass('nosymbol');
 					$percRange.removeClass('nosymbol');
 
-					// $minPerc.text(adjustedMinPercent);
-					// $maxPerc.text(adjustedMaxPercent);
-					// $percRange.text(percRange);
-					$minPerc
-						.prop('number', $minPerc.text())
-						.animateNumber({ number : adjustedMinPercent }, 200);
-					$maxPerc
-						.prop('number', $maxPerc.text())
-						.animateNumber({ number : adjustedMaxPercent }, 200);
-					$percRange
-						.prop('number', $percRange.text())
-						.animateNumber({ number : percRange }, 200);
+					if(animateNumbers == true){
+						$minPerc
+							.prop('number', $minPerc.text())
+							.animateNumber({ number : adjustedMinPercent }, 200);
+						$maxPerc
+							.prop('number', $maxPerc.text())
+							.animateNumber({ number : adjustedMaxPercent }, 200);
+						$percRange
+							.prop('number', $percRange.text())
+							.animateNumber({ number : percRange }, 200);
+					} else {
+						$minPerc.text(adjustedMinPercent);
+						$maxPerc.text(adjustedMaxPercent);
+						$percRange.text(percRange);
+					}
 				}
 			});
 
@@ -919,16 +919,16 @@ var Page = (function(){
 
 		function transitionRageForward($activeRageButton){
 			if(!$activeRageButton.is(':last-child')){
-				rageAdjustment($activeRageButton.next());
+				rageAdjustment($activeRageButton.next(), animateNumbers = true);
 			} else {
-				rageAdjustment($activeRageButton.siblings('.rageBtn:first-child'));
+				rageAdjustment($activeRageButton.siblings('.rageBtn:first-child'), animateNumbers = true);
 			}
 		}
 		function transitionRageBackward($activeRageButton){
 			if(!$activeRageButton.is(':first-child')){
-				rageAdjustment($activeRageButton.prev());
+				rageAdjustment($activeRageButton.prev(), animateNumbers = true);
 			} else {
-				rageAdjustment($activeRageButton.siblings('.rageBtn:last-child'));
+				rageAdjustment($activeRageButton.siblings('.rageBtn:last-child'), animateNumbers = true);
 			}
 		}
 		function transitionCharacterForward(activeContainer){
@@ -1059,24 +1059,24 @@ var Page = (function(){
 				if(isShiftActive){
 					if(e.which == keyright){
 						//console.log('shift held and right');
-						transitionRageForward($this.find('.rageBtn.active'));
+						transitionRageForward($this.find('.rageBtn.active'), animateNumbers = true);
 					}
 					if(e.which == keyleft){
 						//console.log('shift held and left');
-						transitionRageBackward($this.find('.rageBtn.active'));
+						transitionRageBackward($this.find('.rageBtn.active'), animateNumbers = true);
 					}
 
 				} else {
 					if(e.which == keyright){transitionCharacterForward($('.character-box.selected'))};
 					if(e.which == keyleft){transitionCharacterBackward($('.character-box.selected'))};
 
-					if(e.which == key1){rageAdjustment($this.find('.rageBtn:nth-child(1)'))};
-					if(e.which == key2){rageAdjustment($this.find('.rageBtn:nth-child(2)'))};
-					if(e.which == key3){rageAdjustment($this.find('.rageBtn:nth-child(3)'))};
-					if(e.which == key4){rageAdjustment($this.find('.rageBtn:nth-child(4)'))};
-					if(e.which == key5){rageAdjustment($this.find('.rageBtn:nth-child(5)'))};
-					if(e.which == key6){rageAdjustment($this.find('.rageBtn:nth-child(6)'))};
-					if(e.which == key7){rageAdjustment($this.find('.rageBtn:nth-child(7)'))};
+					if(e.which == key1){rageAdjustment($this.find('.rageBtn:nth-child(1)', animateNumbers = true))};
+					if(e.which == key2){rageAdjustment($this.find('.rageBtn:nth-child(2)', animateNumbers = true))};
+					if(e.which == key3){rageAdjustment($this.find('.rageBtn:nth-child(3)', animateNumbers = true))};
+					if(e.which == key4){rageAdjustment($this.find('.rageBtn:nth-child(4)', animateNumbers = true))};
+					if(e.which == key5){rageAdjustment($this.find('.rageBtn:nth-child(5)', animateNumbers = true))};
+					if(e.which == key6){rageAdjustment($this.find('.rageBtn:nth-child(6)', animateNumbers = true))};
+					if(e.which == key7){rageAdjustment($this.find('.rageBtn:nth-child(7)', animateNumbers = true))};
 				}
 			}
 
@@ -1100,7 +1100,7 @@ var Page = (function(){
 			activateCharacter($(this));
 		});
 		$('#characterModal').on('click', '.rageBtn', function(){
-			rageAdjustment($(this));
+			rageAdjustment($(this), animateNumbers = true);
 		});
 
 

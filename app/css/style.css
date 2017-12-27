@@ -10062,6 +10062,9 @@ a.text-dark:focus, a.text-dark:hover {
   background-color: #32765c;
   color: #FFF; }
 
+.bowser.card-deck .btn {
+  background-color: #235240 !important; }
+
 .bowser.nav-characters:before {
   background: #32765c; }
 
@@ -10099,6 +10102,9 @@ a.text-dark:focus, a.text-dark:hover {
   background-color: #feda00;
   color: #431c0b; }
 
+.donkey-kong.card-deck .btn {
+  background-color: #cbae00 !important; }
+
 .donkey-kong.nav-characters:before {
   background: #feda00; }
 
@@ -10130,6 +10136,9 @@ a.text-dark:focus, a.text-dark:hover {
   background-color: #8a8983;
   color: #FFF; }
 
+.game-and-watch.card-deck .btn {
+  background-color: #706f6a !important; }
+
 .game-and-watch.nav-characters li > span {
   background: rgba(138, 137, 131, 0.8) !important;
   color: #FFF !important; }
@@ -10157,6 +10166,9 @@ a.text-dark:focus, a.text-dark:hover {
   background-color: #f05f1b;
   color: #FFF; }
 
+.lucas.card-deck .btn {
+  background-color: #cb4a0d !important; }
+
 .lucas .btn {
   color: #FFF; }
 
@@ -10179,7 +10191,8 @@ a.text-dark:focus, a.text-dark:hover {
   background-color: #ce82de; }
 
 .robin .btn, .robin .dropdown-item {
-  background-color: #be5ad3 !important; }
+  background-color: #be5ad3 !important;
+  color: #FFF; }
   .robin .btn:hover, .robin .btn.active, .robin .dropdown-item:hover, .robin .dropdown-item.active {
     background-color: #ac34c6 !important; }
 
@@ -10187,8 +10200,8 @@ a.text-dark:focus, a.text-dark:hover {
   background-color: #ce82de;
   color: #FFF; }
 
-.robin .btn {
-  color: #FFF; }
+.robin.card-deck .btn {
+  background-color: #be5ad3 !important; }
 
 .robin.nav-characters:before {
   background: rgba(206, 130, 222, 0.5) !important; }
@@ -10220,13 +10233,13 @@ a.text-dark:focus, a.text-dark:hover {
 .card .card-image-top {
   position: relative; }
 
-.card-image-top .card-body {
-  position: relative;
-  padding: 0.75rem 1.25rem; }
-
-.card .card-body button {
-  margin-right: 5px;
-  border: 2px solid; }
+.card .card-body {
+  position: relative; }
+  .card .card-body .btn-group > .btn {
+    margin-left: 0; }
+  .card .card-body button {
+    margin-right: 5px;
+    border: 2px solid; }
 
 .moveBtn.active {
   border-color: rgba(213, 0, 0, 0.5) !important; }
