@@ -10052,16 +10052,14 @@ a.text-dark:focus, a.text-dark:hover {
   .bowser .secondarynav .dropdown-menu {
     background-color: #32765c; }
 
-.bowser .btn {
+.bowser .btn, .bowser .dropdown-item {
+  color: #FFF;
   background-color: #235240 !important; }
-  .bowser .btn:hover, .bowser .btn.active {
+  .bowser .btn:hover, .bowser .btn.active, .bowser .dropdown-item:hover, .bowser .dropdown-item.active {
     background-color: #142e24 !important; }
 
 .bowser.card-deck .card-image-top {
   background-color: #32765c;
-  color: #FFF; }
-
-.bowser .btn {
   color: #FFF; }
 
 .bowser.nav-characters:before {
@@ -10076,7 +10074,7 @@ a.text-dark:focus, a.text-dark:hover {
   .bowser .nav-moves a:before {
     background: rgba(50, 118, 92, 0.5) !important; }
 
-.bowser .dropdown-menu {
+.bowser .dropdown-menu, .bowser #sort {
   background-color: #32765c; }
 
 .donkey-kong:hover.nav-characters li > span {
@@ -10091,11 +10089,10 @@ a.text-dark:focus, a.text-dark:hover {
     .donkey-kong .secondarynav .navbar-brand .pathfill {
       fill: #431c0b; }
 
-.donkey-kong .btn {
+.donkey-kong .btn, .donkey-kong .dropdown-item {
   background-color: #9c840e !important;
-  border-color: #9c840e;
   color: #FFF; }
-  .donkey-kong .btn:hover, .donkey-kong .btn.active {
+  .donkey-kong .btn:hover, .donkey-kong .btn.active, .donkey-kong .dropdown-item:hover, .donkey-kong .dropdown-item.active {
     background-color: #6d5c0a !important; }
 
 .donkey-kong.card-deck .card-image-top {
@@ -10114,7 +10111,7 @@ a.text-dark:focus, a.text-dark:hover {
   .donkey-kong.nav-characters .nav-moves a:before {
     background: rgba(254, 218, 0, 0.5) !important; }
 
-.donkey-kong .dropdown-menu {
+.donkey-kong .dropdown-menu, .donkey-kong #sort {
   background-color: #feda00; }
 
 .game-and-watch:hover.nav-characters li > span {
@@ -10123,11 +10120,10 @@ a.text-dark:focus, a.text-dark:hover {
 .game-and-watch .secondarynav {
   background-color: #8a8983; }
 
-.game-and-watch .btn {
+.game-and-watch .btn, .game-and-watch .dropdown-item {
   background-color: #706f6a !important;
-  border-color: #706f6a;
   color: #FFF; }
-  .game-and-watch .btn:hover, .game-and-watch .btn.active {
+  .game-and-watch .btn:hover, .game-and-watch .btn.active, .game-and-watch .dropdown-item:hover, .game-and-watch .dropdown-item.active {
     background-color: #565551 !important; }
 
 .game-and-watch.card-deck .card-image-top {
@@ -10143,7 +10139,7 @@ a.text-dark:focus, a.text-dark:hover {
   .game-and-watch.nav-characters .nav-moves a:before {
     background: rgba(138, 137, 131, 0.5) !important; }
 
-.game-and-watch .dropdown-menu {
+.game-and-watch .dropdown-menu, .game-and-watch #sort {
   background-color: #8a8983; }
 
 .lucas:hover.nav-characters li > span {
@@ -10152,10 +10148,9 @@ a.text-dark:focus, a.text-dark:hover {
 .lucas .secondarynav {
   background-color: #f05f1b; }
 
-.lucas .btn {
-  background-color: #cb4a0d !important;
-  border-color: #cb4a0d; }
-  .lucas .btn:hover, .lucas .btn.active {
+.lucas .btn, .lucas .dropdown-item {
+  background-color: #cb4a0d !important; }
+  .lucas .btn:hover, .lucas .btn.active, .lucas .dropdown-item:hover, .lucas .dropdown-item.active {
     background-color: #9b380a !important; }
 
 .lucas.card-deck .card-image-top {
@@ -10174,7 +10169,7 @@ a.text-dark:focus, a.text-dark:hover {
   .lucas.nav-characters .nav-moves a:before {
     background: rgba(240, 95, 27, 0.5) !important; }
 
-.lucas .dropdown-menu {
+.lucas .dropdown-menu, .lucas #sort {
   background-color: #f05f1b; }
 
 .robin:hover.nav-characters li > span {
@@ -10183,10 +10178,9 @@ a.text-dark:focus, a.text-dark:hover {
 .robin .secondarynav {
   background-color: #ce82de; }
 
-.robin .btn {
-  background-color: #be5ad3 !important;
-  border-color: #be5ad3; }
-  .robin .btn:hover, .robin .btn.active {
+.robin .btn, .robin .dropdown-item {
+  background-color: #be5ad3 !important; }
+  .robin .btn:hover, .robin .btn.active, .robin .dropdown-item:hover, .robin .dropdown-item.active {
     background-color: #ac34c6 !important; }
 
 .robin.card-deck .card-image-top {
@@ -10208,7 +10202,7 @@ a.text-dark:focus, a.text-dark:hover {
   .robin.nav-characters .nav-moves a:before {
     background: rgba(206, 130, 222, 0.5) !important; }
 
-.robin .dropdown-menu {
+.robin .dropdown-menu, .robin #sort {
   background-color: #ce82de; }
 
 /* Cards */
@@ -10590,7 +10584,7 @@ body.toggle-sidedrawer #page-wrapper {
     outline: none; }
   #filter-toggle span {
     float: left;
-    margin-top: 4px;
+    margin-top: 3px;
     font-size: 12px;
     font-weight: 700;
     text-transform: uppercase; }
@@ -10627,25 +10621,23 @@ body.toggle-sidedrawer #page-wrapper {
 
 /* --- */
 /* --- CONTENT CONTAINERS --- */
-.search-box .clear-input {
-  display: none; }
+#body .search-box {
+  position: relative;
+  overflow: hidden; }
+  #body .search-box .clear-input {
+    display: none; }
+  #body .search-box.active .clear-input {
+    display: block;
+    position: absolute;
+    top: -3px;
+    background: none;
+    border: none;
+    background-color: transparent !important;
+    right: 0;
+    padding: 6px 0; }
+  #body .search-box.active #search {
+    background: none; }
 
-.search-box.active .clear-input {
-  display: block;
-  position: absolute;
-  top: -3px;
-  right: 1%;
-  background: none;
-  border: none; }
-
-.search-box.active #search {
-  /*width:90%;*/
-  background: none; }
-
-/*.wrapper{
-    display:flex;
-    align-items:stretch;
-}*/
 .wrapper {
   width: 100%; }
 
@@ -10819,7 +10811,7 @@ a[aria-expanded="true"]::before {
 
 .dropdown-menu {
   position: absolute;
-  top: 32px;
+  top: 39px;
   right: 0;
   z-index: 10;
   display: none;
@@ -10867,14 +10859,14 @@ a[aria-expanded="true"]::before {
     background-color: #757573;
     color: #FFF;
     min-width: 280px;
+    padding: 0;
     display: none; }
     #secondarynav .dropdown-menu.show {
       display: block; }
-    #secondarynav .dropdown-menu .dropdown-item:hover {
-      background-color: #8e8e8e;
-      cursor: pointer; }
-    #secondarynav .dropdown-menu .dropdown-item:active {
-      background-color: #5a5a5a; }
+    #secondarynav .dropdown-menu .dropdown-item {
+      transition: background-color 0.2s ease; }
+      #secondarynav .dropdown-menu .dropdown-item:hover {
+        cursor: pointer; }
 
 #filters-bar {
   margin-top: 10px;
@@ -10883,6 +10875,25 @@ a[aria-expanded="true"]::before {
     width: 283px;
     margin-left: 10px;
     margin-top: 2px; }
+    #filters-bar #sort .dropdown-menu {
+      border-radius: 3px;
+      padding: 0;
+      overflow: hidden; }
+      #filters-bar #sort .dropdown-menu li {
+        padding: 0; }
+        #filters-bar #sort .dropdown-menu li a {
+          width: 100%;
+          text-align: right;
+          margin: 0;
+          padding: 10px;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+          border-radius: 0; }
+          #filters-bar #sort .dropdown-menu li a.add-extra-info {
+            padding-right: 23px; }
+            #filters-bar #sort .dropdown-menu li a.add-extra-info .checkbox {
+              top: 13px; }
+              #filters-bar #sort .dropdown-menu li a.add-extra-info .checkbox.fa-check {
+                right: 7px; }
 
 #card-wrapper, #character-wrapper {
   top: 66px;
@@ -10966,6 +10977,10 @@ a[aria-expanded="true"]::before {
 
 /* --- */
 /* --- BUTTONS --- */
+.btn:focus {
+  outline: none;
+  box-shadow: inherit; }
+
 .btn:hover {
   cursor: pointer; }
 
@@ -11093,7 +11108,7 @@ a[aria-expanded="true"]::before {
 .btn .checkbox {
   position: absolute;
   top: 8px;
-  right: 7px; }
+  right: 8px; }
 
 /* --- */
 /* --- TABLES --- */
@@ -11748,7 +11763,40 @@ tr.table-descs td {
   body.toggle-aboutmenu #primarynav .navbar-nav {
     display: block !important; }
   #page-wrapper {
-    overflow: visible; } }
+    overflow: visible; }
+  body.filtersActive #sort {
+    display: flex !important; }
+  #filters-bar #sort {
+    position: absolute;
+    right: 15px;
+    top: 40px;
+    z-index: 1;
+    flex-direction: column;
+    text-align: right;
+    border-radius: 3px;
+    display: none;
+    overflow: hidden; }
+    #filters-bar #sort li a {
+      width: 100%;
+      text-align: right;
+      margin: 0;
+      padding: 15px 10px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+      border-radius: 0; }
+    #filters-bar #sort li .dropdown-menu {
+      display: block;
+      position: static;
+      float: none;
+      padding: 0; }
+      #filters-bar #sort li .dropdown-menu li {
+        padding: 0; }
+        #filters-bar #sort li .dropdown-menu li a {
+          padding: 15px 10px;
+          margin: 0; }
+          #filters-bar #sort li .dropdown-menu li a.add-extra-info .checkbox {
+            top: 18px; }
+    #filters-bar #sort .filter-dropdown-btn-container {
+      display: none; } }
 
 @media screen and (min-width: 600px) {
   #character-list li.active .characterImage {
@@ -11806,6 +11854,8 @@ tr.table-descs td {
     margin-top: -3px;
     font-size: 14px;
     padding: 5px 10px; }
+  #body #sort {
+    background-color: transparent !important; }
   .text-dark #icon-prev .pathfill, .text-dark #icon-next .pathfill, .text-dark #characterBackButton .pathfill {
     fill: #333; }
   .characterImageContainer .characterImage:hover, .leftImage .characterImage:hover, .rightImage .characterImage:hover {

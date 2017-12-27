@@ -8,8 +8,6 @@ var Page = (function(){
 		self.character = ko.observableArray([]);
 		self.killConfirm = ko.observableArray([]);
 		self.stage = ko.observableArray([]);
-
-		console.log(self.killConfirm);
 		
 		// This is new!
 		//self.moves = ko.observableArray([]);
@@ -225,7 +223,7 @@ var Page = (function(){
 			$this.addClass('active');
 			var characterId = $this.closest('.card-deck').data('index');
 			var moveId = $this.data('moveid'); // Needed for each loop below
-			// console.log('card-deck: ' + characterId + ' moveId: ' + moveId);
+			//console.log('card-deck: ' + characterId + ' moveId: ' + moveId);
 			var characterName = $this.closest('.card-deck').data('name');
 			$('#nav-title').text(characterName);
 			$('.rageModifier h3').text(characterName + ' Rage Modifier');
@@ -234,6 +232,7 @@ var Page = (function(){
 			var moveName = $this.html();
 
 			var id = $this.attr('id');
+			console.log('id is: ' + id);
 			$('#side-menu .nav-moves a').removeClass('active');
 			$('#side-menu a[data-ref=' + id + ']').addClass('active');
 
@@ -259,14 +258,25 @@ var Page = (function(){
 				// nuke the existing contents of the dropdown menu
 				$dropdownMenu.empty()
 
+				// Need to see if the generated button has the same id as the current move
+				// If it does, add a class of 'active' to it so we know that it's already selected
+				function checkIdAndAddActive(moveId, buttonId){
+					var className = "";
+					if(moveId == buttonId){
+						className = "active";
+						console.log('id and moveid match!');
+					}
+					return className;
+				}
+
 				// generate those dropdown items
 				$this.parent().find('.moveBtn').each(function(){
 					$button = $(this);
 					var name = $button.html();
 					var href = $button.attr('href');
 					var moveUrl = $button.data('moveurl');
-					var id = $button.attr('id');
-					$dropdownMenu.append('<a class="dropdown-item" data-ident=' + id + '>' + name + '</a>');
+					var buttonId = $button.attr('id');
+					$dropdownMenu.append('<a class="dropdown-item ' + checkIdAndAddActive(id, buttonId) + '" data-ident=' + buttonId + '>' + name + '</a>');
 				});
 			} else {
 				$('#secondarynav #moveName').html(moveName).show();
@@ -448,6 +458,15 @@ var Page = (function(){
 				$('.moveBtn.active').removeClass('active');
 				$('.nav-moves a.active').removeClass('active');
 				$('#secondarynav-dropdown .dropdown-item.active').removeClass('active');
+
+				// Deactivate the filter toggle
+				if($('body').hasClass('filtersActive')){
+					$('body').removeClass('filtersActive');
+					$('#filter-toggle').removeClass('active');
+				}
+				$('#secondarynav .dropdown').removeClass('show');
+				$('#secondarynav #secondarynav-dropdown-menu').removeClass('show');
+
 			};
 		}
 
@@ -740,10 +759,9 @@ var Page = (function(){
 			// This causes the code to loop through twice - once for rendering the numbers and another for animating them. Is inefficent, really
 			// This could probably be optimised later
 
-			// This thing is causing problems between transitions!
-			setTimeout(function(){
-				rageAdjustment($charModal.find('.rageBtn.active'));
-			}, 500);
+			// setTimeout(function(){
+			rageAdjustment($charModal.find('.rageBtn.active'));
+			// }, 500);
 			
 
 
@@ -804,8 +822,8 @@ var Page = (function(){
 			
 			self.siblings('.rageBtn').removeClass('active');
 			self.addClass('active');
-			var rageAdjMin = '';
-			var rageAdjMax = '';
+			var rageAdjMin = 0;
+			var rageAdjMax = 0;
 
 			var $moveBtnActive = $('.moveBtn.active');
 			var rage50 = $moveBtnActive.data('rage50');
@@ -820,15 +838,7 @@ var Page = (function(){
 			// Earlier, I put a rough spreadsheet was put together to try and measure the variance of decay relative to DK's rage between characters --> https://docs.google.com/spreadsheets/d/10YmEZihWk6oPPXnynnfIpyEApfl0ANPRlCq4WnHv3Ls/edit#gid=0
 			// The stuff in red measures accumulated decay. Doesn't seem to be a pattern, so an average value is taken
 
-			// Calculate amount to adjust min-percent based on rage
-			/*if(rageAmount == "50"){rageAdjMin = -2; rageAdjMax = -5 }
-			if(rageAmount == "60"){rageAdjMin = -5; rageAdjMax = -9 }
-			if(rageAmount == "80"){rageAdjMin = -9; rageAdjMax = -16 }
-			if(rageAmount == "100"){rageAdjMin = -12; rageAdjMax = -22 }
-			if(rageAmount == "125"){rageAdjMin = -14; rageAdjMax = -27 }
-			if(rageAmount == "150"){rageAdjMin = -18; rageAdjMax = -33 }*/
-
-			//if(rageAmount == "0"){rageAdjMin = 0; rageAdjMax = 0 }
+			if(rageAmount == "0"){rageAdjMin = 0; rageAdjMax = 0 }
 			if(rageAmount == "50"){rageAdjMin = rage50[0]; rageAdjMax = rage50[1] }
 			if(rageAmount == "60"){rageAdjMin = rage60[0]; rageAdjMax = rage60[1] }
 			if(rageAmount == "80"){rageAdjMin = rage80[0]; rageAdjMax = rage80[1] }
@@ -836,17 +846,21 @@ var Page = (function(){
 			if(rageAmount == "125"){rageAdjMin = rage125[0]; rageAdjMax = rage125[1] }
 			if(rageAmount == "150"){rageAdjMin = rage150[0]; rageAdjMax = rage150[1] }
 
-			console.log('rageAdjMin is: ' + rageAdjMin + ' and rageAdjMax is: ' + rageAdjMax);
-
 			// Hmm, if min percent goes below zero, this will affect the max percent range, right???? NO, IT PROBABLY SHOULDN'T (I think...)
-			$('#characterModal .stagePercents.table').each(function(){
+			$('#characterModal .stage .table').each(function(){
 				var $this = $(this);
 
 				var $minPerc = $this.find('.minPerc');
 				var $maxPerc = $this.find('.maxPerc');
 				var $percRange = $this.find('.percRange');
-				var defaultMinPercent = $minPerc.data('defaultmin');
-				var defaultMaxPercent = $maxPerc.data('defaultmax');
+				// Why does this not work??
+				/*var defaultMinPercent = $minPerc.data('defaultmin');
+				var defaultMaxPercent = $maxPerc.data('defaultmax');*/
+				// But this does?!
+				var defaultMinPercent = $minPerc.attr('data-defaultmin');
+				var defaultMaxPercent = $maxPerc.attr('data-defaultmax');
+
+				// console.log($this.find('.stage-part-name').text() + ': MinPercent is: ' + $minPerc.text() + ' MaxPercent is: ' + $maxPerc.text() + '\ndefaultMinPercent is: ' + defaultMinPercent + ' and defaultMaxPercent is: ' + defaultMaxPercent);
 
 				var adjustedMinPercent = parseInt(defaultMinPercent) + rageAdjMin;
 				var adjustedMaxPercent = parseInt(defaultMaxPercent) + rageAdjMax;
@@ -871,21 +885,18 @@ var Page = (function(){
 					$maxPerc.removeClass('nosymbol');
 					$percRange.removeClass('nosymbol');
 
-					$minPerc.text(adjustedMinPercent);
-					$maxPerc.text(adjustedMaxPercent);
-					$percRange.text(percRange);
-
-					console.log($this.find('.stage-part-name').text() + ': MinPercent is: ' + $minPerc.text() + ' MaxPercent is: ' + $maxPerc.text() + '\ndefaultMinPercent is: ' +  defaultMinPercent + ' and defaultMaxPercent is: ' + defaultMaxPercent);
-					// $minPerc
-					// 	.prop('number', $minPerc.text())
-					// 	.animateNumber({ number : adjustedMinPercent }, 200);
-					// $maxPerc
-					// 	.prop('number', $maxPerc.text())
-					// 	.animateNumber({ number : adjustedMaxPercent }, 200);
-					// $percRange
-					// 	.prop('number', $percRange.text())
-					// 	.animateNumber({ number : percRange }, 200);
-
+					// $minPerc.text(adjustedMinPercent);
+					// $maxPerc.text(adjustedMaxPercent);
+					// $percRange.text(percRange);
+					$minPerc
+						.prop('number', $minPerc.text())
+						.animateNumber({ number : adjustedMinPercent }, 200);
+					$maxPerc
+						.prop('number', $maxPerc.text())
+						.animateNumber({ number : adjustedMaxPercent }, 200);
+					$percRange
+						.prop('number', $percRange.text())
+						.animateNumber({ number : percRange }, 200);
 				}
 			});
 
@@ -1096,10 +1107,10 @@ var Page = (function(){
 		/* --- */
 
 		$('#filter-toggle').click(function(){
-			console.log('filter toggle clicked!');
+			//console.log('filter toggle clicked!');
 			var $this = $(this);
 			$this.toggleClass('active');
-			$this.next('.btn-group.mobile').toggleClass('active');
+			//$this.next('.btn-group.mobile').toggleClass('active');
 			$('body').toggleClass('filtersActive');
 
 			// If on mobile and at top of screen, the filter row covers the content! Not good.
@@ -1167,6 +1178,8 @@ var Page = (function(){
 			console.log('dropdown button clicked!');
 			$('#secondarynav .navbar-header .dropdown-menu').toggleClass('show');	
 		});
+
+
 
 
 		$('.add-extra-info').click(function(){
