@@ -295,8 +295,6 @@ var Page = (function(){
 				$character.attr('data-maxpercent', maxPercent);
 
 
-				// $character.find('.grid-minPercent').text(minPercent).attr('data-minpercent', minPercent);
-				// $character.find('.grid-maxPercent').text(maxPercent).attr('data-maxpercent', maxPercent);
 				// IT WOOOOOORKS!!!
 				
 				var percentAverage = percentSum/percentDifferences.length;
@@ -304,7 +302,7 @@ var Page = (function(){
 				// Now calculate the percents to iterate by. Assuming there are 5 difficulty levels, take sum and divide by midway for average. So sum/2.5.
 				// This calculates how much to iterate each percent by
 				var diffIterator = Math.floor(percentAverage/2.5);
-				//console.log(difficultyIterator);
+				// console.log(diffIterator);
 
 				var diff = "";
 				var percentDiff = (maxPercent - minPercent) + 1;
@@ -323,6 +321,22 @@ var Page = (function(){
 				$difficulty.attr('class', 'difficulty').addClass(diff);
 				$difficulty.find('.text-difficulty').text(diff);
 				$difficulty.find('.text-percRange').text(parseInt(maxPercent) - parseInt(minPercent) + 1);
+
+				// Need to disable/hide icons that the combo is not possible on, or have no data...
+				// IMPORTANT STANDARD
+				// [minPercent 0, maxPercent 0] = NO DATA AVAILABLE, so HIDE THE BOX
+				// [minPercent 0, maxPercent 0] = COMBO IS IMPOSSIBlE, so GREY OUT THE BOX AND DISABLE IT
+				$character.removeClass('hide').removeClass('disabled');
+
+				// Need this to also not mess up the margins
+				// https://stackoverflow.com/questions/32355054/how-to-get-nth-child-selector-to-skip-hidden-divs
+				if(minPercent == 0 && maxPercent == 0){
+					$character.addClass('hide');
+				}
+				if(minPercent == 1 && maxPercent){
+					$character.addClass('disabled');
+				}
+
 			});
 
 		};
@@ -359,7 +373,7 @@ var Page = (function(){
 
 			// Need to delay open/close function in case it's already animating. Some spastic might hit ESC twice quickly
 			// Add class of 'animating' to body and remove when the animation is finished
-			$('body').addClass('animating');
+			$('body').addClass('animating').removeClass('show-secondary-dropdown');
 
 			if(!$('body').hasClass('character-grid-active')){
 				$(('body')).addClass('character-grid-active');
@@ -378,10 +392,6 @@ var Page = (function(){
 					// variables for transition it to the same screen
 					// The only way this is gonna happen is if the grid is on screen and a sidemenu button is clicked, which in turn is like a card button click
 					$nonCurrPage = $currPage;
-					// outClass = 'pt-page-scaleDownCenter';
-					// inClass = 'pt-page-scaleUpCenter pt-page-delay100';
-					// outClass = 'pt-page-fade';
-					// inClass = 'pt-page-fade';
 				} else {
 
 					// variables for transition it backwards
@@ -407,6 +417,7 @@ var Page = (function(){
 					console.log('we have a match!');
 
 					// Initiate transition between MOVES OF SAME CHARACTER
+					$('body').addClass('show-secondary-dropdown');
 					$('#secondarynav-dropdown-menu').removeClass('show');
 					$('#characterGrid').fadeOut('fast', function(){
 						activateCharacterGrid(self);
@@ -983,12 +994,12 @@ var Page = (function(){
 					transitionCharacter();
 					//activateCharacter($activeContainer.siblings('.character-box:visible'));
 					//activateCharacter($activeContainer.nextAll('.character-box:visible'));
-					var $nextVisibleChar = $activeContainer.nextAll('.character-box:visible').first();
+					var $nextVisibleChar = $activeContainer.nextAll('.character-box:not(.disabled):visible').first();
 					activateCharacter($nextVisibleChar);
 				} else {
 					// Loop backward to first VISIBLE character if press right key on last character
 					transitionCharacter();
-					activateCharacter($activeContainer.siblings('.character-box:visible').first());
+					activateCharacter($activeContainer.siblings('.character-box:not(.disabled):visible').first());
 				}
 			}
 		}
@@ -1002,12 +1013,12 @@ var Page = (function(){
 					// PrevAll is working, but is not determining is the element is fucking VISIBLE or not!
 					// :visible:last will return Bayo
 					// :visible:first will work until elements are separated
-					var $prevVisibleChar = $activeContainer.prevAll('.character-box:visible').first();
+					var $prevVisibleChar = $activeContainer.prevAll('.character-box:not(.disabled):visible').first();
 					activateCharacter($prevVisibleChar);
 				} else {
 					// Loop backward to first VISIBLE character if press right key on last character
 					transitionCharacter();
-					activateCharacter($activeContainer.siblings('.character-box:visible').last());
+					activateCharacter($activeContainer.siblings('.character-box:not(.disabled):visible').last());
 				}
 			}
 		}
@@ -1135,7 +1146,7 @@ var Page = (function(){
 
 		// Using traditional 'click()' bindings will not work on dynamically generated character boxes!
 		// https://stackoverflow.com/questions/6658752/click-event-doesnt-work-on-dynamically-generated-elements
-		$('#characterGrid').on('click', '.character-box', function(){
+		$('#characterGrid').on('click', '.character-box:not(.disabled)', function(){
 			activateCharacter($(this));
 		});
 		$('#characterModal').on('click', '.rageBtn', function(){
@@ -1192,7 +1203,7 @@ var Page = (function(){
 		$('#credits').click(function(){
 			activateMenuBox('page-credits');
 		});
-		$('#info').click(function(){
+		function activateInfoBox(){
 			$('#page-info .detailed-info').hide();
 			activateMenuBox('page-info');
 			var $moveBtnActive = $('.moveBtn.active');
@@ -1205,6 +1216,12 @@ var Page = (function(){
 			$('#page-info iframe').attr('src', giphyVid);
 			$('#page-info .giphy a').attr('href', giphySource);
 			$('#page-info .' + currentMove).show();
+		}
+		$('#info').click(function(){
+			activateInfoBox();
+		});
+		$('#characterGrid').on('click', '.character-box.disabled', function(){
+			activateInfoBox();
 		});
 
 		$('#filter-dropdown-btn').click(function(e){
@@ -1249,6 +1266,7 @@ var Page = (function(){
 			// Deactivate the filter toggle
 			$('#secondarynav .dropdown').removeClass('show');
 			$('#secondarynav #secondarynav-dropdown-menu').removeClass('show');
+			$('body').removeClass('toggle-aboutmenu');
 		});
 
 		//////////////////////////////////////////////////////////////////////////////

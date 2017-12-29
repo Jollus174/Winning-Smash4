@@ -10339,7 +10339,7 @@ ol {
 
 .loading .loader-container {
   background: #eee;
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 100%;
   z-index: 999; }
@@ -10863,9 +10863,20 @@ a[aria-expanded="true"]::before {
   margin-left: 0.55em;
   vertical-align: 0.155em; }
 
+body #secondarynav .navbar-header {
+  display: none; }
+
+body #secondarynav.show-secondary-dropdown .navbar-header {
+  display: block; }
+
 #secondarynav {
   display: block;
   transition: background-color 0.2s ease; }
+  #secondarynav #moveName {
+    width: 100%;
+    display: block;
+    overflow: hidden;
+    margin-right: 0; }
   #secondarynav #character-wrapper-back {
     float: left;
     padding: 0.3125rem 0.45rem;
@@ -10883,12 +10894,16 @@ a[aria-expanded="true"]::before {
     padding-top: 0.3125rem;
     padding-bottom: 0.3125rem; }
   #secondarynav .dropdown-menu {
+    top: 54px;
+    padding: 0 7.5px;
     text-align: left;
-    background-color: #757573;
+    background-color: transparent;
     color: #FFF;
     min-width: 280px;
-    padding: 0;
-    display: none; }
+    max-width: 500px;
+    padding: 0 7.5px;
+    display: none;
+    box-shadow: none; }
     #secondarynav .dropdown-menu.show {
       display: block; }
     #secondarynav .dropdown-menu .dropdown-item {
@@ -10929,7 +10944,10 @@ a[aria-expanded="true"]::before {
 
 #character-wrapper {
   top: 56px;
-  background: #eee; }
+  background: #eee;
+  display: none; }
+  #character-wrapper.pt-page-current {
+    display: block; }
   #character-wrapper .container-fluid {
     background: #eee; }
 
@@ -11189,21 +11207,37 @@ a[aria-expanded="true"]::before {
   opacity: 0.3; }
 
 .character-box .characterImage {
-  transition: opacity 0.3s ease, background-position 0.3s ease; }
-
-.characterContainer .characterImage {
-  /*transition:opacity 0.5s ease, background-position 0.5s ease;*/
+  transition: opacity 0.3s ease, background-position 0.3s ease;
   background-position: center;
   background-image: none; }
+  .character-box .characterImage.left-image {
+    background-position: 20px center; }
+  .character-box .characterImage.right-image {
+    background-position: center; }
+  .character-box .characterImage:hover {
+    cursor: pointer; }
 
-.leftImage .characterImage {
-  background-position: 20px center; }
+.character-box.disabled {
+  filter: grayscale(1); }
+  .character-box.disabled .grid-difficulty, .character-box.disabled .grid-fallspeed, .character-box.disabled .grid-gravity, .character-box.disabled .grid-percRange {
+    display: none; }
+  .character-box.disabled:after {
+    content: 'N/A - Check Info';
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    top: 39px;
+    left: 7.5px;
+    right: 0;
+    width: auto;
+    display: inline-block;
+    color: #FFF;
+    text-transform: uppercase;
+    font-weight: 700;
+    background: rgba(62, 62, 62, 0.8); }
 
-.rightImage .characterImage {
-  background-position: center; }
-
-.characterImageContainer:hover {
-  cursor: pointer; }
+.character-box.hide {
+  display: none; }
 
 #characterGrid .character-box {
   margin-bottom: 7.5px;
@@ -11745,13 +11779,29 @@ tr.table-descs td {
     width: 180px; } }
 
 @media screen and (max-width: 768px) {
-  /*.character-box:nth-of-type(even){margin-right:0;}*/
-  .character-box:nth-of-type(odd) {
-    margin-left: 0; }
-  #secondarynav .dropdown {
-    overflow: hidden; }
-  #secondarynav .dropdown-menu {
-    width: 93%; }
+  /* styles for that effing dropdown for multiple moves in secondary nav */
+  #secondarynav {
+    display: flex;
+    align-items: center !important;
+    flex-wrap: initial; }
+    #secondarynav .navbar-header {
+      width: 100%;
+      float: none; }
+      #secondarynav .navbar-header .dropdown {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        overflow: hidden;
+        min-width: auto;
+        width: 100%;
+        font-size: 14px; }
+        #secondarynav .navbar-header .dropdown .dropdown-toggle {
+          width: 100%;
+          text-align: left; }
+          #secondarynav .navbar-header .dropdown .dropdown-toggle:after {
+            position: absolute;
+            top: 50%;
+            right: 8px; }
   .navbar-static-side {
     display: none; }
   body.toggle-sidedrawer {
@@ -11821,7 +11871,7 @@ tr.table-descs td {
       width: 100%;
       text-align: right;
       margin: 0;
-      padding: 15px 10px;
+      padding: 10px;
       border-bottom: 1px solid rgba(0, 0, 0, 0.2);
       border-radius: 0; }
     #filters-bar #sort li .dropdown-menu {
@@ -11831,14 +11881,11 @@ tr.table-descs td {
       padding: 0; }
       #filters-bar #sort li .dropdown-menu li {
         padding: 0; }
-        #filters-bar #sort li .dropdown-menu li a {
-          padding: 15px 10px;
-          margin: 0; }
-          #filters-bar #sort li .dropdown-menu li a.add-extra-info .checkbox {
-            top: 18px; }
+        #filters-bar #sort li .dropdown-menu li a.add-extra-info .checkbox {
+          top: 13px; }
     #filters-bar #sort .filter-dropdown-btn-container {
       display: none; }
-  #characterGrid .character-box:nth-child(2n) {
+  #characterGrid .character-box:not('.hide'):nth-child(2n) {
     padding-right: 7.5px; } }
 
 @media screen and (min-width: 600px) {
@@ -11875,6 +11922,10 @@ tr.table-descs td {
         -webkit-transform: translate(0,0);
         transform: translate(0,0);
     }*/
+  .loading .loader-container {
+    position: fixed; }
+    .loading .loader-container .loader {
+      right: 220px; }
   #content-wrapper, #footer {
     margin-left: 200px; }
   body.toggle-sidedrawer #content-wrapper, body.toggle-sidedrawer #footer {
@@ -11942,9 +11993,9 @@ tr.table-descs td {
     width: 400px; } }
 
 @media screen and (min-width: 768px) and (max-width: 990px) {
-  #characterGrid .character-box {
+  #characterGrid .character-box:not('.hide') {
     padding-right: 0; }
-    #characterGrid .character-box:nth-child(3n) {
+    #characterGrid .character-box:not('.hide'):nth-child(3n) {
       padding-right: 7.5px; } }
 
 @media screen and (min-width: 990px) and (max-width: 1200px) {
@@ -11982,9 +12033,9 @@ tr.table-descs td {
     }*/
   .leftImage .characterImage {
     background-position: center; }
-  #characterGrid .character-box {
+  #characterGrid .character-box:not('.hide') {
     padding-right: 0; }
-    #characterGrid .character-box:nth-child(4n) {
+    #characterGrid .character-box:not('.hide'):nth-child(4n) {
       padding-right: 7.5px; } }
 
 /*# sourceMappingURL=style.css.map */

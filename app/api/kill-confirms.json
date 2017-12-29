@@ -657,10 +657,10 @@
 
             "percents": {
                 "bayonetta": [93, 114],
-                "bowser": [],
+                "bowser": [1, 1],
                 "bowser-jr": [105, 127],
                 "captain-falcon": [107, 128],
-                "charizard": [],
+                "charizard": [1, 1],
                 "cloud": [103, 128],
                 "cloud-limit": [106, 129],
                 "corrin": [100, 122],

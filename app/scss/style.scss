@@ -407,7 +407,7 @@ ol {
 .loading{
     .loader-container{
         background: #eee;
-        position: absolute;
+        position: fixed;
         width: 100%;
         height: 100%;
         z-index: 999;
@@ -416,7 +416,8 @@ ol {
             display:block;
             margin: auto;
             top: 0;
-            right: 0;
+            // right: 0;
+            right:0;
             bottom: 0;
             left: 0;
             width: 50px;
@@ -1027,10 +1028,28 @@ a[aria-expanded="true"]::before {
 }
 
 
-
+body{
+    #secondarynav{
+        .navbar-header{
+            display:none;
+        }
+        &.show-secondary-dropdown{
+            .navbar-header{
+                display:block;
+            }
+        }
+    }
+}
 #secondarynav{
     display:block;
     transition:background-color 0.2s ease;
+
+    #moveName{
+        width: 100%;
+        display: block;
+        overflow: hidden;
+        margin-right: 0;
+    }
 
     #character-wrapper-back{
         float:left;
@@ -1054,12 +1073,16 @@ a[aria-expanded="true"]::before {
     }
 
     .dropdown-menu{
+        top: 54px;
+        padding: 0 7.5px;
         text-align:left;
-        background-color:#757573;
+        background-color:transparent;
         color:#FFF;
         min-width:280px;
-        padding:0;
+        max-width:500px;
+        padding:0 7.5px;
         display:none;
+        box-shadow:none;
         &.show{
             display:block;
         }
@@ -1116,6 +1139,10 @@ a[aria-expanded="true"]::before {
 #character-wrapper{
     top: 56px;
     background:#eee;
+    display:none;
+    &.pt-page-current{
+        display:block;
+    }
     .container-fluid{
         background:#eee;
     }
@@ -1434,17 +1461,49 @@ a[aria-expanded="true"]::before {
     position:absolute;
     opacity:0.3;
 }
-.character-box .characterImage{
-    transition:opacity 0.3s ease, background-position 0.3s ease;
+.character-box{
+    .characterImage{
+        transition:opacity 0.3s ease, background-position 0.3s ease;
+        background-position:center;
+        background-image:none;
+        &.left-image{
+            background-position:20px center;
+        }
+        &.right-image{
+            background-position:center;
+        }
+        &:hover{
+            cursor:pointer;
+        }
+
+    }
+    &.disabled{
+        filter:grayscale(1);
+        .grid-difficulty, .grid-fallspeed, .grid-gravity, .grid-percRange{
+            display:none;
+        }
+        .characterImage{
+        }
+        &:after{
+            content: 'N/A - Check Info';
+            text-align: center;
+            position: absolute;
+            width: 100%;
+            top: 39px;
+            left: 7.5px;
+            right: 0;
+            width: auto;
+            display: inline-block;
+            color: #FFF;
+            text-transform: uppercase;
+            font-weight: 700;
+            background: rgba(62, 62, 62, 0.8);
+        }
+    }
+    &.hide{
+        display:none;
+    }
 }
-.characterContainer .characterImage{
-    /*transition:opacity 0.5s ease, background-position 0.5s ease;*/
-    background-position:center;
-    background-image:none;
-}
-.leftImage .characterImage{background-position:20px center;}
-.rightImage .characterImage{background-position:center;}
-.characterImageContainer:hover{cursor:pointer;}
 
 #characterGrid{
     .character-box {
@@ -2064,16 +2123,35 @@ tr.table-descs td{
     }   
 }
 
-@media screen and (max-width:768px){
-    /*.character-box:nth-of-type(even){margin-right:0;}*/
-    .character-box:nth-of-type(odd){margin-left:0;}
 
+@media screen and (max-width:768px){
+    /* styles for that effing dropdown for multiple moves in secondary nav */
     #secondarynav{
-        .dropdown{
-            overflow:hidden;
-        }
-        .dropdown-menu{
-            width:93%;
+        display: flex;
+        align-items: center !important;
+        flex-wrap: initial;
+        .navbar-header{
+            width:100%;
+            float:none;
+            .dropdown{
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                overflow: hidden;
+                min-width: auto;
+                width: 100%;
+                font-size: 14px;
+                .dropdown-toggle{
+                    width:100%;
+                    text-align:left;
+                    &:after{
+                        position: absolute;
+                        top: 50%;
+                        right: 8px;
+                    }
+                }
+
+            }
         }
     }
 
@@ -2169,7 +2247,7 @@ tr.table-descs td{
                     width:100%;
                     text-align:right;
                     margin:0;
-                    padding: 15px 10px;
+                    padding: 10px;
                     border-bottom: 1px solid rgba(0,0,0,0.2);
                     border-radius:0;
                 }
@@ -2181,11 +2259,11 @@ tr.table-descs td{
                     li{
                         padding:0;
                         a{
-                            padding: 15px 10px;
-                            margin:0;
+                            // padding: 10px 10px;
+                            // margin:0;
                             &.add-extra-info{
                                 .checkbox{
-                                    top:18px;
+                                    top:13px;
                                 }
                             }
                         }
@@ -2197,7 +2275,7 @@ tr.table-descs td{
     }
 
     #characterGrid{
-        .character-box {
+        .character-box:not('.hide') {
             &:nth-child(2n){
                 padding-right:7.5px;
             }
@@ -2245,6 +2323,15 @@ tr.table-descs td{
         -webkit-transform: translate(0,0);
         transform: translate(0,0);
     }*/
+
+    .loading{
+        .loader-container{
+            position:fixed;
+            .loader{
+                right:220px;
+            }
+        }
+    }
 
     #content-wrapper, #footer {
         margin-left: 200px;
@@ -2377,7 +2464,7 @@ tr.table-descs td{
 
 @media screen and (min-width:768px) and (max-width:990px){
     #characterGrid{
-        .character-box{
+        .character-box:not('.hide'){
             padding-right:0;
             &:nth-child(3n){
                 padding-right:7.5px;
@@ -2428,7 +2515,7 @@ tr.table-descs td{
     }
 
     #characterGrid{
-        .character-box{
+        .character-box:not('.hide'){
             padding-right:0;
             &:nth-child(4n){
                 padding-right:7.5px;
