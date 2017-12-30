@@ -76,7 +76,7 @@
 <body id="body" class="loading wrapper">
 
 	<div id="sidedrawer-overlay"></div>
-	<nav class="navbar-default navbar-static-side" role="navigation">
+	<nav class="navbar-default navbar-static-side" role="navigation" style="position:fixed;">
 		<div class="sidebar-collapse">
 			<ul class="nav" id="side-menu">
 
@@ -120,7 +120,7 @@
 		<div class="loader-container">
 			<img class="loader" src="images/spinner.svg" />
 		</div>
-		<nav id="primarynav" class="navbar navbar-light navbar-static-top" style="align-items:center;">
+		<nav id="primarynav" class="navbar navbar-light fixed-top" style="align-items:center;">
 
 			<div class="navbar-header">
 				<button id="navbar-toggler" class="navbar-toggler navbar-toggler-left mr-1" href="#"><i class="fa fa-bars" aria-hidden="true"></i></button>
@@ -131,7 +131,7 @@
 				<i class="fa fa-ellipsis-v" aria-hidden="true"></i>
 			</div>
 
-			<ul class="navbar-nav flex-column d-none flex-md-row d-md-flex">
+			<ul class="navbar-nav flex-column flex-md-row">
 				<li class="nav-item"><a class="navbar-link small ml-3 --white" id="about" href="#">About</a></li>
 				<li class="nav-item"><a class="navbar-link small ml-3 --white" id="credits" href="#">Credits</a></li>
 				<li class="nav-item">
@@ -212,28 +212,28 @@
 			<div class="container-fluid">
 
 				<!-- secondary nav -->
-				<div class="row border-bottom"> <!-- .nav-wrapper -->
+				<div id="secondarynav-container" class="row border-bottom"> <!-- .nav-wrapper -->
 					<nav id="secondarynav" class="navbar navbar-light navbar-static-top secondarynav">
 
 						<button id="character-wrapper-back" class="navbar-toggler navbar-toggler-left navbar-brand --white" href="#">
 							<svg class="icon-arrowback" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-										    <path d="M0 0h24v24H0z" fill="none"></path>
-										    <path class="pathfill" d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path>
-										</svg>
+								<path d="M0 0h24v24H0z" fill="none"></path>
+								<path class="pathfill" d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path>
+							</svg>
 						</button>
-						<div id="moveName" class="navbar-brand --white" style="font-size:100%;top: 1px;position: relative;">
+						<div id="moveName" class="navbar-brand --white" style="font-size:100%;position: relative;">
 							Move Name
 						</div>
 						<div class="navbar-header">
 							<div class="dropdown show">
-								<button class="btn btn-secondary btn-sm dropdown-toggle" id="secondarynav-dropdown" aria-haspopup="true" aria-expanded="false" style="font-size:0.95rem;margin-top:3px;">
+								<button class="btn btn-secondary btn-sm dropdown-toggle" id="secondarynav-dropdown" aria-haspopup="true" aria-expanded="false" style="font-size:0.95rem;">
 									Dropdown link
 								</button>
 
 							</div>
 						</div>
 						
-						<button id="info" class="btn btn-sm float-right" style="margin-left:10px;margin-top:3px;"><i class="fa fa-info-circle" aria-hidden="true"></i><span style="padding-left:10px; text-transform: none;" class="d-none d-md-inline">More Information</span></button>
+						<button id="info" class="btn btn-sm float-right" style="margin-left:10px;"><i class="fa fa-info-circle" aria-hidden="true"></i><span style="padding-left:10px; text-transform: none;" class="d-none d-md-inline">More Information</span></button>
 						<div id="secondarynav-dropdown-menu" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 							<a class="dropdown-item" href="#">Action</a>
 							<a class="dropdown-item" href="#">Another action</a>
@@ -247,8 +247,8 @@
 
 				<!-- https://stackoverflow.com/questions/6487085/two-divs-one-fixed-width-the-other-the-rest -->
 				<!-- getting fancy now for the filter + info button section. Need filter to have dynamic responsive width while button is fixed width -->
-				<div class="row">
-					<div id="filters-bar" class="navbar d-block">
+				<div id="filtersbar-container" class="row">
+					<div id="filtersbar" class="navbar d-block">
 						<ul id="sort" class="nav navbar-top-links navbar-right d-none d-md-flex float-right">
 
 							<li>
@@ -438,11 +438,43 @@
 
 		<div id="page-info">
 
+			<div class="modifiers">
 
-			<div class="giphy">
+				<div data-bind="foreach: stage">
+					<div class="col-12">
+						<div class="stage" data-bind="css: className, style: {borderColor: colour}">
+							<h3 data-bind="text: name, style: {backgroundColor: colour}">Stage Name</h3>
+							<div class="stage-content">
+								<div class="row">
+									<div class="stageTables col-12 col-md-9" data-bind="foreach: tables, attr: {css: tables.length}">
+										<table class="stagePercents table table-bordered table-sm" cellpadding="0" cellspacing="0" border="0"> <!-- data-bind="attr: { id: 'panel' + $index() + 1 }" -->
+											<tr>
+												<th class="stage-part-name" colspan="3" data-bind="html: stagePartName"></th>
+											</tr>
+											<tr>
+												<td>
+													<p><span class="minPerc" data-bind="attr: {
+														'data-ref': stagePartRef + 'Min',
+														'data-defaultmin': ''
+													}">5</span></p>
+												</td>
+											</tr>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+
+
+			<!-- <div class="giphy">
 				<a href="#" target="_blank" style="display:block;">Video Source</a>
 				<iframe width='100%' height='100%' style='position:absolute' frameBorder='0' class='giphy-embed' allowFullScreen></iframe>
-			</div>
+			</div> -->
 
 			<!-- ko foreach: killConfirm -->
 			

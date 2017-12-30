@@ -6,7 +6,7 @@
         {
             "moveId": 0,
             "moveName": "Up Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air",
-            "moveUrl": "upthrow-upair",
+            "moveUrl": "up-throw-up-air",
 
             "info": "",
             "giphy": ["https://giphy.com/embed/3oFzm4XhnWq9vSZtIc", "https://www.youtube.com/watch?v=W3sgCRc13sk"],
@@ -111,7 +111,7 @@
         {
             "moveId": 0,
             "moveName": "Cargo Up Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air",
-            "moveUrl": "cargoupthrow-upair",
+            "moveUrl": "cargo-up-throw-up-air",
 
             "info": "Within certain percent thresholds, it also functions as a kill confirm into his up air attack. This confirm is known among Donkey Kong specialists as <strong>Aerial Cargo Up Toss up air (ACUT)</strong>, the <strong>DKO</strong>, or to most Western players, simply as the <strong>Ding Dong</strong>.",
             "giphy": ["https://giphy.com/embed/xT1R9YAchWK3aiJAhq", "https://www.youtube.com/watch?v=JlcIN-MKGCk"],
@@ -214,7 +214,7 @@
         {
             "moveId": 0,
             "moveName": "Down Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air",
-            "moveUrl": "downthrow-upair",
+            "moveUrl": "down-throw-up-air",
 
             "info": "",
             "giphy": ["https://giphy.com/embed/3ohc0PUZMNWWHEWKmA", "https://www.youtube.com/watch?v=QP2hMnR66eg"],
@@ -318,7 +318,7 @@
         {
             "moveId": 0,
             "moveName": "Down Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air",
-            "moveUrl": "downthrow-upair",
+            "moveUrl": "down-throw-up-air",
 
             "info": "https://www.youtube.com/watch?v=AXeykQaviE4",
             "giphy": ["https://giphy.com/embed/xULW8n9ACGvGXbE3ok", "https://www.youtube.com/watch?v=AXeykQaviE4"],
@@ -419,7 +419,7 @@
         {
             "moveId": 1,
             "moveName": "Down Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air (DI in throw)",
-            "moveUrl": "downthrow-upair-di-in-throw",
+            "moveUrl": "down-throw-up-air-di-in-throw",
 
             "info": "https://www.youtube.com/watch?v=AXeykQaviE4",
             "giphy": ["https://giphy.com/embed/xULW8n9ACGvGXbE3ok", "https://www.youtube.com/watch?v=AXeykQaviE4"],
@@ -520,7 +520,7 @@
         {
             "moveId": 2,
             "moveName": "Down Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air (DI out throw)",
-            "moveUrl": "downthrow-upair-di-out-throw",
+            "moveUrl": "down-throw-up-air-di-out-throw",
 
             "info": "https://www.youtube.com/watch?v=AXeykQaviE4",
             "giphy": ["https://giphy.com/embed/xULW8n9ACGvGXbE3ok", "https://www.youtube.com/watch?v=AXeykQaviE4"],
@@ -628,7 +628,7 @@
         {
             "moveId": 0,
             "moveName": "Down Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air",
-            "moveUrl": "dthrow-upair",
+            "moveUrl": "dthrow-up-air",
 
             "info": "",
             "giphy": ["https://giphy.com/embed/l0HUmuMwBtdOQdZrG", "https://www.youtube.com/watch?v=MuYO0LM_4ac"],

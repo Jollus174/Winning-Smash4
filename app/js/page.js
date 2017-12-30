@@ -42,6 +42,25 @@ var Page = (function(){
 			}
 		})*/
 
+		// Need to turn off sidemenu on mobile first if a grid button is clicked!
+		// if($(window).width() < 768){
+		// 	$('body').removeClass('toggle-sidedrawer');
+		// };
+		// Detect if page is desktop or mobile
+		function detectWidth(){
+			var winWidth = $(window).width();
+			if((winWidth) > 768){
+				$('body').addClass('viewport-desktop');
+			} else {
+				$('body').removeClass('viewport-desktop');
+			}
+		}
+		detectWidth();
+		$(window).resize(function(){
+			detectWidth();
+		})
+
+
 		function reassignIndexes(){
 			console.log('reindexing!');
 			$('.character-box').each(function(){
@@ -256,10 +275,12 @@ var Page = (function(){
 					var moveUrl = $button.data('moveurl');
 					var buttonId = $button.attr('id');
 					$dropdownMenu.append('<a class="dropdown-item ' + checkIdAndAddActive(id, buttonId) + '" data-ident=' + buttonId + '>' + name + '</a>');
+				$('body').addClass('show-secondary-dropdown');
 				});
 			} else {
 				$('#secondarynav #moveName').html(moveName).show();
 				$('#secondarynav .dropdown').hide();
+				$('body').removeClass('show-secondary-dropdown');
 			}
 
 			var percentDifferences = [];
@@ -338,6 +359,17 @@ var Page = (function(){
 				}
 
 			});
+			$('body').addClass('character-grid-active');
+
+			// Need move URL to append to URL
+			// constructUrl(self, id);
+
+			// Update the URL
+			var locationHost = window.location.host,
+				baseUrl = window.location.protocol + "//" + locationHost,
+				dataUrl = self.attr('id');
+			var constructedUrl = baseUrl + '/#/' + dataUrl + '/';
+			window.location.replace(constructedUrl);
 
 		};
 
@@ -370,13 +402,11 @@ var Page = (function(){
 				// support css animations
 				support = Modernizr.cssanimations;
 
-
 			// Need to delay open/close function in case it's already animating. Some spastic might hit ESC twice quickly
 			// Add class of 'animating' to body and remove when the animation is finished
-			$('body').addClass('animating').removeClass('show-secondary-dropdown');
+			$('body').addClass('animating').removeClass('fixed-navbar');
 
 			if(!$('body').hasClass('character-grid-active')){
-				$(('body')).addClass('character-grid-active');
 				activateCharacterGrid(self);
 				retrieveCharUrl(self);
 				// variables for transition it forwards
@@ -417,7 +447,6 @@ var Page = (function(){
 					console.log('we have a match!');
 
 					// Initiate transition between MOVES OF SAME CHARACTER
-					$('body').addClass('show-secondary-dropdown');
 					$('#secondarynav-dropdown-menu').removeClass('show');
 					$('#characterGrid').fadeOut('fast', function(){
 						activateCharacterGrid(self);
@@ -428,11 +457,8 @@ var Page = (function(){
 
 				} else {
 
-
 					// Initiate transition BETWEEN DIFFERENT CHARACTERS
 
-
-					
 					// Initiate transition between MOVES OF SAME CHARACTER
 					$('#secondarynav-dropdown-menu').removeClass('show');
 					$('#character-wrapper').fadeOut('fast', function(){
@@ -443,36 +469,16 @@ var Page = (function(){
 						$('#character-wrapper').fadeIn('fast');
 						$('body').removeClass('animating');
 					});
-
-
-/*
-					$currPage.addClass(outClass).on(animEndEventName, function() {
-
-						// This needs work since class is switching at wrong time
-
-						$(this).attr('class', 'pt-page');
-						$currPage.off( animEndEventName );
-						$('body').removeClass('animating');
-
-						console.log('transitioning between different characters!');
-						
-						activateCharacterGrid(self);
-						$('#page-wrapper').removeClass();
-						retrieveCharUrl(self);
-					});
-						$nonCurrPage.removeClass().addClass('pt-page pt-page-current').addClass(inClass).on(animEndEventName, function() {
-
-							var $this = $(this);
-							$this.attr('class', 'pt-page pt-page-current');
-
-							$nonCurrPage.off( animEndEventName );
-						});*/
 				}
+
 			} else {
 				// Initiate STANDARD transition
 				// $nonCurrPage.removeClass('pt-page-current');
 				// $currPage.addClass('pt-page-current');
 				//$('#card-wrapper').removeClass('pt-page-current');
+				if($('body').hasClass('viewport-desktop')){
+					$('#primarynav .navbar-nav').hide();
+				}
 				$currPage.addClass(outClass).on(animEndEventName, function() {
 
 					$(this).removeClass().addClass('pt-page');
@@ -491,6 +497,10 @@ var Page = (function(){
 					var $this = $(this);
 					$this.attr('class', 'pt-page pt-page-current');
 					$nonCurrPage.off( animEndEventName );
+					$('body').addClass('fixed-navbar');
+					if($('body').hasClass('viewport-desktop')){
+						$('#primarynav .navbar-nav').fadeIn('fast');
+					}
 				});
 			}
 		};
@@ -506,6 +516,11 @@ var Page = (function(){
 
 				$('body').removeClass('filtersActive');
 				$('#filter-toggle').removeClass('active');
+
+				var locationHost = window.location.host;
+				var baseUrl = window.location.protocol + "//" + locationHost;
+				var constructedUrl = baseUrl + '/#/';
+				window.location.replace(constructedUrl);
 			};
 		}
 
@@ -591,7 +606,19 @@ var Page = (function(){
 		function constructUrl(self){
 			var locationHost = window.location.host;
 			var baseUrl = window.location.protocol + "//" + locationHost;
-			var dataUrl = self.data('url');
+			var dataUrl = "";
+			
+			// Need to check if we're clicking on a:
+			// characterGrid item
+			// character item
+			// info button ....
+
+			if($(self).hasClass('moveBtn')){
+				dataUrl = self.attr('id');
+				var constructedUrl = baseUrl + '/#/' + dataUrl + '/';
+				window.location.replace(constructedUrl);
+				console.log('constructed url is:' + constructedUrl);
+			}
 			//var rageAmount = self.find('.rageBtn.active').attr('data-rage');
 			//console.log('current rage is ' + rageAmount);
 			/*if(rageAmount != '0' && rageAmount != 'undefined' && locationHost != 'dev.glideagency.com/'){
@@ -599,11 +626,27 @@ var Page = (function(){
 			} else {
 				rageAmount = "";
 			}*/
-			var constructedUrl = baseUrl + '/#/' + dataUrl;
-			
-			//console.log(constructedUrl);
-			window.location.replace(constructedUrl);
 		}
+
+
+		// Using traditional 'click()' bindings will not work on dynamically generated character boxes!
+		// https://stackoverflow.com/questions/6658752/click-event-doesnt-work-on-dynamically-generated-elements
+
+		// Need to use a custom event, since this is also being used for the URL deconstructor, and a click binding cannot be used for it
+		// http://api.jquery.com/trigger/
+		$('#characterGrid').on('click', '.character-box:not(.disabled)', function(){
+			activateCharacter($(this));
+		});
+		$('#characterGrid').on('activateCharBox', function(event){
+			console.log('custom event has fired!');
+			activateCharacter($(this));
+			//$(this).hide;
+		});
+		/*$('#characterGrid').click(function(){
+			//'.character-box:not(.disabled)'
+			var box = $(this).find('.character-box:not(.disabled)');
+			box.trigger('activateCharBox');
+		});*/
 
 		function deconstructUrl(){
 			var baseUrl = window.location.protocol + "//" + window.location.host + '/';
@@ -623,29 +666,46 @@ var Page = (function(){
 				var parts = currentUrl.split('/');
 
 				// Need to check if they're dialling one of the menu links, or a character
-				var urlDirectory = parts[parts.length - 1];
-				if(urlDirectory == 'about'){
+				// for(i=0; i<parts.length; i++){
+				// 	console.log('url part is: ' + i + ' ' + parts[i]);
+				// }
+				// Everything after index 3 is relevant.
+				// Index 4 == moveName || About || Credits
+				// Index 5 == characterName || info
+
+				if(parts[4] == 'about'){
 					// activate About box
-					activateMenuBox('page-about');
-				} else if (urlDirectory == 'credits'){
+					//activateMenuBox('page-about');
+				} else if (parts[4] == 'credits'){
 					// activate Credits box
-					activateMenuBox('page-credits');
+					//activateMenuBox('page-credits');
 				} else {
-					var character = String(parts[parts.length - 1]);
 
 					// This is working...
 					//console.log(character);
+					console.log(parts[4]);
 
-					// Target the character with the class defined in the URl
-					var urlCharacter = $('.character-box[data-url=' + character + ']');
+					// Target the moveBtn with the ID defined in the URl
+					// Also check if it exists. URL may be invalid
+					var characterGrid = parts[4].length ? $('#' + parts[4]) : "";
+					var characterBox = parts[5].length ? $('#characterGrid .character-box.' + parts[5]) : "";
 
 					// and activate it
-					if(urlCharacter.length){
-						activateCharacter(urlCharacter);
+					if(parts[4].length && characterGrid.length){
+						pageTransition(characterGrid);
+						if(parts[5].length && characterBox.length && parts[5] != 'info'){
+
+							// Working
+							//activateCharacter($('#characterGrid .character-box.bayonetta'));
+							activateCharacter(characterBox);
+
+						} else if(parts[5] == 'info'){
+							activateInfoBox();
+						}
 					} else {
 						// It needs to fallback though in case the character is undefined.
 						console.log('This character does not exist, yo');
-						$('#notification').html('Looks like this character does not exist.<br>Please check the URL.').show();
+						$('#notification').html('Looks like this move or character does not exist.<br>Please check the URL.').show();
 						$('#notification').delay(3000).fadeOut();
 					}
 
@@ -656,7 +716,10 @@ var Page = (function(){
 				}
 			}
 		}
-		//deconstructUrl();
+		// For some reason this fires incorrectly if left unwrapped?
+		setTimeout(function(){
+			deconstructUrl();
+		}, 0);
 
 		function activateCharacter(self){
 
@@ -809,14 +872,7 @@ var Page = (function(){
 
 			var $activeMoveBtn = $('.moveBtn.active');
 			$('#modalTitle span').html($activeMoveBtn.closest('.card-deck').data('name') + ' - ' + $activeMoveBtn.html());
-			
 
-
-			/*if($charModal.find('.btn[data-rage="0"]').hasClass('active')){
-				//console.log('default rage');
-			} else {
-				//console.log('NOT default rage');
-			}*/
 
 			// Need to resize based on window.innerHeight due to mobile address bar sizings.
 			// https://developers.google.com/web/updates/2016/12/url-bar-resizing
@@ -824,7 +880,13 @@ var Page = (function(){
 				fixedRagebar($('#characterModal .characterContainer'));
 			})
 
-			//constructUrl(self);
+			// var locationHost = window.location.host;
+			// var baseUrl = window.location.protocol + "//" + locationHost;
+			// var constructedUrl = baseUrl + '/#/' + self.data('url') + '/';
+			// window.location.replace(constructedUrl);
+
+			var url = window.location.href + self.data('url') + '/';
+			window.location = url;
 
 		}
 
@@ -850,11 +912,15 @@ var Page = (function(){
 			
 			// Page does not force reload if '#' is in the URL
 			// https://stackoverflow.com/questions/2405117/difference-between-window-location-href-window-location-href-and-window-location
-			var baseUrl = window.location.protocol + "//" + window.location.host + '/#/';
-			//var baseUrl = window.location.protocol + "//" + window.location.host + '/';
-			//console.log(baseUrl);
-			window.location.replace(baseUrl);
-			// This seems to cause problems with the PWA side of things, and forces some kind of reload anyway.
+			// var baseUrl = window.location.protocol + "//" + window.location.host + '/#/';
+			// window.location.replace(baseUrl);
+
+			// Update the URL
+			var locationHost = window.location.host;
+			var baseUrl = window.location.protocol + "//" + locationHost;
+			var dataUrl = $('.moveBtn.active').attr('id');
+			var constructedUrl = baseUrl + '/#/' + dataUrl + '/';
+			window.location.replace(constructedUrl);
 		};
 
 
@@ -966,19 +1032,18 @@ var Page = (function(){
 		}
 
 		// Transitions
-
 		function transitionRageForward($activeRageButton){
-			if(!$activeRageButton.is(':last-child')){
+			if(!$activeRageButton.is(':last-of-type')){
 				rageAdjustment($activeRageButton.next(), animateNumbers = true);
 			} else {
-				rageAdjustment($activeRageButton.siblings('.rageBtn:first-child'), animateNumbers = true);
+				rageAdjustment($('.rageModifier .rageBtn:first-of-type'), animateNumbers = true);
 			}
 		}
 		function transitionRageBackward($activeRageButton){
-			if(!$activeRageButton.is(':first-child')){
+			if(!$activeRageButton.is(':first-of-type')){
 				rageAdjustment($activeRageButton.prev(), animateNumbers = true);
 			} else {
-				rageAdjustment($activeRageButton.siblings('.rageBtn:last-child'), animateNumbers = true);
+				rageAdjustment($activeRageButton.siblings('.rageBtn:last-of-type'), animateNumbers = true);
 			}
 		}
 		function transitionCharacterForward(activeContainer){
@@ -1144,11 +1209,9 @@ var Page = (function(){
 		});
 
 
-		// Using traditional 'click()' bindings will not work on dynamically generated character boxes!
-		// https://stackoverflow.com/questions/6658752/click-event-doesnt-work-on-dynamically-generated-elements
-		$('#characterGrid').on('click', '.character-box:not(.disabled)', function(){
-			activateCharacter($(this));
-		});
+
+
+
 		$('#characterModal').on('click', '.rageBtn', function(){
 			rageAdjustment($(this), animateNumbers = true);
 		});
@@ -1216,6 +1279,8 @@ var Page = (function(){
 			$('#page-info iframe').attr('src', giphyVid);
 			$('#page-info .giphy a').attr('href', giphySource);
 			$('#page-info .' + currentMove).show();
+			var url = window.location.href + 'info/';
+			window.location = url;
 		}
 		$('#info').click(function(){
 			activateInfoBox();
@@ -1272,39 +1337,16 @@ var Page = (function(){
 		//////////////////////////////////////////////////////////////////////////////
 
 
+		function toggleCheck(self){
+			$checkbox = self.find('.checkbox');
+			if($checkbox.hasClass('fa-check')){
+				$checkbox.removeClass('fa-check').addClass('fa-times');
+			} else {
+				$checkbox.removeClass('fa-times').addClass('fa-check');
+			};
+		};
 		$('.add-extra-info').click(function(){
 			$this = $(this);
-
-			function toggleCheck(self){
-				$checkbox = self.find('.checkbox');
-				if($checkbox.hasClass('fa-check')){
-					$checkbox.removeClass('fa-check').addClass('fa-times');
-				} else {
-					$checkbox.removeClass('fa-times').addClass('fa-check');
-				};
-			};
-
-			// Need to see if these are the MOBILE toggles, or the DESKTOP toggles. They'll function slightly differently
-			// if($this.closest('.btn-group').hasClass('mobile')){
-			// 	// Need to make it that only one 'toggle extra info' button on mobile can be active at a time
-			// 	// Otherwise the design starts to break down and look poopoo
-
-			// 	// if(!$this.hasClass('active')){
-			// 	// 	$('.mobile .add-extra-info checkbox').removeClass('fa-times').addClass('fa-check');
-			// 	// 	$this.addClass('active');
-			// 	// 	if($this.hasClass('add-info-grid')){
-			// 	// 		$('body').addClass('show-extra-info').removeClass('show-ledgeFsmash');
-			// 	// 	}
-			// 	// 	if($this.hasClass('add-ledgeFsmash-grid')){
-			// 	// 		$('body').addClass('show-ledgeFsmash').removeClass('show-extra-info');
-			// 	// 	}
-			// 	// } else {
-			// 	// 	$this.removeClass('active');
-			// 	// 	$('body').removeClass('show-ledgeFsmash show-extra-info');
-			// 	// }
-
-			// } else {
-
 			if($this.hasClass('add-info-grid')){
 				// $this.toggleClass('active');
 				// $this.find('.checkbox').removeClass;
