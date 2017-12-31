@@ -1713,11 +1713,14 @@ body.show-ledgeFsmash .grid-ledgeFsmash{display:block;}
 
 .giphy{
     width:100%;
-    height:0;
+    // height:0;
     padding-bottom:56%;
     position:relative;
     margin-top:20px;
     display:block !important; /* I don't know why the browser is setting this to 'display: none;' automatically as an inline style */
+}
+.detailed-info{
+    margin-top:20px;
 }
 
 
@@ -1971,47 +1974,6 @@ body.show-ledgeFsmash .grid-ledgeFsmash{display:block;}
     content: '%';
 }
 
-
-// .col-1 table.stagePercents{
-//     float: left;
-//     width: 98%;
-//     margin: 0 0 1% 1%;
-// }
-// .col-2 table.stagePercents{
-//     float:left;
-//     width:48.5%;
-//     margin:1%;
-//     margin-top:0;
-// }
-// .col-2 table.stagePercents:nth-of-type(odd){
-//     margin-right:0;
-//     /*margin-left:0;*/
-// }
-// .col-2 table.stagePercents:nth-of-type(even){
-//     margin-right:0;
-// }
-
-// .col-3 table.stagePercents{
-//     float:left;
-//     width:32.2%;
-//     margin:1%;
-//     margin-top:0;
-// }
-// .col-3 table.stagePercents:nth-child(3n+2){ /* Every third element starting at number 2 */
-//     margin-left:0;
-//     margin-right:0;
-// }
-// .col-3 table.stagePercents:nth-child(3n+1){margin-left:1%;} /* Right-most tables */
-// .col-3 table.stagePercents:nth-child(3n+3){margin-right:0;} /* Right-most tables */
-
-
-// table.stagePercents{
-//     float:left;
-//     margin:1%;
-//     width:98%;
-// }
-
-
 .percRange-cell{
     background: #d8d8d8;
     font-size: 14px;
@@ -2025,13 +1987,63 @@ body.show-ledgeFsmash .grid-ledgeFsmash{display:block;}
 tr.table-descs{
     display:none;
 }
-.stage-fd tr.table-descs{
+tr.table-descs{
     display:table-row;
 }
 tr.table-descs td{
     font-size: 12px;
     text-transform: uppercase;
     font-weight: 700;
+}
+
+.modifiers{
+    font-size: 14px;
+    text-align:center;
+    margin-top:20px;
+    &.modifiers-stages{
+        border-color:#ff6f00;
+        h3{
+            background:#ff6f00;
+        }
+    }
+    &.modifiers-rage{
+        border-color:#cc2727;
+        h3{
+            background:#cc2727;
+        }
+    }
+    .modifiers-info{
+        margin-bottom: 10px;
+        font-size: 11px;
+        text-transform: uppercase;
+        font-weight: 700;
+    }
+    .container-fluid{
+        padding-top:7.5px;
+        padding-bottom:7.5px;
+    }
+    .modifiers-border{
+        border:1px solid #eceeef;
+        div{
+            padding-top:5px;
+            padding-bottom:5px;
+            display:flex;
+            justify-content:space-evenly;
+        }
+    }
+    .stage-name{
+        background-color: rgba(0, 0, 0, 0.05);
+        text-transform:uppercase;
+        font-weight:700;
+        font-size:11px
+    }
+    .hidden-sm-down{
+        display:none;
+    }
+
+    .minPerc, .maxPerc{
+        width:50%;
+    }
 }
 
 /* --- CHARACTER DETAILS --- */
@@ -2132,18 +2144,6 @@ tr.table-descs td{
         overflow-y:scroll;
     }
 
-    /*#sidedrawer {
-        bottom: 0;
-        left: 0;
-        -webkit-transform: translate(-200px,0);
-        transform: translate(-200px,0);
-        position:fixed;
-    }*/
-    /*body.toggle-sidedrawer #sidedrawer{
-        left:0;
-        -webkit-transform: translate(0,0);
-        transform: translate(0,0);
-    }*/
     #sidedrawer-contents{
         position:static;
     }
@@ -2271,7 +2271,7 @@ tr.table-descs td{
         #sort{
             position: absolute;
             right: 15px;
-            top: 40px;
+            top: 45px;
             z-index: 1;
             flex-direction:column;
             text-align:right;
@@ -2436,13 +2436,6 @@ tr.table-descs td{
                 }
             }
         }
-        // &.show-secondary-dropdown{
-        //     #secondarynav-container{
-        //         #info{
-        //             transform: translate(-220px, 0);
-        //         }
-        //     }
-        // }
     }
     #filters-bar #sort li:first-child a{
         margin-left:15px;
@@ -2601,42 +2594,9 @@ tr.table-descs td{
     }
 }
 
-@media screen and (min-width:990px) and (max-width:1200px){
-
-    /* TO DO: UTILISE FLEX LAYOUTS FOR THIS SECTION, POSSIBLY */
-    /*.character-box {
-        margin: 1%;
-        margin-bottom:0;
-        width: 32.666%;
-    }
-    .character-box:nth-child(3n){
-        margin-left:0;
-        margin-right:0;
-    }
-    .character-box:nth-child(3n+1){
-        margin-right:0;
-        margin-left:0;
-    }*/
-}
-
 @media screen and (min-width:990px){
 
-    span.desktop-lg{display:inline;}
-
     #character-list{max-width:100%;}
-
-    /*.character-box {
-        margin: 0.5%;
-        margin-bottom:0;
-        margin-right:0;
-        width: 24.62%;
-    }
-    .character-box:nth-child(4n){margin-right:0 !important;}
-    .character-box:nth-child(4n+1){margin-left:0 !important;}
-
-    #main{
-        margin:3em 10px 10px;
-    }*/
 
     .leftImage .characterImage{
         background-position:center;

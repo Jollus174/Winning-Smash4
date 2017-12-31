@@ -61,7 +61,7 @@
     		"stagePartRef": "svNormal"
 		},
 		{
-			"stagePartName": "SV Platform",
+			"stagePartName": "SV Plat<span class='hidden-sm-down'>form</span>",
 			"stagePartRef": "svPlat"
 		}
 	]

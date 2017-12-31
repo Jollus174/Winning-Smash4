@@ -117,6 +117,24 @@ var characters = (function() {
                 // Deeper
                 // https://jsfiddle.net/wfs569gf/
                 vm.moves = data.moves;
+                vm.stageModifiers = data.stageModifiers;
+
+                vm.stageMinPercents = [
+                    data.bfNormalMin,
+                    data.bfLowPlatMin,
+                    data.bfTopPlatMin,
+
+                    data.dlLowPlatMin,
+                    data.dlTopPlatMin,
+
+                    data.svNormalMin, 
+                    data.svPlatMin,
+
+                    data.tcNormalMin, 
+                    data.tcLowPlatMin,
+                    data.tcSidePlatMin,
+                    data.tcTopPlatMin
+                ];
 
                 // WTF HOW IS THIS WORKING WITH THESE LINES COMMENTED OUT?!
                 //vm.moveName = data.moveName;

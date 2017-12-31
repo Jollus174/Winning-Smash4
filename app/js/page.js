@@ -314,8 +314,6 @@ var Page = (function(){
 				$character.find('.grid-maxPercent').text(maxPercent);
 				$character.attr('data-minpercent', minPercent);
 				$character.attr('data-maxpercent', maxPercent);
-
-
 				// IT WOOOOOORKS!!!
 				
 				var percentAverage = percentSum/percentDifferences.length;
@@ -354,15 +352,59 @@ var Page = (function(){
 				if(minPercent == 0 && maxPercent == 0){
 					$character.addClass('hide');
 				}
-				if(minPercent == 1 && maxPercent){
+				if(minPercent == 1 && maxPercent == 1){
 					$character.addClass('disabled');
 				}
 
 			});
+
+
+			// Christ this is garbage... Utter garbage
+			/*var fdNormal = 0,
+				bfNormal = parseInt(self.data('bfnormalmin')),
+				bfLowPlat = parseInt(self.data('bflowplatmin')),
+				bfTopPlat = parseInt(self.data('bftopplatmin')),
+				dlLowPlat = parseInt(self.data('dllowplatmin')),
+				dlTopPlat = parseInt(self.data('dltopplatmin')),
+
+				svNormal = parseInt(self.data('svnormalmin')),
+				svPlat = parseInt(self.data('svplatmin')),
+
+				tcNormal = parseInt(self.data('tcnormalmin')),
+				tcLowPlat = parseInt(self.data('tclowplatmin')),
+				tcSidePlat = parseInt(self.data('tcsideplatmin')),
+				tcTopPlat = parseInt(self.data('tctopplatmin'));*/
+
+			// Map those modifiers to the Info section. Gotta run through one last time, but only a small run
+			$.each(killConfirmsJSON[characterId]['moves'][moveId], function(index, value){
+				//$('.modifiers-stages .minperc:nth-child(' + index + ')').hide();
+				//console.log(index + ' ' + value);
+				$('.modifiers-stages').find('.' + index).text(value);
+
+				//$('.modifiers-stages').find('.bfNormal').hide();
+				// $(selector).hide();
+				//$('.modifiers-stages .col-4:nth-child(' + (index+1) + ') .minperc').hide();
+			});
+
+			var rageModifier = [
+				self.data('rage50'),
+				self.data('rage60'),
+				self.data('rage80'),
+				self.data('rage100'),
+				self.data('rage125'),
+				self.data('rage150')
+			];
+
+			$('.modifiers-rage .col-4').each(function(){
+				var theIndex = $(this).index();
+				$(this).find('.minRage').text(rageModifier[theIndex][0]);
+				$(this).find('.maxRage').text(rageModifier[theIndex][1]);
+			});
+
+			///////
+
 			$('body').addClass('character-grid-active');
 
-			// Need move URL to append to URL
-			// constructUrl(self, id);
 
 			// Update the URL
 			var locationHost = window.location.host,
@@ -939,12 +981,12 @@ var Page = (function(){
 			var rageAdjMax = 0;
 
 			var $moveBtnActive = $('.moveBtn.active');
-			var rage50 = $moveBtnActive.data('rage50');
-			var rage60 = $moveBtnActive.data('rage60');
-			var rage80 = $moveBtnActive.data('rage80');
-			var rage100 = $moveBtnActive.data('rage100');
-			var rage125 = $moveBtnActive.data('rage125');
-			var rage150 = $moveBtnActive.data('rage150');
+			var rage50 = $moveBtnActive.data('rage50'),
+				rage60 = $moveBtnActive.data('rage60'),
+				rage80 = $moveBtnActive.data('rage80'),
+				rage100 = $moveBtnActive.data('rage100'),
+				rage125 = $moveBtnActive.data('rage125'),
+				rage150 = $moveBtnActive.data('rage150');
 
 			// According to the data, characters with ... dunno, I got nothing
 			// There seems to be no distinct pattern of how rage causes the min and max% windows to decay
