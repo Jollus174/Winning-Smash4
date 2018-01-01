@@ -114,10 +114,6 @@
 	</nav> <!-- sidebar -->
 
 
-
-
-	<!-- G & W Twitter - https://twitter.com/houseoffastfood -->
-
 	<div id="page-wrapper">
 		<div class="loader-container">
 			<img class="loader" src="images/spinner.svg" />
@@ -359,45 +355,11 @@
 		</div>
 
 		<div id="page-about" hidden>
-			<div class="desktop">
-				<h2>Using the Calculator</h2>
-				<div class="panel" style="margin-top:20px;">
-					<div class="panel-heading">
-						<h3 class="panel-title">Keyboard Shortcuts - For Desktop</h3>
-					</div>
-					<div class="panel-body">
-						<p><span class="input-type">ESC</span>Open/Close Menu</p>
-						<div class="panel">
-
-							<div class="panel-body">
-								
-								<h4 class="panel-label">Upon selecting a character</h4>
-								<p><span class="input-type">ESC</span>Close Character</p>
-								<p>
-									<span class="input-type">⇐</span>Previous Character<br>
-								    <span class="input-type">⇒</span>Next Character
-								</p>
-
-								<p>
-									<span class="input-type">Shift + ⇐</span>Cycle Rage Modifier Backwards<br>
-								    <span class="input-type">Shift + ⇒</span>Cycle Rage Modifier Forwards
-								</p>
-
-								<p>
-									<span class="input-type">1</span> - <span class="input-type">7</span>Select Rage Modifier Amount
-								</p>
-							</div>
-						</div>
-					</div> <!-- panel-body -->
-				</div> <!-- panel -->
-			</div>
 
 			<h2>What Is This?</h2>
 			<p>This is a personal project developed to help Super Smash Bros. for Wii U (SSBU) players better understand the character Donkey Kong. On July 30, 2015, patch 1.1.0 was released and Donkey Kong's cargo upthrow was buffed, allowing it to work as a combo starter. This turned DK into a grappler-like character, and allowed him to quickly build damage on his opponents via grabs.</p>
 
-			<p>Within certain percent thresholds, it also functions as a kill confirm into his up air attack. This confirm is known among Donkey Kong specialists as <strong>Aerial Cargo Up Toss up air (ACUT)</strong>, the <strong>DKO</strong>, or to most Western players, simply as the <strong>Ding Dong</strong>.</p>
-			<div style="width:100%;height:0;padding-bottom:56%;position:relative;margin-top:20px;"><iframe src="https://giphy.com/embed/xT1R9YAchWK3aiJAhq" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div>
-			<br>
+			<p>The calculator assumes that the attacker's rage affects every victim in the same way - in practice it does not. There could be somewhere between a 5-10% discrepancy between character kill percents depending on their weight and gravity. See <a href="https://docs.google.com/spreadsheets/d/1bGbb7fiX1W0Oer58yf6Kcwtx_zgxg--WYGrUpxTjRpk/htmlview?pli=1#" target="_blank" rel="noopener">Poke's Bowser chart</a> to see how rage scaling affects victims in different ways.</p>
 
 			<p>Historically within Super Smash Bros. and especially with the release of SSBU, it's been difficult for players to accurately determine exact percent thresholds that confirms will cease to connect or kill, due to the opponent's weight, percentage, DI, stage blastzones, and most recently, their own character's current rage.</p>
 
@@ -410,17 +372,6 @@
 
 			<p>Right now, only Android devices running Google Chrome are confirmed to be able to utilise the 'Add to Home' feature and download this web page for instant access, but other browsers and Operating Systems may also support this. All users running modern browsers can still connect online and use the calculator.</p>
 
-			<p>All raw percent values and formulas have been adopted from the <a href="https://docs.google.com/spreadsheets/d/1OvUy2gsTrUj96cAHSkSIZHGnUaaS-UrX6SdFKyctNmU/edit#gid=932844731" target="_blank" rel="noopener">DK Doc</a> labbed by <a href="https://twitter.com/thevondk" target="_blank" rel="noopener">Poke</a>.</p>
-
-			<div class="panel">
-				<div class="panel-body">
-
-					<p>The raw percent values for the calculator were recorded under optimal conditions, assuming poor DI on the opponent's part, and the Ding Dong executed perfectly. For tournament conditions, it's recommended to<br><strong>add 5% to the minimum percent</strong>, and <strong>subtract 5% from the maximum percent</strong>.</p>
-
-				</div>
-
-			</div>
-
 			<h2>Feedback / Bug Reports</h2>
 
 			<p>This application is currently under development, and the latest builds are pushed to the <a href="https://github.com/Jollus88/DingDong-PWA" target="_blank" rel="noopener">Github repo</a>. Any development issues should be submitted through <a href="https://github.com/Jollus88/DingDong-PWA/issues" target="_blank" rel="noopener">Github's ticketing system</a>.</p>
@@ -429,7 +380,23 @@
 
 		</div> <!-- page-about -->
 
-		<div id="page-info">
+		<div id="page-credits" hidden>
+
+			<p><a href="https://twitter.com/TheVonDk" target="_blank" rel="noopener">Poke</a> for labbing the kill confirms for <a href="https://docs.google.com/spreadsheets/d/1OvUy2gsTrUj96cAHSkSIZHGnUaaS-UrX6SdFKyctNmU/edit#gid=932844731" target="_blank" rel="noopener">Donkey Kong</a>, <a href="https://docs.google.com/spreadsheets/d/1bGbb7fiX1W0Oer58yf6Kcwtx_zgxg--WYGrUpxTjRpk/htmlview?pli=1#" target="_blank" rel="noopener">Bowser</a> and <a href="https://docs.google.com/spreadsheets/d/1VNYNt0JFe7ak02Db_Ds1Y1QdoK7muOaPSqqd0c5JOUs/edit#gid=0" target="_blank" rel="noopener">Robin</a>.</p>
+
+			<p><a href="https://twitter.com/houseoffastfood" target="_blank" rel="noopener">Mickey</a> for the <a href="https://docs.google.com/spreadsheets/d/1AxpLDkDltkjAND819JrbgfIgPH_pjkeFPhjpzXPDgP0/edit#gid=0" target="_blank" rel="noopener">G &amp; W Toot-Toot spreadsheet</a></p>
+
+			<p><a href="#" target="_blank" rel="noopener">Taiheita</a> for the <a href="https://docs.google.com/spreadsheets/d/1wIHQkV-RTsKBQq9_aBrP2yE9B55gCeN2cbilx3InPYo/edit#gid=1136269350" target="_blank" rel="noopener">Lucas Down Throw > Up Air Kill Confirm Spreadsheet</a></p>
+
+			<p>Special thanks to labbers Arago, Gale, </p>
+
+			<p>Shoutouts to <a href="https://twitter.com/likeacyansunday" target="_blank" rel="noopener">Shiva</a>, <a href="https://twitter.com/lhc_maribro?lang=en" target="_blank" rel="noopener">Maribro</a>, and <a href="https://twitter.com/KuroganeHammer" target="_blank" rel="noopener">Kurogane Hammer</a>.</p>
+
+			<p>Thanks to Nintendo, Namco Bandai, and Sora for developing Super Smash Bros. for Wii U.</p>
+
+		</div> <!-- page-credits -->
+
+		<div id="page-info" hidden>
 
 			<div class="giphy">
 				<!-- <a href="#" target="_blank" style="display:block;">Video Source</a> -->

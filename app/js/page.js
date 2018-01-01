@@ -344,7 +344,7 @@ var Page = (function(){
 				// Need to disable/hide icons that the combo is not possible on, or have no data...
 				// IMPORTANT STANDARD
 				// [minPercent 0, maxPercent 0] = NO DATA AVAILABLE, so HIDE THE BOX
-				// [minPercent 0, maxPercent 0] = COMBO IS IMPOSSIBlE, so GREY OUT THE BOX AND DISABLE IT
+				// [minPercent 1, maxPercent 1] = COMBO IS IMPOSSIBlE, so GREY OUT THE BOX AND DISABLE IT
 				$character.removeClass('hide').removeClass('disabled');
 
 				// Need this to also not mess up the margins
@@ -717,10 +717,10 @@ var Page = (function(){
 
 				if(parts[4] == 'about'){
 					// activate About box
-					//activateMenuBox('page-about');
+					activateMenuBox('page-about');
 				} else if (parts[4] == 'credits'){
 					// activate Credits box
-					//activateMenuBox('page-credits');
+					activateMenuBox('page-credits');
 				} else {
 
 					// This is working...
@@ -1059,7 +1059,6 @@ var Page = (function(){
 			});
 
 		};
-
 
 		function activateMenuBox(target){
 			// check to see if a character is currently active
