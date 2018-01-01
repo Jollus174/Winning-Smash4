@@ -50,9 +50,9 @@ var Page = (function(){
 		function detectWidth(){
 			var winWidth = $(window).width();
 			if((winWidth) > 768){
-				$('body').addClass('viewport-desktop');
+				$('body').addClass('viewport-desktop').removeClass('viewport-mobile');
 			} else {
-				$('body').removeClass('viewport-desktop');
+				$('body').removeClass('viewport-desktop').addClass('viewport-mobile');
 			}
 		}
 		detectWidth();
@@ -791,36 +791,36 @@ var Page = (function(){
 
 			// Begin the mapping
 
-			var name = self.data('name');
-			var urlName = self.data('url');
-			var bgColour = self.data('bgcolour');
-			var weight = parseInt(self.data('weight'));
-			var fallspeed = self.data('fallspeed');
-			var gravity = self.data('gravity');
-			var airdodgeStart = parseInt(self.data('airdodgestart'));
-			var airdodgeEnd = parseInt(self.data('airdodgeend'));
-			var minPercent = parseInt(self.data('minpercent'));
-			var maxPercent = parseInt(self.data('maxpercent'));
+			var name = self.data('name'),
+				urlName = self.data('url'),
+				bgColour = self.data('bgcolour'),
+				weight = parseInt(self.data('weight')),
+				fallspeed = self.data('fallspeed'),
+				gravity = self.data('gravity'),
+				airdodgeStart = parseInt(self.data('airdodgestart')),
+				airdodgeEnd = parseInt(self.data('airdodgeend')),
+				minPercent = parseInt(self.data('minpercent')),
+				maxPercent = parseInt(self.data('maxpercent')),
+				textContrast = self.data('textcontrast'),
+				airdodge = airdodgeStart + ' - ' + airdodgeEnd;
 
 			// console.log('min perc is:' + minPercent + ' and max perc is: ' + maxPercent);
-			var textContrast = self.data('textcontrast');
-			var airdodge = airdodgeStart + ' - ' + airdodgeEnd;
 
 			var $moveBtnActive = $('.moveBtn.active');
 
-			var bfNormalMin = parseInt($moveBtnActive.data('bfnormalmin'));
-			var bfLowPlatMin = parseInt($moveBtnActive.data('bflowplatmin'));
-			var bfTopPlatMin = parseInt($moveBtnActive.data('bftopplatmin'));
-			var dlLowPlatMin = parseInt($moveBtnActive.data('dllowplatmin'));
-			var dlTopPlatMin = parseInt($moveBtnActive.data('dltopplatmin'));
+			var bfNormalMin = parseInt($moveBtnActive.data('bfnormalmin')),
+				bfLowPlatMin = parseInt($moveBtnActive.data('bflowplatmin')),
+				bfTopPlatMin = parseInt($moveBtnActive.data('bftopplatmin')),
+				dlLowPlatMin = parseInt($moveBtnActive.data('dllowplatmin')),
+				dlTopPlatMin = parseInt($moveBtnActive.data('dltopplatmin')),
 
-			var svNormalMin = parseInt($moveBtnActive.data('svnormalmin'));
-			var svPlatMin = parseInt($moveBtnActive.data('svplatmin'));
+				svNormalMin = parseInt($moveBtnActive.data('svnormalmin')),
+				svPlatMin = parseInt($moveBtnActive.data('svplatmin')),
 
-			var tcNormalMin = parseInt($moveBtnActive.data('tcnormalmin'));
-			var tcLowPlatMin = parseInt($moveBtnActive.data('tclowplatmin'));
-			var tcSidePlatMin = parseInt($moveBtnActive.data('tcsideplatmin'));
-			var tcTopPlatMin = parseInt($moveBtnActive.data('tctopplatmin'));
+				tcNormalMin = parseInt($moveBtnActive.data('tcnormalmin')),
+				tcLowPlatMin = parseInt($moveBtnActive.data('tclowplatmin')),
+				tcSidePlatMin = parseInt($moveBtnActive.data('tcsideplatmin')),
+				tcTopPlatMin = parseInt($moveBtnActive.data('tctopplatmin'));
 
 			// Time to activate the Character Modal
 			$charModal.addClass('active');
@@ -1353,6 +1353,14 @@ var Page = (function(){
 			e.stopPropagation();
 			$('body').toggleClass('toggle-aboutmenu');
 		});
+
+		$('#logo-link').click(function(e){
+			e.preventDefault();
+			toggleSidebar();
+			if($('body').hasClass('character-grid-active')){
+				deactivateCharacterGrid();
+			};
+		})
 		// Need to close About menu if item is clicked
 		// $('#primarynav .nav-item').click(function(){
 		// 	$('body').removeClass('toggle-aboutmenu');

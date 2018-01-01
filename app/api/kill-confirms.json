@@ -8,7 +8,7 @@
             "moveName": "Up Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air",
             "moveUrl": "up-throw-up-air",
 
-            "info": "",
+            "info": [""],
             "giphy": ["https://giphy.com/embed/3oFzm4XhnWq9vSZtIc", "https://www.youtube.com/watch?v=W3sgCRc13sk"],
 
             "rage50": "[-2, -2]",
@@ -113,7 +113,12 @@
             "moveName": "Cargo Up Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air",
             "moveUrl": "cargo-up-throw-up-air",
 
-            "info": "Within certain percent thresholds, it also functions as a kill confirm into his up air attack. This confirm is known among Donkey Kong specialists as <strong>Aerial Cargo Up Toss up air (ACUT)</strong>, the <strong>DKO</strong>, or to most Western players, simply as the <strong>Ding Dong</strong>.",
+            "info": [
+                "This confirm is known among Donkey Kong specialists as <strong>Aerial Cargo Up Toss Up Air (ACUT)</strong>, the <strong>DKO</strong>, or to most Western players, as the <strong>Ding Dong</strong>.",
+                "DK's cargo up throw sends the opponent at 92 degrees and up air sends the opponent at 90 degrees, so there isn't a favourable way to DI, especially since DK swings his head in an arc with his up air.",
+                "However, if you're slightly above your KO range, make sure NOT TO DI the Cargo up toss. The reason is that DI-ing Cargo up toss to the left / right takes away slightly from the vertical component, so you remain closer to DK than you should, and this will allow him to KO you at fraudulent %'s.",
+                "Poke's chart assumes that you DI the cargo toss and the up air at min%'s, and that you <i>do not DI</i> the cargo toss at max%'s. So if you DI the cargo toss at max%, <strong>you effectively increase your KO range.</strong>"                
+            ],
             "giphy": ["https://giphy.com/embed/xT1R9YAchWK3aiJAhq", "https://www.youtube.com/watch?v=JlcIN-MKGCk"],
 
             "rage50": "[-2, -5]",
@@ -216,7 +221,7 @@
             "moveName": "Down Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air",
             "moveUrl": "down-throw-up-air",
 
-            "info": "",
+            "info": [""],
             "giphy": ["https://giphy.com/embed/3ohc0PUZMNWWHEWKmA", "https://www.youtube.com/watch?v=QP2hMnR66eg"],
 
             "rage50": "[-2, -2]",
@@ -320,7 +325,7 @@
             "moveName": "Down Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air",
             "moveUrl": "down-throw-up-air",
 
-            "info": "https://www.youtube.com/watch?v=AXeykQaviE4",
+            "info": ["https://www.youtube.com/watch?v=AXeykQaviE4"],
             "giphy": ["https://giphy.com/embed/xULW8n9ACGvGXbE3ok", "https://www.youtube.com/watch?v=AXeykQaviE4"],
 
             "rage50": "[-4, -4]",
@@ -421,7 +426,7 @@
             "moveName": "Down Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air (DI in throw)",
             "moveUrl": "down-throw-up-air-di-in-throw",
 
-            "info": "https://www.youtube.com/watch?v=AXeykQaviE4",
+            "info": ["https://www.youtube.com/watch?v=AXeykQaviE4"],
             "giphy": ["https://giphy.com/embed/xULW8n9ACGvGXbE3ok", "https://www.youtube.com/watch?v=AXeykQaviE4"],
 
             "rage50": "[-4, -4]",
@@ -522,7 +527,7 @@
             "moveName": "Down Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air (DI out throw)",
             "moveUrl": "down-throw-up-air-di-out-throw",
 
-            "info": "https://www.youtube.com/watch?v=AXeykQaviE4",
+            "info": ["https://www.youtube.com/watch?v=AXeykQaviE4"],
             "giphy": ["https://giphy.com/embed/xULW8n9ACGvGXbE3ok", "https://www.youtube.com/watch?v=AXeykQaviE4"],
 
             "rage50": "[-4, -4]",
@@ -630,7 +635,7 @@
             "moveName": "Down Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air",
             "moveUrl": "dthrow-up-air",
 
-            "info": "",
+            "info": [""],
             "giphy": ["https://giphy.com/embed/l0HUmuMwBtdOQdZrG", "https://www.youtube.com/watch?v=MuYO0LM_4ac"],
 
             "rage50": "[-4, -4]",

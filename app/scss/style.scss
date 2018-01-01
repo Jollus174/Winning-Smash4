@@ -569,6 +569,8 @@ header {
     padding:0 10px;
 }
 
+.main-logo{margin-top:-10px;}
+
 
 #sidedrawer {
     bottom: 0;
@@ -1132,7 +1134,6 @@ body{
         margin-left:10px;
         // margin-top:2px; /* Messes up on desktop with character grid out */
         .dropdown-menu{
-            border-radius:3px;
             padding:0;
             overflow:hidden;
             li{
@@ -1168,10 +1169,6 @@ body{
 #character-wrapper{
     top: 56px;
     background:#eee;
-    // display:none;
-    // &.pt-page-current{
-    //     display:block;
-    // }
     .container-fluid{
         background:#eee;
     }
@@ -1468,7 +1465,8 @@ body{
 .character-grid-active #characterGrid{
     display:flex;
     position:relative;
-    top:55px
+    top:55px;
+    padding-right:7.5px; /* To account for the 'no-right-padding' of charBoxes, and keep them evenly spaced */
 }
 
 .characterTitleBar{
@@ -1629,10 +1627,9 @@ body.show-ledgeFsmash .grid-ledgeFsmash{display:block;}
 .grid-percRange{
     background: #e03838;
     border: 1px solid #FFF;
-    padding: 0 5px;
+    padding: 1px 5px;
     font-size: 14px;
-    // line-height:20px;
-    line-height:22px;
+    // line-height:22px;
     color: #FFF;
     border-radius: 3px;
     font-weight: 700;
@@ -1721,6 +1718,7 @@ body.show-ledgeFsmash .grid-ledgeFsmash{display:block;}
 }
 .detailed-info{
     margin-top:20px;
+    margin-bottom:40px;
 }
 
 
@@ -2020,13 +2018,13 @@ tr.table-descs td{
     }
     .container-fluid{
         padding-top:7.5px;
-        padding-bottom:7.5px;
     }
     .modifiers-border{
         border:1px solid #eceeef;
-        div{
-            padding-top:5px;
-            padding-bottom:5px;
+        margin-bottom:10px;
+        > div{
+            padding-top:1px;
+            padding-bottom:1px;
             display:flex;
             justify-content:space-evenly;
         }
@@ -2296,13 +2294,9 @@ tr.table-descs td{
                     padding: 0;
                     li{
                         padding:0;
-                        a{
-                            // padding: 10px 10px;
-                            // margin:0;
-                            &.add-extra-info{
-                                .checkbox{
-                                    top:13px;
-                                }
+                        a.add-extra-info{
+                            .checkbox{
+                                top:13px;
                             }
                         }
                     }
@@ -2313,9 +2307,9 @@ tr.table-descs td{
     }
 
     #characterGrid{
-        .character-box:not('.hide') {
-            &:nth-child(2n){
-                padding-right:7.5px;
+        .character-box{
+            &:not('.hide'){
+                padding-right:0;
             }
         }
     }
@@ -2587,9 +2581,6 @@ tr.table-descs td{
     #characterGrid{
         .character-box:not('.hide'){
             padding-right:0;
-            &:nth-child(3n){
-                padding-right:7.5px;
-            }
         }
     }
 }
@@ -2603,10 +2594,9 @@ tr.table-descs td{
     }
 
     #characterGrid{
-        .character-box:not('.hide'){
-            padding-right:0;
-            &:nth-child(4n){
-                padding-right:7.5px;
+        .character-box{
+            &:not('.hide'){
+                padding-right:0;
             }
         }
     }

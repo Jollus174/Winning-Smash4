@@ -10488,6 +10488,9 @@ header {
   float: left;
   padding: 0 10px; }
 
+.main-logo {
+  margin-top: -10px; }
+
 #sidedrawer {
   bottom: 0;
   left: -200px;
@@ -10925,7 +10928,6 @@ body.show-secondary-dropdown .navbar-header {
   width: 283px;
   margin-left: 10px; }
   #filtersbar #sort .dropdown-menu {
-    border-radius: 3px;
     padding: 0;
     overflow: hidden; }
     #filtersbar #sort .dropdown-menu li {
@@ -11184,7 +11186,9 @@ body.show-secondary-dropdown .navbar-header {
 .character-grid-active #characterGrid {
   display: flex;
   position: relative;
-  top: 55px; }
+  top: 55px;
+  padding-right: 7.5px;
+  /* To account for the 'no-right-padding' of charBoxes, and keep them evenly spaced */ }
 
 .characterTitleBar {
   position: absolute;
@@ -11352,9 +11356,8 @@ body.show-ledgeFsmash .grid-ledgeFsmash {
 .grid-percRange {
   background: #e03838;
   border: 1px solid #FFF;
-  padding: 0 5px;
+  padding: 1px 5px;
   font-size: 14px;
-  line-height: 22px;
   color: #FFF;
   border-radius: 3px;
   font-weight: 700; }
@@ -11437,7 +11440,8 @@ body.show-ledgeFsmash .grid-ledgeFsmash {
   /* I don't know why the browser is setting this to 'display: none;' automatically as an inline style */ }
 
 .detailed-info {
-  margin-top: 20px; }
+  margin-top: 20px;
+  margin-bottom: 40px; }
 
 #characterModal.active {
   position: fixed;
@@ -11707,13 +11711,13 @@ tr.table-descs td {
     text-transform: uppercase;
     font-weight: 700; }
   .modifiers .container-fluid {
-    padding-top: 7.5px;
-    padding-bottom: 7.5px; }
+    padding-top: 7.5px; }
   .modifiers .modifiers-border {
-    border: 1px solid #eceeef; }
-    .modifiers .modifiers-border div {
-      padding-top: 5px;
-      padding-bottom: 5px;
+    border: 1px solid #eceeef;
+    margin-bottom: 10px; }
+    .modifiers .modifiers-border > div {
+      padding-top: 1px;
+      padding-bottom: 1px;
       display: flex;
       justify-content: space-evenly; }
   .modifiers .stage-name {
@@ -11925,8 +11929,8 @@ tr.table-descs td {
           top: 13px; }
     #filtersbar #sort .filter-dropdown-btn-container {
       display: none; }
-  #characterGrid .character-box:not('.hide'):nth-child(2n) {
-    padding-right: 7.5px; } }
+  #characterGrid .character-box:not('.hide') {
+    padding-right: 0; } }
 
 @media screen and (min-width: 600px) {
   #character-list li.active .characterImage {
@@ -12063,9 +12067,7 @@ tr.table-descs td {
 
 @media screen and (min-width: 768px) and (max-width: 990px) {
   #characterGrid .character-box:not('.hide') {
-    padding-right: 0; }
-    #characterGrid .character-box:not('.hide'):nth-child(3n) {
-      padding-right: 7.5px; } }
+    padding-right: 0; } }
 
 @media screen and (min-width: 990px) {
   #character-list {
@@ -12073,8 +12075,6 @@ tr.table-descs td {
   .leftImage .characterImage {
     background-position: center; }
   #characterGrid .character-box:not('.hide') {
-    padding-right: 0; }
-    #characterGrid .character-box:not('.hide'):nth-child(4n) {
-      padding-right: 7.5px; } }
+    padding-right: 0; } }
 
 /*# sourceMappingURL=style.css.map */

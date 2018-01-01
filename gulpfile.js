@@ -17,7 +17,6 @@ var runSequence = require('run-sequence');
 var del = require('del');
 var jsonminify = require('gulp-jsonminify');
 
-
 // Development Tasks
 gulp.task('watch', ['browserSync', 'sass'], function(){
 	gulp.watch('app/scss/**/*.scss', ['sass']);
@@ -84,6 +83,16 @@ gulp.task('jsonminify', function(){
 gulp.task('clean:public', function(){
 	return del.sync('public');
 });
+
+gulp.task('movemanifest', function(){
+	return gulp.src('app/manifest.json')
+		.pipe(jsonminify())
+		.pipe(gulp.dest('public'))
+});
+gulp.task('moveserviceworker', function(){
+	return gulp.src('app/service-worker.js')
+		.pipe(gulp.dest('public'))
+})
 //
 
 // Tie everything together into one glorious whole
@@ -93,7 +102,7 @@ gulp.task('clean:public', function(){
 gulp.task('build', function(){
 	runSequence(
 		'clean:public',
-		['sass','images','fonts','jsonminify','useref'])
+		['sass','images','fonts','jsonminify','useref', 'movemanifest', 'moveserviceworker'])
 });
 
 gulp.task('default', function(){

@@ -5,8 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Winning at Smash4</title>
-    <meta name="description" content="A progressive web app for calculating Donkey Kong Ding Dong Percents in Super Smash Bros. for Wii U." />
+    <title>Winning at Smash 4</title>
+    <meta name="description" content="A Super Smash Bros. for Wii U Progressive Web App for calculating kill confirm ranges across different characters, stages and rage thresholds." />
 
 	<!-- Moving the Firebase initialisation codes to bottom, as they break all the JS scripts in Microsoft Edge browser -->
 	<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
@@ -27,13 +27,12 @@
     <link async rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/character-icons.css">
     <link async ref="stylesheet" href="css/animations.css">
-
     <!-- endbuild -->
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,500,700" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
     <link rel="manifest" href="./manifest.json">
-    <meta name="theme-color" content="#ffd54f">
+    <meta name="theme-color" content="#d50000">
     <link rel="icon" sizes="32x32" href="./images/icons/launcher-icon-32x32.png">
     <link rel="icon" sizes="96x96" href="./images/icons/launcher-icon-96x96.png">
     <link rel="icon" sizes="128x128" href="./images/icons/launcher-icon-128x128.png">
@@ -47,10 +46,10 @@
 	<!-- Add to home screen for Safari on iOS -->
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-	<meta name="apple-mobile-web-app-title" content="Ding Dong Calculator">
+	<meta name="apple-mobile-web-app-title" content="winning at Smash4">
 	<link rel="apple-touch-icon" href="./images/icons/launcher-icon-152x152.png">
 	<meta name="msapplication-TileImage" content="./images/icons/launcher-icon-144x144.png">
-	<meta name="msapplication-TileColor" content="#ffd54f">
+	<meta name="msapplication-TileColor" content="#d50000">
 
 	<!--<script>
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -81,7 +80,10 @@
 			<ul class="nav" id="side-menu">
 
 		        <li class="sidebar-header">
-		            <h3>Winning at Smash4</h3>
+		        	<a id="logo-link" href="#" class="p-0">
+		        		<img src="images/logo-winning-at-smash4.png" class="img-fluid main-logo" alt="Winning at Smash4" />
+		        	</a>
+		            <!-- <h3>Winning at Smash4</h3> -->
 		        </li>
 
 		        <!-- Sidebar Links -->
@@ -151,7 +153,6 @@
 
 				<div id="characterSelection" class="row" data-bind="foreach: killConfirm">
 
-
 					<div class="card-deck col-12 col-lg-6 col-xl-4" data-bind="css: url, attr: {
 						'data-index': index,
 						'data-name': name,
@@ -193,13 +194,9 @@
 									}">Up Throw <span>-></span> Up Air</button>
 								</div>							
 							</div>
-
 						</div>
 					</div>
 				</div> <!-- row -->
-
-				
-
 			</div>
 		</div> <!-- card-wrapper -->
 
@@ -434,6 +431,28 @@
 
 		<div id="page-info">
 
+			<div class="giphy">
+				<!-- <a href="#" target="_blank" style="display:block;">Video Source</a> -->
+				<iframe width='100%' height='100%' style='position:absolute' frameBorder='0' class='giphy-embed' allowFullScreen></iframe>
+			</div>
+
+
+			<!-- ko foreach: killConfirm -->
+			
+				<!-- ko foreach: moves -->
+
+					<div class="detailed-info" data-bind="css: $parent.url + '-' + moveUrl" hidden>
+						<!-- ko foreach: info -->
+						<p data-bind="html: $data">
+
+						</p>
+						<!-- /ko -->
+					</div>
+
+				<!-- /ko -->
+
+			<!-- /ko -->
+
 			<div class="modifiers modifiers-stages stage">
 				<h3>Stage Modifiers</h3>
 
@@ -523,27 +542,6 @@
 
 			</div>
 
-
-			<div class="giphy">
-				<!-- <a href="#" target="_blank" style="display:block;">Video Source</a> -->
-				<iframe width='100%' height='100%' style='position:absolute' frameBorder='0' class='giphy-embed' allowFullScreen></iframe>
-			</div>
-
-			<!-- ko foreach: killConfirm -->
-			
-				<!-- ko foreach: moves -->
-
-					<div class="detailed-info" data-bind="css: $parent.url + '-' + moveUrl" hidden>
-						<p data-bind="html: info">
-
-						</p>
-
-					</div>
-
-				<!-- /ko -->
-
-			<!-- /ko -->
-
 		</div>
 	</div>
 
@@ -629,17 +627,14 @@
 					<div class="stickyName" data-ref="name"></div>
 					<div class="rageModifier">
 						<h3>Rage Modifier</h3>
-						<!-- <div class="btn-group"> -->
-							<button type="button" class="btn rageBtn resetBtn active" data-rage="0">0%</button>
-							<button type="button" class="btn rageBtn" data-rage="50">50%</button>
-							<button type="button" class="btn rageBtn" data-rage="60">60%</button>
-							<button type="button" class="btn rageBtn" data-rage="80">80%</button>
-							<button type="button" class="btn rageBtn" data-rage="100">100%</button>
-							<button type="button" class="btn rageBtn" data-rage="125">125%</button>
-							<button type="button" class="btn rageBtn maxRageBtn" data-rage="150">150%</button>
-						<!-- </div> -->
+						<button type="button" class="btn rageBtn resetBtn active" data-rage="0">0%</button>
+						<button type="button" class="btn rageBtn" data-rage="50">50%</button>
+						<button type="button" class="btn rageBtn" data-rage="60">60%</button>
+						<button type="button" class="btn rageBtn" data-rage="80">80%</button>
+						<button type="button" class="btn rageBtn" data-rage="100">100%</button>
+						<button type="button" class="btn rageBtn" data-rage="125">125%</button>
+						<button type="button" class="btn rageBtn maxRageBtn" data-rage="150">150%</button>
 					</div>
-
 				</div>
 
 				<div class="stages">
@@ -685,10 +680,8 @@
 								</div>
 							</div>
 						</div>
-
 					</div>
 				</div> <!-- stage list via Knockout -->
-
 			</div> <!-- characterDetails -->
 		</div> <!-- characterContainer -->
 	</div> <!-- characterModal -->
@@ -696,7 +689,6 @@
 	<div id="notification"></div>
 
 	<!-- build:js js/main.min.js -->
-
 	<script src="js/modernizr.custom.js"></script>
 	<script src="js/vendor/knockout-3.3.0.js"></script>
 	<script src="js/vendor/jquery-3.2.1.min.js"></script>
@@ -706,10 +698,7 @@
 	<script src="js/page.js"></script>
 	<script src="js/characters.js"></script>
 	<script src="js/main.js"></script>
-
 	<!-- endbuild -->
 
-
 </body>
-
 </html>

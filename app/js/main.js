@@ -1,5 +1,5 @@
 
-/* -- Turning off Service Worker for now since it could potentially be a pain
+/* -- Turning off Service Worker for now since it could potentially be a pain */
 
 
 // Register the service worker (if available).
@@ -15,12 +15,14 @@ if ('serviceWorker' in navigator) {
     // It won't be able to control pages unless it's located at the same level or higher than them.
     // *Don't* register service worker file in, e.g., a scripts/ sub-directory!
     // See https://github.com/slightlyoff/ServiceWorker/issues/468
-    navigator.serviceWorker.register('./service-worker.js?v2').then(function(reg) {
+    navigator.serviceWorker.register('./service-worker.js').then(function(reg) {
       // updatefound is fired if service-worker.js changes.
       reg.onupdatefound = function() {
         // The updatefound event implies that reg.installing is set; see
         // https://w3c.github.io/ServiceWorker/#service-worker-registration-updatefound-event
+        console.log('service worker update is found!');
         var installingWorker = reg.installing;
+
 
         installingWorker.onstatechange = function() {
           switch (installingWorker.state) {
@@ -49,7 +51,6 @@ if ('serviceWorker' in navigator) {
     });
   });
 }
-*/
 
 
 window.addEventListener('online', function(e) {

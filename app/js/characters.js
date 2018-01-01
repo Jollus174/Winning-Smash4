@@ -48,8 +48,8 @@ var characters = (function() {
             return new Promise(function(resolve, reject){
 
                 var charAttrsRequest = new XMLHttpRequest();
-                charAttrsRequest.open('GET', 'api/char-attrs.json');
-                // charAttrsRequest.open('GET', 'api/char-attrs-complete.json');
+                // charAttrsRequest.open('GET', 'api/char-attrs.json');
+                charAttrsRequest.open('GET', 'api/char-attrs-complete.json');
 
                 charAttrsRequest.onload = function(){
                     // success
