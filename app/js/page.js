@@ -224,194 +224,200 @@ var Page = (function(){
 		// Needs to be done via callback so I can control exactly WHEN the data switches over. It'll be transitioning now, see - it can be changed mid-transition
 		function activateCharacterGrid(self){
 			$this = self;
-			$('.moveBtn').removeClass('active');
-			$this.addClass('active');
-			var characterId = $this.closest('.card-deck').data('index');
-			var moveId = $this.data('moveid'); // Needed for each loop below
-			//console.log('card-deck: ' + characterId + ' moveId: ' + moveId);
-			var characterName = $this.closest('.card-deck').data('name');
-			$('#nav-title').text(characterName);
-			$('.rageModifier h3').text(characterName + ' Rage Modifier');
-			//$('body').addClass('character-grid-active');
+			if(!$this.hasClass('active')){
+			
+				$('.moveBtn').removeClass('active');
+				$this.addClass('active');
+				var characterId = $this.closest('.card-deck').data('index');
+				var moveId = $this.data('moveid'); // Needed for each loop below
+				//console.log('card-deck: ' + characterId + ' moveId: ' + moveId);
+				var characterName = $this.closest('.card-deck').data('name');
+				$('#nav-title').text(characterName);
+				$('.rageModifier h3').text(characterName + ' Rage Modifier');
+				//$('body').addClass('character-grid-active');
 
-			var moveName = $this.html();
+				var moveName = $this.html();
 
-			var id = $this.attr('id');
-			$('#side-menu .nav-moves a').removeClass('active');
-			$('#side-menu a[data-ref=' + id + ']').addClass('active');
+				var id = $this.attr('id');
+				$('#side-menu .nav-moves a').removeClass('active');
+				$('#side-menu a[data-ref=' + id + ']').addClass('active');
 
-			/* --- */
+				/* --- */
 
 
-			// Check for how many buttons in the card
-			// If more than one, then display the move-switcher dropdown in secondarynav
-			var btnCount = $this.parent().find('.moveBtn').length;
-			if(btnCount > 1){
-				$('#secondarynav #moveName').hide();
-				var $dropdown = $('#secondarynav-dropdown');
-				var $dropdownMenu = $('#secondarynav-dropdown-menu');
-				$('#secondarynav .dropdown').show();
-				// adjust the dropdown title
-				$dropdown.html(moveName);
+				// Check for how many buttons in the card
+				// If more than one, then display the move-switcher dropdown in secondarynav
+				var btnCount = $this.parent().find('.moveBtn').length;
+				if(btnCount > 1){
+					$('#secondarynav #moveName').hide();
+					var $dropdown = $('#secondarynav-dropdown');
+					var $dropdownMenu = $('#secondarynav-dropdown-menu');
+					$('#secondarynav .dropdown').show();
+					// adjust the dropdown title
+					$dropdown.html(moveName);
 
-				// nuke the existing contents of the dropdown menu
-				$dropdownMenu.empty()
+					// nuke the existing contents of the dropdown menu
+					$dropdownMenu.empty()
 
-				// Need to see if the generated button has the same id as the current move
-				// If it does, add a class of 'active' to it so we know that it's already selected
-				function checkIdAndAddActive(moveId, buttonId){
-					var className = "";
-					if(moveId == buttonId){
-						className = "active";
+					// Need to see if the generated button has the same id as the current move
+					// If it does, add a class of 'active' to it so we know that it's already selected
+					function checkIdAndAddActive(moveId, buttonId){
+						var className = "";
+						if(moveId == buttonId){
+							className = "active";
+						}
+						return className;
 					}
-					return className;
+
+					// generate those dropdown items
+					$this.parent().find('.moveBtn').each(function(){
+						$button = $(this);
+						var name = $button.html();
+						var href = $button.attr('href');
+						var moveUrl = $button.data('moveurl');
+						var buttonId = $button.attr('id');
+						$dropdownMenu.append('<a class="dropdown-item ' + checkIdAndAddActive(id, buttonId) + '" data-ident=' + buttonId + '>' + name + '</a>');
+					$('body').addClass('show-secondary-dropdown');
+					});
+				} else {
+					$('#secondarynav #moveName').html(moveName).show();
+					$('#secondarynav .dropdown').hide();
+					$('body').removeClass('show-secondary-dropdown');
 				}
 
-				// generate those dropdown items
-				$this.parent().find('.moveBtn').each(function(){
-					$button = $(this);
-					var name = $button.html();
-					var href = $button.attr('href');
-					var moveUrl = $button.data('moveurl');
-					var buttonId = $button.attr('id');
-					$dropdownMenu.append('<a class="dropdown-item ' + checkIdAndAddActive(id, buttonId) + '" data-ident=' + buttonId + '>' + name + '</a>');
-				$('body').addClass('show-secondary-dropdown');
+				var percentDifferences = [];
+				var percentSum = 0;
+				var minPercentSum = 0;
+				var maxPercentSum = 0
+
+				$.each(killConfirmsJSON[characterId]['moves'][moveId]['percents'], function(index, value){
+					// Push these min/max percent values to an array so I can calculate an average between all of them
+					// Need this to calculate difficulties in a uniform manner
+					var minPercent = value[0];
+					var maxPercent = value[1];
+
+					percentDifferences.push(maxPercent - minPercent);
+					percentSum += ((maxPercent + 1) - minPercent);
+					minPercentSum += minPercent;
+					maxPercentSum += maxPercent;
 				});
-			} else {
-				$('#secondarynav #moveName').html(moveName).show();
-				$('#secondarynav .dropdown').hide();
-				$('body').removeClass('show-secondary-dropdown');
-			}
 
-			var percentDifferences = [];
-			var percentSum = 0;
-			var minPercentSum = 0;
-			var maxPercentSum = 0
+				$.each(killConfirmsJSON[characterId]['moves'][moveId]['percents'], function(index, value){
 
-			$.each(killConfirmsJSON[characterId]['moves'][moveId]['percents'], function(index, value){
-				// Push these min/max percent values to an array so I can calculate an average between all of them
-				// Need this to calculate difficulties in a uniform manner
-				var minPercent = value[0];
-				var maxPercent = value[1];
+					// this is good!
+					// https://stackoverflow.com/questions/4329092/multi-dimensional-associative-arrays-in-javascript
+					var $character = $('.' + index + '.character-box');
+					// console.log(index);
+					var minPercent = value[0];
+					var maxPercent = value[1];
+					//console.log(index + 's attrs are: min percent is: ' + minPercent + ' and max percent is: ' + maxPercent);
 
-				percentDifferences.push(maxPercent - minPercent);
-				percentSum += ((maxPercent + 1) - minPercent);
-				minPercentSum += minPercent;
-				maxPercentSum += maxPercent;
-			});
+					$character.find('.grid-minPercent').text(minPercent);
+					$character.find('.grid-maxPercent').text(maxPercent);
+					$character.attr('data-minpercent', minPercent);
+					$character.attr('data-maxpercent', maxPercent);
+					// IT WOOOOOORKS!!!
+					
+					var percentAverage = percentSum/percentDifferences.length;
 
-			$.each(killConfirmsJSON[characterId]['moves'][moveId]['percents'], function(index, value){
+					// Now calculate the percents to iterate by. Assuming there are 5 difficulty levels, take sum and divide by midway for average. So sum/2.5.
+					// This calculates how much to iterate each percent by
+					var diffIterator = Math.floor(percentAverage/2.5);
+					// console.log(diffIterator);
 
-				// this is good!
-				// https://stackoverflow.com/questions/4329092/multi-dimensional-associative-arrays-in-javascript
-				var $character = $('.' + index + '.character-box');
-				// console.log(index);
-				var minPercent = value[0];
-				var maxPercent = value[1];
-				//console.log(index + 's attrs are: min percent is: ' + minPercent + ' and max percent is: ' + maxPercent);
+					var diff = "";
+					var percentDiff = (maxPercent - minPercent) + 1;
 
-				$character.find('.grid-minPercent').text(minPercent);
-				$character.find('.grid-maxPercent').text(maxPercent);
-				$character.attr('data-minpercent', minPercent);
-				$character.attr('data-maxpercent', maxPercent);
-				// IT WOOOOOORKS!!!
-				
-				var percentAverage = percentSum/percentDifferences.length;
+					// Now compute that difficulty
+					if(0 <= percentDiff && percentDiff <= diffIterator){diff = 'very-hard'};
+					if(diffIterator <= percentDiff && percentDiff <= diffIterator*2){diff = 'hard'};
+					if(diffIterator*2 <= percentDiff && percentDiff <= diffIterator*3){diff = 'average'};
+					if(diffIterator*3 <= percentDiff && percentDiff <= diffIterator*4){diff = 'easy'};
+					if(diffIterator*4 <= percentDiff){diff = 'very-easy'};
 
-				// Now calculate the percents to iterate by. Assuming there are 5 difficulty levels, take sum and divide by midway for average. So sum/2.5.
-				// This calculates how much to iterate each percent by
-				var diffIterator = Math.floor(percentAverage/2.5);
-				// console.log(diffIterator);
+					// Map that difficulty
+					// Regretably I'll need to run through the JSON twice now, because gotta calculate an average from all values, THEN apply based off those values
+					var $difficulty = $character.find('.difficulty');
 
-				var diff = "";
-				var percentDiff = (maxPercent - minPercent) + 1;
+					$difficulty.attr('class', 'difficulty').addClass(diff);
+					$difficulty.find('.text-difficulty').text(diff);
+					$difficulty.find('.text-percRange').text(parseInt(maxPercent) - parseInt(minPercent) + 1);
 
-				// Now compute that difficulty
-				if(0 <= percentDiff && percentDiff <= diffIterator){diff = 'very-hard'};
-				if(diffIterator <= percentDiff && percentDiff <= diffIterator*2){diff = 'hard'};
-				if(diffIterator*2 <= percentDiff && percentDiff <= diffIterator*3){diff = 'average'};
-				if(diffIterator*3 <= percentDiff && percentDiff <= diffIterator*4){diff = 'easy'};
-				if(diffIterator*4 <= percentDiff){diff = 'very-easy'};
+					// Need to disable/hide icons that the combo is not possible on, or have no data...
+					// IMPORTANT STANDARD
+					// [minPercent 0, maxPercent 0] = NO DATA AVAILABLE, so HIDE THE BOX
+					// [minPercent 1, maxPercent 1] = COMBO IS IMPOSSIBlE, so GREY OUT THE BOX AND DISABLE IT
+					$character.removeClass('hide').removeClass('disabled');
 
-				// Map that difficulty
-				// Regretably I'll need to run through the JSON twice now, because gotta calculate an average from all values, THEN apply based off those values
-				var $difficulty = $character.find('.difficulty');
+					// Need this to also not mess up the margins
+					// https://stackoverflow.com/questions/32355054/how-to-get-nth-child-selector-to-skip-hidden-divs
+					if(minPercent == 0 && maxPercent == 0){
+						$character.addClass('hide');
+					}
+					if(minPercent == 1 && maxPercent == 1){
+						$character.addClass('disabled');
+					}
 
-				$difficulty.attr('class', 'difficulty').addClass(diff);
-				$difficulty.find('.text-difficulty').text(diff);
-				$difficulty.find('.text-percRange').text(parseInt(maxPercent) - parseInt(minPercent) + 1);
-
-				// Need to disable/hide icons that the combo is not possible on, or have no data...
-				// IMPORTANT STANDARD
-				// [minPercent 0, maxPercent 0] = NO DATA AVAILABLE, so HIDE THE BOX
-				// [minPercent 1, maxPercent 1] = COMBO IS IMPOSSIBlE, so GREY OUT THE BOX AND DISABLE IT
-				$character.removeClass('hide').removeClass('disabled');
-
-				// Need this to also not mess up the margins
-				// https://stackoverflow.com/questions/32355054/how-to-get-nth-child-selector-to-skip-hidden-divs
-				if(minPercent == 0 && maxPercent == 0){
-					$character.addClass('hide');
-				}
-				if(minPercent == 1 && maxPercent == 1){
-					$character.addClass('disabled');
-				}
-
-			});
+				});
 
 
-			// Christ this is garbage... Utter garbage
-			/*var fdNormal = 0,
-				bfNormal = parseInt(self.data('bfnormalmin')),
-				bfLowPlat = parseInt(self.data('bflowplatmin')),
-				bfTopPlat = parseInt(self.data('bftopplatmin')),
-				dlLowPlat = parseInt(self.data('dllowplatmin')),
-				dlTopPlat = parseInt(self.data('dltopplatmin')),
+				// Christ this is garbage... Utter garbage
+				/*var fdNormal = 0,
+					bfNormal = parseInt(self.data('bfnormalmin')),
+					bfLowPlat = parseInt(self.data('bflowplatmin')),
+					bfTopPlat = parseInt(self.data('bftopplatmin')),
+					dlLowPlat = parseInt(self.data('dllowplatmin')),
+					dlTopPlat = parseInt(self.data('dltopplatmin')),
 
-				svNormal = parseInt(self.data('svnormalmin')),
-				svPlat = parseInt(self.data('svplatmin')),
+					svNormal = parseInt(self.data('svnormalmin')),
+					svPlat = parseInt(self.data('svplatmin')),
 
-				tcNormal = parseInt(self.data('tcnormalmin')),
-				tcLowPlat = parseInt(self.data('tclowplatmin')),
-				tcSidePlat = parseInt(self.data('tcsideplatmin')),
-				tcTopPlat = parseInt(self.data('tctopplatmin'));*/
+					tcNormal = parseInt(self.data('tcnormalmin')),
+					tcLowPlat = parseInt(self.data('tclowplatmin')),
+					tcSidePlat = parseInt(self.data('tcsideplatmin')),
+					tcTopPlat = parseInt(self.data('tctopplatmin'));*/
 
-			// Map those modifiers to the Info section. Gotta run through one last time, but only a small run
-			$.each(killConfirmsJSON[characterId]['moves'][moveId], function(index, value){
-				//$('.modifiers-stages .minperc:nth-child(' + index + ')').hide();
-				//console.log(index + ' ' + value);
-				$('.modifiers-stages').find('.' + index).text(value);
+				// Map those modifiers to the Info section. Gotta run through one last time, but only a small run
+				$.each(killConfirmsJSON[characterId]['moves'][moveId], function(index, value){
+					//$('.modifiers-stages .minperc:nth-child(' + index + ')').hide();
+					//console.log(index + ' ' + value);
+					$('.modifiers-stages').find('.' + index).text(value);
 
-				//$('.modifiers-stages').find('.bfNormal').hide();
-				// $(selector).hide();
-				//$('.modifiers-stages .col-4:nth-child(' + (index+1) + ') .minperc').hide();
-			});
+					//$('.modifiers-stages').find('.bfNormal').hide();
+					// $(selector).hide();
+					//$('.modifiers-stages .col-4:nth-child(' + (index+1) + ') .minperc').hide();
+				});
 
-			var rageModifier = [
-				self.data('rage50'),
-				self.data('rage60'),
-				self.data('rage80'),
-				self.data('rage100'),
-				self.data('rage125'),
-				self.data('rage150')
-			];
+				var rageModifier = [
+					self.data('rage50'),
+					self.data('rage60'),
+					self.data('rage80'),
+					self.data('rage100'),
+					self.data('rage125'),
+					self.data('rage150')
+				];
 
-			$('.modifiers-rage .col-4').each(function(){
-				var theIndex = $(this).index();
-				$(this).find('.minRage').text(rageModifier[theIndex][0]);
-				$(this).find('.maxRage').text(rageModifier[theIndex][1]);
-			});
+				$('.modifiers-rage .col-4').each(function(){
+					var theIndex = $(this).index();
+					$(this).find('.minRage').text(rageModifier[theIndex][0]);
+					$(this).find('.maxRage').text(rageModifier[theIndex][1]);
+				});
 
-			///////
+				///////
 
-			$('body').addClass('character-grid-active');
+				$('body').addClass('character-grid-active');
 
 
-			// Update the URL
-			var locationHost = window.location.host,
-				baseUrl = window.location.protocol + "//" + locationHost,
-				dataUrl = self.attr('id');
-			var constructedUrl = baseUrl + '/#/' + dataUrl + '/';
-			window.location.replace(constructedUrl);
+				// Update the URL
+				var locationHost = window.location.host;
+				var baseUrl = window.location.protocol + "//" + locationHost;
+				var dataUrl = self.attr('id');
+				var constructedUrl = baseUrl + '/#/' + dataUrl + '/';
+				window.location.replace(constructedUrl);
+
+				console.log(constructedUrl);
+
+			};
 
 		};
 
@@ -680,7 +686,6 @@ var Page = (function(){
 			activateCharacter($(this));
 		});
 		$('#characterGrid').on('activateCharBox', function(event){
-			console.log('custom event has fired!');
 			activateCharacter($(this));
 			//$(this).hide;
 		});
@@ -927,8 +932,15 @@ var Page = (function(){
 			// var constructedUrl = baseUrl + '/#/' + self.data('url') + '/';
 			// window.location.replace(constructedUrl);
 
-			var url = window.location.href + self.data('url') + '/';
-			window.location = url;
+			// Update the URL
+			var locationHost = window.location.host;
+			var baseUrl = window.location.protocol + "//" + locationHost;
+			var dataUrl = $('.moveBtn.active').attr('id');
+			var constructedUrl = baseUrl + '/#/' + dataUrl + '/' + self.data('url');
+			window.location.replace(constructedUrl);
+
+			// var url = window.location.href + self.data('url') + '/';
+			// window.location = url;
 
 		}
 
@@ -1342,7 +1354,8 @@ var Page = (function(){
 			$('#secondarynav-dropdown-menu').toggleClass('show');	
 		});
 
-		$('#secondarynav').on('click', '.dropdown-item', function(){
+		$('#secondarynav').on('click', '.dropdown-item', function(e){
+			e.preventDefault();
 			var $this = $(this);
 			var ident = $this.data('ident');
 			$('.moveBtn[id=' + ident + ']').trigger('click');
@@ -1406,7 +1419,8 @@ var Page = (function(){
 			}
 		});
 
-		$('#side-menu').on('click', '.components a', function(){
+		$('#side-menu').on('click', '.components a', function(e){
+			e.preventDefault();
 			var dataref = $(this).data('ref');
 			$('.card-deck #' + dataref).trigger('click');
 		});

@@ -888,6 +888,9 @@ a[aria-expanded="true"]::before {
         padding: 20px;
         background: #d50000;
     }
+    li{
+        width:100%;
+    }
     ul.components {
         // padding: 20px 0;
         flex-direction:column;

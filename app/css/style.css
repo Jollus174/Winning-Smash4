@@ -10752,6 +10752,8 @@ a[aria-expanded="true"]::before {
     width: 100%;
     padding: 20px;
     background: #d50000; }
+  #side-menu li {
+    width: 100%; }
   #side-menu ul.components {
     flex-direction: column; }
     #side-menu ul.components.nav-characters > li {
