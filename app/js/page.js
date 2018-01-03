@@ -1313,10 +1313,12 @@ var Page = (function(){
 			deactivateCharacter();
 		});
 
-		$('#about').click(function(){
+		$('#about').click(function(e){
+			e.preventDefault();
 			activateMenuBox('page-about');
 		});
-		$('#credits').click(function(){
+		$('#credits').click(function(e){
+			e.preventDefault();
 			activateMenuBox('page-credits');
 		});
 		function activateInfoBox(){

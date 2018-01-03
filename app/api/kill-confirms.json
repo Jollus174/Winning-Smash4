@@ -8,15 +8,21 @@
             "moveName": "Up Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air",
             "moveUrl": "up-throw-up-air",
 
-            "info": [""],
+            "info": [
+                "Need to lab this on different stages with different rage amounts...",
+                "Bowser's kill confirm is known as the Koo-pa, Bow-wow, or Showtime. An up throw from Bowser will true combo into his up air between certain %'s and will kill the victim regardless of DI.",
+                "If the victim has no DI or DI's the throw in, the move min% kill threshold will increase to <em>1-5% earlier</em>, with the max% unaffected.",
+                "If the opponent has no DI or DI's the throw out, the max% kill threshold will increase to <em>1-4% later</em>, with the min% unaffected.",
+                "The calculator assumes the victim is DI-ing the move optimally, with them <strong>DI-ing out the down throw</strong>, and <strong>DI-ing in the up air</strong>."
+            ],
             "giphy": ["https://giphy.com/embed/3oFzm4XhnWq9vSZtIc", "https://www.youtube.com/watch?v=W3sgCRc13sk"],
 
-            "rage50": "[-2, -2]",
-            "rage60": "[-5, -5]",
-            "rage80": "[-8, -8]",
-            "rage100": "[-11, -11]",
-            "rage125": "[-17, -17]",
-            "rage150": "[-19, -19]",
+            "rage50": "[-4, -5]",
+            "rage60": "[-6, -7]",
+            "rage80": "[-10, -11]",
+            "rage100": "[-15, -16]",
+            "rage125": "[-19, -20]",
+            "rage150": "[-22, -23]",
 
             "bfNormalMin": 7,
             "bfLowPlatMin": -7,
@@ -67,9 +73,9 @@
                 "mega-man": [95, 116],
                 "meta-knight": [78, 96],
                 "mewtwo": [76, 97],
-                "mii-brawler": [0, 0],
-                "mii-gunner": [0, 0],
-                "mii-swordfighter": [0, 0],
+                "mii-brawler": [88, 109],
+                "mii-gunner": [85, 98],
+                "mii-swordfighter": [87, 98],
                 "ness": [83, 102],
                 "olimar": [77, 91],
                 "pacman": [85, 103],
@@ -327,8 +333,8 @@
 
             "info": [
                 "Mr. Game & Watch's Toot Toot kill confirm is complex, as it consists of a down throw and then up throw multi-hit, both hits of which can be DI'd.",
-                "If the victim has no DI or DI's the throw in, the move min% kill threshold will increase to 1-5% earlier, with the max% unaffected.",
-                "If the opponent has no DI or DI's the throw out, the max% kill threshold will increase to 1-10% later, with the min% unaffected.",
+                "If the victim has no DI or DI's the throw in, the move min% kill threshold will increase to <em>1-5% earlier</em>, with the max% unaffected.",
+                "If the opponent has no DI or DI's the throw out, the max% kill threshold will increase to <em>1-10% later</em>, with the min% unaffected.",
                 "The calculator assumes that the victim is DI-ing the move optimally, with them <strong>DI-ing out the down throw</strong>, and <strong>DI-ing out both hits of the up air</strong>."
             ],
             "giphy": ["https://giphy.com/embed/xULW8n9ACGvGXbE3ok", "https://www.youtube.com/watch?v=AXeykQaviE4"],
