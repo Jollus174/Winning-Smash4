@@ -10,10 +10,10 @@
 
             "info": [
                 "Need to lab this on different stages with different rage amounts...",
-                "Bowser's kill confirm is known as the Koo-pa, Bow-wow, or Showtime. An up throw from Bowser will true combo into his up air between certain %'s and will kill the victim regardless of DI.",
-                "If the victim has no DI or DI's the throw in, the move min% kill threshold will increase to <em>1-5% earlier</em>, with the max% unaffected.",
-                "If the opponent has no DI or DI's the throw out, the max% kill threshold will increase to <em>1-4% later</em>, with the min% unaffected.",
-                "The calculator assumes the victim is DI-ing the move optimally, with them <strong>DI-ing out the down throw</strong>, and <strong>DI-ing in the up air</strong>."
+                "Bowser's kill confirm is known as the <strong>Koo-Pah</strong>, <strong>Bow-Wow</strong>, or <strong>Show Time</strong>. An Up Throw from Bowser will true combo into his Up Air between certain percents and will kill the victim regardless of DI.",
+                "If the victim has no DI or DI's the throw in, the move min-% kill threshold will increase to <em>1-5% earlier</em>, with the max-% unaffected.",
+                "If they have no DI or DI the throw out, the max-% kill threshold will increase to <em>1-4% later</em>, with the min-% unaffected.",
+                "The calculator assumes the victim is DI-ing the move optimally, with them <strong>DI-ing out the Up Throw</strong>, and <strong>DI-ing in the Up Air</strong>."
             ],
             "giphy": ["https://giphy.com/embed/3oFzm4XhnWq9vSZtIc", "https://www.youtube.com/watch?v=W3sgCRc13sk"],
 
@@ -121,9 +121,9 @@
 
             "info": [
                 "This confirm is known among Donkey Kong specialists as <strong>Aerial Cargo Up Toss Up Air (ACUT)</strong>, the <strong>DKO</strong>, or to most Western players, as the <strong>Ding Dong</strong>.",
-                "DK's cargo up throw sends the opponent at 92 degrees and up air sends the opponent at 90 degrees, so there isn't a favourable way to DI, especially since DK swings his head in an arc with his up air.",
+                "DK's cargo Up Throw sends the opponent at 92 degrees and Up Air sends the opponent at 90 degrees, so there isn't a favourable way to DI, especially since DK swings his head in an arc with his Up Air.",
                 "However, if you're slightly above your KO range, make sure NOT TO DI the Cargo up toss. The reason is that DI-ing Cargo up toss to the left / right takes away slightly from the vertical component, so you remain closer to DK than you should, and this will allow him to KO you at fraudulent %'s.",
-                "Poke's chart assumes that you DI the cargo toss and the up air at min%'s, and that you <i>do not DI</i> the cargo toss at max%'s. So if you DI the cargo toss at max%, <strong>you effectively increase your KO range.</strong>"                
+                "Poke's chart assumes that you DI the cargo toss and the Up Air at min-%'s, and that you <i>do not DI</i> the cargo toss at max-%'s. So if you DI the cargo toss at max-%, <strong>you effectively increase your KO range.</strong>"                
             ],
             "giphy": ["https://giphy.com/embed/xT1R9YAchWK3aiJAhq", "https://www.youtube.com/watch?v=JlcIN-MKGCk"],
 
@@ -227,15 +227,22 @@
             "moveName": "Down Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air",
             "moveUrl": "down-throw-up-air",
 
-            "info": [""],
+            "info": [
+                "<strong><em>Need to lab some of these values</em></strong>",
+                "This kill confirm consists of a Down Throw, which Lucas can follow-up with an Up Air to kill. It's sometimes known as the <strong>PK Hoo-Hah</strong>, after Diddy Kong's pre-patch Up Air confirm.",
+                "If the victim has no DI or DI's the throw in, the move min-% kill threshold will increase to <em>1-3% earlier</em>, with the max-% unaffected.",
+                "If they have no DI or DI the Down Throw or Up Air out, the max-% kill threshold will increase to <em>1-10% later</em>, with the min-% unaffected.",
+                "The calculator assumes the victim is DI-ing the move optimally, with them <strong>DI-ing out the Down Throw</strong>, and <strong>DI-ing in the Up Air</strong>."
+            ],
+
             "giphy": ["https://giphy.com/embed/3ohc0PUZMNWWHEWKmA", "https://www.youtube.com/watch?v=QP2hMnR66eg"],
 
-            "rage50": "[-2, -2]",
-            "rage60": "[-5, -5]",
-            "rage80": "[-8, -8]",
-            "rage100": "[-11, -11]",
-            "rage125": "[-17, -17]",
-            "rage150": "[-19, -19]",
+            "rage50": "[-2, -3]",
+            "rage60": "[-5, -7]",
+            "rage80": "[-11, -12]",
+            "rage100": "[-15, -16]",
+            "rage125": "[-20, -22]",
+            "rage150": "[-24, -30]",
 
             "bfNormalMin": 7,
             "bfLowPlatMin": -7,
@@ -332,10 +339,10 @@
             "moveUrl": "down-throw-up-air",
 
             "info": [
-                "Mr. Game & Watch's Toot Toot kill confirm is complex, as it consists of a down throw and then up throw multi-hit, both hits of which can be DI'd.",
-                "If the victim has no DI or DI's the throw in, the move min% kill threshold will increase to <em>1-5% earlier</em>, with the max% unaffected.",
-                "If the opponent has no DI or DI's the throw out, the max% kill threshold will increase to <em>1-10% later</em>, with the min% unaffected.",
-                "The calculator assumes that the victim is DI-ing the move optimally, with them <strong>DI-ing out the down throw</strong>, and <strong>DI-ing out both hits of the up air</strong>."
+                "Mr. Game & Watch's <strong>Toot Toot</strong> kill confirm is complex, as it consists of a Down Throw and then Up Throw multi-hit, both hits of which can be DI'd.",
+                "If the victim has no DI or DI's the throw in, the move min-% kill threshold will increase to <em>1-5% earlier</em>, with the max-% unaffected.",
+                "If they have no DI or DI the throw out, the max-% kill threshold will increase to <em>1-10% later</em>, with the min-% unaffected.",
+                "The calculator assumes that the victim is DI-ing the move optimally, with them <strong>DI-ing out the Down Throw</strong>, and <strong>DI-ing out both hits of the up air</strong>."
             ],
             "giphy": ["https://giphy.com/embed/xULW8n9ACGvGXbE3ok", "https://www.youtube.com/watch?v=AXeykQaviE4"],
 
@@ -444,7 +451,15 @@
             "moveName": "Down Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air",
             "moveUrl": "dthrow-up-air",
 
-            "info": [""],
+             "info": [
+                "Robin's <strong>Checkmate</strong> kill confirm consists of a Down Throw followed-up with a strong hit Up Air with the Levin Sword between certain percents.",
+                "If the victim has no DI or DI's the Up Air up, the max-% kill threshold will increase to <em>4-6% later</em>, with the min-% unaffected.",
+                "The calculator assumes that the victim is DI-ing the move optimally, with them <strong>DI-ing out the Down Throw</strong>, and <strong>DI-ing up and away the Up Air</strong>.",
+                "Robin normally cannot Checkmate Bowser or Charizard, because of their heavy weight and Robin's 7 frame (!) jump squat.",
+                "It's possible for Robin to do so if they double jump of a stage ledge or platform. If Robin can catch these two characters at the ledge, their KO ranges are:<br><strong>Bowser: 108 - 126%</strong><br><strong>Charizard: 99 - 113%</strong>",
+                "More information on this can be viewed <a href='https://www.youtube.com/watch?v=sP9svcfxu_o&t=49s' target='_blank' rel='noopener'>here</a>."
+            ],
+            
             "giphy": ["https://giphy.com/embed/l0HUmuMwBtdOQdZrG", "https://www.youtube.com/watch?v=MuYO0LM_4ac"],
 
             "rage50": "[-4, -4]",
