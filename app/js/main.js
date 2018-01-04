@@ -37,6 +37,12 @@ if ('serviceWorker' in navigator) {
                 // At this point, everything has been precached.
                 // It's the perfect time to display a "Content is cached for offline use." message.
                 console.log('Content is now available offline!');
+                var notification = document.getElementById('notification-offline');
+                notification.innerHTML = 'This web app is now ready for use offline.';
+                notification.style.display = 'block';
+                setTimeout(function(){
+                  notification.style.display = 'none';
+                }, 2000);
               }
               break;
 
@@ -76,11 +82,5 @@ if (navigator.onLine) {
 }
 
 
-
-
 // set knockout view model bindings
-//console.log(Page.something);
-//Page.query.subscribe();
-//Page.vm.query.subscribe(Page.vm.search);
-//Page.vm.query.subscribe(Page.vm.search);
 ko.applyBindings(Page.vm);

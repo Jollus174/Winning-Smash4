@@ -1451,10 +1451,10 @@ var Page = (function(){
 		},
 		showOfflineWarning: function(){
 			// disable the live data
-			document.querySelector('body').classList.add('loading')
+			//document.querySelector('body').classList.add('loading')
 			// load html template informing the user they are offline
 			var request = new XMLHttpRequest();
-			request.open('GET', '/offline.html', true);
+			request.open('GET', '../offline.html', true);
 
 			request.onload = function(){
 				if(request.status === 200){

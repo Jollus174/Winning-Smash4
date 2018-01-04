@@ -519,7 +519,7 @@ span.mobile{display:inline;}
 }
 
 
-#notification{
+#notification, #notification-offline{
     display:none;
     position: fixed;
     z-index: 1000;
@@ -535,6 +535,15 @@ span.mobile{display:inline;}
     border: 3px solid $primary-colour;
     box-shadow: 0 3px rgba(0,0,0,0.2);
     font-weight: 700;
+}
+
+#notification-offline{
+    border-color:#bcdff1;
+    width:100%;
+    min-width:260px;
+    max-width:400px;
+    padding-left:10px;
+    padding-right:10px;
 }
 
 /* ---HEADER --- */
