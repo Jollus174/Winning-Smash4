@@ -1,5 +1,5 @@
 // use a cacheName for cache versioning
-var cacheName = 'v1:static';
+var cacheName = 'v2:static';
 
 // during the install phase you usually want to cache static assets
 self.addEventListener('install', function(e) {
@@ -8,6 +8,7 @@ self.addEventListener('install', function(e) {
         caches.open(cacheName).then(function(cache) {
             return cache.addAll([
                 './',
+                './offline.html',
                 '/images/characters/png/bayonetta.png',
                 '/images/characters/png/bowser.png',
                 '/images/characters/png/bowserjr.png',
