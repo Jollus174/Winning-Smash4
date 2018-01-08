@@ -315,11 +315,11 @@ var characters = (function() {
             characterController.getKillConfirms().then(function(response){
                 Page.vm.killConfirm(response);
                 //console.log(Page.vm.killConfirm(response));
-                console.log('kill confirms loaded');
+                //console.log('kill confirms loaded');
             });
             characterController.getStageList().then(function(response){
                 Page.vm.stage(response);
-                console.log('stage list loaded');
+                //console.log('stage list loaded');
             })
             characterController.getCharAttrs().then(function(response){
                 // bind the characters to the UI

@@ -10218,6 +10218,40 @@ a.text-dark:focus, a.text-dark:hover {
 .robin .dropdown-menu, .robin #sort {
   background-color: #ce82de; }
 
+.zelda:hover.nav-characters li > span {
+  background: #aa74ba !important; }
+
+.zelda .secondarynav {
+  background-color: #aa74ba; }
+
+.zelda .btn, .zelda .dropdown-item {
+  background-color: #9453a8 !important;
+  color: #FFF; }
+  .zelda .btn:hover, .zelda .btn.active, .zelda .dropdown-item:hover, .zelda .dropdown-item.active {
+    background-color: #764286 !important; }
+
+.zelda.card-deck .card-image-top {
+  background-color: #aa74ba;
+  color: #FFF; }
+
+.zelda.card-deck .btn {
+  background-color: #9453a8 !important; }
+
+.zelda.nav-characters:before {
+  background: rgba(170, 116, 186, 0.5) !important; }
+
+.zelda.nav-characters li > span {
+  background: rgba(170, 116, 186, 0.8) !important;
+  color: #FFF !important; }
+
+.zelda.nav-characters .nav-moves a {
+  position: relative; }
+  .zelda.nav-characters .nav-moves a:before {
+    background: rgba(170, 116, 186, 0.5) !important; }
+
+.zelda .dropdown-menu, .zelda #sort {
+  background-color: #aa74ba; }
+
 /* Cards */
 /* --- Temporary style, the BG colour will normally be auto-generated --- */
 .card .characterImage {
@@ -10934,18 +10968,18 @@ body.show-secondary-dropdown .navbar-header {
     overflow: hidden; }
     #filtersbar #sort .dropdown-menu li {
       padding: 0; }
-      #filtersbar #sort .dropdown-menu li a {
+      #filtersbar #sort .dropdown-menu li button {
         width: 100%;
         text-align: right;
         margin: 0;
         padding: 10px;
         border-bottom: 1px solid rgba(0, 0, 0, 0.2);
         border-radius: 0; }
-        #filtersbar #sort .dropdown-menu li a.add-extra-info {
+        #filtersbar #sort .dropdown-menu li button.add-extra-info {
           padding-right: 23px; }
-          #filtersbar #sort .dropdown-menu li a.add-extra-info .checkbox {
+          #filtersbar #sort .dropdown-menu li button.add-extra-info .checkbox {
             top: 13px; }
-            #filtersbar #sort .dropdown-menu li a.add-extra-info .checkbox.fa-check {
+            #filtersbar #sort .dropdown-menu li button.add-extra-info .checkbox.fa-check {
               right: 7px; }
 
 #card-wrapper, #character-wrapper {
@@ -11402,6 +11436,14 @@ body.show-ledgeFsmash .grid-ledgeFsmash {
 .very-easy {
   background: #8BC34A; }
 
+/* --- CHARACTER EXCEPTIONS :( --- */
+.zelda .bayonetta .difficulty.average {
+  background: #E65100;
+  color: #FFF; }
+  .zelda .bayonetta .difficulty.average .text-difficulty:after {
+    content: 'very-hard'; }
+
+/* --- */
 /* --- ACTIVE CLASSES --- */
 .no-scroll.character-active .menu-page {
   display: none; }
@@ -11914,7 +11956,7 @@ tr.table-descs td {
     border-radius: 3px;
     display: none;
     overflow: hidden; }
-    #filtersbar #sort li a {
+    #filtersbar #sort li button {
       width: 100%;
       text-align: right;
       margin: 0;

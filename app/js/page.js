@@ -62,9 +62,12 @@ var Page = (function(){
 		// Need to redo all sort functions to work with jQuery, since Knockout and jQuery sort functions don't play nice together
 		// http://trentrichardson.com/2013/12/16/sort-dom-elements-jquery/
 
-		self.sortName = function(item, event){
+		//self.sortName = function(item, event){
+		function sortName(self){
 			var $filterButtons = $('.filter-btn').not('#filter-dropdown-btn.filter-btn');
-			var $element = $(event.target);
+			var $element = $(self);
+
+			console.log('sortname function!');
 
 			if($element.hasClass('active')){
 				$element.toggleClass('asc');
@@ -92,9 +95,10 @@ var Page = (function(){
 		};
 
 
-		self.sortWeight = function(item, event){
+		//self.sortWeight = function(item, event){
+		function sortWeight(self){
 			var $filterButtons = $('.filter-btn').not('#filter-dropdown-btn.filter-btn');
-			var $element = $(event.target);
+			var $element = $(self);
 
 			if($element.hasClass('active')){
 				$element.toggleClass('asc');
@@ -119,9 +123,10 @@ var Page = (function(){
 			reassignIndexes();
 		};
 
-		self.sortDifficulty = function(item, event){
+		//self.sortDifficulty = function(item, event){
+		function sortDifficulty(self){
 			var $filterButtons = $('.filter-btn').not('#filter-dropdown-btn.filter-btn');
-			var $element = $(event.target);
+			var $element = $(self);
 
 			if($element.hasClass('active')){
 				$element.toggleClass('asc');
@@ -147,9 +152,10 @@ var Page = (function(){
 		};
 
 
-		self.sortFallspeed = function(item, event){
+		//self.sortFallspeed = function(item, event){
+		function sortFallspeed(self){
 			var $filterButtons = $('.filter-btn').not('#filter-dropdown-btn.filter-btn');
-			var $element = $(event.target);
+			var $element = $(self);
 
 			if($element.hasClass('active')){
 				$element.toggleClass('asc');
@@ -174,9 +180,10 @@ var Page = (function(){
 			reassignIndexes();
 		};
 
-		self.sortGravity = function(item, event){
+		//self.sortGravity = function(item, event){
+		function sortGravity(self){
 			var $filterButtons = $('.filter-btn').not('#filter-dropdown-btn.filter-btn');
-			var $element = $(event.target);
+			var $element = $(self);
 
 			if($element.hasClass('active')){
 				$element.toggleClass('asc');
@@ -201,16 +208,19 @@ var Page = (function(){
 			reassignIndexes();
 		};
 
-
+		var $this = this;
 		// Detect if Sort Name filter is active
 		function executeActiveFilter(self){
 			var filterId = $('.filter-btn.active').attr('id');
+			//var $this = this;
 			// Only need to execute this if a filter other than sortName is active
 			if(filterId != 'sort-name'){
-				if(filterId == sort-weight){ console.log('sort weight!');this.sortWeight; };
-				if(filterId == sort-difficulty){ this.sortDifficulty };
-				if(filterId == sort-fallspeed){ this.sortFallspeed };
-				if(filterId == sort-gravity){ this.sortGravity };
+				// if(filterId == sort-weight){
+				// 	sortWeight(self);
+				// };
+				// if(filterId == sort-difficulty){ this.sortDifficulty };
+				// if(filterId == sort-fallspeed){ this.sortFallspeed };
+				// if(filterId == sort-gravity){ this.sortGravity };
 				// console.log(filterId);
 				// this.sortName;
 			} else {
@@ -1363,7 +1373,13 @@ var Page = (function(){
 			if($('body').hasClass('character-grid-active')){
 				deactivateCharacterGrid();
 			};
-		})
+		});
+
+		$('#sort-name').click(function(){ sortName($(this)) });
+		$('#sort-weight').click(function(){ sortWeight($(this)) });
+		$('#sort-difficulty').click(function(){ sortDifficulty($(this)) });
+		$('#sort-fallspeed').click(function(){ sortFallspeed($(this)) });
+		$('#sort-gravity').click(function(){ sortGravity($(this)) });
 		// Need to close About menu if item is clicked
 		// $('#primarynav .nav-item').click(function(){
 		// 	$('body').removeClass('toggle-aboutmenu');

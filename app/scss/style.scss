@@ -50,6 +50,12 @@ $robin-button-primary:#ce82de;
 $robin-button-primary-hover:darken($robin-button-primary, 10%);
 $robin-button-primary-active:#d82800;
 
+$zelda:#aa74ba;
+$zelda-button-homepage:darken($zelda, 10%);
+$zelda-button-primary:#aa74ba;
+$zelda-button-primary-hover:darken($zelda-button-primary, 10%);
+$zelda-button-primary-active:#7c468c;
+
 /* --- */
 
 .bowser{
@@ -244,6 +250,42 @@ $robin-button-primary-active:#d82800;
         }
     }
     .dropdown-menu, #sort{background-color:$robin}
+}
+
+.zelda{
+    &:hover{
+        &.nav-characters li > span{
+            background:$zelda !important;
+        }
+    }
+    .secondarynav{background-color:$zelda;}
+    .btn, .dropdown-item{
+        background-color:$zelda-button-homepage !important;
+        color:$text-light;
+        //border-color:$zelda-button-homepage;
+        &:hover, &.active{background-color:darken($zelda-button-homepage, 10%) !important;}
+    }
+    &.card-deck{
+        .card-image-top{
+            background-color:$zelda;
+            color:$text-light;
+        }
+        .btn{
+            background-color:darken($zelda, 10%) !important;
+        }
+    }
+    &.nav-characters{
+        &:before{background:transparentize($zelda, 0.5) !important;}
+        li > span{
+            background:transparentize($zelda, 0.2) !important;
+            color: $text-light !important;
+        }
+        .nav-moves a{
+            position:relative;
+            &:before{background:transparentize($zelda, 0.5) !important;}
+        }
+    }
+    .dropdown-menu, #sort{background-color:$zelda}
 }
 
 
@@ -1141,7 +1183,7 @@ body{
             overflow:hidden;
             li{
                 padding:0;
-                a{
+                button{
                     width:100%;
                     text-align:right;
                     margin:0;
@@ -1676,6 +1718,24 @@ body.show-ledgeFsmash .grid-ledgeFsmash{display:block;}
 .very-easy{
     background: #8BC34A;
 }
+
+/* --- CHARACTER EXCEPTIONS :( --- */
+
+.zelda{
+    .bayonetta{
+        .difficulty.average{
+            background:#E65100;
+            color:#FFF;
+            .text-difficulty:after{
+                content:'very-hard';
+            }
+        }
+    }
+}
+
+
+
+/* --- */
 
 /* --- ACTIVE CLASSES --- */
 
@@ -2282,7 +2342,7 @@ tr.table-descs td{
 
             li{
                 // margin:10px 0 0;
-                a{
+                button{
                     width:100%;
                     text-align:right;
                     margin:0;
