@@ -91,6 +91,7 @@ var Page = (function(){
 			reassignIndexes();
 		};
 
+
 		self.sortWeight = function(item, event){
 			var $filterButtons = $('.filter-btn').not('#filter-dropdown-btn.filter-btn');
 			var $element = $(event.target);
@@ -200,8 +201,22 @@ var Page = (function(){
 			reassignIndexes();
 		};
 
-		// All BELOW MIGRATED OVER FROM custom.js
-		// Now no more BS with the JSON being loaded twice
+
+		// Detect if Sort Name filter is active
+		function executeActiveFilter(self){
+			var filterId = $('.filter-btn.active').attr('id');
+			// Only need to execute this if a filter other than sortName is active
+			if(filterId != 'sort-name'){
+				if(filterId == sort-weight){ console.log('sort weight!');this.sortWeight; };
+				if(filterId == sort-difficulty){ this.sortDifficulty };
+				if(filterId == sort-fallspeed){ this.sortFallspeed };
+				if(filterId == sort-gravity){ this.sortGravity };
+				// console.log(filterId);
+				// this.sortName;
+			} else {
+				console.log('current filter is sortName!');
+			}
+		};
 
 
 		// Need to trigger this on button click now
@@ -346,20 +361,6 @@ var Page = (function(){
 
 
 				// Christ this is garbage... Utter garbage
-				/*var fdNormal = 0,
-					bfNormal = parseInt(self.data('bfnormalmin')),
-					bfLowPlat = parseInt(self.data('bflowplatmin')),
-					bfTopPlat = parseInt(self.data('bftopplatmin')),
-					dlLowPlat = parseInt(self.data('dllowplatmin')),
-					dlTopPlat = parseInt(self.data('dltopplatmin')),
-
-					svNormal = parseInt(self.data('svnormalmin')),
-					svPlat = parseInt(self.data('svplatmin')),
-
-					tcNormal = parseInt(self.data('tcnormalmin')),
-					tcLowPlat = parseInt(self.data('tclowplatmin')),
-					tcSidePlat = parseInt(self.data('tcsideplatmin')),
-					tcTopPlat = parseInt(self.data('tctopplatmin'));*/
 
 				// Map those modifiers to the Info section. Gotta run through one last time, but only a small run
 				$.each(killConfirmsJSON[characterId]['moves'][moveId], function(index, value){
@@ -390,6 +391,8 @@ var Page = (function(){
 				///////
 
 				$('body').addClass('character-grid-active');
+
+				executeActiveFilter(self);
 
 
 				// Update the URL
@@ -1280,6 +1283,8 @@ var Page = (function(){
 			// 	$('#main').css('margin-top', '');
 			// }
 		});
+
+
 
 
 
