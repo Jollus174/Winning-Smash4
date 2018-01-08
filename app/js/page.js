@@ -8,22 +8,6 @@ var Page = (function(){
 		self.character = ko.observableArray([]);
 		self.killConfirm = ko.observableArray([]);
 		self.stage = ko.observableArray([]);
-		
-		// This is new!
-		//self.moves = ko.observableArray([]);
-		//self.percents = ko.obserableArray([]);
-
-		// !!!
-		// This could also be important in allowing the Moves to be iterated
-		// !!!
-		// Probably not though. It's just var declaration
-
-
-		//self.moves = ko.observableArray(moves);
-		/*var moves = function(moveName){
-			this.moveName = moveName;
-		}*/
-
 
 		// Filter is finally bloody working. Ty based 'super cool'
 		// https://stackoverflow.com/questions/36283070/search-filter-with-knockoutjs

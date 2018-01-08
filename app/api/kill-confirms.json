@@ -11,8 +11,8 @@
             "info": [
                 "Need to lab this on different stages with different rage amounts...",
                 "Bowser's kill confirm is known as the <strong>Koo-Pah</strong>, <strong>Bow-Wow</strong>, or <strong>Show Time</strong>. An Up Throw from Bowser will true combo into his Up Air between certain percents and will kill the victim regardless of DI.",
-                "If the victim has no DI or DI's the throw in, the move min-% kill threshold will increase to <em>1-5% earlier</em>, with the max-% unaffected.",
-                "If they have no DI or DI the throw out, the max-% kill threshold will increase to <em>1-4% later</em>, with the min-% unaffected.",
+                "If the victim has no DI or DI's the throw in, the move min-% kill threshold will increase to <em>1-5% earlier</em>.",
+                "If they have no DI or DI the throw out, the max-% kill threshold will increase to <em>1-4% later</em>.",
                 "The calculator assumes the victim is DI-ing the move optimally, with them <strong>DI-ing out the Up Throw</strong>, and <strong>DI-ing in the Up Air</strong>."
             ],
             "giphy": ["https://giphy.com/embed/3oFzm4XhnWq9vSZtIc", "https://www.youtube.com/watch?v=W3sgCRc13sk"],
@@ -340,8 +340,8 @@
 
             "info": [
                 "Mr. Game & Watch's <strong>Toot Toot</strong> kill confirm is complex, as it consists of a Down Throw and then Up Throw multi-hit, both hits of which can be DI'd.",
-                "If the victim has no DI or DI's the throw in, the move min-% kill threshold will increase to <em>1-5% earlier</em>, with the max-% unaffected.",
-                "If they have no DI or DI the throw out, the max-% kill threshold will increase to <em>1-10% later</em>, with the min-% unaffected.",
+                "If the victim has no DI or DI's the throw in, the move min-% kill threshold will increase to <em>1-5% earlier</em>.",
+                "If they have no DI or DI the throw out, the max-% kill threshold will increase to <em>1-10% later</em>.",
                 "The calculator assumes that the victim is DI-ing the move optimally, with them <strong>DI-ing out the Down Throw</strong>, and <strong>DI-ing out both hits of the up air</strong>."
             ],
             "giphy": ["https://giphy.com/embed/xULW8n9ACGvGXbE3ok", "https://www.youtube.com/watch?v=AXeykQaviE4"],
