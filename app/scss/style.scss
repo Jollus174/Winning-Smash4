@@ -1717,24 +1717,6 @@ body.show-ledgeFsmash .grid-ledgeFsmash{display:block;}
     background: #8BC34A;
 }
 
-/* --- CHARACTER EXCEPTIONS :( --- */
-
-.zelda{
-    .bayonetta{
-        .difficulty.average{
-            background:#E65100;
-            color:#FFF;
-            .text-difficulty:after{
-                content:'very-hard';
-            }
-        }
-    }
-}
-
-
-
-/* --- */
-
 /* --- ACTIVE CLASSES --- */
 
 .no-scroll.character-active .menu-page{

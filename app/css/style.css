@@ -11432,14 +11432,6 @@ body.show-ledgeFsmash .grid-ledgeFsmash {
 .very-easy {
   background: #8BC34A; }
 
-/* --- CHARACTER EXCEPTIONS :( --- */
-.zelda .bayonetta .difficulty.average {
-  background: #E65100;
-  color: #FFF; }
-  .zelda .bayonetta .difficulty.average .text-difficulty:after {
-    content: 'very-hard'; }
-
-/* --- */
 /* --- ACTIVE CLASSES --- */
 .no-scroll.character-active .menu-page {
   display: none; }
