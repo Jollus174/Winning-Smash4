@@ -64,22 +64,10 @@ var Page = (function(){
 
 		//self.sortName = function(item, event){
 		function sortName(self){
-			var $filterButtons = $('.filter-btn').not('#filter-dropdown-btn.filter-btn');
-			var $element = $(self);
-
-			console.log('sortname function!');
-
-			if($element.hasClass('active')){
-				$element.toggleClass('asc');
-			} else {
-				$filterButtons.removeClass('active asc');
-				$element.addClass('active');
-			};
-
 			var $grid = $('#characterGrid');
 			var $gridItem = $grid.children('.character-box');
 
-			if($element.hasClass('asc')){
+			if(self.hasClass('asc')){
 				$gridItem.sort(function(left, right){
 					// Ascending order
 					return $(right).data('name') == $(left).data('name') ? 0 : ($(right).data('name') < $(left).data('name') ? -1 : 1)
@@ -97,20 +85,10 @@ var Page = (function(){
 
 		//self.sortWeight = function(item, event){
 		function sortWeight(self){
-			var $filterButtons = $('.filter-btn').not('#filter-dropdown-btn.filter-btn');
-			var $element = $(self);
-
-			if($element.hasClass('active')){
-				$element.toggleClass('asc');
-			} else {
-				$filterButtons.removeClass('active asc');
-				$element.addClass('active');
-			};
-
 			var $grid = $('#characterGrid');
 			var $gridItem = $grid.children('.character-box');
 
-			if($element.hasClass('asc')){
+			if(self.hasClass('asc')){
 				$gridItem.sort(function(lower, higher){
 					return $(higher).data('weight') - $(lower).data('weight');
 				});
@@ -125,20 +103,10 @@ var Page = (function(){
 
 		//self.sortDifficulty = function(item, event){
 		function sortDifficulty(self){
-			var $filterButtons = $('.filter-btn').not('#filter-dropdown-btn.filter-btn');
-			var $element = $(self);
-
-			if($element.hasClass('active')){
-				$element.toggleClass('asc');
-			} else {
-				$filterButtons.removeClass('active asc');
-				$element.addClass('active');
-			};
-
 			var $grid = $('#characterGrid');
 			var $gridItem = $grid.children('.character-box');
 
-			if($element.hasClass('asc')){
+			if(self.hasClass('asc')){
 				$gridItem.sort(function(lower, higher){
 					return $(higher).find('.text-percRange').text() - $(lower).find('.text-percRange').text();
 				});
@@ -154,20 +122,10 @@ var Page = (function(){
 
 		//self.sortFallspeed = function(item, event){
 		function sortFallspeed(self){
-			var $filterButtons = $('.filter-btn').not('#filter-dropdown-btn.filter-btn');
-			var $element = $(self);
-
-			if($element.hasClass('active')){
-				$element.toggleClass('asc');
-			} else {
-				$filterButtons.removeClass('active asc');
-				$element.addClass('active');
-			};
-
 			var $grid = $('#characterGrid');
 			var $gridItem = $grid.children('.character-box');
 
-			if($element.hasClass('asc')){
+			if(self.hasClass('asc')){
 				$gridItem.sort(function(lower, higher){
 					return $(higher).data('fallspeed') - $(lower).data('fallspeed');
 				});
@@ -182,20 +140,10 @@ var Page = (function(){
 
 		//self.sortGravity = function(item, event){
 		function sortGravity(self){
-			var $filterButtons = $('.filter-btn').not('#filter-dropdown-btn.filter-btn');
-			var $element = $(self);
-
-			if($element.hasClass('active')){
-				$element.toggleClass('asc');
-			} else {
-				$filterButtons.removeClass('active asc');
-				$element.addClass('active');
-			};
-
 			var $grid = $('#characterGrid');
 			var $gridItem = $grid.children('.character-box');
 
-			if($element.hasClass('asc')){
+			if(self.hasClass('asc')){
 				$gridItem.sort(function(lower, higher){
 					return $(higher).data('gravity') - $(lower).data('gravity');
 				});
@@ -208,24 +156,15 @@ var Page = (function(){
 			reassignIndexes();
 		};
 
-		var $this = this;
 		// Detect if Sort Name filter is active
 		function executeActiveFilter(self){
 			var filterId = $('.filter-btn.active').attr('id');
 			//var $this = this;
 			// Only need to execute this if a filter other than sortName is active
-			if(filterId != 'sort-name'){
-				// if(filterId == sort-weight){
-				// 	sortWeight(self);
-				// };
-				// if(filterId == sort-difficulty){ this.sortDifficulty };
-				// if(filterId == sort-fallspeed){ this.sortFallspeed };
-				// if(filterId == sort-gravity){ this.sortGravity };
-				// console.log(filterId);
-				// this.sortName;
-			} else {
-				console.log('current filter is sortName!');
-			}
+			// Actually, the only dynamic filter is sortDifficulty...
+			if(filterId == 'sort-difficulty'){
+				sortDifficulty($('#sort-difficulty'));
+			};
 		};
 
 
@@ -316,7 +255,6 @@ var Page = (function(){
 					// this is good!
 					// https://stackoverflow.com/questions/4329092/multi-dimensional-associative-arrays-in-javascript
 					var $character = $('.' + index + '.character-box');
-					// console.log(index);
 					var minPercent = value[0];
 					var maxPercent = value[1];
 					//console.log(index + 's attrs are: min percent is: ' + minPercent + ' and max percent is: ' + maxPercent);
@@ -1375,11 +1313,42 @@ var Page = (function(){
 			};
 		});
 
-		$('#sort-name').click(function(){ sortName($(this)) });
-		$('#sort-weight').click(function(){ sortWeight($(this)) });
-		$('#sort-difficulty').click(function(){ sortDifficulty($(this)) });
-		$('#sort-fallspeed').click(function(){ sortFallspeed($(this)) });
-		$('#sort-gravity').click(function(){ sortGravity($(this)) });
+
+		function ascendingOrDescendingFilter(self){
+			var $filterButtons = $('.filter-btn').not('#filter-dropdown-btn.filter-btn');
+			var $element = self;
+
+			if($element.hasClass('active')){
+				$element.toggleClass('asc');
+			} else {
+				$filterButtons.removeClass('active asc');
+				$element.addClass('active');
+			};
+
+			var $grid = $('#characterGrid');
+			var $gridItem = $grid.children('.character-box');
+		};
+
+		$('#sort-name').click(function(){
+			ascendingOrDescendingFilter($(this));
+			sortName($(this));
+		});
+		$('#sort-weight').click(function(){
+			ascendingOrDescendingFilter($(this));
+			sortWeight($(this));
+		});
+		$('#sort-difficulty').click(function(){
+			ascendingOrDescendingFilter($(this));
+			sortDifficulty($(this));
+		});
+		$('#sort-fallspeed').click(function(){
+			ascendingOrDescendingFilter($(this));
+			sortFallspeed($(this));
+		});
+		$('#sort-gravity').click(function(){ 
+			ascendingOrDescendingFilter($(this));
+			sortGravity($(this));
+		});
 		// Need to close About menu if item is clicked
 		// $('#primarynav .nav-item').click(function(){
 		// 	$('body').removeClass('toggle-aboutmenu');
