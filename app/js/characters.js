@@ -113,6 +113,9 @@ var characters = (function() {
                 vm.url = data.url;
                 vm.hashUrl = ko.observable('#' + vm.url);
                 vm.index = data.index;
+                vm.moveUrl = data.moveUrl;
+
+                vm.specialInfo = data.specialInfo;
 
                 // Deeper
                 // https://jsfiddle.net/wfs569gf/

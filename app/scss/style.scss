@@ -910,24 +910,13 @@ body.animating{
     margin-left: -250px;
 }
 
-/*a[data-toggle="collapse"] {
-    position: relative;
+.special-info{
+    display:none;
+    font-size:0.8em;
+    // border:1px solid #e7eaec;
+    // background-color:#f5f5f5;
+    // color:#333;
 }
-
-a[aria-expanded="false"]::before, a[aria-expanded="true"]::before {
-    content: '\e259';
-    display: block;
-    position: absolute;
-    right: 20px;
-    font-family: 'Glyphicons Halflings';
-    font-size: 0.6em;
-}
-
-a[aria-expanded="true"]::before {
-    content: '\e260';
-}*/
-
-
 
 
 
@@ -1716,7 +1705,6 @@ body.show-ledgeFsmash .grid-ledgeFsmash{display:block;}
 }
 .hard{
     background: #ef6c00;
-    // color: rgba(0,0,0,.87);
 }
 .average{
     background: #FFEB3B;

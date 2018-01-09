@@ -17,6 +17,8 @@
             ],
             "giphy": ["https://giphy.com/embed/3oFzm4XhnWq9vSZtIc", "https://www.youtube.com/watch?v=W3sgCRc13sk"],
 
+            "specialInfo": "",
+
             "rage50": "[-4, -5]",
             "rage60": "[-6, -7]",
             "rage80": "[-10, -11]",
@@ -126,6 +128,8 @@
                 "Poke's chart assumes that you DI the cargo toss and the Up Air at min-%'s, and that you <i>do not DI</i> the cargo toss at max-%'s. So if you DI the cargo toss at max-%, <strong>you effectively increase your KO range.</strong>"                
             ],
             "giphy": ["https://giphy.com/embed/xT1R9YAchWK3aiJAhq", "https://www.youtube.com/watch?v=JlcIN-MKGCk"],
+
+            "specialInfo": "",
 
             "rage50": "[-2, -5]",
             "rage60": "[-5, -9]",
@@ -237,6 +241,8 @@
 
             "giphy": ["https://giphy.com/embed/3ohc0PUZMNWWHEWKmA", "https://www.youtube.com/watch?v=QP2hMnR66eg"],
 
+            "specialInfo": "",
+
             "rage50": "[-2, -3]",
             "rage60": "[-5, -7]",
             "rage80": "[-11, -12]",
@@ -345,6 +351,8 @@
                 "The calculator assumes that the victim is DI-ing the move optimally, with them <strong>DI-ing out the Down Throw</strong>, and <strong>DI-ing out both hits of the up air</strong>."
             ],
             "giphy": ["https://giphy.com/embed/xULW8n9ACGvGXbE3ok", "https://www.youtube.com/watch?v=AXeykQaviE4"],
+
+            "specialInfo": "",
 
             "rage50": "[-4, -4]",
             "rage60": "[-6, -6]",
@@ -462,6 +470,8 @@
             
             "giphy": ["https://giphy.com/embed/l0HUmuMwBtdOQdZrG", "https://www.youtube.com/watch?v=MuYO0LM_4ac"],
 
+            "specialInfo": "",
+
             "rage50": "[-4, -4]",
             "rage60": "[-6, -6]",
             "rage80": "[-13, -13]",
@@ -573,6 +583,8 @@
             ],
             
             "giphy": ["", ""],
+
+            "specialInfo": "In Zelda's case, difficulty is determined by the victim's airdodge frame, not by the kill confirm window.",
 
             "rage50": "[-4, -4]",
             "rage60": "[-6, -6]",

@@ -62,7 +62,6 @@ var Page = (function(){
 		// Need to redo all sort functions to work with jQuery, since Knockout and jQuery sort functions don't play nice together
 		// http://trentrichardson.com/2013/12/16/sort-dom-elements-jquery/
 
-		//self.sortName = function(item, event){
 		function sortName(self){
 			var $grid = $('#characterGrid');
 			var $gridItem = $grid.children('.character-box');
@@ -82,8 +81,6 @@ var Page = (function(){
 			reassignIndexes();
 		};
 
-
-		//self.sortWeight = function(item, event){
 		function sortWeight(self){
 			var $grid = $('#characterGrid');
 			var $gridItem = $grid.children('.character-box');
@@ -101,26 +98,41 @@ var Page = (function(){
 			reassignIndexes();
 		};
 
-		//self.sortDifficulty = function(item, event){
 		function sortDifficulty(self){
 			var $grid = $('#characterGrid');
 			var $gridItem = $grid.children('.character-box');
 
-			if(self.hasClass('asc')){
-				$gridItem.sort(function(lower, higher){
-					return $(higher).find('.text-percRange').text() - $(lower).find('.text-percRange').text();
-				});
+			// If the character selected is Zelda
+			if($('.moveBtn.active').attr('id') != 'zelda-dthrow-up-air'){
+
+				if(self.hasClass('asc')){
+					$gridItem.sort(function(lower, higher){
+						return $(higher).find('.text-percRange').text() - $(lower).find('.text-percRange').text();
+					});
+				} else {
+					$gridItem.sort(function(lower, higher){
+						return $(lower).find('.text-percRange').text() - $(higher).find('.text-percRange').text();
+					});
+				}
+
 			} else {
-				$gridItem.sort(function(lower, higher){
-					return $(lower).find('.text-percRange').text() - $(higher).find('.text-percRange').text();
-				});
+
+				if(self.hasClass('asc')){
+					$gridItem.sort(function(lower, higher){
+						return $(higher).data('airdodgestart') - $(lower).data('airdodgestart');
+					});
+				} else {
+					$gridItem.sort(function(lower, higher){
+						return $(lower).data('airdodgestart') - $(higher).data('airdodgestart');
+					});
+				}
+
 			}
+
 			$gridItem.detach().appendTo($grid);
 			reassignIndexes();
 		};
 
-
-		//self.sortFallspeed = function(item, event){
 		function sortFallspeed(self){
 			var $grid = $('#characterGrid');
 			var $gridItem = $grid.children('.character-box');
@@ -138,7 +150,6 @@ var Page = (function(){
 			reassignIndexes();
 		};
 
-		//self.sortGravity = function(item, event){
 		function sortGravity(self){
 			var $grid = $('#characterGrid');
 			var $gridItem = $grid.children('.character-box');
@@ -225,7 +236,7 @@ var Page = (function(){
 						var moveUrl = $button.data('moveurl');
 						var buttonId = $button.attr('id');
 						$dropdownMenu.append('<a class="dropdown-item ' + checkIdAndAddActive(id, buttonId) + '" data-ident=' + buttonId + '>' + name + '</a>');
-					$('body').addClass('show-secondary-dropdown');
+						$('body').addClass('show-secondary-dropdown');
 					});
 				} else {
 					$('#secondarynav #moveName').html(moveName).show();
@@ -249,7 +260,7 @@ var Page = (function(){
 					minPercentSum += minPercent;
 					maxPercentSum += maxPercent;
 				});
-
+			
 				$.each(killConfirmsJSON[characterId]['moves'][moveId]['percents'], function(index, value){
 
 					// this is good!
@@ -264,30 +275,8 @@ var Page = (function(){
 					$character.attr('data-minpercent', minPercent);
 					$character.attr('data-maxpercent', maxPercent);
 					// IT WOOOOOORKS!!!
-					
-					var percentAverage = percentSum/percentDifferences.length;
 
-					// Now calculate the percents to iterate by. Assuming there are 5 difficulty levels, take sum and divide by midway for average. So sum/2.5.
-					// This calculates how much to iterate each percent by
-					var diffIterator = Math.floor(percentAverage/2.5);
-					// console.log(diffIterator);
-
-					var diff = "";
-					var percentDiff = (maxPercent - minPercent) + 1;
-
-					// Now compute that difficulty
-					if(0 <= percentDiff && percentDiff <= diffIterator){diff = 'very-hard'};
-					if(diffIterator <= percentDiff && percentDiff <= diffIterator*2){diff = 'hard'};
-					if(diffIterator*2 <= percentDiff && percentDiff <= diffIterator*3){diff = 'average'};
-					if(diffIterator*3 <= percentDiff && percentDiff <= diffIterator*4){diff = 'easy'};
-					if(diffIterator*4 <= percentDiff){diff = 'very-easy'};
-
-					// Map that difficulty
-					// Regretably I'll need to run through the JSON twice now, because gotta calculate an average from all values, THEN apply based off those values
 					var $difficulty = $character.find('.difficulty');
-
-					$difficulty.attr('class', 'difficulty').addClass(diff);
-					$difficulty.find('.text-difficulty').text(diff);
 					$difficulty.find('.text-percRange').text(parseInt(maxPercent) - parseInt(minPercent) + 1);
 
 					// Need to disable/hide icons that the combo is not possible on, or have no data...
@@ -296,14 +285,65 @@ var Page = (function(){
 					// [minPercent 1, maxPercent 1] = COMBO IS IMPOSSIBlE, so GREY OUT THE BOX AND DISABLE IT
 					$character.removeClass('hide').removeClass('disabled');
 
-					// Need this to also not mess up the margins
+					// Need hidden elements to also not mess up the margins
 					// https://stackoverflow.com/questions/32355054/how-to-get-nth-child-selector-to-skip-hidden-divs
 					if(minPercent == 0 && maxPercent == 0){
 						$character.addClass('hide');
-					}
+					};
 					if(minPercent == 1 && maxPercent == 1){
 						$character.addClass('disabled');
-					}
+					};
+
+
+					// Difficult iterator for characters other than Zelda. Feck
+					// Zelda needs an alternative difficulty calculator based on the opponent's airdodge frame. Feck
+					// Also need to redo the Difficulty sort since it's now sorting by airdodge frame. Triple feck
+					if(id != 'zelda-dthrow-up-air'){
+					
+						var percentAverage = percentSum/percentDifferences.length;
+
+						// Now calculate the percents to iterate by. Assuming there are 5 difficulty levels, take sum and divide by midway for average. So sum/2.5.
+						// This calculates how much to iterate each percent by
+						var diffIterator = Math.floor(percentAverage/2.5);
+						// console.log(diffIterator);
+
+						var diff = "";
+						var percentDiff = (maxPercent - minPercent) + 1;
+
+						// Now compute that difficulty
+						if(0 <= percentDiff && percentDiff <= diffIterator){diff = 'very-hard'};
+						if(diffIterator <= percentDiff && percentDiff <= diffIterator*2){diff = 'hard'};
+						if(diffIterator*2 <= percentDiff && percentDiff <= diffIterator*3){diff = 'average'};
+						if(diffIterator*3 <= percentDiff && percentDiff <= diffIterator*4){diff = 'easy'};
+						if(diffIterator*4 <= percentDiff){diff = 'very-easy'};
+
+						// Map that difficulty
+						// Regretably I'll need to run through the JSON twice now, because gotta calculate an average from all values, THEN apply based off those values
+
+						$difficulty.attr('class', 'difficulty').addClass(diff);
+						$difficulty.find('.text-difficulty').text(diff);
+
+
+					} else {
+						// Hello Zelda
+						//console.log('hello zelda');
+						var $character = $('.' + index + '.character-box');
+						var airdodgeStart = $character.data('airdodgestart');
+						var airdodgeEnd = $character.data('airdodgeend');
+
+						var diff = "";
+
+						// Time to recalulate difficulty based on airdodge frames
+						if(airdodgeStart == 1){diff = 'very-hard'};
+						if(airdodgeStart == 2){diff = 'hard'};
+						if(airdodgeStart == 3){diff = 'average'};
+						if(airdodgeStart == 4){diff = 'easy'};
+
+
+						$difficulty.attr('class', 'difficulty').addClass(diff);
+						$difficulty.find('.text-difficulty').text(diff);
+
+					};
 
 				});
 
@@ -312,13 +352,7 @@ var Page = (function(){
 
 				// Map those modifiers to the Info section. Gotta run through one last time, but only a small run
 				$.each(killConfirmsJSON[characterId]['moves'][moveId], function(index, value){
-					//$('.modifiers-stages .minperc:nth-child(' + index + ')').hide();
-					//console.log(index + ' ' + value);
 					$('.modifiers-stages').find('.' + index).text(value);
-
-					//$('.modifiers-stages').find('.bfNormal').hide();
-					// $(selector).hide();
-					//$('.modifiers-stages .col-4:nth-child(' + (index+1) + ') .minperc').hide();
 				});
 
 				var rageModifier = [
@@ -340,13 +374,22 @@ var Page = (function(){
 
 				$('body').addClass('character-grid-active');
 
+				// Refilter the menu based on pre-selected filter (only really applicable with difficulty, since is determined dynamically. All other attrs static)
 				executeActiveFilter(self);
 
+				// Ensure the correct 'Special Info' box is displayed, but only if it's not empty!
+				var $specialInfo = $('#info-' + id);
+				// console.log($specialInfo.text());
+				if($specialInfo.text().trim().length){
+					$specialInfo.show();
+				} else {
+					$('.special-info').hide();
+				}
 
 				// Update the URL
 				var locationHost = window.location.host;
 				var baseUrl = window.location.protocol + "//" + locationHost;
-				var dataUrl = self.attr('id');
+				var dataUrl = id;
 				var constructedUrl = baseUrl + '/#/' + dataUrl + '/';
 				window.location.replace(constructedUrl);
 
@@ -535,12 +578,12 @@ var Page = (function(){
 			
 			var windowTop = self.scrollTop();
 			
-            containerWidth = $charContainer.innerWidth();
-            marginOffset = $charContainer.css('margin-top');
-            if(120 < windowTop){
-                $('#characterModal .sticky').addClass('stuck');
-                $('.stuck').css({ top: marginOffset, width: containerWidth });
-                $('.stickyName').slideDown('fast');
+			containerWidth = $charContainer.innerWidth();
+			marginOffset = $charContainer.css('margin-top');
+			if(120 < windowTop){
+				$('#characterModal .sticky').addClass('stuck');
+				$('.stuck').css({ top: marginOffset, width: containerWidth });
+				$('.stickyName').slideDown('fast');
 
 			} else {
 				$('.stuck').css({ top: 0, width: '100%' }); // restore the original top value of the sticky element
@@ -558,31 +601,29 @@ var Page = (function(){
 			////////////////////////////////////////////
 		}
 		var raf = window.requestAnimationFrame ||
-		    window.webkitRequestAnimationFrame ||
-		    window.mozRequestAnimationFrame ||
-		    window.msRequestAnimationFrame ||
-		    window.oRequestAnimationFrame;
+			window.webkitRequestAnimationFrame ||
+			window.mozRequestAnimationFrame ||
+			window.msRequestAnimationFrame ||
+			window.oRequestAnimationFrame;
 		var $window = $charContainer;
 		var lastScrollTop = $window.scrollTop();
 
 		if (raf) {
-    		loop();
+			loop();
 		}
 		function loop() {
-		    var scrollTop = $window.scrollTop();
-		    if (lastScrollTop === scrollTop) {
-		        raf(loop);
-		        return;
-		    } else {
-		        lastScrollTop = scrollTop;
-		        // fire scroll function if scrolls vertically
-		        scroll();
-		        raf(loop);
-		    }
+			var scrollTop = $window.scrollTop();
+			if (lastScrollTop === scrollTop) {
+				raf(loop);
+				return;
+			} else {
+				lastScrollTop = scrollTop;
+				// fire scroll function if scrolls vertically
+				scroll();
+				raf(loop);
+			}
 		}
 		fixedRagebar($charContainer);
-
-
 
 
 		// The URL constructers/deconstructers are back to haunt me
@@ -1273,10 +1314,12 @@ var Page = (function(){
 			$('#page-info .' + currentMove).show();
 			var url = window.location.href + 'info/';
 			window.location = url;
-		}
+		};
+
 		$('#info').click(function(){
 			activateInfoBox();
 		});
+
 		$('#characterGrid').on('click', '.character-box.disabled', function(){
 			activateInfoBox();
 		});
@@ -1313,7 +1356,6 @@ var Page = (function(){
 			};
 		});
 
-
 		function ascendingOrDescendingFilter(self){
 			var $filterButtons = $('.filter-btn').not('#filter-dropdown-btn.filter-btn');
 			var $element = self;
@@ -1349,6 +1391,11 @@ var Page = (function(){
 			ascendingOrDescendingFilter($(this));
 			sortGravity($(this));
 		});
+
+		// $('#sort-airdodge').click(function(){ 
+		// 	ascendingOrDescendingFilter($(this));
+		// 	sortAirdodgeStart($(this));
+		// });
 		// Need to close About menu if item is clicked
 		// $('#primarynav .nav-item').click(function(){
 		// 	$('body').removeClass('toggle-aboutmenu');
