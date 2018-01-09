@@ -923,6 +923,13 @@ var Page = (function(){
 			var $body = $('body');
 			$body.removeClass('no-scroll');
 			$('#character-underlay').css('backgroundColor', 'transparent');
+
+			// Update the URL
+			var locationHost = window.location.host;
+			var baseUrl = window.location.protocol + "//" + locationHost;
+			var dataUrl = $('.moveBtn.active').attr('id');
+			var constructedUrl = baseUrl + '/#/' + dataUrl + '/';
+
 			// determine if body has clas 'character-active', to see if we're deactivating a character or a menu page
 			if($body.hasClass('character-active')){
 				var $charModal = $('#characterModal');
@@ -937,22 +944,22 @@ var Page = (function(){
 				// var baseUrl = window.location.protocol + "//" + window.location.host + '/#/';
 				// window.location.replace(baseUrl);
 
-				// Update the URL
-				var locationHost = window.location.host;
-				var baseUrl = window.location.protocol + "//" + locationHost;
-				var dataUrl = $('.moveBtn.active').attr('id');
-				var constructedUrl = baseUrl + '/#/' + dataUrl + '/';
+
 				window.location.replace(constructedUrl);
 
 			} else {
-				// Hide any info/about boxes
-				//$('.menu-page > div').hide();
+				if($body.hasClass('show-info-box')){
+					$body.removeClass('show-info-box');
+					// Update the URL
+					console.log(constructedUrl);
+					window.location.replace(constructedUrl);					
+				};
+
 				$('#sidedrawer-underlay').css('backgroundColor', 'transparent');
 				$('#menuBackButton').removeClass('active');
 				$('#page-info .giphy iframe').attr('src', '');
 			};
 		};
-
 
 		function transitionCharacter(){
 			var $charModal = $('#characterModal');
@@ -1301,6 +1308,7 @@ var Page = (function(){
 		});
 		function activateInfoBox(){
 			$('#page-info .detailed-info').hide();
+			$('body').addClass('show-info-box');
 			activateMenuBox('page-info');
 			var $moveBtnActive = $('.moveBtn.active');
 			var currentMove = $moveBtnActive.attr('id');
@@ -1317,6 +1325,7 @@ var Page = (function(){
 		};
 
 		$('#info').click(function(){
+			$('body').addClass('show-info-box')
 			activateInfoBox();
 		});
 
