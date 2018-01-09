@@ -931,25 +931,26 @@ var Page = (function(){
 				$charModal.find('.characterBorder').css('height', 'auto');
 				$('#characterGrid .character-box.selected').removeClass('selected');
 				$body.removeClass('character-active');
+
+				// Page does not force reload if '#' is in the URL
+				// https://stackoverflow.com/questions/2405117/difference-between-window-location-href-window-location-href-and-window-location
+				// var baseUrl = window.location.protocol + "//" + window.location.host + '/#/';
+				// window.location.replace(baseUrl);
+
+				// Update the URL
+				var locationHost = window.location.host;
+				var baseUrl = window.location.protocol + "//" + locationHost;
+				var dataUrl = $('.moveBtn.active').attr('id');
+				var constructedUrl = baseUrl + '/#/' + dataUrl + '/';
+				window.location.replace(constructedUrl);
+
 			} else {
 				// Hide any info/about boxes
 				//$('.menu-page > div').hide();
 				$('#sidedrawer-underlay').css('backgroundColor', 'transparent');
 				$('#menuBackButton').removeClass('active');
 				$('#page-info .giphy iframe').attr('src', '');
-			}
-			
-			// Page does not force reload if '#' is in the URL
-			// https://stackoverflow.com/questions/2405117/difference-between-window-location-href-window-location-href-and-window-location
-			// var baseUrl = window.location.protocol + "//" + window.location.host + '/#/';
-			// window.location.replace(baseUrl);
-
-			// Update the URL
-			var locationHost = window.location.host;
-			var baseUrl = window.location.protocol + "//" + locationHost;
-			var dataUrl = $('.moveBtn.active').attr('id');
-			var constructedUrl = baseUrl + '/#/' + dataUrl + '/';
-			window.location.replace(constructedUrl);
+			};
 		};
 
 
