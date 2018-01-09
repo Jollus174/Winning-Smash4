@@ -5,7 +5,7 @@
     "moves": [
         {
             "moveId": 0,
-            "moveName": "Up Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air",
+            "moveName": "Up Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air <span style='color:#FFF;' class='badge badge-pill badge-info'>Lab Rage + Stage Modifiers</span>",
             "moveUrl": "up-throw-up-air",
 
             "info": [
@@ -228,7 +228,7 @@
     "moves": [
         {
             "moveId": 0,
-            "moveName": "Down Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air",
+            "moveName": "Down Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air <span style='color:#FFF;' class='badge badge-pill badge-info'>Lab Rage + Stage Modifiers</span>",
             "moveUrl": "down-throw-up-air",
 
             "info": [
@@ -341,7 +341,7 @@
     "moves": [
         {
             "moveId": 0,
-            "moveName": "Down Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air",
+            "moveName": "Down Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air <span style='color:#FFF;' class='badge badge-pill badge-info'>Lab Rage + Stage Modifiers</span>",
             "moveUrl": "down-throw-up-air",
 
             "info": [
@@ -456,7 +456,7 @@
     "moves": [
         {
             "moveId": 0,
-            "moveName": "Down Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air",
+            "moveName": "Down Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air <span style='color:#FFF;' class='badge badge-pill badge-info'>Lab Rage + Stage Modifiers</span>",
             "moveUrl": "dthrow-up-air",
 
              "info": [
@@ -569,7 +569,7 @@
     "moves": [
         {
             "moveId": 0,
-            "moveName": "Down Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air",
+            "moveName": "Down Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air <span style='color:#FFF;' class='badge badge-pill badge-info'>Lab Rage + Stage Modifiers</span>",
             "moveUrl": "dthrow-up-air",
 
              "info": [

@@ -381,9 +381,9 @@ var Page = (function(){
 				var $specialInfo = $('#info-' + id);
 				// console.log($specialInfo.text());
 				if($specialInfo.text().trim().length){
-					$specialInfo.show();
+					$specialInfo.addClass('active');
 				} else {
-					$('.special-info').hide();
+					$('.special-info').removeClass('active');
 				}
 
 				// Update the URL
@@ -706,7 +706,6 @@ var Page = (function(){
 
 					// This is working...
 					//console.log(character);
-					console.log(parts[4]);
 
 					// Target the moveBtn with the ID defined in the URl
 					// Also check if it exists. URL may be invalid

@@ -10774,6 +10774,8 @@ body.animating #primary-nav {
 .special-info {
   display: none;
   font-size: 0.8em; }
+  .special-info.active {
+    display: inline-block; }
 
 #side-menu {
   color: #fff;
@@ -11391,6 +11393,7 @@ body.show-ledgeFsmash .grid-ledgeFsmash {
   border: 1px solid #FFF;
   padding: 1px 5px;
   font-size: 14px;
+  line-height: normal;
   color: #FFF;
   border-radius: 3px;
   font-weight: 700; }
@@ -11463,6 +11466,9 @@ body.show-ledgeFsmash .grid-ledgeFsmash {
   bottom: 0;
   margin: 55px auto 20px;
   padding: 0 20px 20px; }
+  #page-about h2, #page-credits h2, #page-info h2 {
+    margin-top: 20px;
+    margin-bottom: 20px; }
 
 .giphy {
   width: 100%;

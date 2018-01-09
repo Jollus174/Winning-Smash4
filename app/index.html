@@ -308,7 +308,7 @@
 								<span data-bind="text: (id + 1)"></span>
 							</div>
 							<div class="grid-percRange">
-								<span><span class="grid-minPercent" data-bind="text: minPercent"></span> - <span class="grid-maxPercent" data-bind="text: maxPercent"></span>%</span>
+								<span class="grid-minPercent" data-bind="text: minPercent"></span> - <span class="grid-maxPercent" data-bind="text: maxPercent"></span>%
 							</div>
 							<div hidden class="extra-info grid-fallspeed">
 								<span>Fallspeed - <span style="font-weight:700;" data-bind="text: fallspeed">1.65</span></span>
@@ -360,43 +360,44 @@
 
 		<div id="page-about" hidden>
 
-			<h2>What Is This?</h2>
-			<p>This is a personal project developed to help Super Smash Bros. for Wii U (SSBU) players better understand the character Donkey Kong. On July 30, 2015, patch 1.1.0 was released and Donkey Kong's cargo upthrow was buffed, allowing it to work as a combo starter. This turned DK into a grappler-like character, and allowed him to quickly build damage on his opponents via grabs.</p>
+			<h2>About</h2>
+			<p>This is a personal project developed to help Super Smash Bros. for Wii U (SSBU) players better understand the kill confirms of their characters or opponents, across a variety of stages and rage amounts.</p>
 
-			<p>The calculator assumes that the attacker's rage affects every victim in the same way - in practice it does not. There could be somewhere between a 5-10% discrepancy between character kill percents depending on their weight and gravity. See <a href="https://docs.google.com/spreadsheets/d/1bGbb7fiX1W0Oer58yf6Kcwtx_zgxg--WYGrUpxTjRpk/htmlview?pli=1#" target="_blank" rel="noopener">Poke's Bowser chart</a> to see how rage scaling affects victims in different ways.</p>
+			<p>For every confirm listed, the calculator assumes that the victim is applying the most optimal DI for the situation. More information can be viewed in the Information section for each move.</p>
 
-			<p>Historically within Super Smash Bros. and especially with the release of SSBU, it's been difficult for players to accurately determine exact percent thresholds that confirms will cease to connect or kill, due to the opponent's weight, percentage, DI, stage blastzones, and most recently, their own character's current rage.</p>
+			<p>The calculator also assumes that the attacker's rage affects every victim in the same way - in practice it does not. There could be somewhere between a 5-10% discrepancy between character kill percents depending on their weight and gravity. See <a href="https://docs.google.com/spreadsheets/d/1bGbb7fiX1W0Oer58yf6Kcwtx_zgxg--WYGrUpxTjRpk/htmlview?pli=1#" target="_blank" rel="noopener">Poke's Bowser chart</a> to see how rage scaling affects victims in different ways.</p>
 
-			<p>Many dedicated players have recorded and labbed their character's confirms and setups against various opponents with differing DI and rage, and recorded them into spreadsheets for the community. Although useful, many of these spreadsheets still require that the player memorise specific base percent values and recalculate based on the above variable dependencies. This could be harmful to a less experienced Donkey Kong player if they're unfamiliar with the kill percent range against certain characters, or to their opponent, who would be expected to already know these values if they were facing off against an optimal DK player.</p>
+			<h2>Downloading the Web App</h2>
 
-			<h2>Why Build This?</h2>
-			<p>To attempt to fill the disconnect, this calculator was developed to help players determine Donkey Kong's kill confirm percent thresholds instantly, rather than relying on memory, retrieving online community spreadsheets, or manually calculating values. As of July 2017, this Web App is only to determine Ding Dong percent thresholds, but this could be later expanded to include all of his percent dependent confirms.</p>
+			<p>This is a development build of an open-source <a href="https://developers.google.com/web/progressive-web-apps/" target="_blank" rel="noopener">Progressive Web App (PWA)</a>, an emerging web technology that allows users to download a website to their mobile or tablet device for offline use. This is not a native mobile app that can be downloaded from an App Store, but contains similar functions and provides the same user experience and benefits. If viewing the website on Chrome Browse on mobile, you should be treated with an install banner like the following.</p>
 
-			<p>This is a development build of an open-source <a href="https://developers.google.com/web/progressive-web-apps/" target="_blank" rel="noopener">Progressive Web App (PWA)</a>, an emerging web technology that allows users to download a website to their mobile or tablet device for offline use. This is not a native mobile app that can be downloaded from an App Store, but contains similar functions and provides the same user experience and benefits.</p>
+			<img class="img-fluid" src="images/chrome_pwa_feature.jpg" alt="Chrome Progressive Web App Feature" /><br>
 
-			<p>Right now, only Android devices running Google Chrome are confirmed to be able to utilise the 'Add to Home' feature and download this web page for instant access, but other browsers and Operating Systems may also support this. All users running modern browsers can still connect online and use the calculator.</p>
+			<p>Downloading the web app for offline use carries many benefits, including faster speed, and ensured functionality in areas with limited or no network connection. If there's ever an update, your device will automatically download it upon opening the app, and it will be present the next time it's started up.</p>
 
 			<h2>Feedback / Bug Reports</h2>
 
-			<p>This application is currently under development, and the latest builds are pushed to the <a href="https://github.com/Jollus88/Winning-Smash4" target="_blank" rel="noopener">Github repo</a>. Any development issues should be submitted through <a href="https://github.com/Jollus88/DingDong-PWA/issues" target="_blank" rel="noopener">Github's ticketing system</a>.</p>
+			<p>This application is currently under development, and the latest builds are pushed to the <a href="https://github.com/Jollus88/Winning-Smash4" target="_blank" rel="noopener">Github repo</a>. Any development issues should be submitted through <a href="https://github.com/Jollus88/Winning-Smash4/issues" target="_blank" rel="noopener">Github's ticketing system</a>.</p>
 
-			<p>If there's any other feedback, feel free to contact me via <a href="https://twitter.com/JollusSSB" target="_blank" rel="noopener">Twitter</a>, or PM me on Discord at <strong>Jollus#6199</strong>.</p>
+			<p>If there's any other feedback, or you'd like your character's confirm featured, feel free to contact me via <a href="https://twitter.com/JollusSSB" target="_blank" rel="noopener">Twitter</a>, or PM me on Discord at <strong>Jollus#6199</strong>.</p>
 
 		</div> <!-- page-about -->
 
 		<div id="page-credits" hidden>
 
+			<h2>Credits</h2>
+
 			<p><a href="https://twitter.com/TheVonDk" target="_blank" rel="noopener">Poke</a> for labbing the kill confirms for <a href="https://docs.google.com/spreadsheets/d/1OvUy2gsTrUj96cAHSkSIZHGnUaaS-UrX6SdFKyctNmU/edit#gid=932844731" target="_blank" rel="noopener">Donkey Kong</a>, <a href="https://docs.google.com/spreadsheets/d/1bGbb7fiX1W0Oer58yf6Kcwtx_zgxg--WYGrUpxTjRpk/htmlview?pli=1#" target="_blank" rel="noopener">Bowser</a> and <a href="https://docs.google.com/spreadsheets/d/1VNYNt0JFe7ak02Db_Ds1Y1QdoK7muOaPSqqd0c5JOUs/edit#gid=0" target="_blank" rel="noopener">Robin</a>.</p>
 
 			<p><a href="https://twitter.com/houseoffastfood" target="_blank" rel="noopener">Mickey</a> for the <a href="https://docs.google.com/spreadsheets/d/1AxpLDkDltkjAND819JrbgfIgPH_pjkeFPhjpzXPDgP0/edit#gid=0" target="_blank" rel="noopener">G &amp; W Toot-Toot spreadsheet</a></p>
 
-			<p><a href="https://twitter.com/Tihit212" target="_blank" rel="noopener">Taiheita</a> for the <a href="https://docs.google.com/spreadsheets/d/1wIHQkV-RTsKBQq9_aBrP2yE9B55gCeN2cbilx3InPYo/edit#gid=1136269350" target="_blank" rel="noopener">Lucas Down Throw > Up Air Kill Confirm Spreadsheet</a></p>
+			<p><a href="https://twitter.com/Tihit212" target="_blank" rel="noopener">Taiheita</a> for the <a href="https://docs.google.com/spreadsheets/d/1wIHQkV-RTsKBQq9_aBrP2yE9B55gCeN2cbilx3InPYo/edit#gid=1136269350" target="_blank" rel="noopener">Lucas Down Throw > Up Air Spreadsheet</a></p>
 
-			<p><a href="#" target="_blank" rel="noopener">Xelda</a> for the <a href="https://docs.google.com/spreadsheets/d/1zd5Ky1MR9ECFCtKRlfyQ77YNT9gAZ7GNXJkqZGVgmoI/edit#gid=511032032" target="_blank" rel="noopener">Zelda Down Throw > Up Air Confirm Spreadsheet</a>
+			<p>Xelda for the <a href="https://docs.google.com/spreadsheets/d/1zd5Ky1MR9ECFCtKRlfyQ77YNT9gAZ7GNXJkqZGVgmoI/edit#gid=511032032" target="_blank" rel="noopener">Zelda Down Throw > Up Air Spreadsheet</a></p>
 
-			<p>Special thanks to Smashers Arago, Gale, <a href="https://twitter.com/Gurpwnder" target="_blank" rel="noopener">Gurpinder</a>, <a href="https://twitter.com/BanZelda" target="_blank" rel="noopener">Dia</a>, <a href="https://twitter.com/cayiika" target="_blank" rel="noopener">Cayika</a></p>
+			<p>Special thanks to Smashers Arago, Gale, <a href="https://twitter.com/Gurpwnder" target="_blank" rel="noopener">Gurpinder</a>, <a href="https://twitter.com/BanZelda" target="_blank" rel="noopener">Dia</a>, <a href="https://twitter.com/cayiika" target="_blank" rel="noopener">Cayika</a>, BJN39</p>
 
-			<p>Shoutouts to <a href="https://twitter.com/likeacyansunday" target="_blank" rel="noopener">Shiva</a>, <a href="https://twitter.com/lhc_maribro?lang=en" target="_blank" rel="noopener">Maribro</a>, <a href="https://twitter.com/Gurpwnder" target="_blank" rel="noopener">Gurpinder</a>, and <a href="https://twitter.com/KuroganeHammer" target="_blank" rel="noopener">Kurogane Hammer</a>.</p>
+			<p>Shoutouts to <a href="https://twitter.com/likeacyansunday" target="_blank" rel="noopener">Shiva</a> and <a href="https://twitter.com/KuroganeHammer" target="_blank" rel="noopener">Kurogane Hammer</a>.</p>
 
 			<p>Thanks to Nintendo, Namco Bandai, and Sora for developing Super Smash Bros. for Wii U.</p>
 
