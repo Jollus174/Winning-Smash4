@@ -11391,9 +11391,9 @@ body.show-ledgeFsmash .grid-ledgeFsmash {
 .grid-percRange {
   background: #e03838;
   border: 1px solid #FFF;
-  padding: 1px 5px;
+  padding: 0 5px;
   font-size: 14px;
-  line-height: normal;
+  line-height: 1.5em;
   color: #FFF;
   border-radius: 3px;
   font-weight: 700; }

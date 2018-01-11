@@ -1,7 +1,4 @@
 
-/* -- Turning off Service Worker for now since it could potentially be a pain */
-
-
 // Register the service worker (if available).
 // Updating this to include push manager for updating the PWA
 // https://developers.google.com/web/fundamentals/getting-started/codelabs/push-notifications/
@@ -22,7 +19,6 @@ if ('serviceWorker' in navigator) {
         // https://w3c.github.io/ServiceWorker/#service-worker-registration-updatefound-event
         console.log('service worker update is found!');
         var installingWorker = reg.installing;
-
 
         installingWorker.onstatechange = function() {
           switch (installingWorker.state) {

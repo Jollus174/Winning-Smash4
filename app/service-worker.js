@@ -1,9 +1,17 @@
 // use a cacheName for cache versioning
-var cacheName = 'v3:static';
+var cacheName = ['v6:static'];
 
 // during the install phase you usually want to cache static assets
 self.addEventListener('install', function(e) {
     // once the SW is installed, go ahead and fetch the resources to make this work offline
+
+    // https://stackoverflow.com/questions/45467842/how-to-clear-cache-of-service-worker
+    // caches.keys().then(function(names){
+    //     for(let name of names)
+    //         caches.delete(name);
+    //     console.log('caches deleted!')
+    // });
+    console.log('v6 installing');
     e.waitUntil(
         caches.open(cacheName).then(function(cache) {
             return cache.addAll([
@@ -111,6 +119,24 @@ self.addEventListener('install', function(e) {
         })
     );
 });
+
+self.addEventListener('activate', function(event){
+
+    // delete any caches that aren't in cacheName
+    // https://developers.google.com/web/fundamentals/primers/service-workers/lifecycle
+
+    event.waitUntil(
+        caches.keys().then(keys => Promise.all(
+            keys.map(key => {
+                if(!cacheName.includes(key)){
+                    return caches.delete(key);
+                }
+            })
+        )).then(() => {
+            console.log('v6 now ready to handle fetches!');
+        })
+    );
+})
 
 // when the browser fetches a url
 self.addEventListener('fetch', function(event) {

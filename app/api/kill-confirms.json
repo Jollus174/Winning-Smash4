@@ -5,7 +5,7 @@
     "moves": [
         {
             "moveId": 0,
-            "moveName": "Up Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air <span style='color:#FFF;' class='badge badge-pill badge-info'>Lab Rage + Stage Modifiers</span>",
+            "moveName": "Up Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air",
             "moveUrl": "up-throw-up-air",
 
             "info": [
@@ -13,33 +13,33 @@
                 "Bowser's kill confirm is known as the <strong>Koo-Pah</strong>, <strong>Bow-Wow</strong>, or <strong>Show Time</strong>. An Up Throw from Bowser will true combo into his Up Air between certain percents and will kill the victim regardless of DI.",
                 "If the victim has no DI or DI's the throw in, the move min-% kill threshold will increase to <em>1-5% earlier</em>.",
                 "If they have no DI or DI the throw out, the max-% kill threshold will increase to <em>1-4% later</em>.",
-                "The calculator assumes the victim is DI-ing the move optimally, with them <strong>DI-ing out the Up Throw</strong>, and <strong>DI-ing in the Up Air</strong>."
+                "The calculator assumes the victim is DI-ing the move optimally, with them <strong>DI-ing out the Up Throw</strong>, and <strong>DI-ing away the Up Air</strong>."
             ],
             "giphy": ["https://giphy.com/embed/3oFzm4XhnWq9vSZtIc", "https://www.youtube.com/watch?v=W3sgCRc13sk"],
 
             "specialInfo": "",
 
-            "rage50": "[-4, -5]",
-            "rage60": "[-6, -7]",
-            "rage80": "[-10, -11]",
-            "rage100": "[-15, -16]",
-            "rage125": "[-19, -20]",
-            "rage150": "[-22, -23]",
+            "rage50": "[-3, -7]",
+            "rage60": "[-6, -13]",
+            "rage80": "[-10, -22]",
+            "rage100": "[-15, -31]",
+            "rage125": "[-21, -43]",
+            "rage150": "[-27, -56]",
 
-            "bfNormalMin": 7,
-            "bfLowPlatMin": -7,
-            "bfTopPlatMin": -20,
+            "bfNormalMin": 4,
+            "bfLowPlatMin": -5,
+            "bfTopPlatMin": -15,
 
-            "dlLowPlatMin": -15,
-            "dlTopPlatMin": -26,
+            "dlLowPlatMin": -13,
+            "dlTopPlatMin": -23,
 
             "svNormalMin": 1,
-            "svPlatMin": -14,
+            "svPlatMin": -12,
 
             "tcNormalMin": -4,
-            "tcLowPlatMin": -20,
-            "tcSidePlatMin": -25,
-            "tcTopPlatMin": -41,
+            "tcLowPlatMin": -22,
+            "tcSidePlatMin": -27,
+            "tcTopPlatMin": -39,
 
             "percents": {
                 "bayonetta": [85, 107],
@@ -228,7 +228,7 @@
     "moves": [
         {
             "moveId": 0,
-            "moveName": "Down Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air <span style='color:#FFF;' class='badge badge-pill badge-info'>Lab Rage + Stage Modifiers</span>",
+            "moveName": "Down Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air <span style='color:#FFF;' class='badge badge-pill badge-info'>Lab Stage Modifiers</span>",
             "moveUrl": "down-throw-up-air",
 
             "info": [
@@ -243,12 +243,12 @@
 
             "specialInfo": "",
 
-            "rage50": "[-2, -3]",
-            "rage60": "[-5, -7]",
-            "rage80": "[-11, -12]",
-            "rage100": "[-15, -16]",
-            "rage125": "[-20, -22]",
-            "rage150": "[-24, -30]",
+            "rage50": "[-5, -9]",
+            "rage60": "[-8, -18]",
+            "rage80": "[-13, -28]",
+            "rage100": "[-17, -36]",
+            "rage125": "[-22, -48]",
+            "rage150": "[-28, -62]",
 
             "bfNormalMin": 7,
             "bfLowPlatMin": -7,
@@ -504,18 +504,18 @@
                 "cloud-limit": [106, 129],
                 "corrin": [100, 122],
                 "dark-pit": [96, 116],
-                "diddy-kong": [121, 139],
-                "donkey-kong": [98, 117],
-                "dr-mario": [114, 133],
-                "duck-hunt": [96, 118],
-                "falco": [98, 110],
-                "fox": [95, 108],
-                "game-and-watch": [88, 108],
-                "ganondorf": [79, 105],
-                "greninja": [107, 120],
-                "ike": [91, 111],
-                "jigglypuff": [107, 124],
-                "king-dedede": [74, 99],
+                "diddy-kong": [98, 117],
+                "donkey-kong":[114, 133],
+                "dr-mario": [96, 118],
+                "duck-hunt": [98, 110],
+                "falco": [95, 108],
+                "fox": [88, 108],
+                "game-and-watch": [79, 105],
+                "ganondorf": [107, 120],
+                "greninja": [91, 111],
+                "ike": [107, 124],
+                "jigglypuff": [74, 99],
+                "king-dedede": [121, 139],
                 "kirby": [83, 108],
                 "link": [102, 123],
                 "little-mac": [95, 117],
@@ -569,7 +569,7 @@
     "moves": [
         {
             "moveId": 0,
-            "moveName": "Down Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air <span style='color:#FFF;' class='badge badge-pill badge-info'>Lab Rage + Stage Modifiers</span>",
+            "moveName": "Down Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air",
             "moveUrl": "dthrow-up-air",
 
              "info": [

@@ -1,6 +1,6 @@
 {
     "short_name": "Winning at Smash 4",
-    "name": "Winning at Smash 4 - Kill Confirm Calculator",
+    "name": "Smash 4 Kill Confirm Calculator",
     "//": "Append tracking parameters to start_url",
     "description": "A Super Smash Bros. for Wii U Progressive Web App for calculating kill confirm ranges across different characters, stages and rage thresholds.",
     "icons": [
