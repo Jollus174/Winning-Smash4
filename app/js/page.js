@@ -924,6 +924,8 @@ var Page = (function(){
 			$body.removeClass('no-scroll');
 			$('#character-underlay').css('backgroundColor', 'transparent');
 
+			// Page does not force reload if '#' is in the URL
+			// https://stackoverflow.com/questions/2405117/difference-between-window-location-href-window-location-href-and-window-location
 			// Update the URL
 			var locationHost = window.location.host;
 			var baseUrl = window.location.protocol + "//" + locationHost;
@@ -938,27 +940,17 @@ var Page = (function(){
 				$charModal.find('.characterBorder').css('height', 'auto');
 				$('#characterGrid .character-box.selected').removeClass('selected');
 				$body.removeClass('character-active');
-
-				// Page does not force reload if '#' is in the URL
-				// https://stackoverflow.com/questions/2405117/difference-between-window-location-href-window-location-href-and-window-location
-				// var baseUrl = window.location.protocol + "//" + window.location.host + '/#/';
-				// window.location.replace(baseUrl);
-
-
-				window.location.replace(constructedUrl);
-
 			} else {
 				if($body.hasClass('show-info-box')){
 					$body.removeClass('show-info-box');
-					// Update the URL
-					console.log(constructedUrl);
-					window.location.replace(constructedUrl);					
 				};
-
+				$('.infoModal').hide();
 				$('#sidedrawer-underlay').css('backgroundColor', 'transparent');
 				$('#menuBackButton').removeClass('active');
 				$('#page-info .giphy iframe').attr('src', '');
+
 			};
+			window.location.replace(constructedUrl);
 		};
 
 		function transitionCharacter(){
@@ -1055,12 +1047,21 @@ var Page = (function(){
 
 		};
 
-		function activateMenuBox(target){
+		function activateMenuBox(target, urlPart){
 			// check to see if a character is currently active
 			// realisitically this will probably never be executed...
 			if($('body').hasClass('active-character')){
-				deactivateCharacter();	
+				deactivateCharacter();
 			}
+
+			// Rewrite the URL and append the section to the end
+			if(urlPart){
+				var locationHost = window.location.host;
+				var baseUrl = window.location.protocol + "//" + locationHost;
+				var constructedUrl = baseUrl + '/#/' + urlPart;
+				console.log(urlPart);
+				window.location.replace(constructedUrl);
+			};
 			$('body').addClass('no-scroll').removeClass('text-dark');
 			$('#sidedrawer-underlay').css('backgroundColor', 'rgb(136,136,136)');
 			$('#menuBackButton').addClass('active');
@@ -1192,11 +1193,7 @@ var Page = (function(){
 					deactivateCharacterGrid();
 				} else {
 					// else toggle the sidemenu instead
-					//$('body').toggleClass('toggle-sidedrawer');
-
-				   
-				    //$('#sidebar').toggleClass('active');
-				    toggleSidebar();
+					toggleSidebar();
 				}
 				
 			}
@@ -1300,11 +1297,11 @@ var Page = (function(){
 
 		$('#about').click(function(e){
 			e.preventDefault();
-			activateMenuBox('page-about');
+			activateMenuBox('page-about', 'about');
 		});
 		$('#credits').click(function(e){
 			e.preventDefault();
-			activateMenuBox('page-credits');
+			activateMenuBox('page-credits', 'credits');
 		});
 		function activateInfoBox(){
 			$('#page-info .detailed-info').hide();
