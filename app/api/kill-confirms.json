@@ -9,7 +9,6 @@
             "moveUrl": "up-throw-up-air",
 
             "info": [
-                "Need to lab this on different stages with different rage amounts...",
                 "Bowser's kill confirm is known as the <strong>Koo-Pah</strong>, <strong>Bow-Wow</strong>, or <strong>Show Time</strong>. An Up Throw from Bowser will true combo into his Up Air between certain percents and will kill the victim regardless of DI.",
                 "If the victim has no DI or DI's the throw in, the move min-% kill threshold will increase to <em>1-5% earlier</em>.",
                 "If they have no DI or DI the throw out, the max-% kill threshold will increase to <em>1-4% later</em>.",
@@ -232,11 +231,10 @@
             "moveUrl": "down-throw-up-air",
 
             "info": [
-                "<strong><em>Need to lab some of these values</em></strong>",
-                "This kill confirm consists of a Down Throw, which Lucas can follow-up with an Up Air to kill. It's sometimes known as the <strong>PK Hoo-Hah</strong>, after Diddy Kong's pre-patch Up Air confirm.",
+                "This kill confirm consists of a Down Throw, which Lucas can follow-up with an Up Air to kill. It's sometimes known as the <strong>Snake &amp; Bake</strong> or <strong>PK Hoo-Hah</strong>, after Diddy Kong's pre-patch Up Air confirm.",
                 "If the victim has no DI or DI's the throw in, the move min-% kill threshold will increase to <em>1-3% earlier</em>, with the max-% unaffected.",
                 "If they have no DI or DI the Down Throw or Up Air out, the max-% kill threshold will increase to <em>1-10% later</em>, with the min-% unaffected.",
-                "The calculator assumes the victim is DI-ing the move optimally, with them <strong>DI-ing out the Down Throw</strong>, and <strong>DI-ing in the Up Air</strong>."
+                "The calculator assumes the victim is DI-ing the move optimally, with them <strong>DI-ing out the Down Throw</strong>, and <strong>DI-ing out the Up Air</strong>."
             ],
 
             "giphy": ["https://giphy.com/embed/3ohc0PUZMNWWHEWKmA", "https://www.youtube.com/watch?v=QP2hMnR66eg"],
@@ -341,7 +339,7 @@
     "moves": [
         {
             "moveId": 0,
-            "moveName": "Down Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air <span style='color:#FFF;' class='badge badge-pill badge-info'>Lab Rage + Stage Modifiers</span>",
+            "moveName": "Down Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air",
             "moveUrl": "down-throw-up-air",
 
             "info": [
@@ -354,27 +352,27 @@
 
             "specialInfo": "",
 
-            "rage50": "[-4, -4]",
-            "rage60": "[-6, -6]",
-            "rage80": "[-13, -13]",
-            "rage100": "[-16, -16]",
-            "rage125": "[-22, -22]",
-            "rage150": "[-28, -28]",
+            "rage50": "[-6, -6]",
+            "rage60": "[-8, -9]",
+            "rage80": "[-14, -15]",
+            "rage100": "[-18, -20]",
+            "rage125": "[-25, -25]",
+            "rage150": "[-31, -32]",
 
-            "bfNormalMin": 5,
-            "bfLowPlatMin": -12,
-            "bfTopPlatMin": -17,
+            "bfNormalMin": 6,
+            "bfLowPlatMin": -5,
+            "bfTopPlatMin": -14,
 
-            "dlLowPlatMin": -13,
-            "dlTopPlatMin": -26,
+            "dlLowPlatMin": -11,
+            "dlTopPlatMin": -23,
 
             "svNormalMin": 1,
-            "svPlatMin": -14,
+            "svPlatMin": -11,
 
-            "tcNormalMin": -3,
-            "tcLowPlatMin": -14,
-            "tcSidePlatMin": -17,
-            "tcTopPlatMin": -38,
+            "tcNormalMin": -2,
+            "tcLowPlatMin": -13,
+            "tcSidePlatMin": -22,
+            "tcTopPlatMin": -33,
 
             "lylatNormalMin": 0,
             "lylatSidePlatMin": -13,
@@ -425,7 +423,7 @@
                 "pikachu": [86, 102],
                 "pit": [97, 111],
                 "rob": [105, 113],
-                "robin": [97, 109], 
+                "robin": [95, 109], 
                 "rosalina-and-luma": [81, 83],
                 "roy": [104, 119], 
                 "ryu": [103, 118], 
@@ -462,7 +460,7 @@
              "info": [
                 "Robin's <strong>Checkmate</strong> kill confirm consists of a Down Throw followed-up with a strong hit Up Air with the Levin Sword between certain percents.",
                 "If the victim has no DI or DI's the Up Air up, the max-% kill threshold will increase to <em>4-6% later</em>, with the min-% unaffected.",
-                "The calculator assumes that the victim is DI-ing the move optimally, with them <strong>DI-ing out the Down Throw</strong>, and <strong>DI-ing up and away the Up Air</strong>.",
+                "The calculator assumes that the victim is DI-ing the move optimally, with them <strong>DI-ing out the Down Throw</strong>, and <strong>DI-ing in Up Air</strong>.",
                 "Robin normally cannot Checkmate Bowser or Charizard, because of their heavy weight and Robin's 7 frame (!) jump squat.",
                 "It's possible for Robin to do so if they double jump of a stage ledge or platform. If Robin can catch these two characters at the ledge, their KO ranges are:<br><strong>Bowser: 108 - 126%</strong><br><strong>Charizard: 99 - 113%</strong>",
                 "More information on this can be viewed <a href='https://www.youtube.com/watch?v=sP9svcfxu_o&t=49s' target='_blank' rel='noopener'>here</a>."
@@ -472,27 +470,27 @@
 
             "specialInfo": "",
 
-            "rage50": "[-4, -5]",
-            "rage60": "[-7, -11]",
-            "rage80": "[-12, -16]",
-            "rage100": "[-17, -21]",
-            "rage125": "[-22, -24]",
-            "rage150": "[-27, -27]",
+            "rage50": "[-4, -4]",
+            "rage60": "[-6, -6]",
+            "rage80": "[-13, -13]",
+            "rage100": "[-16, -16]",
+            "rage125": "[-22, -22]",
+            "rage150": "[-28, -28]",
 
-            "bfNormalMin": 5,
-            "bfLowPlatMin": -5,
-            "bfTopPlatMin": -13,
+            "bfNormalMin": 7,
+            "bfLowPlatMin": -7,
+            "bfTopPlatMin": -20,
 
-            "dlLowPlatMin": -11,
-            "dlTopPlatMin": -21,
+            "dlLowPlatMin": -15,
+            "dlTopPlatMin": -26,
 
             "svNormalMin": 1,
-            "svPlatMin": -10,
+            "svPlatMin": -14,
 
-            "tcNormalMin": -3,
-            "tcLowPlatMin": -14,
-            "tcSidePlatMin": -13,
-            "tcTopPlatMin": -25,
+            "tcNormalMin": -4,
+            "tcLowPlatMin": -20,
+            "tcSidePlatMin": -25,
+            "tcTopPlatMin": -41,
 
             "percents": {
                 "bayonetta": [93, 114],
@@ -581,8 +579,8 @@
                 "Also worth mentioning is Bayonetta is extremely difficult to perform this combo on, due to her frame 1 airdodge that requires Zelda to make two frame perfect inputs:",
                 "Buffer Turn (F9 - F19) → <strong>Dash (F20 - F21) → Jump (F21 - F22)</strong> → Buffer Up Air (F21-27)"
             ],
-
-            "giphy": ["https://giphy.com/embed/3o751XGmDHkHBxbgwE", "https://giphy.com/gifs/zelda-wii-u-smash-bros-3o751XGmDHkHBxbgwE"],
+            
+            "giphy": ["https://giphy.com/embed/3o751XGmDHkHBxbgwE", ""],
 
             "specialInfo": "In Zelda's case, difficulty is determined by the victim's airdodge frame, not by the kill confirm window.",
 
