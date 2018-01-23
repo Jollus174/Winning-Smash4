@@ -11,7 +11,7 @@ self.addEventListener('install', function(e) {
     //         caches.delete(name);
     //     console.log('caches deleted!')
     // });
-    console.log('v6 installing');
+    console.log(cacheName[0] + ' is now installing');
     e.waitUntil(
         caches.open(cacheName).then(function(cache) {
             return cache.addAll([
@@ -133,7 +133,7 @@ self.addEventListener('activate', function(event){
                 }
             })
         )).then(() => {
-            console.log('v6 now ready to handle fetches!');
+            console.log(cacheName[0] + ' now ready to handle fetches!');
         })
     );
 })
