@@ -76,31 +76,6 @@ var Page = (function(){
 			tick();
 		}
 
-		// function _fade(el){
-		// 	var self = this;
-		// 	var last = +new Date();
-		// 	self._fadeIn = function(el){
-		// 		var tick = function(){
-		// 			el.style.opacity = +el.style.opacity + (new Date() - last) / 400;
-		// 			last = +new Date();
-
-		// 			if(+el.style.opacity < 1){
-		// 				(window._requestAnimationFrame && _requestAnimationFrame(tick)) || setTimeout(tick,16);
-		// 			}
-		// 		};
-		// 		tick();
-		// 	};
-		// }
-
-		/*setTimeout(function(){
-			_fadeOut(document.getElementById('logo-link'));
-		}, 1000);
-
-		setTimeout(function(){
-			_fadeIn(document.getElementById('logo-link'));
-		}, 3000);*/
-
-
 		// Detect if page is desktop or mobile
 		function detectWidth(){
 			var winWidth = $(window).width();
