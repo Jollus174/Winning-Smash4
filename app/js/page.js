@@ -76,6 +76,12 @@ var Page = (function(){
 			tick();
 		}
 
+		// Analytics tracking function
+		function setSendPageView(page){
+			ga('set', 'page', page);
+			ga('send', 'pageview');
+		}
+
 		// Detect if page is desktop or mobile
 		function detectWidth(){
 			var winWidth = $(window).width();
@@ -595,6 +601,8 @@ var Page = (function(){
 				var baseUrl = window.location.protocol + "//" + locationHost;
 				var constructedUrl = baseUrl + '/#/';
 				window.location.replace(constructedUrl);
+				// for analytics
+				setSendPageView('/');
 			};
 		}
 
@@ -684,6 +692,7 @@ var Page = (function(){
 				dataUrl = self.attr('id');
 				var constructedUrl = baseUrl + '/#/' + dataUrl + '/';
 				window.location.replace(constructedUrl);
+				setSendPageView(dataUrl);
 				console.log('constructed url is:' + constructedUrl);
 			}
 			//var rageAmount = self.find('.rageBtn.active').attr('data-rage');
@@ -954,6 +963,7 @@ var Page = (function(){
 			var dataUrl = $('.moveBtn.active').attr('id');
 			var constructedUrl = baseUrl + '/#/' + dataUrl + '/' + self.data('url');
 			window.location.replace(constructedUrl);
+			setSendPageView(dataUrl + '/' + self.data('url'));
 
 			// var url = window.location.href + self.data('url') + '/';
 			// window.location = url;
@@ -992,6 +1002,7 @@ var Page = (function(){
 
 			};
 			window.location.replace(constructedUrl);
+			setSendPageView(dataUrl);
 		};
 
 		function transitionCharacter(){
@@ -1102,6 +1113,7 @@ var Page = (function(){
 				var constructedUrl = baseUrl + '/#/' + urlPart;
 				console.log(urlPart);
 				window.location.replace(constructedUrl);
+				setSendPageView(urlPart);
 			};
 			$('body').addClass('no-scroll').removeClass('text-dark');
 			$('#sidedrawer-underlay').css('backgroundColor', 'rgb(136,136,136)');
