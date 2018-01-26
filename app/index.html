@@ -76,13 +76,13 @@
 <body id="body" class="loading wrapper">
 
 	<div id="sidedrawer-overlay"></div>
-	<nav class="navbar-default navbar-static-side" role="navigation" style="position:fixed;">
+	<nav id="sidebar" class="navbar-default navbar-static-side" role="navigation" style="position:fixed;">
 		<div class="sidebar-collapse">
 			<ul class="nav" id="side-menu">
 
 				<li class="sidebar-header">
 					<a id="logo-link" href="#" class="p-0">
-						<img src="images/logo-winning-at-smash4.png" class="img-fluid main-logo" alt="Winning at Smash4" />
+						<img src="images/logo-winning-at-smash4.png" class="img-fluid main-logo" alt="Winning at Smash 4" />
 					</a>
 					<!-- <h3>Winning at Smash4</h3> -->
 				</li>
@@ -104,12 +104,6 @@
 				</li>
 			</ul>
 		</div>
-
-		<!-- <ul class="sidebar-bottom-links">
-			<li><a id="about" href="#">About</a></li>
-			<li><a id="credits" href="#">Credits</a></li>
-			<li><a id="feedback" href="https://github.com/Jollus88/Winning-Smash4/issues" target="_blank">Feedback</a></li>
-		</ul> -->
 
 	</nav> <!-- sidebar -->
 
@@ -664,6 +658,19 @@
 
 	<div id="notification"></div>
 	<div id="notification-offline"></div>
+
+	<script>
+		pageUrl = window.location.href;
+		var parts = pageUrl.split('/');
+		for(i=0; i<parts.length; i++){
+			if(parts[i].includes('winningatsmash4')){
+				document.write('<div style="text-align: center;padding: 20px;">Coming Soon</div>');
+				var elements = [, ];
+				document.getElementById('sidebar').style.display = 'none';
+				document.getElementById('page-wrapper').style.display = 'none';
+			}
+		}
+	</script>
 
 	<!-- build:js js/main.min.js -->
 	<script src="js/modernizr.custom.js"></script>

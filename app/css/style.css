@@ -10762,78 +10762,71 @@ body.animating #primary-nav {
 .--white {
   color: #FFF !important; }
 
-#sidebar {
-  min-width: 250px;
-  max-width: 250px;
-  min-height: 100vh;
-  /* Is at least equal to the viewport height */ }
-
-#sidebar.active {
-  margin-left: -250px; }
-
 .special-info {
   display: none;
   font-size: 0.8em; }
   .special-info.active {
     display: inline-block; }
 
-#side-menu {
-  color: #fff;
-  transition: all 0.3s; }
-  #side-menu .sidebar-header {
-    width: 100%;
-    padding: 20px;
-    background: #d50000; }
-  #side-menu li {
-    width: 100%; }
-  #side-menu ul.components {
-    flex-direction: column; }
-    #side-menu ul.components.nav-characters > li {
-      border-bottom: 1px solid #cccccc; }
-      #side-menu ul.components.nav-characters > li a {
-        transition: all 0.2s ease; }
-      #side-menu ul.components.nav-characters > li a:hover {
-        background: #efefef; }
-    #side-menu ul.components li > a, #side-menu ul.components li > span {
-      padding: 15px 0 15px 20px;
-      display: block;
-      overflow: hidden;
-      position: relative;
-      text-decoration: none;
-      font-size: 14px;
-      line-height: 24px;
-      color: #686868; }
-    #side-menu ul.components li > span {
-      background: #efefef;
-      text-transform: uppercase;
-      font-weight: 700; }
-    #side-menu ul.components .nav-moves a {
-      padding: 10px 10px 10px 20px;
-      position: relative; }
-      #side-menu ul.components .nav-moves a:before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 3px;
-        height: 100%;
-        z-index: 5;
-        transition: width 0.2s ease; }
-      #side-menu ul.components .nav-moves a:hover:before {
-        width: 6px; }
-      #side-menu ul.components .nav-moves a.active:before {
-        width: 6px; }
-  #side-menu span, #side-menu a {
+#side-menu .sidebar-header {
+  width: 100%;
+  padding: 20px;
+  background: #d50000; }
+
+#side-menu li {
+  width: 100%; }
+
+#side-menu ul.components {
+  flex-direction: column; }
+  #side-menu ul.components.nav-characters > li {
+    border-bottom: 1px solid #cccccc; }
+    #side-menu ul.components.nav-characters > li a {
+      transition: all 0.2s ease; }
+    #side-menu ul.components.nav-characters > li a:hover {
+      background: #efefef; }
+  #side-menu ul.components li > a, #side-menu ul.components li > span {
+    padding: 15px 0 15px 20px;
     display: block;
-    padding: 0.2rem 1.5rem;
-    font-weight: 500;
-    color: rgba(0, 0, 0, 0.65); }
-  #side-menu li.active {
-    color: rgba(0, 0, 0, 0.85); }
-  #side-menu li > a:hover {
-    color: rgba(0, 0, 0, 0.85);
+    overflow: hidden;
+    position: relative;
     text-decoration: none;
-    background-color: transparent; }
+    font-size: 14px;
+    line-height: 24px;
+    color: #686868; }
+  #side-menu ul.components li > span {
+    background: #efefef;
+    text-transform: uppercase;
+    font-weight: 700; }
+  #side-menu ul.components .nav-moves a {
+    padding: 10px 10px 10px 20px;
+    position: relative; }
+    #side-menu ul.components .nav-moves a:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 3px;
+      height: 100%;
+      z-index: 5;
+      transition: width 0.2s ease; }
+    #side-menu ul.components .nav-moves a:hover:before {
+      width: 6px; }
+    #side-menu ul.components .nav-moves a.active:before {
+      width: 6px; }
+
+#side-menu span, #side-menu a {
+  display: block;
+  padding: 0.2rem 1.5rem;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.65); }
+
+#side-menu li.active {
+  color: rgba(0, 0, 0, 0.85); }
+
+#side-menu li > a:hover {
+  color: rgba(0, 0, 0, 0.85);
+  text-decoration: none;
+  background-color: transparent; }
 
 #content-wrapper {
   min-height: 100%;
@@ -10903,11 +10896,12 @@ body.animating #primary-nav {
   margin-left: 0.55em;
   vertical-align: 0.155em; }
 
-body #secondarynav .navbar-header {
-  display: none; }
-
-body.show-secondary-dropdown .navbar-header {
-  display: block !important; }
+body {
+  overflow-x: hidden; }
+  body #secondarynav .navbar-header {
+    display: none; }
+  body.show-secondary-dropdown .navbar-header {
+    display: block !important; }
 
 #secondarynav {
   display: block;

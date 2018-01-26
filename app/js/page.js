@@ -454,6 +454,9 @@ var Page = (function(){
 
 				console.log(constructedUrl);
 
+				// Window to go to top on click, pretty much just for the sake of mobile and table viewports
+				window.scrollTo(0, 0);
+
 			};
 
 		};

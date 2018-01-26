@@ -900,15 +900,15 @@ body.animating{
     color:#FFF !important;
 }
 
-#sidebar {
-    min-width: 250px;
-    max-width: 250px;
-    min-height: 100vh; /* Is at least equal to the viewport height */
-}
+// #sidebar {
+//     min-width: 250px;
+//     max-width: 250px;
+//     min-height: 100vh; /* Is at least equal to the viewport height */
+// }
 
-#sidebar.active {
-    margin-left: -250px;
-}
+// #sidebar.active {
+//     margin-left: -250px;
+// }
 
 .special-info{
     display:none;
@@ -924,8 +924,8 @@ body.animating{
 
 
 #side-menu {
-    color: #fff;
-    transition: all 0.3s;
+    // color: #fff;
+    // transition: all 0.3s;
     .sidebar-header {
         width:100%;
         padding: 20px;
@@ -1095,6 +1095,7 @@ body.animating{
 
 
 body{
+    overflow-x:hidden;
     #secondarynav{
         .navbar-header{
             display:none;
