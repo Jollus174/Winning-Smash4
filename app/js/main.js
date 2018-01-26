@@ -76,7 +76,7 @@ if (navigator.onLine) {
     // show offline message
     Page.showOfflineWarning();
 }
-
-
-// set knockout view model bindings
 ko.applyBindings(Page.vm);
+setTimeout(function(){
+  Page.runCustomJS();
+}, 2000);
