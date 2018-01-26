@@ -26,10 +26,81 @@ var Page = (function(){
 			}
 		})*/
 
-		// Need to turn off sidemenu on mobile first if a grid button is clicked!
-		// if($(window).width() < 768){
-		// 	$('body').removeClass('toggle-sidedrawer');
-		// };
+		// Setting some cross-browser terms
+		var _requestAnimationFrame = window.requestAnimationFrame ||
+			window.webkitRequestAnimationFrame ||
+			window.mozRequestAnimationFrame ||
+			window.msRequestAnimationFrame ||
+			window.oRequestAnimationFrame;
+
+		var animEndEventNames = {
+			'WebkitAnimation' : 'webkitAnimationEnd',
+			'OAnimation' : 'oAnimationEnd',
+			'msAnimation' : 'MSAnimationEnd',
+			'animation' : 'animationend'
+		},
+		// animation end event name
+		animEndEventName = animEndEventNames[ Modernizr.prefixed( 'animation' ) ],
+		// support css animations
+		support = Modernizr.cssanimations;
+
+		function _fadeIn(el, callback){
+			el.style.opacity = 0;
+			el.style.display = '';
+			var last = +new Date();
+			var tick = function(){
+				el.style.opacity = +el.style.opacity + (new Date() - last) / 200;
+				last = +new Date();
+
+				if(+el.style.opacity < 1){
+					(window._requestAnimationFrame && _requestAnimationFrame(tick)) || setTimeout(tick,16);
+				} else {
+					if(callback){ callback() };
+				}
+			};
+			tick();
+		}
+		function _fadeOut(el, callback){
+			el.style.opacity = 1;
+			var last = +new Date();
+			var tick = function(){
+				el.style.opacity = +el.style.opacity - (new Date() - last) / 200;
+				last = +new Date();
+
+				if(+el.style.opacity > 0){
+					(window._requestAnimationFrame && _requestAnimationFrame(tick)) || setTimeout(tick,16);
+				} else {
+					if(callback){ callback() };
+				}
+			};
+			tick();
+		}
+
+		// function _fade(el){
+		// 	var self = this;
+		// 	var last = +new Date();
+		// 	self._fadeIn = function(el){
+		// 		var tick = function(){
+		// 			el.style.opacity = +el.style.opacity + (new Date() - last) / 400;
+		// 			last = +new Date();
+
+		// 			if(+el.style.opacity < 1){
+		// 				(window._requestAnimationFrame && _requestAnimationFrame(tick)) || setTimeout(tick,16);
+		// 			}
+		// 		};
+		// 		tick();
+		// 	};
+		// }
+
+		/*setTimeout(function(){
+			_fadeOut(document.getElementById('logo-link'));
+		}, 1000);
+
+		setTimeout(function(){
+			_fadeIn(document.getElementById('logo-link'));
+		}, 3000);*/
+
+
 		// Detect if page is desktop or mobile
 		function detectWidth(){
 			var winWidth = $(window).width();
@@ -47,6 +118,13 @@ var Page = (function(){
 
 		function reassignIndexes(){
 			console.log('reindexing!');
+			var elements = document.querySelectorAll('.character-box');
+			/*Array.prototype.forEach.call(elements, function(el, i){
+				//var $this = $(this);
+				var theIndex = nodeList.el.index();
+				console.log(theIndex);
+				//el.children('.grid-index span').text(theIndex + 1);
+			});*/
 			$('.character-box').each(function(){
 				var $this = $(this);
 				var theIndex = parseInt($this.index());
@@ -416,17 +494,7 @@ var Page = (function(){
 			/* --- Animate the navigation transition -- */
 			var	$wrapper = $('#page-wrapper'),
 				$currPage = $wrapper.children('div.pt-page-current'),
-				$nonCurrPage = $wrapper.children('div.pt-page').not('div.pt-page-current'),
-				animEndEventNames = {
-					'WebkitAnimation' : 'webkitAnimationEnd',
-					'OAnimation' : 'oAnimationEnd',
-					'msAnimation' : 'MSAnimationEnd',
-					'animation' : 'animationend'
-				},
-				// animation end event name
-				animEndEventName = animEndEventNames[ Modernizr.prefixed( 'animation' ) ],
-				// support css animations
-				support = Modernizr.cssanimations;
+				$nonCurrPage = $wrapper.children('div.pt-page').not('div.pt-page-current');
 
 			// Need to delay open/close function in case it's already animating. Some spastic might hit ESC twice quickly
 			// Add class of 'animating' to body and remove when the animation is finished
@@ -474,10 +542,10 @@ var Page = (function(){
 
 					// Initiate transition between MOVES OF SAME CHARACTER
 					$('#secondarynav-dropdown-menu').removeClass('show');
-					$('#characterGrid').fadeOut('fast', function(){
+					_fadeOut(document.getElementById('characterGrid'), function(){				
 						activateCharacterGrid(self);
 						console.log('transitioning between same character!');
-						$('#characterGrid').fadeIn('fast');
+						_fadeIn(document.getElementById('characterGrid'));
 						$('body').removeClass('animating');
 					});
 
@@ -487,12 +555,12 @@ var Page = (function(){
 
 					// Initiate transition between MOVES OF SAME CHARACTER
 					$('#secondarynav-dropdown-menu').removeClass('show');
-					$('#character-wrapper').fadeOut('fast', function(){
+					_fadeOut(document.getElementById('character-wrapper'), function(){					
 						activateCharacterGrid(self);
 						console.log('transitioning between different characters!');
 						$('#page-wrapper').removeClass();
 						retrieveCharUrl(self);
-						$('#character-wrapper').fadeIn('fast');
+						_fadeIn(document.getElementById('character-wrapper'));
 						$('body').removeClass('animating');
 					});
 				}
@@ -525,7 +593,12 @@ var Page = (function(){
 					$nonCurrPage.off( animEndEventName );
 					$('body').addClass('fixed-navbar');
 					if($('body').hasClass('viewport-desktop')){
-						$('#primarynav .navbar-nav').fadeIn('fast');
+						// what was this for??
+						// fading in the top-right nav!
+						//$('#primarynav .navbar-nav').fadeIn('fast');
+						// var primNav = document.getElementById('primarynav');
+						 _fadeIn(document.getElementById('top-right-nav'));
+						//_fadeOut(document.getElementById('notification'));
 					}
 				});
 			}
@@ -600,27 +673,22 @@ var Page = (function(){
 			// Need secondary nav scroll functions here!
 			////////////////////////////////////////////
 		}
-		var raf = window.requestAnimationFrame ||
-			window.webkitRequestAnimationFrame ||
-			window.mozRequestAnimationFrame ||
-			window.msRequestAnimationFrame ||
-			window.oRequestAnimationFrame;
 		var $window = $charContainer;
 		var lastScrollTop = $window.scrollTop();
 
-		if (raf) {
+		if (_requestAnimationFrame) {
 			loop();
 		}
 		function loop() {
 			var scrollTop = $window.scrollTop();
 			if (lastScrollTop === scrollTop) {
-				raf(loop);
+				_requestAnimationFrame(loop);
 				return;
 			} else {
 				lastScrollTop = scrollTop;
 				// fire scroll function if scrolls vertically
 				scroll();
-				raf(loop);
+				_requestAnimationFrame(loop);
 			}
 		}
 		fixedRagebar($charContainer);
@@ -686,55 +754,54 @@ var Page = (function(){
 				console.log('urls do not match!');
 
 				// Time to deconstruct that sucker
-				var parts = currentUrl.split('/');
+				var parts = decodeURI(window.location.hash).split('/');
 
 				// Need to check if they're dialling one of the menu links, or a character
 				// for(i=0; i<parts.length; i++){
 				// 	console.log('url part is: ' + i + ' ' + parts[i]);
 				// }
 				// Everything after index 3 is relevant.
-				// Index 4 == moveName || About || Credits
-				// Index 5 == characterName || info
+				// Index 1 == moveName || About || Credits
+				// Index 2 == characterName || info
 
-				if(parts[4] == 'about'){
+				if(parts[1] == 'about'){
 					// activate About box
 					activateMenuBox('page-about');
-				} else if (parts[4] == 'credits'){
+				} else if (parts[1] == 'credits'){
 					// activate Credits box
 					activateMenuBox('page-credits');
 				} else {
 
-					// This is working...
-					//console.log(character);
-
 					// Target the moveBtn with the ID defined in the URl
 					// Also check if it exists. URL may be invalid
-					var characterGrid = parts[4].length ? $('#' + parts[4]) : "";
-					var characterBox = parts[5].length ? $('#characterGrid .character-box.' + parts[5]) : "";
+					var characterGrid = parts[1].length ? $('#' + parts[1]) : "";
+					var characterBox = parts[2].length ? $('#characterGrid .character-box.' + parts[2]) : "";
 
 					// and activate it
-					if(parts[4].length && characterGrid.length){
+					if(parts[1].length && characterGrid.length){
+						console.log('trying to transition character from URL');
 						pageTransition(characterGrid);
-						if(parts[5].length && characterBox.length && parts[5] != 'info'){
+						if(parts[2].length && characterBox.length && parts[2] != 'info'){
 
 							// Working
 							//activateCharacter($('#characterGrid .character-box.bayonetta'));
 							activateCharacter(characterBox);
 
-						} else if(parts[5] == 'info'){
+						} else if(parts[2] == 'info'){
 							activateInfoBox();
 						}
 					} else {
 						// It needs to fallback though in case the character is undefined.
 						console.log('This character does not exist, yo');
 						$('#notification').html('Looks like this move or character does not exist.<br>Please check the URL.').show();
-						$('#notification').delay(3000).fadeOut();
+						setTimeout(function(){
+							_fadeOut(document.getElementById('notification'));
+						}, 3000)
 					}
 
 					// Need to activate the correct rage button depending on the URL...
 					//var rageAmount = current
 					//rageAdjustment($(urlCharacter).find('.rageBtn[data-rage='));
-
 				}
 			}
 		}
@@ -764,7 +831,6 @@ var Page = (function(){
 			$charModal.find('.characterImageContainer').attr('class', 'characterImageContainer');
 
 			$charModal.removeClass('animate');
-
 
 			// Firstly, generate a request for the JSON file
 			// This is referring to the JSON var created earlier
