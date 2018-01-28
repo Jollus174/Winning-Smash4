@@ -186,7 +186,7 @@ var Page = (function(){
 					});
 				}
 
-			}
+			};
 
 			$gridItem.detach().appendTo($grid);
 			reassignIndexes();
@@ -236,7 +236,6 @@ var Page = (function(){
 				sortDifficulty($('#sort-difficulty'));
 			};
 		};
-
 
 		// Need to trigger this on button click now
 		// Needs to be done via callback so I can control exactly WHEN the data switches over. It'll be transitioning now, see - it can be changed mid-transition
@@ -513,7 +512,6 @@ var Page = (function(){
 					*/
 					inClass = 'pt-page-moveFromLeft pt-page-ontop';
 					outClass = 'pt-page-moveToRight';
-
 				}
 			}
 			// Now execute the transition with those variables from earlier
@@ -604,8 +602,6 @@ var Page = (function(){
 				var baseUrl = window.location.protocol + "//" + locationHost;
 				var constructedUrl = baseUrl + '/#/';
 				window.location.replace(constructedUrl);
-				// for analytics
-				setSendPageView('/');
 			};
 		}
 
@@ -679,53 +675,18 @@ var Page = (function(){
 		}
 		fixedRagebar($charContainer);
 
-
-		// The URL constructers/deconstructers are back to haunt me
-		function constructUrl(self){
-			var locationHost = window.location.host;
-			var baseUrl = window.location.protocol + "//" + locationHost;
-			var dataUrl = "";
-			
-			// Need to check if we're clicking on a:
-			// characterGrid item
-			// character item
-			// info button ....
-
-			if($(self).hasClass('moveBtn')){
-				dataUrl = self.attr('id');
-				var constructedUrl = baseUrl + '/#/' + dataUrl + '/';
-				window.location.replace(constructedUrl);
-				setSendPageView(dataUrl);
-				console.log('constructed url is:' + constructedUrl);
-			}
-			//var rageAmount = self.find('.rageBtn.active').attr('data-rage');
-			//console.log('current rage is ' + rageAmount);
-			/*if(rageAmount != '0' && rageAmount != 'undefined' && locationHost != 'dev.glideagency.com/'){
-				rageAmount = '?rage=' + rageAmount;
-			} else {
-				rageAmount = "";
-			}*/
-		}
-
-
 		// Using traditional 'click()' bindings will not work on dynamically generated character boxes!
 		// https://stackoverflow.com/questions/6658752/click-event-doesnt-work-on-dynamically-generated-elements
 
-		// Need to use a custom event, since this is also being used for the URL deconstructor, and a click binding cannot be used for it
 		// http://api.jquery.com/trigger/
 		$('#characterGrid').on('click', '.character-box:not(.disabled)', function(){
 			activateCharacter($(this));
 		});
-		$('#characterGrid').on('activateCharBox', function(event){
-			activateCharacter($(this));
-			//$(this).hide;
-		});
-		/*$('#characterGrid').click(function(){
-			//'.character-box:not(.disabled)'
-			var box = $(this).find('.character-box:not(.disabled)');
-			box.trigger('activateCharBox');
-		});*/
+		// $('#characterGrid').on('activateCharBox', function(event){
+		// 	activateCharacter($(this));
+		// });
 
+		// The URL constructers/deconstructers are back to haunt me
 		function deconstructUrl(){
 			var baseUrl = window.location.protocol + "//" + window.location.host + '/';
 			var currentUrl = $(location).attr('href');
@@ -948,17 +909,11 @@ var Page = (function(){
 			var $activeMoveBtn = $('.moveBtn.active');
 			$('#modalTitle span').html($activeMoveBtn.closest('.card-deck').data('name') + ' - ' + $activeMoveBtn.html());
 
-
 			// Need to resize based on window.innerHeight due to mobile address bar sizings.
 			// https://developers.google.com/web/updates/2016/12/url-bar-resizing
 			$(window).resize(function(e){
 				fixedRagebar($('#characterModal .characterContainer'));
 			})
-
-			// var locationHost = window.location.host;
-			// var baseUrl = window.location.protocol + "//" + locationHost;
-			// var constructedUrl = baseUrl + '/#/' + self.data('url') + '/';
-			// window.location.replace(constructedUrl);
 
 			// Update the URL
 			var locationHost = window.location.host;
@@ -1005,7 +960,6 @@ var Page = (function(){
 
 			};
 			window.location.replace(constructedUrl);
-			setSendPageView(dataUrl);
 		};
 
 		function transitionCharacter(){
@@ -1030,18 +984,13 @@ var Page = (function(){
 				rage125 = $moveBtnActive.data('rage125'),
 				rage150 = $moveBtnActive.data('rage150');
 
-			// According to the data, characters with ... dunno, I got nothing
-			// There seems to be no distinct pattern of how rage causes the min and max% windows to decay
-			// Earlier, I put a rough spreadsheet was put together to try and measure the variance of decay relative to DK's rage between characters --> https://docs.google.com/spreadsheets/d/10YmEZihWk6oPPXnynnfIpyEApfl0ANPRlCq4WnHv3Ls/edit#gid=0
-			// The stuff in red measures accumulated decay. Doesn't seem to be a pattern, so an average value is taken
-
-			if(rageAmount == "0"){rageAdjMin = 0; rageAdjMax = 0 }
-			if(rageAmount == "50"){rageAdjMin = rage50[0]; rageAdjMax = rage50[1] }
-			if(rageAmount == "60"){rageAdjMin = rage60[0]; rageAdjMax = rage60[1] }
-			if(rageAmount == "80"){rageAdjMin = rage80[0]; rageAdjMax = rage80[1] }
-			if(rageAmount == "100"){rageAdjMin = rage100[0]; rageAdjMax = rage100[1] }
-			if(rageAmount == "125"){rageAdjMin = rage125[0]; rageAdjMax = rage125[1] }
-			if(rageAmount == "150"){rageAdjMin = rage150[0]; rageAdjMax = rage150[1] }
+			if(rageAmount == "0"){ rageAdjMin = 0; rageAdjMax = 0 }
+			if(rageAmount == "50"){ rageAdjMin = rage50[0]; rageAdjMax = rage50[1] }
+			if(rageAmount == "60"){ rageAdjMin = rage60[0]; rageAdjMax = rage60[1] }
+			if(rageAmount == "80"){ rageAdjMin = rage80[0]; rageAdjMax = rage80[1] }
+			if(rageAmount == "100"){ rageAdjMin = rage100[0]; rageAdjMax = rage100[1] }
+			if(rageAmount == "125"){ rageAdjMin = rage125[0]; rageAdjMax = rage125[1] }
+			if(rageAmount == "150"){ rageAdjMin = rage150[0]; rageAdjMax = rage150[1] }
 
 			// Hmm, if min percent goes below zero, this will affect the max percent range, right???? NO, IT PROBABLY SHOULDN'T (I think...)
 			$('#characterModal .stage .table').each(function(){
@@ -1225,6 +1174,7 @@ var Page = (function(){
 		var key5 = 53;
 		var key6 = 54;
 		var key7 = 55;
+		var keyi = 73;
 
 		$(document).keyup(function(e){
 
@@ -1254,6 +1204,13 @@ var Page = (function(){
 				
 			}
 			if(e.which == shiftKey) isShiftActive = true;
+
+			if(e.which == keyi){
+				if($('.moveBtn').hasClass('active')){
+					$('body').addClass('show-info-box');
+					activateInfoBox();
+				}
+			}
 
 			// Need to check if character is currently active.
 			if($('#characterModal.active').length){
@@ -1297,10 +1254,6 @@ var Page = (function(){
 			toggleSidebar();
 		});
 
-
-
-
-
 		$('#characterModal').on('click', '.rageBtn', function(){
 			rageAdjustment($(this), animateNumbers = true);
 		});
@@ -1314,28 +1267,7 @@ var Page = (function(){
 			$this.toggleClass('active');
 			//$this.next('.btn-group.mobile').toggleClass('active');
 			$('body').toggleClass('filtersActive');
-
-			// If on mobile and at top of screen, the filter row covers the content! Not good.
-			// This detects if the user is partly down the page, and if not will offset the grid by the height of header + height of filter row
-
-			// if($('body').hasClass('filtersActive')){
-			// 	// First check to see if the filters are active. If they aren't, then proceed
-			// 	var scrollTop = $(window).scrollTop();
-			// 	var headerHeight = $('header').height() + $('.btn-group.mobile.active').innerHeight();
-			// 	if(scrollTop < 140){
-			// 		$('#main').css('margin-top', headerHeight);
-			// 	} else {
-			// 		$('#main').css('margin-top', '');
-			// 	}
-			// 	// If they aren't active and the button is clicked, remove the jQuery offset if present
-			// } else {
-			// 	$('#main').css('margin-top', '');
-			// }
 		});
-
-
-
-
 
 		$('#character-wrapper-back').click(function(){
 			deactivateCharacterGrid();
@@ -1373,8 +1305,9 @@ var Page = (function(){
 			$('#page-info iframe').attr('src', giphyVid);
 			$('#page-info .giphy a').attr('href', giphySource);
 			$('#page-info .' + currentMove).show();
-			var url = window.location.href + 'info/';
-			window.location = url;
+			var theUrl = window.location.href + 'info/';
+			window.location = theUrl;
+			setSendPageView(currentMove + '/info');
 		};
 
 		$('#info').click(function(){
@@ -1383,6 +1316,7 @@ var Page = (function(){
 		});
 
 		$('#characterGrid').on('click', '.character-box.disabled', function(){
+			$('body').addClass('show-info-box')
 			activateInfoBox();
 		});
 
@@ -1454,16 +1388,6 @@ var Page = (function(){
 			sortGravity($(this));
 		});
 
-		// $('#sort-airdodge').click(function(){ 
-		// 	ascendingOrDescendingFilter($(this));
-		// 	sortAirdodgeStart($(this));
-		// });
-		// Need to close About menu if item is clicked
-		// $('#primarynav .nav-item').click(function(){
-		// 	$('body').removeClass('toggle-aboutmenu');
-		// });
-
-
 		/////////////////////////////////////////////////////////////////////////////
 		// Reset dropdowns on document click
 		// https://craigmdennis.com/articles/close-dropdowns-clicking-outside-jquery/
@@ -1509,17 +1433,6 @@ var Page = (function(){
 			var dataref = $(this).data('ref');
 			$('.card-deck #' + dataref).trigger('click');
 		});
-
-
-		// $('body.toggle-aboutmenu #primarynav').click(function(){
-		// 	console.log('primary nav clicked!');
-		// })
-
-		// $('body.toggle-aboutmenu #primarynav .nav-item').click(function(){
-		// 	$('body').toggleClass('toggle-aboutmenu');
-		// });
-
-
 	};
 
 	return {
