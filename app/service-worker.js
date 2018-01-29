@@ -1,5 +1,5 @@
 // use a cacheName for cache versioning
-var cacheName = ['v8_5:static'];
+var cacheName = ['v9_1:static'];
 
 // during the install phase you usually want to cache static assets
 self.addEventListener('install', function(e) {
@@ -91,8 +91,8 @@ self.addEventListener('install', function(e) {
 
                 '/images/spinner.svg',
                 '/images/stripe.png',
-                '/images/dk-credits.jpg',
-                '/images/chrome_pwa_feature.jpg',
+                '/images/credits.jpg',
+                '/images/progressive-web-app.jpg',
                 '/images/icon-search.svg',
                 '/images/icon-search-active.svg',
                 '/images/logo-winning-at-smash4.png',
@@ -103,7 +103,6 @@ self.addEventListener('install', function(e) {
 
                 '/api/kill-confirms.json',
                 '/api/stage-list.json',
-                '/api/char-attrs.json',
                 '/api/char-attr-complete.json',
 
                 '/fonts/FontAweome.otf',

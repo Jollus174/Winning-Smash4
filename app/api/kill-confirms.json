@@ -474,20 +474,17 @@
             "rage125": "[-22, -22]",
             "rage150": "[-28, -28]",
 
-            "bfNormalMin": 7,
-            "bfLowPlatMin": -7,
-            "bfTopPlatMin": -20,
-
-            "dlLowPlatMin": -15,
-            "dlTopPlatMin": -26,
-
+            "bfNormalMin": 5,
+            "bfLowPlatMin": -5,
+            "bfTopPlatMin": -13,
+            "dlLowPlatMin": -11,
+            "dlTopPlatMin": -21,
             "svNormalMin": 1,
-            "svPlatMin": -14,
-
-            "tcNormalMin": -4,
-            "tcLowPlatMin": -20,
-            "tcSidePlatMin": -25,
-            "tcTopPlatMin": -41,
+            "svPlatMin": -10,
+            "tcNormalMin": -3,
+            "tcLowPlatMin": -14,
+            "tcSidePlatMin": -13,
+            "tcTopPlatMin": -25,
 
             "percents": {
                 "bayonetta": [93, 114],
