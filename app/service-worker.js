@@ -1,5 +1,5 @@
-/*// use a cacheName for cache versioning
-var cacheName = ['v9_3:static'];
+// use a cacheName for cache versioning
+var cacheName = ['v9_5:static'];
 
 // during the install phase you usually want to cache static assets
 self.addEventListener('install', function(e) {
@@ -150,4 +150,4 @@ self.addEventListener('fetch', function(event) {
             return fetch(event.request);
         })
     );
-});*/
+});
