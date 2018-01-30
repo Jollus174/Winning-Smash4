@@ -1,6 +1,3 @@
-// This function is also used in custom.js to determine difficulty, so I'm moving it outside the toCharacterViewModel() function
-
-
 var killConfirmsJSON = '';
 
 // Sort out character boxes
@@ -331,7 +328,7 @@ var characters = (function() {
                 document.getElementById("body").classList.remove('loading')
                 // displays the grid now that shiz is loaded
                 //document.getElementById('main').style.display = "block";
-                //Custom();
+                Custom();
             });
         }
     }
