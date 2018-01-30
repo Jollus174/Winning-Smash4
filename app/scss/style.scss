@@ -72,7 +72,7 @@ $zelda-button-primary-active:#7c468c;
     }
     .btn, .dropdown-item{
         color:$text-light;
-        background-color:darken($bowser, 10%) !important;
+        background-color:darken($bowser, 10%);
         &:hover, &.active{background-color:darken($bowser-button-homepage, 10%) !important;}
     }
     &.card-deck{
@@ -80,8 +80,10 @@ $zelda-button-primary-active:#7c468c;
             background-color:$bowser;
             color:$text-light;
         }
-        .btn{
-            background-color:darken($bowser, 10%) !important;
+        .card-body{
+            .btn{
+                background-color:darken($bowser, 10%);
+            }
         }
     }
     &.nav-characters:before{background:$bowser;}
@@ -116,18 +118,21 @@ $zelda-button-primary-active:#7c468c;
         }
     }
     .btn, .dropdown-item{
-        background-color:$donkey-kong-button-primary !important;
-        //border-color:$donkey-kong-button-primary;
+        background-color:$donkey-kong-button-primary;
         color:$text-light;
-        &:hover, &.active{background-color:darken($donkey-kong-button-primary, 10%) !important;}
+        &:hover, &.active{
+            background-color:darken($donkey-kong-button-primary, 10%) !important;
+        }
     }
     &.card-deck{
         .card-image-top{
             background-color:$donkey-kong;
             color:$text-dark;
         }
-        .btn{
-            background-color:darken($donkey-kong, 10%) !important;
+        .card-body{
+            .btn{
+                background-color:darken($donkey-kong, 10%);
+            }
         }
     }
     &.nav-characters{
@@ -152,7 +157,7 @@ $zelda-button-primary-active:#7c468c;
     }
     .secondarynav{background-color:$gnw;}
     .btn, .dropdown-item{
-        background-color:$gnw-button-homepage !important;
+        background-color:$gnw-button-homepage;
         // border-color:$gnw-button-homepage;
         color:$text-light;
         &:hover, &.active{background-color:darken($gnw-button-homepage, 10%) !important;}
@@ -162,8 +167,10 @@ $zelda-button-primary-active:#7c468c;
             background-color:$gnw;
             color:$text-light;
         }
-        .btn{
-            background-color:darken($gnw, 10%) !important;
+        .card-body{
+            .btn{
+                background-color:darken($gnw, 10%);
+            }
         }
     }
     &.nav-characters{
@@ -189,7 +196,7 @@ $zelda-button-primary-active:#7c468c;
     }
     .secondarynav{background-color:$lucas;}
     .btn, .dropdown-item{
-        background-color:$lucas-button-homepage !important;
+        background-color:$lucas-button-homepage;
         //border-color:$lucas-button-homepage;
         &:hover, &.active{background-color:darken($lucas-button-homepage, 10%) !important;}
     }
@@ -198,8 +205,10 @@ $zelda-button-primary-active:#7c468c;
             background-color:$lucas;
             color:$text-light;
         }
-        .btn{
-            background-color:darken($lucas, 10%) !important;
+        .card-body{
+            .btn{
+                background-color:darken($lucas, 10%);
+            }
         }
     }
     .btn{color:$text-light;}
@@ -224,7 +233,7 @@ $zelda-button-primary-active:#7c468c;
     }
     .secondarynav{background-color:$robin;}
     .btn, .dropdown-item{
-        background-color:$robin-button-homepage !important;
+        background-color:$robin-button-homepage;
         color:$text-light;
         //border-color:$robin-button-homepage;
         &:hover, &.active{background-color:darken($robin-button-homepage, 10%) !important;}
@@ -234,8 +243,10 @@ $zelda-button-primary-active:#7c468c;
             background-color:$robin;
             color:$text-light;
         }
-        .btn{
-            background-color:darken($robin, 10%) !important;
+        .card-body{
+            .btn{
+                background-color:darken($robin, 10%);
+            }
         }
     }
     &.nav-characters{
@@ -260,7 +271,7 @@ $zelda-button-primary-active:#7c468c;
     }
     .secondarynav{background-color:$zelda;}
     .btn, .dropdown-item{
-        background-color:$zelda-button-homepage !important;
+        background-color:$zelda-button-homepage;
         color:$text-light;
         //border-color:$zelda-button-homepage;
         &:hover, &.active{background-color:darken($zelda-button-homepage, 10%) !important;}
@@ -270,8 +281,10 @@ $zelda-button-primary-active:#7c468c;
             background-color:$zelda;
             color:$text-light;
         }
-        .btn{
-            background-color:darken($zelda, 10%) !important;
+        .card-body{
+            .btn{
+                background-color:darken($zelda, 10%);
+            }
         }
     }
     &.nav-characters{
@@ -1633,12 +1646,12 @@ body{
 
 .grid-difficulty, .grid-percRange, .grid-fallspeed, .grid-gravity, .grid-difficultyValue, .grid-ledgeFsmash{position:absolute;}
 .grid-percRange{top:6px; left:6px;}
-.grid-difficulty{top:32px; left:2px;}
-.grid-fallspeed{top:58px; left:6px;}
-.grid-gravity{top:77px; left:6px;}
+.grid-difficulty{top:30px; left:2px;}
+.grid-fallspeed{top:56px; left:6px;}
+.grid-gravity{top:76px; left:6px;}
 .grid-ledgeFsmash{top:77px; right:3px;}
 .grid-difficultyValue{
-    top: 77px;
+    top: 76px;
     right: 5px;
     left: initial;
 }
@@ -1671,10 +1684,10 @@ body{
 body.show-extra-info .extra-info{display:block;}
 body.show-ledgeFsmash .grid-ledgeFsmash{display:block;}
 
-.grid-percRange{
+.grid-percRangeText{
     background: #e03838;
     border: 1px solid #FFF;
-    padding: 0 5px;
+    padding: 1px 4px;
     font-size: 14px;
     line-height:1.5em;
     color: #FFF;

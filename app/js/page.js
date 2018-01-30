@@ -26,6 +26,18 @@ var Page = (function(){
 			}
 		})*/
 
+	function defer(method) {
+		// Script is fired is some browsers before the kill-confirms JSON has loaded....
+		// Putting this in a timeout to be triggered only when the JSON has loaded
+	    if (killConfirmsJSON == "") {
+	    	console.log('JSON not yet loaded');
+	    } else {
+	        setTimeout(function() { defer(method()) }, 50);
+	    }
+	};
+
+	defer(function(){
+
 		// Setting some cross-browser terms
 		var _requestAnimationFrame = window.requestAnimationFrame ||
 			window.webkitRequestAnimationFrame ||
@@ -307,6 +319,7 @@ var Page = (function(){
 				var minPercentSum = 0;
 				var maxPercentSum = 0
 
+				console.log(killConfirmsJSON);
 				$.each(killConfirmsJSON[characterId]['moves'][moveId]['percents'], function(index, value){
 					// Push these min/max percent values to an array so I can calculate an average between all of them
 					// Need this to calculate difficulties in a uniform manner
@@ -705,9 +718,9 @@ var Page = (function(){
 				var parts = decodeURI(window.location.hash).split('/');
 
 				// Need to check if they're dialling one of the menu links, or a character
-				// for(i=0; i<parts.length; i++){
-				// 	console.log('url part is: ' + i + ' ' + parts[i]);
-				// }
+				for(i=0; i<parts.length; i++){
+					console.log('url part is: ' + i + ' ' + parts[i]);
+				}
 				// Everything after index 3 is relevant.
 				// Index 1 == moveName || About || Credits
 				// Index 2 == characterName || info
@@ -722,13 +735,14 @@ var Page = (function(){
 
 					// Target the moveBtn with the ID defined in the URl
 					// Also check if it exists. URL may be invalid
-					var characterGrid = parts[1].length ? $('#' + parts[1]) : "";
+					var characterGrid = parts[1].length ? parts[1] : "";
+					console.log(characterGrid);
 					var characterBox = parts[2].length ? $('#characterGrid .character-box.' + parts[2]) : "";
 
 					// and activate it
-					if(parts[1].length && characterGrid.length){
+					if(parts[1].length){
 						console.log('trying to transition character from URL');
-						pageTransition(characterGrid);
+						pageTransition($('#' + parts[1]));
 						if(parts[2].length && characterBox.length && parts[2] != 'info'){
 
 							// Working
@@ -1403,37 +1417,22 @@ var Page = (function(){
 			$('#secondarynav .dropdown').removeClass('show');
 			$('#secondarynav #secondarynav-dropdown-menu').removeClass('show');
 			$('body').removeClass('toggle-aboutmenu');
+			$('body').removeClass('filtersActive');
+			$('#filter-toggle').removeClass('active');
 		});
+		$('#sort').click(function(e){
+			e.stopPropagation();
+		});
+		// $('#filter-toggle').on('focusout', function(){
+		// 	$(this).removeClass('open');
+		// 	$('body').removeClass('filtersActive');
+		// 	console.log('now close the menu!');
+		// })
 
 		//////////////////////////////////////////////////////////////////////////////
 
 
-		function toggleCheck(self){
-			$checkbox = self.find('.checkbox');
-			if($checkbox.hasClass('fa-check')){
-				$checkbox.removeClass('fa-check').addClass('fa-times');
-			} else {
-				$checkbox.removeClass('fa-times').addClass('fa-check');
-			};
-		};
-		$('.add-extra-info').click(function(){
-			$this = $(this);
-			if($this.hasClass('add-info-grid')){
-				// $this.toggleClass('active');
-				// $this.find('.checkbox').removeClass;
-				toggleCheck($this);
-
-				$('body').toggleClass('show-extra-info');
-
-			}
-		});
-
-		$('#side-menu').on('click', '.components a', function(e){
-			e.preventDefault();
-			var dataref = $(this).data('ref');
-			$('.card-deck #' + dataref).trigger('click');
-		});
-	};
+	});
 
 	return {
 		vm: new RenderViewModel(),

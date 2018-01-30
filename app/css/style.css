@@ -10054,7 +10054,7 @@ a.text-dark:focus, a.text-dark:hover {
 
 .bowser .btn, .bowser .dropdown-item {
   color: #FFF;
-  background-color: #235240 !important; }
+  background-color: #235240; }
   .bowser .btn:hover, .bowser .btn.active, .bowser .dropdown-item:hover, .bowser .dropdown-item.active {
     background-color: #142e24 !important; }
 
@@ -10062,8 +10062,8 @@ a.text-dark:focus, a.text-dark:hover {
   background-color: #32765c;
   color: #FFF; }
 
-.bowser.card-deck .btn {
-  background-color: #235240 !important; }
+.bowser.card-deck .card-body .btn {
+  background-color: #235240; }
 
 .bowser.nav-characters:before {
   background: #32765c; }
@@ -10093,7 +10093,7 @@ a.text-dark:focus, a.text-dark:hover {
       fill: #431c0b; }
 
 .donkey-kong .btn, .donkey-kong .dropdown-item {
-  background-color: #9c840e !important;
+  background-color: #9c840e;
   color: #FFF; }
   .donkey-kong .btn:hover, .donkey-kong .btn.active, .donkey-kong .dropdown-item:hover, .donkey-kong .dropdown-item.active {
     background-color: #6d5c0a !important; }
@@ -10102,8 +10102,8 @@ a.text-dark:focus, a.text-dark:hover {
   background-color: #feda00;
   color: #431c0b; }
 
-.donkey-kong.card-deck .btn {
-  background-color: #cbae00 !important; }
+.donkey-kong.card-deck .card-body .btn {
+  background-color: #cbae00; }
 
 .donkey-kong.nav-characters:before {
   background: #feda00; }
@@ -10127,7 +10127,7 @@ a.text-dark:focus, a.text-dark:hover {
   background-color: #8a8983; }
 
 .game-and-watch .btn, .game-and-watch .dropdown-item {
-  background-color: #706f6a !important;
+  background-color: #706f6a;
   color: #FFF; }
   .game-and-watch .btn:hover, .game-and-watch .btn.active, .game-and-watch .dropdown-item:hover, .game-and-watch .dropdown-item.active {
     background-color: #565551 !important; }
@@ -10136,8 +10136,8 @@ a.text-dark:focus, a.text-dark:hover {
   background-color: #8a8983;
   color: #FFF; }
 
-.game-and-watch.card-deck .btn {
-  background-color: #706f6a !important; }
+.game-and-watch.card-deck .card-body .btn {
+  background-color: #706f6a; }
 
 .game-and-watch.nav-characters li > span {
   background: rgba(138, 137, 131, 0.8) !important;
@@ -10158,7 +10158,7 @@ a.text-dark:focus, a.text-dark:hover {
   background-color: #f05f1b; }
 
 .lucas .btn, .lucas .dropdown-item {
-  background-color: #cb4a0d !important; }
+  background-color: #cb4a0d; }
   .lucas .btn:hover, .lucas .btn.active, .lucas .dropdown-item:hover, .lucas .dropdown-item.active {
     background-color: #9b380a !important; }
 
@@ -10166,8 +10166,8 @@ a.text-dark:focus, a.text-dark:hover {
   background-color: #f05f1b;
   color: #FFF; }
 
-.lucas.card-deck .btn {
-  background-color: #cb4a0d !important; }
+.lucas.card-deck .card-body .btn {
+  background-color: #cb4a0d; }
 
 .lucas .btn {
   color: #FFF; }
@@ -10191,7 +10191,7 @@ a.text-dark:focus, a.text-dark:hover {
   background-color: #ce82de; }
 
 .robin .btn, .robin .dropdown-item {
-  background-color: #be5ad3 !important;
+  background-color: #be5ad3;
   color: #FFF; }
   .robin .btn:hover, .robin .btn.active, .robin .dropdown-item:hover, .robin .dropdown-item.active {
     background-color: #ac34c6 !important; }
@@ -10200,8 +10200,8 @@ a.text-dark:focus, a.text-dark:hover {
   background-color: #ce82de;
   color: #FFF; }
 
-.robin.card-deck .btn {
-  background-color: #be5ad3 !important; }
+.robin.card-deck .card-body .btn {
+  background-color: #be5ad3; }
 
 .robin.nav-characters:before {
   background: rgba(206, 130, 222, 0.5) !important; }
@@ -10225,7 +10225,7 @@ a.text-dark:focus, a.text-dark:hover {
   background-color: #aa74ba; }
 
 .zelda .btn, .zelda .dropdown-item {
-  background-color: #9453a8 !important;
+  background-color: #9453a8;
   color: #FFF; }
   .zelda .btn:hover, .zelda .btn.active, .zelda .dropdown-item:hover, .zelda .dropdown-item.active {
     background-color: #764286 !important; }
@@ -10234,8 +10234,8 @@ a.text-dark:focus, a.text-dark:hover {
   background-color: #aa74ba;
   color: #FFF; }
 
-.zelda.card-deck .btn {
-  background-color: #9453a8 !important; }
+.zelda.card-deck .card-body .btn {
+  background-color: #9453a8; }
 
 .zelda.nav-characters:before {
   background: rgba(170, 116, 186, 0.5) !important; }
@@ -11329,15 +11329,15 @@ body {
   left: 6px; }
 
 .grid-difficulty {
-  top: 32px;
+  top: 30px;
   left: 2px; }
 
 .grid-fallspeed {
-  top: 58px;
+  top: 56px;
   left: 6px; }
 
 .grid-gravity {
-  top: 77px;
+  top: 76px;
   left: 6px; }
 
 .grid-ledgeFsmash {
@@ -11345,7 +11345,7 @@ body {
   right: 3px; }
 
 .grid-difficultyValue {
-  top: 77px;
+  top: 76px;
   right: 5px;
   left: initial; }
 
@@ -11382,10 +11382,10 @@ body.show-extra-info .extra-info {
 body.show-ledgeFsmash .grid-ledgeFsmash {
   display: block; }
 
-.grid-percRange {
+.grid-percRangeText {
   background: #e03838;
   border: 1px solid #FFF;
-  padding: 0 5px;
+  padding: 1px 4px;
   font-size: 14px;
   line-height: 1.5em;
   color: #FFF;

@@ -31,6 +31,7 @@ var characters = (function() {
                         //var killConfirmsJSON = "";
                         killConfirmsJSON = JSON.parse(killConfirmsRequest.response);
                         resolve(killConfirmsJSON);
+                        console.log('got the kill confirms file!');
                     } else {
                         // error
                         console.log('missing kill confirms file');

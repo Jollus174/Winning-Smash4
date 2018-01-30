@@ -60,7 +60,7 @@
 		ga('create', 'UA-113159492-1', 'auto');
 
 		// The following line sets the dimension to the pageview request.
-		ga('set', 'Your Dimension Name', navigator.onLine); 
+		ga('set', 'Normal Visitors', navigator.onLine); 
 		ga('send', 'pageview');
 
 		// Setup a listener to track Add to Homescreen events.
@@ -75,6 +75,8 @@
 
 <body id="body" class="loading wrapper">
 
+	<img style="display:none;" src="images/winning-at-smash4.jpg" alt="Winning at Smash 4 Kill Confirm Calculator" />
+
 	<div id="sidedrawer-overlay"></div>
 	<nav id="sidebar" class="navbar-default navbar-static-side" role="navigation" style="position:fixed;">
 		<div class="sidebar-collapse">
@@ -82,7 +84,7 @@
 
 				<li class="sidebar-header">
 					<a id="logo-link" href="#" class="p-0">
-						<img src="images/logo-winning-at-smash4.png" class="img-fluid main-logo" alt="Winning at Smash 4" />
+						<img src="images/logo-winning-at-smash4.png" class="img-fluid main-logo" alt="Winning at Smash 4 Logo" />
 					</a>
 					<!-- <h3>Winning at Smash4</h3> -->
 				</li>
@@ -303,7 +305,9 @@
 								<span data-bind="text: (id + 1)"></span>
 							</div>
 							<div class="grid-percRange">
-								<span class="grid-minPercent" data-bind="text: minPercent"></span> - <span class="grid-maxPercent" data-bind="text: maxPercent"></span>%
+								<span class="grid-percRangeText">
+									<span class="grid-minPercent" data-bind="text: minPercent"></span> - <span class="grid-maxPercent" data-bind="text: maxPercent"></span>%
+								</span>
 							</div>
 							<div hidden class="extra-info grid-fallspeed">
 								<span>Fallspeed - <span style="font-weight:700;" data-bind="text: fallspeed">1.65</span></span>
@@ -386,13 +390,13 @@
 
 			<p><a href="https://twitter.com/houseoffastfood" target="_blank" rel="noopener">Mickey</a> for the <a href="https://docs.google.com/spreadsheets/d/1AxpLDkDltkjAND819JrbgfIgPH_pjkeFPhjpzXPDgP0/edit#gid=0" target="_blank" rel="noopener">G &amp; W Toot-Toot spreadsheet</a>.</p>
 
-			<p><a href="https://twitter.com/Tihit212" target="_blank" rel="noopener">Taiheita</a> for the <a href="https://docs.google.com/spreadsheets/d/1wIHQkV-RTsKBQq9_aBrP2yE9B55gCeN2cbilx3InPYo/edit#gid=1136269350" target="_blank" rel="noopener">Lucas Down Throw > Up Air Spreadsheet</a>.</p>
+			<p><a href="https://twitter.com/Tihit212" target="_blank" rel="noopener">Taiheita</a> for the <a href="https://docs.google.com/spreadsheets/d/1wIHQkV-RTsKBQq9_aBrP2yE9B55gCeN2cbilx3InPYo/edit#gid=1136269350" target="_blank" rel="noopener">Lucas Down Throw > Up Air spreadsheet</a>.</p>
 
-			<p>Xelda for the <a href="https://docs.google.com/spreadsheets/d/1zd5Ky1MR9ECFCtKRlfyQ77YNT9gAZ7GNXJkqZGVgmoI/edit#gid=511032032" target="_blank" rel="noopener">Zelda Down Throw > Up Air Spreadsheet</a>.</p>
+			<p>Xelda for the <a href="https://docs.google.com/spreadsheets/d/1zd5Ky1MR9ECFCtKRlfyQ77YNT9gAZ7GNXJkqZGVgmoI/edit#gid=511032032" target="_blank" rel="noopener">Zelda Down Throw > Up Air spreadsheet</a>. <a href="https://twitter.com/BanZelda" target="_blank" rel="noopener">Dia</a> for the <a href="https://docs.google.com/spreadsheets/d/1DJ6nOhD5csa5xEgPvgCXMXKR-Gsy_WwbtJARkbCxTIA/edit#gid=0" target="_blank" rel="noopener">WIP Zelda spreadsheet</a>.</p>
 
 			<p><a href="https://twitter.com/unwnded?lang=en" target="_blank" rel="noopener">Extra</a>, <a href="https://twitter.com/Dsafunky1" target="_blank" rel="noopener">Denz</a>, <a href="https://twitter.com/Havok_96" target="_blank" rel="noopener">Havok</a> and <a href="https://twitter.com/JPiskopos" target="_blank" rel="noopener">Piski</a> for labbing assistance.</p>
 
-			<p>Special thanks to smashers <a href="https://twitter.com/BanZelda" target="_blank" rel="noopener">Dia</a>, <a href="https://twitter.com/cayiika" target="_blank" rel="noopener">Cayika</a>, <a href="https://twitter.com/Gurpwnder" target="_blank" rel="noopener">Gurpinder</a>, Arago, Gale, BJN39.</p>
+			<p>Special thanks to smashers <a href="https://twitter.com/cayiika" target="_blank" rel="noopener">Cayika</a>, <a href="https://twitter.com/Gurpwnder" target="_blank" rel="noopener">Gurpinder</a>, Arago, Gale, BJN39, eta3372.</p>
 
 			<p>Shoutouts to <a href="https://twitter.com/likeacyansunday" target="_blank" rel="noopener">Shiva</a> for images help and <a href="https://twitter.com/KuroganeHammer" target="_blank" rel="noopener">Kurogane Hammer</a> for data help.</p>
 
@@ -574,7 +578,9 @@
 				<div id="characterModalImage" class="characterImage"></div>
 
 				<div class="grid-percRange">
-					<span><span class="minPerc">83</span> - <span class="maxPerc">111</span>%</span>
+					<span class="grid-percRangeText">
+						<span class="minPerc">83</span> - <span class="maxPerc">111</span>%
+					</span>
 				</div>
 
 				<div class="grid-difficulty">
@@ -661,7 +667,7 @@
 	<div id="notification"></div>
 	<div id="notification-offline"></div>
 
-	<script>
+<!-- 	<script>
 		pageUrl = window.location.href;
 		var parts = pageUrl.split('/');
 		for(i=0; i<parts.length; i++){
@@ -672,7 +678,7 @@
 				document.getElementById('page-wrapper').style.display = 'none';
 			}
 		}
-	</script>
+	</script> -->
 
 	<!-- build:js js/main.min.js -->
 	<script src="js/modernizr.custom.js"></script>
