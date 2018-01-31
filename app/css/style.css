@@ -10979,6 +10979,7 @@ body {
   position: absolute; }
 
 #character-wrapper {
+  display: none;
   top: 56px;
   background: #eee; }
   #character-wrapper .container-fluid {
@@ -10987,6 +10988,9 @@ body {
 .secondarynav {
   background-color: #8a8983;
   display: none; }
+
+.animating #character-wrapper, .character-grid-active #character-wrapper {
+  display: block; }
 
 #secondarynav .navbar-header {
   position: relative;
