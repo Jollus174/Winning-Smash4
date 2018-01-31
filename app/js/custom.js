@@ -308,6 +308,10 @@ var Custom = function(){
 
 				$character.find('.grid-minPercent').text(minPercent);
 				$character.find('.grid-maxPercent').text(maxPercent);
+				// Need to update characterModal percents too
+				$('#characterModal').find('.minPerc').text(minPercent);
+				$('#characterModal').find('.maxPerc').text(maxPercent);
+
 				$character.attr('data-minpercent', minPercent);
 				$character.attr('data-maxpercent', maxPercent);
 				// IT WOOOOOORKS!!!
@@ -502,7 +506,7 @@ var Custom = function(){
 
 				// Initiate transition between MOVES OF SAME CHARACTER
 				$('#secondarynav-dropdown-menu').removeClass('show');
-				_fadeOut(document.getElementById('characterGrid'), function(){				
+				_fadeOut(document.getElementById('characterGrid'), function(){
 					activateCharacterGrid(self);
 					console.log('transitioning between same character!');
 					_fadeIn(document.getElementById('characterGrid'));
@@ -515,7 +519,7 @@ var Custom = function(){
 
 				// Initiate transition between MOVES OF SAME CHARACTER
 				$('#secondarynav-dropdown-menu').removeClass('show');
-				_fadeOut(document.getElementById('character-wrapper'), function(){					
+				_fadeOut(document.getElementById('character-wrapper'), function(){
 					activateCharacterGrid(self);
 					console.log('transitioning between different characters!');
 					$('#page-wrapper').removeClass();
@@ -1184,8 +1188,11 @@ var Custom = function(){
 		}
 		if(e.which == shiftKey) isShiftActive = true;
 
+		// I want to be able to access info with 'I' if a characterGrid is out
+		// Need to detect if search field is focussed first though
+		// https://stackoverflow.com/questions/967096/using-jquery-to-test-if-an-input-has-focus
 		if(e.which == keyi){
-			if($('.moveBtn').hasClass('active')){
+			if($('.moveBtn').hasClass('active') && !$('#search').is(':focus')){
 				$('body').addClass('show-info-box');
 				activateInfoBox();
 			}

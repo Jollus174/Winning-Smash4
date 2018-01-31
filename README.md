@@ -1,8 +1,6 @@
 # Winning at Smash 4
 A Progressive Web App for effective kill confirms in Super Smash Bros. for Wii U.
 
-This is currently under production and not ready for release.
-
 # Installation
 To install, make sure Gulp is first installed `npm install gulp -g`
 
