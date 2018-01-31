@@ -36,7 +36,7 @@ Xelda for the <a href="https://docs.google.com/spreadsheets/d/1zd5Ky1MR9ECFCtKRl
 
 <a href="https://twitter.com/unwnded?lang=en" target="_blank" rel="noopener">Extra</a>, <a href="https://twitter.com/Dsafunky1" target="_blank" rel="noopener">Denz</a>, <a href="https://twitter.com/Havok_96" target="_blank" rel="noopener">Havok</a> and <a href="https://twitter.com/JPiskopos" target="_blank" rel="noopener">Piski</a> for labbing assistance.
 
-Special thanks to smashers <a href="https://twitter.com/cayiika" target="_blank" rel="noopener">Cayika</a>, <a href="https://twitter.com/Gurpwnder" target="_blank" rel="noopener">Gurpinder</a>, Arago, Gale, BJN39, eta3372.
+Special thanks to smashers <a href="https://twitter.com/cayiika" target="_blank" rel="noopener">Cayika</a>, <a href="https://twitter.com/Gurpwnder" target="_blank" rel="noopener">Gurpinder</a>, Gale, BJN39, eta3372.
 
 Shoutouts to <a href="https://twitter.com/likeacyansunday" target="_blank" rel="noopener">Shiva</a> for images help and <a href="https://twitter.com/KuroganeHammer" target="_blank" rel="noopener">Kurogane Hammer</a> for data help.
 
