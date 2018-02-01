@@ -223,6 +223,7 @@ var Custom = function(){
 			$('.moveBtn').removeClass('active');
 			$this.addClass('active');
 			var characterId = $this.closest('.card-deck').data('index');
+			console.log('character ID is: ' + characterId + ' the strange loopback begins here!');
 			var moveId = $this.data('moveid'); // Needed for each loop below
 			//console.log('card-deck: ' + characterId + ' moveId: ' + moveId);
 			var characterName = $this.closest('.card-deck').data('name');
@@ -237,7 +238,6 @@ var Custom = function(){
 			$('#side-menu a[data-ref=' + id + ']').addClass('active');
 
 			/* --- */
-
 
 			// Check for how many buttons in the card
 			// If more than one, then display the move-switcher dropdown in secondarynav
@@ -284,7 +284,6 @@ var Custom = function(){
 			var minPercentSum = 0;
 			var maxPercentSum = 0
 
-			console.log(killConfirmsJSON);
 			$.each(killConfirmsJSON[characterId]['moves'][moveId]['percents'], function(index, value){
 				// Push these min/max percent values to an array so I can calculate an average between all of them
 				// Need this to calculate difficulties in a uniform manner
@@ -345,8 +344,6 @@ var Custom = function(){
 					// Now calculate the percents to iterate by. Assuming there are 5 difficulty levels, take sum and divide by midway for average. So sum/2.5.
 					// This calculates how much to iterate each percent by
 					var diffIterator = Math.floor(percentAverage/2.5);
-					// console.log(diffIterator);
-
 					var diff = "";
 					var percentDiff = (maxPercent - minPercent) + 1;
 
@@ -382,11 +379,8 @@ var Custom = function(){
 
 					$difficulty.attr('class', 'difficulty').addClass(diff);
 					$difficulty.find('.text-difficulty').text(diff);
-
 				};
-
 			});
-
 
 			// Christ this is garbage... Utter garbage
 
@@ -430,18 +424,12 @@ var Custom = function(){
 			var locationHost = window.location.host;
 			var baseUrl = window.location.protocol + "//" + locationHost;
 			var dataUrl = id;
-			var constructedUrl = baseUrl + '/#/' + dataUrl + '/';
-			window.location.replace(constructedUrl);
-
-			console.log(constructedUrl);
+			window.location.hash = '/' + dataUrl + '/';
 
 			// Window to go to top on click, pretty much just for the sake of mobile and table viewports
 			window.scrollTo(0, 0);
-
 		};
-
 	};
-
 
 	function retrieveCharUrl(self){
 		// Place the character's name in #page-wrapper so I can target and do things with it
@@ -459,7 +447,9 @@ var Custom = function(){
 		/* --- Animate the navigation transition -- */
 		var	$wrapper = $('#page-wrapper'),
 			$currPage = $wrapper.children('div.pt-page-current'),
-			$nonCurrPage = $wrapper.children('div.pt-page').not('div.pt-page-current');
+			$nonCurrPage = $wrapper.children('div.pt-page').not('div.pt-page-current'),
+			outClass = "",
+			inClass = "";
 
 		// Need to delay open/close function in case it's already animating. Some spastic might hit ESC twice quickly
 		// Add class of 'animating' to body and remove when the animation is finished
@@ -485,7 +475,9 @@ var Custom = function(){
 
 				// variables for transition it backwards
 				// Remember this!
-				$('body').removeClass('character-grid-active');
+
+				// This is surely causing an issue
+				//$('body').removeClass('character-grid-active');
 				//
 
 			 	/*FANCIER TRANSITIONS
@@ -519,6 +511,9 @@ var Custom = function(){
 
 				// Initiate transition between MOVES OF SAME CHARACTER
 				$('#secondarynav-dropdown-menu').removeClass('show');
+
+				console.log('the loopback error is here?');
+
 				_fadeOut(document.getElementById('character-wrapper'), function(){
 					activateCharacterGrid(self);
 					console.log('transitioning between different characters!');
@@ -531,9 +526,6 @@ var Custom = function(){
 
 		} else {
 			// Initiate STANDARD transition
-			// $nonCurrPage.removeClass('pt-page-current');
-			// $currPage.addClass('pt-page-current');
-			//$('#card-wrapper').removeClass('pt-page-current');
 			if($('body').hasClass('viewport-desktop')){
 				$('#primarynav .navbar-nav').hide();
 			}
@@ -586,23 +578,6 @@ var Custom = function(){
 			window.location.replace(constructedUrl);
 		};
 	}
-
-	// THIS IS THE CHARACTER DATA CONTROLLER, RIGHT HERE!
-	$('body').on('click', '.moveBtn', function(){
-
-		// Check if the grid is already out
-		// If the grid is out and the moveBtn is clicked, that means we're just transitioning between character grids and need a different kind of transition
-		// This is for the side menu, which has buttons that trigger a click for its counterpart .moveBtn in card grid
-
-		// check to see if it already has a class of 'active' first. Don't want people clicking the same button twice
-		if(!$(this).hasClass('active')){
-			if($('body').hasClass('character-grid-active')){
-				pageTransition($(this), characterGridActive = true);
-			} else {
-				pageTransition($(this));
-			}
-		};
-	});
 
 
 	// RAGE MODIFIER STICKY
@@ -661,12 +636,142 @@ var Custom = function(){
 	// https://stackoverflow.com/questions/6658752/click-event-doesnt-work-on-dynamically-generated-elements
 
 	// http://api.jquery.com/trigger/
-	$('#characterGrid').on('click', '.character-box:not(.disabled)', function(){
-		activateCharacter($(this));
-	});
+
 	// $('#characterGrid').on('activateCharBox', function(event){
 	// 	activateCharacter($(this));
 	// });
+
+	// THIS IS THE CHARACTER DATA CONTROLLER, RIGHT HERE!
+	$('body').on('click', '.moveBtn', function(){
+
+		// Check if the grid is already out
+		// If the grid is out and the moveBtn is clicked, that means we're just transitioning between character grids and need a different kind of transition
+		// This is for the side menu, which has buttons that trigger a click for its counterpart .moveBtn in card grid
+
+		// check to see if it already has a class of 'active' first. Don't want people clicking the same button twice
+		if(!$(this).hasClass('active')){
+			// Update the URL
+			//var moveUrl = $('.moveBtn.active').attr('id');
+			var moveUrl = $(this).attr('id');
+			var hashUrl = '/' + moveUrl;
+			render(hashUrl);
+			/*if($('body').hasClass('character-grid-active')){
+				// Rather than this, check if there are already two parts of the URL that exist...
+				//pageTransition($(this), characterGridActive = true);
+			} else {
+				pageTransition($(this));
+			}*/
+		};
+	});
+
+	$('#characterGrid').on('click', '.character-box:not(.disabled)', function(){
+		//activateCharacter($(this));
+		// Update the URL
+		console.log('clicked!');
+		var moveUrl = $('.moveBtn.active').attr('id');
+		var charUrl = $(this).data('url');
+		var hashUrl = '/' + moveUrl + '/' + charUrl;
+		console.log('hash url is: ' + hashUrl);
+		render(hashUrl);
+	});
+
+
+	function render(url){
+
+		// Get the keywords from the url
+		var temp = url.split('/')[0];
+		var parts = url.split('/')
+
+	// If 'homescreen' does NOT exist in URL...
+	//if(baseUrl != currentUrl && baseUrl + '#' != currentUrl && baseUrl + '#/' != currentUrl && !(currentUrl.indexOf('homescreen') > -1)){
+
+		// Current URL is not the base URL
+		console.log('urls do not match! With new function');
+
+		console.log('parts[1] is:' + parts[1] + ' and parts[2] is: ' + parts[2]);
+	//};
+		// and activate it
+		if(parts[1]){
+			console.log('trying to transition character from URL');
+
+			console.log('parts[1] is: ' + parts[1]);
+
+			// Check if a grid is already active
+			if($('body').hasClass('character-grid-active')){
+				console.log('char grid active');
+
+				if(parts[2]){
+					console.log('more than one url part');
+					if(parts[2] == 'info'){
+						activateInfoBox();
+					} else {
+						console.log('activating character');
+						activateCharacter($('#characterGrid .character-box.' + parts[2]));
+					}
+				} else {
+					console.log('charGrid is active');
+					if($('#' + parts[1].length)){
+						pageTransition($('#' + parts[1].length), characterGridActive = true);
+					} else {
+						urlError();
+					}
+				}
+
+			// Wait... this is all firing twice...
+			// That's why on card click it fades in then out
+
+			} else {
+
+				console.log('char grid not active');
+				if(parts[1] == 'about'){
+					activateMenuBox('page-about');
+				} else if (parts[1] == 'credits'){
+					activateMenuBox('page-credits');
+				} else {
+					if(parts[2]){
+						console.log('more than one url part');
+						if(parts[2] == 'info'){
+							activateInfoBox();
+						} else {
+							activateCharacter($('#characterGrid .character-box.' + parts[2]));
+						}
+					} else {
+						console.log('parts 1 is: ' + parts[1])
+						if($('#' + parts[1])){
+							pageTransition($('#' + parts[1]));
+						} else {
+							urlError();
+						};
+					};
+
+					// Need error handling somewhere around here
+					// Error handling at page transitions!
+				};
+
+				// Working
+				//activateCharacter($('#characterGrid .character-box.bayonetta'));
+				//function pageTransition(self, transitionToAnotherGrid){
+				//pageTransition(characterBox);
+			};
+		}
+		setSendPageView(url);
+	};
+	function urlError(){
+		// It needs to fallback though in case the character is undefined.
+		console.log('This character does not exist, yo');
+		$('#notification').html('Looks like this move or character does not exist.<br>Please check the URL.').show();
+		setTimeout(function(){
+			_fadeOut(document.getElementById('notification'));
+		}, 3000)
+	}
+
+	render(decodeURI(window.location.hash));
+
+	$(window).on('hashchange', function(){
+        // On every hash change the render function is called with the new hash.
+        // This will navigate the app and allow native back/forward functionality
+        render(decodeURI(window.location.hash));
+	});
 
 	// The URL constructers/deconstructers are back to haunt me
 	function deconstructUrl(){
@@ -737,9 +842,9 @@ var Custom = function(){
 		}
 	}
 	// For some reason this fires incorrectly if left unwrapped?
-	setTimeout(function(){
-		deconstructUrl();
-	}, 0);
+	// setTimeout(function(){
+	// 	deconstructUrl();
+	// }, 0);
 
 	function activateCharacter(self){
 
@@ -776,10 +881,10 @@ var Custom = function(){
 			gravity = self.data('gravity'),
 			airdodgeStart = parseInt(self.data('airdodgestart')),
 			airdodgeEnd = parseInt(self.data('airdodgeend')),
-			minPercent = parseInt(self.data('minpercent')),
-			maxPercent = parseInt(self.data('maxpercent')),
 			textContrast = self.data('textcontrast'),
-			airdodge = airdodgeStart + ' - ' + airdodgeEnd;
+			airdodge = airdodgeStart + ' - ' + airdodgeEnd,
+			minPercent = parseInt(self.attr('data-minpercent')),
+			maxPercent = parseInt(self.attr('data-maxpercent'));
 
 		// console.log('min perc is:' + minPercent + ' and max perc is: ' + maxPercent);
 
@@ -811,7 +916,6 @@ var Custom = function(){
 		$charModal.find('.characterImageContainer, .stickyName').css('backgroundColor', bgColour);
 		$charModal.find('.legend-keys--shift, .legend-keys--escape').css('color', bgColour);
 
-
 		// Trick to restart the CSS animation for the characterImage slideIn. What a headache.
 		// https://css-tricks.com/restart-css-animation/
 		// https://stackoverflow.com/questions/31028479/restarting-css-animation-via-javascript
@@ -842,11 +946,11 @@ var Custom = function(){
 		$charOverviewItem.find('li[data-ref="gravity"]').html('Gravity' + '<span class="value">' + gravity + '</span>');
 
 		// Map those mf-ing values
-		// Ideally these should all be pushed to an array and mapped all at once, but eh
 
 		var $fd = $charModal.find('.stage-fd');
 		$fd.find('span[data-ref="fdNormalMin"]').text(minPercent).attr('data-defaultmin', minPercent);
 		$fd.find('span[data-ref="fdNormalMax"]').text(maxPercent).attr('data-defaultmax', maxPercent);
+		console.log('min percent is: ' + minPercent + ' and max percent is: ' + maxPercent);
 
 		var $bf = $charModal.find('.stage-bf');
 		$bf.find('span[data-ref="bfNormalMin"]').text(minPercent + bfNormalMin).attr('data-defaultmin', minPercent + bfNormalMin);
@@ -898,17 +1002,6 @@ var Custom = function(){
 			fixedRagebar($('#characterModal .characterContainer'));
 		})
 
-		// Update the URL
-		var locationHost = window.location.host;
-		var baseUrl = window.location.protocol + "//" + locationHost;
-		var dataUrl = $('.moveBtn.active').attr('id');
-		var constructedUrl = baseUrl + '/#/' + dataUrl + '/' + self.data('url');
-		window.location.replace(constructedUrl);
-		setSendPageView(dataUrl + '/' + self.data('url'));
-
-		// var url = window.location.href + self.data('url') + '/';
-		// window.location = url;
-
 	}
 
 	function deactivateCharacter(){
@@ -942,7 +1035,7 @@ var Custom = function(){
 			$('#page-info .giphy iframe').attr('src', '');
 
 		};
-		window.location.replace(constructedUrl);
+		window.location.hash = '/' + dataUrl + '/';
 	};
 
 	function transitionCharacter(){
@@ -950,6 +1043,8 @@ var Custom = function(){
 		$charModal.attr('class', 'active');
 		$('#characterGrid .character-box.selected').removeClass('selected');
 	}
+
+
 
 	function rageAdjustment(self, animateNumbers){
 		var rageAmount = self.attr("data-rage");
@@ -1045,9 +1140,7 @@ var Custom = function(){
 		if(urlPart){
 			var locationHost = window.location.host;
 			var baseUrl = window.location.protocol + "//" + locationHost;
-			var constructedUrl = baseUrl + '/#/' + urlPart;
-			console.log(urlPart);
-			window.location.replace(constructedUrl);
+			window.location.hash = '/' + urlPart;
 			setSendPageView(urlPart);
 		};
 		$('body').addClass('no-scroll').removeClass('text-dark');
@@ -1195,7 +1288,7 @@ var Custom = function(){
 			if($('.moveBtn').hasClass('active') && !$('#search').is(':focus')){
 				$('body').addClass('show-info-box');
 				activateInfoBox();
-			}
+			};
 		}
 
 		// Need to check if character is currently active.
@@ -1236,7 +1329,6 @@ var Custom = function(){
 		toggleSidebar();
 	});
 	$('.navbar-header').on('click', '#navbar-toggler', function(){
-		console.log('toggler clicked!');
 		toggleSidebar();
 	});
 
@@ -1291,8 +1383,9 @@ var Custom = function(){
 		$('#page-info iframe').attr('src', giphyVid);
 		$('#page-info .giphy a').attr('href', giphySource);
 		$('#page-info .' + currentMove).show();
-		var theUrl = window.location.href + 'info/';
-		window.location = theUrl;
+		//var theUrl = window.location.href + 'info/';
+		//window.location = theUrl;
+		window.location.hash = '/' + currentMove + '/info/';
 		setSendPageView(currentMove + '/info');
 	};
 
@@ -1302,8 +1395,12 @@ var Custom = function(){
 	});
 
 	$('#characterGrid').on('click', '.character-box.disabled', function(){
-		$('body').addClass('show-info-box')
-		activateInfoBox();
+		// $('body').addClass('show-info-box')
+		// activateInfoBox();
+		var moveUrl = $('.moveBtn.active').attr('id');
+		var hashUrl = '/' + moveUrl + 'info/';
+		console.log(hashUrl);
+		render(hashUrl);
 	});
 
 	$('#filter-dropdown-btn').click(function(e){

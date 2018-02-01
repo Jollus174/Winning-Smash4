@@ -317,6 +317,7 @@ var characters = (function() {
                 Page.vm.killConfirm(response);
                 //console.log(Page.vm.killConfirm(response));
                 //console.log('kill confirms loaded');
+                Custom();
             });
             characterController.getStageList().then(function(response){
                 Page.vm.stage(response);
@@ -328,7 +329,7 @@ var characters = (function() {
                 document.getElementById("body").classList.remove('loading')
                 // displays the grid now that shiz is loaded
                 //document.getElementById('main').style.display = "block";
-                Custom();
+                
             });
         }
     }
