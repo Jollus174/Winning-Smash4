@@ -54,18 +54,11 @@ var Custom = function(){
 	}
 
 	// Analytics tracking function
-	function setSendPageView(page){
-		ga('set', 'page', page);
-		ga('send', 'pageview');
-	}
 	function changeUrl(urlPart){
 		window.location.hash = '/' + urlPart;
-		setSendPageView(window.location + '/#/' + urlPart);
+		ga('set', 'page', window.location + '/#/' + urlPart);
+		ga('send', 'pageview');
 	};
-		// if(urlPart, baseUrl){
-		// 	window.location.hash = '/' + urlPart;
-		// 	setSendPageView(window.location + '/' + urlPart);
-		// };
 
 	// Detect if page is desktop or mobile
 	function detectWidth(){
@@ -85,12 +78,6 @@ var Custom = function(){
 	function reassignIndexes(){
 		console.log('reindexing!');
 		var elements = document.querySelectorAll('.character-box');
-		/*Array.prototype.forEach.call(elements, function(el, i){
-			//var $this = $(this);
-			var theIndex = nodeList.el.index();
-			console.log(theIndex);
-			//el.children('.grid-index span').text(theIndex + 1);
-		});*/
 		$('.character-box').each(function(){
 			var $this = $(this);
 			var theIndex = parseInt($this.index());
@@ -224,12 +211,9 @@ var Custom = function(){
 
 	// Need to trigger this on button click now
 	// Needs to be done via callback so I can control exactly WHEN the data switches over. It'll be transitioning now, see - it can be changed mid-transition
-	function activateCharacterGrid(self, updateTheUrl){
+	function activateCharacterGrid(self){
 		$this = self;
 		if(!$this.hasClass('active')){
-
-
-
 		
 			$('.moveBtn').removeClass('active');
 			$this.addClass('active');
@@ -247,8 +231,6 @@ var Custom = function(){
 			var id = $this.attr('id');
 			$('#side-menu .nav-moves a').removeClass('active');
 			$('#side-menu a[data-ref=' + id + ']').addClass('active');
-
-			//renderUrl(id)
 
 			/* --- */
 
@@ -433,13 +415,6 @@ var Custom = function(){
 				$('.special-info').removeClass('active');
 			}
 
-			// Update the URL
-			// var locationHost = window.location.host;
-			// var baseUrl = window.location.protocol + "//" + locationHost;
-			// var dataUrl = id;
-			// window.location.hash = '/' + dataUrl + '/';
-
-
 			// Window to go to top on click, pretty much just for the sake of mobile and table viewports
 			window.scrollTo(0, 0);
 		};
@@ -465,29 +440,17 @@ var Custom = function(){
 			outClass = "",
 			inClass = "";
 
+		// console.log('is this firing twice?');
+
 		// Need to delay open/close function in case it's already animating. Some spastic might hit ESC twice quickly
 		// Add class of 'animating' to body and remove when the animation is finished
 		$('body').addClass('animating').removeClass('fixed-navbar');
 
 		if(!$('body').hasClass('character-grid-active')){
-			activateCharacterGrid(self, true);
+			activateCharacterGrid(self);
 			retrieveCharUrl(self);
 
-			// if(updateTheUrl == true){
-			// 	console.log('update url is true!');
-			// 	console.log('moveId is: ' + moveId)
-			// 	changeUrl(self.attr('id'));
-			// };
-
-			// LOOPBACK ISSUE STARTS HERE
-			// This causes render to fire twice for some reason on moveBtn click...
-			changeUrl(self.attr('id'));
-
 			// variables for transition it forwards
-			/* FANCIER TRANSITIONS
-			outClass = 'pt-page-scaleDown',
-			inClass = 'pt-page-moveFromRight pt-page-ontop';
-			*/
 			outClass = 'pt-page-moveToLeft';
 			inClass = 'pt-page-moveFromRight pt-page-ontop';
 
@@ -495,6 +458,7 @@ var Custom = function(){
 			if(transitionToAnotherGrid == true){
 				// variables for transition it to the same screen
 				// The only way this is gonna happen is if the grid is on screen and a sidemenu button is clicked, which in turn is like a card button click
+				console.log('TRANS TO ANOTHER GRID JUT HAPPENED?!!');
 				$nonCurrPage = $currPage;
 			} else {
 
@@ -517,14 +481,14 @@ var Custom = function(){
 				console.log('we have a match!');
 
 				// Initiate transition between MOVES OF SAME CHARACTER
-/*				$('#secondarynav-dropdown-menu').removeClass('show');
+				$('#secondarynav-dropdown-menu').removeClass('show');
 				_fadeOut(document.getElementById('characterGrid'), function(){
 					activateCharacterGrid(self);
 					console.log('transitioning between same character!');
 					_fadeIn(document.getElementById('characterGrid'));
 					$('body').removeClass('animating');
 				});
-*/
+
 			} else {
 
 				// Initiate transition BETWEEN DIFFERENT CHARACTERS
@@ -562,19 +526,17 @@ var Custom = function(){
 					$('#page-wrapper').removeClass();
 				}
 			});
+			console.log('nonCurrPages classes are: ' + $nonCurrPage.attr('class'));
 			$nonCurrPage.removeClass().addClass('pt-page pt-page-current').addClass(inClass).on(animEndEventName, function() {
+
+				console.log('nonCurrPages classes are: ' + $nonCurrPage.attr('class'));
 				
 				var $this = $(this);
 				$this.attr('class', 'pt-page pt-page-current');
 				$nonCurrPage.off( animEndEventName );
 				$('body').addClass('fixed-navbar');
 				if($('body').hasClass('viewport-desktop')){
-					// what was this for??
-					// fading in the top-right nav!
-					//$('#primarynav .navbar-nav').fadeIn('fast');
-					// var primNav = document.getElementById('primarynav');
 					 _fadeIn(document.getElementById('top-right-nav'));
-					//_fadeOut(document.getElementById('notification'));
 				}
 			});
 		}
@@ -592,10 +554,10 @@ var Custom = function(){
 			$('body').removeClass('filtersActive');
 			$('#filter-toggle').removeClass('active');
 
-			var locationHost = window.location.host;
-			var baseUrl = window.location.protocol + "//" + locationHost;
-			var constructedUrl = baseUrl + '/#/';
-			window.location.replace(constructedUrl);
+			// var locationHost = window.location.host;
+			// var baseUrl = window.location.protocol + "//" + locationHost;
+			// var constructedUrl = baseUrl + '/#/';
+			// window.location.replace(constructedUrl);
 		};
 	}
 
@@ -652,49 +614,6 @@ var Custom = function(){
 	}
 	fixedRagebar($charContainer);
 
-	// Using traditional 'click()' bindings will not work on dynamically generated character boxes!
-	// https://stackoverflow.com/questions/6658752/click-event-doesnt-work-on-dynamically-generated-elements
-
-	// http://api.jquery.com/trigger/
-
-	// $('#characterGrid').on('activateCharBox', function(event){
-	// 	activateCharacter($(this));
-	// });
-
-	// THIS IS THE CHARACTER DATA CONTROLLER, RIGHT HERE!
-	$('body').on('click', '.moveBtn', function(){
-
-		// Check if the grid is already out
-		// If the grid is out and the moveBtn is clicked, that means we're just transitioning between character grids and need a different kind of transition
-		// This is for the side menu, which has buttons that trigger a click for its counterpart .moveBtn in card grid
-
-		// check to see if it already has a class of 'active' first. Don't want people clicking the same button twice
-		if(!$(this).hasClass('active')){
-			// Update the URL
-			//var moveUrl = $('.moveBtn.active').attr('id');
-			var moveUrl = $(this).attr('id');
-			var hashUrl = '/' + moveUrl;
-			render(hashUrl);
-			/*if($('body').hasClass('character-grid-active')){
-				// Rather than this, check if there are already two parts of the URL that exist...
-				//pageTransition($(this), characterGridActive = true);
-			} else {
-				pageTransition($(this));
-			}*/
-		};
-	});
-
-	$('#characterGrid').on('click', '.character-box:not(.disabled)', function(){
-		//activateCharacter($(this));
-		// Update the URL
-		console.log('clicked!');
-		var moveUrl = $('.moveBtn.active').attr('id');
-		var charUrl = $(this).data('url');
-		var hashUrl = '/' + moveUrl + '/' + charUrl;
-		console.log('hash url is: ' + hashUrl);
-		render(hashUrl);
-	});
-
 
 	function render(url){
 
@@ -713,67 +632,58 @@ var Custom = function(){
 	//};
 		// and activate it
 		if(parts[1]){
-			console.log('trying to transition character from URL');
 
-			// Check if a grid is already active
-			if($('body').hasClass('character-grid-active')){
-				console.log('char grid active');
-
-
-				if(parts[2]){
-					console.log('more than one url part');
-					if(parts[2] == 'info'){
-						activateInfoBox();
-					} else {
-						console.log('activating character');
-						activateCharacter($('#characterGrid .character-box.' + parts[2]));
-					}
-				} else {
-					console.log('charGrid is active');
-					if($('#' + parts[1].length)){
-						pageTransition($('#' + parts[1]), characterGridActive = true);
-					} else {
-						urlError();
-					}
-				}
-
-			// Wait... this is all firing twice...
-			// That's why on card click it fades in then out
-
+			if(parts[1] == 'about'){
+				activateMenuBox('page-about', 'about');
+			} else if (parts[1] == 'credits'){
+				activateMenuBox('page-credts', 'credits');
 			} else {
+				console.log('trying to transition character from URL');
 
-				console.log('char grid not active');
-				if(parts[1] == 'about'){
-					activateMenuBox('page-about');
-	// function changeUrl(urlPart){
-	// 	window.location.hash = '/' + urlPart;
-	// 	setSendPageView(window.location + '/#/' + urlPart);
-	// };			
-					changeUrl('about');
-				} else if (parts[1] == 'credits'){
-					activateMenuBox('page-credits');
-					changeUrl('credits');
-				} else {
-					if(parts[2]){
-						console.log('more than one url part');
-						if(parts[2] == 'info'){
-							activateInfoBox();
+				// Make sure that selector exists
+				if($('#' + parts[1])){
+
+					console.log('transitioning grid only');
+
+
+					if(!parts[2]){
+						// If parts[2] does not exist... Then we're transitioning the Character Grid
+						// The pageTransition function will take care of the rest
+						if($('body').hasClass('character-grid-active')){
+							// Transitioning to another character grid
+							console.log('transitioning to another grid');
+							pageTransition($('#' + parts[1], transitionToAnotherGrid));
 						} else {
-							activateCharacter($('#characterGrid .character-box.' + parts[2]));
+							// Transitioning forward!
+							pageTransition($('#' + parts[1]));
 						}
 					} else {
-						console.log('parts 1 is: ' + parts[1])
-						if($('#' + parts[1])){
-							// This executes the standard transition
-							pageTransition($('#' + parts[1]));
+						// Parts[2] does exist, so execute those part[2] functions
+						if(parts[2] == 'info'){
+							activateInfoBox();
+						} else if ($('.character-box.' + parts[2])){
+
+							// Need to see if there's already a character active
+							if($('body').hasClass('character-active')){
+								console.log('trying to transition forwards!');
+							} else {
+								activateCharacter($('.character-box.' + parts[2]));
+							}
+
 						} else {
+							// If parts[2] selector does not exist, throw error
 							urlError();
 						};
-					};
+					}
 
-					// Need error handling somewhere around here
-					// Error handling at page transitions!
-				};
+				} else {
+					// If parts[1] selector does not exist, throw error
+					urlError();
+				}
+
+
+				// Wait... this is all firing twice...
+				// That's why on card click it fades in then out
 
 				// Working
 				//activateCharacter($('#characterGrid .character-box.bayonetta'));
@@ -965,10 +875,6 @@ var Custom = function(){
 		$body.removeClass('no-scroll');
 		$('#character-underlay').css('backgroundColor', 'transparent');
 
-		// Page does not force reload if '#' is in the URL
-		// https://stackoverflow.com/questions/2405117/difference-between-window-location-href-window-location-href-and-window-location
-
-
 		// determine if body has clas 'character-active', to see if we're deactivating a character or a menu page
 		if($body.hasClass('character-active')){
 			var $charModal = $('#characterModal');
@@ -991,20 +897,12 @@ var Custom = function(){
 		// Update the URL
 		// var locationHost = window.location.host;
 		// var baseUrl = window.location.protocol + "//" + locationHost;
-		var moveUrl = $('.moveBtn.active').attr('id');
-		changeUrl('/' + moveUrl);
 	// function changeUrl(urlPart){
 	// 	window.location.hash = '/' + urlPart;
 	// 	setSendPageView(window.location + '/#/' + urlPart);
 	// };
 		// var constructedUrl = baseUrl + '/#/' + dataUrl + '/';
 	};
-
-	function transitionCharacter(){
-		var $charModal = $('#characterModal');
-		$charModal.attr('class', 'active');
-		$('#characterGrid .character-box.selected').removeClass('selected');
-	}
 
 
 
@@ -1098,11 +996,13 @@ var Custom = function(){
 			deactivateCharacter();
 		}
 
+		console.log('target is:' + target + ' and urlPart is: ' + urlPart);
+
 		// Rewrite the URL and append the section to the end
-		if(urlPart){
-			window.location.hash = '/' + urlPart;
-			setSendPageView(urlPart);
-		};
+		// if(urlPart){
+		// 	window.location.hash = '/' + urlPart;
+		// 	setSendPageView(urlPart);
+		// };
 		$('body').addClass('no-scroll').removeClass('text-dark');
 		$('#sidedrawer-underlay').css('backgroundColor', 'rgb(136,136,136)');
 		$('#menuBackButton').addClass('active');
@@ -1134,15 +1034,17 @@ var Custom = function(){
 		// https://stackoverflow.com/questions/6823842/select-the-next-element-with-a-specific-attribute-jquery
 		if($activeContainer.siblings('.character-box').is(':visible')){
 			if($activeContainer.nextAll('.character-box').is(':visible')){
-				transitionCharacter();
-				//activateCharacter($activeContainer.siblings('.character-box:visible'));
-				//activateCharacter($activeContainer.nextAll('.character-box:visible'));
+				$('#characterModal').attr('class', 'active');
+				$('#characterGrid .character-box.selected').removeClass('selected');
 				var $nextVisibleChar = $activeContainer.nextAll('.character-box:not(.disabled):visible').first();
-				activateCharacter($nextVisibleChar);
+				console.log('the url is ' + $nextVisibleChar.data('url'));
+				changeUrl($nextVisibleChar.data('url'));
+				//activateCharacter($nextVisibleChar);
 			} else {
 				// Loop backward to first VISIBLE character if press right key on last character
-				transitionCharacter();
-				activateCharacter($activeContainer.siblings('.character-box:not(.disabled):visible').first());
+				$('#characterModal').attr('class', 'active');
+				$('#characterGrid .character-box.selected').removeClass('selected');
+				//activateCharacter($activeContainer.siblings('.character-box:not(.disabled):visible').first());
 			}
 		}
 	}
@@ -1152,7 +1054,8 @@ var Custom = function(){
 			//console.log('siblings are visible');
 			if($activeContainer.prevAll('.character-box').is(':visible')){
 				//console.log('previous visible box exists')
-				transitionCharacter();
+				$('#characterModal').attr('class', 'active');
+				$('#characterGrid .character-box.selected').removeClass('selected');
 				// PrevAll is working, but is not determining is the element is fucking VISIBLE or not!
 				// :visible:last will return Bayo
 				// :visible:first will work until elements are separated
@@ -1160,7 +1063,8 @@ var Custom = function(){
 				activateCharacter($prevVisibleChar);
 			} else {
 				// Loop backward to first VISIBLE character if press right key on last character
-				transitionCharacter();
+				$('#characterModal').attr('class', 'active');
+				$('#characterGrid .character-box.selected').removeClass('selected');
 				activateCharacter($activeContainer.siblings('.character-box:not(.disabled):visible').last());
 			}
 		}
@@ -1299,6 +1203,27 @@ var Custom = function(){
 
 	/* --- */
 
+	$('body').on('click', '.moveBtn', function(){
+
+		// Check if the grid is already out
+		// If the grid is out and the moveBtn is clicked, that means we're just transitioning between character grids and need a different kind of transition
+		// This is for the side menu, which has buttons that trigger a click for its counterpart .moveBtn in card grid
+
+		// check to see if it already has a class of 'active' first. Don't want people clicking the same button twice
+		if(!$(this).hasClass('active')){
+			// Update the URL
+			var moveUrl = $(this).attr('id');
+			changeUrl(moveUrl);
+		};
+	});
+
+	$('#characterGrid').on('click', '.character-box:not(.disabled)', function(){
+		// Update the URL
+		var moveUrl = $('.moveBtn.active').attr('id');
+		var charUrl = $(this).data('url');
+		changeUrl(moveUrl + '/' + charUrl);
+	});
+
 	$('#filter-toggle').click(function(e){
 		e.stopPropagation();
 		var $this = $(this);
@@ -1309,6 +1234,7 @@ var Custom = function(){
 
 	$('#character-wrapper-back').click(function(){
 		deactivateCharacterGrid();
+		changeUrl($('.moveBtn.active').attr('id'));
 	});
 
 	$('#icon-next').click(function(){
@@ -1318,23 +1244,26 @@ var Custom = function(){
 		transitionCharacterBackward($('.character-box.selected'));
 	});
 	$('.backButton').click(function(){
-		deactivateCharacter();
+		// deactivateCharacter();
+		var moveUrl = $('.moveBtn.active').attr('id');
+		changeUrl('/' + moveUrl);
 	});
 
 	$('#about').click(function(e){
 		e.preventDefault();
-		activateMenuBox('page-about', 'about');
+		//activateMenuBox('page-about', 'about');
+		changeUrl('about');
 	});
 	$('#credits').click(function(e){
 		e.preventDefault();
-		activateMenuBox('page-credits', 'credits');
+		//activateMenuBox('page-credits', 'credits');
+		changeUrl('credits');
 	});
 	function activateInfoBox(){
 		$('#page-info .detailed-info').hide();
 		$('body').addClass('show-info-box');
 		activateMenuBox('page-info');
-		var $moveBtnActive = $('.moveBtn.active');
-		var currentMove = $moveBtnActive.attr('id');
+
 		var giphyVid = $moveBtnActive.data('giphy');
 		var giphySource = $moveBtnActive.data('giphy-source');
 
@@ -1344,7 +1273,7 @@ var Custom = function(){
 		$('#page-info .giphy a').attr('href', giphySource);
 		$('#page-info .' + currentMove).show();
 
-		changeUrl()
+		render($currentMove + '/info');
 		//var theUrl = window.location.href + 'info/';
 		//window.location = theUrl;
 		// window.location.hash = '/' + currentMove + '/info/';
@@ -1352,8 +1281,9 @@ var Custom = function(){
 	};
 
 	$('#info').click(function(){
-		$('body').addClass('show-info-box')
-		activateInfoBox();
+		var $moveBtnActive = $('.moveBtn.active');
+		var currentMove = $moveBtnActive.attr('id');
+		render($moveBtnActive + '/info');
 	});
 
 	$('#characterGrid').on('click', '.character-box.disabled', function(){
