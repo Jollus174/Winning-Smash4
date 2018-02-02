@@ -53,12 +53,7 @@ var Custom = function(){
 		tick();
 	}
 
-	// Analytics tracking function
-	function changeUrl(urlPart){
-		window.location.hash = '/' + urlPart;
-		ga('set', 'page', window.location + '/#/' + urlPart);
-		ga('send', 'pageview');
-	};
+
 
 	// Detect if page is desktop or mobile
 	function detectWidth(){
@@ -201,13 +196,139 @@ var Custom = function(){
 	// Detect if Sort Name filter is active
 	function executeActiveFilter(self){
 		var filterId = $('.filter-btn.active').attr('id');
-		//var $this = this;
 		// Only need to execute this if a filter other than sortName is active
 		// Actually, the only dynamic filter is sortDifficulty...
 		if(filterId == 'sort-difficulty'){
 			sortDifficulty($('#sort-difficulty'));
 		};
 	};
+
+
+	// Analytics tracking function
+	function changeUrl(urlPart){
+		var part = urlPart ? urlPart : "";
+		window.location.hash = '/' + part;
+		ga('set', 'page', window.location + '/#/' + part);
+		ga('send', 'pageview');
+	};
+
+	function render(url){
+
+		// Get the keywords from the url
+		var temp = url.split('/')[0];
+		var parts = url.split('/')
+
+		console.log('the url is: ' + url);
+
+		// console.log('win location is: ' + window.location);
+
+	// If 'homescreen' does NOT exist in URL...
+	//if(baseUrl != currentUrl && baseUrl + '#' != currentUrl && baseUrl + '#/' != currentUrl && !(currentUrl.indexOf('homescreen') > -1)){
+
+		// Current URL is not the base URL
+		console.log('urls do not match! With new function');
+		console.log('parts[1] is:' + parts[1] + ' and parts[2] is: ' + parts[2]);
+	//};
+		// and activate it
+		if(parts[1]){
+
+			if(parts[1] == 'about'){
+				activateMenuBox('page-about', 'about');
+			} else if (parts[1] == 'credits'){
+				activateMenuBox('page-credts', 'credits');
+			} else {
+				console.log('trying to transition character from URL');
+
+
+
+				// Make sure that selector exists
+				var $parts1Selector = parts[1].length ? $('#' + parts[1]) : "";
+				if($parts1Selector.length){
+					console.log('part1 selector exists! ');
+				} else {
+					console.log('part1 selector DOES NOT exits');
+				}
+				if($parts1Selector && parts[1] != 'undefined' || $parts1Selector == ""){
+
+					console.log('transitioning grid only');
+					if(!parts[2]){
+						// If parts[2] does not exist... Then we're transitioning the Character Grid
+						// The pageTransition function will take care of the rest
+						if($('body').hasClass('character-grid-active')){
+							// Transitioning to another character grid
+							console.log('transitioning to another grid');
+							pageTransition($('#' + parts[1]), transitionToAnotherGrid = true);
+						} else {
+							// Transitioning forward!
+							pageTransition($('#' + parts[1]));
+						}
+					} else if(parts[2] != 'undefined') {
+						// Parts[2] does exist, so execute those part[2] functions
+						var $parts2Selector = parts[2].length ? $('.character-box.' + parts[2]) : "";
+						if(parts[2] == 'info'){
+							activateInfoBox();
+						} else if ($parts2Selector && parts[2] != 'undefined'){
+
+							// Need to see if there's already a character active
+							if($('body').hasClass('character-active')){
+								console.log('trying to transition forwards!');
+							} else {
+								activateCharacter($('.character-box.' + parts[2]));
+							}
+
+						} else {
+							// If parts[2] selector does not exist, throw error
+							urlError();
+						};
+					} else {
+						urlError();
+					}
+
+				} else {
+					// If parts[1] selector does not exist, throw error
+					urlError();
+				}
+
+				// Wait... this is all firing twice...
+				// That's why on card click it fades in then out
+
+				// Working
+				//activateCharacter($('#characterGrid .character-box.bayonetta'));
+				//function pageTransition(self, transitionToAnotherGrid){
+				//pageTransition(characterBox);
+			};
+		} else {
+			// Need to transition this backward
+			// Can tell when this is needed as body will have .character-grid-active
+
+			console.log('do the thingy');
+			if($('body').hasClass('character-grid-active')){
+				console.log('deactivate the grid!');
+				deactivateCharacterGrid();
+				
+			}
+
+		}
+		
+
+		//setSendPageView(url);
+	};
+	function urlError(){
+		// It needs to fallback though in case the character is undefined.
+		console.log('This character does not exist, yo');
+		$('#notification').html('Looks like this move or character does not exist.<br>Please check the URL.').show();
+		setTimeout(function(){
+			_fadeOut(document.getElementById('notification'));
+		}, 3000)
+	}
+
+	render(decodeURI(window.location.hash));
+
+	$(window).on('hashchange', function(){
+        // On every hash change the render function is called with the new hash.
+        // This will navigate the app and allow native back/forward functionality
+        render(decodeURI(window.location.hash));
+	});
 
 	// Need to trigger this on button click now
 	// Needs to be done via callback so I can control exactly WHEN the data switches over. It'll be transitioning now, see - it can be changed mid-transition
@@ -526,10 +647,7 @@ var Custom = function(){
 					$('#page-wrapper').removeClass();
 				}
 			});
-			console.log('nonCurrPages classes are: ' + $nonCurrPage.attr('class'));
 			$nonCurrPage.removeClass().addClass('pt-page pt-page-current').addClass(inClass).on(animEndEventName, function() {
-
-				console.log('nonCurrPages classes are: ' + $nonCurrPage.attr('class'));
 				
 				var $this = $(this);
 				$this.attr('class', 'pt-page pt-page-current');
@@ -545,7 +663,7 @@ var Custom = function(){
 
 	function deactivateCharacterGrid(){
 		if(!$('body').hasClass('animating')){
-			pageTransition();
+			// pageTransition();
 			$('#nav-title').text('Select a Kill Confirm');
 			$('.moveBtn.active').removeClass('active');
 			$('.nav-moves a.active').removeClass('active');
@@ -553,6 +671,8 @@ var Custom = function(){
 
 			$('body').removeClass('filtersActive');
 			$('#filter-toggle').removeClass('active');
+
+			changeUrl();
 
 			// var locationHost = window.location.host;
 			// var baseUrl = window.location.protocol + "//" + locationHost;
@@ -613,104 +733,6 @@ var Custom = function(){
 		}
 	}
 	fixedRagebar($charContainer);
-
-
-	function render(url){
-
-		// Get the keywords from the url
-		var temp = url.split('/')[0];
-		var parts = url.split('/')
-
-		// console.log('win location is: ' + window.location);
-
-	// If 'homescreen' does NOT exist in URL...
-	//if(baseUrl != currentUrl && baseUrl + '#' != currentUrl && baseUrl + '#/' != currentUrl && !(currentUrl.indexOf('homescreen') > -1)){
-
-		// Current URL is not the base URL
-		console.log('urls do not match! With new function');
-		console.log('parts[1] is:' + parts[1] + ' and parts[2] is: ' + parts[2]);
-	//};
-		// and activate it
-		if(parts[1]){
-
-			if(parts[1] == 'about'){
-				activateMenuBox('page-about', 'about');
-			} else if (parts[1] == 'credits'){
-				activateMenuBox('page-credts', 'credits');
-			} else {
-				console.log('trying to transition character from URL');
-
-				// Make sure that selector exists
-				if($('#' + parts[1])){
-
-					console.log('transitioning grid only');
-
-
-					if(!parts[2]){
-						// If parts[2] does not exist... Then we're transitioning the Character Grid
-						// The pageTransition function will take care of the rest
-						if($('body').hasClass('character-grid-active')){
-							// Transitioning to another character grid
-							console.log('transitioning to another grid');
-							pageTransition($('#' + parts[1], transitionToAnotherGrid));
-						} else {
-							// Transitioning forward!
-							pageTransition($('#' + parts[1]));
-						}
-					} else {
-						// Parts[2] does exist, so execute those part[2] functions
-						if(parts[2] == 'info'){
-							activateInfoBox();
-						} else if ($('.character-box.' + parts[2])){
-
-							// Need to see if there's already a character active
-							if($('body').hasClass('character-active')){
-								console.log('trying to transition forwards!');
-							} else {
-								activateCharacter($('.character-box.' + parts[2]));
-							}
-
-						} else {
-							// If parts[2] selector does not exist, throw error
-							urlError();
-						};
-					}
-
-				} else {
-					// If parts[1] selector does not exist, throw error
-					urlError();
-				}
-
-
-				// Wait... this is all firing twice...
-				// That's why on card click it fades in then out
-
-				// Working
-				//activateCharacter($('#characterGrid .character-box.bayonetta'));
-				//function pageTransition(self, transitionToAnotherGrid){
-				//pageTransition(characterBox);
-			};
-		}
-		
-
-		//setSendPageView(url);
-	};
-	function urlError(){
-		// It needs to fallback though in case the character is undefined.
-		console.log('This character does not exist, yo');
-		$('#notification').html('Looks like this move or character does not exist.<br>Please check the URL.').show();
-		setTimeout(function(){
-			_fadeOut(document.getElementById('notification'));
-		}, 3000)
-	}
-
-	render(decodeURI(window.location.hash));
-
-	$(window).on('hashchange', function(){
-        // On every hash change the render function is called with the new hash.
-        // This will navigate the app and allow native back/forward functionality
-        render(decodeURI(window.location.hash));
-	});
 
 	function activateCharacter(self, urlPart){
 
@@ -1137,6 +1159,7 @@ var Custom = function(){
 				deactivateCharacter();
 			} else if ($('body').hasClass('character-grid-active')){
 				deactivateCharacterGrid();
+
 			} else {
 				// else toggle the sidemenu instead
 				toggleSidebar();
