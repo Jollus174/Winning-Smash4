@@ -1049,15 +1049,26 @@ var Custom = function(){
 			if($activeContainer.nextAll('.character-box').is(':visible')){
 				var $nextVisibleChar = $activeContainer.nextAll('.character-box:not(.disabled):visible').first();
 				$nextVisibleChar.addClass('selected');
-				changeUrl($('.moveBtn.active').attr('id') + '/' + $nextVisibleChar.data('url'));
-				//activateCharacter($nextVisibleChar);
+				//changeUrl($('.moveBtn.active').attr('id') + '/' + $nextVisibleChar.data('url'));
+				activateCharacter($nextVisibleChar);
 			} else {
 				// Loop backward to first VISIBLE character if press right key on last character
 				var $firstCharacter = $activeContainer.siblings('.character-box:not(.disabled):visible').first();
 				$firstCharacter.addClass('selected');
-				changeUrl($('.moveBtn.active').attr('id') + '/' + $firstCharacter.data('url'));
-				//activateCharacter($firstCharacter);
+				//changeUrl($('.moveBtn.active').attr('id') + '/' + $firstCharacter.data('url'));
+				activateCharacter($firstCharacter);
 			}
+			// Because we want the back button to close the character modal rather than go to prev/next one...
+			// We need to go back to the old method of URL changing for this.
+			var locationHost = window.location.host;
+			var baseUrl = window.location.protocol + "//" + locationHost;
+			var dataUrl = $activeContainer.attr('data-url');
+			var constructedUrl = baseUrl + '/#/' + dataUrl;
+
+			//window.location.replace(constructedUrl);
+			// for analytics tracking
+			ga('set', 'page', window.location.href);
+			ga('send', 'pageview');
 		}
 	}
 	function transitionCharacterBackward(activeContainer){
