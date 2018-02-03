@@ -230,7 +230,7 @@ var Custom = function(){
 			if(parts[1] == 'about'){
 				activateMenuBox('page-about', 'about');
 			} else if (parts[1] == 'credits'){
-				activateMenuBox('page-credts', 'credits');
+				activateMenuBox('page-credits', 'credits');
 			} else {
 				// Make sure that selector exists
 				var $parts1Selector = parts[1].length ? $('#' + parts[1]) : "";
@@ -241,9 +241,15 @@ var Custom = function(){
 						// If parts[2] does not exist... Then we're transitioning the Character Grid
 						// The pageTransition function will take care of the rest
 						if($('body').hasClass('character-grid-active')){
-							// Transitioning to another character grid
-							console.log('transitioning to another grid');
-							pageTransition($('#' + parts[1]), transitionToAnotherGrid = true);
+							// If the current grid DOESN'T MATCH the grid of the active moveBtn
+							if(parts[1] != $('.moveBtn.active').attr('id')){
+								// Transitioning to another character grid
+								console.log('transitioning to another grid');
+								pageTransition($('#' + parts[1]), transitionToAnotherGrid = true);
+							} else {
+								// If it does match, then do no transition, but deactivatate the modal and any info boxes
+								deactivateCharacter();
+							}
 						} else {
 							// Transitioning forward!
 							pageTransition($('#' + parts[1]));
@@ -271,13 +277,13 @@ var Custom = function(){
 								// This is double-handling the 'selected' class, but this needs to be done so
 								// back nav can work in brower with character transitions...
 								//$('.character-box.' + parts[2]).addClass('selected');
+
 								$('#characterModal').attr('class', 'active');
 								$('#characterGrid .character-box').removeClass('selected');
 								console.log('trying to transition forwards!');
 								console.log('parts[2] is: ' + parts[2]);
 								activateCharacter($('.character-box.' + parts[2]));
 							} else {
-								console.log('3parts[2] is: ' + parts[2]);
 								activateCharacter($('.character-box.' + parts[2]));
 							}
 
@@ -303,7 +309,6 @@ var Custom = function(){
 			// Need to transition this backward
 			// Can tell when this is needed as body will have .character-grid-active
 
-			console.log('do the thingy');
 			if($('body').hasClass('character-grid-active')){
 				console.log('deactivate the grid!');
 				pageTransition();
@@ -698,7 +703,7 @@ var Custom = function(){
 
 
 
-	function activateCharacter(self, urlPart){
+	function activateCharacter(self){
 
 		// Add class of 'selected' to the clicked character box. This is used for transitioning between characters while the modal box is open
 		self.addClass('selected');
@@ -755,8 +760,6 @@ var Custom = function(){
 			tcSidePlatMin = parseInt($moveBtnActive.data('tcsideplatmin')),
 			tcTopPlatMin = parseInt($moveBtnActive.data('tctopplatmin'));
 
-		console.log('bfNorMin percent is: ' + bfNormalMin);
-
 		// Time to activate the Character Modal
 		$charModal.addClass('active');
 
@@ -803,7 +806,7 @@ var Custom = function(){
 		var $fd = $charModal.find('.stage-fd');
 		$fd.find('span[data-ref="fdNormalMin"]').text(minPercent).attr('data-defaultmin', minPercent);
 		$fd.find('span[data-ref="fdNormalMax"]').text(maxPercent).attr('data-defaultmax', maxPercent);
-		console.log('min percent is: ' + minPercent + ' and max percent is: ' + maxPercent);
+		// console.log('min percent is: ' + minPercent + ' and max percent is: ' + maxPercent);
 
 		var $bf = $charModal.find('.stage-bf');
 		$bf.find('span[data-ref="bfNormalMin"]').text(minPercent + bfNormalMin).attr('data-defaultmin', minPercent + bfNormalMin);
@@ -837,14 +840,7 @@ var Custom = function(){
 		$tc.find('span[data-ref="tcTopPlatMin"]').text(minPercent + tcTopPlatMin).attr('data-defaultmin', minPercent + tcTopPlatMin);
 		$tc.find('span[data-ref="tcTopPlatMax"]').text(maxPercent).attr('data-defaultmax', maxPercent);
 
-		// Now to render % differences... Better to take care of them all in one loop
-		// I want to see if rage button is not at default first though, to avoid double-handling the percent range calculations
-		// This causes the code to loop through twice - once for rendering the numbers and another for animating them. Is inefficent, really
-		// This could probably be optimised later
-
-		// setTimeout(function(){
 		rageAdjustment($charModal.find('.rageBtn.active'));
-		// }, 500);
 
 		var $activeMoveBtn = $('.moveBtn.active');
 		$('#modalTitle span').html($activeMoveBtn.closest('.card-deck').data('name') + ' - ' + $activeMoveBtn.html());
@@ -855,7 +851,7 @@ var Custom = function(){
 			fixedRagebar($('#characterModal .characterContainer'));
 		});
 
-	}
+	};
 
 	function deactivateCharacter(){
 		var $body = $('body');
@@ -878,8 +874,8 @@ var Custom = function(){
 			$('#sidedrawer-underlay').css('backgroundColor', 'transparent');
 			$('#menuBackButton').removeClass('active');
 			$('#page-info .giphy iframe').attr('src', '');
-
 		};
+		changeUrl($('.moveBtn.active').attr('id'));
 		//window.location.hash = '/' + dataUrl + '/';
 		// Update the URL
 		// var locationHost = window.location.host;
@@ -1036,14 +1032,6 @@ var Custom = function(){
 		if($('body').hasClass('active-character')){
 			deactivateCharacter();
 		}
-
-		console.log('target is:' + target + ' and urlPart is: ' + urlPart);
-
-		// Rewrite the URL and append the section to the end
-		// if(urlPart){
-		// 	window.location.hash = '/' + urlPart;
-		// 	setSendPageView(urlPart);
-		// };
 		$('body').addClass('no-scroll').removeClass('text-dark');
 		$('#sidedrawer-underlay').css('backgroundColor', 'rgb(136,136,136)');
 		$('#menuBackButton').addClass('active');
@@ -1099,7 +1087,7 @@ var Custom = function(){
 				changeUrl($('.moveBtn.active').attr('id') + '/' + $prevVisibleChar.data('url'));
 			} else {
 				// Loop backward to first VISIBLE character if press right key on last character
-				var $lastCharacter = $activeContainer.siblings('.character-box:not(.disabled):visible').first();
+				var $lastCharacter = $activeContainer.siblings('.character-box:not(.disabled):visible').last();
 				$lastCharacter.addClass('selected');
 				changeUrl($('.moveBtn.active').attr('id') + '/' + $lastCharacter.data('url'));
 			}
@@ -1139,8 +1127,10 @@ var Custom = function(){
 	// Character key events
 
 	// Include handlers for if SHIFT is held for rage button shifting
-	var shiftKey = 16; // SHIFT
+	var keyShift = 16; // SHIFT
 	var isShiftActive = false;
+	var keyAlt = 18;
+	var isAltActive = false;
 	var keyleft = 37;
 	var keyright = 39;
 	var key1 = 49;
@@ -1154,7 +1144,8 @@ var Custom = function(){
 
 	$(document).keyup(function(e){
 
-		if(e.which == shiftKey) isShiftActive = false;
+		if(e.which == keyShift) isShiftActive = false;
+		if(e.which == keyAlt) isAltActive = false;
 
 	}).keydown(function(e){
 		e = e || window.event;
@@ -1180,7 +1171,8 @@ var Custom = function(){
 			}
 			
 		}
-		if(e.which == shiftKey) isShiftActive = true;
+		if(e.which == keyShift) isShiftActive = true;
+		if(e.which == keyAlt) isAltActive = true;
 
 		// I want to be able to access info with 'I' if a characterGrid is out
 		// Need to detect if search field is focussed first though
@@ -1193,7 +1185,7 @@ var Custom = function(){
 		}
 
 		// Need to check if character is currently active.
-		if($('#characterModal.active').length){
+		if($('#characterModal.active').length && isAltActive == false){
 			var $this = $(this);
 			//console.log('modal is active!');
 			// Need to check if SHIFT is held.
@@ -1254,11 +1246,19 @@ var Custom = function(){
 		};
 	});
 
-	$('#characterGrid').on('click', '.character-box:not(.disabled)', function(){
-		// Update the URL
+	$('#characterGrid').on('click', '.character-box', function(){
+
 		var moveUrl = $('.moveBtn.active').attr('id');
 		var charUrl = $(this).data('url');
-		changeUrl(moveUrl + '/' + charUrl);
+		if(!$(this).hasClass('disabled')){
+			changeUrl(moveUrl + '/' + charUrl);
+		} else {
+			changeUrl(moveUrl + '/info');
+		}
+		// Update the URL
+		// var moveUrl = $('.moveBtn.active').attr('id');
+		// var charUrl = $(this).data('url');
+		// changeUrl(moveUrl + '/' charUrl);
 	});
 
 	$('#filter-toggle').click(function(e){
@@ -1281,19 +1281,15 @@ var Custom = function(){
 		transitionCharacterBackward($('.character-box.selected'));
 	});
 	$('.backButton').click(function(){
-		// deactivateCharacter();
-		var moveUrl = $('.moveBtn.active').attr('id');
-		changeUrl('/' + moveUrl);
+		changeUrl($('.moveBtn.active').attr('id'));
 	});
 
 	$('#about').click(function(e){
 		e.preventDefault();
-		//activateMenuBox('page-about', 'about');
 		changeUrl('about');
 	});
 	$('#credits').click(function(e){
 		e.preventDefault();
-		//activateMenuBox('page-credits', 'credits');
 		changeUrl('credits');
 	});
 	function activateInfoBox(){
@@ -1301,6 +1297,7 @@ var Custom = function(){
 		$('body').addClass('show-info-box');
 		activateMenuBox('page-info');
 
+		var $moveBtnActive = $('.moveBtn.active');
 		var giphyVid = $moveBtnActive.data('giphy');
 		var giphySource = $moveBtnActive.data('giphy-source');
 
@@ -1308,9 +1305,9 @@ var Custom = function(){
 		//console.log(giphyVid);
 		$('#page-info iframe').attr('src', giphyVid);
 		$('#page-info .giphy a').attr('href', giphySource);
-		$('#page-info .' + currentMove).show();
+		$('#page-info .' + $moveBtnActive.attr('id')).show();
 
-		render($currentMove + '/info');
+		//render($currentMove + '/info');
 		//var theUrl = window.location.href + 'info/';
 		//window.location = theUrl;
 		// window.location.hash = '/' + currentMove + '/info/';
@@ -1318,18 +1315,7 @@ var Custom = function(){
 	};
 
 	$('#info').click(function(){
-		var $moveBtnActive = $('.moveBtn.active');
-		var currentMove = $moveBtnActive.attr('id');
-		render($moveBtnActive + '/info');
-	});
-
-	$('#characterGrid').on('click', '.character-box.disabled', function(){
-		// $('body').addClass('show-info-box')
-		// activateInfoBox();
-		var moveUrl = $('.moveBtn.active').attr('id');
-		var hashUrl = '/' + moveUrl + 'info/';
-		console.log(hashUrl);
-		render(hashUrl);
+		changeUrl($('.moveBtn.active').attr('id') + '/info');
 	});
 
 	$('#filter-dropdown-btn').click(function(e){

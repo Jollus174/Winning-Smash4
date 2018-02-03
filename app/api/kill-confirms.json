@@ -571,7 +571,8 @@
                 "As a result, characters with higher falling speed have their vertical knockback reduced for longer, improving their vertical endurance while also hampering their ability to recover from horizontal blows.",
                 "So because of that, <strong>if a character with high fallspeed DI's behind Zelda, they can escape the down throw window a bit earlier than if they DI'ed away from her (which would send them straight up, because Down Throw sends at 100 degrees default).",
                 "Also worth mentioning is Bayonetta is extremely difficult to perform this combo on, due to her frame 1 airdodge that requires Zelda to make two frame perfect inputs:",
-                "Buffer Turn (F9 - F19) → <strong>Dash (F20 - F21) → Jump (F21 - F22)</strong> → Buffer Up Air (F21-27)"
+                "Buffer Turn (F9 - F19) → <strong>Dash (F20 - F21) → Jump (F21 - F22)</strong> → Buffer Up Air (F21-27)",
+                "For further reading, including failsafe methods such as the Triangle Jump that cover all DI options, see <a href='https://twitter.com/BanZelda/status/954410695625289728' target='_blank' rel='noopener'>Dia's tweet here</a>."
             ],
             
             "giphy": ["https://giphy.com/embed/3o751XGmDHkHBxbgwE", ""],
