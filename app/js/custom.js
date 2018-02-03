@@ -208,7 +208,7 @@ var Custom = function(){
 	function changeUrl(urlPart){
 		var part = urlPart ? urlPart : "";
 		window.location.hash = '/' + part;
-		ga('set', 'page', window.location + '/#/' + part);
+		ga('set', 'page', window.location.href);
 		ga('send', 'pageview');
 	};
 
@@ -217,8 +217,6 @@ var Custom = function(){
 		// Get the keywords from the url
 		var temp = url.split('/')[0];
 		var parts = url.split('/')
-
-		console.log('the url is: ' + url);
 
 		// If 'homescreen' does NOT exist in URL...
 		//if(baseUrl != currentUrl && baseUrl + '#' != currentUrl && baseUrl + '#/' != currentUrl && !(currentUrl.indexOf('homescreen') > -1)){
@@ -249,22 +247,19 @@ var Custom = function(){
 							} else {
 								// If it does match, then do no transition, but deactivatate the modal and any info boxes
 								deactivateCharacter();
-							}
+							};
 						} else {
 							// Transitioning forward!
 							pageTransition($('#' + parts[1]));
-						}
+						};
 					} else if(parts[2] != 'undefined') {
 						// Parts[2] does exist, so execute those part[2] functions
 						// Make sure the appropriate moveBtn has an active class
 						// This is done by transitioning the grid, stupid!
-						//$parts1Selector.addClass('active');
 						if(!$('body').hasClass('character-grid-active')){
 							console.log('transition the grid forward initially!');
 							pageTransition($('#' + parts[1]));
-						}
-						//$('body').addClass('character-grid-active');
-						console.log('2parts[2] is: ' + parts[2]);
+						};
 						var $parts2Selector = parts[2].length ? $('.character-box.' + parts[2]) : "";
 						// selector is being picked up correctly
 						// console.log('parts2 selector is:' + $parts2Selector);
@@ -281,7 +276,7 @@ var Custom = function(){
 								$('#characterModal').attr('class', 'active');
 								$('#characterGrid .character-box').removeClass('selected');
 								console.log('trying to transition forwards!');
-								console.log('parts[2] is: ' + parts[2]);
+								// console.log('parts[2] is: ' + parts[2]);
 								activateCharacter($('.character-box.' + parts[2]));
 							} else {
 								activateCharacter($('.character-box.' + parts[2]));
@@ -293,17 +288,12 @@ var Custom = function(){
 						};
 					} else {
 						urlError();
-					}
+					};
 
 				} else {
 					// If parts[1] selector does not exist, throw error
 					urlError();
-				}
-
-				// Working
-				//activateCharacter($('#characterGrid .character-box.bayonetta'));
-				//function pageTransition(self, transitionToAnotherGrid){
-				//pageTransition(characterBox);
+				};
 			};
 		} else {
 			// Need to transition this backward
@@ -314,12 +304,8 @@ var Custom = function(){
 				pageTransition();
 				deactivateCharacterGrid();
 				
-			}
-
-		}
-		
-
-		//setSendPageView(url);
+			};
+		};
 	};
 	function urlError(){
 		// It needs to fallback though in case the character is undefined.
@@ -390,7 +376,7 @@ var Custom = function(){
 			if(transitionToAnotherGrid == true){
 				// variables for transition it to the same screen
 				// The only way this is gonna happen is if the grid is on screen and a sidemenu button is clicked, which in turn is like a card button click
-				console.log('TRANS TO ANOTHER GRID JUST HAPPENED?!!');
+				console.log('transitioning to another grid while one is active');
 				$nonCurrPage = $currPage;
 			} else {
 
@@ -425,8 +411,6 @@ var Custom = function(){
 
 				// Initiate transition between MOVES OF SAME CHARACTER
 				$('#secondarynav-dropdown-menu').removeClass('show');
-
-				console.log('the loopback error is here?');
 
 				_fadeOut(document.getElementById('character-wrapper'), function(){
 					activateCharacterGrid(self);
