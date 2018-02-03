@@ -220,15 +220,10 @@ var Custom = function(){
 
 		console.log('the url is: ' + url);
 
-		// console.log('win location is: ' + window.location);
-
-	// If 'homescreen' does NOT exist in URL...
-	//if(baseUrl != currentUrl && baseUrl + '#' != currentUrl && baseUrl + '#/' != currentUrl && !(currentUrl.indexOf('homescreen') > -1)){
-
-		// Current URL is not the base URL
-		console.log('urls do not match! With new function');
+		// If 'homescreen' does NOT exist in URL...
+		//if(baseUrl != currentUrl && baseUrl + '#' != currentUrl && baseUrl + '#/' != currentUrl && !(currentUrl.indexOf('homescreen') > -1)){
 		console.log('parts[1] is:' + parts[1] + ' and parts[2] is: ' + parts[2]);
-	//};
+
 		// and activate it
 		if(parts[1]){
 
@@ -237,17 +232,8 @@ var Custom = function(){
 			} else if (parts[1] == 'credits'){
 				activateMenuBox('page-credts', 'credits');
 			} else {
-				console.log('trying to transition character from URL');
-
-
-
 				// Make sure that selector exists
 				var $parts1Selector = parts[1].length ? $('#' + parts[1]) : "";
-				if($parts1Selector.length){
-					console.log('part1 selector exists! ');
-				} else {
-					console.log('part1 selector DOES NOT exits');
-				}
 				if($parts1Selector && parts[1] != 'undefined' || $parts1Selector == ""){
 
 					console.log('transitioning grid only');
@@ -264,15 +250,34 @@ var Custom = function(){
 						}
 					} else if(parts[2] != 'undefined') {
 						// Parts[2] does exist, so execute those part[2] functions
+						// Make sure the appropriate moveBtn has an active class
+						// This is done by transitioning the grid, stupid!
+						//$parts1Selector.addClass('active');
+						if(!$('body').hasClass('character-grid-active')){
+							console.log('transition the grid forward initially!');
+							pageTransition($('#' + parts[1]));
+						}
+						//$('body').addClass('character-grid-active');
+						console.log('2parts[2] is: ' + parts[2]);
 						var $parts2Selector = parts[2].length ? $('.character-box.' + parts[2]) : "";
+						// selector is being picked up correctly
+						// console.log('parts2 selector is:' + $parts2Selector);
 						if(parts[2] == 'info'){
 							activateInfoBox();
-						} else if ($parts2Selector && parts[2] != 'undefined'){
+						} else if ($parts2Selector){
 
 							// Need to see if there's already a character active
 							if($('body').hasClass('character-active')){
+								// This is double-handling the 'selected' class, but this needs to be done so
+								// back nav can work in brower with character transitions...
+								//$('.character-box.' + parts[2]).addClass('selected');
+								$('#characterModal').attr('class', 'active');
+								$('#characterGrid .character-box').removeClass('selected');
 								console.log('trying to transition forwards!');
+								console.log('parts[2] is: ' + parts[2]);
+								activateCharacter($('.character-box.' + parts[2]));
 							} else {
+								console.log('3parts[2] is: ' + parts[2]);
 								activateCharacter($('.character-box.' + parts[2]));
 							}
 
@@ -289,9 +294,6 @@ var Custom = function(){
 					urlError();
 				}
 
-				// Wait... this is all firing twice...
-				// That's why on card click it fades in then out
-
 				// Working
 				//activateCharacter($('#characterGrid .character-box.bayonetta'));
 				//function pageTransition(self, transitionToAnotherGrid){
@@ -304,6 +306,7 @@ var Custom = function(){
 			console.log('do the thingy');
 			if($('body').hasClass('character-grid-active')){
 				console.log('deactivate the grid!');
+				pageTransition();
 				deactivateCharacterGrid();
 				
 			}
@@ -322,13 +325,144 @@ var Custom = function(){
 		}, 3000)
 	}
 
-	render(decodeURI(window.location.hash));
+	// Hack fix for initial URL deconstructor for now
+	setTimeout(function(){
+		render(decodeURI(window.location.hash));
+	}, 500);
 
 	$(window).on('hashchange', function(){
         // On every hash change the render function is called with the new hash.
         // This will navigate the app and allow native back/forward functionality
         render(decodeURI(window.location.hash));
 	});
+
+
+	function retrieveCharUrl(self){
+		// Place the character's name in #page-wrapper so I can target and do things with it
+		var $pagewrapper = $('#page-wrapper');
+		var charUrl = self.closest('.card-deck').data('url');
+		$pagewrapper.addClass(charUrl);
+	};
+	function pageTransition(self, transitionToAnotherGrid){
+
+		// Need to turn off sidemenu on mobile first if a grid button is clicked!
+		// if($(window).width() < 768){
+		// 	$('body').removeClass('toggle-sidedrawer');
+		// };
+
+		/* --- Animate the navigation transition -- */
+		var	$wrapper = $('#page-wrapper'),
+			$currPage = $wrapper.children('div.pt-page-current'),
+			$nonCurrPage = $wrapper.children('div.pt-page').not('div.pt-page-current'),
+			outClass = "",
+			inClass = "";
+
+		// Need to delay open/close function in case it's already animating. Some spastic might hit ESC twice quickly
+		// Add class of 'animating' to body and remove when the animation is finished
+		$('body').addClass('animating').removeClass('fixed-navbar');
+
+		if(!$('body').hasClass('character-grid-active')){
+			activateCharacterGrid(self);
+			retrieveCharUrl(self);
+
+			// If the grid wasn't yet active, then run this function again, the URL may have had a part[2]!
+			// MAKE SURE TO KEEP THAT PART TWO AFTERWARDS!!
+			// Need to rebuild a URL
+			/*var fullUrl = decodeURI(window.location.hash);
+			console.log('fullUrl is:' + fullUrl);
+			var rebuiltUrl = '';
+			console.log(window.location.pathname);
+			//changeUrl($('.moveBtn.active').attr('id'));
+
+
+			console.log(window.location.href);
+*/
+			// variables for transition it forwards
+			outClass = 'pt-page-moveToLeft';
+			inClass = 'pt-page-moveFromRight pt-page-ontop';
+
+		} else {
+			if(transitionToAnotherGrid == true){
+				// variables for transition it to the same screen
+				// The only way this is gonna happen is if the grid is on screen and a sidemenu button is clicked, which in turn is like a card button click
+				console.log('TRANS TO ANOTHER GRID JUST HAPPENED?!!');
+				$nonCurrPage = $currPage;
+			} else {
+
+				// variables for transition it backwards
+				// Remember this!
+
+				$('body').removeClass('character-grid-active');
+				inClass = 'pt-page-moveFromLeft pt-page-ontop';
+				outClass = 'pt-page-moveToRight';
+			}
+		}
+		// Now execute the transition with those variables from earlier
+		// If we're transitioning to another character grid, the switchCharacter function needs to be invoked midway between transitions
+		if(transitionToAnotherGrid == true){
+			// Need to ALSO check if we're just transitioning to a different move of the same character. Different transition for that (just a fade)
+			var charUrl = self.closest('.card-deck').data('url');
+			if(charUrl == $('#page-wrapper').attr('class')){
+				console.log('we have a match!');
+
+				// Initiate transition between MOVES OF SAME CHARACTER
+				$('#secondarynav-dropdown-menu').removeClass('show');
+				_fadeOut(document.getElementById('characterGrid'), function(){
+					activateCharacterGrid(self);
+					console.log('transitioning between same character!');
+					_fadeIn(document.getElementById('characterGrid'));
+					$('body').removeClass('animating');
+				});
+
+			} else {
+
+				// Initiate transition BETWEEN DIFFERENT CHARACTERS
+
+				// Initiate transition between MOVES OF SAME CHARACTER
+				$('#secondarynav-dropdown-menu').removeClass('show');
+
+				console.log('the loopback error is here?');
+
+				_fadeOut(document.getElementById('character-wrapper'), function(){
+					activateCharacterGrid(self);
+					console.log('transitioning between different characters!');
+					$('#page-wrapper').removeClass();
+					retrieveCharUrl(self);
+					_fadeIn(document.getElementById('character-wrapper'));
+					$('body').removeClass('animating');
+				});
+			}
+
+		} else {
+			// Initiate STANDARD transition
+			if($('body').hasClass('viewport-desktop')){
+				$('#primarynav .navbar-nav').hide();
+			}
+			$currPage.addClass(outClass).on(animEndEventName, function() {
+
+				$(this).removeClass().addClass('pt-page');
+				$currPage.off( animEndEventName );
+				$('body').removeClass('animating');
+
+				console.log('transitioning standard!');
+
+				// Nuke that character class from the page-wrapper AFTER the 'transition-out'
+				if(!$('body').hasClass('character-grid-active')){
+					$('#page-wrapper').removeClass();
+				}
+			});
+			$nonCurrPage.removeClass().addClass('pt-page pt-page-current').addClass(inClass).on(animEndEventName, function() {
+				
+				var $this = $(this);
+				$this.attr('class', 'pt-page pt-page-current');
+				$nonCurrPage.off( animEndEventName );
+				$('body').addClass('fixed-navbar');
+				if($('body').hasClass('viewport-desktop')){
+					 _fadeIn(document.getElementById('top-right-nav'));
+				}
+			});
+		}
+	};
 
 	// Need to trigger this on button click now
 	// Needs to be done via callback so I can control exactly WHEN the data switches over. It'll be transitioning now, see - it can be changed mid-transition
@@ -541,125 +675,6 @@ var Custom = function(){
 		};
 	};
 
-	function retrieveCharUrl(self){
-		// Place the character's name in #page-wrapper so I can target and do things with it
-		var $pagewrapper = $('#page-wrapper');
-		var charUrl = self.closest('.card-deck').data('url');
-		$pagewrapper.addClass(charUrl);
-	};
-	function pageTransition(self, transitionToAnotherGrid){
-
-		// Need to turn off sidemenu on mobile first if a grid button is clicked!
-		// if($(window).width() < 768){
-		// 	$('body').removeClass('toggle-sidedrawer');
-		// };
-
-		/* --- Animate the navigation transition -- */
-		var	$wrapper = $('#page-wrapper'),
-			$currPage = $wrapper.children('div.pt-page-current'),
-			$nonCurrPage = $wrapper.children('div.pt-page').not('div.pt-page-current'),
-			outClass = "",
-			inClass = "";
-
-		// console.log('is this firing twice?');
-
-		// Need to delay open/close function in case it's already animating. Some spastic might hit ESC twice quickly
-		// Add class of 'animating' to body and remove when the animation is finished
-		$('body').addClass('animating').removeClass('fixed-navbar');
-
-		if(!$('body').hasClass('character-grid-active')){
-			activateCharacterGrid(self);
-			retrieveCharUrl(self);
-
-			// variables for transition it forwards
-			outClass = 'pt-page-moveToLeft';
-			inClass = 'pt-page-moveFromRight pt-page-ontop';
-
-		} else {
-			if(transitionToAnotherGrid == true){
-				// variables for transition it to the same screen
-				// The only way this is gonna happen is if the grid is on screen and a sidemenu button is clicked, which in turn is like a card button click
-				console.log('TRANS TO ANOTHER GRID JUT HAPPENED?!!');
-				$nonCurrPage = $currPage;
-			} else {
-
-				// variables for transition it backwards
-				// Remember this!
-
-				// This is surely causing an issue
-				//$('body').removeClass('character-grid-active');
-				//
-				inClass = 'pt-page-moveFromLeft pt-page-ontop';
-				outClass = 'pt-page-moveToRight';
-			}
-		}
-		// Now execute the transition with those variables from earlier
-		// If we're transitioning to another character grid, the switchCharacter function needs to be invoked midway between transitions
-		if(transitionToAnotherGrid == true){
-			// Need to ALSO check if we're just transitioning to a different move of the same character. Different transition for that (just a fade)
-			var charUrl = self.closest('.card-deck').data('url');
-			if(charUrl == $('#page-wrapper').attr('class')){
-				console.log('we have a match!');
-
-				// Initiate transition between MOVES OF SAME CHARACTER
-				$('#secondarynav-dropdown-menu').removeClass('show');
-				_fadeOut(document.getElementById('characterGrid'), function(){
-					activateCharacterGrid(self);
-					console.log('transitioning between same character!');
-					_fadeIn(document.getElementById('characterGrid'));
-					$('body').removeClass('animating');
-				});
-
-			} else {
-
-				// Initiate transition BETWEEN DIFFERENT CHARACTERS
-
-				// Initiate transition between MOVES OF SAME CHARACTER
-				$('#secondarynav-dropdown-menu').removeClass('show');
-
-				console.log('the loopback error is here?');
-
-				_fadeOut(document.getElementById('character-wrapper'), function(){
-					activateCharacterGrid(self);
-					console.log('transitioning between different characters!');
-					$('#page-wrapper').removeClass();
-					retrieveCharUrl(self);
-					_fadeIn(document.getElementById('character-wrapper'));
-					$('body').removeClass('animating');
-				});
-			}
-
-		} else {
-			// Initiate STANDARD transition
-			if($('body').hasClass('viewport-desktop')){
-				$('#primarynav .navbar-nav').hide();
-			}
-			$currPage.addClass(outClass).on(animEndEventName, function() {
-
-				$(this).removeClass().addClass('pt-page');
-				$currPage.off( animEndEventName );
-				$('body').removeClass('animating');
-
-				console.log('transitioning standard!');
-
-				// Nuke that character class from the page-wrapper AFTER the 'transition-out'
-				if(!$('body').hasClass('character-grid-active')){
-					$('#page-wrapper').removeClass();
-				}
-			});
-			$nonCurrPage.removeClass().addClass('pt-page pt-page-current').addClass(inClass).on(animEndEventName, function() {
-				
-				var $this = $(this);
-				$this.attr('class', 'pt-page pt-page-current');
-				$nonCurrPage.off( animEndEventName );
-				$('body').addClass('fixed-navbar');
-				if($('body').hasClass('viewport-desktop')){
-					 _fadeIn(document.getElementById('top-right-nav'));
-				}
-			});
-		}
-	};
-
 
 	function deactivateCharacterGrid(){
 		if(!$('body').hasClass('animating')){
@@ -682,57 +697,6 @@ var Custom = function(){
 	}
 
 
-	// RAGE MODIFIER STICKY
-	// The was originally within activateCharacter(), but after serveral transitions it begins to lag the app
-	// The requestAnimatonFrame references may have been stacking and causing scroll jank, so it's been moved
-	// here and is declared only once.
-	
-	var $charContainer = $('#characterModal .characterContainer');
-	function fixedRagebar(self){
-		
-		var windowTop = self.scrollTop();
-		
-		containerWidth = $charContainer.innerWidth();
-		marginOffset = $charContainer.css('margin-top');
-		if(120 < windowTop){
-			$('#characterModal .sticky').addClass('stuck');
-			$('.stuck').css({ top: marginOffset, width: containerWidth });
-			$('.stickyName').slideDown('fast');
-
-		} else {
-			$('.stuck').css({ top: 0, width: '100%' }); // restore the original top value of the sticky element
-			$('.sticky').removeClass('stuck');
-			$('.stickyName').hide();
-		}
-	}
-
-	// Limiting min execution interval on scroll to help prevent scroll jank
-	// http://joji.me/en-us/blog/how-to-develop-high-performance-onscroll-event
-	var scroll = function(){
-		fixedRagebar($charContainer);
-
-		// Need secondary nav scroll functions here!
-		////////////////////////////////////////////
-	}
-	var $window = $charContainer;
-	var lastScrollTop = $window.scrollTop();
-
-	if (_requestAnimationFrame) {
-		loop();
-	}
-	function loop() {
-		var scrollTop = $window.scrollTop();
-		if (lastScrollTop === scrollTop) {
-			_requestAnimationFrame(loop);
-			return;
-		} else {
-			lastScrollTop = scrollTop;
-			// fire scroll function if scrolls vertically
-			scroll();
-			_requestAnimationFrame(loop);
-		}
-	}
-	fixedRagebar($charContainer);
 
 	function activateCharacter(self, urlPart){
 
@@ -747,7 +711,6 @@ var Custom = function(){
 		var $index = $charBox.data('index');
 
 		// Character Modal initialisers
-		// I want these outside the 'getJSON' request so they're loaded before the JSON is, otherwise there is NO IMAGE for a brief moment.
 		var $charModal = $('#characterModal');
 
 		// Need to strip all classes from 'characterImageContainer' to remove the applied character class
@@ -762,7 +725,7 @@ var Custom = function(){
 		// Begin the mapping
 
 		var name = self.data('name'),
-			urlName = self.data('url'),
+			urlName = self.attr('data-url'),
 			bgColour = self.data('bgcolour'),
 			weight = parseInt(self.data('weight')),
 			fallspeed = self.data('fallspeed'),
@@ -791,6 +754,8 @@ var Custom = function(){
 			tcLowPlatMin = parseInt($moveBtnActive.data('tclowplatmin')),
 			tcSidePlatMin = parseInt($moveBtnActive.data('tcsideplatmin')),
 			tcTopPlatMin = parseInt($moveBtnActive.data('tctopplatmin'));
+
+		console.log('bfNorMin percent is: ' + bfNormalMin);
 
 		// Time to activate the Character Modal
 		$charModal.addClass('active');
@@ -888,7 +853,7 @@ var Custom = function(){
 		// https://developers.google.com/web/updates/2016/12/url-bar-resizing
 		$(window).resize(function(e){
 			fixedRagebar($('#characterModal .characterContainer'));
-		})
+		});
 
 	}
 
@@ -926,6 +891,60 @@ var Custom = function(){
 		// var constructedUrl = baseUrl + '/#/' + dataUrl + '/';
 	};
 
+
+
+
+	// RAGE MODIFIER STICKY
+	// The was originally within activateCharacter(), but after serveral transitions it begins to lag the app
+	// The requestAnimatonFrame references may have been stacking and causing scroll jank, so it's been moved
+	// here and is declared only once.
+	
+	var $charContainer = $('#characterModal .characterContainer');
+	function fixedRagebar(self){
+		
+		var windowTop = self.scrollTop();
+		
+		containerWidth = $charContainer.innerWidth();
+		marginOffset = $charContainer.css('margin-top');
+		if(120 < windowTop){
+			$('#characterModal .sticky').addClass('stuck');
+			$('.stuck').css({ top: marginOffset, width: containerWidth });
+			$('.stickyName').slideDown('fast');
+
+		} else {
+			$('.stuck').css({ top: 0, width: '100%' }); // restore the original top value of the sticky element
+			$('.sticky').removeClass('stuck');
+			$('.stickyName').hide();
+		}
+	}
+
+	// Limiting min execution interval on scroll to help prevent scroll jank
+	// http://joji.me/en-us/blog/how-to-develop-high-performance-onscroll-event
+	var scroll = function(){
+		fixedRagebar($charContainer);
+
+		// Need secondary nav scroll functions here!
+		////////////////////////////////////////////
+	}
+	var $window = $charContainer;
+	var lastScrollTop = $window.scrollTop();
+
+	if (_requestAnimationFrame) {
+		loop();
+	}
+	function loop() {
+		var scrollTop = $window.scrollTop();
+		if (lastScrollTop === scrollTop) {
+			_requestAnimationFrame(loop);
+			return;
+		} else {
+			lastScrollTop = scrollTop;
+			// fire scroll function if scrolls vertically
+			scroll();
+			_requestAnimationFrame(loop);
+		}
+	}
+	fixedRagebar($charContainer);
 
 
 	function rageAdjustment(self, animateNumbers){
@@ -1047,7 +1066,7 @@ var Custom = function(){
 		}
 	}
 	function transitionCharacterForward(activeContainer){
-		var $activeContainer = $(activeContainer);
+		var $activeContainer = activeContainer;
 		// Loop back to first character if press right key on last character
 		// WAIT, first check to see if it HAS visible siblings. The search box may remove them and mess up this code
 		// Welp, next() will only return the VERY NEXT element. Need to return the next :visible element, regardless
@@ -1056,38 +1075,33 @@ var Custom = function(){
 		// https://stackoverflow.com/questions/6823842/select-the-next-element-with-a-specific-attribute-jquery
 		if($activeContainer.siblings('.character-box').is(':visible')){
 			if($activeContainer.nextAll('.character-box').is(':visible')){
-				$('#characterModal').attr('class', 'active');
-				$('#characterGrid .character-box.selected').removeClass('selected');
 				var $nextVisibleChar = $activeContainer.nextAll('.character-box:not(.disabled):visible').first();
-				console.log('the url is ' + $nextVisibleChar.data('url'));
-				changeUrl($nextVisibleChar.data('url'));
+				$nextVisibleChar.addClass('selected');
+				changeUrl($('.moveBtn.active').attr('id') + '/' + $nextVisibleChar.data('url'));
 				//activateCharacter($nextVisibleChar);
 			} else {
 				// Loop backward to first VISIBLE character if press right key on last character
-				$('#characterModal').attr('class', 'active');
-				$('#characterGrid .character-box.selected').removeClass('selected');
-				//activateCharacter($activeContainer.siblings('.character-box:not(.disabled):visible').first());
+				var $firstCharacter = $activeContainer.siblings('.character-box:not(.disabled):visible').first();
+				$firstCharacter.addClass('selected');
+				changeUrl($('.moveBtn.active').attr('id') + '/' + $firstCharacter.data('url'));
+				//activateCharacter($firstCharacter);
 			}
 		}
 	}
 	function transitionCharacterBackward(activeContainer){
-		var $activeContainer = $(activeContainer);
+		var $activeContainer = activeContainer;
 		if($activeContainer.siblings('.character-box').is(':visible')){
 			//console.log('siblings are visible');
 			if($activeContainer.prevAll('.character-box').is(':visible')){
 				//console.log('previous visible box exists')
-				$('#characterModal').attr('class', 'active');
-				$('#characterGrid .character-box.selected').removeClass('selected');
-				// PrevAll is working, but is not determining is the element is fucking VISIBLE or not!
-				// :visible:last will return Bayo
-				// :visible:first will work until elements are separated
 				var $prevVisibleChar = $activeContainer.prevAll('.character-box:not(.disabled):visible').first();
-				activateCharacter($prevVisibleChar);
+				$prevVisibleChar.addClass('selected');
+				changeUrl($('.moveBtn.active').attr('id') + '/' + $prevVisibleChar.data('url'));
 			} else {
 				// Loop backward to first VISIBLE character if press right key on last character
-				$('#characterModal').attr('class', 'active');
-				$('#characterGrid .character-box.selected').removeClass('selected');
-				activateCharacter($activeContainer.siblings('.character-box:not(.disabled):visible').last());
+				var $lastCharacter = $activeContainer.siblings('.character-box:not(.disabled):visible').first();
+				$lastCharacter.addClass('selected');
+				changeUrl($('.moveBtn.active').attr('id') + '/' + $lastCharacter.data('url'));
 			}
 		}
 	}
