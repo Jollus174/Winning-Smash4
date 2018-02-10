@@ -36,6 +36,6 @@ Xelda for the <a href="https://docs.google.com/spreadsheets/d/1zd5Ky1MR9ECFCtKRl
 
 Special thanks to smashers <a href="https://twitter.com/cayiika" target="_blank" rel="noopener">Cayika</a>, <a href="https://twitter.com/Gurpwnder" target="_blank" rel="noopener">Gurpinder</a>, Gale, BJN39, eta3372.
 
-Shoutouts to <a href="https://twitter.com/likeacyansunday" target="_blank" rel="noopener">Shiva</a> for images help and <a href="https://twitter.com/KuroganeHammer" target="_blank" rel="noopener">Kurogane Hammer</a> for data help.
+Shoutouts to <a href="https://twitter.com/frappesnowland" target="_blank" rel="noopener">Shiva</a> for images help and <a href="https://twitter.com/KuroganeHammer" target="_blank" rel="noopener">Kurogane Hammer</a> for data help.
 
 Thanks to Nintendo, Namco Bandai, and Sora for developing Super Smash Bros. for Wii U.
