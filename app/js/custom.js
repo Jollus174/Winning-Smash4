@@ -232,7 +232,7 @@ var Custom = function(){
 			} else {
 				// Make sure that selector exists
 				var $parts1Selector = parts[1].length ? $('#' + parts[1]) : "";
-				if($parts1Selector && parts[1] != 'undefined' || $parts1Selector == ""){
+				if($parts1Selector.length != 0 && parts[1] != 'undefined'){
 
 					console.log('transitioning grid only');
 					if(!parts[2]){
@@ -252,7 +252,7 @@ var Custom = function(){
 							// Transitioning forward!
 							pageTransition($('#' + parts[1]));
 						};
-					} else if(parts[2] != 'undefined') {
+					} else if($('.character-box.' + parts[2]).length && parts[2] != 'undefined') {
 						// Parts[2] does exist, so execute those part[2] functions
 						// Make sure the appropriate moveBtn has an active class
 						// This is done by transitioning the grid, stupid!
@@ -1163,8 +1163,9 @@ var Custom = function(){
 		// https://stackoverflow.com/questions/967096/using-jquery-to-test-if-an-input-has-focus
 		if(e.which == keyi){
 			if($('.moveBtn').hasClass('active') && !$('#search').is(':focus')){
-				$('body').addClass('show-info-box');
-				activateInfoBox();
+				// $('body').addClass('show-info-box');
+				// activateInfoBox();
+				changeUrl($('.moveBtn.active').attr('id') + '/info');
 			};
 		}
 
