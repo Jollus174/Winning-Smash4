@@ -10044,6 +10044,42 @@ a.text-dark:focus, a.text-dark:hover {
 
 /* --- VARIABLES - BECAUSE BROWSERSYNC KEEPS CRASHING --- */
 /* --- */
+.bayonetta:hover.nav-characters li > span {
+  background: #8078c3 !important; }
+
+.bayonetta .secondarynav {
+  background-color: #8078c3; }
+  .bayonetta .secondarynav .dropdown-menu {
+    background-color: #8078c3; }
+
+.bayonetta .btn, .bayonetta .dropdown-item {
+  color: #FFF;
+  background-color: #5f55b3; }
+  .bayonetta .btn:hover, .bayonetta .btn.active, .bayonetta .dropdown-item:hover, .bayonetta .dropdown-item.active {
+    background-color: #4a4293 !important; }
+
+.bayonetta.card-deck .card-image-top {
+  background-color: #8078c3;
+  color: #FFF; }
+
+.bayonetta.card-deck .card-body .btn {
+  background-color: #5f55b3; }
+
+.bayonetta.nav-characters:before {
+  background: #8078c3; }
+
+.bayonetta li > span {
+  background: rgba(128, 120, 195, 0.8) !important;
+  color: #FFF !important; }
+
+.bayonetta .nav-moves a {
+  position: relative; }
+  .bayonetta .nav-moves a:before {
+    background: rgba(128, 120, 195, 0.5) !important; }
+
+.bayonetta .dropdown-menu, .bayonetta #sort {
+  background-color: #8078c3; }
+
 .bowser:hover.nav-characters li > span {
   background: #32765c !important; }
 

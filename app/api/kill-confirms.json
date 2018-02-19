@@ -1,5 +1,117 @@
 [{
     "index": 0,
+    "name": "Bayonetta",
+    "url": "bayonetta",
+    "moves": [
+        {
+            "moveId": 0,
+            "moveName": "Literally Everything",
+            "moveUrl": "everything",
+
+            "info": [
+                "Bowser's kill confirm is known as the <strong>Koo-Pah</strong>, <strong>Bow-Wow</strong>, or <strong>Show Time</strong>. An Up Throw from Bowser will true combo into his Up Air between certain percents and will kill the victim regardless of DI.",
+                "If the victim has no DI or DI's the throw in, the move min-% kill threshold will increase to <em>1-5% earlier</em>.",
+                "If they have no DI or DI the throw out, the max-% kill threshold will increase to <em>1-4% later</em>.",
+                "The calculator assumes the victim is DI-ing the move optimally, with them <strong>DI-ing out the Up Throw</strong>, and <strong>DI-ing away the Up Air</strong>."
+            ],
+            "giphy": ["https://giphy.com/embed/3oFzm4XhnWq9vSZtIc", "https://www.youtube.com/watch?v=W3sgCRc13sk"],
+
+            "specialInfo": "",
+
+            "rage50": "[-2, -6]",
+            "rage60": "[-4, -8]",
+            "rage80": "[-8, -12]",
+            "rage100": "[-12, -16]",
+            "rage125": "[-17, -22]",
+            "rage150": "[-19, -25]",
+
+            "bfNormalMin": 4,
+            "bfLowPlatMin": -5,
+            "bfTopPlatMin": -15,
+
+            "dlLowPlatMin": -13,
+            "dlTopPlatMin": -23,
+
+            "svNormalMin": 1,
+            "svPlatMin": -12,
+
+            "tcNormalMin": -4,
+            "tcLowPlatMin": -22,
+            "tcSidePlatMin": -27,
+            "tcTopPlatMin": -39,
+
+            "percents": {
+                "bayonetta": [0,999],
+                "bowser": [0,999],
+                "bowser-jr": [0,999],
+                "captain-falcon": [0,999],
+                "charizard": [0,999],
+                "cloud": [0,999],
+                "cloud-limit": [0,999],
+                "corrin": [0,999],
+                "dark-pit": [0,999],
+                "diddy-kong": [0,999],
+                "donkey-kong": [0,999],
+                "dr-mario": [0,999],
+                "duck-hunt": [0,999],
+                "falco": [0,999],
+                "fox": [0,999],
+                "ganondorf": [0,999],
+                "game-and-watch": [0,999],
+                "greninja": [0,999],
+                "ike": [0,999],
+                "jigglypuff": [0,999],
+                "king-dedede": [0,999],
+                "kirby": [0,999],
+                "link": [0,999],
+                "little-mac": [0,999],
+                "lucario": [0,999],
+                "lucas": [0,999],
+                "lucina": [0,999],
+                "luigi": [0,999],
+                "mario": [0,999],
+                "marth": [0,999],
+                "mega-man": [0,999],
+                "meta-knight": [0,999],
+                "mewtwo": [0,999],
+                "mii-brawler": [0,999],
+                "mii-gunner": [0,999],
+                "mii-swordfighter": [0,999],
+                "ness": [0,999],
+                "olimar": [0,999],
+                "pacman": [0,999],
+                "palutena": [0,999],
+                "peach": [0,999],
+                "pikachu": [0,999],
+                "pit": [0,999],
+                "rob": [0,999],
+                "robin": [0,999],
+                "rosalina-and-luma": [0,999],
+                "roy": [0,999],
+                "ryu": [0,999],
+                "samus": [0,999],
+                "sheik": [0,999],
+                "shulk": [0,999],
+                "shulk-buster": [0,999],
+                "shulk-jump": [0,999],
+                "shulk-shield": [0,999],
+                "shulk-smash": [0,999],
+                "sonic": [0,999],
+                "toon-link": [0,999],
+                "villager": [0,999],
+                "wario": [0,999],
+                "wii-fit-trainer": [0,999],
+                "yoshi": [0,999],
+                "zelda": [0,999],
+                "zero-suit-samus": [0,999]
+            }
+
+
+        }
+    ]
+},
+{
+    "index": 1,
     "name": "Bowser",
     "url": "bowser",
     "moves": [
@@ -111,7 +223,7 @@
     ]
 },
 {
-    "index": 1,
+    "index": 2,
     "name": "Donkey Kong",
     "url": "donkey-kong",
     "moves": [
@@ -221,7 +333,7 @@
     ]
 },
 {
-    "index": 2,
+    "index": 3,
     "name": "Lucas",
     "url": "lucas",
     "moves": [
@@ -330,7 +442,7 @@
 },
 
 {
-    "index": 3,
+    "index": 4,
     "name": "Mr. Game & Watch",
     "url": "game-and-watch",
     "moves": [
@@ -445,7 +557,7 @@
 },
 
 {
-    "index": 4,
+    "index": 5,
     "name": "Robin",
     "url": "robin",
     "moves": [
@@ -555,7 +667,7 @@
     ]
 },
 {
-    "index": 5,
+    "index": 6,
     "name": "Zelda",
     "url": "zelda",
     "moves": [

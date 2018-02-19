@@ -530,7 +530,7 @@ var Custom = function(){
 				var maxPercent = value[1];
 
 				percentDifferences.push(maxPercent - minPercent);
-				percentSum += ((maxPercent + 1) - minPercent);
+				percentSum += ((maxPercent) - minPercent);
 				minPercentSum += minPercent;
 				maxPercentSum += maxPercent;
 			});
@@ -555,7 +555,7 @@ var Custom = function(){
 				// IT WOOOOOORKS!!!
 
 				var $difficulty = $character.find('.difficulty');
-				$difficulty.find('.text-percRange').text(parseInt(maxPercent) - parseInt(minPercent) + 1);
+				$difficulty.find('.text-percRange').text(parseInt(maxPercent) - parseInt(minPercent));
 
 				// Need to disable/hide icons that the combo is not possible on, or have no data...
 				// IMPORTANT STANDARD
@@ -596,8 +596,10 @@ var Custom = function(){
 					// Map that difficulty
 					// Regretably I'll need to run through the JSON twice now, because gotta calculate an average from all values, THEN apply based off those values
 
-					$difficulty.attr('class', 'difficulty').addClass(diff);
-					$difficulty.find('.text-difficulty').text(diff);
+					//$difficulty.attr('class', 'difficulty').addClass(diff);
+					// $difficulty.find('.text-difficulty').text(diff);
+					$difficulty.attr('class', 'difficulty').addClass('very-easy');
+					$difficulty.find('.text-difficulty').text('very-easy');
 
 
 				} else {
@@ -975,7 +977,7 @@ var Custom = function(){
 			// Some min %'s go below zero at max rage (wtf). Need to round to 0
 			// Adjusting min percent last in case it goes below zero and fucks the percRange var
 			adjustedMinPercent = Math.max(0, adjustedMinPercent);
-			var percRange = (adjustedMaxPercent - adjustedMinPercent) + 1;
+			var percRange = (adjustedMaxPercent - adjustedMinPercent);
 			// console.log(percRange);
 
 			if(adjustedMaxPercent < adjustedMinPercent ){

@@ -20,6 +20,12 @@ $button-primary:#d0361a;
 $button-primary-hover:darken($button-primary, 15%);
 $button-primary-active:darken($button-primary, 15%);
 
+$bayonetta:#8078c3;
+$bayonetta-button-homepage:darken($bayonetta, 10%);
+$bayonetta-button-primary:#8078c3;
+$bayonetta-button-primary-hover:darken($bayonetta-button-primary, 10%);
+$bayonetta-button-primary-active:#7c468c;
+
 $bowser:#32765c;
 $bowser-button-homepage:darken($bowser, 10%);
 $bowser-button-primary:#ff7043;
@@ -57,6 +63,46 @@ $zelda-button-primary-hover:darken($zelda-button-primary, 10%);
 $zelda-button-primary-active:#7c468c;
 
 /* --- */
+
+.bayonetta{
+    &:hover{
+        &.nav-characters li > span{
+            background:$bayonetta !important;
+        }
+    }
+    .secondarynav{
+        background-color:$bayonetta;
+        .dropdown-menu{
+            background-color:$bayonetta;
+        }
+    }
+    .btn, .dropdown-item{
+        color:$text-light;
+        background-color:darken($bayonetta, 10%);
+        &:hover, &.active{background-color:darken($bayonetta-button-homepage, 10%) !important;}
+    }
+    &.card-deck{
+        .card-image-top{
+            background-color:$bayonetta;
+            color:$text-light;
+        }
+        .card-body{
+            .btn{
+                background-color:darken($bayonetta, 10%);
+            }
+        }
+    }
+    &.nav-characters:before{background:$bayonetta;}
+    li > span{
+        background:transparentize($bayonetta, 0.2) !important;
+        color: $text-light !important;
+    }
+    .nav-moves a{
+        position:relative;
+        &:before{background:transparentize($bayonetta, 0.5) !important;}
+    }
+    .dropdown-menu, #sort{background-color:$bayonetta}
+}
 
 .bowser{
     &:hover{
