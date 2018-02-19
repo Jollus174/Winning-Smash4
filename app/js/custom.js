@@ -252,7 +252,7 @@ var Custom = function(){
 							// Transitioning forward!
 							pageTransition($('#' + parts[1]));
 						};
-					} else if($('.character-box.' + parts[2]).length && parts[2] != 'undefined') {
+					} else if(parts[2] != 'undefined') {
 						// Parts[2] does exist, so execute those part[2] functions
 						// Make sure the appropriate moveBtn has an active class
 						// This is done by transitioning the grid, stupid!
@@ -265,7 +265,7 @@ var Custom = function(){
 						// console.log('parts2 selector is:' + $parts2Selector);
 						if(parts[2] == 'info'){
 							activateInfoBox();
-						} else if ($parts2Selector){
+						} else if ($parts2Selector.length){
 
 							// Need to see if there's already a character active
 							if($('body').hasClass('character-active')){
