@@ -13,7 +13,7 @@ var Custom = function(){
 	var animEndEventNames = {
 		'WebkitAnimation' : 'webkitAnimationEnd',
 		'OAnimation' : 'oAnimationEnd',
-		'msAnimation' : 'MSAnimationEnd',
+		'msAnimation' : 'MSAnimationEnd', 
 		'animation' : 'animationend'
 	},
 	// animation end event name
