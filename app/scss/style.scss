@@ -20,288 +20,83 @@ $button-primary:#d0361a;
 $button-primary-hover:darken($button-primary, 15%);
 $button-primary-active:darken($button-primary, 15%);
 
-$bowser:#32765c;
-$bowser-button-homepage:darken($bowser, 10%);
-$bowser-button-primary:#ff7043;
-$bowser-button-primary-hover:darken($bowser-button-primary, 10%);
-$bowser-button-primary-active:#d82800;
-
-$donkey-kong:#feda00;
-$donkey-kong-button-homepage:darken($donkey-kong, 10%);
-$donkey-kong-button-primary:#9c840e;
-$donkey-kong-button-primary-hover:darken($donkey-kong-button-primary, 10%);
-$donkey-kong-button-primary-active:#9c840e;
-
-$gnw:#8a8983;
-$gnw-button-homepage:darken($gnw, 10%);
-$gnw-button-primary:#ff7043;
-$gnw-button-primary-hover:darken($gnw-button-primary, 10%);
-$gnw-button-primary-active:#d82800;
-
-$lucas:#f05f1b;
-$lucas-button-homepage:darken($lucas, 10%);
-$lucas-button-primary:#9c840e;
-$lucas-button-primary-hover:darken($lucas-button-primary, 10%);
-$lucas-button-primary-active:#9c840e;
-
-$robin:#ce82de;
-$robin-button-homepage:darken($robin, 10%);
-$robin-button-primary:#ce82de;
-$robin-button-primary-hover:darken($robin-button-primary, 10%);
-$robin-button-primary-active:#d82800;
-
-$zelda:#aa74ba;
-$zelda-button-homepage:darken($zelda, 10%);
-$zelda-button-primary:#aa74ba;
-$zelda-button-primary-hover:darken($zelda-button-primary, 10%);
-$zelda-button-primary-active:#7c468c;
-
 /* --- */
 
-.bowser{
+@mixin character-styles($char, $text-colour){
     &:hover{
         &.nav-characters li > span{
-            background:$bowser !important;
+            background:$char !important;
         }
     }
     .secondarynav{
-        background-color:$bowser;
+        background-color:$char;
         .dropdown-menu{
-            background-color:$bowser;
+            background-color:$char;
         }
-    }
-    .btn, .dropdown-item{
-        color:$text-light;
-        background-color:darken($bowser, 10%);
-        &:hover, &.active{background-color:darken($bowser-button-homepage, 10%) !important;}
-    }
-    &.card-deck{
-        .card-image-top{
-            background-color:$bowser;
-            color:$text-light;
-        }
-        .card-body{
-            .btn{
-                background-color:darken($bowser, 10%);
+        .navbar-brand{
+            color:$text-colour !important;
+            .pathfill{
+                fill:$text-colour;
             }
         }
     }
-    &.nav-characters:before{background:$bowser;}
+    .btn, .dropdown-item{
+        color:$text-colour;
+        background-color:darken($char, 10%);
+        &:hover, &.active{
+            background-color:darken($char, 20%) !important;
+        }
+    }
+    .btn{
+        color:$text-light;
+    }
+    &.card-deck{
+        .card-image-top{
+            background-color:$char;
+            color:$text-colour;
+        }
+        .card-body{
+            .btn{
+                background-color:darken($char, 10%);
+                border-color:transparent !important;
+            }
+        }
+    }
+    &.nav-characters:before{background:$char;}
     li > span{
-        background:transparentize($bowser, 0.2) !important;
-        color: $text-light !important;
+        background:transparentize($char, 0.2) !important;
+        color: $text-colour !important;
     }
     .nav-moves a{
         position:relative;
-        &:before{background:transparentize($bowser, 0.5) !important;}
+        &:before{background:transparentize($char, 0.5) !important;}
     }
-    .dropdown-menu, #sort{background-color:$bowser}
+    .dropdown-menu, #sort{background-color:$char}
 }
 
-
+.bowser{
+    @include character-styles(#32765c, $text-light);
+}
 .donkey-kong{
-    &:hover{
-        &.nav-characters li > span{
-            background:$donkey-kong !important;
-        }
-    }
-    .secondarynav{
-        background-color:$donkey-kong;
-        .dropdown-menu{
-            background-color:$donkey-kong;
-        }
-        .navbar-brand{
-            color:$text-dark !important;
-            .pathfill{
-                fill:$text-dark;
-            }
-        }
-    }
-    .btn, .dropdown-item{
-        background-color:$donkey-kong-button-primary;
-        color:$text-light;
-        &:hover, &.active{
-            background-color:darken($donkey-kong-button-primary, 10%) !important;
-        }
-    }
+    @include character-styles(#feda00, $text-dark);
     &.card-deck{
-        .card-image-top{
-            background-color:$donkey-kong;
-            color:$text-dark;
-        }
-        .card-body{
-            .btn{
-                background-color:darken($donkey-kong, 10%);
-            }
+        .btn{
+            color:$text-light;
         }
     }
-    &.nav-characters{
-        &:before{background:$donkey-kong;}
-        li > span{
-            background:transparentize($donkey-kong, 0.2) !important;
-            color: $text-dark !important;
-        }
-        .nav-moves a{
-            position:relative;
-            &:before{background:transparentize($donkey-kong, 0.5) !important;}
-        }
-    }
-    .dropdown-menu, #sort{background-color:$donkey-kong}
 }
-
 .game-and-watch{
-    &:hover{
-        &.nav-characters li > span{
-            background:$gnw !important;
-        }
-    }
-    .secondarynav{background-color:$gnw;}
-    .btn, .dropdown-item{
-        background-color:$gnw-button-homepage;
-        // border-color:$gnw-button-homepage;
-        color:$text-light;
-        &:hover, &.active{background-color:darken($gnw-button-homepage, 10%) !important;}
-    }
-    &.card-deck{
-        .card-image-top{
-            background-color:$gnw;
-            color:$text-light;
-        }
-        .card-body{
-            .btn{
-                background-color:darken($gnw, 10%);
-            }
-        }
-    }
-    &.nav-characters{
-        //
-
-        li > span{
-            background:transparentize($gnw, 0.2) !important;
-            color: $text-light !important;
-        }
-        .nav-moves a{
-            position:relative;
-            &:before{background:transparentize($gnw, 0.5) !important;}
-        }
-    }
-    .dropdown-menu, #sort{background-color:$gnw}
+    @include character-styles(#8a8983, $text-light);
 }
-
 .lucas{
-    &:hover{
-        &.nav-characters li > span{
-            background:$lucas !important;
-        }
-    }
-    .secondarynav{background-color:$lucas;}
-    .btn, .dropdown-item{
-        background-color:$lucas-button-homepage;
-        //border-color:$lucas-button-homepage;
-        &:hover, &.active{background-color:darken($lucas-button-homepage, 10%) !important;}
-    }
-    &.card-deck{
-        .card-image-top{
-            background-color:$lucas;
-            color:$text-light;
-        }
-        .card-body{
-            .btn{
-                background-color:darken($lucas, 10%);
-            }
-        }
-    }
-    .btn{color:$text-light;}
-    &.nav-characters{
-        li > span{
-            background:transparentize($lucas, 0.2) !important;
-            color: $text-light !important;
-        }
-        .nav-moves a{
-            position:relative;
-            &:before{background:transparentize($lucas, 0.5) !important;}
-        }
-    }
-    .dropdown-menu, #sort{background-color:$lucas}
+    @include character-styles(#f05f1b, $text-light);
 }
-
 .robin{
-    &:hover{
-        &.nav-characters li > span{
-            background:$robin !important;
-        }
-    }
-    .secondarynav{background-color:$robin;}
-    .btn, .dropdown-item{
-        background-color:$robin-button-homepage;
-        color:$text-light;
-        //border-color:$robin-button-homepage;
-        &:hover, &.active{background-color:darken($robin-button-homepage, 10%) !important;}
-    }
-    &.card-deck{
-        .card-image-top{
-            background-color:$robin;
-            color:$text-light;
-        }
-        .card-body{
-            .btn{
-                background-color:darken($robin, 10%);
-            }
-        }
-    }
-    &.nav-characters{
-        &:before{background:transparentize($robin, 0.5) !important;}
-        li > span{
-            background:transparentize($robin, 0.2) !important;
-            color: $text-light !important;
-        }
-        .nav-moves a{
-            position:relative;
-            &:before{background:transparentize($robin, 0.5) !important;}
-        }
-    }
-    .dropdown-menu, #sort{background-color:$robin}
+    @include character-styles(#ce82de, $text-light);
 }
-
 .zelda{
-    &:hover{
-        &.nav-characters li > span{
-            background:$zelda !important;
-        }
-    }
-    .secondarynav{background-color:$zelda;}
-    .btn, .dropdown-item{
-        background-color:$zelda-button-homepage;
-        color:$text-light;
-        //border-color:$zelda-button-homepage;
-        &:hover, &.active{background-color:darken($zelda-button-homepage, 10%) !important;}
-    }
-    &.card-deck{
-        .card-image-top{
-            background-color:$zelda;
-            color:$text-light;
-        }
-        .card-body{
-            .btn{
-                background-color:darken($zelda, 10%);
-            }
-        }
-    }
-    &.nav-characters{
-        &:before{background:transparentize($zelda, 0.5) !important;}
-        li > span{
-            background:transparentize($zelda, 0.2) !important;
-            color: $text-light !important;
-        }
-        .nav-moves a{
-            position:relative;
-            &:before{background:transparentize($zelda, 0.5) !important;}
-        }
-    }
-    .dropdown-menu, #sort{background-color:$zelda}
+    @include character-styles(#aa74ba, $text-light);
 }
-
-
 
 /* Cards */
 
