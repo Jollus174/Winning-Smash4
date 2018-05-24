@@ -10056,11 +10056,13 @@ a.text-dark:focus, a.text-dark:hover {
     .bowser .secondarynav .navbar-brand .pathfill {
       fill: #FFF; }
 
-.bowser .btn, .bowser .dropdown-item {
+.bowser .btn, .bowser .dropdown-item, .bowser .btn-secondary {
   color: #FFF;
   background-color: #235240; }
-  .bowser .btn:hover, .bowser .btn.active, .bowser .dropdown-item:hover, .bowser .dropdown-item.active {
-    background-color: #142e24 !important; }
+  .bowser .btn:hover, .bowser .btn.active, .bowser .btn:active, .bowser .dropdown-item:hover, .bowser .dropdown-item.active, .bowser .dropdown-item:active, .bowser .btn-secondary:hover, .bowser .btn-secondary.active, .bowser .btn-secondary:active {
+    background-color: #142e24 !important;
+    box-shadow: none !important;
+    border-color: #142e24 !important; }
 
 .bowser .btn {
   color: #FFF; }
@@ -10100,11 +10102,13 @@ a.text-dark:focus, a.text-dark:hover {
     .donkey-kong .secondarynav .navbar-brand .pathfill {
       fill: #431c0b; }
 
-.donkey-kong .btn, .donkey-kong .dropdown-item {
+.donkey-kong .btn, .donkey-kong .dropdown-item, .donkey-kong .btn-secondary {
   color: #431c0b;
   background-color: #cbae00; }
-  .donkey-kong .btn:hover, .donkey-kong .btn.active, .donkey-kong .dropdown-item:hover, .donkey-kong .dropdown-item.active {
-    background-color: #988200 !important; }
+  .donkey-kong .btn:hover, .donkey-kong .btn.active, .donkey-kong .btn:active, .donkey-kong .dropdown-item:hover, .donkey-kong .dropdown-item.active, .donkey-kong .dropdown-item:active, .donkey-kong .btn-secondary:hover, .donkey-kong .btn-secondary.active, .donkey-kong .btn-secondary:active {
+    background-color: #988200 !important;
+    box-shadow: none !important;
+    border-color: #988200 !important; }
 
 .donkey-kong .btn {
   color: #FFF; }
@@ -10147,11 +10151,13 @@ a.text-dark:focus, a.text-dark:hover {
     .game-and-watch .secondarynav .navbar-brand .pathfill {
       fill: #FFF; }
 
-.game-and-watch .btn, .game-and-watch .dropdown-item {
+.game-and-watch .btn, .game-and-watch .dropdown-item, .game-and-watch .btn-secondary {
   color: #FFF;
   background-color: #706f6a; }
-  .game-and-watch .btn:hover, .game-and-watch .btn.active, .game-and-watch .dropdown-item:hover, .game-and-watch .dropdown-item.active {
-    background-color: #565551 !important; }
+  .game-and-watch .btn:hover, .game-and-watch .btn.active, .game-and-watch .btn:active, .game-and-watch .dropdown-item:hover, .game-and-watch .dropdown-item.active, .game-and-watch .dropdown-item:active, .game-and-watch .btn-secondary:hover, .game-and-watch .btn-secondary.active, .game-and-watch .btn-secondary:active {
+    background-color: #565551 !important;
+    box-shadow: none !important;
+    border-color: #565551 !important; }
 
 .game-and-watch .btn {
   color: #FFF; }
@@ -10191,11 +10197,13 @@ a.text-dark:focus, a.text-dark:hover {
     .lucas .secondarynav .navbar-brand .pathfill {
       fill: #FFF; }
 
-.lucas .btn, .lucas .dropdown-item {
+.lucas .btn, .lucas .dropdown-item, .lucas .btn-secondary {
   color: #FFF;
   background-color: #cb4a0d; }
-  .lucas .btn:hover, .lucas .btn.active, .lucas .dropdown-item:hover, .lucas .dropdown-item.active {
-    background-color: #9b380a !important; }
+  .lucas .btn:hover, .lucas .btn.active, .lucas .btn:active, .lucas .dropdown-item:hover, .lucas .dropdown-item.active, .lucas .dropdown-item:active, .lucas .btn-secondary:hover, .lucas .btn-secondary.active, .lucas .btn-secondary:active {
+    background-color: #9b380a !important;
+    box-shadow: none !important;
+    border-color: #9b380a !important; }
 
 .lucas .btn {
   color: #FFF; }
@@ -10223,6 +10231,55 @@ a.text-dark:focus, a.text-dark:hover {
 .lucas .dropdown-menu, .lucas #sort {
   background-color: #f05f1b; }
 
+.pikachu:hover.nav-characters li > span {
+  background: #DCAE23 !important; }
+
+.pikachu .secondarynav {
+  background-color: #DCAE23; }
+  .pikachu .secondarynav .dropdown-menu {
+    background-color: #DCAE23; }
+  .pikachu .secondarynav .navbar-brand {
+    color: #431c0b !important; }
+    .pikachu .secondarynav .navbar-brand .pathfill {
+      fill: #431c0b; }
+
+.pikachu .btn, .pikachu .dropdown-item, .pikachu .btn-secondary {
+  color: #431c0b;
+  background-color: #b08b1c; }
+  .pikachu .btn:hover, .pikachu .btn.active, .pikachu .btn:active, .pikachu .dropdown-item:hover, .pikachu .dropdown-item.active, .pikachu .dropdown-item:active, .pikachu .btn-secondary:hover, .pikachu .btn-secondary.active, .pikachu .btn-secondary:active {
+    background-color: #846815 !important;
+    box-shadow: none !important;
+    border-color: #846815 !important; }
+
+.pikachu .btn {
+  color: #FFF; }
+
+.pikachu.card-deck .card-image-top {
+  background-color: #DCAE23;
+  color: #431c0b; }
+
+.pikachu.card-deck .card-body .btn {
+  background-color: #b08b1c;
+  border-color: transparent !important; }
+
+.pikachu.nav-characters:before {
+  background: #DCAE23; }
+
+.pikachu li > span {
+  background: rgba(220, 174, 35, 0.8) !important;
+  color: #431c0b !important; }
+
+.pikachu .nav-moves a {
+  position: relative; }
+  .pikachu .nav-moves a:before {
+    background: rgba(220, 174, 35, 0.5) !important; }
+
+.pikachu .dropdown-menu, .pikachu #sort {
+  background-color: #DCAE23; }
+
+.pikachu.card-deck .btn {
+  color: #FFF; }
+
 .robin:hover.nav-characters li > span {
   background: #ce82de !important; }
 
@@ -10235,11 +10292,13 @@ a.text-dark:focus, a.text-dark:hover {
     .robin .secondarynav .navbar-brand .pathfill {
       fill: #FFF; }
 
-.robin .btn, .robin .dropdown-item {
+.robin .btn, .robin .dropdown-item, .robin .btn-secondary {
   color: #FFF;
   background-color: #be5ad3; }
-  .robin .btn:hover, .robin .btn.active, .robin .dropdown-item:hover, .robin .dropdown-item.active {
-    background-color: #ac34c6 !important; }
+  .robin .btn:hover, .robin .btn.active, .robin .btn:active, .robin .dropdown-item:hover, .robin .dropdown-item.active, .robin .dropdown-item:active, .robin .btn-secondary:hover, .robin .btn-secondary.active, .robin .btn-secondary:active {
+    background-color: #ac34c6 !important;
+    box-shadow: none !important;
+    border-color: #ac34c6 !important; }
 
 .robin .btn {
   color: #FFF; }
@@ -10279,11 +10338,13 @@ a.text-dark:focus, a.text-dark:hover {
     .zelda .secondarynav .navbar-brand .pathfill {
       fill: #FFF; }
 
-.zelda .btn, .zelda .dropdown-item {
+.zelda .btn, .zelda .dropdown-item, .zelda .btn-secondary {
   color: #FFF;
   background-color: #9453a8; }
-  .zelda .btn:hover, .zelda .btn.active, .zelda .dropdown-item:hover, .zelda .dropdown-item.active {
-    background-color: #764286 !important; }
+  .zelda .btn:hover, .zelda .btn.active, .zelda .btn:active, .zelda .dropdown-item:hover, .zelda .dropdown-item.active, .zelda .dropdown-item:active, .zelda .btn-secondary:hover, .zelda .btn-secondary.active, .zelda .btn-secondary:active {
+    background-color: #764286 !important;
+    box-shadow: none !important;
+    border-color: #764286 !important; }
 
 .zelda .btn {
   color: #FFF; }

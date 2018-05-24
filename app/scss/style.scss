@@ -40,11 +40,13 @@ $button-primary-active:darken($button-primary, 15%);
             }
         }
     }
-    .btn, .dropdown-item{
+    .btn, .dropdown-item, .btn-secondary{
         color:$text-colour;
         background-color:darken($char, 10%);
-        &:hover, &.active{
+        &:hover, &.active, &:active{
             background-color:darken($char, 20%) !important;
+            box-shadow:none !important;
+            border-color: darken($char, 20%) !important;
         }
     }
     .btn{
@@ -81,7 +83,7 @@ $button-primary-active:darken($button-primary, 15%);
     @include character-styles(#feda00, $text-dark);
     &.card-deck{
         .btn{
-            color:$text-light;
+             color:$text-light;
         }
     }
 }
@@ -90,6 +92,14 @@ $button-primary-active:darken($button-primary, 15%);
 }
 .lucas{
     @include character-styles(#f05f1b, $text-light);
+}
+.pikachu{
+    @include character-styles(#DCAE23, $text-dark);
+    &.card-deck{
+        .btn{
+            color:$text-light;
+        }
+    }
 }
 .robin{
     @include character-styles(#ce82de, $text-light);
