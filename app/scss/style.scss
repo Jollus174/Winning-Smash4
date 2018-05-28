@@ -40,13 +40,13 @@ $button-primary-active:darken($button-primary, 15%);
             }
         }
     }
-    .btn, .dropdown-item, .btn-secondary{
+    .btn, .dropdown-item, .btn-secondary, #secondarynav-dropdown{
         color:$text-colour;
         background-color:darken($char, 10%);
         &:hover, &.active, &:active{
             background-color:darken($char, 20%) !important;
             box-shadow:none !important;
-            border-color: darken($char, 20%) !important;
+            border-color: darken($char, 20%);
         }
     }
     .btn{
@@ -100,6 +100,9 @@ $button-primary-active:darken($button-primary, 15%);
             color:$text-light;
         }
     }
+    #secondarynav-dropdown{
+        color:$text-light;
+    }
 }
 .robin{
     @include character-styles(#ce82de, $text-light);
@@ -109,8 +112,6 @@ $button-primary-active:darken($button-primary, 15%);
 }
 
 /* Cards */
-
-/* --- Temporary style, the BG colour will normally be auto-generated --- */
 .card{
     .characterImage{
         background-repeat: no-repeat;
@@ -130,6 +131,7 @@ $button-primary-active:darken($button-primary, 15%);
         // padding:0.75rem 1.25rem;
         .btn-group > .btn{
             margin-left:0;
+            margin: 0.25rem;
         }
         button{
             margin-right:5px;
@@ -144,27 +146,9 @@ $button-primary-active:darken($button-primary, 15%);
     margin-bottom:10px;
 }
 
-
-/* --- CAAAARDS --- */
-
-// https://stackoverflow.com/questions/10929458/sass-converting-hex-to-rgba-for-background-opacity
-// @mixin background-opacity($color, $opacity:0.3){
-//     background:
-// }
-
-// babeh's first mix-in :)
-// not yet
-//@mixin
-
-
-
-
 .nav-characters li > span{
     transition:all 0.2s ease;
 }
-
-
-// nav-characters bowser
 
 /* --- */
 
@@ -906,9 +890,19 @@ body.animating{
     border-top-right-radius: 0;
     box-shadow: 0 3px 3px rgba(0,0,0,.175);
 }
-.dropdown-toggle::after{
-    margin-left: 0.55em;
-    vertical-align: 0.155em;
+#secondarynav-dropdown{
+    border:none;
+    box-shadow:none;
+    &:after{
+        margin-left: 0.55em;
+        vertical-align: 0.155em;
+    }
+    span{
+        width: 95%;
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 }
 
 
@@ -931,8 +925,6 @@ body{
     z-index:6;
     position:absolute;
     // position:fixed;
-
-
 
     #character-wrapper-back{
         float:left;
@@ -1597,38 +1589,60 @@ body.show-ledgeFsmash .grid-ledgeFsmash{display:block;}
 }
 
 
-#characterModal.active{
-    position:fixed;
-    z-index:10;
-    margin:0 !important;
-    padding:0;
-    width:auto;
-    left:0;
-    right:0;
-    top:0;
-    bottom:0;
-    display:block !important;
-    transition:background-color 0.3s ease;
+#characterModal{
+    &.active{
+        position:fixed;
+        z-index:10;
+        margin:0 !important;
+        padding:0;
+        width:auto;
+        left:0;
+        right:0;
+        top:0;
+        bottom:0;
+        display:block !important;
+        transition:background-color 0.3s ease;
+        .characterContainer{
+            position: absolute;
+            z-index: 10;
+            max-width: 600px !important;
+            float: none;
+            outline: 3px solid #FFF;
+            overflow-y:scroll;
+            -webkit-overflow-scrolling:touch;
+            background:#FFF;
+            left:10px;
+            right:10px;
+            top:0;
+            bottom:0;
+            margin:55px auto 20px;
+        }
+        .characterName{
+            display: block;
+            position: absolute;
+            margin:auto;
+            bottom: 5px;
+            left: 5px;
+            background: rgba(0,0,0,0.5);
+            padding: 3px 8px;
+            border-radius: 5px;
+            color: #FFF;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+    }
 }
-
-/*#characterModal.active .grid-index{display:none;}*/
-
-
-#characterModal.active .characterContainer{
-    /*will-change: transform;*/ /* Don't know what this does. Stolen from pokedex.org styles */ /* ??? This stops the rage sticky bar from sticking! */
-    position: absolute;
-    z-index: 10;
-    max-width: 600px !important;
-    float: none;
-    outline: 3px solid #FFF;
-    overflow-y:scroll;
-    -webkit-overflow-scrolling:touch;
-    background:#FFF;
-    left:10px;
-    right:10px;
-    top:0;
-    bottom:0;
-    margin:55px auto 20px;
+.hide-stages{
+    #characterModal{
+        .stages{
+            > div > .col-12{
+                &:first-child{
+                    display:block;
+                }
+                display:none;
+            }
+        }
+    }
 }
 
 .modalUnderlay{
@@ -1647,22 +1661,6 @@ body.show-ledgeFsmash .grid-ledgeFsmash{display:block;}
     z-index: 9;
     opacity:1;
     transition:background-color 0.2s ease;
-}
-
-
-
-#characterModal.active .characterName{
-    display: block;
-    position: absolute;
-    margin:auto;
-    bottom: 5px;
-    left: 5px;
-    background: rgba(0,0,0,0.5);
-    padding: 3px 8px;
-    border-radius: 5px;
-    color: #FFF;
-    font-weight: 700;
-    text-transform: uppercase;
 }
 
 .backButton{
@@ -2240,8 +2238,11 @@ tr.table-descs td{
     }
 
 
-    #secondarynav .dropdown{
-        top:3px;
+    #secondarynav{
+        .dropdown{
+            // top:3px;
+            margin-top:3px;
+        }
     }
     
     #filtersbar-container{
@@ -2278,18 +2279,15 @@ tr.table-descs td{
 
             #secondarynav-container{
                 position:fixed;
-                #filtersbar-container{
-                    // top:109px;
-                    //top:43px;
-                }
-                #filters-bar{
+                #secondarynav{
+                    .dropdown{
+                        span{
+                            display:inline;
+                        }
+                    }
                 }
                 #info{
                     transform: translate(-220px, 0);
-                }
-                #sort{
-                    // transform: translate(-220px, 0);
-                    // margin-left: 220px;
                 }
             }
 

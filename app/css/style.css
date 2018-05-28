@@ -10056,13 +10056,13 @@ a.text-dark:focus, a.text-dark:hover {
     .bowser .secondarynav .navbar-brand .pathfill {
       fill: #FFF; }
 
-.bowser .btn, .bowser .dropdown-item, .bowser .btn-secondary {
+.bowser .btn, .bowser .dropdown-item, .bowser .btn-secondary, .bowser #secondarynav-dropdown {
   color: #FFF;
   background-color: #235240; }
-  .bowser .btn:hover, .bowser .btn.active, .bowser .btn:active, .bowser .dropdown-item:hover, .bowser .dropdown-item.active, .bowser .dropdown-item:active, .bowser .btn-secondary:hover, .bowser .btn-secondary.active, .bowser .btn-secondary:active {
+  .bowser .btn:hover, .bowser .btn.active, .bowser .btn:active, .bowser .dropdown-item:hover, .bowser .dropdown-item.active, .bowser .dropdown-item:active, .bowser .btn-secondary:hover, .bowser .btn-secondary.active, .bowser .btn-secondary:active, .bowser #secondarynav-dropdown:hover, .bowser #secondarynav-dropdown.active, .bowser #secondarynav-dropdown:active {
     background-color: #142e24 !important;
     box-shadow: none !important;
-    border-color: #142e24 !important; }
+    border-color: #142e24; }
 
 .bowser .btn {
   color: #FFF; }
@@ -10102,13 +10102,13 @@ a.text-dark:focus, a.text-dark:hover {
     .donkey-kong .secondarynav .navbar-brand .pathfill {
       fill: #431c0b; }
 
-.donkey-kong .btn, .donkey-kong .dropdown-item, .donkey-kong .btn-secondary {
+.donkey-kong .btn, .donkey-kong .dropdown-item, .donkey-kong .btn-secondary, .donkey-kong #secondarynav-dropdown {
   color: #431c0b;
   background-color: #cbae00; }
-  .donkey-kong .btn:hover, .donkey-kong .btn.active, .donkey-kong .btn:active, .donkey-kong .dropdown-item:hover, .donkey-kong .dropdown-item.active, .donkey-kong .dropdown-item:active, .donkey-kong .btn-secondary:hover, .donkey-kong .btn-secondary.active, .donkey-kong .btn-secondary:active {
+  .donkey-kong .btn:hover, .donkey-kong .btn.active, .donkey-kong .btn:active, .donkey-kong .dropdown-item:hover, .donkey-kong .dropdown-item.active, .donkey-kong .dropdown-item:active, .donkey-kong .btn-secondary:hover, .donkey-kong .btn-secondary.active, .donkey-kong .btn-secondary:active, .donkey-kong #secondarynav-dropdown:hover, .donkey-kong #secondarynav-dropdown.active, .donkey-kong #secondarynav-dropdown:active {
     background-color: #988200 !important;
     box-shadow: none !important;
-    border-color: #988200 !important; }
+    border-color: #988200; }
 
 .donkey-kong .btn {
   color: #FFF; }
@@ -10151,13 +10151,13 @@ a.text-dark:focus, a.text-dark:hover {
     .game-and-watch .secondarynav .navbar-brand .pathfill {
       fill: #FFF; }
 
-.game-and-watch .btn, .game-and-watch .dropdown-item, .game-and-watch .btn-secondary {
+.game-and-watch .btn, .game-and-watch .dropdown-item, .game-and-watch .btn-secondary, .game-and-watch #secondarynav-dropdown {
   color: #FFF;
   background-color: #706f6a; }
-  .game-and-watch .btn:hover, .game-and-watch .btn.active, .game-and-watch .btn:active, .game-and-watch .dropdown-item:hover, .game-and-watch .dropdown-item.active, .game-and-watch .dropdown-item:active, .game-and-watch .btn-secondary:hover, .game-and-watch .btn-secondary.active, .game-and-watch .btn-secondary:active {
+  .game-and-watch .btn:hover, .game-and-watch .btn.active, .game-and-watch .btn:active, .game-and-watch .dropdown-item:hover, .game-and-watch .dropdown-item.active, .game-and-watch .dropdown-item:active, .game-and-watch .btn-secondary:hover, .game-and-watch .btn-secondary.active, .game-and-watch .btn-secondary:active, .game-and-watch #secondarynav-dropdown:hover, .game-and-watch #secondarynav-dropdown.active, .game-and-watch #secondarynav-dropdown:active {
     background-color: #565551 !important;
     box-shadow: none !important;
-    border-color: #565551 !important; }
+    border-color: #565551; }
 
 .game-and-watch .btn {
   color: #FFF; }
@@ -10197,13 +10197,13 @@ a.text-dark:focus, a.text-dark:hover {
     .lucas .secondarynav .navbar-brand .pathfill {
       fill: #FFF; }
 
-.lucas .btn, .lucas .dropdown-item, .lucas .btn-secondary {
+.lucas .btn, .lucas .dropdown-item, .lucas .btn-secondary, .lucas #secondarynav-dropdown {
   color: #FFF;
   background-color: #cb4a0d; }
-  .lucas .btn:hover, .lucas .btn.active, .lucas .btn:active, .lucas .dropdown-item:hover, .lucas .dropdown-item.active, .lucas .dropdown-item:active, .lucas .btn-secondary:hover, .lucas .btn-secondary.active, .lucas .btn-secondary:active {
+  .lucas .btn:hover, .lucas .btn.active, .lucas .btn:active, .lucas .dropdown-item:hover, .lucas .dropdown-item.active, .lucas .dropdown-item:active, .lucas .btn-secondary:hover, .lucas .btn-secondary.active, .lucas .btn-secondary:active, .lucas #secondarynav-dropdown:hover, .lucas #secondarynav-dropdown.active, .lucas #secondarynav-dropdown:active {
     background-color: #9b380a !important;
     box-shadow: none !important;
-    border-color: #9b380a !important; }
+    border-color: #9b380a; }
 
 .lucas .btn {
   color: #FFF; }
@@ -10243,13 +10243,13 @@ a.text-dark:focus, a.text-dark:hover {
     .pikachu .secondarynav .navbar-brand .pathfill {
       fill: #431c0b; }
 
-.pikachu .btn, .pikachu .dropdown-item, .pikachu .btn-secondary {
+.pikachu .btn, .pikachu .dropdown-item, .pikachu .btn-secondary, .pikachu #secondarynav-dropdown {
   color: #431c0b;
   background-color: #b08b1c; }
-  .pikachu .btn:hover, .pikachu .btn.active, .pikachu .btn:active, .pikachu .dropdown-item:hover, .pikachu .dropdown-item.active, .pikachu .dropdown-item:active, .pikachu .btn-secondary:hover, .pikachu .btn-secondary.active, .pikachu .btn-secondary:active {
+  .pikachu .btn:hover, .pikachu .btn.active, .pikachu .btn:active, .pikachu .dropdown-item:hover, .pikachu .dropdown-item.active, .pikachu .dropdown-item:active, .pikachu .btn-secondary:hover, .pikachu .btn-secondary.active, .pikachu .btn-secondary:active, .pikachu #secondarynav-dropdown:hover, .pikachu #secondarynav-dropdown.active, .pikachu #secondarynav-dropdown:active {
     background-color: #846815 !important;
     box-shadow: none !important;
-    border-color: #846815 !important; }
+    border-color: #846815; }
 
 .pikachu .btn {
   color: #FFF; }
@@ -10280,6 +10280,9 @@ a.text-dark:focus, a.text-dark:hover {
 .pikachu.card-deck .btn {
   color: #FFF; }
 
+.pikachu #secondarynav-dropdown {
+  color: #FFF; }
+
 .robin:hover.nav-characters li > span {
   background: #ce82de !important; }
 
@@ -10292,13 +10295,13 @@ a.text-dark:focus, a.text-dark:hover {
     .robin .secondarynav .navbar-brand .pathfill {
       fill: #FFF; }
 
-.robin .btn, .robin .dropdown-item, .robin .btn-secondary {
+.robin .btn, .robin .dropdown-item, .robin .btn-secondary, .robin #secondarynav-dropdown {
   color: #FFF;
   background-color: #be5ad3; }
-  .robin .btn:hover, .robin .btn.active, .robin .btn:active, .robin .dropdown-item:hover, .robin .dropdown-item.active, .robin .dropdown-item:active, .robin .btn-secondary:hover, .robin .btn-secondary.active, .robin .btn-secondary:active {
+  .robin .btn:hover, .robin .btn.active, .robin .btn:active, .robin .dropdown-item:hover, .robin .dropdown-item.active, .robin .dropdown-item:active, .robin .btn-secondary:hover, .robin .btn-secondary.active, .robin .btn-secondary:active, .robin #secondarynav-dropdown:hover, .robin #secondarynav-dropdown.active, .robin #secondarynav-dropdown:active {
     background-color: #ac34c6 !important;
     box-shadow: none !important;
-    border-color: #ac34c6 !important; }
+    border-color: #ac34c6; }
 
 .robin .btn {
   color: #FFF; }
@@ -10338,13 +10341,13 @@ a.text-dark:focus, a.text-dark:hover {
     .zelda .secondarynav .navbar-brand .pathfill {
       fill: #FFF; }
 
-.zelda .btn, .zelda .dropdown-item, .zelda .btn-secondary {
+.zelda .btn, .zelda .dropdown-item, .zelda .btn-secondary, .zelda #secondarynav-dropdown {
   color: #FFF;
   background-color: #9453a8; }
-  .zelda .btn:hover, .zelda .btn.active, .zelda .btn:active, .zelda .dropdown-item:hover, .zelda .dropdown-item.active, .zelda .dropdown-item:active, .zelda .btn-secondary:hover, .zelda .btn-secondary.active, .zelda .btn-secondary:active {
+  .zelda .btn:hover, .zelda .btn.active, .zelda .btn:active, .zelda .dropdown-item:hover, .zelda .dropdown-item.active, .zelda .dropdown-item:active, .zelda .btn-secondary:hover, .zelda .btn-secondary.active, .zelda .btn-secondary:active, .zelda #secondarynav-dropdown:hover, .zelda #secondarynav-dropdown.active, .zelda #secondarynav-dropdown:active {
     background-color: #764286 !important;
     box-shadow: none !important;
-    border-color: #764286 !important; }
+    border-color: #764286; }
 
 .zelda .btn {
   color: #FFF; }
@@ -10373,7 +10376,6 @@ a.text-dark:focus, a.text-dark:hover {
   background-color: #aa74ba; }
 
 /* Cards */
-/* --- Temporary style, the BG colour will normally be auto-generated --- */
 .card .characterImage {
   background-repeat: no-repeat;
   background-position: right center;
@@ -10390,7 +10392,8 @@ a.text-dark:focus, a.text-dark:hover {
 .card .card-body {
   position: relative; }
   .card .card-body .btn-group > .btn {
-    margin-left: 0; }
+    margin-left: 0;
+    margin: 0.25rem; }
   .card .card-body button {
     margin-right: 5px;
     border: 2px solid; }
@@ -10401,7 +10404,6 @@ a.text-dark:focus, a.text-dark:hover {
 #characterSelection .card {
   margin-bottom: 10px; }
 
-/* --- CAAAARDS --- */
 .nav-characters li > span {
   transition: all 0.2s ease; }
 
@@ -11012,9 +11014,17 @@ body.animating #primary-nav {
   border-top-right-radius: 0;
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.175); }
 
-.dropdown-toggle::after {
-  margin-left: 0.55em;
-  vertical-align: 0.155em; }
+#secondarynav-dropdown {
+  border: none;
+  box-shadow: none; }
+  #secondarynav-dropdown:after {
+    margin-left: 0.55em;
+    vertical-align: 0.155em; }
+  #secondarynav-dropdown span {
+    width: 95%;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis; }
 
 body {
   overflow-x: hidden; }
@@ -11611,25 +11621,37 @@ body.show-ledgeFsmash .grid-ledgeFsmash {
   bottom: 0;
   display: block !important;
   transition: background-color 0.3s ease; }
+  #characterModal.active .characterContainer {
+    position: absolute;
+    z-index: 10;
+    max-width: 600px !important;
+    float: none;
+    outline: 3px solid #FFF;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    background: #FFF;
+    left: 10px;
+    right: 10px;
+    top: 0;
+    bottom: 0;
+    margin: 55px auto 20px; }
+  #characterModal.active .characterName {
+    display: block;
+    position: absolute;
+    margin: auto;
+    bottom: 5px;
+    left: 5px;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 3px 8px;
+    border-radius: 5px;
+    color: #FFF;
+    font-weight: 700;
+    text-transform: uppercase; }
 
-/*#characterModal.active .grid-index{display:none;}*/
-#characterModal.active .characterContainer {
-  /*will-change: transform;*/
-  /* Don't know what this does. Stolen from pokedex.org styles */
-  /* ??? This stops the rage sticky bar from sticking! */
-  position: absolute;
-  z-index: 10;
-  max-width: 600px !important;
-  float: none;
-  outline: 3px solid #FFF;
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
-  background: #FFF;
-  left: 10px;
-  right: 10px;
-  top: 0;
-  bottom: 0;
-  margin: 55px auto 20px; }
+.hide-stages #characterModal .stages > div > .col-12 {
+  display: none; }
+  .hide-stages #characterModal .stages > div > .col-12:first-child {
+    display: block; }
 
 .modalUnderlay {
   -webkit-transform-origin: 0 0;
@@ -11647,19 +11669,6 @@ body.show-ledgeFsmash .grid-ledgeFsmash {
   z-index: 9;
   opacity: 1;
   transition: background-color 0.2s ease; }
-
-#characterModal.active .characterName {
-  display: block;
-  position: absolute;
-  margin: auto;
-  bottom: 5px;
-  left: 5px;
-  background: rgba(0, 0, 0, 0.5);
-  padding: 3px 8px;
-  border-radius: 5px;
-  color: #FFF;
-  font-weight: 700;
-  text-transform: uppercase; }
 
 .backButton {
   position: absolute;
@@ -12119,7 +12128,7 @@ tr.table-descs td {
     .toggle-sidedrawer #primarynav .navbar-nav {
       transform: translate(0, 0); }
   #secondarynav .dropdown {
-    top: 3px; }
+    margin-top: 3px; }
   #filtersbar-container {
     position: absolute;
     width: 100%; }
@@ -12141,6 +12150,8 @@ tr.table-descs td {
     padding: 3px 0 8px; }
   body.fixed-navbar #secondarynav-container {
     position: fixed; }
+    body.fixed-navbar #secondarynav-container #secondarynav .dropdown span {
+      display: inline; }
     body.fixed-navbar #secondarynav-container #info {
       transform: translate(-220px, 0); }
   body.toggle-sidedrawer #secondarynav-container #info {

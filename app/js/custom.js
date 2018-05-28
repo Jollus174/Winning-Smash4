@@ -383,7 +383,7 @@ var Custom = function(){
 				// variables for transition it backwards
 				// Remember this!
 
-				$('body').removeClass('character-grid-active');
+				$('body').removeClass('character-grid-active').removeClass('hide-stages');
 				inClass = 'pt-page-moveFromLeft pt-page-ontop';
 				outClass = 'pt-page-moveToRight';
 			}
@@ -487,7 +487,7 @@ var Custom = function(){
 				var $dropdownMenu = $('#secondarynav-dropdown-menu');
 				$('#secondarynav .dropdown').show();
 				// adjust the dropdown title
-				$dropdown.html(moveName);
+				$('#secondarynav-dropdown span').html(moveName);
 
 				// nuke the existing contents of the dropdown menu
 				$dropdownMenu.empty()
@@ -645,7 +645,11 @@ var Custom = function(){
 
 			///////
 
-			$('body').addClass('character-grid-active');
+			if(characterName == 'Pikachu'){
+				$('body').addClass('character-grid-active hide-stages');
+			} else {
+				$('body').addClass('character-grid-active');
+			}
 
 			// Refilter the menu based on pre-selected filter (only really applicable with difficulty, since is determined dynamically. All other attrs static)
 			executeActiveFilter(self);
@@ -653,7 +657,7 @@ var Custom = function(){
 			// Ensure the correct 'Special Info' box is displayed, but only if it's not empty!
 			var $specialInfo = $('#info-' + id);
 			// console.log($specialInfo.text());
-			if($specialInfo.text().trim().length){
+			if($specialInfo.html().trim().length){
 				$specialInfo.addClass('active');
 			} else {
 				$('.special-info').removeClass('active');

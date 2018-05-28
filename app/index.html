@@ -210,7 +210,7 @@
 						<div class="navbar-header">
 							<div class="dropdown show">
 								<button class="btn btn-secondary btn-sm dropdown-toggle" id="secondarynav-dropdown" aria-haspopup="true" aria-expanded="false" style="font-size:0.95rem;">
-									Dropdown link
+									<span>Dropdown link</span>
 								</button>
 							</div>
 						</div>
@@ -279,7 +279,7 @@
 
 					<div class="col-12" data-bind="foreach: killConfirm">
 						<!-- ko foreach: moves -->
-						<div class="alert alert-info special-info" role="alert" data-bind="text: specialInfo, attr: {id: 'info-' + $parent.url + '-' + moveUrl}"></div>
+						<div class="alert alert-info special-info" role="alert" data-bind="html: specialInfo, attr: {id: 'info-' + $parent.url + '-' + moveUrl}"></div>
 						<!-- /ko -->
 					</div>
 
