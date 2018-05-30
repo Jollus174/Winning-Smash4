@@ -10889,6 +10889,9 @@ body.animating #primary-nav {
   font-size: 0.8em; }
   .special-info.active {
     display: inline-block; }
+  .special-info a {
+    font-weight: 700;
+    color: inherit; }
 
 #side-menu .sidebar-header {
   width: 100%;
@@ -11462,8 +11465,10 @@ body {
   left: 6px; }
 
 .grid-difficulty {
-  top: 30px;
-  left: 2px; }
+  top: 34px;
+  left: 2px;
+  display: flex;
+  flex-flow: row nowrap; }
 
 .grid-fallspeed {
   top: 56px;
@@ -11499,15 +11504,15 @@ body {
   border-radius: 3px;
   display: none; }
 
-.grid-ledgeFsmash span span {
-  text-transform: uppercase;
-  font-weight: 700; }
-
 .grid-ledgeFsmash.no {
   background: #e03838; }
 
 .grid-ledgeFsmash.yes {
   background: #4caf50; }
+
+.grid-ledgeFsmash span span {
+  text-transform: uppercase;
+  font-weight: 700; }
 
 body.show-extra-info .extra-info {
   display: block; }
@@ -11537,7 +11542,7 @@ body.show-ledgeFsmash .grid-ledgeFsmash {
   display: inline-block;
   padding: 0 3px; }
 
-.very-hard, .hard, .average, .easy, .very-easy {
+.very-hard, .hard, .average, .easy, .very-easy, .grid-specialInfo {
   text-transform: uppercase;
   padding: 1px 4px;
   border-radius: 3px;
@@ -11545,6 +11550,13 @@ body.show-ledgeFsmash .grid-ledgeFsmash {
   font-weight: 700;
   color: #FFF;
   margin-left: 4px; }
+
+.grid-specialInfo {
+  display: none;
+  background: #f34abf; }
+
+.pikachu .grid-specialInfo {
+  display: block; }
 
 .very-hard {
   background: #dd2c00; }

@@ -356,18 +356,6 @@ var Custom = function(){
 			activateCharacterGrid(self);
 			retrieveCharUrl(self);
 
-			// If the grid wasn't yet active, then run this function again, the URL may have had a part[2]!
-			// MAKE SURE TO KEEP THAT PART TWO AFTERWARDS!!
-			// Need to rebuild a URL
-			/*var fullUrl = decodeURI(window.location.hash);
-			console.log('fullUrl is:' + fullUrl);
-			var rebuiltUrl = '';
-			console.log(window.location.pathname);
-			//changeUrl($('.moveBtn.active').attr('id'));
-
-
-			console.log(window.location.href);
-*/
 			// variables for transition it forwards
 			outClass = 'pt-page-moveToLeft';
 			inClass = 'pt-page-moveFromRight pt-page-ontop';
@@ -542,16 +530,21 @@ var Custom = function(){
 				var $character = $('.' + index + '.character-box');
 				var minPercent = value[0];
 				var maxPercent = value[1];
+				var specialInfo = value[2];
+				console.log(specialInfo);
 				//console.log(index + 's attrs are: min percent is: ' + minPercent + ' and max percent is: ' + maxPercent);
 
 				$character.find('.grid-minPercent').text(minPercent);
 				$character.find('.grid-maxPercent').text(maxPercent);
+				$character.find('.grid-specialInfo').text(specialInfo);
 				// Need to update characterModal percents too
 				$('#characterModal').find('.minPerc').text(minPercent);
 				$('#characterModal').find('.maxPerc').text(maxPercent);
+				$('#characterModal').find('.grid-specialInfo').text(specialInfo);
 
 				$character.attr('data-minpercent', minPercent);
 				$character.attr('data-maxpercent', maxPercent);
+
 				// IT WOOOOOORKS!!!
 
 				var $difficulty = $character.find('.difficulty');
@@ -657,7 +650,7 @@ var Custom = function(){
 			// Ensure the correct 'Special Info' box is displayed, but only if it's not empty!
 			var $specialInfo = $('#info-' + id);
 			// console.log($specialInfo.text());
-			if($specialInfo.html().trim().length){
+			if($specialInfo.text().trim().length){
 				$specialInfo.addClass('active');
 			} else {
 				$('.special-info').removeClass('active');
@@ -1303,8 +1296,9 @@ var Custom = function(){
 		// setSendPageView(currentMove + '/info');
 	};
 
-	$('#info').click(function(){
+	$('#info, .info').click(function(e){
 		changeUrl($('.moveBtn.active').attr('id') + '/info');
+		e.preventDefault();
 	});
 
 	$('#filter-dropdown-btn').click(function(e){

@@ -113,8 +113,6 @@ var characters = (function() {
                 vm.index = data.index;
                 vm.moveUrl = data.moveUrl;
 
-                vm.specialInfo = data.specialInfo;
-
                 // Deeper
                 // https://jsfiddle.net/wfs569gf/
                 vm.moves = data.moves;
@@ -200,12 +198,7 @@ var characters = (function() {
 
                 vm.minPercent = parseInt(data.minPercent);
                 vm.maxPercent = parseInt(data.maxPercent);
-
-                vm.percRange = ko.computed(function(){
-                    var percRange = vm.maxPercent - vm.minPercent;
-                    percRange++; // Need percent range to be inclusive
-                    return percRange;
-                }, this);
+                vm.specialInfo = data.specialInfo;
 
                 vm.difficultyValue = ko.computed(function(){
                     var floatiness = vm.fallspeed * vm.gravity;
