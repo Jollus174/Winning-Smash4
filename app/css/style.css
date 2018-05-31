@@ -10232,56 +10232,50 @@ a.text-dark:focus, a.text-dark:hover {
   background-color: #f05f1b; }
 
 .pikachu:hover.nav-characters li > span {
-  background: #DCAE23 !important; }
+  background: #daaa17 !important; }
 
 .pikachu .secondarynav {
-  background-color: #DCAE23; }
+  background-color: #daaa17; }
   .pikachu .secondarynav .dropdown-menu {
-    background-color: #DCAE23; }
+    background-color: #daaa17; }
   .pikachu .secondarynav .navbar-brand {
-    color: #431c0b !important; }
+    color: #FFF !important; }
     .pikachu .secondarynav .navbar-brand .pathfill {
-      fill: #431c0b; }
+      fill: #FFF; }
 
 .pikachu .btn, .pikachu .dropdown-item, .pikachu .btn-secondary, .pikachu #secondarynav-dropdown {
-  color: #431c0b;
-  background-color: #b08b1c; }
+  color: #FFF;
+  background-color: #ac8612; }
   .pikachu .btn:hover, .pikachu .btn.active, .pikachu .btn:active, .pikachu .dropdown-item:hover, .pikachu .dropdown-item.active, .pikachu .dropdown-item:active, .pikachu .btn-secondary:hover, .pikachu .btn-secondary.active, .pikachu .btn-secondary:active, .pikachu #secondarynav-dropdown:hover, .pikachu #secondarynav-dropdown.active, .pikachu #secondarynav-dropdown:active {
-    background-color: #846815 !important;
+    background-color: #7e620d !important;
     box-shadow: none !important;
-    border-color: #846815; }
+    border-color: #7e620d; }
 
 .pikachu .btn {
   color: #FFF; }
 
 .pikachu.card-deck .card-image-top {
-  background-color: #DCAE23;
-  color: #431c0b; }
+  background-color: #daaa17;
+  color: #FFF; }
 
 .pikachu.card-deck .card-body .btn {
-  background-color: #b08b1c;
+  background-color: #ac8612;
   border-color: transparent !important; }
 
 .pikachu.nav-characters:before {
-  background: #DCAE23; }
+  background: #daaa17; }
 
 .pikachu li > span {
-  background: rgba(220, 174, 35, 0.8) !important;
-  color: #431c0b !important; }
+  background: rgba(218, 170, 23, 0.8) !important;
+  color: #FFF !important; }
 
 .pikachu .nav-moves a {
   position: relative; }
   .pikachu .nav-moves a:before {
-    background: rgba(220, 174, 35, 0.5) !important; }
+    background: rgba(218, 170, 23, 0.5) !important; }
 
 .pikachu .dropdown-menu, .pikachu #sort {
-  background-color: #DCAE23; }
-
-.pikachu.card-deck .btn {
-  color: #FFF; }
-
-.pikachu #secondarynav-dropdown {
-  color: #FFF; }
+  background-color: #daaa17; }
 
 .robin:hover.nav-characters li > span {
   background: #ce82de !important; }
@@ -11563,7 +11557,7 @@ body.show-ledgeFsmash .grid-ledgeFsmash {
   display: none;
   background: #f34abf; }
 
-.pikachu .grid-specialInfo {
+.pikachu .grid-specialInfo, .hide-stages .grid-specialInfo {
   display: block; }
 
 .very-hard {

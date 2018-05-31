@@ -455,12 +455,8 @@
 			"moveUrl": "up-throw-thunder-bdi",
 
 			 "info": [
-				"Robin's <strong>Checkmate</strong> kill confirm consists of a Down Throw followed-up with a strong hit Up Air with the Levin Sword between certain percents.",
-				"If the victim has no DI or DI's the Up Air up, the max-% kill threshold will increase to <em>4-6% later</em>, with the min-% unaffected.",
-				"The calculator assumes that the victim is DI-ing the move optimally, with them <strong>DI-ing out the Down Throw</strong>, and <strong>DI-ing in Up Air</strong>.",
-				"Robin normally cannot Checkmate Bowser or Charizard, because of their heavy weight and Robin's 7 frame (!) jump squat.",
-				"It's possible for Robin to do if they double jump off a stage ledge or platform. If Robin can catch these two characters at the ledge, their KO ranges are:<br><strong>Bowser: 108 - 126%</strong><br><strong>Charizard: 99 - 113%</strong>",
-				"More information on this can be viewed <a href='https://www.youtube.com/watch?v=sP9svcfxu_o&t=49s' target='_blank' rel='noopener'>here</a>.",
+                "<strong>A GIF collection of different setups and DIs can be viewed through <a href='https://imgur.com/a/j3ekG' target='_blank' rel='noopener'>here</a>.",
+                "Because of the nature of the game's hitstun calculations and launch speed, the are deadzones in between this combo's 'true' percents. These are listed as follows:",
                 "Little Mac: 116-125% :: 96-105% (100 rage) :: 83-92% (150 rage)",
                 "Shulk: 136-138% :: 113-116% (100 rage) :: 99-101% (150 rage)",
                 "Shulk (Buster): 132-137% :: 110-115% (100 rage) :: 95-100% (150 rage)",
@@ -469,16 +465,16 @@
                 "Shulk (Smash): 118-119% :: 97-99% (100 rage) :: 83-85% (150 rage)"
 			],
 			
-			"giphy": ["https://giphy.com/embed/42waw3Y7dAjlWulyRB", ""],
+            "giphy": ["https://giphy.com/embed/1BhDgxLRnr0Smjfg0l", ""],
 
             "specialInfo": "<strong>IMPORTANT</strong> Due to the nature of this combo, there are several deadzones within the kill percents where it is no longer true. Check the <a class='info' href=''>info section</a> for more info.<br>Since this not strictly a kill confirm, only Final Destination is included as a stage, and the percents listed are the percents that this combo is simply true, not when it kills.<br>Also included within the character grid is how far Pikachu needs to run to connect this combo.",
 
-			"rage50": "[-4, -4]",
-			"rage60": "[-6, -6]",
-			"rage80": "[-13, -13]",
-			"rage100": "[-16, -16]",
-			"rage125": "[-22, -22]",
-			"rage150": "[-28, -28]",
+			"rage50": "[-8, -9]",
+			"rage60": "[-10, -12]",
+			"rage80": "[-14, -16]",
+			"rage100": "[-18, -22]",
+			"rage125": "[-24, -29]",
+			"rage150": "[-30, -37]",
 
 			"bfNormalMin": 5,
 			"bfLowPlatMin": -5,
@@ -565,24 +561,24 @@
 			"moveUrl": "up-throw-thunder-fdi",
 
 			 "info": [
-				"Robin's <strong>Checkmate</strong> kill confirm consists of a Down Throw followed-up with a strong hit Up Air with the Levin Sword between certain percents.",
-				"If the victim has no DI or DI's the Up Air up, the max-% kill threshold will increase to <em>4-6% later</em>, with the min-% unaffected.",
-				"The calculator assumes that the victim is DI-ing the move optimally, with them <strong>DI-ing out the Down Throw</strong>, and <strong>DI-ing in Up Air</strong>.",
-				"Robin normally cannot Checkmate Bowser or Charizard, because of their heavy weight and Robin's 7 frame (!) jump squat.",
-				"It's possible for Robin to do if they double jump off a stage ledge or platform. If Robin can catch these two characters at the ledge, their KO ranges are:<br><strong>Bowser: 108 - 126%</strong><br><strong>Charizard: 99 - 113%</strong>",
-				"More information on this can be viewed <a href='https://www.youtube.com/watch?v=sP9svcfxu_o&t=49s' target='_blank' rel='noopener'>here</a>."
+                "<strong>A GIF collection of different setups and DIs can be viewed through <a href='https://imgur.com/a/j3ekG' target='_blank' rel='noopener'>here</a>.",
+                "Because of the nature of the game's hitstun calculations and launch speed, the are deadzones in between this combo's 'true' percents. These are listed as follows:",
+                "Corrin: 132-133% :: 110-112% (100 rage) :: 95-97% (150 rage)",
+                "Lucario: 126-129%",
+                "Meta Knight: 114-115% :: 94-96% (100 rage) :: 81-83% (150 rage)",
+                "Ryu: 121-127% :: 99-106% (100 rage) :: 85-92% (150 rage)"
 			],
 			
-			"giphy": ["https://giphy.com/embed/1BhDgxLRnr0Smjfg0l", ""],
+            "giphy": ["https://giphy.com/embed/42waw3Y7dAjlWulyRB", ""],
 
 			"specialInfo": "<strong>IMPORTANT</strong> Due to the nature of this combo, there are several deadzones within the kill percents where it is no longer true. Check the <a class='info' href=''>info section</a> for more info.<br>Since this not strictly a kill confirm, only Final Destination is included as a stage, and the percents listed are the percents that this combo is simply true, not when it kills.<br>Also included within the character grid is how far Pikachu needs to run to connect this combo.",
 
-			"rage50": "[-4, -4]",
-			"rage60": "[-6, -6]",
-			"rage80": "[-13, -13]",
-			"rage100": "[-16, -16]",
-			"rage125": "[-22, -22]",
-			"rage150": "[-28, -28]",
+            "rage50": "[-8, -9]",
+            "rage60": "[-10, -12]",
+            "rage80": "[-14, -16]",
+            "rage100": "[-18, -22]",
+            "rage125": "[-24, -29]",
+            "rage150": "[-30, -37]",
 
 			"bfNormalMin": 5,
 			"bfLowPlatMin": -5,

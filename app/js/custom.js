@@ -387,6 +387,7 @@ var Custom = function(){
 				// Initiate transition between MOVES OF SAME CHARACTER
 				$('#secondarynav-dropdown-menu').removeClass('show');
 				_fadeOut(document.getElementById('characterGrid'), function(){
+					$('.special-info').removeClass('active');
 					activateCharacterGrid(self);
 					console.log('transitioning between same character!');
 					_fadeIn(document.getElementById('characterGrid'));

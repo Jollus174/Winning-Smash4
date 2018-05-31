@@ -94,15 +94,15 @@ $button-primary-active:darken($button-primary, 15%);
     @include character-styles(#f05f1b, $text-light);
 }
 .pikachu{
-    @include character-styles(#DCAE23, $text-dark);
-    &.card-deck{
-        .btn{
-            color:$text-light;
-        }
-    }
-    #secondarynav-dropdown{
-        color:$text-light;
-    }
+    @include character-styles(#daaa17, $text-light);
+    // &.card-deck{
+    //     .btn{
+    //         color:$text-light;
+    //     }
+    // }
+    // #secondarynav-dropdown{
+    //     color:$text-light;
+    // }
 }
 .robin{
     @include character-styles(#ce82de, $text-light);
@@ -1546,7 +1546,7 @@ body.show-ledgeFsmash .grid-ledgeFsmash{display:block;}
     display:none;
     background:#f34abf;
 }
-.pikachu{
+.pikachu, .hide-stages{
     .grid-specialInfo{
         display:block;
     }
