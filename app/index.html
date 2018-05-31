@@ -9,18 +9,34 @@
     <meta name="description" content="A Super Smash Bros. for Wii U Progressive Web App for calculating kill confirm ranges such as Robin's Checkmate, Donkey Kong's Ding Dong and Bowser's Koo-Pah." />
 
 	<!-- Moving the Firebase initialisation codes to bottom, as they break all the JS scripts in Microsoft Edge browser -->
-	<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+	<!-- Production -->
+	<!-- <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
 	<script>
-	  // Initialize Firebase
-	  var config = {
-	    apiKey: "AIzaSyCMA_USBZQAaA9J_Rtrx0J2WEh6BsLr2cc",
-	    authDomain: "winning-at-smash4.firebaseapp.com",
-	    databaseURL: "https://winning-at-smash4.firebaseio.com",
-	    projectId: "winning-at-smash4",
-	    storageBucket: "",
-	    messagingSenderId: "159867334563"
-	  };
-	  firebase.initializeApp(config);
+		// Initialize Firebase
+		var config = {
+			apiKey: "AIzaSyCMA_USBZQAaA9J_Rtrx0J2WEh6BsLr2cc",
+			authDomain: "winning-at-smash4.firebaseapp.com",
+			databaseURL: "https://winning-at-smash4.firebaseio.com",
+			projectId: "winning-at-smash4",
+			storageBucket: "",
+			messagingSenderId: "159867334563"
+		};
+		firebase.initializeApp(config);
+	</script> -->
+
+	<!-- Staging -->
+	<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+	<script>
+		// Initialize Firebase
+		var config = {
+			apiKey: "AIzaSyBjYsv8pKDoL4EKoGSaGcxtVjWsQM_boCY",
+			authDomain: "winning-at-smash4-staging.firebaseapp.com",
+			databaseURL: "https://winning-at-smash4-staging.firebaseio.com",
+			projectId: "winning-at-smash4-staging",
+			storageBucket: "winning-at-smash4-staging.appspot.com",
+			messagingSenderId: "161318436424"
+		};
+		firebase.initializeApp(config);
 	</script>
 
     <!-- build:css css/style.min.css -->

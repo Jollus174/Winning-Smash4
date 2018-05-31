@@ -11667,6 +11667,9 @@ body.show-ledgeFsmash .grid-ledgeFsmash {
   .hide-stages #characterModal .stages > div > .col-12:first-child {
     display: block; }
 
+.hide-stages .modifiers-stages {
+  display: none; }
+
 .modalUnderlay {
   -webkit-transform-origin: 0 0;
   transform-origin: 0 0; }
