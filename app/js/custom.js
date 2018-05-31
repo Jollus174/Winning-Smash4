@@ -459,6 +459,9 @@ var Custom = function(){
 			$('.rageModifier h3').text(characterName + ' Rage Modifier');
 			//$('body').addClass('character-grid-active');
 
+			$('.special-info').removeClass('active');
+
+
 			var moveName = $this.html();
 
 			var id = $this.attr('id');
@@ -532,7 +535,6 @@ var Custom = function(){
 				var minPercent = value[0];
 				var maxPercent = value[1];
 				var specialInfo = value[2];
-				console.log(specialInfo);
 				//console.log(index + 's attrs are: min percent is: ' + minPercent + ' and max percent is: ' + maxPercent);
 
 				$character.find('.grid-minPercent').text(minPercent);
@@ -642,6 +644,7 @@ var Custom = function(){
 				$('body').addClass('character-grid-active hide-stages');
 			} else {
 				$('body').addClass('character-grid-active');
+				$('body').removeClass('hide-stages');
 			}
 
 			// Refilter the menu based on pre-selected filter (only really applicable with difficulty, since is determined dynamically. All other attrs static)
