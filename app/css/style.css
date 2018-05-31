@@ -11019,15 +11019,23 @@ body.animating #primary-nav {
 
 #secondarynav-dropdown {
   border: none;
-  box-shadow: none; }
+  box-shadow: none;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center; }
   #secondarynav-dropdown:after {
-    margin-left: 0.55em;
-    vertical-align: 0.155em; }
-  #secondarynav-dropdown span {
-    width: 95%;
+    display: none; }
+  #secondarynav-dropdown .dropdown-toggle {
+    display: flex;
+    flex-flow: row nowrap; }
+  #secondarynav-dropdown span.text {
+    width: 100%;
     display: block;
     overflow: hidden;
-    text-overflow: ellipsis; }
+    text-overflow: ellipsis;
+    margin: 0;
+    padding: 0;
+    padding-right: 5px; }
 
 body {
   overflow-x: hidden; }

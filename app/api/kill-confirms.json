@@ -451,7 +451,7 @@
 	"moves": [
 		{
 			"moveId": 0,
-			"moveName": "Up Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Thunder (Backward DI)",
+			"moveName": "Up Throw Thunder (Backward DI)",
 			"moveUrl": "up-throw-thunder-bdi",
 
 			 "info": [
@@ -471,7 +471,7 @@
 			
 			"giphy": ["https://giphy.com/embed/42waw3Y7dAjlWulyRB", ""],
 
-            "specialInfo": "<strong>IMPORTANT</strong> Due to the nature of this combo, there are several deadzones within the kill percents where it is no longer true. Check the <a class='info' href=''>info section</a> for more info.<br><br>Since this not strictly a kill confirm, only Final Destination is included as a stage, and the percents listed are the percents that this combo is simply true, not when it kills.<br><br>Also included within the character grid is how far Pikachu needs to run to connect this combo.",
+            "specialInfo": "<strong>IMPORTANT</strong> Due to the nature of this combo, there are several deadzones within the kill percents where it is no longer true. Check the <a class='info' href=''>info section</a> for more info.<br>Since this not strictly a kill confirm, only Final Destination is included as a stage, and the percents listed are the percents that this combo is simply true, not when it kills.<br>Also included within the character grid is how far Pikachu needs to run to connect this combo.",
 
 			"rage50": "[-4, -4]",
 			"rage60": "[-6, -6]",
@@ -561,7 +561,7 @@
 
 		{
 			"moveId": 1,
-			"moveName": "Up Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Thunder (Forward DI)",
+			"moveName": "Up Throw Thunder (Forward DI)",
 			"moveUrl": "up-throw-thunder-fdi",
 
 			 "info": [
@@ -575,7 +575,7 @@
 			
 			"giphy": ["https://giphy.com/embed/1BhDgxLRnr0Smjfg0l", ""],
 
-			"specialInfo": "<strong>IMPORTANT</strong> Due to the nature of this combo, there are several deadzones within the kill percents where it is no longer true. Check the <a class='info' href=''>info section</a> for more info.<br><br>Since this not strictly a kill confirm, only Final Destination is included as a stage, and the percents listed are the percents that this combo is simply true, not when it kills.<br><br>Also included within the character grid is how far Pikachu needs to run to connect this combo.",
+			"specialInfo": "<strong>IMPORTANT</strong> Due to the nature of this combo, there are several deadzones within the kill percents where it is no longer true. Check the <a class='info' href=''>info section</a> for more info.<br>Since this not strictly a kill confirm, only Final Destination is included as a stage, and the percents listed are the percents that this combo is simply true, not when it kills.<br>Also included within the character grid is how far Pikachu needs to run to connect this combo.",
 
 			"rage50": "[-4, -4]",
 			"rage60": "[-6, -6]",

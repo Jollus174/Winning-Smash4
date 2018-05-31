@@ -897,15 +897,28 @@ body.animating{
 #secondarynav-dropdown{
     border:none;
     box-shadow:none;
+    display:flex;
+    flex-flow:row nowrap;
+    align-items:center;
+    // &:after{
+    //     margin-left: 0.55em;
+    //     vertical-align: 0.155em;
+    // }
     &:after{
-        margin-left: 0.55em;
-        vertical-align: 0.155em;
+        display:none;
     }
-    span{
-        width: 95%;
+    .dropdown-toggle{
+        display:flex;
+        flex-flow:row nowrap;
+    }
+    span.text{
+        width:100%;
         display: block;
         overflow: hidden;
         text-overflow: ellipsis;
+        margin:0;
+        padding:0;
+        padding-right:5px;
     }
 }
 

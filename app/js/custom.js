@@ -475,7 +475,7 @@ var Custom = function(){
 				var $dropdownMenu = $('#secondarynav-dropdown-menu');
 				$('#secondarynav .dropdown').show();
 				// adjust the dropdown title
-				$('#secondarynav-dropdown span').html(moveName);
+				$('#secondarynav-dropdown').html('<span class="text">' + moveName + '</span><span class="caret"></span>');
 
 				// nuke the existing contents of the dropdown menu
 				$dropdownMenu.empty()
@@ -591,7 +591,6 @@ var Custom = function(){
 
 					$difficulty.attr('class', 'difficulty').addClass(diff);
 					$difficulty.find('.text-difficulty').text(diff);
-
 
 				} else {
 					// Hello Zelda
@@ -1381,7 +1380,7 @@ var Custom = function(){
 
 
 		// Deactivate the filter toggle
-		$('#secondarynav .dropdown').removeClass('show');
+		// $('#secondarynav .dropdown').removeClass('show');
 		$('#secondarynav #secondarynav-dropdown-menu').removeClass('show');
 		$('body').removeClass('toggle-aboutmenu');
 		$('body').removeClass('filtersActive');
