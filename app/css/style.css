@@ -10056,6 +10056,9 @@ a.text-dark:focus, a.text-dark:hover {
     .bowser .secondarynav .navbar-brand .pathfill {
       fill: #FFF; }
 
+.bowser#characterModal .secondarynav {
+  border-bottom: 1px solid #2a644e; }
+
 .bowser .btn, .bowser .dropdown-item, .bowser .btn-secondary, .bowser #secondarynav-dropdown {
   color: #FFF;
   background-color: #235240; }
@@ -10101,6 +10104,9 @@ a.text-dark:focus, a.text-dark:hover {
     color: #431c0b !important; }
     .donkey-kong .secondarynav .navbar-brand .pathfill {
       fill: #431c0b; }
+
+.donkey-kong#characterModal .secondarynav {
+  border-bottom: 1px solid #e5c400; }
 
 .donkey-kong .btn, .donkey-kong .dropdown-item, .donkey-kong .btn-secondary, .donkey-kong #secondarynav-dropdown {
   color: #431c0b;
@@ -10151,6 +10157,9 @@ a.text-dark:focus, a.text-dark:hover {
     .game-and-watch .secondarynav .navbar-brand .pathfill {
       fill: #FFF; }
 
+.game-and-watch#characterModal .secondarynav {
+  border-bottom: 1px solid #7d7c76; }
+
 .game-and-watch .btn, .game-and-watch .dropdown-item, .game-and-watch .btn-secondary, .game-and-watch #secondarynav-dropdown {
   color: #FFF;
   background-color: #706f6a; }
@@ -10196,6 +10205,9 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF !important; }
     .lucas .secondarynav .navbar-brand .pathfill {
       fill: #FFF; }
+
+.lucas#characterModal .secondarynav {
+  border-bottom: 1px solid #e3520f; }
 
 .lucas .btn, .lucas .dropdown-item, .lucas .btn-secondary, .lucas #secondarynav-dropdown {
   color: #FFF;
@@ -10243,6 +10255,9 @@ a.text-dark:focus, a.text-dark:hover {
     .pikachu .secondarynav .navbar-brand .pathfill {
       fill: #FFF; }
 
+.pikachu#characterModal .secondarynav {
+  border-bottom: 1px solid #c39815; }
+
 .pikachu .btn, .pikachu .dropdown-item, .pikachu .btn-secondary, .pikachu #secondarynav-dropdown {
   color: #FFF;
   background-color: #ac8612; }
@@ -10289,6 +10304,9 @@ a.text-dark:focus, a.text-dark:hover {
     .robin .secondarynav .navbar-brand .pathfill {
       fill: #FFF; }
 
+.robin#characterModal .secondarynav {
+  border-bottom: 1px solid #c66ed9; }
+
 .robin .btn, .robin .dropdown-item, .robin .btn-secondary, .robin #secondarynav-dropdown {
   color: #FFF;
   background-color: #be5ad3; }
@@ -10334,6 +10352,9 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF !important; }
     .zelda .secondarynav .navbar-brand .pathfill {
       fill: #FFF; }
+
+.zelda#characterModal .secondarynav {
+  border-bottom: 1px solid #a063b2; }
 
 .zelda .btn, .zelda .dropdown-item, .zelda .btn-secondary, .zelda #secondarynav-dropdown {
   color: #FFF;
@@ -11033,39 +11054,33 @@ body.animating #primary-nav {
 
 body {
   overflow-x: hidden; }
-  body #secondarynav .navbar-header {
-    display: none; }
-  body.show-secondary-dropdown .navbar-header {
-    display: block !important; }
 
-#secondarynav {
-  display: block;
+#secondarynav-topmenu {
   transition: background-color 0.2s ease;
   z-index: 6;
   position: absolute; }
-  #secondarynav #character-wrapper-back {
-    float: left;
+  #secondarynav-topmenu #character-wrapper-back {
     padding: 0.3125rem 0.45rem;
     transition: background 0.2s ease;
     cursor: pointer;
     position: relative;
     z-index: 5;
     margin-right: 0.7rem; }
-    #secondarynav #character-wrapper-back:hover {
+    #secondarynav-topmenu #character-wrapper-back:hover {
       background: rgba(0, 0, 0, 0.08); }
-    #secondarynav #character-wrapper-back:focus {
+    #secondarynav-topmenu #character-wrapper-back:focus {
       outline: inherit; }
-  #secondarynav #secondarynav-container {
+  #secondarynav-topmenu #secondarynav-container {
     position: fixed;
     width: 100%; }
-  #secondarynav .navbar-top-links {
+  #secondarynav-topmenu .navbar-top-links {
     float: right;
     padding-top: 0.3125rem;
     padding-bottom: 0.3125rem; }
-  #secondarynav #filtersbar-container {
+  #secondarynav-topmenu #filtersbar-container {
     position: relative;
     top: 50px; }
-  #secondarynav .dropdown-menu {
+  #secondarynav-topmenu .dropdown-menu {
     top: 54px;
     padding: 0 7.5px;
     text-align: left;
@@ -11076,12 +11091,37 @@ body {
     padding: 0 7.5px;
     display: none;
     box-shadow: none; }
-    #secondarynav .dropdown-menu.show {
+    #secondarynav-topmenu .dropdown-menu.show {
       display: block; }
-    #secondarynav .dropdown-menu .dropdown-item {
+    #secondarynav-topmenu .dropdown-menu .dropdown-item {
       transition: background-color 0.2s ease; }
-      #secondarynav .dropdown-menu .dropdown-item:hover {
+      #secondarynav-topmenu .dropdown-menu .dropdown-item:hover {
         cursor: pointer; }
+
+.multiple-moves #secondarynav-topmenu {
+  position: fixed; }
+
+.multiple-moves #moveName {
+  display: none; }
+
+.multiple-moves .secondarynav {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: left;
+  overflow: hidden; }
+  .multiple-moves .secondarynav .navbar-header {
+    position: relative;
+    display: flex;
+    flex-grow: 1;
+    flex-flow: row nowrap;
+    cursor: all-scroll;
+    overflow: hidden; }
+    @media (max-width: 500px) {
+      .multiple-moves .secondarynav .navbar-header {
+        overflow-x: scroll; } }
+  .multiple-moves .secondarynav .btn-secondary {
+    margin-right: 5px;
+    border: none; }
 
 #filtersbar-container {
   position: relative;
@@ -11120,17 +11160,8 @@ body {
   #character-wrapper .container-fluid {
     background: #eee; }
 
-.secondarynav {
-  background-color: #8a8983;
-  display: none; }
-
 .animating #character-wrapper, .character-grid-active #character-wrapper {
   display: block; }
-
-#secondarynav .navbar-header {
-  position: relative;
-  float: left;
-  overflow: hidden; }
 
 .legend-keys {
   width: 160px;
@@ -11470,7 +11501,8 @@ body {
   top: 34px;
   left: 2px;
   display: flex;
-  flex-flow: row nowrap; }
+  flex-flow: column wrap;
+  align-items: flex-start; }
 
 .grid-fallspeed {
   top: 56px;
@@ -12146,6 +12178,8 @@ tr.table-descs td {
       transform: translate(0, 0); }
   #secondarynav .dropdown {
     margin-top: 3px; }
+  .grid-difficulty {
+    flex-flow: row nowrap; }
   #filtersbar-container {
     position: absolute;
     width: 100%; }
@@ -12157,8 +12191,6 @@ tr.table-descs td {
     width: 100%;
     z-index: 10; }
     body #secondarynav-container #info {
-      position: relative;
-      top: 3px;
       transform: translate(0, 0); }
   body #filtersbar-container {
     background: #eeeeee;

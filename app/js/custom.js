@@ -474,15 +474,7 @@ var Custom = function(){
 			// If more than one, then display the move-switcher dropdown in secondarynav
 			var btnCount = $this.parent().find('.moveBtn').length;
 			if(btnCount > 1){
-				$('#secondarynav #moveName').hide();
-				var $dropdown = $('#secondarynav-dropdown');
-				var $dropdownMenu = $('#secondarynav-dropdown-menu');
-				$('#secondarynav .dropdown').show();
-				// adjust the dropdown title
-				$('#secondarynav-dropdown').html('<span class="text">' + moveName + '</span><span class="caret"></span>');
-
-				// nuke the existing contents of the dropdown menu
-				$dropdownMenu.empty()
+				$('body').addClass('multiple-moves');
 
 				// Need to see if the generated button has the same id as the current move
 				// If it does, add a class of 'active' to it so we know that it's already selected
@@ -494,6 +486,7 @@ var Custom = function(){
 					return className;
 				}
 
+				$('#secondarynav-topmenu .navbar-header, #characterModal .secondarynav .navbar-header').empty();
 				// generate those dropdown items
 				$this.parent().find('.moveBtn').each(function(){
 					$button = $(this);
@@ -501,13 +494,11 @@ var Custom = function(){
 					var href = $button.attr('href');
 					var moveUrl = $button.data('moveurl');
 					var buttonId = $button.attr('id');
-					$dropdownMenu.append('<a class="dropdown-item ' + checkIdAndAddActive(id, buttonId) + '" data-ident=' + buttonId + '>' + name + '</a>');
-					$('body').addClass('show-secondary-dropdown');
+
+					$('#secondarynav-topmenu .navbar-header, #characterModal .secondarynav .navbar-header').append('<button class="btn btn-secondary btn-sm ' + checkIdAndAddActive(id, buttonId) + '" data-ident=' + buttonId + '>' + name + '</button>');
 				});
 			} else {
-				$('#secondarynav #moveName').html(moveName).show();
-				$('#secondarynav .dropdown').hide();
-				$('body').removeClass('show-secondary-dropdown');
+				$('body').removeClass('multiple-moves');
 			}
 
 			var percentDifferences = [];

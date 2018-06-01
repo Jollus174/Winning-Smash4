@@ -212,7 +212,7 @@
 
 				<!-- secondary nav -->
 				<div id="secondarynav-container" class="row border-bottom"> <!-- .nav-wrapper -->
-					<nav id="secondarynav" class="navbar navbar-light navbar-static-top secondarynav">
+					<nav id="secondarynav-topmenu" class="navbar navbar-light navbar-static-top secondarynav">
 
 						<button id="character-wrapper-back" class="navbar-toggler navbar-toggler-left navbar-brand --white" href="#">
 							<svg class="icon-arrowback" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -220,21 +220,16 @@
 								<path class="pathfill" d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path>
 							</svg>
 						</button>
-						<div id="moveName" class="navbar-brand --white" style="font-size:100%;position: relative;">
-							Move Name
-						</div>
 						<div class="navbar-header">
-							<div class="dropdown show">
-								<button class="btn btn-secondary btn-sm dropdown-toggle" id="secondarynav-dropdown" aria-haspopup="true" aria-expanded="false" style="font-size:0.95rem;">
-									<span>Dropdown link</span>
-								</button>
+							<div id="moveName" class="navbar-brand --white" style="font-size:100%;position: relative;">
+								Move Name
 							</div>
 						</div>
 						
-						<button id="info" class="btn btn-sm float-right" style="margin-left:10px;"><i class="fa fa-info-circle" aria-hidden="true"></i><span style="padding-left:10px; text-transform: none;" class="d-none d-md-inline">More Information</span></button>
-						<div id="secondarynav-dropdown-menu" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+						<button id="info" class="btn btn-sm" style="margin-left:10px;"><i class="fa fa-info-circle" aria-hidden="true"></i><span style="padding-left:10px; text-transform: none;" class="d-none d-md-inline">More Information</span></button>
+						<!-- <div id="secondarynav-dropdown-menu" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 							<span class="text">Dropdown menu item</span><span class="caret"></span>
-						</div>
+						</div> -->
 
 					</nav>
 				</div>
@@ -594,6 +589,19 @@
 		</div>
 
 		<div class="characterContainer clearfix">
+
+			<nav class="navbar navbar-light navbar-static-top secondarynav">
+
+				<div class="navbar-header">
+					<div class="button-row">
+						<button class="btn btn-secondary btn-sm" style="font-size:0.95rem;">
+							<span>Dropdown link</span>
+						</button>
+					</div>
+				</div>
+
+			</nav>
+
 			<div class="characterImageContainer">
 				<div id="characterModalImage" class="characterImage"></div>
 
