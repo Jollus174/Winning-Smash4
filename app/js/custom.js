@@ -1294,7 +1294,7 @@ var Custom = function(){
 		transitionCharacterBackward($('.character-box.selected'));
 	});
 	$('.backButton').click(function(){
-		changeUrl($('.moveBtn.active').attr('id'));
+		changeUrl($('.card-body .moveBtn.active').attr('id'));
 	});
 
 	$('#about').click(function(e){
@@ -1441,4 +1441,24 @@ var Custom = function(){
 		var dataref = $(this).data('ref');
 		$('.card-deck #' + dataref).trigger('click');
 	});
+
+	//////////////////////////////////////////////////////////////////////////////
+
+	// Current time:
+	// 1528012042
+
+	// 16 June is:
+	// 1529135239
+
+	// Generate 'new' circles
+	var generateCircles = function(endDate, target){
+		// Take the current date, and compare it to the target date
+		// If the current date is before the endDate, then add class of 'New' to the CARD in target
+		var currentEpochTime = Math.floor((new Date).getTime()/1000);
+		if(currentEpochTime < endDate){
+			$('.card-deck' + target).addClass('new');
+			$('.list-unstyled' + target).addClass('new');
+		}
+	};
+	generateCircles(1529135239, '.pikachu');
 };
