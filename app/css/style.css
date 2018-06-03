@@ -17555,7 +17555,9 @@ body {
 
 #page-wrapper #secondarynav-container {
   position: absolute;
-  top: 0; }
+  top: 0;
+  z-index: 1;
+  width: 100%; }
 
 .animating #page-wrapper #secondarynav-container {
   top: 0 !important;
@@ -17570,7 +17572,8 @@ body {
   left: 0;
   right: 0;
   margin: 0;
-  display: block; }
+  display: block;
+  z-index: 1; }
 
 .fixed-navbar #moveName {
   display: none; }
