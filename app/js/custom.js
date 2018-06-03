@@ -686,7 +686,10 @@ var Custom = function(){
 			}
 
 			// Window to go to top on click, pretty much just for the sake of mobile and table viewports
-			window.scrollTo(0, 0);
+			// Only scroll up if no multi-moves
+			if(!$('body').hasClass('multiple-moves')){
+				window.scrollTo(0, 0);
+			}
 		};
 	};
 
