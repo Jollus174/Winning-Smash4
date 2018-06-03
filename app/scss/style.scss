@@ -1215,7 +1215,13 @@ body{
 .animating{
     #page-wrapper{
         #secondarynav-container{
-            top:-56px;
+            // This fixes the fixed navbar jumping around during transitions!
+            top:0 !important;
+            position:absolute !important;
+            transform: translate(0, 0);
+            #info{
+                transform:translate(0, 0);
+            }
         }
     }
 }

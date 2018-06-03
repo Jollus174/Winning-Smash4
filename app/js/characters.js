@@ -110,9 +110,10 @@ var characters = (function() {
                 vm.name = data.name;
                 vm.charId = data.charId;
                 vm.hashUrl = ko.observable('#' + vm.charId);
-                vm.index = data.index;
-                vm.moveIndex = data.moveIndex;
+                vm.index = parseInt(data.index);
+                vm.moveIndex = parseInt(data.moveIndex);
                 vm.moveId = data.moveId;
+                vm.id = data.id;
 
                 // Deeper
                 // https://jsfiddle.net/wfs569gf/
@@ -164,7 +165,7 @@ var characters = (function() {
             if(data){
                 var vm = new characterAttrsViewModel();
 
-                vm.index = data.index;
+                vm.charIndex = parseInt(data.charIndex);
                 vm.name = data.name;
                 vm.weight = data.weight;
                 vm.fallspeed = data.fallspeed;

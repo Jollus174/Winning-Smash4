@@ -96,11 +96,12 @@ var Custom = function(){
 
 	function reassignIndexes(){
 		console.log('reindexing!');
-		var elements = document.querySelectorAll('.character-box');
+		// var elements = document.querySelectorAll('.character-box');
 		$('.character-box').each(function(){
 			var $this = $(this);
 			var theIndex = parseInt($this.index());
-			$this.find('.grid-index span').text(theIndex + 1);
+			// var theIndex = parseInt($this.attr('data-charindex'));
+			$this.find('.grid-index span').text(theIndex);
 		})
 	}
 	// Initialise the reindexing
@@ -121,14 +122,15 @@ var Custom = function(){
 				// Ascending order
 				return $(right).data('name') == $(left).data('name') ? 0 : ($(right).data('name') < $(left).data('name') ? -1 : 1)
 			});
+			$gridItem.detach().appendTo($grid);
+			reassignIndexes();
 		} else {
 			$gridItem.sort(function(left, right){
 				return $(left).data('name') == $(right).data('name') ? 0 : ($(left).data('name') < $(right).data('name') ? -1 : 1)
 			});
-			
+			$gridItem.detach().appendTo($grid);
+			reassignIndexes();
 		}
-		$gridItem.detach().appendTo($grid);
-		reassignIndexes();
 	};
 
 	function sortWeight(self){
@@ -139,13 +141,14 @@ var Custom = function(){
 			$gridItem.sort(function(lower, higher){
 				return $(higher).data('weight') - $(lower).data('weight');
 			});
+			$gridItem.detach().appendTo($grid);
 		} else {
 			$gridItem.sort(function(lower, higher){
 				return $(lower).data('weight') - $(higher).data('weight');
 			});
+			$gridItem.detach().appendTo($grid);
+			reassignIndexes();
 		}
-		$gridItem.detach().appendTo($grid);
-		reassignIndexes();
 	};
 
 	function sortDifficulty(self){
@@ -159,28 +162,29 @@ var Custom = function(){
 				$gridItem.sort(function(lower, higher){
 					return $(higher).find('.text-percRange').text() - $(lower).find('.text-percRange').text();
 				});
+				$gridItem.detach().appendTo($grid);
 			} else {
 				$gridItem.sort(function(lower, higher){
 					return $(lower).find('.text-percRange').text() - $(higher).find('.text-percRange').text();
 				});
+				$gridItem.detach().appendTo($grid);
+				reassignIndexes();
 			}
-
 		} else {
 
 			if(self.hasClass('asc')){
 				$gridItem.sort(function(lower, higher){
 					return $(higher).data('airdodgestart') - $(lower).data('airdodgestart');
 				});
+				$gridItem.detach().appendTo($grid);
 			} else {
 				$gridItem.sort(function(lower, higher){
 					return $(lower).data('airdodgestart') - $(higher).data('airdodgestart');
 				});
+				$gridItem.detach().appendTo($grid);
+				reassignIndexes();
 			}
-
 		};
-
-		$gridItem.detach().appendTo($grid);
-		reassignIndexes();
 	};
 
 	function sortFallspeed(self){
@@ -191,13 +195,14 @@ var Custom = function(){
 			$gridItem.sort(function(lower, higher){
 				return $(higher).data('fallspeed') - $(lower).data('fallspeed');
 			});
+			$gridItem.detach().appendTo($grid);
 		} else {
 			$gridItem.sort(function(lower, higher){
 				return $(lower).data('fallspeed') - $(higher).data('fallspeed');
 			});
+			$gridItem.detach().appendTo($grid);
+			reassignIndexes();
 		}
-		$gridItem.detach().appendTo($grid);
-		reassignIndexes();
 	};
 
 	function sortGravity(self){
@@ -208,13 +213,14 @@ var Custom = function(){
 			$gridItem.sort(function(lower, higher){
 				return $(higher).data('gravity') - $(lower).data('gravity');
 			});
+			$gridItem.detach().appendTo($grid);
 		} else {
 			$gridItem.sort(function(lower, higher){
 				return $(lower).data('gravity') - $(higher).data('gravity');
 			});
+			$gridItem.detach().appendTo($grid);
+			reassignIndexes();
 		}
-		$gridItem.detach().appendTo($grid);
-		reassignIndexes();
 	};
 
 	// Detect if Sort Name filter is active
@@ -302,10 +308,7 @@ var Custom = function(){
 								// This is double-handling the 'selected' class, but this needs to be done so
 								// back nav can work in brower with character transitions...
 								//$('.character-box.' + parts[2]).addClass('selected');
-								
-								// if($body.hasClass('multiple-moves')){
-								// 	console.log('multiple moves button clicked!');
-								// } else {
+
 									if($body.hasClass('multiple-moves')){
 										console.log('moves button clicked');
 									}
@@ -313,10 +316,8 @@ var Custom = function(){
 									$('#characterModal').attr('class', 'active');
 									$('#characterGrid .character-box').removeClass('selected');
 									console.log('trying to transition forwards!');
+									activateCharacterGrid($('.card-body .moveBtn[data-moveurl=' + parts[1] + ']'));
 									activateCharacter($('.character-box.' + parts[2]));
-								// }
-								// Need a new route here for if the modal is active and the charcter move changes.
-								// parts[1] must change, while parts[2] remains same
 
 							} else {
 								activateCharacter($('.character-box.' + parts[2]));
@@ -414,7 +415,7 @@ var Custom = function(){
 				// variables for transition it backwards
 				// Remember this!
 
-				$('body').removeClass('character-grid-active hide-stages');
+				$('body').removeClass('character-grid-active');
 				inClass = 'pt-page-moveFromLeft pt-page-ontop';
 				outClass = 'pt-page-moveToRight';
 			}
@@ -664,8 +665,7 @@ var Custom = function(){
 			});
 
 			///////
-
-			if(characterName == 'Pikachu'){
+			if(characterName == 'pikachu'){
 				$('body').addClass('character-grid-active hide-stages');
 			} else {
 				$('body').addClass('character-grid-active');
@@ -676,6 +676,7 @@ var Custom = function(){
 			executeActiveFilter(self);
 
 			// Ensure the correct 'Special Info' box is displayed, but only if it's not empty!
+			console.log('moveUrl is ' + moveUrl);
 			var $specialInfo = $('#info-' + moveUrl);
 			// console.log($specialInfo.text());
 			if($specialInfo.text().trim().length){
@@ -722,7 +723,7 @@ var Custom = function(){
 
 		// Grab the data-index attr added by Knockout for each box. This is used to link the box to the JSON data that's generated in the modal
 		var $charBox = self.closest('.character-box.selected');
-		var $index = $charBox.data('index');
+		var $index = $charBox.attr('data-index');
 
 		// Character Modal initialisers
 		var $charModal = $('#characterModal');
@@ -1065,13 +1066,13 @@ var Custom = function(){
 			if($activeContainer.nextAll('.character-box').is(':visible')){
 				var $nextVisibleChar = $activeContainer.nextAll('.character-box:not(.disabled):visible').first();
 				$nextVisibleChar.addClass('selected');
-				changeUrl($('.card-body .moveBtn.active').attr('id') + '/' + $nextVisibleChar.data('url'));
+				changeUrl($('.card-body .moveBtn.active').attr('id') + '/' + $nextVisibleChar.data('id'));
 				//activateCharacter($nextVisibleChar);
 			} else {
 				// Loop backward to first VISIBLE character if press right key on last character
 				var $firstCharacter = $activeContainer.siblings('.character-box:not(.disabled):visible').first();
 				$firstCharacter.addClass('selected');
-				changeUrl($('.card-body .moveBtn.active').attr('id') + '/' + $firstCharacter.data('url'));
+				changeUrl($('.card-body .moveBtn.active').attr('id') + '/' + $firstCharacter.data('id'));
 				//activateCharacter($firstCharacter);
 			}
 		}
@@ -1084,12 +1085,12 @@ var Custom = function(){
 				//console.log('previous visible box exists')
 				var $prevVisibleChar = $activeContainer.prevAll('.character-box:not(.disabled):visible').first();
 				$prevVisibleChar.addClass('selected');
-				changeUrl($('.card-body .moveBtn.active').attr('id') + '/' + $prevVisibleChar.data('url'));
+				changeUrl($('.card-body .moveBtn.active').attr('id') + '/' + $prevVisibleChar.data('id'));
 			} else {
 				// Loop backward to first VISIBLE character if press right key on last character
 				var $lastCharacter = $activeContainer.siblings('.character-box:not(.disabled):visible').last();
 				$lastCharacter.addClass('selected');
-				changeUrl($('.card-body .moveBtn.active').attr('id') + '/' + $lastCharacter.data('url'));
+				changeUrl($('.card-body .moveBtn.active').attr('id') + '/' + $lastCharacter.data('id'));
 			}
 		}
 	}
@@ -1242,18 +1243,21 @@ var Custom = function(){
 
 		// check to see if it already has a class of 'active' first. Don't want people clicking the same button twice
 		var $this = $(this);
-		moveUrl =  $this.attr('data-moveurl');
+		var moveUrl = $this.attr('data-moveurl');
+		var $targetButton = $('.card-body .moveBtn[data-moveurl=' + moveUrl + ']');
 
 		if(!$this.hasClass('active')){
 			if($('body').hasClass('character-active')){
-				
-				var charUrl = $('.character-box.selected').attr('data-moveurl');
+				var charUrl = $('.character-box.selected').attr('data-id');
+				// This needs to exist, but won't work backwards properly
+				// activateCharacterGrid($targetButton);
+				// console.log('the result is ' + moveUrl + '/' + charUrl);
 				changeUrl(moveUrl + '/' + charUrl);
 			} else {
 				// Earlier version won't work, since the 2nd nav buttons have no IDs
 				// Bind the click of one of the other button sets to the main card buttons
 				var moveUrl = $this.attr('data-moveurl');
-				moveUrl = $('.card-body .moveBtn[data-moveurl=' + moveUrl + ']').attr('data-moveurl');
+				moveUrl = $targetButton.attr('data-moveurl');
 				// activateCharacterGrid($this);
 				changeUrl(moveUrl);
 			};

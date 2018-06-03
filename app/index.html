@@ -296,13 +296,13 @@
 
 					<div class="col-12" data-bind="foreach: killConfirm">
 						<!-- ko foreach: moves -->
-						<div class="alert alert-info special-info" role="alert" data-bind="html: specialInfo, attr: {id: 'info-' + $parent.id + '-' + moveId}"></div>
+						<div class="alert alert-info special-info" role="alert" data-bind="html: specialInfo, attr: {id: 'info-' + $parent.charId + '-' + moveId}"></div>
 						<!-- /ko -->
 					</div>
 
 					<!-- ko foreach: character -->
 					<div class="character-box col-6 col-md-4 col-lg-3" data-bind="css: id, attr: {
-						'data-index': index,
+						'data-charindex': charIndex,
 						'data-name': name,
 						'data-id': id,
 						'data-weight': weight,
@@ -322,7 +322,8 @@
 								<span class="grid-specialInfo">Far</span>
 							</div>
 							<div class="grid-index">
-								<span data-bind="text: (index + 1)"></span>
+								<!-- <span></span> -->
+								<span data-bind="text: (charIndex + 1)"></span>
 							</div>
 							<div class="grid-percRange">
 								<span class="grid-percRangeText">

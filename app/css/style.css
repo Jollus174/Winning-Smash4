@@ -16550,7 +16550,11 @@ body {
   top: 0; }
 
 .animating #page-wrapper #secondarynav-container {
-  top: -56px; }
+  top: 0 !important;
+  position: absolute !important;
+  transform: translate(0, 0); }
+  .animating #page-wrapper #secondarynav-container #info {
+    transform: translate(0, 0); }
 
 .fixed-navbar #page-wrapper #secondarynav-container {
   position: fixed;
