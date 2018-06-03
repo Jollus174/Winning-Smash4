@@ -1,4 +1,28 @@
-// This is called before kill confirms JSON has loaded if neat top of page.js
+/*************************************************************
+ *                                                           *
+ *   .=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-.      *
+ *   |                     ______                     |      *
+ *   |                  .-"      "-.                  |      *
+ *   |                 /            \                 |      *
+ *   |     _          |              |          _     |      *
+ *   |    ( \         |,  .-.  .-.  ,|         / )    |      *
+ *   |     > "=._     | )(__/  \__)( |     _.=" <     |      *
+ *   |    (_/"=._"=._ |/     /\     \| _.="_.="\_)    |      *
+ *   |           "=._"(_     ^^     _)"_.="           |      *
+ *   |               "=\__|IIIIII|__/="               |      *
+ *   |              _.="| \IIIIII/ |"=._              |      *
+ *   |    _     _.="_.="\          /"=._"=._     _    |      *
+ *   |   ( \_.="_.="     `--------`     "=._"=._/ )   |      *
+ *   |    > _.="                            "=._ <    |      *
+ *   |   (_/                                    \_)   |      *
+ *   |                                                |      *
+ *   '-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-='      *
+ *                                                           *
+ *        ABANDON ALL HOPE, ALL YE WHO ENTER HERE            *
+ *************************************************************/
+
+
+// This is called before kill confirms JSON has loaded if near top of page.js
 // Move script call back to characters.js instead
 
 var Custom = function(){
@@ -207,6 +231,7 @@ var Custom = function(){
 	// Analytics tracking function
 	function changeUrl(urlPart){
 		var part = urlPart ? urlPart : "";
+		console.log(part);
 		window.location.hash = '/' + part;
 		ga('set', 'page', window.location.href);
 		ga('send', 'pageview');
@@ -216,11 +241,13 @@ var Custom = function(){
 
 		// Get the keywords from the url
 		var temp = url.split('/')[0];
-		var parts = url.split('/')
+		var parts = url.split('/');
 
 		// If 'homescreen' does NOT exist in URL...
 		//if(baseUrl != currentUrl && baseUrl + '#' != currentUrl && baseUrl + '#/' != currentUrl && !(currentUrl.indexOf('homescreen') > -1)){
 		console.log('parts[1] is:' + parts[1] + ' and parts[2] is: ' + parts[2]);
+
+		var $body = $('body');
 
 		// and activate it
 		if(parts[1]){
@@ -253,31 +280,44 @@ var Custom = function(){
 							pageTransition($('#' + parts[1]));
 						};
 					} else if(parts[2] != 'undefined') {
+						console.log('transition to anotyher character');
 						// Parts[2] does exist, so execute those part[2] functions
 						// Make sure the appropriate moveBtn has an active class
 						// This is done by transitioning the grid, stupid!
-						if(!$('body').hasClass('character-grid-active')){
+						if(!$body.hasClass('character-grid-active')){
 							console.log('transition the grid forward initially!');
 							pageTransition($('#' + parts[1]));
 						};
 						var $parts2Selector = parts[2].length ? $('.character-box.' + parts[2]) : "";
 						// selector is being picked up correctly
-						// console.log('parts2 selector is:' + $parts2Selector);
+
 						if(parts[2] == 'info'){
 							activateInfoBox();
 						} else if ($parts2Selector.length){
 
 							// Need to see if there's already a character active
-							if($('body').hasClass('character-active')){
+							if($body.hasClass('character-active')){
+
+
 								// This is double-handling the 'selected' class, but this needs to be done so
 								// back nav can work in brower with character transitions...
 								//$('.character-box.' + parts[2]).addClass('selected');
+								
+								// if($body.hasClass('multiple-moves')){
+								// 	console.log('multiple moves button clicked!');
+								// } else {
+									if($body.hasClass('multiple-moves')){
+										console.log('moves button clicked');
+									}
 
-								$('#characterModal').attr('class', 'active');
-								$('#characterGrid .character-box').removeClass('selected');
-								console.log('trying to transition forwards!');
-								// console.log('parts[2] is: ' + parts[2]);
-								activateCharacter($('.character-box.' + parts[2]));
+									$('#characterModal').attr('class', 'active');
+									$('#characterGrid .character-box').removeClass('selected');
+									console.log('trying to transition forwards!');
+									activateCharacter($('.character-box.' + parts[2]));
+								// }
+								// Need a new route here for if the modal is active and the charcter move changes.
+								// parts[1] must change, while parts[2] remains same
+
 							} else {
 								activateCharacter($('.character-box.' + parts[2]));
 							}
@@ -299,11 +339,11 @@ var Custom = function(){
 			// Need to transition this backward
 			// Can tell when this is needed as body will have .character-grid-active
 
-			if($('body').hasClass('character-grid-active')){
+			// if($body.hasClass('character-grid-active') && (!($body.hasClass('multiple-moves')))){
+			if($body.hasClass('character-grid-active')){
 				console.log('deactivate the grid!');
 				pageTransition();
-				deactivateCharacterGrid();
-				
+				// deactivateCharacterGrid();
 			};
 		};
 	};
@@ -330,9 +370,8 @@ var Custom = function(){
 
 	function retrieveCharUrl(self){
 		// Place the character's name in #page-wrapper so I can target and do things with it
-		var $pagewrapper = $('#page-wrapper');
-		var charUrl = self.closest('.card-deck').data('url');
-		$pagewrapper.addClass(charUrl);
+		var charId = self.attr('data-charid');
+		$('#page-wrapper').addClass(charId);
 	};
 	function pageTransition(self, transitionToAnotherGrid){
 
@@ -350,7 +389,10 @@ var Custom = function(){
 
 		// Need to delay open/close function in case it's already animating. Some spastic might hit ESC twice quickly
 		// Add class of 'animating' to body and remove when the animation is finished
-		$('body').addClass('animating').removeClass('fixed-navbar');
+		$('body').addClass('animating');
+
+		// THIS IS A FIX TO STOP THE NAVBAR FROM SHIFTING DURING TRANSITION
+		// Except it breaks the bar when transitioning between characters
 
 		if(!$('body').hasClass('character-grid-active')){
 			activateCharacterGrid(self);
@@ -364,6 +406,7 @@ var Custom = function(){
 			if(transitionToAnotherGrid == true){
 				// variables for transition it to the same screen
 				// The only way this is gonna happen is if the grid is on screen and a sidemenu button is clicked, which in turn is like a card button click
+				// ^ HAHA, and I guess hindsight is 20/20. Turns out it's needed for the new Pikachu confirms. Good work past Joel
 				console.log('transitioning to another grid while one is active');
 				$nonCurrPage = $currPage;
 			} else {
@@ -371,7 +414,7 @@ var Custom = function(){
 				// variables for transition it backwards
 				// Remember this!
 
-				$('body').removeClass('character-grid-active').removeClass('hide-stages');
+				$('body').removeClass('character-grid-active hide-stages');
 				inClass = 'pt-page-moveFromLeft pt-page-ontop';
 				outClass = 'pt-page-moveToRight';
 			}
@@ -385,7 +428,6 @@ var Custom = function(){
 				console.log('we have a match!');
 
 				// Initiate transition between MOVES OF SAME CHARACTER
-				$('#secondarynav-dropdown-menu').removeClass('show');
 				_fadeOut(document.getElementById('characterGrid'), function(){
 					$('.special-info').removeClass('active');
 					activateCharacterGrid(self);
@@ -397,9 +439,6 @@ var Custom = function(){
 			} else {
 
 				// Initiate transition BETWEEN DIFFERENT CHARACTERS
-
-				// Initiate transition between MOVES OF SAME CHARACTER
-				$('#secondarynav-dropdown-menu').removeClass('show');
 
 				_fadeOut(document.getElementById('character-wrapper'), function(){
 					activateCharacterGrid(self);
@@ -434,7 +473,6 @@ var Custom = function(){
 				var $this = $(this);
 				$this.attr('class', 'pt-page pt-page-current');
 				$nonCurrPage.off( animEndEventName );
-				$('body').addClass('fixed-navbar');
 				if($('body').hasClass('viewport-desktop')){
 					 _fadeIn(document.getElementById('top-right-nav'));
 				}
@@ -450,23 +488,21 @@ var Custom = function(){
 		
 			$('.moveBtn').removeClass('active');
 			$this.addClass('active');
-			var characterId = $this.closest('.card-deck').data('index');
-			console.log('character ID is: ' + characterId + ' the strange loopback begins here!');
-			var moveId = $this.data('moveid'); // Needed for each loop below
-			//console.log('card-deck: ' + characterId + ' moveId: ' + moveId);
-			var characterName = $this.closest('.card-deck').data('name');
-			$('#nav-title').text(characterName);
+			var characterIndex = $this.closest('.card-deck').data('index');
+			// console.log('character ID is: ' + characterIndex + ' the strange loopback begins here!');
+			var moveId = $this.attr('data-moveId'); // Needed for each loop below
+			var moveIndex = $this.attr('data-moveIndex');
+			var characterName = $this.closest('.card-deck').data('charid');
+			var moveUrl = characterName + '-' + moveId
+			$('#nav-title').text($this.closest('.card-deck').data('name'));
 			$('.rageModifier h3').text(characterName + ' Rage Modifier');
 			//$('body').addClass('character-grid-active');
 
 			$('.special-info').removeClass('active');
-
+			$(body).attr('data-currentcharactergrid', characterName);
 
 			var moveName = $this.html();
-
-			var id = $this.attr('id');
-			$('#side-menu .nav-moves a').removeClass('active');
-			$('#side-menu a[data-ref=' + id + ']').addClass('active');
+			$('.moveBtn[data-id=' + moveId + ']').addClass('active');
 
 			/* --- */
 
@@ -474,41 +510,38 @@ var Custom = function(){
 			// If more than one, then display the move-switcher dropdown in secondarynav
 			var btnCount = $this.parent().find('.moveBtn').length;
 			if(btnCount > 1){
-				$('body').addClass('multiple-moves');
+				$('body').addClass('multiple-moves fixed-navbar');
 
-				// Need to see if the generated button has the same id as the current move
-				// If it does, add a class of 'active' to it so we know that it's already selected
-				function checkIdAndAddActive(moveId, buttonId){
-					var className = "";
-					if(moveId == buttonId){
-						className = "active";
-					}
-					return className;
-				}
-
-				$('#secondarynav-topmenu .navbar-header, #characterModal .secondarynav .navbar-header').empty();
+				var $secondaryNavMenus = $('#secondarynav-topmenu .navbar-header .move-selector, #characterModal .secondarynav .move-selector');
+				$secondaryNavMenus.empty();
 				// generate those dropdown items
 				$this.parent().find('.moveBtn').each(function(){
 					$button = $(this);
 					var name = $button.html();
 					var href = $button.attr('href');
+					var moveId = $button.data('moveid');
 					var moveUrl = $button.data('moveurl');
-					var buttonId = $button.attr('id');
 
-					$('#secondarynav-topmenu .navbar-header, #characterModal .secondarynav .navbar-header').append('<button class="btn btn-secondary btn-sm ' + checkIdAndAddActive(id, buttonId) + '" data-ident=' + buttonId + '>' + name + '</button>');
+					var addActiveIfSameId = moveId == $this.attr('data-moveId') ? 'active' : '';
+
+					$secondaryNavMenus.append('<button class="btn btn-secondary btn-sm moveBtn ' + addActiveIfSameId + '" data-moveurl=' + moveUrl + '>' + name + '</button>');
 				});
 			} else {
-				$('body').removeClass('multiple-moves');
+				$('body').removeClass('multiple-moves fixed-navbar');
+				$('#moveName').html(moveName);
 			}
 
-			var percentDifferences = [];
-			var percentSum = 0;
-			var minPercentSum = 0;
-			var maxPercentSum = 0
+			var percentDifferences = [],
+				percentSum = 0,
+				minPercentSum = 0,
+				maxPercentSum = 0;
 
-			$.each(killConfirmsJSON[characterId]['moves'][moveId]['percents'], function(index, value){
+			// console.log('char index is ' + characterIndex + ' and moveindex is ' + moveIndex);
+
+			$.each(killConfirmsJSON[characterIndex]['moves'][moveIndex]['percents'], function(index, value){
 				// Push these min/max percent values to an array so I can calculate an average between all of them
 				// Need this to calculate difficulties in a uniform manner
+
 				var minPercent = value[0];
 				var maxPercent = value[1];
 
@@ -518,15 +551,16 @@ var Custom = function(){
 				maxPercentSum += maxPercent;
 			});
 		
-			$.each(killConfirmsJSON[characterId]['moves'][moveId]['percents'], function(index, value){
+			$.each(killConfirmsJSON[characterIndex]['moves'][moveIndex]['percents'], function(index, value){
 
 				// this is good!
 				// https://stackoverflow.com/questions/4329092/multi-dimensional-associative-arrays-in-javascript
 				var $character = $('.' + index + '.character-box');
+				// console.log('.' + index + '.character-box');
 				var minPercent = value[0];
 				var maxPercent = value[1];
 				var specialInfo = value[2];
-				//console.log(index + 's attrs are: min percent is: ' + minPercent + ' and max percent is: ' + maxPercent);
+				// console.log(index + 's attrs are: min percent is: ' + minPercent + ' and max percent is: ' + maxPercent);
 
 				$character.find('.grid-minPercent').text(minPercent);
 				$character.find('.grid-maxPercent').text(maxPercent);
@@ -563,7 +597,7 @@ var Custom = function(){
 				// Difficult iterator for characters other than Zelda. Feck
 				// Zelda needs an alternative difficulty calculator based on the opponent's airdodge frame. Feck
 				// Also need to redo the Difficulty sort since it's now sorting by airdodge frame. Triple feck
-				if(id != 'zelda-dthrow-up-air'){
+				if(moveUrl != 'zelda-dthrow-up-air'){
 				
 					var percentAverage = percentSum/percentDifferences.length;
 
@@ -610,7 +644,7 @@ var Custom = function(){
 			// Christ this is garbage... Utter garbage
 
 			// Map those modifiers to the Info section. Gotta run through one last time, but only a small run
-			$.each(killConfirmsJSON[characterId]['moves'][moveId], function(index, value){
+			$.each(killConfirmsJSON[characterIndex]['moves'][moveIndex], function(index, value){
 				$('.modifiers-stages').find('.' + index).text(value);
 			});
 
@@ -642,7 +676,7 @@ var Custom = function(){
 			executeActiveFilter(self);
 
 			// Ensure the correct 'Special Info' box is displayed, but only if it's not empty!
-			var $specialInfo = $('#info-' + id);
+			var $specialInfo = $('#info-' + moveUrl);
 			// console.log($specialInfo.text());
 			if($specialInfo.text().trim().length){
 				$specialInfo.addClass('active');
@@ -662,7 +696,7 @@ var Custom = function(){
 			$('#nav-title').text('Select a Kill Confirm');
 			$('.moveBtn.active').removeClass('active');
 			$('.nav-moves a.active').removeClass('active');
-			$('#secondarynav-dropdown .dropdown-item.active').removeClass('active');
+			$('#move-selector .btn-secondary').removeClass('active');
 
 			$('body').removeClass('filtersActive');
 			$('#filter-toggle').removeClass('active');
@@ -705,7 +739,7 @@ var Custom = function(){
 		// Begin the mapping
 
 		var name = self.data('name'),
-			urlName = self.attr('data-url'),
+			urlName = self.attr('data-id'),
 			bgColour = self.data('bgcolour'),
 			weight = parseInt(self.data('weight')),
 			fallspeed = self.data('fallspeed'),
@@ -719,7 +753,7 @@ var Custom = function(){
 
 		// console.log('min perc is:' + minPercent + ' and max perc is: ' + maxPercent);
 
-		var $moveBtnActive = $('.moveBtn.active');
+		var $moveBtnActive = $('.card-body .moveBtn.active');
 
 		var bfNormalMin = parseInt($moveBtnActive.data('bfnormalmin')),
 			bfLowPlatMin = parseInt($moveBtnActive.data('bflowplatmin')),
@@ -817,7 +851,7 @@ var Custom = function(){
 
 		rageAdjustment($charModal.find('.rageBtn.active'));
 
-		var $activeMoveBtn = $('.moveBtn.active');
+		var $activeMoveBtn = $('.card-body .moveBtn.active');
 		$('#modalTitle span').html($activeMoveBtn.closest('.card-deck').data('name') + ' - ' + $activeMoveBtn.html());
 
 		// Need to resize based on window.innerHeight due to mobile address bar sizings.
@@ -850,16 +884,7 @@ var Custom = function(){
 			$('#menuBackButton').removeClass('active');
 			$('#page-info .giphy iframe').attr('src', '');
 		};
-		changeUrl($('.moveBtn.active').attr('id'));
-		//window.location.hash = '/' + dataUrl + '/';
-		// Update the URL
-		// var locationHost = window.location.host;
-		// var baseUrl = window.location.protocol + "//" + locationHost;
-	// function changeUrl(urlPart){
-	// 	window.location.hash = '/' + urlPart;
-	// 	setSendPageView(window.location + '/#/' + urlPart);
-	// };
-		// var constructedUrl = baseUrl + '/#/' + dataUrl + '/';
+		changeUrl($('.card-body .moveBtn.active').attr('id'));
 	};
 
 
@@ -926,7 +951,7 @@ var Custom = function(){
 		var rageAdjMin = 0;
 		var rageAdjMax = 0;
 
-		var $moveBtnActive = $('.moveBtn.active');
+		var $moveBtnActive = $('.card-body .moveBtn.active');
 		var rage50 = $moveBtnActive.data('rage50'),
 			rage60 = $moveBtnActive.data('rage60'),
 			rage80 = $moveBtnActive.data('rage80'),
@@ -1040,13 +1065,13 @@ var Custom = function(){
 			if($activeContainer.nextAll('.character-box').is(':visible')){
 				var $nextVisibleChar = $activeContainer.nextAll('.character-box:not(.disabled):visible').first();
 				$nextVisibleChar.addClass('selected');
-				changeUrl($('.moveBtn.active').attr('id') + '/' + $nextVisibleChar.data('url'));
+				changeUrl($('.card-body .moveBtn.active').attr('id') + '/' + $nextVisibleChar.data('url'));
 				//activateCharacter($nextVisibleChar);
 			} else {
 				// Loop backward to first VISIBLE character if press right key on last character
 				var $firstCharacter = $activeContainer.siblings('.character-box:not(.disabled):visible').first();
 				$firstCharacter.addClass('selected');
-				changeUrl($('.moveBtn.active').attr('id') + '/' + $firstCharacter.data('url'));
+				changeUrl($('.card-body .moveBtn.active').attr('id') + '/' + $firstCharacter.data('url'));
 				//activateCharacter($firstCharacter);
 			}
 		}
@@ -1059,12 +1084,12 @@ var Custom = function(){
 				//console.log('previous visible box exists')
 				var $prevVisibleChar = $activeContainer.prevAll('.character-box:not(.disabled):visible').first();
 				$prevVisibleChar.addClass('selected');
-				changeUrl($('.moveBtn.active').attr('id') + '/' + $prevVisibleChar.data('url'));
+				changeUrl($('.card-body .moveBtn.active').attr('id') + '/' + $prevVisibleChar.data('url'));
 			} else {
 				// Loop backward to first VISIBLE character if press right key on last character
 				var $lastCharacter = $activeContainer.siblings('.character-box:not(.disabled):visible').last();
 				$lastCharacter.addClass('selected');
-				changeUrl($('.moveBtn.active').attr('id') + '/' + $lastCharacter.data('url'));
+				changeUrl($('.card-body .moveBtn.active').attr('id') + '/' + $lastCharacter.data('url'));
 			}
 		}
 	}
@@ -1150,15 +1175,14 @@ var Custom = function(){
 		if(e.which == keyAlt) isAltActive = true;
 
 		// I want to be able to access info with 'I' if a characterGrid is out
-		// Need to detect if search field is focussed first though
+		// Need to detect if search field is focused first though
 		// https://stackoverflow.com/questions/967096/using-jquery-to-test-if-an-input-has-focus
-		if(e.which == keyi){
-			if($('.moveBtn').hasClass('active') && !$('#search').is(':focus')){
-				// $('body').addClass('show-info-box');
-				// activateInfoBox();
-				changeUrl($('.moveBtn.active').attr('id') + '/info');
-			};
-		}
+		// Turning this off, since 'i' activating info with a combo of CTRL+SHIFT for the dev tools is annoying
+		// if(e.which == keyi && !isShiftActive){
+		// 	if($('.moveBtn').hasClass('active') && !$('#search').is(':focus')){
+		// 		changeUrl($('.moveBtn.active').attr('id') + '/info');
+		// 	};
+		// }
 
 		// Need to check if character is currently active.
 		if($('#characterModal.active').length && isAltActive == false){
@@ -1214,40 +1238,49 @@ var Custom = function(){
 		// If the grid is out and the moveBtn is clicked, that means we're just transitioning between character grids and need a different kind of transition
 		// This is for the side menu, which has buttons that trigger a click for its counterpart .moveBtn in card grid
 
+		// New routing including for if a modal is already activated and a move button is clicked, since this will change parts[1] of the URL but leave parts[2] as-is...
+
 		// check to see if it already has a class of 'active' first. Don't want people clicking the same button twice
-		if(!$(this).hasClass('active')){
-			// Update the URL
-			var moveUrl = $(this).attr('id');
-			changeUrl(moveUrl);
-		};
+		var $this = $(this);
+		moveUrl =  $this.attr('data-moveurl');
+
+		if(!$this.hasClass('active')){
+			if($('body').hasClass('character-active')){
+				
+				var charUrl = $('.character-box.selected').attr('data-moveurl');
+				changeUrl(moveUrl + '/' + charUrl);
+			} else {
+				// Earlier version won't work, since the 2nd nav buttons have no IDs
+				// Bind the click of one of the other button sets to the main card buttons
+				var moveUrl = $this.attr('data-moveurl');
+				moveUrl = $('.card-body .moveBtn[data-moveurl=' + moveUrl + ']').attr('data-moveurl');
+				// activateCharacterGrid($this);
+				changeUrl(moveUrl);
+			};
+		}
 	});
 
 	$('#characterGrid').on('click', '.character-box', function(){
 
-		var moveUrl = $('.moveBtn.active').attr('id');
-		var charUrl = $(this).data('url');
+		var moveUrl = $('.card-body .moveBtn.active').attr('id');
+		var charId = $(this).attr('data-id');
 		if(!$(this).hasClass('disabled')){
-			changeUrl(moveUrl + '/' + charUrl);
+			changeUrl(moveUrl + '/' + charId);
 		} else {
 			changeUrl(moveUrl + '/info');
 		}
-		// Update the URL
-		// var moveUrl = $('.moveBtn.active').attr('id');
-		// var charUrl = $(this).data('url');
-		// changeUrl(moveUrl + '/' charUrl);
 	});
 
 	$('#filter-toggle').click(function(e){
 		e.stopPropagation();
 		var $this = $(this);
 		$this.toggleClass('active');
-		//$this.next('.btn-group.mobile').toggleClass('active');
 		$('body').toggleClass('filtersActive');
 	});
 
 	$('#character-wrapper-back').click(function(){
 		deactivateCharacterGrid();
-		changeUrl($('.moveBtn.active').attr('id'));
+		changeUrl($('.card-body .moveBtn.active').attr('id'));
 	});
 
 	$('#icon-next').click(function(){
@@ -1282,12 +1315,6 @@ var Custom = function(){
 		$('#page-info iframe').attr('src', giphyVid);
 		$('#page-info .giphy a').attr('href', giphySource);
 		$('#page-info .' + $moveBtnActive.attr('id')).show();
-
-		//render($currentMove + '/info');
-		//var theUrl = window.location.href + 'info/';
-		//window.location = theUrl;
-		// window.location.hash = '/' + currentMove + '/info/';
-		// setSendPageView(currentMove + '/info');
 	};
 
 	$('#info, .info').click(function(e){
@@ -1302,12 +1329,9 @@ var Custom = function(){
 		$this.closest('.navbar-top-links').toggleClass('open');
 	});
 
-	$('#secondarynav-dropdown').click(function(e){
-		e.stopPropagation();
-		$('#secondarynav-dropdown-menu').toggleClass('show');	
-	});
 
-	$('#secondarynav').on('click', '.dropdown-item', function(e){
+	// HERE!
+	$('.move-selector').on('click', '.btn-secondary', function(e){
 		e.preventDefault();
 		var $this = $(this);
 		var ident = $this.data('ident');
@@ -1369,14 +1393,9 @@ var Custom = function(){
 	/////////////////////////////////////////////////////////////////////////////
 
 	$(document).click(function(){
-		$('#secondarynav-dropdown-menu').removeClass('show');
 		$('#filter-dropdown-btn').removeClass('active');
 		//$('#sort').removeClass('open');
 
-
-		// Deactivate the filter toggle
-		// $('#secondarynav .dropdown').removeClass('show');
-		$('#secondarynav #secondarynav-dropdown-menu').removeClass('show');
 		$('body').removeClass('toggle-aboutmenu');
 		$('body').removeClass('filtersActive');
 		$('#filter-toggle').removeClass('active');

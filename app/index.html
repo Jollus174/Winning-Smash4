@@ -89,7 +89,7 @@
 
 </head>
 
-<body id="body" class="loading wrapper">
+<body id="body" class="loading wrapper" data-currentcharactergrid="" data-currentcharactermodal="">
 
 	<img style="display:none;" src="images/winning-at-smash4.jpg" alt="Winning at Smash 4 Kill Confirm Calculator" />
 
@@ -108,12 +108,18 @@
 				<!-- Sidebar Links -->
 				<li>
 					<!-- ko foreach: killConfirm -->
-					<ul class="list-unstyled components nav nav-characters" data-bind="css: url">
+					<ul class="list-unstyled components nav nav-characters" data-bind="css: charId">
 						<li>
 							<span data-bind="text: name"></span>
-							<ul class="list-unstyled nav-moves" data-bind="attr: {id: hashUrl}, foreach: moves">
+							<ul class="list-unstyled nav-moves" data-bind="attr: {id: charId}, foreach: moves">
 								<li>
-									<a href="#" data-bind="html: moveName, attr: {'data-ref': $parent.url + '-' + moveUrl}">Page</a>
+									<a href="#" class="moveBtn" data-bind="html: moveName, attr: {
+										'data-moveid': moveId,
+										'data-moveurl': $parent.charId + '-' + moveId,
+										href: '#/' + $parent.charId + '/' + moveId
+									}">
+										Page
+									</a>
 								</li>
 							</ul>
 						</li>
@@ -159,10 +165,10 @@
 
 				<div id="characterSelection" class="row" data-bind="foreach: killConfirm">
 
-					<div class="card-deck col-12 col-lg-6 col-xl-4" data-bind="css: url, attr: {
+					<div class="card-deck col-12 col-lg-6 col-xl-4" data-bind="css: charId, attr: {
 						'data-index': index,
 						'data-name': name,
-						'data-url': url
+						'data-charid': charId
 					}">
 						<div class="card">
 							<div class="card-image-top">
@@ -174,10 +180,12 @@
 							<div class="card-body">
 								<div class="btn-group" role="group" data-bind="foreach: moves">
 									<button class="btn btn-sm moveBtn" data-bind="html: moveName, attr: {
-										id: $parent.url + '-' + moveUrl,
-										href: '#/' + $parent.url + '/' + moveUrl,
-										'data-moveurl': moveUrl,
+										id: $parent.charId + '-' + moveId,
+										href: '#/' + $parent.charId + '/' + moveId,
 										'data-moveid': moveId,
+										'data-moveurl': $parent.charId + '-' + moveId,
+										'data-moveindex': moveIndex,
+										'data-charid': $parent.charId,
 										'data-rage50': rage50,
 										'data-rage60': rage60,
 										'data-rage80': rage80,
@@ -223,6 +231,9 @@
 						<div class="navbar-header">
 							<div id="moveName" class="navbar-brand --white" style="font-size:100%;position: relative;">
 								Move Name
+							</div>
+							<div class="move-selector" class="navbar-brand --white">
+								Moves
 							</div>
 						</div>
 						
@@ -285,16 +296,15 @@
 
 					<div class="col-12" data-bind="foreach: killConfirm">
 						<!-- ko foreach: moves -->
-						<div class="alert alert-info special-info" role="alert" data-bind="html: specialInfo, attr: {id: 'info-' + $parent.url + '-' + moveUrl}"></div>
+						<div class="alert alert-info special-info" role="alert" data-bind="html: specialInfo, attr: {id: 'info-' + $parent.id + '-' + moveId}"></div>
 						<!-- /ko -->
 					</div>
 
 					<!-- ko foreach: character -->
-					<div class="character-box col-6 col-md-4 col-lg-3" data-bind="css: url, attr: {
-						'data-url': url,
+					<div class="character-box col-6 col-md-4 col-lg-3" data-bind="css: id, attr: {
+						'data-index': index,
 						'data-name': name,
-						'data-index': id,
-						'data-bgcolour': bgColour,
+						'data-id': id,
 						'data-weight': weight,
 						'data-fallspeed': fallspeed,
 						'data-gravity': gravity,
@@ -302,10 +312,9 @@
 						'data-airdodgeend': airdodgeEnd,
 						'data-minpercent': minPercent,
 						'data-maxpercent': maxPercent,
-						'data-specialinfo': specialInfo,
-						'data-textcontrast': textContrast
+						'data-specialinfo': specialInfo
 					}">
-						<div class="characterImageContainer" data-bind="style: {backgroundColor: bgColour}, css: imageProperties">
+						<div class="characterImageContainer">
 							<div class="characterImage"><div class="characterImageContainer-lightOverlay"></div></div>
 							
 							<div class="grid-difficulty">
@@ -313,7 +322,7 @@
 								<span class="grid-specialInfo">Far</span>
 							</div>
 							<div class="grid-index">
-								<span data-bind="text: (id + 1)"></span>
+								<span data-bind="text: (index + 1)"></span>
 							</div>
 							<div class="grid-percRange">
 								<span class="grid-percRangeText">
@@ -433,7 +442,7 @@
 			
 				<!-- ko foreach: moves -->
 
-					<div class="detailed-info" data-bind="css: $parent.url + '-' + moveUrl" hidden>
+					<div class="detailed-info" data-bind="css: $parent.charId + '-' + moveId" hidden>
 						<!-- ko foreach: info -->
 						<p data-bind="html: $data">
 
@@ -593,10 +602,8 @@
 			<nav class="navbar navbar-light navbar-static-top secondarynav">
 
 				<div class="navbar-header">
-					<div class="button-row">
-						<button class="btn btn-secondary btn-sm" style="font-size:0.95rem;">
-							<span>Dropdown link</span>
-						</button>
+					<div class="move-selector" class="navbar-brand --white">
+						<button class="btn btn-secondary btn-sm moveBtn">Name</button>
 					</div>
 				</div>
 

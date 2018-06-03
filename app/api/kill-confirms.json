@@ -1,12 +1,12 @@
 [{
 	"index": 0,
 	"name": "Bowser",
-	"url": "bowser",
+	"charId": "bowser",
 	"moves": [
 		{
-			"moveId": 0,
+			"moveIndex": 0,
 			"moveName": "Up Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air",
-			"moveUrl": "up-throw-up-air",
+			"moveId": "up-throw-up-air",
 
 			"info": [
 				"Bowser's kill confirm is known as the <strong>Koo-Pah</strong>, <strong>Bow-Wow</strong>, or <strong>Show Time</strong>. An Up Throw from Bowser will true combo into his Up Air between certain percents and will kill the victim regardless of DI.",
@@ -113,12 +113,12 @@
 {
 	"index": 1,
 	"name": "Donkey Kong",
-	"url": "donkey-kong",
+	"charId": "donkey-kong",
 	"moves": [
 		{
-			"moveId": 0,
+			"moveIndex": 0,
 			"moveName": "Cargo Up Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air",
-			"moveUrl": "cargo-up-throw-up-air",
+			"moveId": "cargo-up-throw-up-air",
 
 			"info": [
 				"This confirm is known among Donkey Kong specialists as <strong>Aerial Cargo Up Throw Up Air (ACUT)</strong>, the <strong>DKO</strong>, or to most Western players, as the <strong>Ding Dong</strong>.",
@@ -223,12 +223,12 @@
 {
 	"index": 2,
 	"name": "Lucas",
-	"url": "lucas",
+	"charId": "lucas",
 	"moves": [
 		{
-			"moveId": 0,
+			"moveIndex": 0,
 			"moveName": "Down Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air",
-			"moveUrl": "down-throw-up-air",
+			"moveId": "down-throw-up-air",
 
 			"info": [
 				"This kill confirm consists of a Down Throw, which Lucas can follow-up with an Up Air to kill. It's sometimes known as the <strong>Snake &amp; Bake</strong> or <strong>PK Hoo-Hah</strong>, after Diddy Kong's pre-patch Up Air confirm.",
@@ -332,12 +332,12 @@
 {
 	"index": 3,
 	"name": "Mr. Game & Watch",
-	"url": "game-and-watch",
+	"charId": "game-and-watch",
 	"moves": [
 		{
-			"moveId": 0,
+			"moveIndex": 0,
 			"moveName": "Down Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air",
-			"moveUrl": "down-throw-up-air",
+			"moveId": "down-throw-up-air",
 
 			"info": [
 				"Mr. Game & Watch's <strong>Toot Toot</strong> kill confirm is complex, as it consists of a Down Throw and then Up Throw multi-hit, both hits of which can be DI'd.",
@@ -447,12 +447,12 @@
 {
 	"index": 4,
 	"name": "Pikachu",
-	"url": "pikachu",
+	"charId": "pikachu",
 	"moves": [
 		{
-			"moveId": 0,
+			"moveIndex": 0,
 			"moveName": "Up Throw Thunder (Backward DI)",
-			"moveUrl": "up-throw-thunder-bdi",
+			"moveId": "up-throw-thunder-bdi",
 
 			 "info": [
                 "<strong>A GIF collection of different setups and DIs can be viewed through <a href='https://imgur.com/a/j3ekG' target='_blank' rel='noopener'>here</a>.",
@@ -556,9 +556,9 @@
 		},
 
 		{
-			"moveId": 1,
+			"moveIndex": 1,
 			"moveName": "Up Throw Thunder (Forward DI)",
-			"moveUrl": "up-throw-thunder-fdi",
+			"moveId": "up-throw-thunder-fdi",
 
 			 "info": [
                 "<strong>A GIF collection of different setups and DIs can be viewed through <a href='https://imgur.com/a/j3ekG' target='_blank' rel='noopener'>here</a>.",
@@ -665,12 +665,12 @@
 {
 	"index": 5,
 	"name": "Robin",
-	"url": "robin",
+	"charId": "robin",
 	"moves": [
 		{
-			"moveId": 0,
+			"moveIndex": 0,
 			"moveName": "Down Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air",
-			"moveUrl": "dthrow-up-air",
+			"moveId": "dthrow-up-air",
 
 			 "info": [
 				"Robin's <strong>Checkmate</strong> kill confirm consists of a Down Throw followed-up with a strong hit Up Air with the Levin Sword between certain percents.",
@@ -775,12 +775,12 @@
 {
 	"index": 6,
 	"name": "Zelda",
-	"url": "zelda",
+	"charId": "zelda",
 	"moves": [
 		{
-			"moveId": 0,
+			"moveIndex": 0,
 			"moveName": "Down Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air",
-			"moveUrl": "dthrow-up-air",
+			"moveId": "dthrow-up-air",
 
 			 "info": [
 				"This confirm is performed after a Down Throw, quick dash back, and an Up Air.",

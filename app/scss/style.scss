@@ -20,6 +20,7 @@ $button-primary:#d0361a;
 $button-primary-hover:darken($button-primary, 15%);
 $button-primary-active:darken($button-primary, 15%);
 
+
 /* --- */
 
 @mixin character-styles($char, $text-colour){
@@ -41,16 +42,47 @@ $button-primary-active:darken($button-primary, 15%);
         }
     }
     &#characterModal{
+        .secondarynav-container{
+            background-color:darken($char, 10%);
+        }
         .secondarynav{
-            // background-color:darken($char, 20%);
+            background-color:darken($char, 10%);
             border-bottom:1px solid darken($char, 5%);
+            .btn-secondary{
+                color: $text-colour;
+                font-weight:700;
+                transition: none;
+                &:hover, &.active, &:active{
+                    border-color: darken($char, 20%) !important;
+                    background: darken($char, 20%);
+                }
+                @if $text-colour == $text-light {
+                    background-color:darken($char, 15%);
+                    border: 1px solid darken($char, 30%);
+                    &:hover, &.active, &:active{
+                        background-color:darken($char, 30%) !important;
+                    }
+                } @else {
+                    background-color:lighten($char, 5%);
+                    border: 1px solid darken($char, 20%);
+                    &:hover, &.active, &:active{
+                        background-color:lighten($char, 20%) !important;
+                    }
+                }
+            }
+        }
+        .characterOverview{
+            li{
+                color: $text-colour;
+            }
         }
     }
-    .btn, .dropdown-item, .btn-secondary, #secondarynav-dropdown{
+    .btn, .dropdown-item, .btn.btn-secondary, #secondarynav-dropdown{
         color:$text-colour;
         background-color:darken($char, 10%);
+        border-color: $char;
         &:hover, &.active, &:active{
-            background-color:darken($char, 20%) !important;
+            background-color:darken($char, 20%);
             box-shadow:none !important;
             border-color: darken($char, 20%);
         }
@@ -79,42 +111,231 @@ $button-primary-active:darken($button-primary, 15%);
         position:relative;
         &:before{background:transparentize($char, 0.5) !important;}
     }
-    .dropdown-menu, #sort{background-color:$char}
+    #moveName{
+        color: $text-colour;
+    }
+    .dropdown-menu,
+    #sort{
+        background-color:$char;
+    }
+    #character-underlay{
+        background-color:$char !important;
+    }
+    #icon-next, #icon-prev{
+        path.pathfill{
+            fill: $text-colour;
+        }
+    }
+    .legend-keys{
+        svg{
+            fill: $text-colour;
+        }
+        .legend-keys--text{
+            color: $text-colour;
+        }
+        .legend-keys--shift,
+        .legend-keys--escape{
+            background: $text-colour;
+            color:$char;
+        }
+    }
 }
 
+// CHARACTERS
+
+.bayonetta{
+    @include character-styles($bayonetta, $text-light);
+}
 .bowser{
-    @include character-styles(#32765c, $text-light);
+    @include character-styles($bowser, $text-light);
+}
+.bowser-jr{
+    @include character-styles($bowser-jr, $text-dark);
+}
+.captain-falcon{
+    @include character-styles($captain-falcon, $text-light);
+}
+.charizard{
+    @include character-styles($charizard, $text-light);
+}
+.cloud{
+    @include character-styles($cloud, $text-light);
+}
+.cloud-limit{
+    @include character-styles($cloud-limit, $text-light);
+}
+.corrin{
+    @include character-styles($corrin, $text-light);
+}
+.dark-pit{
+    @include character-styles($dark-pit, $text-light);
+}
+.diddy-kong{
+    @include character-styles($diddy-kong, $text-light);
 }
 .donkey-kong{
-    @include character-styles(#feda00, $text-dark);
+    @include character-styles($donkey-kong, $text-dark);
     &.card-deck{
         .btn{
              color:$text-light;
         }
     }
 }
+.dr-mario{
+    @include character-styles($dr-mario, $text-light);
+}
+.duck-hunt{
+    @include character-styles($duck-hunt, $text-light);
+}
+.falco{
+    @include character-styles($falco, $text-light);
+}
+.fox{
+    @include character-styles($fox, $text-light);
+}
 .game-and-watch{
-    @include character-styles(#8a8983, $text-light);
+    @include character-styles($game-and-watch, $text-light);
+}
+.ganondorf{
+    @include character-styles($ganondorf, $text-light);
+}
+.greninja{
+    @include character-styles($greninja, $text-light);
+}
+.ike{
+    @include character-styles($ike, $text-light);
+}
+.jigglypuff{
+    @include character-styles($jigglypuff, $text-light);
+}
+.king-dedede{
+    @include character-styles($king-dedede, $text-dark);
+}
+.kirby{
+    @include character-styles($kirby, $text-light);
+}
+.link{
+    @include character-styles($link, $text-dark);
+}
+.little-mac{
+    @include character-styles($little-mac, $text-light);
+}
+.lucario{
+    @include character-styles($lucario, $text-dark);
 }
 .lucas{
-    @include character-styles(#f05f1b, $text-light);
+    @include character-styles($lucas, $text-light);
+}
+.lucina{
+    @include character-styles($lucina, $text-light);
+}
+.luigi{
+    @include character-styles($luigi, $text-light);
+}
+.mario{
+    @include character-styles($mario, $text-light);
+}
+.marth{
+    @include character-styles($marth, $text-light);
+}
+.mega-man{
+    @include character-styles($mega-man, $text-light);
+}
+.meta-knight{
+    @include character-styles($meta-knight, $text-light);
+}
+.mewtwo{
+    @include character-styles($mewtwo, $text-light);
+}
+.mii-brawler{
+    @include character-styles($mii-brawler, $text-light);
+}
+.mii-gunner{
+    @include character-styles($mii-gunner, $text-light);
+}
+.mii-swordfighter{
+    @include character-styles($mii-swordfighter, $text-light);
+}
+.ness{
+    @include character-styles($ness, $text-light);
+}
+.olimar{
+    @include character-styles($olimar, $text-dark);
+}
+.pacman{
+    @include character-styles($pacman, $text-light);
+}
+.palutena{
+    @include character-styles($palutena, $text-dark);
+}
+.peach{
+    @include character-styles($peach, $text-dark);
 }
 .pikachu{
-    @include character-styles(#daaa17, $text-light);
-    // &.card-deck{
-    //     .btn{
-    //         color:$text-light;
-    //     }
-    // }
-    // #secondarynav-dropdown{
-    //     color:$text-light;
-    // }
+    @include character-styles($pikachu, $text-light);
+}
+.pit{
+    @include character-styles($pit, $text-light);
+}
+.rob{
+    @include character-styles($rob, $text-light);
 }
 .robin{
-    @include character-styles(#ce82de, $text-light);
+    @include character-styles($robin, $text-light);
+}
+.rosalina-and-luma{
+    @include character-styles($rosalina-and-luma, $text-dark);
+}
+.roy{
+    @include character-styles($roy, $text-light);
+}
+.ryu{
+    @include character-styles($ryu, $text-light);
+}
+.samus{
+    @include character-styles($samus, $text-light);
+}
+.sheik{
+    @include character-styles($sheik, $text-light);
+}
+.shulk{
+    @include character-styles($shulk, $text-light);
+}
+.shulk-buster{
+    @include character-styles($shulk-buster, $text-light);
+}
+.shulk-jump{
+    @include character-styles($shulk-jump, $text-light);
+}
+.shulk-shield{
+    @include character-styles($shulk-shield, $text-light);
+}
+.shulk-smash{
+    @include character-styles($shulk-smash, $text-light);
+}
+.sonic{
+    @include character-styles($sonic, $text-light);
+}
+.toon-link{
+    @include character-styles($toon-link, $text-dark);
+}
+.villager{
+    @include character-styles($villager, $text-light);
+}
+.wario{
+    @include character-styles($wario, $text-dark);
+}
+.wii-fit-trainer{
+    @include character-styles($wii-fit-trainer, $text-dark);
+}
+.yoshi{
+    @include character-styles($yoshi, $text-light);
 }
 .zelda{
-    @include character-styles(#aa74ba, $text-light);
+    @include character-styles($zelda, $text-light);
+}
+.zero-suit-samus{
+    @include character-styles($zero-suit-samus, $text-light);
 }
 
 /* Cards */
@@ -134,7 +355,6 @@ $button-primary-active:darken($button-primary, 15%);
     }
     .card-body{
         position:relative;
-        // padding:0.75rem 1.25rem;
         .btn-group > .btn{
             margin-left:0;
             margin: 0.25rem;
@@ -144,9 +364,6 @@ $button-primary-active:darken($button-primary, 15%);
             border:2px solid;
         }
     }
-}
-.moveBtn.active{
-    border-color:rgba(213, 0, 0, 0.5) !important;
 }
 #characterSelection .card{
     margin-bottom:10px;
@@ -989,9 +1206,37 @@ body{
         }
     }
 }
-.multiple-moves{
-    #secondarynav-topmenu{
-        position:fixed;
+#page-wrapper{
+    #secondarynav-container{
+        position:absolute;
+        top:0;
+    }
+}
+.animating{
+    #page-wrapper{
+        #secondarynav-container{
+            top:-56px;
+        }
+    }
+}
+.fixed-navbar{
+    #page-wrapper{
+        #secondarynav-container{
+            // position:static;
+            position:fixed;
+            top:56px;
+            left:0;
+            right:0;
+            margin:0;
+            display:block;
+            #secondarynav-topmenu{
+                // position:static;
+                // position: absolute;
+                // top: -53px;
+                // left: -220px;
+            }
+
+        }
     }
     #moveName{
         display:none;
@@ -1004,25 +1249,31 @@ body{
         .navbar-header{
             position:relative;
             display: flex;
-            flex-grow:1;
-            flex-flow: row nowrap;
-            cursor:all-scroll;
             overflow:hidden;
             @media (max-width:500px){
                 overflow-x:scroll;
+                cursor:all-scroll;
             }
-            // -webkit-overflow-scrolling: touch;
-            // &::-webkit-scrollbar {
-            //    display: none;
-            // }
-        }
-        .btn-secondary{
-            margin-right:5px;
-            border:none;
+            .move-selector{
+                display:flex;
+                flex-flow:row nowrap;
+                .btn-secondary{
+                    margin-right:5px;
+                    border:none;
+                }
+            }
         }
     }
 }
-
+.navbar-header{
+    display:flex;
+    flex-flow: row nowrap;
+    flex-grow:1;
+    .move-selector{
+        display:none;
+        padding:0;
+    }
+}
 
 #filtersbar-container{
     position:relative;
@@ -1631,6 +1882,9 @@ body.show-ledgeFsmash .grid-ledgeFsmash{display:block;}
 
 
 #characterModal{
+    .secondarynav{
+        display:none;
+    }
     &.active{
         position:fixed;
         z-index:10;
@@ -1671,6 +1925,9 @@ body.show-ledgeFsmash .grid-ledgeFsmash{display:block;}
             font-weight: 700;
             text-transform: uppercase;
         }
+        .grid-difficulty{
+            flex-flow:column wrap;
+        }
     }
 }
 .hide-stages{
@@ -1686,6 +1943,13 @@ body.show-ledgeFsmash .grid-ledgeFsmash{display:block;}
     }
     .modifiers-stages{
         display:none;
+    }
+}
+.multiple-moves{
+    #characterModal{
+        .secondarynav{
+            display:flex;
+        }
     }
 }
 
@@ -2267,6 +2531,15 @@ tr.table-descs td{
             }
         }
     }
+    .fixed-navbar{
+        #secondarynav-container{
+            transform: translate(220px, 0);
+            #secondarynav-topmenu{
+                transform: translate(0, 0);
+                display:flex;
+            }
+        }
+    }
 
     .toggle-sidedrawer{
         #page-wrapper{
@@ -2275,6 +2548,12 @@ tr.table-descs td{
         #primarynav{
             transform: translate(0, 0);
             .navbar-nav{
+                transform: translate(0, 0);
+            }
+        }
+        #secondarynav-container{
+            transform: translate(0, 0);
+            #secondarynav-topmenu{
                 transform: translate(0, 0);
             }
         }
@@ -2312,6 +2591,7 @@ tr.table-descs td{
             position:absolute;
             width:100%;
             z-index:10;
+            top:53px;
             #info{
                 transform:translate(0, 0);
             }
@@ -2322,17 +2602,8 @@ tr.table-descs td{
             position:absolute;
             padding: 3px 0 8px;
         }
-        &.fixed-navbar{
-
+        &.multiple-moves{
             #secondarynav-container{
-                position:fixed;
-                #secondarynav{
-                    .dropdown{
-                        span{
-                            display:inline;
-                        }
-                    }
-                }
                 #info{
                     transform: translate(-220px, 0);
                 }

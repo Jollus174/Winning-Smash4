@@ -108,10 +108,11 @@ var characters = (function() {
                 var vm = new killConfirmsViewModel();
             
                 vm.name = data.name;
-                vm.url = data.url;
-                vm.hashUrl = ko.observable('#' + vm.url);
+                vm.charId = data.charId;
+                vm.hashUrl = ko.observable('#' + vm.charId);
                 vm.index = data.index;
-                vm.moveUrl = data.moveUrl;
+                vm.moveIndex = data.moveIndex;
+                vm.moveId = data.moveId;
 
                 // Deeper
                 // https://jsfiddle.net/wfs569gf/
@@ -139,30 +140,6 @@ var characters = (function() {
                 //vm.moveName = data.moveName;
                 //vm.moveUrl = data.moveUrl;
                 //vm.moveId = data.moveId;
-                //console.log(vm.moveId);
-
-                // vm.rageZero = data.rageZero;
-                // vm.rage50 = data.rage50;
-                // vm.rage80 = data.rage80;
-                // vm.rage100 = data.rage100;
-                // vm.rage125 = data.rage125;
-                // vm.rage150 = data.rage150;
-
-                //vm.percents = data.percents;
-                //console.log(data.percents);
-                /* need to search for object name though... */
-
-
-                /* --- Parsey things for killConfirm value generation to go here --- */
-
-                // vm.buildData = ko.computed(function(){
-                //     return ko.utils.arrayMap(vm.moves, function(item){
-                //         //return { moves.percents.}
-                //     })
-                //     //var $element = $(event.target);
-
-                // });
-
 
                 //vm.hashMoveUrl = ko.observable('#' + vm.moveUrl);
                 // http://digitalbush.com/2013/12/11/knockout-js-href-binding/
@@ -187,14 +164,13 @@ var characters = (function() {
             if(data){
                 var vm = new characterAttrsViewModel();
 
-                vm.id = parseInt(data.id);
+                vm.index = data.index;
                 vm.name = data.name;
-                vm.bgColour = data.bgColour;
                 vm.weight = data.weight;
                 vm.fallspeed = data.fallspeed;
                 vm.gravity = data.gravity;
-
                 vm.url = data.url;
+                vm.id = data.id;
 
                 vm.minPercent = parseInt(data.minPercent);
                 vm.maxPercent = parseInt(data.maxPercent);
@@ -214,14 +190,9 @@ var characters = (function() {
                 } else {
                     vm.imagePosition = '';
                 }
-                if(data.textContrast){
-                    vm.textContrast = data.textContrast;
-                } else {
-                    vm.textContrast = '';
-                }
 
                 // Generating image properties
-                vm.imageProperties = ko.observable(vm.imagePosition + ' ' + vm.textContrast);
+                vm.imageProperties = ko.observable(vm.imagePosition);
 
                 // GENERATING CHARACTER MODAL BOX
                 // vm.log = function(data, event){

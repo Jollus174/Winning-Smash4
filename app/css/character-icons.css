@@ -1,193 +1,379 @@
+.character-box.bayonetta .characterImageContainer, #characterModal.bayonetta .characterImageContainer, .card-deck.bayonetta .characterImageContainer {
+  background-color: #a79fe5; }
+
 .character-box.bayonetta .characterImage, #characterModal.bayonetta .characterImage, .card-deck.bayonetta .characterImage {
-  background-image: url(../images/characters/png/bayonetta.png); }
+  background-image: url("../images/characters/png/bayonetta.png"); }
+
+.character-box.bowser .characterImageContainer, #characterModal.bowser .characterImageContainer, .card-deck.bowser .characterImageContainer {
+  background-color: #32765c; }
 
 .character-box.bowser .characterImage, #characterModal.bowser .characterImage, .card-deck.bowser .characterImage {
-  background-image: url(../images/characters/png/bowser.png); }
+  background-image: url("../images/characters/png/bowser.png"); }
+
+.character-box.bowser-jr .characterImageContainer, #characterModal.bowser-jr .characterImageContainer, .card-deck.bowser-jr .characterImageContainer {
+  background-color: #cfce37; }
 
 .character-box.bowser-jr .characterImage, #characterModal.bowser-jr .characterImage, .card-deck.bowser-jr .characterImage {
-  background-image: url(../images/characters/png/bowserjr.png); }
+  background-image: url("../images/characters/png/bowserjr.png"); }
 
-.character-box.charizard .characterImage, #characterModal.charizard .characterImage, .card-deck.charizard .characterImage {
-  background-image: url(../images/characters/png/charizard.png); }
+.character-box.captain-falcon .characterImageContainer, #characterModal.captain-falcon .characterImageContainer, .card-deck.captain-falcon .characterImageContainer {
+  background-color: #9088e2; }
 
 .character-box.captain-falcon .characterImage, #characterModal.captain-falcon .characterImage, .card-deck.captain-falcon .characterImage {
-  background-image: url(../images/characters/png/cfalcon.png); }
+  background-image: url("../images/characters/png/cfalcon.png"); }
+
+.character-box.charizard .characterImageContainer, #characterModal.charizard .characterImageContainer, .card-deck.charizard .characterImageContainer {
+  background-color: #f66624; }
+
+.character-box.charizard .characterImage, #characterModal.charizard .characterImage, .card-deck.charizard .characterImage {
+  background-image: url("../images/characters/png/charizard.png"); }
+
+.character-box.cloud .characterImageContainer, #characterModal.cloud .characterImageContainer, .card-deck.cloud .characterImageContainer {
+  background-color: #009684; }
 
 .character-box.cloud .characterImage, #characterModal.cloud .characterImage, .card-deck.cloud .characterImage {
-  background-image: url(../images/characters/png/cloud.png); }
+  background-image: url("../images/characters/png/cloud.png"); }
+
+.character-box.cloud-limit .characterImageContainer, #characterModal.cloud-limit .characterImageContainer, .card-deck.cloud-limit .characterImageContainer {
+  background-color: #009684; }
 
 .character-box.cloud-limit .characterImage, #characterModal.cloud-limit .characterImage, .card-deck.cloud-limit .characterImage {
-  background-image: url(../images/characters/png/cloudlimit.png); }
+  background-image: url("../images/characters/png/cloudlimit.png"); }
+
+.character-box.corrin .characterImageContainer, #characterModal.corrin .characterImageContainer, .card-deck.corrin .characterImageContainer {
+  background-color: #733131; }
 
 .character-box.corrin .characterImage, #characterModal.corrin .characterImage, .card-deck.corrin .characterImage {
-  background-image: url(../images/characters/png/corrin.png); }
+  background-image: url("../images/characters/png/corrin.png"); }
+
+.character-box.dark-pit .characterImageContainer, #characterModal.dark-pit .characterImageContainer, .card-deck.dark-pit .characterImageContainer {
+  background-color: #af6ce9; }
 
 .character-box.dark-pit .characterImage, #characterModal.dark-pit .characterImage, .card-deck.dark-pit .characterImage {
-  background-image: url(../images/characters/png/darkpit.png); }
+  background-image: url("../images/characters/png/darkpit.png"); }
+
+.character-box.diddy-kong .characterImageContainer, #characterModal.diddy-kong .characterImageContainer, .card-deck.diddy-kong .characterImageContainer {
+  background-color: #932324; }
 
 .character-box.diddy-kong .characterImage, #characterModal.diddy-kong .characterImage, .card-deck.diddy-kong .characterImage {
-  background-image: url(../images/characters/png/diddykong.png); }
+  background-image: url("../images/characters/png/diddykong.png"); }
+
+.character-box.donkey-kong .characterImageContainer, #characterModal.donkey-kong .characterImageContainer, .card-deck.donkey-kong .characterImageContainer {
+  background-color: #feda00; }
 
 .character-box.donkey-kong .characterImage, #characterModal.donkey-kong .characterImage, .card-deck.donkey-kong .characterImage {
-  background-image: url(../images/characters/png/donkeykong.png); }
+  background-image: url("../images/characters/png/donkeykong.png"); }
+
+.character-box.dr-mario .characterImageContainer, #characterModal.dr-mario .characterImageContainer, .card-deck.dr-mario .characterImageContainer {
+  background-color: #d72935; }
 
 .character-box.dr-mario .characterImage, #characterModal.dr-mario .characterImage, .card-deck.dr-mario .characterImage {
-  background-image: url(../images/characters/png/drmario.png); }
+  background-image: url("../images/characters/png/drmario.png"); }
+
+.character-box.duck-hunt .characterImageContainer, #characterModal.duck-hunt .characterImageContainer, .card-deck.duck-hunt .characterImageContainer {
+  background-color: #935a33; }
 
 .character-box.duck-hunt .characterImage, #characterModal.duck-hunt .characterImage, .card-deck.duck-hunt .characterImage {
-  background-image: url(../images/characters/png/duckhunt.png); }
+  background-image: url("../images/characters/png/duckhunt.png"); }
+
+.character-box.falco .characterImageContainer, #characterModal.falco .characterImageContainer, .card-deck.falco .characterImageContainer {
+  background-color: #52b1e3; }
 
 .character-box.falco .characterImage, #characterModal.falco .characterImage, .card-deck.falco .characterImage {
-  background-image: url(../images/characters/png/falco.png); }
+  background-image: url("../images/characters/png/falco.png"); }
+
+.character-box.fox .characterImageContainer, #characterModal.fox .characterImageContainer, .card-deck.fox .characterImageContainer {
+  background-color: #036ac9; }
 
 .character-box.fox .characterImage, #characterModal.fox .characterImage, .card-deck.fox .characterImage {
-  background-image: url(../images/characters/png/fox.png); }
+  background-image: url("../images/characters/png/fox.png"); }
+
+.character-box.ganondorf .characterImageContainer, #characterModal.ganondorf .characterImageContainer, .card-deck.ganondorf .characterImageContainer {
+  background-color: #7d7898; }
 
 .character-box.ganondorf .characterImage, #characterModal.ganondorf .characterImage, .card-deck.ganondorf .characterImage {
-  background-image: url(../images/characters/png/ganondorf.png); }
+  background-image: url("../images/characters/png/ganondorf.png"); }
+
+.character-box.game-and-watch .characterImageContainer, #characterModal.game-and-watch .characterImageContainer, .card-deck.game-and-watch .characterImageContainer {
+  background-color: #8A8983; }
 
 .character-box.game-and-watch .characterImage, #characterModal.game-and-watch .characterImage, .card-deck.game-and-watch .characterImage {
-  background-image: url(../images/characters/png/gameandwatch.png); }
+  background-image: url("../images/characters/png/gameandwatch.png"); }
+
+.character-box.greninja .characterImageContainer, #characterModal.greninja .characterImageContainer, .card-deck.greninja .characterImageContainer {
+  background-color: #5073a9; }
 
 .character-box.greninja .characterImage, #characterModal.greninja .characterImage, .card-deck.greninja .characterImage {
-  background-image: url(../images/characters/png/greninja.png); }
+  background-image: url("../images/characters/png/greninja.png"); }
+
+.character-box.ike .characterImageContainer, #characterModal.ike .characterImageContainer, .card-deck.ike .characterImageContainer {
+  background-color: #C44737; }
 
 .character-box.ike .characterImage, #characterModal.ike .characterImage, .card-deck.ike .characterImage {
-  background-image: url(../images/characters/png/ike.png); }
+  background-image: url("../images/characters/png/ike.png"); }
+
+.character-box.jigglypuff .characterImageContainer, #characterModal.jigglypuff .characterImageContainer, .card-deck.jigglypuff .characterImageContainer {
+  background-color: #F283EA; }
 
 .character-box.jigglypuff .characterImage, #characterModal.jigglypuff .characterImage, .card-deck.jigglypuff .characterImage {
-  background-image: url(../images/characters/png/jigglypuff.png); }
+  background-image: url("../images/characters/png/jigglypuff.png"); }
+
+.character-box.king-dedede .characterImageContainer, #characterModal.king-dedede .characterImageContainer, .card-deck.king-dedede .characterImageContainer {
+  background-color: #FFE966; }
 
 .character-box.king-dedede .characterImage, #characterModal.king-dedede .characterImage, .card-deck.king-dedede .characterImage {
-  background-image: url(../images/characters/png/kingdedede.png); }
+  background-image: url("../images/characters/png/kingdedede.png"); }
+
+.character-box.kirby .characterImageContainer, #characterModal.kirby .characterImageContainer, .card-deck.kirby .characterImageContainer {
+  background-color: #E5939A; }
 
 .character-box.kirby .characterImage, #characterModal.kirby .characterImage, .card-deck.kirby .characterImage {
-  background-image: url(../images/characters/png/kirby.png); }
+  background-image: url("../images/characters/png/kirby.png"); }
+
+.character-box.link .characterImageContainer, #characterModal.link .characterImageContainer, .card-deck.link .characterImageContainer {
+  background-color: #bed163; }
 
 .character-box.link .characterImage, #characterModal.link .characterImage, .card-deck.link .characterImage {
-  background-image: url(../images/characters/png/link.png); }
+  background-image: url("../images/characters/png/link.png"); }
+
+.character-box.little-mac .characterImageContainer, #characterModal.little-mac .characterImageContainer, .card-deck.little-mac .characterImageContainer {
+  background-color: #39775A; }
 
 .character-box.little-mac .characterImage, #characterModal.little-mac .characterImage, .card-deck.little-mac .characterImage {
-  background-image: url(../images/characters/png/littlemac.png); }
+  background-image: url("../images/characters/png/littlemac.png"); }
+
+.character-box.lucario .characterImageContainer, #characterModal.lucario .characterImageContainer, .card-deck.lucario .characterImageContainer {
+  background-color: #AEE4FF; }
 
 .character-box.lucario .characterImage, #characterModal.lucario .characterImage, .card-deck.lucario .characterImage {
-  background-image: url(../images/characters/png/lucario.png); }
+  background-image: url("../images/characters/png/lucario.png"); }
+
+.character-box.lucas .characterImageContainer, #characterModal.lucas .characterImageContainer, .card-deck.lucas .characterImageContainer {
+  background-color: #F05F1B; }
 
 .character-box.lucas .characterImage, #characterModal.lucas .characterImage, .card-deck.lucas .characterImage {
-  background-image: url(../images/characters/png/lucas.png); }
+  background-image: url("../images/characters/png/lucas.png"); }
+
+.character-box.lucina .characterImageContainer, #characterModal.lucina .characterImageContainer, .card-deck.lucina .characterImageContainer {
+  background-color: #74A7CA; }
 
 .character-box.lucina .characterImage, #characterModal.lucina .characterImage, .card-deck.lucina .characterImage {
-  background-image: url(../images/characters/png/lucina.png); }
+  background-image: url("../images/characters/png/lucina.png"); }
+
+.character-box.luigi .characterImageContainer, #characterModal.luigi .characterImageContainer, .card-deck.luigi .characterImageContainer {
+  background-color: #41A732; }
 
 .character-box.luigi .characterImage, #characterModal.luigi .characterImage, .card-deck.luigi .characterImage {
-  background-image: url(../images/characters/png/luigi.png); }
+  background-image: url("../images/characters/png/luigi.png"); }
+
+.character-box.mario .characterImageContainer, #characterModal.mario .characterImageContainer, .card-deck.mario .characterImageContainer {
+  background-color: #AA2C30; }
 
 .character-box.mario .characterImage, #characterModal.mario .characterImage, .card-deck.mario .characterImage {
-  background-image: url(../images/characters/png/mario.png); }
+  background-image: url("../images/characters/png/mario.png"); }
+
+.character-box.marth .characterImageContainer, #characterModal.marth .characterImageContainer, .card-deck.marth .characterImageContainer {
+  background-color: #3EAACC; }
 
 .character-box.marth .characterImage, #characterModal.marth .characterImage, .card-deck.marth .characterImage {
-  background-image: url(../images/characters/png/marth.png); }
+  background-image: url("../images/characters/png/marth.png"); }
+
+.character-box.mega-man .characterImageContainer, #characterModal.mega-man .characterImageContainer, .card-deck.mega-man .characterImageContainer {
+  background-color: #58A0BF; }
 
 .character-box.mega-man .characterImage, #characterModal.mega-man .characterImage, .card-deck.mega-man .characterImage {
-  background-image: url(../images/characters/png/megaman.png); }
+  background-image: url("../images/characters/png/megaman.png"); }
+
+.character-box.meta-knight .characterImageContainer, #characterModal.meta-knight .characterImageContainer, .card-deck.meta-knight .characterImageContainer {
+  background-color: #2d3d7a; }
 
 .character-box.meta-knight .characterImage, #characterModal.meta-knight .characterImage, .card-deck.meta-knight .characterImage {
-  background-image: url(../images/characters/png/metaknight.png); }
+  background-image: url("../images/characters/png/metaknight.png"); }
+
+.character-box.mewtwo .characterImageContainer, #characterModal.mewtwo .characterImageContainer, .card-deck.mewtwo .characterImageContainer {
+  background-color: #8054C3; }
 
 .character-box.mewtwo .characterImage, #characterModal.mewtwo .characterImage, .card-deck.mewtwo .characterImage {
-  background-image: url(../images/characters/png/mewtwo.png); }
+  background-image: url("../images/characters/png/mewtwo.png"); }
+
+.character-box.mii-brawler .characterImageContainer, #characterModal.mii-brawler .characterImageContainer, .card-deck.mii-brawler .characterImageContainer {
+  background-color: #cd7e2c; }
 
 .character-box.mii-brawler .characterImage, #characterModal.mii-brawler .characterImage, .card-deck.mii-brawler .characterImage {
-  background-image: url(../images/characters/png/miibrawler.png); }
+  background-image: url("../images/characters/png/miibrawler.png"); }
+
+.character-box.mii-swordfighter .characterImageContainer, #characterModal.mii-swordfighter .characterImageContainer, .card-deck.mii-swordfighter .characterImageContainer {
+  background-color: #cd7e2c; }
 
 .character-box.mii-swordfighter .characterImage, #characterModal.mii-swordfighter .characterImage, .card-deck.mii-swordfighter .characterImage {
-  background-image: url(../images/characters/png/miiswordfighter.png); }
+  background-image: url("../images/characters/png/miiswordfighter.png"); }
+
+.character-box.mii-gunner .characterImageContainer, #characterModal.mii-gunner .characterImageContainer, .card-deck.mii-gunner .characterImageContainer {
+  background-color: #cd7e2c; }
 
 .character-box.mii-gunner .characterImage, #characterModal.mii-gunner .characterImage, .card-deck.mii-gunner .characterImage {
-  background-image: url(../images/characters/png/miigunner.png); }
+  background-image: url("../images/characters/png/miigunner.png"); }
+
+.character-box.ness .characterImageContainer, #characterModal.ness .characterImageContainer, .card-deck.ness .characterImageContainer {
+  background-color: #ab2d30; }
 
 .character-box.ness .characterImage, #characterModal.ness .characterImage, .card-deck.ness .characterImage {
-  background-image: url(../images/characters/png/ness.png); }
+  background-image: url("../images/characters/png/ness.png"); }
+
+.character-box.olimar .characterImageContainer, #characterModal.olimar .characterImageContainer, .card-deck.olimar .characterImageContainer {
+  background-color: #c3f1a9; }
 
 .character-box.olimar .characterImage, #characterModal.olimar .characterImage, .card-deck.olimar .characterImage {
-  background-image: url(../images/characters/png/olimar.png); }
+  background-image: url("../images/characters/png/olimar.png"); }
+
+.character-box.pacman .characterImageContainer, #characterModal.pacman .characterImageContainer, .card-deck.pacman .characterImageContainer {
+  background-color: #dea03a; }
 
 .character-box.pacman .characterImage, #characterModal.pacman .characterImage, .card-deck.pacman .characterImage {
-  background-image: url(../images/characters/png/pacman.png); }
+  background-image: url("../images/characters/png/pacman.png"); }
+
+.character-box.palutena .characterImageContainer, #characterModal.palutena .characterImageContainer, .card-deck.palutena .characterImageContainer {
+  background-color: #4ce2eb; }
 
 .character-box.palutena .characterImage, #characterModal.palutena .characterImage, .card-deck.palutena .characterImage {
-  background-image: url(../images/characters/png/palutena.png); }
+  background-image: url("../images/characters/png/palutena.png"); }
+
+.character-box.peach .characterImageContainer, #characterModal.peach .characterImageContainer, .card-deck.peach .characterImageContainer {
+  background-color: #fec6f3; }
 
 .character-box.peach .characterImage, #characterModal.peach .characterImage, .card-deck.peach .characterImage {
-  background-image: url(../images/characters/png/peach.png); }
+  background-image: url("../images/characters/png/peach.png"); }
+
+.character-box.pikachu .characterImageContainer, #characterModal.pikachu .characterImageContainer, .card-deck.pikachu .characterImageContainer {
+  background-color: #d8a50a; }
 
 .character-box.pikachu .characterImage, #characterModal.pikachu .characterImage, .card-deck.pikachu .characterImage {
-  background-image: url(../images/characters/png/pikachu.png); }
+  background-image: url("../images/characters/png/pikachu.png"); }
+
+.character-box.pit .characterImageContainer, #characterModal.pit .characterImageContainer, .card-deck.pit .characterImageContainer {
+  background-color: #70B5D7; }
 
 .character-box.pit .characterImage, #characterModal.pit .characterImage, .card-deck.pit .characterImage {
-  background-image: url(../images/characters/png/pit.png); }
+  background-image: url("../images/characters/png/pit.png"); }
+
+.character-box.rob .characterImageContainer, #characterModal.rob .characterImageContainer, .card-deck.rob .characterImageContainer {
+  background-color: #B2B9BF; }
 
 .character-box.rob .characterImage, #characterModal.rob .characterImage, .card-deck.rob .characterImage {
-  background-image: url(../images/characters/png/rob.png); }
+  background-image: url("../images/characters/png/rob.png"); }
+
+.character-box.robin .characterImageContainer, #characterModal.robin .characterImageContainer, .card-deck.robin .characterImageContainer {
+  background-color: #CE82DE; }
 
 .character-box.robin .characterImage, #characterModal.robin .characterImage, .card-deck.robin .characterImage {
-  background-image: url(../images/characters/png/robin.png); }
+  background-image: url("../images/characters/png/robin.png"); }
+
+.character-box.rosalina-and-luma .characterImageContainer, #characterModal.rosalina-and-luma .characterImageContainer, .card-deck.rosalina-and-luma .characterImageContainer {
+  background-color: #4ce2eb; }
 
 .character-box.rosalina-and-luma .characterImage, #characterModal.rosalina-and-luma .characterImage, .card-deck.rosalina-and-luma .characterImage {
-  background-image: url(../images/characters/png/rosalina.png); }
+  background-image: url("../images/characters/png/rosalina.png"); }
+
+.character-box.roy .characterImageContainer, #characterModal.roy .characterImageContainer, .card-deck.roy .characterImageContainer {
+  background-color: #5CB94D; }
 
 .character-box.roy .characterImage, #characterModal.roy .characterImage, .card-deck.roy .characterImage {
-  background-image: url(../images/characters/png/roy.png); }
+  background-image: url("../images/characters/png/roy.png"); }
+
+.character-box.ryu .characterImageContainer, #characterModal.ryu .characterImageContainer, .card-deck.ryu .characterImageContainer {
+  background-color: #E04447; }
 
 .character-box.ryu .characterImage, #characterModal.ryu .characterImage, .card-deck.ryu .characterImage {
-  background-image: url(../images/characters/png/ryu.png); }
+  background-image: url("../images/characters/png/ryu.png"); }
+
+.character-box.samus .characterImageContainer, #characterModal.samus .characterImageContainer, .card-deck.samus .characterImageContainer {
+  background-color: #333F58; }
 
 .character-box.samus .characterImage, #characterModal.samus .characterImage, .card-deck.samus .characterImage {
-  background-image: url(../images/characters/png/samus.png); }
+  background-image: url("../images/characters/png/samus.png"); }
+
+.character-box.sheik .characterImageContainer, #characterModal.sheik .characterImageContainer, .card-deck.sheik .characterImageContainer {
+  background-color: #786cd7; }
 
 .character-box.sheik .characterImage, #characterModal.sheik .characterImage, .card-deck.sheik .characterImage {
-  background-image: url(../images/characters/png/sheik.png); }
+  background-image: url("../images/characters/png/sheik.png"); }
+
+.character-box.shulk .characterImageContainer, #characterModal.shulk .characterImageContainer, .card-deck.shulk .characterImageContainer {
+  background-color: #E55B79; }
 
 .character-box.shulk .characterImage, #characterModal.shulk .characterImage, .card-deck.shulk .characterImage {
-  background-image: url(../images/characters/png/shulk.png); }
+  background-image: url("../images/characters/png/shulk.png"); }
+
+.character-box.shulk-buster .characterImageContainer, #characterModal.shulk-buster .characterImageContainer, .card-deck.shulk-buster .characterImageContainer {
+  background-color: #E55B79; }
 
 .character-box.shulk-buster .characterImage, #characterModal.shulk-buster .characterImage, .card-deck.shulk-buster .characterImage {
-  background-image: url(../images/characters/png/shulkbuster.png); }
+  background-image: url("../images/characters/png/shulkbuster.png"); }
+
+.character-box.shulk-jump .characterImageContainer, #characterModal.shulk-jump .characterImageContainer, .card-deck.shulk-jump .characterImageContainer {
+  background-color: #E55B79; }
 
 .character-box.shulk-jump .characterImage, #characterModal.shulk-jump .characterImage, .card-deck.shulk-jump .characterImage {
-  background-image: url(../images/characters/png/shulkjump.png); }
+  background-image: url("../images/characters/png/shulkjump.png"); }
+
+.character-box.shulk-shield .characterImageContainer, #characterModal.shulk-shield .characterImageContainer, .card-deck.shulk-shield .characterImageContainer {
+  background-color: #E55B79; }
 
 .character-box.shulk-shield .characterImage, #characterModal.shulk-shield .characterImage, .card-deck.shulk-shield .characterImage {
-  background-image: url(../images/characters/png/shulkshield.png); }
+  background-image: url("../images/characters/png/shulkshield.png"); }
+
+.character-box.shulk-smash .characterImageContainer, #characterModal.shulk-smash .characterImageContainer, .card-deck.shulk-smash .characterImageContainer {
+  background-color: #E55B79; }
 
 .character-box.shulk-smash .characterImage, #characterModal.shulk-smash .characterImage, .card-deck.shulk-smash .characterImage {
-  background-image: url(../images/characters/png/shulksmash.png); }
+  background-image: url("../images/characters/png/shulksmash.png"); }
 
-.character-box.shulk-speed .characterImage, #characterModal.shulk-speed .characterImage, .card-deck.shulk-speed .characterImage {
-  background-image: url(../images/characters/png/shulkspeed.png); }
+.character-box.sonic .characterImageContainer, #characterModal.sonic .characterImageContainer, .card-deck.sonic .characterImageContainer {
+  background-color: #579DF2; }
 
 .character-box.sonic .characterImage, #characterModal.sonic .characterImage, .card-deck.sonic .characterImage {
-  background-image: url(../images/characters/png/sonic.png); }
+  background-image: url("../images/characters/png/sonic.png"); }
+
+.character-box.toon-link .characterImageContainer, #characterModal.toon-link .characterImageContainer, .card-deck.toon-link .characterImageContainer {
+  background-color: #98D44B; }
 
 .character-box.toon-link .characterImage, #characterModal.toon-link .characterImage, .card-deck.toon-link .characterImage {
-  background-image: url(../images/characters/png/toonlink.png); }
+  background-image: url("../images/characters/png/toonlink.png"); }
+
+.character-box.villager .characterImageContainer, #characterModal.villager .characterImageContainer, .card-deck.villager .characterImageContainer {
+  background-color: #3BAC6C; }
 
 .character-box.villager .characterImage, #characterModal.villager .characterImage, .card-deck.villager .characterImage {
-  background-image: url(../images/characters/png/villager.png); }
+  background-image: url("../images/characters/png/villager.png"); }
+
+.character-box.wario .characterImageContainer, #characterModal.wario .characterImageContainer, .card-deck.wario .characterImageContainer {
+  background-color: #FECB4C; }
 
 .character-box.wario .characterImage, #characterModal.wario .characterImage, .card-deck.wario .characterImage {
-  background-image: url(../images/characters/png/wario.png); }
+  background-image: url("../images/characters/png/wario.png"); }
+
+.character-box.wii-fit-trainer .characterImageContainer, #characterModal.wii-fit-trainer .characterImageContainer, .card-deck.wii-fit-trainer .characterImageContainer {
+  background-color: #86d776; }
 
 .character-box.wii-fit-trainer .characterImage, #characterModal.wii-fit-trainer .characterImage, .card-deck.wii-fit-trainer .characterImage {
-  background-image: url(../images/characters/png/wiifittrainer.png); }
+  background-image: url("../images/characters/png/wiifittrainer.png"); }
+
+.character-box.yoshi .characterImageContainer, #characterModal.yoshi .characterImageContainer, .card-deck.yoshi .characterImageContainer {
+  background-color: #4d9540; }
 
 .character-box.yoshi .characterImage, #characterModal.yoshi .characterImage, .card-deck.yoshi .characterImage {
-  background-image: url(../images/characters/png/yoshi.png); }
+  background-image: url("../images/characters/png/yoshi.png"); }
+
+.character-box.zelda .characterImageContainer, #characterModal.zelda .characterImageContainer, .card-deck.zelda .characterImageContainer {
+  background-color: #AA74BA; }
 
 .character-box.zelda .characterImage, #characterModal.zelda .characterImage, .card-deck.zelda .characterImage {
-  background-image: url(../images/characters/png/zelda.png); }
+  background-image: url("../images/characters/png/zelda.png"); }
+
+.character-box.zero-suit-samus .characterImageContainer, #characterModal.zero-suit-samus .characterImageContainer, .card-deck.zero-suit-samus .characterImageContainer {
+  background-color: #005AAA; }
 
 .character-box.zero-suit-samus .characterImage, #characterModal.zero-suit-samus .characterImage, .card-deck.zero-suit-samus .characterImage {
-  background-image: url(../images/characters/png/zerosuitsamus.png); }
+  background-image: url("../images/characters/png/zerosuitsamus.png"); }
 
 /*# sourceMappingURL=character-icons.css.map */
