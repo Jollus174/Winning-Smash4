@@ -16,11 +16,12 @@
 			],
 			"giphy": ["https://giphy.com/embed/3oFzm4XhnWq9vSZtIc", "https://www.youtube.com/watch?v=W3sgCRc13sk"],
 
-			"spreadsheet": ["https://docs.google.com/spreadsheets/d/1bGbb7fiX1W0Oer58yf6Kcwtx_zgxg--WYGrUpxTjRpk"],
-			"spreadsheetcredit": ["https://twitter.com/TheVonDk", "Poke"],
+			"spreadsheetLink": "https://docs.google.com/spreadsheets/d/1bGbb7fiX1W0Oer58yf6Kcwtx_zgxg--WYGrUpxTjRpk",
+			"spreadsheetMethod": "",
+			"creditLink": "https://twitter.com/TheVonDk",
+			"creditName": "Poke",
 
-			"specialInfo": "",
-			
+			"specialInfo": "",	
 
 			"rage50": "[-2, -6]",
 			"rage60": "[-4, -8]",
@@ -132,8 +133,10 @@
 			],
 			"giphy": ["https://giphy.com/embed/xT1R9YAchWK3aiJAhq", "https://www.youtube.com/watch?v=JlcIN-MKGCk"],
 
-			"spreadsheet": ["https://docs.google.com/spreadsheets/d/1OvUy2gsTrUj96cAHSkSIZHGnUaaS-UrX6SdFKyctNmU"],
-			"spreadsheetcredit": ["https://twitter.com/TheVonDk", "Poke"],
+			"spreadsheetLink": "https://docs.google.com/spreadsheets/d/1OvUy2gsTrUj96cAHSkSIZHGnUaaS-UrX6SdFKyctNmU",
+			"spreadsheetMethod": "",
+			"creditLink": "https://twitter.com/TheVonDk",
+			"creditName": "Poke",
 
 			"specialInfo": "",
 
@@ -246,8 +249,10 @@
 
 			"giphy": ["https://giphy.com/embed/3ohc0PUZMNWWHEWKmA", "https://www.youtube.com/watch?v=QP2hMnR66eg"],
 
-			"spreadsheet": ["https://docs.google.com/spreadsheets/d/1VNYNt0JFe7ak02Db_Ds1Y1QdoK7muOaPSqqd0c5JOUs"],
-			"spreadsheetcredit": ["https://twitter.com/Tihit212", "Taiheta"],
+			"spreadsheetLink": "https://docs.google.com/spreadsheets/d/1VNYNt0JFe7ak02Db_Ds1Y1QdoK7muOaPSqqd0c5JOUs",
+			"spreadsheetMethod": "",
+			"creditLink": "https://twitter.com/Tihit212",
+			"creditName": "Taiheta",
 
 			"specialInfo": "",
 
@@ -357,8 +362,10 @@
 			],
 			"giphy": ["https://giphy.com/embed/xULW8n9ACGvGXbE3ok", "https://www.youtube.com/watch?v=AXeykQaviE4"],
 
-			"spreadsheet": ["https://docs.google.com/spreadsheets/d/1AxpLDkDltkjAND819JrbgfIgPH_pjkeFPhjpzXPDgP0/"],
-			"spreadsheetcredit": ["https://twitter.com/houseoffastfood", "Mickey"],
+			"spreadsheetLink": "https://docs.google.com/spreadsheets/d/1AxpLDkDltkjAND819JrbgfIgPH_pjkeFPhjpzXPDgP0/",
+			"spreadsheetMethod": "",
+			"creditLink": "https://twitter.com/houseoffastfood",
+			"creditName": "Mickey",
 
 			"specialInfo": "",
 
@@ -480,9 +487,10 @@
 			
             "giphy": ["https://giphy.com/embed/1BhDgxLRnr0Smjfg0l", ""],
 
-			"spreadsheet": ["https://docs.google.com/spreadsheets/d/18cuJYFSAsserv-yDggpbPv7QFLA62V3kneu86scL6EM"],
-			"spreadsheetmethod": ["https://docs.google.com/document/d/17TiS0CGt1h08FEuOln9kBfAQYk81K0QX6Pc3kXS15pI"],
-			"spreadsheetcredit": ["https://twitter.com/Proctavia_SSB", "Proctavia_SSB"],
+			"spreadsheetLink": "https://docs.google.com/spreadsheets/d/18cuJYFSAsserv-yDggpbPv7QFLA62V3kneu86scL6EM",
+			"spreadsheetMethod": "https://docs.google.com/document/d/17TiS0CGt1h08FEuOln9kBfAQYk81K0QX6Pc3kXS15pI",
+			"creditLink": "https://twitter.com/Proctavia_SSB",
+			"creditName": "Proctavia_SSB",
 
             "specialInfo": "<strong>IMPORTANT</strong> Due to the nature of this combo, there are several deadzones within the kill percents where it's no longer true. Check the <a class='info' href=''>info section</a> for more.<br>Since this isn't strictly a kill confirm, only Final Destination is included as a stage, and the percents listed are the percents that this combo is simply 'true', not when it kills.<br>Also included within the character grid is how far Pikachu needs to run to connect this combo.",
 
@@ -589,9 +597,10 @@
 			
             "giphy": ["https://giphy.com/embed/42waw3Y7dAjlWulyRB", ""],
 
-			"spreadsheet": ["https://docs.google.com/spreadsheets/d/18cuJYFSAsserv-yDggpbPv7QFLA62V3kneu86scL6EM"],
-			"spreadsheetmethod": ["https://docs.google.com/document/d/17TiS0CGt1h08FEuOln9kBfAQYk81K0QX6Pc3kXS15pI"],
-			"spreadsheetcredit": ["https://twitter.com/Proctavia_SSB", "Proctavia_SSB"],
+			"spreadsheetLink": "https://docs.google.com/spreadsheets/d/18cuJYFSAsserv-yDggpbPv7QFLA62V3kneu86scL6EM",
+			"spreadsheetMethod": "https://docs.google.com/document/d/17TiS0CGt1h08FEuOln9kBfAQYk81K0QX6Pc3kXS15pI",
+			"creditLink": "https://twitter.com/Proctavia_SSB",
+			"creditName": "Proctavia_SSB",
 
 			"specialInfo": "<strong>IMPORTANT</strong> Due to the nature of this combo, there are several deadzones within the kill percents where it's no longer true. Check the <a class='info' href=''>info section</a> for more.<br>Since this isn't strictly a kill confirm, only Final Destination is included as a stage, and the percents listed are the percents that this combo is simply 'true', not when it kills.<br>Also included within the character grid is how far Pikachu needs to run to connect this combo.",
 
@@ -704,8 +713,10 @@
 			
 			"giphy": ["https://giphy.com/embed/l0HUmuMwBtdOQdZrG", "https://www.youtube.com/watch?v=MuYO0LM_4ac"],
 
-			"spreadsheet": ["https://docs.google.com/spreadsheets/d/18cuJYFSAsserv-yDggpbPv7QFLA62V3kneu86scL6EM/edit#gid=1190401967"],
-			"spreadsheetcredit": ["https://twitter.com/robinlabteam", "The Robin Lab Team"],
+			"spreadsheetLink": "https://docs.google.com/spreadsheets/d/18cuJYFSAsserv-yDggpbPv7QFLA62V3kneu86scL6EM",
+			"spreadsheetMethod": "",
+			"creditLink": "https://twitter.com/robinlabteam",
+			"creditName": "The Robin Lab Team",
 
 			"specialInfo": "",
 
@@ -819,8 +830,10 @@
 			
 			"giphy": ["https://giphy.com/embed/3o751XGmDHkHBxbgwE", ""],
 
-			"spreadsheet": ["https://docs.google.com/spreadsheets/d/18cuJYFSAsserv-yDggpbPv7QFLA62V3kneu86scL6EM/edit#gid=1190401967"],
-			"spreadsheetcredit": ["https://twitter.com/robinlabteam", "The Robin Lab Team"],
+			"spreadsheetLink": "https://docs.google.com/spreadsheets/d/1zd5Ky1MR9ECFCtKRlfyQ77YNT9gAZ7GNXJkqZGVgmoI",
+			"spreadsheetMethod": "",
+			"creditLink": "",
+			"creditName": "Xelda",
 
 			"specialInfo": "In Zelda's case, difficulty is determined by the victim's airdodge frame, not by the kill confirm window.",
 

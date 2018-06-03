@@ -113,7 +113,6 @@ var characters = (function() {
                 vm.index = parseInt(data.index);
                 vm.moveIndex = parseInt(data.moveIndex);
                 vm.moveId = data.moveId;
-                vm.id = data.id;
 
                 // Deeper
                 // https://jsfiddle.net/wfs569gf/
@@ -136,6 +135,19 @@ var characters = (function() {
                     data.tcSidePlatMin,
                     data.tcTopPlatMin
                 ];
+
+                // Credits
+                vm.spreadsheetLink = data.spreadsheetLink;
+                vm.spreadsheetName = data.spreadsheetName;
+                vm.creditLink = data.creditLink;
+                vm.creditName = data.creditName;
+                // if(data.spreadsheetMethod){
+                //     vm.spreadsheetMethod = data.spreadsheetMethod;
+                // } else {
+                // }
+                vm.spreadsheetMethod = data.spreadsheetMethod;
+
+
 
                 // WTF HOW IS THIS WORKING WITH THESE LINES COMMENTED OUT?!
                 //vm.moveName = data.moveName;
