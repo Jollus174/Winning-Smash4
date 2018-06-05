@@ -10252,12 +10252,11 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF;
     font-weight: 700;
     transition: none;
-    background-color: #7063d5;
+    background-color: #5d4fcf;
     border: 1px solid #4132b9; }
-    .bayonetta#characterModal .secondarynav .btn-secondary:hover, .bayonetta#characterModal .secondarynav .btn-secondary.active, .bayonetta#characterModal .secondarynav .btn-secondary:active {
-      border-color: #5d4fcf !important;
-      background: #5d4fcf; }
-    .bayonetta#characterModal .secondarynav .btn-secondary:hover, .bayonetta#characterModal .secondarynav .btn-secondary.active, .bayonetta#characterModal .secondarynav .btn-secondary:active {
+    .bayonetta#characterModal .secondarynav .btn-secondary.active {
+      background-color: #4b3bca !important; }
+    .bayonetta#characterModal .secondarynav .btn-secondary:hover, .bayonetta#characterModal .secondarynav .btn-secondary:active {
       background-color: #4132b9 !important; }
 
 .bayonetta#characterModal .characterOverview li {
@@ -10357,12 +10356,11 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF;
     font-weight: 700;
     transition: none;
-    background-color: #1b4032;
+    background-color: #142e24;
     border: 1px solid #040b08; }
-    .bowser#characterModal .secondarynav .btn-secondary:hover, .bowser#characterModal .secondarynav .btn-secondary.active, .bowser#characterModal .secondarynav .btn-secondary:active {
-      border-color: #142e24 !important;
-      background: #142e24; }
-    .bowser#characterModal .secondarynav .btn-secondary:hover, .bowser#characterModal .secondarynav .btn-secondary.active, .bowser#characterModal .secondarynav .btn-secondary:active {
+    .bowser#characterModal .secondarynav .btn-secondary.active {
+      background-color: #0c1c16 !important; }
+    .bowser#characterModal .secondarynav .btn-secondary:hover, .bowser#characterModal .secondarynav .btn-secondary:active {
       background-color: #040b08 !important; }
 
 .bowser#characterModal .characterOverview li {
@@ -10464,11 +10462,10 @@ a.text-dark:focus, a.text-dark:hover {
     transition: none;
     background-color: #d4d34c;
     border: 1px solid #81801f; }
-    .bowser-jr#characterModal .secondarynav .btn-secondary:hover, .bowser-jr#characterModal .secondarynav .btn-secondary.active, .bowser-jr#characterModal .secondarynav .btn-secondary:active {
-      border-color: #81801f !important;
-      background: #81801f; }
-    .bowser-jr#characterModal .secondarynav .btn-secondary:hover, .bowser-jr#characterModal .secondarynav .btn-secondary.active, .bowser-jr#characterModal .secondarynav .btn-secondary:active {
+    .bowser-jr#characterModal .secondarynav .btn-secondary.active {
       background-color: #e3e289 !important; }
+    .bowser-jr#characterModal .secondarynav .btn-secondary:hover, .bowser-jr#characterModal .secondarynav .btn-secondary:active {
+      background-color: #edecb2 !important; }
 
 .bowser-jr#characterModal .characterOverview li {
   color: #431c0b; }
@@ -10567,12 +10564,11 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF;
     font-weight: 700;
     transition: none;
-    background-color: #574ad3;
+    background-color: #4436ce;
     border: 1px solid #3429a8; }
-    .captain-falcon#characterModal .secondarynav .btn-secondary:hover, .captain-falcon#characterModal .secondarynav .btn-secondary.active, .captain-falcon#characterModal .secondarynav .btn-secondary:active {
-      border-color: #4436ce !important;
-      background: #4436ce; }
-    .captain-falcon#characterModal .secondarynav .btn-secondary:hover, .captain-falcon#characterModal .secondarynav .btn-secondary.active, .captain-falcon#characterModal .secondarynav .btn-secondary:active {
+    .captain-falcon#characterModal .secondarynav .btn-secondary.active {
+      background-color: #3b2ebd !important; }
+    .captain-falcon#characterModal .secondarynav .btn-secondary:hover, .captain-falcon#characterModal .secondarynav .btn-secondary:active {
       background-color: #3429a8 !important; }
 
 .captain-falcon#characterModal .characterOverview li {
@@ -10672,12 +10668,11 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF;
     font-weight: 700;
     transition: none;
-    background-color: #c54408;
+    background-color: #ad3b07;
     border: 1px solid #7c2a05; }
-    .charizard#characterModal .secondarynav .btn-secondary:hover, .charizard#characterModal .secondarynav .btn-secondary.active, .charizard#characterModal .secondarynav .btn-secondary:active {
-      border-color: #ad3b07 !important;
-      background: #ad3b07; }
-    .charizard#characterModal .secondarynav .btn-secondary:hover, .charizard#characterModal .secondarynav .btn-secondary.active, .charizard#characterModal .secondarynav .btn-secondary:active {
+    .charizard#characterModal .secondarynav .btn-secondary.active {
+      background-color: #943306 !important; }
+    .charizard#characterModal .secondarynav .btn-secondary:hover, .charizard#characterModal .secondarynav .btn-secondary:active {
       background-color: #7c2a05 !important; }
 
 .charizard#characterModal .characterOverview li {
@@ -10777,12 +10772,11 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF;
     font-weight: 700;
     transition: none;
-    background-color: #004a41;
+    background-color: #00302a;
     border: 1px solid black; }
-    .cloud#characterModal .secondarynav .btn-secondary:hover, .cloud#characterModal .secondarynav .btn-secondary.active, .cloud#characterModal .secondarynav .btn-secondary:active {
-      border-color: #00302a !important;
-      background: #00302a; }
-    .cloud#characterModal .secondarynav .btn-secondary:hover, .cloud#characterModal .secondarynav .btn-secondary.active, .cloud#characterModal .secondarynav .btn-secondary:active {
+    .cloud#characterModal .secondarynav .btn-secondary.active {
+      background-color: #001714 !important; }
+    .cloud#characterModal .secondarynav .btn-secondary:hover, .cloud#characterModal .secondarynav .btn-secondary:active {
       background-color: black !important; }
 
 .cloud#characterModal .characterOverview li {
@@ -10882,12 +10876,11 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF;
     font-weight: 700;
     transition: none;
-    background-color: #004a41;
+    background-color: #00302a;
     border: 1px solid black; }
-    .cloud-limit#characterModal .secondarynav .btn-secondary:hover, .cloud-limit#characterModal .secondarynav .btn-secondary.active, .cloud-limit#characterModal .secondarynav .btn-secondary:active {
-      border-color: #00302a !important;
-      background: #00302a; }
-    .cloud-limit#characterModal .secondarynav .btn-secondary:hover, .cloud-limit#characterModal .secondarynav .btn-secondary.active, .cloud-limit#characterModal .secondarynav .btn-secondary:active {
+    .cloud-limit#characterModal .secondarynav .btn-secondary.active {
+      background-color: #001714 !important; }
+    .cloud-limit#characterModal .secondarynav .btn-secondary:hover, .cloud-limit#characterModal .secondarynav .btn-secondary:active {
       background-color: black !important; }
 
 .cloud-limit#characterModal .characterOverview li {
@@ -10987,12 +10980,11 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF;
     font-weight: 700;
     transition: none;
-    background-color: #3d1a1a;
+    background-color: #2b1313;
     border: 1px solid #080303; }
-    .corrin#characterModal .secondarynav .btn-secondary:hover, .corrin#characterModal .secondarynav .btn-secondary.active, .corrin#characterModal .secondarynav .btn-secondary:active {
-      border-color: #2b1313 !important;
-      background: #2b1313; }
-    .corrin#characterModal .secondarynav .btn-secondary:hover, .corrin#characterModal .secondarynav .btn-secondary.active, .corrin#characterModal .secondarynav .btn-secondary:active {
+    .corrin#characterModal .secondarynav .btn-secondary.active {
+      background-color: #1a0b0b !important; }
+    .corrin#characterModal .secondarynav .btn-secondary:hover, .corrin#characterModal .secondarynav .btn-secondary:active {
       background-color: #080303 !important; }
 
 .corrin#characterModal .characterOverview li {
@@ -11092,12 +11084,11 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF;
     font-weight: 700;
     transition: none;
-    background-color: #8b29df;
+    background-color: #7e1fd0;
     border: 1px solid #6318a4; }
-    .dark-pit#characterModal .secondarynav .btn-secondary:hover, .dark-pit#characterModal .secondarynav .btn-secondary.active, .dark-pit#characterModal .secondarynav .btn-secondary:active {
-      border-color: #7e1fd0 !important;
-      background: #7e1fd0; }
-    .dark-pit#characterModal .secondarynav .btn-secondary:hover, .dark-pit#characterModal .secondarynav .btn-secondary.active, .dark-pit#characterModal .secondarynav .btn-secondary:active {
+    .dark-pit#characterModal .secondarynav .btn-secondary.active {
+      background-color: #701cba !important; }
+    .dark-pit#characterModal .secondarynav .btn-secondary:hover, .dark-pit#characterModal .secondarynav .btn-secondary:active {
       background-color: #6318a4 !important; }
 
 .dark-pit#characterModal .characterOverview li {
@@ -11197,12 +11188,11 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF;
     font-weight: 700;
     transition: none;
-    background-color: #551415;
+    background-color: #410f10;
     border: 1px solid #170606; }
-    .diddy-kong#characterModal .secondarynav .btn-secondary:hover, .diddy-kong#characterModal .secondarynav .btn-secondary.active, .diddy-kong#characterModal .secondarynav .btn-secondary:active {
-      border-color: #410f10 !important;
-      background: #410f10; }
-    .diddy-kong#characterModal .secondarynav .btn-secondary:hover, .diddy-kong#characterModal .secondarynav .btn-secondary.active, .diddy-kong#characterModal .secondarynav .btn-secondary:active {
+    .diddy-kong#characterModal .secondarynav .btn-secondary.active {
+      background-color: #2c0a0b !important; }
+    .diddy-kong#characterModal .secondarynav .btn-secondary:hover, .diddy-kong#characterModal .secondarynav .btn-secondary:active {
       background-color: #170606 !important; }
 
 .diddy-kong#characterModal .characterOverview li {
@@ -11304,11 +11294,10 @@ a.text-dark:focus, a.text-dark:hover {
     transition: none;
     background-color: #ffde19;
     border: 1px solid #988200; }
-    .donkey-kong#characterModal .secondarynav .btn-secondary:hover, .donkey-kong#characterModal .secondarynav .btn-secondary.active, .donkey-kong#characterModal .secondarynav .btn-secondary:active {
-      border-color: #988200 !important;
-      background: #988200; }
-    .donkey-kong#characterModal .secondarynav .btn-secondary:hover, .donkey-kong#characterModal .secondarynav .btn-secondary.active, .donkey-kong#characterModal .secondarynav .btn-secondary:active {
+    .donkey-kong#characterModal .secondarynav .btn-secondary.active {
       background-color: #ffe965 !important; }
+    .donkey-kong#characterModal .secondarynav .btn-secondary:hover, .donkey-kong#characterModal .secondarynav .btn-secondary:active {
+      background-color: #fff098 !important; }
 
 .donkey-kong#characterModal .characterOverview li {
   color: #431c0b; }
@@ -11410,12 +11399,11 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF;
     font-weight: 700;
     transition: none;
-    background-color: #971c25;
+    background-color: #821820;
     border: 1px solid #571015; }
-    .dr-mario#characterModal .secondarynav .btn-secondary:hover, .dr-mario#characterModal .secondarynav .btn-secondary.active, .dr-mario#characterModal .secondarynav .btn-secondary:active {
-      border-color: #821820 !important;
-      background: #821820; }
-    .dr-mario#characterModal .secondarynav .btn-secondary:hover, .dr-mario#characterModal .secondarynav .btn-secondary.active, .dr-mario#characterModal .secondarynav .btn-secondary:active {
+    .dr-mario#characterModal .secondarynav .btn-secondary.active {
+      background-color: #6c141a !important; }
+    .dr-mario#characterModal .secondarynav .btn-secondary:hover, .dr-mario#characterModal .secondarynav .btn-secondary:active {
       background-color: #571015 !important; }
 
 .dr-mario#characterModal .characterOverview li {
@@ -11515,12 +11503,11 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF;
     font-weight: 700;
     transition: none;
-    background-color: #5a371f;
+    background-color: #472c19;
     border: 1px solid #21140c; }
-    .duck-hunt#characterModal .secondarynav .btn-secondary:hover, .duck-hunt#characterModal .secondarynav .btn-secondary.active, .duck-hunt#characterModal .secondarynav .btn-secondary:active {
-      border-color: #472c19 !important;
-      background: #472c19; }
-    .duck-hunt#characterModal .secondarynav .btn-secondary:hover, .duck-hunt#characterModal .secondarynav .btn-secondary.active, .duck-hunt#characterModal .secondarynav .btn-secondary:active {
+    .duck-hunt#characterModal .secondarynav .btn-secondary.active {
+      background-color: #342012 !important; }
+    .duck-hunt#characterModal .secondarynav .btn-secondary:hover, .duck-hunt#characterModal .secondarynav .btn-secondary:active {
       background-color: #21140c !important; }
 
 .duck-hunt#characterModal .characterOverview li {
@@ -11620,12 +11607,11 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF;
     font-weight: 700;
     transition: none;
-    background-color: #208ec8;
+    background-color: #1d7fb2;
     border: 1px solid #165f86; }
-    .falco#characterModal .secondarynav .btn-secondary:hover, .falco#characterModal .secondarynav .btn-secondary.active, .falco#characterModal .secondarynav .btn-secondary:active {
-      border-color: #1d7fb2 !important;
-      background: #1d7fb2; }
-    .falco#characterModal .secondarynav .btn-secondary:hover, .falco#characterModal .secondarynav .btn-secondary.active, .falco#characterModal .secondarynav .btn-secondary:active {
+    .falco#characterModal .secondarynav .btn-secondary.active {
+      background-color: #196f9c !important; }
+    .falco#characterModal .secondarynav .btn-secondary:hover, .falco#characterModal .secondarynav .btn-secondary:active {
       background-color: #165f86 !important; }
 
 .falco#characterModal .characterOverview li {
@@ -11725,12 +11711,11 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF;
     font-weight: 700;
     transition: none;
-    background-color: #02427e;
+    background-color: #023565;
     border: 1px solid #011b32; }
-    .fox#characterModal .secondarynav .btn-secondary:hover, .fox#characterModal .secondarynav .btn-secondary.active, .fox#characterModal .secondarynav .btn-secondary:active {
-      border-color: #023565 !important;
-      background: #023565; }
-    .fox#characterModal .secondarynav .btn-secondary:hover, .fox#characterModal .secondarynav .btn-secondary.active, .fox#characterModal .secondarynav .btn-secondary:active {
+    .fox#characterModal .secondarynav .btn-secondary.active {
+      background-color: #01284b !important; }
+    .fox#characterModal .secondarynav .btn-secondary:hover, .fox#characterModal .secondarynav .btn-secondary:active {
       background-color: #011b32 !important; }
 
 .fox#characterModal .characterOverview li {
@@ -11830,12 +11815,11 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF;
     font-weight: 700;
     transition: none;
-    background-color: #63625d;
+    background-color: #565551;
     border: 1px solid #3c3b38; }
-    .game-and-watch#characterModal .secondarynav .btn-secondary:hover, .game-and-watch#characterModal .secondarynav .btn-secondary.active, .game-and-watch#characterModal .secondarynav .btn-secondary:active {
-      border-color: #565551 !important;
-      background: #565551; }
-    .game-and-watch#characterModal .secondarynav .btn-secondary:hover, .game-and-watch#characterModal .secondarynav .btn-secondary.active, .game-and-watch#characterModal .secondarynav .btn-secondary:active {
+    .game-and-watch#characterModal .secondarynav .btn-secondary.active {
+      background-color: #494845 !important; }
+    .game-and-watch#characterModal .secondarynav .btn-secondary:hover, .game-and-watch#characterModal .secondarynav .btn-secondary:active {
       background-color: #3c3b38 !important; }
 
 .game-and-watch#characterModal .characterOverview li {
@@ -11935,12 +11919,11 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF;
     font-weight: 700;
     transition: none;
-    background-color: #59556f;
+    background-color: #4d4a60;
     border: 1px solid #363444; }
-    .ganondorf#characterModal .secondarynav .btn-secondary:hover, .ganondorf#characterModal .secondarynav .btn-secondary.active, .ganondorf#characterModal .secondarynav .btn-secondary:active {
-      border-color: #4d4a60 !important;
-      background: #4d4a60; }
-    .ganondorf#characterModal .secondarynav .btn-secondary:hover, .ganondorf#characterModal .secondarynav .btn-secondary.active, .ganondorf#characterModal .secondarynav .btn-secondary:active {
+    .ganondorf#characterModal .secondarynav .btn-secondary.active {
+      background-color: #423f52 !important; }
+    .ganondorf#characterModal .secondarynav .btn-secondary:hover, .ganondorf#characterModal .secondarynav .btn-secondary:active {
       background-color: #363444 !important; }
 
 .ganondorf#characterModal .characterOverview li {
@@ -12040,12 +12023,11 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF;
     font-weight: 700;
     transition: none;
-    background-color: #375075;
+    background-color: #2f4464;
     border: 1px solid #1f2c41; }
-    .greninja#characterModal .secondarynav .btn-secondary:hover, .greninja#characterModal .secondarynav .btn-secondary.active, .greninja#characterModal .secondarynav .btn-secondary:active {
-      border-color: #2f4464 !important;
-      background: #2f4464; }
-    .greninja#characterModal .secondarynav .btn-secondary:hover, .greninja#characterModal .secondarynav .btn-secondary.active, .greninja#characterModal .secondarynav .btn-secondary:active {
+    .greninja#characterModal .secondarynav .btn-secondary.active {
+      background-color: #273852 !important; }
+    .greninja#characterModal .secondarynav .btn-secondary:hover, .greninja#characterModal .secondarynav .btn-secondary:active {
       background-color: #1f2c41 !important; }
 
 .greninja#characterModal .characterOverview li {
@@ -12145,12 +12127,11 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF;
     font-weight: 700;
     transition: none;
-    background-color: #883126;
+    background-color: #742a21;
     border: 1px solid #4d1c15; }
-    .ike#characterModal .secondarynav .btn-secondary:hover, .ike#characterModal .secondarynav .btn-secondary.active, .ike#characterModal .secondarynav .btn-secondary:active {
-      border-color: #742a21 !important;
-      background: #742a21; }
-    .ike#characterModal .secondarynav .btn-secondary:hover, .ike#characterModal .secondarynav .btn-secondary.active, .ike#characterModal .secondarynav .btn-secondary:active {
+    .ike#characterModal .secondarynav .btn-secondary.active {
+      background-color: #60231b !important; }
+    .ike#characterModal .secondarynav .btn-secondary:hover, .ike#characterModal .secondarynav .btn-secondary:active {
       background-color: #4d1c15 !important; }
 
 .ike#characterModal .characterOverview li {
@@ -12250,12 +12231,11 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF;
     font-weight: 700;
     transition: none;
-    background-color: #eb3ede;
+    background-color: #e827da;
     border: 1px solid #c715ba; }
-    .jigglypuff#characterModal .secondarynav .btn-secondary:hover, .jigglypuff#characterModal .secondarynav .btn-secondary.active, .jigglypuff#characterModal .secondarynav .btn-secondary:active {
-      border-color: #e827da !important;
-      background: #e827da; }
-    .jigglypuff#characterModal .secondarynav .btn-secondary:hover, .jigglypuff#characterModal .secondarynav .btn-secondary.active, .jigglypuff#characterModal .secondarynav .btn-secondary:active {
+    .jigglypuff#characterModal .secondarynav .btn-secondary.active {
+      background-color: #de17d0 !important; }
+    .jigglypuff#characterModal .secondarynav .btn-secondary:hover, .jigglypuff#characterModal .secondarynav .btn-secondary:active {
       background-color: #c715ba !important; }
 
 .jigglypuff#characterModal .characterOverview li {
@@ -12357,11 +12337,10 @@ a.text-dark:focus, a.text-dark:hover {
     transition: none;
     background-color: #ffed80;
     border: 1px solid #ffda00; }
-    .king-dedede#characterModal .secondarynav .btn-secondary:hover, .king-dedede#characterModal .secondarynav .btn-secondary.active, .king-dedede#characterModal .secondarynav .btn-secondary:active {
-      border-color: #ffda00 !important;
-      background: #ffda00; }
-    .king-dedede#characterModal .secondarynav .btn-secondary:hover, .king-dedede#characterModal .secondarynav .btn-secondary.active, .king-dedede#characterModal .secondarynav .btn-secondary:active {
+    .king-dedede#characterModal .secondarynav .btn-secondary.active {
       background-color: #fff8cc !important; }
+    .king-dedede#characterModal .secondarynav .btn-secondary:hover, .king-dedede#characterModal .secondarynav .btn-secondary:active {
+      background-color: white !important; }
 
 .king-dedede#characterModal .characterOverview li {
   color: #431c0b; }
@@ -12460,12 +12439,11 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF;
     font-weight: 700;
     transition: none;
-    background-color: #d65560;
+    background-color: #d1414d;
     border: 1px solid #b42b37; }
-    .kirby#characterModal .secondarynav .btn-secondary:hover, .kirby#characterModal .secondarynav .btn-secondary.active, .kirby#characterModal .secondarynav .btn-secondary:active {
-      border-color: #d1414d !important;
-      background: #d1414d; }
-    .kirby#characterModal .secondarynav .btn-secondary:hover, .kirby#characterModal .secondarynav .btn-secondary.active, .kirby#characterModal .secondarynav .btn-secondary:active {
+    .kirby#characterModal .secondarynav .btn-secondary.active {
+      background-color: #c8303d !important; }
+    .kirby#characterModal .secondarynav .btn-secondary:hover, .kirby#characterModal .secondarynav .btn-secondary:active {
       background-color: #b42b37 !important; }
 
 .kirby#characterModal .characterOverview li {
@@ -12567,11 +12545,10 @@ a.text-dark:focus, a.text-dark:hover {
     transition: none;
     background-color: #c6d777;
     border: 1px solid #8c9f2f; }
-    .link#characterModal .secondarynav .btn-secondary:hover, .link#characterModal .secondarynav .btn-secondary.active, .link#characterModal .secondarynav .btn-secondary:active {
-      border-color: #8c9f2f !important;
-      background: #8c9f2f; }
-    .link#characterModal .secondarynav .btn-secondary:hover, .link#characterModal .secondarynav .btn-secondary.active, .link#characterModal .secondarynav .btn-secondary:active {
+    .link#characterModal .secondarynav .btn-secondary.active {
       background-color: #dfe8b2 !important; }
+    .link#characterModal .secondarynav .btn-secondary:hover, .link#characterModal .secondarynav .btn-secondary:active {
+      background-color: #eff4d9 !important; }
 
 .link#characterModal .characterOverview li {
   color: #431c0b; }
@@ -12670,12 +12647,11 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF;
     font-weight: 700;
     transition: none;
-    background-color: #204333;
+    background-color: #183226;
     border: 1px solid #07100c; }
-    .little-mac#characterModal .secondarynav .btn-secondary:hover, .little-mac#characterModal .secondarynav .btn-secondary.active, .little-mac#characterModal .secondarynav .btn-secondary:active {
-      border-color: #183226 !important;
-      background: #183226; }
-    .little-mac#characterModal .secondarynav .btn-secondary:hover, .little-mac#characterModal .secondarynav .btn-secondary.active, .little-mac#characterModal .secondarynav .btn-secondary:active {
+    .little-mac#characterModal .secondarynav .btn-secondary.active {
+      background-color: #102119 !important; }
+    .little-mac#characterModal .secondarynav .btn-secondary:hover, .little-mac#characterModal .secondarynav .btn-secondary:active {
       background-color: #07100c !important; }
 
 .little-mac#characterModal .characterOverview li {
@@ -12777,10 +12753,9 @@ a.text-dark:focus, a.text-dark:hover {
     transition: none;
     background-color: #c8edff;
     border: 1px solid #48c2ff; }
-    .lucario#characterModal .secondarynav .btn-secondary:hover, .lucario#characterModal .secondarynav .btn-secondary.active, .lucario#characterModal .secondarynav .btn-secondary:active {
-      border-color: #48c2ff !important;
-      background: #48c2ff; }
-    .lucario#characterModal .secondarynav .btn-secondary:hover, .lucario#characterModal .secondarynav .btn-secondary.active, .lucario#characterModal .secondarynav .btn-secondary:active {
+    .lucario#characterModal .secondarynav .btn-secondary.active {
+      background-color: white !important; }
+    .lucario#characterModal .secondarynav .btn-secondary:hover, .lucario#characterModal .secondarynav .btn-secondary:active {
       background-color: white !important; }
 
 .lucario#characterModal .characterOverview li {
@@ -12880,12 +12855,11 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF;
     font-weight: 700;
     transition: none;
-    background-color: #b3410c;
+    background-color: #9b380a;
     border: 1px solid #6b2707; }
-    .lucas#characterModal .secondarynav .btn-secondary:hover, .lucas#characterModal .secondarynav .btn-secondary.active, .lucas#characterModal .secondarynav .btn-secondary:active {
-      border-color: #9b380a !important;
-      background: #9b380a; }
-    .lucas#characterModal .secondarynav .btn-secondary:hover, .lucas#characterModal .secondarynav .btn-secondary.active, .lucas#characterModal .secondarynav .btn-secondary:active {
+    .lucas#characterModal .secondarynav .btn-secondary.active {
+      background-color: #833009 !important; }
+    .lucas#characterModal .secondarynav .btn-secondary:hover, .lucas#characterModal .secondarynav .btn-secondary:active {
       background-color: #6b2707 !important; }
 
 .lucas#characterModal .characterOverview li {
@@ -12985,12 +12959,11 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF;
     font-weight: 700;
     transition: none;
-    background-color: #4383af;
+    background-color: #3c759c;
     border: 1px solid #2e5977; }
-    .lucina#characterModal .secondarynav .btn-secondary:hover, .lucina#characterModal .secondarynav .btn-secondary.active, .lucina#characterModal .secondarynav .btn-secondary:active {
-      border-color: #3c759c !important;
-      background: #3c759c; }
-    .lucina#characterModal .secondarynav .btn-secondary:hover, .lucina#characterModal .secondarynav .btn-secondary.active, .lucina#characterModal .secondarynav .btn-secondary:active {
+    .lucina#characterModal .secondarynav .btn-secondary.active {
+      background-color: #35678a !important; }
+    .lucina#characterModal .secondarynav .btn-secondary:hover, .lucina#characterModal .secondarynav .btn-secondary:active {
       background-color: #2e5977 !important; }
 
 .lucina#characterModal .characterOverview li {
@@ -13090,12 +13063,11 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF;
     font-weight: 700;
     transition: none;
-    background-color: #2a6c20;
+    background-color: #22591a;
     border: 1px solid #13310f; }
-    .luigi#characterModal .secondarynav .btn-secondary:hover, .luigi#characterModal .secondarynav .btn-secondary.active, .luigi#characterModal .secondarynav .btn-secondary:active {
-      border-color: #22591a !important;
-      background: #22591a; }
-    .luigi#characterModal .secondarynav .btn-secondary:hover, .luigi#characterModal .secondarynav .btn-secondary.active, .luigi#characterModal .secondarynav .btn-secondary:active {
+    .luigi#characterModal .secondarynav .btn-secondary.active {
+      background-color: #1b4515 !important; }
+    .luigi#characterModal .secondarynav .btn-secondary:hover, .luigi#characterModal .secondarynav .btn-secondary:active {
       background-color: #13310f !important; }
 
 .luigi#characterModal .characterOverview li {
@@ -13195,12 +13167,11 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF;
     font-weight: 700;
     transition: none;
-    background-color: #6d1c1f;
+    background-color: #591719;
     border: 1px solid #300d0e; }
-    .mario#characterModal .secondarynav .btn-secondary:hover, .mario#characterModal .secondarynav .btn-secondary.active, .mario#characterModal .secondarynav .btn-secondary:active {
-      border-color: #591719 !important;
-      background: #591719; }
-    .mario#characterModal .secondarynav .btn-secondary:hover, .mario#characterModal .secondarynav .btn-secondary.active, .mario#characterModal .secondarynav .btn-secondary:active {
+    .mario#characterModal .secondarynav .btn-secondary.active {
+      background-color: #451213 !important; }
+    .mario#characterModal .secondarynav .btn-secondary:hover, .mario#characterModal .secondarynav .btn-secondary:active {
       background-color: #300d0e !important; }
 
 .mario#characterModal .characterOverview li {
@@ -13300,12 +13271,11 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF;
     font-weight: 700;
     transition: none;
-    background-color: #287b96;
+    background-color: #226b82;
     border: 1px solid #184a59; }
-    .marth#characterModal .secondarynav .btn-secondary:hover, .marth#characterModal .secondarynav .btn-secondary.active, .marth#characterModal .secondarynav .btn-secondary:active {
-      border-color: #226b82 !important;
-      background: #226b82; }
-    .marth#characterModal .secondarynav .btn-secondary:hover, .marth#characterModal .secondarynav .btn-secondary.active, .marth#characterModal .secondarynav .btn-secondary:active {
+    .marth#characterModal .secondarynav .btn-secondary.active {
+      background-color: #1d5a6e !important; }
+    .marth#characterModal .secondarynav .btn-secondary:hover, .marth#characterModal .secondarynav .btn-secondary:active {
       background-color: #184a59 !important; }
 
 .marth#characterModal .characterOverview li {
@@ -13405,12 +13375,11 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF;
     font-weight: 700;
     transition: none;
-    background-color: #387792;
+    background-color: #316880;
     border: 1px solid #234a5b; }
-    .mega-man#characterModal .secondarynav .btn-secondary:hover, .mega-man#characterModal .secondarynav .btn-secondary.active, .mega-man#characterModal .secondarynav .btn-secondary:active {
-      border-color: #316880 !important;
-      background: #316880; }
-    .mega-man#characterModal .secondarynav .btn-secondary:hover, .mega-man#characterModal .secondarynav .btn-secondary.active, .mega-man#characterModal .secondarynav .btn-secondary:active {
+    .mega-man#characterModal .secondarynav .btn-secondary.active {
+      background-color: #2a596e !important; }
+    .mega-man#characterModal .secondarynav .btn-secondary:hover, .mega-man#characterModal .secondarynav .btn-secondary:active {
       background-color: #234a5b !important; }
 
 .mega-man#characterModal .characterOverview li {
@@ -13510,12 +13479,11 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF;
     font-weight: 700;
     transition: none;
-    background-color: #182142;
+    background-color: #12182f;
     border: 1px solid #04050a; }
-    .meta-knight#characterModal .secondarynav .btn-secondary:hover, .meta-knight#characterModal .secondarynav .btn-secondary.active, .meta-knight#characterModal .secondarynav .btn-secondary:active {
-      border-color: #12182f !important;
-      background: #12182f; }
-    .meta-knight#characterModal .secondarynav .btn-secondary:hover, .meta-knight#characterModal .secondarynav .btn-secondary.active, .meta-knight#characterModal .secondarynav .btn-secondary:active {
+    .meta-knight#characterModal .secondarynav .btn-secondary.active {
+      background-color: #0b0e1d !important; }
+    .meta-knight#characterModal .secondarynav .btn-secondary:hover, .meta-knight#characterModal .secondarynav .btn-secondary:active {
       background-color: #04050a !important; }
 
 .meta-knight#characterModal .characterOverview li {
@@ -13615,12 +13583,11 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF;
     font-weight: 700;
     transition: none;
-    background-color: #5b3596;
+    background-color: #502e83;
     border: 1px solid #39215d; }
-    .mewtwo#characterModal .secondarynav .btn-secondary:hover, .mewtwo#characterModal .secondarynav .btn-secondary.active, .mewtwo#characterModal .secondarynav .btn-secondary:active {
-      border-color: #502e83 !important;
-      background: #502e83; }
-    .mewtwo#characterModal .secondarynav .btn-secondary:hover, .mewtwo#characterModal .secondarynav .btn-secondary.active, .mewtwo#characterModal .secondarynav .btn-secondary:active {
+    .mewtwo#characterModal .secondarynav .btn-secondary.active {
+      background-color: #442770 !important; }
+    .mewtwo#characterModal .secondarynav .btn-secondary:hover, .mewtwo#characterModal .secondarynav .btn-secondary:active {
       background-color: #39215d !important; }
 
 .mewtwo#characterModal .characterOverview li {
@@ -13720,12 +13687,11 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF;
     font-weight: 700;
     transition: none;
-    background-color: #8e571e;
+    background-color: #794a1a;
     border: 1px solid #4f3111; }
-    .mii-brawler#characterModal .secondarynav .btn-secondary:hover, .mii-brawler#characterModal .secondarynav .btn-secondary.active, .mii-brawler#characterModal .secondarynav .btn-secondary:active {
-      border-color: #794a1a !important;
-      background: #794a1a; }
-    .mii-brawler#characterModal .secondarynav .btn-secondary:hover, .mii-brawler#characterModal .secondarynav .btn-secondary.active, .mii-brawler#characterModal .secondarynav .btn-secondary:active {
+    .mii-brawler#characterModal .secondarynav .btn-secondary.active {
+      background-color: #643d15 !important; }
+    .mii-brawler#characterModal .secondarynav .btn-secondary:hover, .mii-brawler#characterModal .secondarynav .btn-secondary:active {
       background-color: #4f3111 !important; }
 
 .mii-brawler#characterModal .characterOverview li {
@@ -13825,12 +13791,11 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF;
     font-weight: 700;
     transition: none;
-    background-color: #8e571e;
+    background-color: #794a1a;
     border: 1px solid #4f3111; }
-    .mii-gunner#characterModal .secondarynav .btn-secondary:hover, .mii-gunner#characterModal .secondarynav .btn-secondary.active, .mii-gunner#characterModal .secondarynav .btn-secondary:active {
-      border-color: #794a1a !important;
-      background: #794a1a; }
-    .mii-gunner#characterModal .secondarynav .btn-secondary:hover, .mii-gunner#characterModal .secondarynav .btn-secondary.active, .mii-gunner#characterModal .secondarynav .btn-secondary:active {
+    .mii-gunner#characterModal .secondarynav .btn-secondary.active {
+      background-color: #643d15 !important; }
+    .mii-gunner#characterModal .secondarynav .btn-secondary:hover, .mii-gunner#characterModal .secondarynav .btn-secondary:active {
       background-color: #4f3111 !important; }
 
 .mii-gunner#characterModal .characterOverview li {
@@ -13930,12 +13895,11 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF;
     font-weight: 700;
     transition: none;
-    background-color: #8e571e;
+    background-color: #794a1a;
     border: 1px solid #4f3111; }
-    .mii-swordfighter#characterModal .secondarynav .btn-secondary:hover, .mii-swordfighter#characterModal .secondarynav .btn-secondary.active, .mii-swordfighter#characterModal .secondarynav .btn-secondary:active {
-      border-color: #794a1a !important;
-      background: #794a1a; }
-    .mii-swordfighter#characterModal .secondarynav .btn-secondary:hover, .mii-swordfighter#characterModal .secondarynav .btn-secondary.active, .mii-swordfighter#characterModal .secondarynav .btn-secondary:active {
+    .mii-swordfighter#characterModal .secondarynav .btn-secondary.active {
+      background-color: #643d15 !important; }
+    .mii-swordfighter#characterModal .secondarynav .btn-secondary:hover, .mii-swordfighter#characterModal .secondarynav .btn-secondary:active {
       background-color: #4f3111 !important; }
 
 .mii-swordfighter#characterModal .characterOverview li {
@@ -14035,12 +13999,11 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF;
     font-weight: 700;
     transition: none;
-    background-color: #6e1d1f;
+    background-color: #5a1819;
     border: 1px solid #320d0e; }
-    .ness#characterModal .secondarynav .btn-secondary:hover, .ness#characterModal .secondarynav .btn-secondary.active, .ness#characterModal .secondarynav .btn-secondary:active {
-      border-color: #5a1819 !important;
-      background: #5a1819; }
-    .ness#characterModal .secondarynav .btn-secondary:hover, .ness#characterModal .secondarynav .btn-secondary.active, .ness#characterModal .secondarynav .btn-secondary:active {
+    .ness#characterModal .secondarynav .btn-secondary.active {
+      background-color: #461214 !important; }
+    .ness#characterModal .secondarynav .btn-secondary:hover, .ness#characterModal .secondarynav .btn-secondary:active {
       background-color: #320d0e !important; }
 
 .ness#characterModal .characterOverview li {
@@ -14142,10 +14105,9 @@ a.text-dark:focus, a.text-dark:hover {
     transition: none;
     background-color: #d2f5bf;
     border: 1px solid #86e351; }
-    .olimar#characterModal .secondarynav .btn-secondary:hover, .olimar#characterModal .secondarynav .btn-secondary.active, .olimar#characterModal .secondarynav .btn-secondary:active {
-      border-color: #86e351 !important;
-      background: #86e351; }
-    .olimar#characterModal .secondarynav .btn-secondary:hover, .olimar#characterModal .secondarynav .btn-secondary.active, .olimar#characterModal .secondarynav .btn-secondary:active {
+    .olimar#characterModal .secondarynav .btn-secondary.active {
+      background-color: white !important; }
+    .olimar#characterModal .secondarynav .btn-secondary:hover, .olimar#characterModal .secondarynav .btn-secondary:active {
       background-color: white !important; }
 
 .olimar#characterModal .characterOverview li {
@@ -14245,12 +14207,11 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF;
     font-weight: 700;
     transition: none;
-    background-color: #ae771d;
+    background-color: #98681a;
     border: 1px solid #6d4b12; }
-    .pacman#characterModal .secondarynav .btn-secondary:hover, .pacman#characterModal .secondarynav .btn-secondary.active, .pacman#characterModal .secondarynav .btn-secondary:active {
-      border-color: #98681a !important;
-      background: #98681a; }
-    .pacman#characterModal .secondarynav .btn-secondary:hover, .pacman#characterModal .secondarynav .btn-secondary.active, .pacman#characterModal .secondarynav .btn-secondary:active {
+    .pacman#characterModal .secondarynav .btn-secondary.active {
+      background-color: #835a16 !important; }
+    .pacman#characterModal .secondarynav .btn-secondary:hover, .pacman#characterModal .secondarynav .btn-secondary:active {
       background-color: #6d4b12 !important; }
 
 .pacman#characterModal .characterOverview li {
@@ -14352,11 +14313,10 @@ a.text-dark:focus, a.text-dark:hover {
     transition: none;
     background-color: #63e6ee;
     border: 1px solid #15b3bc; }
-    .palutena#characterModal .secondarynav .btn-secondary:hover, .palutena#characterModal .secondarynav .btn-secondary.active, .palutena#characterModal .secondarynav .btn-secondary:active {
-      border-color: #15b3bc !important;
-      background: #15b3bc; }
-    .palutena#characterModal .secondarynav .btn-secondary:hover, .palutena#characterModal .secondarynav .btn-secondary.active, .palutena#characterModal .secondarynav .btn-secondary:active {
+    .palutena#characterModal .secondarynav .btn-secondary.active {
       background-color: #a8f1f5 !important; }
+    .palutena#characterModal .secondarynav .btn-secondary:hover, .palutena#characterModal .secondarynav .btn-secondary:active {
+      background-color: #d6f8fa !important; }
 
 .palutena#characterModal .characterOverview li {
   color: #431c0b; }
@@ -14457,10 +14417,9 @@ a.text-dark:focus, a.text-dark:hover {
     transition: none;
     background-color: #fedff8;
     border: 1px solid #fc62de; }
-    .peach#characterModal .secondarynav .btn-secondary:hover, .peach#characterModal .secondarynav .btn-secondary.active, .peach#characterModal .secondarynav .btn-secondary:active {
-      border-color: #fc62de !important;
-      background: #fc62de; }
-    .peach#characterModal .secondarynav .btn-secondary:hover, .peach#characterModal .secondarynav .btn-secondary.active, .peach#characterModal .secondarynav .btn-secondary:active {
+    .peach#characterModal .secondarynav .btn-secondary.active {
+      background-color: white !important; }
+    .peach#characterModal .secondarynav .btn-secondary:hover, .peach#characterModal .secondarynav .btn-secondary:active {
       background-color: white !important; }
 
 .peach#characterModal .characterOverview li {
@@ -14560,12 +14519,11 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF;
     font-weight: 700;
     transition: none;
-    background-color: #8f6d07;
+    background-color: #775b05;
     border: 1px solid #463503; }
-    .pikachu#characterModal .secondarynav .btn-secondary:hover, .pikachu#characterModal .secondarynav .btn-secondary.active, .pikachu#characterModal .secondarynav .btn-secondary:active {
-      border-color: #775b05 !important;
-      background: #775b05; }
-    .pikachu#characterModal .secondarynav .btn-secondary:hover, .pikachu#characterModal .secondarynav .btn-secondary.active, .pikachu#characterModal .secondarynav .btn-secondary:active {
+    .pikachu#characterModal .secondarynav .btn-secondary.active {
+      background-color: #5e4804 !important; }
+    .pikachu#characterModal .secondarynav .btn-secondary:hover, .pikachu#characterModal .secondarynav .btn-secondary:active {
       background-color: #463503 !important; }
 
 .pikachu#characterModal .characterOverview li {
@@ -14665,12 +14623,11 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF;
     font-weight: 700;
     transition: none;
-    background-color: #3795c4;
+    background-color: #3186b0;
     border: 1px solid #266888; }
-    .pit#characterModal .secondarynav .btn-secondary:hover, .pit#characterModal .secondarynav .btn-secondary.active, .pit#characterModal .secondarynav .btn-secondary:active {
-      border-color: #3186b0 !important;
-      background: #3186b0; }
-    .pit#characterModal .secondarynav .btn-secondary:hover, .pit#characterModal .secondarynav .btn-secondary.active, .pit#characterModal .secondarynav .btn-secondary:active {
+    .pit#characterModal .secondarynav .btn-secondary.active {
+      background-color: #2c779c !important; }
+    .pit#characterModal .secondarynav .btn-secondary:hover, .pit#characterModal .secondarynav .btn-secondary:active {
       background-color: #266888 !important; }
 
 .pit#characterModal .characterOverview li {
@@ -14770,12 +14727,11 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF;
     font-weight: 700;
     transition: none;
-    background-color: #88939c;
+    background-color: #7a8691;
     border: 1px solid #626d76; }
-    .rob#characterModal .secondarynav .btn-secondary:hover, .rob#characterModal .secondarynav .btn-secondary.active, .rob#characterModal .secondarynav .btn-secondary:active {
-      border-color: #7a8691 !important;
-      background: #7a8691; }
-    .rob#characterModal .secondarynav .btn-secondary:hover, .rob#characterModal .secondarynav .btn-secondary.active, .rob#characterModal .secondarynav .btn-secondary:active {
+    .rob#characterModal .secondarynav .btn-secondary.active {
+      background-color: #6e7a84 !important; }
+    .rob#characterModal .secondarynav .btn-secondary:hover, .rob#characterModal .secondarynav .btn-secondary:active {
       background-color: #626d76 !important; }
 
 .rob#characterModal .characterOverview li {
@@ -14875,12 +14831,11 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF;
     font-weight: 700;
     transition: none;
-    background-color: #b645ce;
+    background-color: #ac34c6;
     border: 1px solid #892a9d; }
-    .robin#characterModal .secondarynav .btn-secondary:hover, .robin#characterModal .secondarynav .btn-secondary.active, .robin#characterModal .secondarynav .btn-secondary:active {
-      border-color: #ac34c6 !important;
-      background: #ac34c6; }
-    .robin#characterModal .secondarynav .btn-secondary:hover, .robin#characterModal .secondarynav .btn-secondary.active, .robin#characterModal .secondarynav .btn-secondary:active {
+    .robin#characterModal .secondarynav .btn-secondary.active {
+      background-color: #9b2fb2 !important; }
+    .robin#characterModal .secondarynav .btn-secondary:hover, .robin#characterModal .secondarynav .btn-secondary:active {
       background-color: #892a9d !important; }
 
 .robin#characterModal .characterOverview li {
@@ -14982,11 +14937,10 @@ a.text-dark:focus, a.text-dark:hover {
     transition: none;
     background-color: #63e6ee;
     border: 1px solid #15b3bc; }
-    .rosalina-and-luma#characterModal .secondarynav .btn-secondary:hover, .rosalina-and-luma#characterModal .secondarynav .btn-secondary.active, .rosalina-and-luma#characterModal .secondarynav .btn-secondary:active {
-      border-color: #15b3bc !important;
-      background: #15b3bc; }
-    .rosalina-and-luma#characterModal .secondarynav .btn-secondary:hover, .rosalina-and-luma#characterModal .secondarynav .btn-secondary.active, .rosalina-and-luma#characterModal .secondarynav .btn-secondary:active {
+    .rosalina-and-luma#characterModal .secondarynav .btn-secondary.active {
       background-color: #a8f1f5 !important; }
+    .rosalina-and-luma#characterModal .secondarynav .btn-secondary:hover, .rosalina-and-luma#characterModal .secondarynav .btn-secondary:active {
+      background-color: #d6f8fa !important; }
 
 .rosalina-and-luma#characterModal .characterOverview li {
   color: #431c0b; }
@@ -15085,12 +15039,11 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF;
     font-weight: 700;
     transition: none;
-    background-color: #408534;
+    background-color: #37732d;
     border: 1px solid #254e1f; }
-    .roy#characterModal .secondarynav .btn-secondary:hover, .roy#characterModal .secondarynav .btn-secondary.active, .roy#characterModal .secondarynav .btn-secondary:active {
-      border-color: #37732d !important;
-      background: #37732d; }
-    .roy#characterModal .secondarynav .btn-secondary:hover, .roy#characterModal .secondarynav .btn-secondary.active, .roy#characterModal .secondarynav .btn-secondary:active {
+    .roy#characterModal .secondarynav .btn-secondary.active {
+      background-color: #2e6126 !important; }
+    .roy#characterModal .secondarynav .btn-secondary:hover, .roy#characterModal .secondarynav .btn-secondary:active {
       background-color: #254e1f !important; }
 
 .roy#characterModal .characterOverview li {
@@ -15190,12 +15143,11 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF;
     font-weight: 700;
     transition: none;
-    background-color: #b91f22;
+    background-color: #a31b1e;
     border: 1px solid #771416; }
-    .ryu#characterModal .secondarynav .btn-secondary:hover, .ryu#characterModal .secondarynav .btn-secondary.active, .ryu#characterModal .secondarynav .btn-secondary:active {
-      border-color: #a31b1e !important;
-      background: #a31b1e; }
-    .ryu#characterModal .secondarynav .btn-secondary:hover, .ryu#characterModal .secondarynav .btn-secondary.active, .ryu#characterModal .secondarynav .btn-secondary:active {
+    .ryu#characterModal .secondarynav .btn-secondary.active {
+      background-color: #8d171a !important; }
+    .ryu#characterModal .secondarynav .btn-secondary:hover, .ryu#characterModal .secondarynav .btn-secondary:active {
       background-color: #771416 !important; }
 
 .ryu#characterModal .characterOverview li {
@@ -15295,12 +15247,11 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF;
     font-weight: 700;
     transition: none;
-    background-color: #171c28;
+    background-color: #0e1117;
     border: 1px solid black; }
-    .samus#characterModal .secondarynav .btn-secondary:hover, .samus#characterModal .secondarynav .btn-secondary.active, .samus#characterModal .secondarynav .btn-secondary:active {
-      border-color: #0e1117 !important;
-      background: #0e1117; }
-    .samus#characterModal .secondarynav .btn-secondary:hover, .samus#characterModal .secondarynav .btn-secondary.active, .samus#characterModal .secondarynav .btn-secondary:active {
+    .samus#characterModal .secondarynav .btn-secondary.active {
+      background-color: #040507 !important; }
+    .samus#characterModal .secondarynav .btn-secondary:hover, .samus#characterModal .secondarynav .btn-secondary:active {
       background-color: black !important; }
 
 .samus#characterModal .characterOverview li {
@@ -15400,12 +15351,11 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF;
     font-weight: 700;
     transition: none;
-    background-color: #4535c2;
+    background-color: #3d2fae;
     border: 1px solid #2f2486; }
-    .sheik#characterModal .secondarynav .btn-secondary:hover, .sheik#characterModal .secondarynav .btn-secondary.active, .sheik#characterModal .secondarynav .btn-secondary:active {
-      border-color: #3d2fae !important;
-      background: #3d2fae; }
-    .sheik#characterModal .secondarynav .btn-secondary:hover, .sheik#characterModal .secondarynav .btn-secondary.active, .sheik#characterModal .secondarynav .btn-secondary:active {
+    .sheik#characterModal .secondarynav .btn-secondary.active {
+      background-color: #362a9a !important; }
+    .sheik#characterModal .secondarynav .btn-secondary:hover, .sheik#characterModal .secondarynav .btn-secondary:active {
       background-color: #2f2486 !important; }
 
 .sheik#characterModal .characterOverview li {
@@ -15505,12 +15455,11 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF;
     font-weight: 700;
     transition: none;
-    background-color: #d22148;
+    background-color: #bc1e40;
     border: 1px solid #901731; }
-    .shulk#characterModal .secondarynav .btn-secondary:hover, .shulk#characterModal .secondarynav .btn-secondary.active, .shulk#characterModal .secondarynav .btn-secondary:active {
-      border-color: #bc1e40 !important;
-      background: #bc1e40; }
-    .shulk#characterModal .secondarynav .btn-secondary:hover, .shulk#characterModal .secondarynav .btn-secondary.active, .shulk#characterModal .secondarynav .btn-secondary:active {
+    .shulk#characterModal .secondarynav .btn-secondary.active {
+      background-color: #a61a39 !important; }
+    .shulk#characterModal .secondarynav .btn-secondary:hover, .shulk#characterModal .secondarynav .btn-secondary:active {
       background-color: #901731 !important; }
 
 .shulk#characterModal .characterOverview li {
@@ -15610,12 +15559,11 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF;
     font-weight: 700;
     transition: none;
-    background-color: #d22148;
+    background-color: #bc1e40;
     border: 1px solid #901731; }
-    .shulk-buster#characterModal .secondarynav .btn-secondary:hover, .shulk-buster#characterModal .secondarynav .btn-secondary.active, .shulk-buster#characterModal .secondarynav .btn-secondary:active {
-      border-color: #bc1e40 !important;
-      background: #bc1e40; }
-    .shulk-buster#characterModal .secondarynav .btn-secondary:hover, .shulk-buster#characterModal .secondarynav .btn-secondary.active, .shulk-buster#characterModal .secondarynav .btn-secondary:active {
+    .shulk-buster#characterModal .secondarynav .btn-secondary.active {
+      background-color: #a61a39 !important; }
+    .shulk-buster#characterModal .secondarynav .btn-secondary:hover, .shulk-buster#characterModal .secondarynav .btn-secondary:active {
       background-color: #901731 !important; }
 
 .shulk-buster#characterModal .characterOverview li {
@@ -15715,12 +15663,11 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF;
     font-weight: 700;
     transition: none;
-    background-color: #d22148;
+    background-color: #bc1e40;
     border: 1px solid #901731; }
-    .shulk-jump#characterModal .secondarynav .btn-secondary:hover, .shulk-jump#characterModal .secondarynav .btn-secondary.active, .shulk-jump#characterModal .secondarynav .btn-secondary:active {
-      border-color: #bc1e40 !important;
-      background: #bc1e40; }
-    .shulk-jump#characterModal .secondarynav .btn-secondary:hover, .shulk-jump#characterModal .secondarynav .btn-secondary.active, .shulk-jump#characterModal .secondarynav .btn-secondary:active {
+    .shulk-jump#characterModal .secondarynav .btn-secondary.active {
+      background-color: #a61a39 !important; }
+    .shulk-jump#characterModal .secondarynav .btn-secondary:hover, .shulk-jump#characterModal .secondarynav .btn-secondary:active {
       background-color: #901731 !important; }
 
 .shulk-jump#characterModal .characterOverview li {
@@ -15820,12 +15767,11 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF;
     font-weight: 700;
     transition: none;
-    background-color: #d22148;
+    background-color: #bc1e40;
     border: 1px solid #901731; }
-    .shulk-shield#characterModal .secondarynav .btn-secondary:hover, .shulk-shield#characterModal .secondarynav .btn-secondary.active, .shulk-shield#characterModal .secondarynav .btn-secondary:active {
-      border-color: #bc1e40 !important;
-      background: #bc1e40; }
-    .shulk-shield#characterModal .secondarynav .btn-secondary:hover, .shulk-shield#characterModal .secondarynav .btn-secondary.active, .shulk-shield#characterModal .secondarynav .btn-secondary:active {
+    .shulk-shield#characterModal .secondarynav .btn-secondary.active {
+      background-color: #a61a39 !important; }
+    .shulk-shield#characterModal .secondarynav .btn-secondary:hover, .shulk-shield#characterModal .secondarynav .btn-secondary:active {
       background-color: #901731 !important; }
 
 .shulk-shield#characterModal .characterOverview li {
@@ -15925,12 +15871,11 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF;
     font-weight: 700;
     transition: none;
-    background-color: #d22148;
+    background-color: #bc1e40;
     border: 1px solid #901731; }
-    .shulk-smash#characterModal .secondarynav .btn-secondary:hover, .shulk-smash#characterModal .secondarynav .btn-secondary.active, .shulk-smash#characterModal .secondarynav .btn-secondary:active {
-      border-color: #bc1e40 !important;
-      background: #bc1e40; }
-    .shulk-smash#characterModal .secondarynav .btn-secondary:hover, .shulk-smash#characterModal .secondarynav .btn-secondary.active, .shulk-smash#characterModal .secondarynav .btn-secondary:active {
+    .shulk-smash#characterModal .secondarynav .btn-secondary.active {
+      background-color: #a61a39 !important; }
+    .shulk-smash#characterModal .secondarynav .btn-secondary:hover, .shulk-smash#characterModal .secondarynav .btn-secondary:active {
       background-color: #901731 !important; }
 
 .shulk-smash#characterModal .characterOverview li {
@@ -16030,12 +15975,11 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF;
     font-weight: 700;
     transition: none;
-    background-color: #1274ea;
+    background-color: #1068d3;
     border: 1px solid #0d51a3; }
-    .sonic#characterModal .secondarynav .btn-secondary:hover, .sonic#characterModal .secondarynav .btn-secondary.active, .sonic#characterModal .secondarynav .btn-secondary:active {
-      border-color: #1068d3 !important;
-      background: #1068d3; }
-    .sonic#characterModal .secondarynav .btn-secondary:hover, .sonic#characterModal .secondarynav .btn-secondary.active, .sonic#characterModal .secondarynav .btn-secondary:active {
+    .sonic#characterModal .secondarynav .btn-secondary.active {
+      background-color: #0e5cbb !important; }
+    .sonic#characterModal .secondarynav .btn-secondary:hover, .sonic#characterModal .secondarynav .btn-secondary:active {
       background-color: #0d51a3 !important; }
 
 .sonic#characterModal .characterOverview li {
@@ -16137,11 +16081,10 @@ a.text-dark:focus, a.text-dark:hover {
     transition: none;
     background-color: #a4d960;
     border: 1px solid #649524; }
-    .toon-link#characterModal .secondarynav .btn-secondary:hover, .toon-link#characterModal .secondarynav .btn-secondary.active, .toon-link#characterModal .secondarynav .btn-secondary:active {
-      border-color: #649524 !important;
-      background: #649524; }
-    .toon-link#characterModal .secondarynav .btn-secondary:hover, .toon-link#characterModal .secondarynav .btn-secondary.active, .toon-link#characterModal .secondarynav .btn-secondary:active {
+    .toon-link#characterModal .secondarynav .btn-secondary.active {
       background-color: #c7e89d !important; }
+    .toon-link#characterModal .secondarynav .btn-secondary:hover, .toon-link#characterModal .secondarynav .btn-secondary:active {
+      background-color: #dff2c6 !important; }
 
 .toon-link#characterModal .characterOverview li {
   color: #431c0b; }
@@ -16240,12 +16183,11 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF;
     font-weight: 700;
     transition: none;
-    background-color: #277348;
+    background-color: #21603c;
     border: 1px solid #143a24; }
-    .villager#characterModal .secondarynav .btn-secondary:hover, .villager#characterModal .secondarynav .btn-secondary.active, .villager#characterModal .secondarynav .btn-secondary:active {
-      border-color: #21603c !important;
-      background: #21603c; }
-    .villager#characterModal .secondarynav .btn-secondary:hover, .villager#characterModal .secondarynav .btn-secondary.active, .villager#characterModal .secondarynav .btn-secondary:active {
+    .villager#characterModal .secondarynav .btn-secondary.active {
+      background-color: #1a4d30 !important; }
+    .villager#characterModal .secondarynav .btn-secondary:hover, .villager#characterModal .secondarynav .btn-secondary:active {
       background-color: #143a24 !important; }
 
 .villager#characterModal .characterOverview li {
@@ -16347,11 +16289,10 @@ a.text-dark:focus, a.text-dark:hover {
     transition: none;
     background-color: #fed265;
     border: 1px solid #e3a201; }
-    .wario#characterModal .secondarynav .btn-secondary:hover, .wario#characterModal .secondarynav .btn-secondary.active, .wario#characterModal .secondarynav .btn-secondary:active {
-      border-color: #e3a201 !important;
-      background: #e3a201; }
-    .wario#characterModal .secondarynav .btn-secondary:hover, .wario#characterModal .secondarynav .btn-secondary.active, .wario#characterModal .secondarynav .btn-secondary:active {
+    .wario#characterModal .secondarynav .btn-secondary.active {
       background-color: #ffe8b1 !important; }
+    .wario#characterModal .secondarynav .btn-secondary:hover, .wario#characterModal .secondarynav .btn-secondary:active {
+      background-color: #fff7e4 !important; }
 
 .wario#characterModal .characterOverview li {
   color: #431c0b; }
@@ -16452,11 +16393,10 @@ a.text-dark:focus, a.text-dark:hover {
     transition: none;
     background-color: #97dd8a;
     border: 1px solid #49b334; }
-    .wii-fit-trainer#characterModal .secondarynav .btn-secondary:hover, .wii-fit-trainer#characterModal .secondarynav .btn-secondary.active, .wii-fit-trainer#characterModal .secondarynav .btn-secondary:active {
-      border-color: #49b334 !important;
-      background: #49b334; }
-    .wii-fit-trainer#characterModal .secondarynav .btn-secondary:hover, .wii-fit-trainer#characterModal .secondarynav .btn-secondary.active, .wii-fit-trainer#characterModal .secondarynav .btn-secondary:active {
+    .wii-fit-trainer#characterModal .secondarynav .btn-secondary.active {
       background-color: #cceec5 !important; }
+    .wii-fit-trainer#characterModal .secondarynav .btn-secondary:hover, .wii-fit-trainer#characterModal .secondarynav .btn-secondary:active {
+      background-color: #effaec !important; }
 
 .wii-fit-trainer#characterModal .characterOverview li {
   color: #431c0b; }
@@ -16555,12 +16495,11 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF;
     font-weight: 700;
     transition: none;
-    background-color: #315f29;
+    background-color: #284e21;
     border: 1px solid #162a12; }
-    .yoshi#characterModal .secondarynav .btn-secondary:hover, .yoshi#characterModal .secondarynav .btn-secondary.active, .yoshi#characterModal .secondarynav .btn-secondary:active {
-      border-color: #284e21 !important;
-      background: #284e21; }
-    .yoshi#characterModal .secondarynav .btn-secondary:hover, .yoshi#characterModal .secondarynav .btn-secondary.active, .yoshi#characterModal .secondarynav .btn-secondary:active {
+    .yoshi#characterModal .secondarynav .btn-secondary.active {
+      background-color: #1f3c1a !important; }
+    .yoshi#characterModal .secondarynav .btn-secondary:hover, .yoshi#characterModal .secondarynav .btn-secondary:active {
       background-color: #162a12 !important; }
 
 .yoshi#characterModal .characterOverview li {
@@ -16660,12 +16599,11 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF;
     font-weight: 700;
     transition: none;
-    background-color: #854b97;
+    background-color: #764286;
     border: 1px solid #583164; }
-    .zelda#characterModal .secondarynav .btn-secondary:hover, .zelda#characterModal .secondarynav .btn-secondary.active, .zelda#characterModal .secondarynav .btn-secondary:active {
-      border-color: #764286 !important;
-      background: #764286; }
-    .zelda#characterModal .secondarynav .btn-secondary:hover, .zelda#characterModal .secondarynav .btn-secondary.active, .zelda#characterModal .secondarynav .btn-secondary:active {
+    .zelda#characterModal .secondarynav .btn-secondary.active {
+      background-color: #673a75 !important; }
+    .zelda#characterModal .secondarynav .btn-secondary:hover, .zelda#characterModal .secondarynav .btn-secondary:active {
       background-color: #583164 !important; }
 
 .zelda#characterModal .characterOverview li {
@@ -16765,12 +16703,11 @@ a.text-dark:focus, a.text-dark:hover {
     color: #FFF;
     font-weight: 700;
     transition: none;
-    background-color: #00325e;
+    background-color: #002444;
     border: 1px solid #000911; }
-    .zero-suit-samus#characterModal .secondarynav .btn-secondary:hover, .zero-suit-samus#characterModal .secondarynav .btn-secondary.active, .zero-suit-samus#characterModal .secondarynav .btn-secondary:active {
-      border-color: #002444 !important;
-      background: #002444; }
-    .zero-suit-samus#characterModal .secondarynav .btn-secondary:hover, .zero-suit-samus#characterModal .secondarynav .btn-secondary.active, .zero-suit-samus#characterModal .secondarynav .btn-secondary:active {
+    .zero-suit-samus#characterModal .secondarynav .btn-secondary.active {
+      background-color: #00172b !important; }
+    .zero-suit-samus#characterModal .secondarynav .btn-secondary:hover, .zero-suit-samus#characterModal .secondarynav .btn-secondary:active {
       background-color: #000911 !important; }
 
 .zero-suit-samus#characterModal .characterOverview li {

@@ -52,21 +52,23 @@ $button-primary-active:darken($button-primary, 15%);
                 color: $text-colour;
                 font-weight:700;
                 transition: none;
-                &:hover, &.active, &:active{
-                    border-color: darken($char, 20%) !important;
-                    background: darken($char, 20%);
-                }
                 @if $text-colour == $text-light {
-                    background-color:darken($char, 15%);
+                    background-color:darken($char, 20%);
                     border: 1px solid darken($char, 30%);
-                    &:hover, &.active, &:active{
+                    &.active{
+                        background-color:darken($char, 25%) !important;
+                    }
+                    &:hover, &:active{
                         background-color:darken($char, 30%) !important;
                     }
                 } @else {
                     background-color:lighten($char, 5%);
                     border: 1px solid darken($char, 20%);
-                    &:hover, &.active, &:active{
+                    &.active{
                         background-color:lighten($char, 20%) !important;
+                    }
+                    &:hover, &:active{
+                        background-color:lighten($char, 30%) !important;
                     }
                 }
             }
