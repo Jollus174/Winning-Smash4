@@ -10314,7 +10314,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #FFF; }
 
 .bayonetta .dropdown-menu,
-.bayonetta #sort {
+.bayonetta #sort,
+.bayonetta .stickyName {
   background-color: #a79fe5; }
 
 .bayonetta #character-underlay {
@@ -10418,7 +10419,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #FFF; }
 
 .bowser .dropdown-menu,
-.bowser #sort {
+.bowser #sort,
+.bowser .stickyName {
   background-color: #32765c; }
 
 .bowser #character-underlay {
@@ -10522,7 +10524,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #431c0b; }
 
 .bowser-jr .dropdown-menu,
-.bowser-jr #sort {
+.bowser-jr #sort,
+.bowser-jr .stickyName {
   background-color: #cfce37; }
 
 .bowser-jr #character-underlay {
@@ -10626,7 +10629,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #FFF; }
 
 .captain-falcon .dropdown-menu,
-.captain-falcon #sort {
+.captain-falcon #sort,
+.captain-falcon .stickyName {
   background-color: #9088e2; }
 
 .captain-falcon #character-underlay {
@@ -10730,7 +10734,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #FFF; }
 
 .charizard .dropdown-menu,
-.charizard #sort {
+.charizard #sort,
+.charizard .stickyName {
   background-color: #f66624; }
 
 .charizard #character-underlay {
@@ -10834,7 +10839,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #FFF; }
 
 .cloud .dropdown-menu,
-.cloud #sort {
+.cloud #sort,
+.cloud .stickyName {
   background-color: #009684; }
 
 .cloud #character-underlay {
@@ -10938,7 +10944,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #FFF; }
 
 .cloud-limit .dropdown-menu,
-.cloud-limit #sort {
+.cloud-limit #sort,
+.cloud-limit .stickyName {
   background-color: #009684; }
 
 .cloud-limit #character-underlay {
@@ -11042,7 +11049,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #FFF; }
 
 .corrin .dropdown-menu,
-.corrin #sort {
+.corrin #sort,
+.corrin .stickyName {
   background-color: #733131; }
 
 .corrin #character-underlay {
@@ -11146,7 +11154,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #FFF; }
 
 .dark-pit .dropdown-menu,
-.dark-pit #sort {
+.dark-pit #sort,
+.dark-pit .stickyName {
   background-color: #af6ce9; }
 
 .dark-pit #character-underlay {
@@ -11250,7 +11259,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #FFF; }
 
 .diddy-kong .dropdown-menu,
-.diddy-kong #sort {
+.diddy-kong #sort,
+.diddy-kong .stickyName {
   background-color: #932324; }
 
 .diddy-kong #character-underlay {
@@ -11354,7 +11364,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #431c0b; }
 
 .donkey-kong .dropdown-menu,
-.donkey-kong #sort {
+.donkey-kong #sort,
+.donkey-kong .stickyName {
   background-color: #feda00; }
 
 .donkey-kong #character-underlay {
@@ -11461,7 +11472,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #FFF; }
 
 .dr-mario .dropdown-menu,
-.dr-mario #sort {
+.dr-mario #sort,
+.dr-mario .stickyName {
   background-color: #d72935; }
 
 .dr-mario #character-underlay {
@@ -11565,7 +11577,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #FFF; }
 
 .duck-hunt .dropdown-menu,
-.duck-hunt #sort {
+.duck-hunt #sort,
+.duck-hunt .stickyName {
   background-color: #935a33; }
 
 .duck-hunt #character-underlay {
@@ -11669,7 +11682,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #FFF; }
 
 .falco .dropdown-menu,
-.falco #sort {
+.falco #sort,
+.falco .stickyName {
   background-color: #52b1e3; }
 
 .falco #character-underlay {
@@ -11773,7 +11787,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #FFF; }
 
 .fox .dropdown-menu,
-.fox #sort {
+.fox #sort,
+.fox .stickyName {
   background-color: #036ac9; }
 
 .fox #character-underlay {
@@ -11877,7 +11892,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #FFF; }
 
 .game-and-watch .dropdown-menu,
-.game-and-watch #sort {
+.game-and-watch #sort,
+.game-and-watch .stickyName {
   background-color: #8A8983; }
 
 .game-and-watch #character-underlay {
@@ -11981,7 +11997,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #FFF; }
 
 .ganondorf .dropdown-menu,
-.ganondorf #sort {
+.ganondorf #sort,
+.ganondorf .stickyName {
   background-color: #7d7898; }
 
 .ganondorf #character-underlay {
@@ -12085,7 +12102,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #FFF; }
 
 .greninja .dropdown-menu,
-.greninja #sort {
+.greninja #sort,
+.greninja .stickyName {
   background-color: #5073a9; }
 
 .greninja #character-underlay {
@@ -12189,7 +12207,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #FFF; }
 
 .ike .dropdown-menu,
-.ike #sort {
+.ike #sort,
+.ike .stickyName {
   background-color: #C44737; }
 
 .ike #character-underlay {
@@ -12293,7 +12312,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #FFF; }
 
 .jigglypuff .dropdown-menu,
-.jigglypuff #sort {
+.jigglypuff #sort,
+.jigglypuff .stickyName {
   background-color: #F283EA; }
 
 .jigglypuff #character-underlay {
@@ -12397,7 +12417,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #431c0b; }
 
 .king-dedede .dropdown-menu,
-.king-dedede #sort {
+.king-dedede #sort,
+.king-dedede .stickyName {
   background-color: #FFE966; }
 
 .king-dedede #character-underlay {
@@ -12501,7 +12522,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #FFF; }
 
 .kirby .dropdown-menu,
-.kirby #sort {
+.kirby #sort,
+.kirby .stickyName {
   background-color: #E5939A; }
 
 .kirby #character-underlay {
@@ -12605,7 +12627,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #431c0b; }
 
 .link .dropdown-menu,
-.link #sort {
+.link #sort,
+.link .stickyName {
   background-color: #bed163; }
 
 .link #character-underlay {
@@ -12709,7 +12732,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #FFF; }
 
 .little-mac .dropdown-menu,
-.little-mac #sort {
+.little-mac #sort,
+.little-mac .stickyName {
   background-color: #39775A; }
 
 .little-mac #character-underlay {
@@ -12813,7 +12837,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #431c0b; }
 
 .lucario .dropdown-menu,
-.lucario #sort {
+.lucario #sort,
+.lucario .stickyName {
   background-color: #AEE4FF; }
 
 .lucario #character-underlay {
@@ -12917,7 +12942,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #FFF; }
 
 .lucas .dropdown-menu,
-.lucas #sort {
+.lucas #sort,
+.lucas .stickyName {
   background-color: #F05F1B; }
 
 .lucas #character-underlay {
@@ -13021,7 +13047,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #FFF; }
 
 .lucina .dropdown-menu,
-.lucina #sort {
+.lucina #sort,
+.lucina .stickyName {
   background-color: #74A7CA; }
 
 .lucina #character-underlay {
@@ -13125,7 +13152,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #FFF; }
 
 .luigi .dropdown-menu,
-.luigi #sort {
+.luigi #sort,
+.luigi .stickyName {
   background-color: #41A732; }
 
 .luigi #character-underlay {
@@ -13229,7 +13257,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #FFF; }
 
 .mario .dropdown-menu,
-.mario #sort {
+.mario #sort,
+.mario .stickyName {
   background-color: #AA2C30; }
 
 .mario #character-underlay {
@@ -13333,7 +13362,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #FFF; }
 
 .marth .dropdown-menu,
-.marth #sort {
+.marth #sort,
+.marth .stickyName {
   background-color: #3EAACC; }
 
 .marth #character-underlay {
@@ -13437,7 +13467,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #FFF; }
 
 .mega-man .dropdown-menu,
-.mega-man #sort {
+.mega-man #sort,
+.mega-man .stickyName {
   background-color: #58A0BF; }
 
 .mega-man #character-underlay {
@@ -13541,7 +13572,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #FFF; }
 
 .meta-knight .dropdown-menu,
-.meta-knight #sort {
+.meta-knight #sort,
+.meta-knight .stickyName {
   background-color: #2d3d7a; }
 
 .meta-knight #character-underlay {
@@ -13645,7 +13677,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #FFF; }
 
 .mewtwo .dropdown-menu,
-.mewtwo #sort {
+.mewtwo #sort,
+.mewtwo .stickyName {
   background-color: #8054C3; }
 
 .mewtwo #character-underlay {
@@ -13749,7 +13782,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #FFF; }
 
 .mii-brawler .dropdown-menu,
-.mii-brawler #sort {
+.mii-brawler #sort,
+.mii-brawler .stickyName {
   background-color: #cd7e2c; }
 
 .mii-brawler #character-underlay {
@@ -13853,7 +13887,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #FFF; }
 
 .mii-gunner .dropdown-menu,
-.mii-gunner #sort {
+.mii-gunner #sort,
+.mii-gunner .stickyName {
   background-color: #cd7e2c; }
 
 .mii-gunner #character-underlay {
@@ -13957,7 +13992,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #FFF; }
 
 .mii-swordfighter .dropdown-menu,
-.mii-swordfighter #sort {
+.mii-swordfighter #sort,
+.mii-swordfighter .stickyName {
   background-color: #cd7e2c; }
 
 .mii-swordfighter #character-underlay {
@@ -14061,7 +14097,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #FFF; }
 
 .ness .dropdown-menu,
-.ness #sort {
+.ness #sort,
+.ness .stickyName {
   background-color: #ab2d30; }
 
 .ness #character-underlay {
@@ -14165,7 +14202,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #431c0b; }
 
 .olimar .dropdown-menu,
-.olimar #sort {
+.olimar #sort,
+.olimar .stickyName {
   background-color: #c3f1a9; }
 
 .olimar #character-underlay {
@@ -14269,7 +14307,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #FFF; }
 
 .pacman .dropdown-menu,
-.pacman #sort {
+.pacman #sort,
+.pacman .stickyName {
   background-color: #dea03a; }
 
 .pacman #character-underlay {
@@ -14373,7 +14412,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #431c0b; }
 
 .palutena .dropdown-menu,
-.palutena #sort {
+.palutena #sort,
+.palutena .stickyName {
   background-color: #4ce2eb; }
 
 .palutena #character-underlay {
@@ -14477,7 +14517,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #431c0b; }
 
 .peach .dropdown-menu,
-.peach #sort {
+.peach #sort,
+.peach .stickyName {
   background-color: #fec6f3; }
 
 .peach #character-underlay {
@@ -14581,7 +14622,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #FFF; }
 
 .pikachu .dropdown-menu,
-.pikachu #sort {
+.pikachu #sort,
+.pikachu .stickyName {
   background-color: #d8a50a; }
 
 .pikachu #character-underlay {
@@ -14685,7 +14727,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #FFF; }
 
 .pit .dropdown-menu,
-.pit #sort {
+.pit #sort,
+.pit .stickyName {
   background-color: #70B5D7; }
 
 .pit #character-underlay {
@@ -14789,7 +14832,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #FFF; }
 
 .rob .dropdown-menu,
-.rob #sort {
+.rob #sort,
+.rob .stickyName {
   background-color: #B2B9BF; }
 
 .rob #character-underlay {
@@ -14893,7 +14937,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #FFF; }
 
 .robin .dropdown-menu,
-.robin #sort {
+.robin #sort,
+.robin .stickyName {
   background-color: #CE82DE; }
 
 .robin #character-underlay {
@@ -14997,7 +15042,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #431c0b; }
 
 .rosalina-and-luma .dropdown-menu,
-.rosalina-and-luma #sort {
+.rosalina-and-luma #sort,
+.rosalina-and-luma .stickyName {
   background-color: #4ce2eb; }
 
 .rosalina-and-luma #character-underlay {
@@ -15101,7 +15147,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #FFF; }
 
 .roy .dropdown-menu,
-.roy #sort {
+.roy #sort,
+.roy .stickyName {
   background-color: #5CB94D; }
 
 .roy #character-underlay {
@@ -15205,7 +15252,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #FFF; }
 
 .ryu .dropdown-menu,
-.ryu #sort {
+.ryu #sort,
+.ryu .stickyName {
   background-color: #E04447; }
 
 .ryu #character-underlay {
@@ -15309,7 +15357,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #FFF; }
 
 .samus .dropdown-menu,
-.samus #sort {
+.samus #sort,
+.samus .stickyName {
   background-color: #333F58; }
 
 .samus #character-underlay {
@@ -15413,7 +15462,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #FFF; }
 
 .sheik .dropdown-menu,
-.sheik #sort {
+.sheik #sort,
+.sheik .stickyName {
   background-color: #786cd7; }
 
 .sheik #character-underlay {
@@ -15517,7 +15567,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #FFF; }
 
 .shulk .dropdown-menu,
-.shulk #sort {
+.shulk #sort,
+.shulk .stickyName {
   background-color: #E55B79; }
 
 .shulk #character-underlay {
@@ -15621,7 +15672,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #FFF; }
 
 .shulk-buster .dropdown-menu,
-.shulk-buster #sort {
+.shulk-buster #sort,
+.shulk-buster .stickyName {
   background-color: #E55B79; }
 
 .shulk-buster #character-underlay {
@@ -15725,7 +15777,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #FFF; }
 
 .shulk-jump .dropdown-menu,
-.shulk-jump #sort {
+.shulk-jump #sort,
+.shulk-jump .stickyName {
   background-color: #E55B79; }
 
 .shulk-jump #character-underlay {
@@ -15829,7 +15882,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #FFF; }
 
 .shulk-shield .dropdown-menu,
-.shulk-shield #sort {
+.shulk-shield #sort,
+.shulk-shield .stickyName {
   background-color: #E55B79; }
 
 .shulk-shield #character-underlay {
@@ -15933,7 +15987,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #FFF; }
 
 .shulk-smash .dropdown-menu,
-.shulk-smash #sort {
+.shulk-smash #sort,
+.shulk-smash .stickyName {
   background-color: #E55B79; }
 
 .shulk-smash #character-underlay {
@@ -16037,7 +16092,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #FFF; }
 
 .sonic .dropdown-menu,
-.sonic #sort {
+.sonic #sort,
+.sonic .stickyName {
   background-color: #579DF2; }
 
 .sonic #character-underlay {
@@ -16141,7 +16197,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #431c0b; }
 
 .toon-link .dropdown-menu,
-.toon-link #sort {
+.toon-link #sort,
+.toon-link .stickyName {
   background-color: #98D44B; }
 
 .toon-link #character-underlay {
@@ -16245,7 +16302,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #FFF; }
 
 .villager .dropdown-menu,
-.villager #sort {
+.villager #sort,
+.villager .stickyName {
   background-color: #3BAC6C; }
 
 .villager #character-underlay {
@@ -16349,7 +16407,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #431c0b; }
 
 .wario .dropdown-menu,
-.wario #sort {
+.wario #sort,
+.wario .stickyName {
   background-color: #FECB4C; }
 
 .wario #character-underlay {
@@ -16453,7 +16512,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #431c0b; }
 
 .wii-fit-trainer .dropdown-menu,
-.wii-fit-trainer #sort {
+.wii-fit-trainer #sort,
+.wii-fit-trainer .stickyName {
   background-color: #86d776; }
 
 .wii-fit-trainer #character-underlay {
@@ -16557,7 +16617,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #FFF; }
 
 .yoshi .dropdown-menu,
-.yoshi #sort {
+.yoshi #sort,
+.yoshi .stickyName {
   background-color: #4d9540; }
 
 .yoshi #character-underlay {
@@ -16661,7 +16722,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #FFF; }
 
 .zelda .dropdown-menu,
-.zelda #sort {
+.zelda #sort,
+.zelda .stickyName {
   background-color: #AA74BA; }
 
 .zelda #character-underlay {
@@ -16765,7 +16827,8 @@ a.text-dark:focus, a.text-dark:hover {
   color: #FFF; }
 
 .zero-suit-samus .dropdown-menu,
-.zero-suit-samus #sort {
+.zero-suit-samus #sort,
+.zero-suit-samus .stickyName {
   background-color: #005AAA; }
 
 .zero-suit-samus #character-underlay {
