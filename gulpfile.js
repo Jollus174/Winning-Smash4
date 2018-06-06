@@ -92,6 +92,10 @@ gulp.task('moveserviceworker', function(){
 	return gulp.src('app/service-worker.js')
 		.pipe(gulp.dest('public'))
 })
+gulp.task('movereset', function(){
+	return gulp.src('app/reset/*')
+		.pipe(gulp.dest('public/reset'))
+});
 //
 
 // Tie everything together into one glorious whole
@@ -101,7 +105,7 @@ gulp.task('moveserviceworker', function(){
 gulp.task('build', function(){
 	runSequence(
 		'clean:public',
-		['sass','images','fonts','jsonminify','useref', 'movemanifest', 'moveserviceworker'])
+		['sass','images','fonts','jsonminify','useref', 'movemanifest', 'moveserviceworker', 'movereset'])
 });
 
 gulp.task('default', function(){
