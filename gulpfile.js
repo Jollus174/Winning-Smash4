@@ -37,8 +37,7 @@ gulp.task('sass', function(){
 	//return gulp.src('app/scss/style.scss')
 	return gulp.src('app/scss/**/*.scss')
 		.pipe(sourcemaps.init())
-			.pipe(sass()) // Converts Sass to CSS with gulp-sass
-			// .pipe(autoprefixer())
+		.pipe(sass().on('error', sass.logError))
 		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest('app/css'))
 		.pipe(browserSync.reload({

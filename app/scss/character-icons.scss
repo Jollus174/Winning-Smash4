@@ -1,194 +1,573 @@
+$bayonetta: #a79fe5;
+$bowser: #32765c;
+$bowser-jr: #cfce37;
+$captain-falcon: #9088e2;
+$charizard: #f66624;
+$cloud: #009684;
+$cloud-limit: #009684;
+$corrin: #733131;
+$dark-pit: #af6ce9;
+$diddy-kong: #932324;
+$donkey-kong: #feda00;
+$dr-mario: #d72935;
+$duck-hunt: #935a33;
+$falco: #52b1e3;
+$fox: #036ac9;
+$ganondorf: #7d7898;
+$game-and-watch: #8A8983;
+$greninja: #5073a9;
+$ike: #C44737;
+$jigglypuff: #F283EA;
+$king-dedede: #FFE966;
+$kirby: #E5939A;
+$link: #bed163;
+$little-mac: #39775A;
+$lucario: #AEE4FF;
+$lucas: #F05F1B;
+$lucina: #74A7CA;
+$luigi: #41A732;
+$mario: #AA2C30;
+$marth: #3EAACC;
+$mega-man: #58A0BF;
+$meta-knight: #2d3d7a;
+$mewtwo: #8054C3;
+$mii-brawler: #cd7e2c;
+$mii-swordfighter: #cd7e2c;
+$mii-gunner: #cd7e2c;
+$ness: #ab2d30;
+$olimar: #c3f1a9;
+$pacman: #dea03a;
+$palutena: #4ce2eb;
+$peach: #fec6f3;
+$pikachu: #d8a50a;
+$pit: #70B5D7;
+$rob: #B2B9BF;
+$robin: #CE82DE;
+$rosalina-and-luma: #4ce2eb;
+$roy: #5CB94D;
+$ryu: #E04447;
+$samus: #333F58;
+$sheik: #786cd7;
+$shulk: #E55B79;
+$shulk-buster: #E55B79;
+$shulk-jump: #E55B79;
+$shulk-shield: #E55B79;
+$shulk-smash: #E55B79;
+$sonic: #579DF2;
+$toon-link: #98D44B;
+$villager: #3BAC6C;
+$wario: #FECB4C;
+$wii-fit-trainer: #86d776;
+$yoshi: #4d9540;
+$zelda: #AA74BA;
+$zero-suit-samus: #005AAA;
+
 .character-box, #characterModal, .card-deck{
-    &.bayonetta .characterImage {
-        background-image: url(../images/characters/png/bayonetta.png);
+    &.bayonetta{
+        .characterImageContainer{
+            background-color:$bayonetta;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/bayonetta.png');
+        }
     }
-    &.bowser .characterImage{
-        background-image: url(../images/characters/png/bowser.png);
+    &.bowser{
+        .characterImageContainer{
+            background-color:$bowser;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/bowser.png');
+        }
     }
-    &.bowser-jr .characterImage{
-        background-image: url(../images/characters/png/bowserjr.png);
+    &.bowser-jr{
+        .characterImageContainer{
+            background-color:$bowser-jr;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/bowserjr.png');
+        }
     }
-    &.charizard .characterImage {
-        background-image: url(../images/characters/png/charizard.png);
+    &.captain-falcon {
+        .characterImageContainer{
+            background-color:$captain-falcon;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/cfalcon.png');
+        }
     }
-    &.captain-falcon .characterImage {
-        background-image: url(../images/characters/png/cfalcon.png);
+    &.charizard {
+        .characterImageContainer{
+            background-color:$charizard;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/charizard.png');
+        }
     }
-    &.cloud .characterImage{
-        background-image: url(../images/characters/png/cloud.png);
+    &.cloud{
+        .characterImageContainer{
+            background-color:$cloud;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/cloud.png');
+        }
     }
-    &.cloud-limit .characterImage{
-        background-image: url(../images/characters/png/cloudlimit.png);
+    &.cloud-limit{
+        .characterImageContainer{
+            background-color:$cloud-limit;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/cloudlimit.png');
+        }
     }
-    &.corrin .characterImage {
-        background-image: url(../images/characters/png/corrin.png);
+    &.corrin {
+        .characterImageContainer{
+            background-color:$corrin;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/corrin.png');
+        }
     }
-    &.dark-pit .characterImage {
-        background-image: url(../images/characters/png/darkpit.png);
+    &.dark-pit {
+        .characterImageContainer{
+            background-color:$dark-pit;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/darkpit.png');
+        }
     }
-    &.diddy-kong .characterImage {
-        background-image: url(../images/characters/png/diddykong.png);
+    &.diddy-kong {
+        .characterImageContainer{
+            background-color:$diddy-kong;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/diddykong.png');
+        }
     }
-    &.donkey-kong .characterImage {
-        background-image: url(../images/characters/png/donkeykong.png);
+    &.donkey-kong {
+        .characterImageContainer{
+            background-color:$donkey-kong;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/donkeykong.png');
+        }
     }
-    &.dr-mario .characterImage {
-        background-image: url(../images/characters/png/drmario.png);
+    &.dr-mario {
+        .characterImageContainer{
+            background-color:$dr-mario;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/drmario.png');
+        }
     }
-    &.duck-hunt .characterImage {
-        background-image: url(../images/characters/png/duckhunt.png);
+    &.duck-hunt {
+        .characterImageContainer{
+            background-color:$duck-hunt;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/duckhunt.png');
+        }
     }
-    &.falco .characterImage {
-        background-image: url(../images/characters/png/falco.png);
+    &.falco {
+        .characterImageContainer{
+            background-color:$falco;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/falco.png');
+        }
     }
-    &.fox .characterImage {
-        background-image: url(../images/characters/png/fox.png);
+    &.fox {
+        .characterImageContainer{
+            background-color:$fox;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/fox.png');
+        }
     }
-    &.ganondorf .characterImage {
-        background-image: url(../images/characters/png/ganondorf.png);
+    &.ganondorf {
+        .characterImageContainer{
+            background-color:$ganondorf;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/ganondorf.png');
+        }
     }
-    &.game-and-watch .characterImage {
-        background-image: url(../images/characters/png/gameandwatch.png);
+    &.game-and-watch {
+        .characterImageContainer{
+            background-color:$game-and-watch;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/gameandwatch.png');
+        }
     }
-    &.greninja .characterImage {
-        background-image: url(../images/characters/png/greninja.png);
+    &.greninja {
+        .characterImageContainer{
+            background-color:$greninja;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/greninja.png');
+        }
     }
-    &.ike .characterImage {
-        background-image: url(../images/characters/png/ike.png);
+    &.ike {
+        .characterImageContainer{
+            background-color:$ike;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/ike.png');
+        }
     }
-    &.jigglypuff .characterImage {
-        background-image: url(../images/characters/png/jigglypuff.png);
+    &.jigglypuff {
+        .characterImageContainer{
+            background-color:$jigglypuff;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/jigglypuff.png');
+        }
     }
-    &.king-dedede .characterImage {
-        background-image: url(../images/characters/png/kingdedede.png);
+    &.king-dedede {
+        .characterImageContainer{
+            background-color:$king-dedede;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/kingdedede.png');
+        }
     }
-    &.kirby .characterImage {
-        background-image: url(../images/characters/png/kirby.png);
+    &.kirby {
+        .characterImageContainer{
+            background-color:$kirby;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/kirby.png');
+        }
     }
-    &.link .characterImage {
-        background-image: url(../images/characters/png/link.png);
+    &.link {
+        .characterImageContainer{
+            background-color:$link;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/link.png');
+        }
     }
-    &.little-mac .characterImage {
-        background-image: url(../images/characters/png/littlemac.png);
+    &.little-mac {
+        .characterImageContainer{
+            background-color:$little-mac;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/littlemac.png');
+        }
     }
-    &.lucario .characterImage {
-        background-image: url(../images/characters/png/lucario.png);
+    &.lucario {
+        .characterImageContainer{
+            background-color:$lucario;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/lucario.png');
+        }
     }
-    &.lucas .characterImage {
-        background-image: url(../images/characters/png/lucas.png);
+    &.lucas {
+        .characterImageContainer{
+            background-color:$lucas;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/lucas.png');
+        }
     }
-    &.lucina .characterImage {
-        background-image: url(../images/characters/png/lucina.png);
+    &.lucina {
+        .characterImageContainer{
+            background-color:$lucina;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/lucina.png');
+        }
     }
-    &.luigi .characterImage {
-        background-image: url(../images/characters/png/luigi.png);
+    &.luigi {
+        .characterImageContainer{
+            background-color:$luigi;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/luigi.png');
+        }
     }
-    &.mario .characterImage {
-        background-image: url(../images/characters/png/mario.png);
+    &.mario {
+        .characterImageContainer{
+            background-color:$mario;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/mario.png');
+        }
     }
-    &.marth .characterImage {
-        background-image: url(../images/characters/png/marth.png);
+    &.marth {
+        .characterImageContainer{
+            background-color:$marth;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/marth.png');
+        }
     }
-    &.mega-man .characterImage {
-        background-image: url(../images/characters/png/megaman.png);
+    &.mega-man {
+        .characterImageContainer{
+            background-color:$mega-man;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/megaman.png');
+        }
     }
-    &.meta-knight .characterImage {
-        background-image: url(../images/characters/png/metaknight.png);
+    &.meta-knight {
+        .characterImageContainer{
+            background-color:$meta-knight;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/metaknight.png');
+        }
     }
-    &.mewtwo .characterImage {
-        background-image: url(../images/characters/png/mewtwo.png);
+    &.mewtwo {
+        .characterImageContainer{
+            background-color:$mewtwo;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/mewtwo.png');
+        }
     }
-    &.mii-brawler .characterImage {
-        background-image: url(../images/characters/png/miibrawler.png);
+    &.mii-brawler {
+        .characterImageContainer{
+            background-color:$mii-brawler;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/miibrawler.png');
+        }
     }
-    &.mii-swordfighter .characterImage {
-        background-image: url(../images/characters/png/miiswordfighter.png);
+    &.mii-swordfighter {
+        .characterImageContainer{
+            background-color:$mii-swordfighter;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/miiswordfighter.png');
+        }
     }
-    &.mii-gunner .characterImage {
-        background-image: url(../images/characters/png/miigunner.png);
+    &.mii-gunner {
+        .characterImageContainer{
+            background-color:$mii-gunner;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/miigunner.png');
+        }
     }
-    &.ness .characterImage {
-        background-image: url(../images/characters/png/ness.png);
+    &.ness {
+        .characterImageContainer{
+            background-color:$ness;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/ness.png');
+        }
     }
-    &.olimar .characterImage {
-        background-image: url(../images/characters/png/olimar.png);
+    &.olimar {
+        .characterImageContainer{
+            background-color:$olimar;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/olimar.png');
+        }
     }
-    &.pacman .characterImage {
-        background-image: url(../images/characters/png/pacman.png);
+    &.pacman {
+        .characterImageContainer{
+            background-color:$pacman;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/pacman.png');
+        }
     }
-    &.palutena .characterImage {
-        background-image: url(../images/characters/png/palutena.png);
+    &.palutena {
+        .characterImageContainer{
+            background-color:$palutena;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/palutena.png');
+        }
     }
-    &.peach .characterImage {
-        background-image: url(../images/characters/png/peach.png);
+    &.peach {
+        .characterImageContainer{
+            background-color:$peach;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/peach.png');
+        }
     }
-    &.pikachu .characterImage {
-        background-image: url(../images/characters/png/pikachu.png);
+    &.pikachu {
+        .characterImageContainer{
+            background-color:$pikachu;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/pikachu.png');
+        }
     }
-    &.pit .characterImage {
-        background-image: url(../images/characters/png/pit.png);
+    &.pit {
+        .characterImageContainer{
+            background-color:$pit;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/pit.png');
+        }
     }
-    &.rob .characterImage {
-        background-image: url(../images/characters/png/rob.png);
+    &.rob {
+        .characterImageContainer{
+            background-color:$rob;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/rob.png');
+        }
     }
-    &.robin .characterImage {
-        background-image: url(../images/characters/png/robin.png);
+    &.robin {
+        .characterImageContainer{
+            background-color:$robin;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/robin.png');
+        }
     }
-    &.rosalina-and-luma .characterImage {
-        background-image: url(../images/characters/png/rosalina.png);
+    &.rosalina-and-luma {
+        .characterImageContainer{
+            background-color:$rosalina-and-luma;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/rosalina.png');
+        }
     }
-    &.roy .characterImage {
-        background-image: url(../images/characters/png/roy.png);
+    &.roy {
+        .characterImageContainer{
+            background-color:$roy;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/roy.png');
+        }
     }
-    &.ryu .characterImage {
-        background-image: url(../images/characters/png/ryu.png);
+    &.ryu {
+        .characterImageContainer{
+            background-color:$ryu;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/ryu.png');
+        }
     }
-    &.samus .characterImage {
-        background-image: url(../images/characters/png/samus.png);
+    &.samus {
+        .characterImageContainer{
+            background-color:$samus;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/samus.png');
+        }
     }
-    &.sheik .characterImage {
-        background-image: url(../images/characters/png/sheik.png);
+    &.sheik {
+        .characterImageContainer{
+            background-color:$sheik;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/sheik.png');
+        }
     }
-    &.shulk .characterImage {
-        background-image: url(../images/characters/png/shulk.png);
+    &.shulk {
+        .characterImageContainer{
+            background-color:$shulk;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/shulk.png');
+        }
     }
-    &.shulk-buster .characterImage {
-        background-image: url(../images/characters/png/shulkbuster.png);
+    &.shulk-buster {
+        .characterImageContainer{
+            background-color:$shulk-buster;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/shulkbuster.png');
+        }
     }
-    &.shulk-jump .characterImage {
-        background-image: url(../images/characters/png/shulkjump.png);
+    &.shulk-jump {
+        .characterImageContainer{
+            background-color:$shulk-jump;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/shulkjump.png');
+        }
     }
-    &.shulk-shield .characterImage {
-        background-image: url(../images/characters/png/shulkshield.png);
+    &.shulk-shield {
+        .characterImageContainer{
+            background-color:$shulk-shield;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/shulkshield.png');
+        }
     }
-    &.shulk-smash .characterImage {
-        background-image: url(../images/characters/png/shulksmash.png);
+    &.shulk-smash {
+        .characterImageContainer{
+            background-color:$shulk-smash;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/shulksmash.png');
+        }
     }
-    &.shulk-speed .characterImage {
-        background-image: url(../images/characters/png/shulkspeed.png);
+    &.sonic {
+        .characterImageContainer{
+            background-color:$sonic;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/sonic.png');
+        }
     }
-    &.sonic .characterImage {
-        background-image: url(../images/characters/png/sonic.png);
+    &.toon-link {
+        .characterImageContainer{
+            background-color:$toon-link;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/toonlink.png');
+        }
     }
-    &.toon-link .characterImage {
-        background-image: url(../images/characters/png/toonlink.png);
+    &.villager {
+        .characterImageContainer{
+            background-color:$villager;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/villager.png');
+        }
     }
-    &.villager .characterImage {
-        background-image: url(../images/characters/png/villager.png);
+    &.wario {
+        .characterImageContainer{
+            background-color:$wario;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/wario.png');
+        }
     }
-    &.wario .characterImage {
-        background-image: url(../images/characters/png/wario.png);
+    &.wii-fit-trainer {
+        .characterImageContainer{
+            background-color:$wii-fit-trainer;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/wiifittrainer.png');
+        }
     }
-    &.wii-fit-trainer .characterImage {
-        background-image: url(../images/characters/png/wiifittrainer.png);
+    &.yoshi {
+        .characterImageContainer{
+            background-color:$yoshi;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/yoshi.png');
+        }
     }
-    &.yoshi .characterImage {
-        background-image: url(../images/characters/png/yoshi.png);
+    &.zelda {
+        .characterImageContainer{
+            background-color:$zelda;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/zelda.png');
+        }
     }
-    &.zelda .characterImage {
-        background-image: url(../images/characters/png/zelda.png);
-    }
-    &.zero-suit-samus .characterImage {
-        background-image: url(../images/characters/png/zerosuitsamus.png);
+    &.zero-suit-samus {
+        .characterImageContainer{
+            background-color:$zero-suit-samus;
+        }
+        .characterImage{
+            background-image:url('../images/characters/png/zerosuitsamus.png');
+        }
     }
 }
+
+
+

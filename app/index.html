@@ -9,19 +9,35 @@
     <meta name="description" content="A Super Smash Bros. for Wii U Progressive Web App for calculating kill confirm ranges such as Robin's Checkmate, Donkey Kong's Ding Dong and Bowser's Koo-Pah." />
 
 	<!-- Moving the Firebase initialisation codes to bottom, as they break all the JS scripts in Microsoft Edge browser -->
+	<!-- Production -->
 	<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
 	<script>
-	  // Initialize Firebase
-	  var config = {
-	    apiKey: "AIzaSyCMA_USBZQAaA9J_Rtrx0J2WEh6BsLr2cc",
-	    authDomain: "winning-at-smash4.firebaseapp.com",
-	    databaseURL: "https://winning-at-smash4.firebaseio.com",
-	    projectId: "winning-at-smash4",
-	    storageBucket: "",
-	    messagingSenderId: "159867334563"
-	  };
-	  firebase.initializeApp(config);
+		// Initialize Firebase
+		var config = {
+			apiKey: "AIzaSyCMA_USBZQAaA9J_Rtrx0J2WEh6BsLr2cc",
+			authDomain: "winning-at-smash4.firebaseapp.com",
+			databaseURL: "https://winning-at-smash4.firebaseio.com",
+			projectId: "winning-at-smash4",
+			storageBucket: "",
+			messagingSenderId: "159867334563"
+		};
+		firebase.initializeApp(config);
 	</script>
+
+	<!-- Staging -->
+	<!-- <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+	<script>
+		// Initialize Firebase
+		var config = {
+			apiKey: "AIzaSyBjYsv8pKDoL4EKoGSaGcxtVjWsQM_boCY",
+			authDomain: "winning-at-smash4-staging.firebaseapp.com",
+			databaseURL: "https://winning-at-smash4-staging.firebaseio.com",
+			projectId: "winning-at-smash4-staging",
+			storageBucket: "winning-at-smash4-staging.appspot.com",
+			messagingSenderId: "161318436424"
+		};
+		firebase.initializeApp(config);
+	</script> -->
 
     <!-- build:css css/style.min.css -->
     <link async rel="stylesheet" href="css/style.css">
@@ -73,7 +89,7 @@
 
 </head>
 
-<body id="body" class="loading wrapper">
+<body id="body" class="loading wrapper" data-currentcharactergrid="" data-currentcharactermodal="">
 
 	<img style="display:none;" src="images/winning-at-smash4.jpg" alt="Winning at Smash 4 Kill Confirm Calculator" />
 
@@ -92,12 +108,18 @@
 				<!-- Sidebar Links -->
 				<li>
 					<!-- ko foreach: killConfirm -->
-					<ul class="list-unstyled components nav nav-characters" data-bind="css: url">
+					<ul class="list-unstyled components nav nav-characters" data-bind="css: charId">
 						<li>
 							<span data-bind="text: name"></span>
-							<ul class="list-unstyled nav-moves" data-bind="attr: {id: hashUrl}, foreach: moves">
+							<ul class="list-unstyled nav-moves" data-bind="attr: {id: charId}, foreach: moves">
 								<li>
-									<a href="#" data-bind="html: moveName, attr: {'data-ref': $parent.url + '-' + moveUrl}">Page</a>
+									<a href="#" class="moveBtn" data-bind="html: moveName, attr: {
+										'data-moveid': moveId,
+										'data-moveurl': $parent.charId + '-' + moveId,
+										href: '#/' + $parent.charId + '/' + moveId
+									}">
+										Page
+									</a>
 								</li>
 							</ul>
 						</li>
@@ -151,10 +173,10 @@
 
 				<div id="characterSelection" class="row" data-bind="foreach: killConfirm">
 
-					<div class="card-deck col-12 col-lg-6 col-xl-4" data-bind="css: url, attr: {
+					<div class="card-deck col-12 col-lg-6 col-xl-4" data-bind="css: charId, attr: {
 						'data-index': index,
 						'data-name': name,
-						'data-url': url
+						'data-charid': charId
 					}">
 						<div class="card">
 							<div class="card-image-top">
@@ -166,10 +188,12 @@
 							<div class="card-body">
 								<div class="btn-group" role="group" data-bind="foreach: moves">
 									<button class="btn btn-sm moveBtn" data-bind="html: moveName, attr: {
-										id: $parent.url + '-' + moveUrl,
-										href: '#/' + $parent.url + '/' + moveUrl,
-										'data-moveurl': moveUrl,
+										id: $parent.charId + '-' + moveId,
+										href: '#/' + $parent.charId + '/' + moveId,
 										'data-moveid': moveId,
+										'data-moveurl': $parent.charId + '-' + moveId,
+										'data-moveindex': moveIndex,
+										'data-charid': $parent.charId,
 										'data-rage50': rage50,
 										'data-rage60': rage60,
 										'data-rage80': rage80,
@@ -204,7 +228,7 @@
 
 				<!-- secondary nav -->
 				<div id="secondarynav-container" class="row border-bottom"> <!-- .nav-wrapper -->
-					<nav id="secondarynav" class="navbar navbar-light navbar-static-top secondarynav">
+					<nav id="secondarynav-topmenu" class="navbar navbar-light navbar-static-top secondarynav">
 
 						<button id="character-wrapper-back" class="navbar-toggler navbar-toggler-left navbar-brand --white" href="#">
 							<svg class="icon-arrowback" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -212,26 +236,19 @@
 								<path class="pathfill" d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path>
 							</svg>
 						</button>
-						<div id="moveName" class="navbar-brand --white" style="font-size:100%;position: relative;">
-							Move Name
-						</div>
 						<div class="navbar-header">
-							<div class="dropdown show">
-								<button class="btn btn-secondary btn-sm dropdown-toggle" id="secondarynav-dropdown" aria-haspopup="true" aria-expanded="false" style="font-size:0.95rem;">
-									Dropdown link
-								</button>
+							<div id="moveName" class="navbar-brand --white" style="font-size:100%;position: relative;">
+								Move Name
+							</div>
+							<div class="move-selector" class="navbar-brand --white">
+								Moves
 							</div>
 						</div>
 						
-						<button id="info" class="btn btn-sm float-right" style="margin-left:10px;"><i class="fa fa-info-circle" aria-hidden="true"></i><span style="padding-left:10px; text-transform: none;" class="d-none d-md-inline">More Information</span></button>
-						<div id="secondarynav-dropdown-menu" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-							<a class="dropdown-item" href="#">Bowser Koopah Percents</a>
-							<a class="dropdown-item" href="#">Donkey Kong Ding Dong Percents</a>
-							<a class="dropdown-item" href="#">Lucas Down Throw > Up Air, Snake and Bake Percents</a>
-							<a class="dropdown-item" href="#">Mr. Game and Watch Toot Toot Percents</a>
-							<a class="dropdown-item" href="#">Robin Checkmate Percents</a>
-							<a class="dropdown-item" href="#">Zelda Down Throw Up Air Percents</a>
-						</div>
+						<button id="info" class="btn btn-sm" style="margin-left:10px;"><i class="fa fa-info-circle" aria-hidden="true"></i><span style="padding-left:10px; text-transform: none;" class="d-none d-md-inline">More Information</span></button>
+						<!-- <div id="secondarynav-dropdown-menu" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+							<span class="text">Dropdown menu item</span><span class="caret"></span>
+						</div> -->
 
 					</nav>
 				</div>
@@ -287,16 +304,15 @@
 
 					<div class="col-12" data-bind="foreach: killConfirm">
 						<!-- ko foreach: moves -->
-						<div class="alert alert-info special-info" role="alert" data-bind="text: specialInfo, attr: {id: 'info-' + $parent.url + '-' + moveUrl}"></div>
+						<div class="alert alert-info special-info" role="alert" data-bind="html: specialInfo, attr: {id: 'info-' + $parent.charId + '-' + moveId}"></div>
 						<!-- /ko -->
 					</div>
 
 					<!-- ko foreach: character -->
-					<div class="character-box col-6 col-md-4 col-lg-3" data-bind="css: url, attr: {
-						'data-url': url,
+					<div class="character-box col-6 col-md-4 col-lg-3" data-bind="css: id, attr: {
+						'data-charindex': charIndex,
 						'data-name': name,
-						'data-index': id,
-						'data-bgcolour': bgColour,
+						'data-id': id,
 						'data-weight': weight,
 						'data-fallspeed': fallspeed,
 						'data-gravity': gravity,
@@ -304,16 +320,18 @@
 						'data-airdodgeend': airdodgeEnd,
 						'data-minpercent': minPercent,
 						'data-maxpercent': maxPercent,
-						'data-textcontrast': textContrast
+						'data-specialinfo': specialInfo
 					}">
-						<div class="characterImageContainer" data-bind="style: {backgroundColor: bgColour}, css: imageProperties">
+						<div class="characterImageContainer">
 							<div class="characterImage"><div class="characterImageContainer-lightOverlay"></div></div>
 							
 							<div class="grid-difficulty">
 								<span class="difficulty easy"><span class="text-difficulty">easy</span> - <span class="text-percRange">28</span>%</span>
+								<span class="grid-specialInfo">Far</span>
 							</div>
 							<div class="grid-index">
-								<span data-bind="text: (id + 1)"></span>
+								<!-- <span></span> -->
+								<span data-bind="text: (charIndex + 1)"></span>
 							</div>
 							<div class="grid-percRange">
 								<span class="grid-percRangeText">
@@ -397,19 +415,33 @@
 
 			<h2>Credits</h2>
 
-			<p><a href="https://twitter.com/TheVonDk" target="_blank" rel="noopener">Poke</a> for labbing the kill confirms for <a href="https://docs.google.com/spreadsheets/d/1OvUy2gsTrUj96cAHSkSIZHGnUaaS-UrX6SdFKyctNmU/edit#gid=932844731" target="_blank" rel="noopener">Donkey Kong</a> and <a href="https://docs.google.com/spreadsheets/d/1bGbb7fiX1W0Oer58yf6Kcwtx_zgxg--WYGrUpxTjRpk/edit#gid=432871589" target="_blank" rel="noopener">Bowser</a>.</p>
 
-			<p><a href="https://twitter.com/houseoffastfood" target="_blank" rel="noopener">Mickey</a> for the <a href="https://docs.google.com/spreadsheets/d/1AxpLDkDltkjAND819JrbgfIgPH_pjkeFPhjpzXPDgP0/edit#gid=0" target="_blank" rel="noopener">G &amp; W Toot-Toot spreadsheet</a>.</p>
+			<!-- ko foreach: killConfirm -->
+			<p data-bind="foreach: moves">
 
-			<p><a href="https://twitter.com/Tihit212" target="_blank" rel="noopener">Taiheita</a> for the <a href="https://docs.google.com/spreadsheets/d/1wIHQkV-RTsKBQq9_aBrP2yE9B55gCeN2cbilx3InPYo/edit#gid=1136269350" target="_blank" rel="noopener">Lucas Down Throw > Up Air spreadsheet</a>.</p>
+				<!-- ko if: creditLink -->
+					<a data-bind="text: creditName, attr: {
+						href: creditLink
+					}" target="_blank">wef </a>
+				<!-- /ko -->
+				<!-- ko ifnot: creditLink -->
+					<span data-bind="text: creditName">not </span>
+				<!-- /ko -->
 
-			<p>The <a href="https://twitter.com/robinlabteam" target="_blank" rel="noopener">Robin Lab Team</a> for the <a href="https://docs.google.com/spreadsheets/d/1VNYNt0JFe7ak02Db_Ds1Y1QdoK7muOaPSqqd0c5JOUs/edit#gid=0" target="_blank" rel="noopener">Robin Checkmate spreadsheet</a>.</p>
+				for the <a data-bind="html:$parent.name + ' ' + moveName + ' spreadsheet', attr: {
+					'href': spreadsheetLink
+				}" target="_blank">ewwf</a><span data-bind="if: spreadsheetMethod"> and <a data-bind="attr: {
+					'href': spreadsheetMethod}" target="_blank">methodology</a></span>. 
+			</p>
+			<!-- /ko -->
 
-			<p>Xelda for the <a href="https://docs.google.com/spreadsheets/d/1zd5Ky1MR9ECFCtKRlfyQ77YNT9gAZ7GNXJkqZGVgmoI/edit#gid=511032032" target="_blank" rel="noopener">Zelda Down Throw > Up Air spreadsheet</a>. <a href="https://twitter.com/BanZelda" target="_blank" rel="noopener">Dia</a> for the <a href="https://docs.google.com/spreadsheets/d/1DJ6nOhD5csa5xEgPvgCXMXKR-Gsy_WwbtJARkbCxTIA/edit#gid=0" target="_blank" rel="noopener">Zelda Kill Percents spreadsheet (WIP)</a>.</p>
+			<p><a href="https://twitter.com/BanZelda" target="_blank" rel="noopener">Dia</a> for the <a href="https://docs.google.com/spreadsheets/d/1DJ6nOhD5csa5xEgPvgCXMXKR-Gsy_WwbtJARkbCxTIA/edit#gid=0" target="_blank" rel="noopener">Zelda Kill Percents spreadsheet (WIP)</a>.</p>
+
+			<p><a href="https://twitter.com/NechuEXE" target="_blank" rel="noopener">Nechu</a> for the <a href="https://imgur.com/a/j3ekG" target="_blank" rel="noopener">Up Throw > Thunder GIF collection</a>.</p>
 
 			<p><a href="https://twitter.com/unwnded?lang=en" target="_blank" rel="noopener">Extra</a>, <a href="https://twitter.com/Dsafunky1" target="_blank" rel="noopener">Denz</a>, <a href="https://twitter.com/Havok_96" target="_blank" rel="noopener">Havok</a> and <a href="https://twitter.com/JPiskopos" target="_blank" rel="noopener">Piski</a> for labbing assistance.</p>
 
-			<p>Special thanks to smashers <a href="https://twitter.com/cayiika" target="_blank" rel="noopener">Cayika</a>, <a href="https://twitter.com/Gurpwnder" target="_blank" rel="noopener">Gurpinder</a>, Gale, BJN39, eta3372.</p>
+			<p>Special thanks to smashers <a href="https://twitter.com/cayiika" target="_blank" rel="noopener">Cayika</a>, <a href="https://twitter.com/Gurpwnder" target="_blank" rel="noopener">Gurpinder</a>, Gale, BJN39, eta3372, Skia.</p>
 
 			<p>Shoutouts to <a href="https://twitter.com/frappesnowland" target="_blank" rel="noopener">Shiva</a> for images help and <a href="https://twitter.com/KuroganeHammer" target="_blank" rel="noopener">Kurogane Hammer</a> for data help.</p>
 
@@ -426,21 +458,36 @@
 				<iframe width='100%' height='100%' style='position:absolute' frameBorder='0' class='giphy-embed' allowFullScreen></iframe>
 			</div>
 
-
-			<!-- ko foreach: killConfirm -->
-			
+			<!-- ko foreach: killConfirm -->			
 				<!-- ko foreach: moves -->
 
-					<div class="detailed-info" data-bind="css: $parent.url + '-' + moveUrl" hidden>
+					<div class="detailed-info" data-bind="css: $parent.charId + '-' + moveId" hidden>
+						<div class="alert alert-secondary">
+							Thanks to 
+
+						<!-- ko if: creditLink -->
+							<a data-bind="text: creditName, attr: {
+								href: creditLink
+							}" target="_blank"> wef </a>
+						<!-- /ko -->
+						<!-- ko ifnot: creditLink -->
+							<span data-bind="text: creditName"> not </span>
+						<!-- /ko -->
+
+						for the <a data-bind="html:$parent.name + ' ' + moveName + ' spreadsheet', attr: {
+							'href': spreadsheetLink
+						}" target="_blank">ewwf</a><span data-bind="if: spreadsheetMethod"> and <a data-bind="attr: {
+							'href': spreadsheetMethod}" target="_blank">methodology</a></span>. 
+							
+						</div>
+
 						<!-- ko foreach: info -->
 						<p data-bind="html: $data">
 
 						</p>
 						<!-- /ko -->
 					</div>
-
 				<!-- /ko -->
-
 			<!-- /ko -->
 
 			<div class="modifiers modifiers-stages stage">
@@ -587,6 +634,17 @@
 		</div>
 
 		<div class="characterContainer clearfix">
+
+			<nav class="navbar navbar-light navbar-static-top secondarynav">
+
+				<div class="navbar-header">
+					<div class="move-selector" class="navbar-brand --white">
+						<button class="btn btn-secondary btn-sm moveBtn">Name</button>
+					</div>
+				</div>
+
+			</nav>
+
 			<div class="characterImageContainer">
 				<div id="characterModalImage" class="characterImage"></div>
 

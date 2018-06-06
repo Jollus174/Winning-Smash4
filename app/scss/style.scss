@@ -20,6 +20,7 @@ $button-primary:#d0361a;
 $button-primary-hover:darken($button-primary, 15%);
 $button-primary-active:darken($button-primary, 15%);
 
+
 /* --- */
 
 @mixin character-styles($char, $text-colour){
@@ -40,17 +41,84 @@ $button-primary-active:darken($button-primary, 15%);
             }
         }
     }
-    .btn, .dropdown-item{
+    &#characterModal{
+        .secondarynav-container{
+            background-color:darken($char, 10%);
+        }
+        .secondarynav{
+            background-color:darken($char, 10%);
+            border-bottom:1px solid darken($char, 5%);
+            .btn-secondary{
+                color: $text-colour;
+                font-weight:700;
+                transition: none;
+                @if $text-colour == $text-light {
+                    background-color:darken($char, 20%);
+                    border: 1px solid darken($char, 30%);
+                    &.active{
+                        background-color:darken($char, 25%) !important;
+                    }
+                    &:hover, &:active{
+                        background-color:darken($char, 30%) !important;
+                    }
+                } @else {
+                    background-color:lighten($char, 5%);
+                    border: 1px solid darken($char, 20%);
+                    &.active{
+                        background-color:lighten($char, 20%) !important;
+                    }
+                    &:hover, &:active{
+                        background-color:lighten($char, 30%) !important;
+                    }
+                }
+            }
+        }
+        .characterOverview{
+            li{
+                color: $text-colour;
+            }
+        }
+    }
+    .btn, .dropdown-item, .btn.btn-secondary, #secondarynav-dropdown{
         color:$text-colour;
         background-color:darken($char, 10%);
-        &:hover, &.active{
-            background-color:darken($char, 20%) !important;
+        border-color: $char;
+        &:hover, &.active, &:active{
+            background-color:darken($char, 20%);
+            box-shadow:none !important;
+            border-color: darken($char, 20%);
         }
     }
     .btn{
         color:$text-light;
     }
     &.card-deck{
+        &.new{
+            .moveBtn{
+                &:after{
+                    content: 'New!';
+                    position: absolute;
+                    background: #fff;
+                    padding: 2px;;
+                    font-size: 10px;
+                    font-weight: 700;
+                    border-radius: 5px;
+                    border: 1px solid $char;;
+                    box-shadow: 0 3px 5px rgba(0,0,0,0.2);
+                    color: darken($char, 20%);
+                    top: -17px;
+                    right:-7px;
+                    z-index:5;
+                    // opacity:0.7;
+                    transition: opacity 0.2s ease;
+                }
+                // &:hover{
+                //     &:after{
+                //         opacity:1;
+                //     }
+                // }
+            }
+        }
         .card-image-top{
             background-color:$char;
             color:$text-colour;
@@ -71,90 +139,277 @@ $button-primary-active:darken($button-primary, 15%);
         position:relative;
         &:before{background:transparentize($char, 0.5) !important;}
     }
-    .dropdown-menu, #sort{background-color:$char}
-}
-
-.bowser{
-    @include character-styles(#32765c, $text-light);
-}
-.donkey-kong{
-    @include character-styles(#feda00, $text-dark);
-    &.card-deck{
-        .btn{
-            color:$text-light;
+    #moveName{
+        color: $text-colour;
+    }
+    .dropdown-menu,
+    #sort{
+        background-color:$char;
+    }
+    #character-underlay{
+        background-color:$char !important;
+    }
+    #icon-next, #icon-prev{
+        path.pathfill{
+            fill: $text-colour;
+        }
+    }
+    .legend-keys{
+        svg{
+            fill: $text-colour;
+        }
+        .legend-keys--text{
+            color: $text-colour;
+        }
+        .legend-keys--shift,
+        .legend-keys--escape{
+            background: $text-colour;
+            color:$char;
         }
     }
 }
+
+// CHARACTERS
+
+.bayonetta{
+    @include character-styles($bayonetta, $text-light);
+}
+.bowser{
+    @include character-styles($bowser, $text-light);
+}
+.bowser-jr{
+    @include character-styles($bowser-jr, $text-dark);
+}
+.captain-falcon{
+    @include character-styles($captain-falcon, $text-light);
+}
+.charizard{
+    @include character-styles($charizard, $text-light);
+}
+.cloud{
+    @include character-styles($cloud, $text-light);
+}
+.cloud-limit{
+    @include character-styles($cloud-limit, $text-light);
+}
+.corrin{
+    @include character-styles($corrin, $text-light);
+}
+.dark-pit{
+    @include character-styles($dark-pit, $text-light);
+}
+.diddy-kong{
+    @include character-styles($diddy-kong, $text-light);
+}
+.donkey-kong{
+    @include character-styles($donkey-kong, $text-dark);
+    &.card-deck{
+        .btn{
+             color:$text-light;
+        }
+    }
+}
+.dr-mario{
+    @include character-styles($dr-mario, $text-light);
+}
+.duck-hunt{
+    @include character-styles($duck-hunt, $text-light);
+}
+.falco{
+    @include character-styles($falco, $text-light);
+}
+.fox{
+    @include character-styles($fox, $text-light);
+}
 .game-and-watch{
-    @include character-styles(#8a8983, $text-light);
+    @include character-styles($game-and-watch, $text-light);
+}
+.ganondorf{
+    @include character-styles($ganondorf, $text-light);
+}
+.greninja{
+    @include character-styles($greninja, $text-light);
+}
+.ike{
+    @include character-styles($ike, $text-light);
+}
+.jigglypuff{
+    @include character-styles($jigglypuff, $text-light);
+}
+.king-dedede{
+    @include character-styles($king-dedede, $text-dark);
+}
+.kirby{
+    @include character-styles($kirby, $text-light);
+}
+.link{
+    @include character-styles($link, $text-dark);
+}
+.little-mac{
+    @include character-styles($little-mac, $text-light);
+}
+.lucario{
+    @include character-styles($lucario, $text-dark);
 }
 .lucas{
-    @include character-styles(#f05f1b, $text-light);
+    @include character-styles($lucas, $text-light);
+}
+.lucina{
+    @include character-styles($lucina, $text-light);
+}
+.luigi{
+    @include character-styles($luigi, $text-light);
+}
+.mario{
+    @include character-styles($mario, $text-light);
+}
+.marth{
+    @include character-styles($marth, $text-light);
+}
+.mega-man{
+    @include character-styles($mega-man, $text-light);
+}
+.meta-knight{
+    @include character-styles($meta-knight, $text-light);
+}
+.mewtwo{
+    @include character-styles($mewtwo, $text-light);
+}
+.mii-brawler{
+    @include character-styles($mii-brawler, $text-light);
+}
+.mii-gunner{
+    @include character-styles($mii-gunner, $text-light);
+}
+.mii-swordfighter{
+    @include character-styles($mii-swordfighter, $text-light);
+}
+.ness{
+    @include character-styles($ness, $text-light);
+}
+.olimar{
+    @include character-styles($olimar, $text-dark);
+}
+.pacman{
+    @include character-styles($pacman, $text-light);
+}
+.palutena{
+    @include character-styles($palutena, $text-dark);
+}
+.peach{
+    @include character-styles($peach, $text-dark);
+}
+.pikachu{
+    @include character-styles($pikachu, $text-light);
+}
+.pit{
+    @include character-styles($pit, $text-light);
+}
+.rob{
+    @include character-styles($rob, $text-light);
 }
 .robin{
-    @include character-styles(#ce82de, $text-light);
+    @include character-styles($robin, $text-light);
+}
+.rosalina-and-luma{
+    @include character-styles($rosalina-and-luma, $text-dark);
+}
+.roy{
+    @include character-styles($roy, $text-light);
+}
+.ryu{
+    @include character-styles($ryu, $text-light);
+}
+.samus{
+    @include character-styles($samus, $text-light);
+}
+.sheik{
+    @include character-styles($sheik, $text-light);
+}
+.shulk{
+    @include character-styles($shulk, $text-light);
+}
+.shulk-buster{
+    @include character-styles($shulk-buster, $text-light);
+}
+.shulk-jump{
+    @include character-styles($shulk-jump, $text-light);
+}
+.shulk-shield{
+    @include character-styles($shulk-shield, $text-light);
+}
+.shulk-smash{
+    @include character-styles($shulk-smash, $text-light);
+}
+.sonic{
+    @include character-styles($sonic, $text-light);
+}
+.toon-link{
+    @include character-styles($toon-link, $text-dark);
+}
+.villager{
+    @include character-styles($villager, $text-light);
+}
+.wario{
+    @include character-styles($wario, $text-dark);
+}
+.wii-fit-trainer{
+    @include character-styles($wii-fit-trainer, $text-dark);
+}
+.yoshi{
+    @include character-styles($yoshi, $text-light);
 }
 .zelda{
-    @include character-styles(#aa74ba, $text-light);
+    @include character-styles($zelda, $text-light);
+}
+.zero-suit-samus{
+    @include character-styles($zero-suit-samus, $text-light);
+}
+
+@mixin new() {
+    content:'nw!';
+    position: absolute;
+    background: #e0703b;
+    width: 30px;
+    height: 30px;
 }
 
 /* Cards */
-
-/* --- Temporary style, the BG colour will normally be auto-generated --- */
-.card{
-    .characterImage{
-        background-repeat: no-repeat;
-        background-position: right center;
-        opacity:0.5;
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        right: 0;
-    }
-    .card-image-top{
-        position:relative;
-    }
-    .card-body{
-        position:relative;
-        // padding:0.75rem 1.25rem;
-        .btn-group > .btn{
-            margin-left:0;
+.card-deck{
+    .card{
+        .characterImage{
+            background-repeat: no-repeat;
+            background-position: right center;
+            opacity:0.5;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            right: 0;
         }
-        button{
-            margin-right:5px;
-            border:2px solid;
+        .card-image-top{
+            position:relative;
+        }
+        .card-body{
+            position:relative;
+            .btn-group > .btn{
+                margin-left:0;
+                margin: 0.25rem;
+            }
+            button{
+                margin-right:5px;
+                border:2px solid;
+            }
         }
     }
-}
-.moveBtn.active{
-    border-color:rgba(213, 0, 0, 0.5) !important;
 }
 #characterSelection .card{
     margin-bottom:10px;
 }
 
-
-/* --- CAAAARDS --- */
-
-// https://stackoverflow.com/questions/10929458/sass-converting-hex-to-rgba-for-background-opacity
-// @mixin background-opacity($color, $opacity:0.3){
-//     background:
-// }
-
-// babeh's first mix-in :)
-// not yet
-//@mixin
-
-
-
-
 .nav-characters li > span{
     transition:all 0.2s ease;
 }
-
-
-// nav-characters bowser
 
 /* --- */
 
@@ -727,6 +982,10 @@ body.animating{
     &.active{
         display:inline-block;
     }
+    a{
+        font-weight:700;
+        color:inherit;
+    }
 }
 
 
@@ -896,36 +1155,45 @@ body.animating{
     border-top-right-radius: 0;
     box-shadow: 0 3px 3px rgba(0,0,0,.175);
 }
-.dropdown-toggle::after{
-    margin-left: 0.55em;
-    vertical-align: 0.155em;
+#secondarynav-dropdown{
+    border:none;
+    box-shadow:none;
+    display:flex;
+    flex-flow:row nowrap;
+    align-items:center;
+    // &:after{
+    //     margin-left: 0.55em;
+    //     vertical-align: 0.155em;
+    // }
+    &:after{
+        display:none;
+    }
+    .dropdown-toggle{
+        display:flex;
+        flex-flow:row nowrap;
+    }
+    span.text{
+        width:100%;
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin:0;
+        padding:0;
+        padding-right:5px;
+    }
 }
 
 
 body{
     overflow-x:hidden;
-    #secondarynav{
-        .navbar-header{
-            display:none;
-        }
-    }
-    &.show-secondary-dropdown{
-        .navbar-header{
-            display:block !important;
-        }
-    }
 }
-#secondarynav{
-    display:block;
+#secondarynav-topmenu{
     transition:background-color 0.2s ease;
     z-index:6;
     position:absolute;
     // position:fixed;
 
-
-
     #character-wrapper-back{
-        float:left;
         padding: 0.3125rem 0.45rem;
         transition:background 0.2s ease;
         cursor:pointer;
@@ -974,6 +1242,83 @@ body{
                 cursor:pointer;
             }
         }
+    }
+}
+#page-wrapper{
+    #secondarynav-container{
+        position:absolute;
+        top:0;
+        z-index:1;
+        width:100%;
+    }
+}
+.animating{
+    #page-wrapper{
+        #secondarynav-container{
+            // This fixes the fixed navbar jumping around during transitions!
+            top:0 !important;
+            position:absolute !important;
+            transform: translate(0, 0);
+            #info{
+                transform:translate(0, 0);
+            }
+        }
+    }
+}
+.fixed-navbar{
+    #page-wrapper{
+        #secondarynav-container{
+            // position:static;
+            position:fixed;
+            top:56px;
+            left:0;
+            right:0;
+            margin:0;
+            display:block;
+            z-index:1;
+            #secondarynav-topmenu{
+                // position:static;
+                // position: absolute;
+                // top: -53px;
+                // left: -220px;
+            }
+
+        }
+    }
+    #moveName{
+        display:none;
+    }
+    .secondarynav{
+        display: flex;
+        flex-flow:row nowrap;
+        justify-content:left;
+        overflow:hidden;
+        .navbar-header{
+            position:relative;
+            display: flex;
+            overflow:hidden;
+            @media (max-width:500px){
+                overflow-x:scroll;
+                cursor:all-scroll;
+            }
+            .move-selector{
+                display:flex;
+                flex-flow:row nowrap;
+                .btn-secondary{
+                    margin-right:5px;
+                    border:none;
+                }
+            }
+        }
+    }
+}
+.navbar-header{
+    display:flex;
+    flex-flow: row nowrap;
+    flex-grow:1;
+    .move-selector{
+        display:none;
+        padding:0;
     }
 }
 
@@ -1029,31 +1374,12 @@ body{
         background:#eee;
     }
 }
-.secondarynav{
-    background-color:#8a8983;
-    display:none;
-}
+
 .animating, .character-grid-active{
     #character-wrapper{
         display:block;
     }
 }
-
-
-// Here be mobile-only styles //
-
-#character-wrapper-back{
-    // margin:0;
-}
-#secondarynav{
-    .navbar-header{
-        position:relative;
-        float:left;
-        overflow:hidden;
-    }
-}
-
-// //
 
 
 .legend-keys{
@@ -1447,7 +1773,13 @@ body{
 
 .grid-difficulty, .grid-percRange, .grid-fallspeed, .grid-gravity, .grid-difficultyValue, .grid-ledgeFsmash{position:absolute;}
 .grid-percRange{top:6px; left:6px;}
-.grid-difficulty{top:30px; left:2px;}
+.grid-difficulty{
+    top:34px;
+    left:2px;
+    display:flex;
+    flex-flow: column wrap;
+    align-items: flex-start;
+}
 .grid-fallspeed{top:56px; left:6px;}
 .grid-gravity{top:76px; left:6px;}
 .grid-ledgeFsmash{top:77px; right:3px;}
@@ -1473,14 +1805,14 @@ body{
     border-radius: 3px;
     display:none;
 }
-.grid-ledgeFsmash span span{
-    text-transform:uppercase;
-    font-weight:700;
+.grid-ledgeFsmash{
+    &.no{background: #e03838;}
+    &.yes{background: #4caf50;}
+    span span{
+        text-transform:uppercase;
+        font-weight:700;
+    }
 }
-.grid-ledgeFsmash.no {background: #e03838;}
-.grid-ledgeFsmash.yes {background: #4caf50;}
-
-
 
 body.show-extra-info .extra-info{display:block;}
 body.show-ledgeFsmash .grid-ledgeFsmash{display:block;}
@@ -1509,7 +1841,7 @@ body.show-ledgeFsmash .grid-ledgeFsmash{display:block;}
     padding: 0 3px;
 }
 
-.very-hard, .hard, .average, .easy, .very-easy{
+.very-hard, .hard, .average, .easy, .very-easy, .grid-specialInfo{
     text-transform:uppercase;
     padding: 1px 4px;
     border-radius: 3px;
@@ -1517,6 +1849,15 @@ body.show-ledgeFsmash .grid-ledgeFsmash{display:block;}
     font-weight:700;
     color: #FFF;
     margin-left:4px;
+}
+.grid-specialInfo{
+    display:none;
+    background:#f34abf;
+}
+.pikachu, .hide-stages{
+    .grid-specialInfo{
+        display:block;
+    }
 }
 .very-hard{
     background: #dd2c00;
@@ -1587,38 +1928,76 @@ body.show-ledgeFsmash .grid-ledgeFsmash{display:block;}
 }
 
 
-#characterModal.active{
-    position:fixed;
-    z-index:10;
-    margin:0 !important;
-    padding:0;
-    width:auto;
-    left:0;
-    right:0;
-    top:0;
-    bottom:0;
-    display:block !important;
-    transition:background-color 0.3s ease;
+#characterModal{
+    .secondarynav{
+        display:none;
+    }
+    &.active{
+        position:fixed;
+        z-index:10;
+        margin:0 !important;
+        padding:0;
+        width:auto;
+        left:0;
+        right:0;
+        top:0;
+        bottom:0;
+        display:block !important;
+        transition:background-color 0.3s ease;
+        .characterContainer{
+            position: absolute;
+            z-index: 10;
+            max-width: 600px !important;
+            float: none;
+            outline: 3px solid #FFF;
+            overflow-y:scroll;
+            -webkit-overflow-scrolling:touch;
+            background:#FFF;
+            left:10px;
+            right:10px;
+            top:0;
+            bottom:0;
+            margin:55px auto 20px;
+        }
+        .characterName{
+            display: block;
+            position: absolute;
+            margin:auto;
+            bottom: 5px;
+            left: 5px;
+            background: rgba(0,0,0,0.5);
+            padding: 3px 8px;
+            border-radius: 5px;
+            color: #FFF;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .grid-difficulty{
+            flex-flow:column wrap;
+        }
+    }
 }
-
-/*#characterModal.active .grid-index{display:none;}*/
-
-
-#characterModal.active .characterContainer{
-    /*will-change: transform;*/ /* Don't know what this does. Stolen from pokedex.org styles */ /* ??? This stops the rage sticky bar from sticking! */
-    position: absolute;
-    z-index: 10;
-    max-width: 600px !important;
-    float: none;
-    outline: 3px solid #FFF;
-    overflow-y:scroll;
-    -webkit-overflow-scrolling:touch;
-    background:#FFF;
-    left:10px;
-    right:10px;
-    top:0;
-    bottom:0;
-    margin:55px auto 20px;
+.hide-stages{
+    #characterModal{
+        .stages{
+            > div > .col-12{
+                &:first-child{
+                    display:block;
+                }
+                display:none;
+            }
+        }
+    }
+    .modifiers-stages{
+        display:none;
+    }
+}
+.multiple-moves{
+    #characterModal{
+        .secondarynav{
+            display:flex;
+        }
+    }
 }
 
 .modalUnderlay{
@@ -1637,22 +2016,6 @@ body.show-ledgeFsmash .grid-ledgeFsmash{display:block;}
     z-index: 9;
     opacity:1;
     transition:background-color 0.2s ease;
-}
-
-
-
-#characterModal.active .characterName{
-    display: block;
-    position: absolute;
-    margin:auto;
-    bottom: 5px;
-    left: 5px;
-    background: rgba(0,0,0,0.5);
-    padding: 3px 8px;
-    border-radius: 5px;
-    color: #FFF;
-    font-weight: 700;
-    text-transform: uppercase;
 }
 
 .backButton{
@@ -2215,6 +2578,15 @@ tr.table-descs td{
             }
         }
     }
+    .fixed-navbar{
+        #secondarynav-container{
+            transform: translate(220px, 0);
+            #secondarynav-topmenu{
+                transform: translate(0, 0);
+                display:flex;
+            }
+        }
+    }
 
     .toggle-sidedrawer{
         #page-wrapper{
@@ -2226,13 +2598,27 @@ tr.table-descs td{
                 transform: translate(0, 0);
             }
         }
+        #secondarynav-container{
+            transform: translate(0, 0);
+            #secondarynav-topmenu{
+                transform: translate(0, 0);
+            }
+        }
 
     }
 
 
-    #secondarynav .dropdown{
-        top:3px;
+    #secondarynav{
+        .dropdown{
+            // top:3px;
+            margin-top:3px;
+        }
     }
+
+    .grid-difficulty{
+        flex-flow:row nowrap;
+    }
+
     
     #filtersbar-container{
         position:absolute;
@@ -2252,9 +2638,8 @@ tr.table-descs td{
             position:absolute;
             width:100%;
             z-index:10;
+            top:53px;
             #info{
-                position:relative;
-                top:3px;
                 transform:translate(0, 0);
             }
         }
@@ -2264,22 +2649,10 @@ tr.table-descs td{
             position:absolute;
             padding: 3px 0 8px;
         }
-        &.fixed-navbar{
-
+        &.multiple-moves{
             #secondarynav-container{
-                position:fixed;
-                #filtersbar-container{
-                    // top:109px;
-                    //top:43px;
-                }
-                #filters-bar{
-                }
                 #info{
                     transform: translate(-220px, 0);
-                }
-                #sort{
-                    // transform: translate(-220px, 0);
-                    // margin-left: 220px;
                 }
             }
 
