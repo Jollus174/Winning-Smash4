@@ -393,9 +393,13 @@ $button-primary-active:darken($button-primary, 15%);
         }
         .card-body{
             position:relative;
+            h2{
+                font-weight:400;
+            }
             .btn-group > .btn{
                 margin-left:0;
                 margin: 0.25rem;
+                font-weight: 700;
             }
             button{
                 margin-right:5px;

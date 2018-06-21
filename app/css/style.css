@@ -16864,9 +16864,12 @@ a.text-dark:focus, a.text-dark:hover {
 
 .card-deck .card .card-body {
   position: relative; }
+  .card-deck .card .card-body h2 {
+    font-weight: 400; }
   .card-deck .card .card-body .btn-group > .btn {
     margin-left: 0;
-    margin: 0.25rem; }
+    margin: 0.25rem;
+    font-weight: 700; }
   .card-deck .card .card-body button {
     margin-right: 5px;
     border: 2px solid; }
