@@ -256,8 +256,11 @@ var Custom = function(){
 		var $body = $('body');
 
 		// and activate it
-		if(parts[1]){
 
+		// ****************
+		// CRAPPY ROUTING
+		// ****************
+		if(parts[1]){
 			if(parts[1] == 'about'){
 				activateMenuBox('page-about', 'about');
 			} else if (parts[1] == 'credits'){
@@ -345,7 +348,11 @@ var Custom = function(){
 				console.log('deactivate the grid!');
 				pageTransition();
 				// deactivateCharacterGrid();
-			};
+			} else {
+				// The /about or /info boxes are probably open from the dashboard
+				deactivateCharacterGrid();
+				console.log('close the damn about box!');
+			}
 		};
 	};
 	function urlError(){
