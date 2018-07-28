@@ -256,8 +256,11 @@ var Custom = function(){
 		var $body = $('body');
 
 		// and activate it
-		if(parts[1]){
 
+		// ****************
+		// CRAPPY ROUTING
+		// ****************
+		if(parts[1]){
 			if(parts[1] == 'about'){
 				activateMenuBox('page-about', 'about');
 			} else if (parts[1] == 'credits'){
@@ -345,7 +348,11 @@ var Custom = function(){
 				console.log('deactivate the grid!');
 				pageTransition();
 				// deactivateCharacterGrid();
-			};
+			} else {
+				// The /about or /info boxes are probably open from the dashboard
+				console.log('close the About or Info box');
+				deactivateCharacter();
+			}
 		};
 	};
 	function urlError(){
@@ -1157,23 +1164,17 @@ var Custom = function(){
 		// Need modal to close on ESC
 		// https://stackoverflow.com/questions/3369593/how-to-detect-escape-key-press-with-javascript-or-jquery
 		var isEscape = false;
-		if ("key" in e){
-			isEscape = (e.key == "Escape" || e.key == "Esc");
-		} else {
-			isEscape = (e.keyCode == 27);
-		}
+		var isEscape = ("key" in e) ? (e.key == "Escape" || e.key == "Esc") : (e.keyCode == 27);
 		if (isEscape){
 			// if character is active, deactivate it
 			if($('body').hasClass('no-scroll')){
 				deactivateCharacter();
 			} else if ($('body').hasClass('character-grid-active')){
 				deactivateCharacterGrid();
-
 			} else {
 				// else toggle the sidemenu instead
 				toggleSidebar();
-			}
-			
+			}		
 		}
 		if(e.which == keyShift) isShiftActive = true;
 		if(e.which == keyAlt) isAltActive = true;
@@ -1297,7 +1298,9 @@ var Custom = function(){
 		transitionCharacterBackward($('.character-box.selected'));
 	});
 	$('.backButton').click(function(){
-		changeUrl($('.card-body .moveBtn.active').attr('id'));
+		// Fix for in case About or Info is active
+		var activeMove = $('.card-body .moveBtn.active').attr('id') != 'undefined' ? $('.card-body .moveBtn.active').attr('id') : '';
+		changeUrl(activeMove);
 	});
 
 	$('#about').click(function(e){
