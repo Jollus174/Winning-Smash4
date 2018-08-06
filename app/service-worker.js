@@ -1,5 +1,5 @@
 // use a cacheName for cache versioning
-var cacheName = ['v3-1:static'];
+var cacheName = ['v3-1-1:static'];
 
 // during the install phase you usually want to cache static assets
 self.addEventListener('install', function(e) {
@@ -103,9 +103,9 @@ self.addEventListener('install', function(e) {
 
                 '/api/kill-confirms.json',
                 '/api/stage-list.json',
-                '/api/char-attr-complete.json',
+                '/api/char-attrs-complete.json',
 
-                '/fonts/FontAweome.otf',
+                '/fonts/FontAwesome.otf',
                 '/fonts/fontawesome-webfont.eot',
                 '/fonts/fontawesome-webfont.svg',
                 '/fonts/fontawesome-webfont.ttf',
