@@ -27,6 +27,12 @@
 
 var Custom = function(){
 
+	// New debugger, will add to whenever necessary
+	var debug = {
+		debugMode: false,
+		transitionType: ''
+	}
+
 	// Setting some cross-browser terms
 	var _requestAnimationFrame = window.requestAnimationFrame ||
 		window.webkitRequestAnimationFrame ||
@@ -95,7 +101,7 @@ var Custom = function(){
 
 
 	function reassignIndexes(){
-		console.log('reindexing!');
+		if(debug.debugMode){ console.log('reindexing!'); }
 		// var elements = document.querySelectorAll('.character-box');
 		$('.character-box').each(function(){
 			var $this = $(this);
@@ -237,7 +243,7 @@ var Custom = function(){
 	// Analytics tracking function
 	function changeUrl(urlPart){
 		var part = urlPart ? urlPart : "";
-		console.log(part);
+		// if(debug.debugMode) { console.log(part); }
 		window.location.hash = '/' + part;
 		ga('set', 'page', window.location.href);
 		ga('send', 'pageview');
@@ -249,9 +255,18 @@ var Custom = function(){
 		var temp = url.split('/')[0];
 		var parts = url.split('/');
 
+		debug.generatedUrl = [];
+		debug.route = [];
+
 		// If 'homescreen' does NOT exist in URL...
 		//if(baseUrl != currentUrl && baseUrl + '#' != currentUrl && baseUrl + '#/' != currentUrl && !(currentUrl.indexOf('homescreen') > -1)){
-		console.log('parts[1] is:' + parts[1] + ' and parts[2] is: ' + parts[2]);
+		if(debug.debugMode) { 
+			for(i in parts){
+				debug.generatedUrl.push('parts[' + i + '] is: ' + parts[i])
+			}
+			// console.log('[parts[1] is:' + parts[1] + ' and parts[2] is: ' + parts[2]);
+			console.log(debug.generatedUrl);
+		}
 
 		var $body = $('body');
 
@@ -260,6 +275,8 @@ var Custom = function(){
 		// ****************
 		// CRAPPY ROUTING
 		// ****************
+
+
 		if(parts[1]){
 			if(parts[1] == 'about'){
 				activateMenuBox('page-about', 'about');
@@ -270,7 +287,7 @@ var Custom = function(){
 				var $parts1Selector = parts[1].length ? $('#' + parts[1]) : "";
 				if($parts1Selector.length != 0 && parts[1] != 'undefined'){
 
-					console.log('transitioning grid only');
+					debug.route.push('transitioning grid only');
 					if(!parts[2]){
 						// If parts[2] does not exist... Then we're transitioning the Character Grid
 						// The pageTransition function will take care of the rest
@@ -278,7 +295,7 @@ var Custom = function(){
 							// If the current grid DOESN'T MATCH the grid of the active moveBtn
 							if(parts[1] != $('.moveBtn.active').attr('id')){
 								// Transitioning to another character grid
-								console.log('transitioning to another grid');
+								debug.route.push('transitioning to another grid');
 								pageTransition($('#' + parts[1]), transitionToAnotherGrid = true);
 							} else {
 								// If it does match, then do no transition, but deactivatate the modal and any info boxes
@@ -289,12 +306,12 @@ var Custom = function(){
 							pageTransition($('#' + parts[1]));
 						};
 					} else if(parts[2] != 'undefined') {
-						console.log('transition to anotyher character');
+						debug.route.push('transition to another character');
 						// Parts[2] does exist, so execute those part[2] functions
 						// Make sure the appropriate moveBtn has an active class
 						// This is done by transitioning the grid, stupid!
 						if(!$body.hasClass('character-grid-active')){
-							console.log('transition the grid forward initially!');
+							debug.route.push('transition the grid forward initially!');
 							pageTransition($('#' + parts[1]));
 						};
 						var $parts2Selector = parts[2].length ? $('.character-box.' + parts[2]) : "";
@@ -302,25 +319,16 @@ var Custom = function(){
 
 						if(parts[2] == 'info'){
 							activateInfoBox();
+							debug.route.push('activating info box')
 						} else if ($parts2Selector.length){
 
 							// Need to see if there's already a character active
 							if($body.hasClass('character-active')){
-
-
-								// This is double-handling the 'selected' class, but this needs to be done so
-								// back nav can work in brower with character transitions...
-								//$('.character-box.' + parts[2]).addClass('selected');
-
-									if($body.hasClass('multiple-moves')){
-										console.log('moves button clicked');
-									}
-
-									$('#characterModal').attr('class', 'active');
-									$('#characterGrid .character-box').removeClass('selected');
-									console.log('trying to transition forwards!');
-									activateCharacterGrid($('.card-body .moveBtn[data-moveurl=' + parts[1] + ']'));
-									activateCharacter($('.character-box.' + parts[2]));
+								$('#characterModal').attr('class', 'active');
+								$('#characterGrid .character-box').removeClass('selected');
+								debug.route.push('trying to transition forwards!');
+								activateCharacterGrid($('.card-body .moveBtn[data-moveurl=' + parts[1] + ']'));
+								activateCharacter($('.character-box.' + parts[2]));
 
 							} else {
 								activateCharacter($('.character-box.' + parts[2]));
@@ -345,15 +353,17 @@ var Custom = function(){
 
 			// if($body.hasClass('character-grid-active') && (!($body.hasClass('multiple-moves')))){
 			if($body.hasClass('character-grid-active')){
-				console.log('deactivate the grid!');
+				debug.route.push('deactivate the grid!');
 				pageTransition();
-				// deactivateCharacterGrid();
 			} else {
 				// The /about or /info boxes are probably open from the dashboard
-				console.log('close the About or Info box');
+				debug.route.push('close the About or Info box');
 				deactivateCharacter();
 			}
 		};
+		if(debug.debugMode){
+			console.log(debug.route);
+		}
 	};
 	function urlError(){
 		// It needs to fallback though in case the character is undefined.
@@ -415,7 +425,7 @@ var Custom = function(){
 				// variables for transition it to the same screen
 				// The only way this is gonna happen is if the grid is on screen and a sidemenu button is clicked, which in turn is like a card button click
 				// ^ HAHA, and I guess hindsight is 20/20. Turns out it's needed for the new Pikachu confirms. Good work past Joel
-				console.log('transitioning to another grid while one is active');
+				debug.transitionType = 'transitioning to another grid while one is active';
 				$nonCurrPage = $currPage;
 			} else {
 
@@ -433,13 +443,13 @@ var Custom = function(){
 			// Need to ALSO check if we're just transitioning to a different move of the same character. Different transition for that (just a fade)
 			var charUrl = self.closest('.card-deck').data('url');
 			if(charUrl == $('#page-wrapper').attr('class')){
-				console.log('we have a match!');
+				if(debug.debugMode) { console.log('we have a match!'); }
 
 				// Initiate transition between MOVES OF SAME CHARACTER
 				_fadeOut(document.getElementById('characterGrid'), function(){
 					$('.special-info').removeClass('active');
 					activateCharacterGrid(self);
-					console.log('transitioning between same character!');
+					debug.transitionType = 'transitioning between same character!';
 					_fadeIn(document.getElementById('characterGrid'));
 					$('body').removeClass('animating');
 				});
@@ -450,7 +460,7 @@ var Custom = function(){
 
 				_fadeOut(document.getElementById('character-wrapper'), function(){
 					activateCharacterGrid(self);
-					console.log('transitioning between different characters!');
+					debug.transitionType = 'transitioning between different characters!';
 					$('#page-wrapper').removeClass();
 					retrieveCharUrl(self);
 					_fadeIn(document.getElementById('character-wrapper'));
@@ -469,7 +479,7 @@ var Custom = function(){
 				$currPage.off( animEndEventName );
 				$('body').removeClass('animating');
 
-				console.log('transitioning standard!');
+				debug.transitionType = 'transitioning standard!';
 
 				// Nuke that character class from the page-wrapper AFTER the 'transition-out'
 				if(!$('body').hasClass('character-grid-active')){
@@ -486,6 +496,7 @@ var Custom = function(){
 				}
 			});
 		}
+		if(debug.debugMode && debug.transitionType.length){ console.log('transition animation: ' + debug.transitionType); }
 	};
 
 	// Need to trigger this on button click now
@@ -683,7 +694,6 @@ var Custom = function(){
 			executeActiveFilter(self);
 
 			// Ensure the correct 'Special Info' box is displayed, but only if it's not empty!
-			console.log('moveUrl is ' + moveUrl);
 			var $specialInfo = $('#info-' + moveUrl);
 			// console.log($specialInfo.text());
 			if($specialInfo.text().trim().length){
@@ -1008,7 +1018,9 @@ var Custom = function(){
 			if(adjustedMaxPercent < adjustedMinPercent ){
 				// On some stages, DingDong is impossible to kill with on some characters (like Satan on Battlefield)
 				// Will need to render 'N/A' in those cases
-				console.log('dingdong is impossible!');
+				if(debug.debugMode){
+					console.log('dingdong is impossible!');
+				}
 				$minPerc.text('N/A').addClass('nosymbol');
 				$maxPerc.text('N/A').addClass('nosymbol');
 				$percRange.text('-').addClass('nosymbol');
@@ -1120,10 +1132,10 @@ var Custom = function(){
 		var valThis = $(this).val().toLowerCase();
 		$searchbox = $(this).closest('.search-box');
 		if($(this).val() == ""){
-			console.log('does not have value');
+			if(debug.debugMode){ console.log('does not have value'); }
 			$searchbox.removeClass('active');
 		} else {
-			console.log('has value');
+			if(debug.debugMode){ console.log('has value'); }
 			$(this).closest('.search-box').addClass('active');
 		}
 		searchList(valThis);
