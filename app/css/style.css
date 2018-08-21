@@ -18637,7 +18637,7 @@ tr.table-descs td {
           top: 13px; }
     #filtersbar #sort .filter-dropdown-btn-container {
       display: none; }
-  #characterGrid .character-box:not('.hide') {
+  #characterGrid .character-box:not(.hide) {
     padding-right: 0; } }
 
 @media screen and (min-width: 600px) {
@@ -18782,7 +18782,7 @@ tr.table-descs td {
     width: 400px; } }
 
 @media screen and (min-width: 768px) and (max-width: 990px) {
-  #characterGrid .character-box:not('.hide') {
+  #characterGrid .character-box:not(.hide) {
     padding-right: 0; } }
 
 @media screen and (min-width: 990px) {
@@ -18790,7 +18790,7 @@ tr.table-descs td {
     max-width: 100%; }
   .leftImage .characterImage {
     background-position: center; }
-  #characterGrid .character-box:not('.hide') {
+  #characterGrid .character-box:not(.hide) {
     padding-right: 0; } }
 
 /*# sourceMappingURL=style.css.map */
