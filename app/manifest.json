@@ -15,6 +15,11 @@
             "type": "image/png"
         },
         {
+            "src": "images/icons/launcher-icon-72x72.png",
+            "sizes": "72x72",
+            "type": "image/png"
+        },
+        {
             "src": "images/icons/launcher-icon-96x96.png",
             "sizes": "96x96",
             "type": "image/png"
@@ -48,9 +53,14 @@
             "src": "images/icons/launcher-icon-512x512.png",
             "sizes": "512x512",
             "type": "image/png"
+        },
+        {
+            "src": "images/icons/launcher-icon-1024x1024.png",
+            "sizes": "1024x1024",
+            "type": "image/png"
         }
     ],
-    "start_url": "/#/?utm_souce=homescreen",
+    "start_url": "https://winningatsmash4.com/#/?utm_souce=homescreen",
     "display": "standalone",
     "orientation": "portrait",
     "theme_color": "#d50000",
