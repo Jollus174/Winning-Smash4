@@ -2541,7 +2541,7 @@ tr.table-descs td{
 
     #characterGrid{
         .character-box{
-            &:not('.hide'){
+            &:not(.hide){
                 padding-right:0;
             }
         }
@@ -2822,7 +2822,7 @@ tr.table-descs td{
 
 @media screen and (min-width:768px) and (max-width:990px){
     #characterGrid{
-        .character-box:not('.hide'){
+        .character-box:not(.hide){
             padding-right:0;
         }
     }
@@ -2838,12 +2838,9 @@ tr.table-descs td{
 
     #characterGrid{
         .character-box{
-            &:not('.hide'){
+            &:not(.hide){
                 padding-right:0;
             }
         }
     }
-
-
-
 }
