@@ -1856,12 +1856,12 @@ body.show-ledgeFsmash .grid-ledgeFsmash{display:block;}
     margin-left:4px;
 }
 .grid-specialInfo{
-    display:none;
-    background:#f34abf;
+    display: none;
+    background: #f34abf;
 }
-.pikachu, .hide-stages{
+[data-currentcharactergrid="pikachu"], .hide-stages{
     .grid-specialInfo{
-        display:block;
+        display: block;
     }
 }
 .very-hard{
