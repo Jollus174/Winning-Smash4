@@ -31,7 +31,7 @@ var Custom = function(){
 	var debug = {
 		debugMode: false,
 		transitionType: ''
-	}
+	};
 
 	// Setting some cross-browser terms
 	var _requestAnimationFrame = window.requestAnimationFrame ||
@@ -47,9 +47,7 @@ var Custom = function(){
 		'animation' : 'animationend'
 	},
 	// animation end event name
-	animEndEventName = animEndEventNames[ Modernizr.prefixed( 'animation' ) ],
-	// support css animations
-	support = Modernizr.cssanimations;
+	animEndEventName = animEndEventNames[ Modernizr.prefixed( 'animation' ) ];
 
 	function _fadeIn(el, callback){
 		el.style.opacity = 0;
@@ -60,9 +58,9 @@ var Custom = function(){
 			last = +new Date();
 
 			if(+el.style.opacity < 1){
-				(window._requestAnimationFrame && _requestAnimationFrame(tick)) || setTimeout(tick,16);
+				_requestAnimationFrame(tick);
 			} else {
-				if(callback){ callback() };
+				if (callback) callback();
 			}
 		};
 		tick();
@@ -75,9 +73,9 @@ var Custom = function(){
 			last = +new Date();
 
 			if(+el.style.opacity > 0){
-				(window._requestAnimationFrame && _requestAnimationFrame(tick)) || setTimeout(tick,16);
+				_requestAnimationFrame(tick);
 			} else {
-				if(callback){ callback() };
+				if (callback) callback();
 			}
 		};
 		tick();
@@ -97,7 +95,7 @@ var Custom = function(){
 	detectWidth();
 	$(window).resize(function(){
 		detectWidth();
-	})
+	});
 
 
 	function reassignIndexes(){
@@ -108,7 +106,7 @@ var Custom = function(){
 			var theIndex = parseInt($this.index());
 			// var theIndex = parseInt($this.attr('data-charindex'));
 			$this.find('.grid-index span').text(theIndex);
-		})
+		});
 	}
 	// Initialise the reindexing
 	reassignIndexes();
@@ -126,18 +124,18 @@ var Custom = function(){
 		if(self.hasClass('asc')){
 			$gridItem.sort(function(left, right){
 				// Ascending order
-				return $(right).data('name') == $(left).data('name') ? 0 : ($(right).data('name') < $(left).data('name') ? -1 : 1)
+				return $(right).data('name') == $(left).data('name') ? 0 : ($(right).data('name') < $(left).data('name') ? -1 : 1);
 			});
 			$gridItem.detach().appendTo($grid);
 			reassignIndexes();
 		} else {
 			$gridItem.sort(function(left, right){
-				return $(left).data('name') == $(right).data('name') ? 0 : ($(left).data('name') < $(right).data('name') ? -1 : 1)
+				return $(left).data('name') == $(right).data('name') ? 0 : ($(left).data('name') < $(right).data('name') ? -1 : 1);
 			});
 			$gridItem.detach().appendTo($grid);
 			reassignIndexes();
 		}
-	};
+	}
 
 	function sortWeight(self){
 		var $grid = $('#characterGrid');
@@ -155,7 +153,7 @@ var Custom = function(){
 			$gridItem.detach().appendTo($grid);
 			reassignIndexes();
 		}
-	};
+	}
 
 	function sortDifficulty(self){
 		var $grid = $('#characterGrid');
@@ -190,8 +188,8 @@ var Custom = function(){
 				$gridItem.detach().appendTo($grid);
 				reassignIndexes();
 			}
-		};
-	};
+		}
+	}
 
 	function sortFallspeed(self){
 		var $grid = $('#characterGrid');
@@ -209,7 +207,7 @@ var Custom = function(){
 			$gridItem.detach().appendTo($grid);
 			reassignIndexes();
 		}
-	};
+	}
 
 	function sortGravity(self){
 		var $grid = $('#characterGrid');
@@ -227,7 +225,7 @@ var Custom = function(){
 			$gridItem.detach().appendTo($grid);
 			reassignIndexes();
 		}
-	};
+	}
 
 	// Detect if Sort Name filter is active
 	function executeActiveFilter(self){
@@ -236,8 +234,8 @@ var Custom = function(){
 		// Actually, the only dynamic filter is sortDifficulty...
 		if(filterId == 'sort-difficulty'){
 			sortDifficulty($('#sort-difficulty'));
-		};
-	};
+		}
+	}
 
 
 	// Analytics tracking function
@@ -247,7 +245,7 @@ var Custom = function(){
 		window.location.hash = '/' + part;
 		ga('set', 'page', window.location.href);
 		ga('send', 'pageview');
-	};
+	}
 
 	function render(url){
 
@@ -261,8 +259,8 @@ var Custom = function(){
 		// If 'homescreen' does NOT exist in URL...
 		//if(baseUrl != currentUrl && baseUrl + '#' != currentUrl && baseUrl + '#/' != currentUrl && !(currentUrl.indexOf('homescreen') > -1)){
 		if(debug.debugMode) { 
-			for(i in parts){
-				debug.generatedUrl.push('parts[' + i + '] is: ' + parts[i])
+			for(var i in parts){
+				debug.generatedUrl.push('parts[' + i + '] is: ' + parts[i]);
 			}
 			// console.log('[parts[1] is:' + parts[1] + ' and parts[2] is: ' + parts[2]);
 			console.log(debug.generatedUrl);
@@ -300,11 +298,11 @@ var Custom = function(){
 							} else {
 								// If it does match, then do no transition, but deactivatate the modal and any info boxes
 								deactivateCharacter();
-							};
+							}
 						} else {
 							// Transitioning forward!
 							pageTransition($('#' + parts[1]));
-						};
+						}
 					} else if(parts[2] != 'undefined') {
 						debug.route.push('transition to another character');
 						// Parts[2] does exist, so execute those part[2] functions
@@ -313,13 +311,13 @@ var Custom = function(){
 						if(!$body.hasClass('character-grid-active')){
 							debug.route.push('transition the grid forward initially!');
 							pageTransition($('#' + parts[1]));
-						};
+						}
 						var $parts2Selector = parts[2].length ? $('.character-box.' + parts[2]) : "";
 						// selector is being picked up correctly
 
 						if(parts[2] == 'info'){
 							activateInfoBox();
-							debug.route.push('activating info box')
+							debug.route.push('activating info box');
 						} else if ($parts2Selector.length){
 
 							// Need to see if there's already a character active
@@ -337,16 +335,16 @@ var Custom = function(){
 						} else {
 							// If parts[2] selector does not exist, throw error
 							urlError();
-						};
+						}
 					} else {
 						urlError();
-					};
+					}
 
 				} else {
 					// If parts[1] selector does not exist, throw error
 					urlError();
-				};
-			};
+				}
+			}
 		} else {
 			// Need to transition this backward
 			// Can tell when this is needed as body will have .character-grid-active
@@ -360,18 +358,18 @@ var Custom = function(){
 				debug.route.push('close the About or Info box');
 				deactivateCharacter();
 			}
-		};
+		}
 		if(debug.debugMode){
 			console.log(debug.route);
 		}
-	};
+	}
 	function urlError(){
 		// It needs to fallback though in case the character is undefined.
 		console.log('This character does not exist, yo');
 		$('#notification').html('Looks like this move or character does not exist.<br>Please check the URL.').show();
 		setTimeout(function(){
 			_fadeOut(document.getElementById('notification'));
-		}, 3000)
+		}, 3000);
 	}
 
 	// Hack fix for initial URL deconstructor for now
@@ -390,7 +388,7 @@ var Custom = function(){
 		// Place the character's name in #page-wrapper so I can target and do things with it
 		var charId = self.attr('data-charid');
 		$('#page-wrapper').addClass(charId);
-	};
+	}
 	function pageTransition(self, transitionToAnotherGrid){
 
 		// Need to turn off sidemenu on mobile first if a grid button is clicked!
@@ -431,7 +429,6 @@ var Custom = function(){
 
 				// variables for transition it backwards
 				// Remember this!
-
 				$('body').removeClass('character-grid-active');
 				inClass = 'pt-page-moveFromLeft pt-page-ontop';
 				outClass = 'pt-page-moveToRight';
@@ -497,7 +494,7 @@ var Custom = function(){
 			});
 		}
 		if(debug.debugMode && debug.transitionType.length){ console.log('transition animation: ' + debug.transitionType); }
-	};
+	}
 
 	// Need to trigger this on button click now
 	// Needs to be done via callback so I can control exactly WHEN the data switches over. It'll be transitioning now, see - it can be changed mid-transition
@@ -512,7 +509,7 @@ var Custom = function(){
 			var moveId = $this.attr('data-moveId'); // Needed for each loop below
 			var moveIndex = $this.attr('data-moveIndex');
 			var characterName = $this.closest('.card-deck').data('charid');
-			var moveUrl = characterName + '-' + moveId
+			var moveUrl = characterName + '-' + moveId;
 			$('#nav-title').text($this.closest('.card-deck').data('name'));
 			$('.rageModifier h3').text(characterName + ' Rage Modifier');
 			//$('body').addClass('character-grid-active');
@@ -592,8 +589,6 @@ var Custom = function(){
 				$character.attr('data-minpercent', minPercent);
 				$character.attr('data-maxpercent', maxPercent);
 
-				// IT WOOOOOORKS!!!
-
 				var $difficulty = $character.find('.difficulty');
 				$difficulty.find('.text-percRange').text(parseInt(maxPercent) - parseInt(minPercent) + 1);
 
@@ -607,10 +602,10 @@ var Custom = function(){
 				// https://stackoverflow.com/questions/32355054/how-to-get-nth-child-selector-to-skip-hidden-divs
 				if(minPercent == 0 && maxPercent == 0){
 					$character.addClass('hide');
-				};
+				}
 				if(minPercent == 1 && maxPercent == 1){
 					$character.addClass('disabled');
-				};
+				}
 
 
 				// Difficult iterator for characters other than Zelda. Feck
@@ -623,15 +618,14 @@ var Custom = function(){
 					// Now calculate the percents to iterate by. Assuming there are 5 difficulty levels, take sum and divide by midway for average. So sum/2.5.
 					// This calculates how much to iterate each percent by
 					var diffIterator = Math.floor(percentAverage/2.5);
-					var diff = "";
 					var percentDiff = (maxPercent - minPercent) + 1;
 
 					// Now compute that difficulty
-					if(0 <= percentDiff && percentDiff <= diffIterator){diff = 'very-hard'};
-					if(diffIterator <= percentDiff && percentDiff <= diffIterator*2){diff = 'hard'};
-					if(diffIterator*2 <= percentDiff && percentDiff <= diffIterator*3){diff = 'average'};
-					if(diffIterator*3 <= percentDiff && percentDiff <= diffIterator*4){diff = 'easy'};
-					if(diffIterator*4 <= percentDiff){diff = 'very-easy'};
+					var diff = 0 <= percentDiff && percentDiff <= diffIterator ? 'very-hard' :
+						diffIterator <= percentDiff && percentDiff <= diffIterator*2 ? 'hard' :
+						diffIterator*2 <= percentDiff && percentDiff <= diffIterator*3 ? 'average' :
+						diffIterator*3 <= percentDiff && percentDiff <= diffIterator*4 ? 'easy' :
+						diffIterator*4 <= percentDiff ? 'very-easy' : '';
 
 					// Map that difficulty
 					// Regretably I'll need to run through the JSON twice now, because gotta calculate an average from all values, THEN apply based off those values
@@ -641,23 +635,19 @@ var Custom = function(){
 
 				} else {
 					// Hello Zelda
-					//console.log('hello zelda');
-					var $character = $('.' + index + '.character-box');
+					$character = $('.' + index + '.character-box');
 					var airdodgeStart = $character.data('airdodgestart');
-					var airdodgeEnd = $character.data('airdodgeend');
-
-					var diff = "";
+					// var airdodgeEnd = $character.data('airdodgeend');
 
 					// Time to recalulate difficulty based on airdodge frames
-					if(airdodgeStart == 1){diff = 'very-hard'};
-					if(airdodgeStart == 2){diff = 'hard'};
-					if(airdodgeStart == 3){diff = 'average'};
-					if(airdodgeStart == 4){diff = 'easy'};
+					var diffClass = airdodgeStart == 1 ? 'very-hard' :
+						airdodgeStart == 2 ? 'hard' :
+						airdodgeStart == 3 ? 'average' :
+						airdodgeStart == 4 ? 'easy' : '';
 
-
-					$difficulty.attr('class', 'difficulty').addClass(diff);
-					$difficulty.find('.text-difficulty').text(diff);
-				};
+					$difficulty.attr('class', 'difficulty').addClass(diffClass);
+					$difficulty.find('.text-difficulty').text(diffClass);
+				}
 			});
 
 			// Christ this is garbage... Utter garbage
@@ -707,8 +697,8 @@ var Custom = function(){
 			if(!$('body').hasClass('multiple-moves')){
 				window.scrollTo(0, 0);
 			}
-		};
-	};
+		}
+	}
 
 
 	function deactivateCharacterGrid(){
@@ -728,7 +718,7 @@ var Custom = function(){
 			// var baseUrl = window.location.protocol + "//" + locationHost;
 			// var constructedUrl = baseUrl + '/#/';
 			// window.location.replace(constructedUrl);
-		};
+		}
 	}
 
 
@@ -807,7 +797,7 @@ var Custom = function(){
 		// https://stackoverflow.com/questions/31028479/restarting-css-animation-via-javascript
 		var returnID = function(id){
 			return document.getElementById(id);
-		}
+		};
 		var $charImage = $('#characterModalImage');
 		returnID('characterModal').offsetWidth = returnID('characterModal').offsetWidth;
 		returnID('characterModal').classList.add('animate');
@@ -880,8 +870,7 @@ var Custom = function(){
 		$(window).resize(function(e){
 			fixedRagebar($('#characterModal .characterContainer'));
 		});
-
-	};
+	}
 
 	function deactivateCharacter(){
 		var $body = $('body');
@@ -899,14 +888,14 @@ var Custom = function(){
 		} else {
 			if($body.hasClass('show-info-box')){
 				$body.removeClass('show-info-box');
-			};
+			}
 			$('.infoModal').hide();
 			$('#sidedrawer-underlay').css('backgroundColor', 'transparent');
 			$('#menuBackButton').removeClass('active');
 			$('#page-info .giphy iframe').attr('src', '');
-		};
+		}
 		changeUrl($('.card-body .moveBtn.active').attr('id'));
-	};
+	}
 
 
 
@@ -942,7 +931,7 @@ var Custom = function(){
 
 		// Need secondary nav scroll functions here!
 		////////////////////////////////////////////
-	}
+	};
 	var $window = $charContainer;
 	var lastScrollTop = $window.scrollTop();
 
@@ -980,13 +969,13 @@ var Custom = function(){
 			rage125 = $moveBtnActive.data('rage125'),
 			rage150 = $moveBtnActive.data('rage150');
 
-		if(rageAmount == "0"){ rageAdjMin = 0; rageAdjMax = 0 }
-		if(rageAmount == "50"){ rageAdjMin = rage50[0]; rageAdjMax = rage50[1] }
-		if(rageAmount == "60"){ rageAdjMin = rage60[0]; rageAdjMax = rage60[1] }
-		if(rageAmount == "80"){ rageAdjMin = rage80[0]; rageAdjMax = rage80[1] }
-		if(rageAmount == "100"){ rageAdjMin = rage100[0]; rageAdjMax = rage100[1] }
-		if(rageAmount == "125"){ rageAdjMin = rage125[0]; rageAdjMax = rage125[1] }
-		if(rageAmount == "150"){ rageAdjMin = rage150[0]; rageAdjMax = rage150[1] }
+		if(rageAmount == "0"){ rageAdjMin = 0; rageAdjMax = 0; }
+		if(rageAmount == "50"){ rageAdjMin = rage50[0]; rageAdjMax = rage50[1]; }
+		if(rageAmount == "60"){ rageAdjMin = rage60[0]; rageAdjMax = rage60[1]; }
+		if(rageAmount == "80"){ rageAdjMin = rage80[0]; rageAdjMax = rage80[1]; }
+		if(rageAmount == "100"){ rageAdjMin = rage100[0]; rageAdjMax = rage100[1]; }
+		if(rageAmount == "125"){ rageAdjMin = rage125[0]; rageAdjMax = rage125[1]; }
+		if(rageAmount == "150"){ rageAdjMin = rage150[0]; rageAdjMax = rage150[1]; }
 
 		// Hmm, if min percent goes below zero, this will affect the max percent range, right???? NO, IT PROBABLY SHOULDN'T (I think...)
 		$('#characterModal .stage .table').each(function(){
@@ -1046,10 +1035,9 @@ var Custom = function(){
 				}
 			}
 		});
+	}
 
-	};
-
-	function activateMenuBox(target, urlPart){
+	function activateMenuBox(target){
 		// check to see if a character is currently active
 		// realisitically this will probably never be executed...
 		if($('body').hasClass('active-character')){
@@ -1125,8 +1113,12 @@ var Custom = function(){
 	function searchList(value){
 		$('.character-box').each(function(){
 			var theName = $(this).find('.characterTitleBar span').text().toLowerCase();
-			(theName.indexOf(value) >= 0) ? $(this).show() : $(this).hide();
-		})
+			if (theName.indexOf(value) >= 0) {
+				$(this).show();
+			} else {
+				$(this).hide();
+			}
+		});
 	}
 	$('#search').keyup(function(){
 		var valThis = $(this).val().toLowerCase();
@@ -1176,7 +1168,8 @@ var Custom = function(){
 		// Need modal to close on ESC
 		// https://stackoverflow.com/questions/3369593/how-to-detect-escape-key-press-with-javascript-or-jquery
 		var isEscape = false;
-		var isEscape = ("key" in e) ? (e.key == "Escape" || e.key == "Esc") : (e.keyCode == 27);
+		isEscape = ("key" in e) ? 
+			(e.key == "Escape" || e.key == "Esc") : (e.keyCode == 27);
 		if (isEscape){
 			// if character is active, deactivate it
 			if($('body').hasClass('no-scroll')){
@@ -1217,16 +1210,16 @@ var Custom = function(){
 				}
 
 			} else {
-				if(e.which == keyright){transitionCharacterForward($('.character-box.selected'))};
-				if(e.which == keyleft){transitionCharacterBackward($('.character-box.selected'))};
+				if(e.which == keyright){transitionCharacterForward($('.character-box.selected'));}
+				if(e.which == keyleft){transitionCharacterBackward($('.character-box.selected'));}
 
-				if(e.which == key1){rageAdjustment($this.find('.rageBtn:nth-child(1)', animateNumbers = true))};
-				if(e.which == key2){rageAdjustment($this.find('.rageBtn:nth-child(2)', animateNumbers = true))};
-				if(e.which == key3){rageAdjustment($this.find('.rageBtn:nth-child(3)', animateNumbers = true))};
-				if(e.which == key4){rageAdjustment($this.find('.rageBtn:nth-child(4)', animateNumbers = true))};
-				if(e.which == key5){rageAdjustment($this.find('.rageBtn:nth-child(5)', animateNumbers = true))};
-				if(e.which == key6){rageAdjustment($this.find('.rageBtn:nth-child(6)', animateNumbers = true))};
-				if(e.which == key7){rageAdjustment($this.find('.rageBtn:nth-child(7)', animateNumbers = true))};
+				if(e.which == key1){rageAdjustment($this.find('.rageBtn:nth-child(1)', animateNumbers = true));}
+				if(e.which == key2){rageAdjustment($this.find('.rageBtn:nth-child(2)', animateNumbers = true));}
+				if(e.which == key3){rageAdjustment($this.find('.rageBtn:nth-child(3)', animateNumbers = true));}
+				if(e.which == key4){rageAdjustment($this.find('.rageBtn:nth-child(4)', animateNumbers = true));}
+				if(e.which == key5){rageAdjustment($this.find('.rageBtn:nth-child(5)', animateNumbers = true));}
+				if(e.which == key6){rageAdjustment($this.find('.rageBtn:nth-child(6)', animateNumbers = true));}
+				if(e.which == key7){rageAdjustment($this.find('.rageBtn:nth-child(7)', animateNumbers = true));}
 			}
 		}
 
@@ -1272,11 +1265,10 @@ var Custom = function(){
 			} else {
 				// Earlier version won't work, since the 2nd nav buttons have no IDs
 				// Bind the click of one of the other button sets to the main card buttons
-				var moveUrl = $this.attr('data-moveurl');
 				moveUrl = $targetButton.attr('data-moveurl');
 				// activateCharacterGrid($this);
 				changeUrl(moveUrl);
-			};
+			}
 		}
 	});
 
@@ -1337,7 +1329,7 @@ var Custom = function(){
 		$('#page-info iframe').attr('src', giphyVid);
 		$('#page-info .giphy a').attr('href', giphySource);
 		$('#page-info .' + $moveBtnActive.attr('id')).show();
-	};
+	}
 
 	$('#info, .info').click(function(e){
 		changeUrl($('.moveBtn.active').attr('id') + '/info');
@@ -1370,7 +1362,7 @@ var Custom = function(){
 		toggleSidebar();
 		if($('body').hasClass('character-grid-active')){
 			deactivateCharacterGrid();
-		};
+		}
 	});
 
 	function ascendingOrDescendingFilter(self){
@@ -1382,11 +1374,11 @@ var Custom = function(){
 		} else {
 			$filterButtons.removeClass('active asc');
 			$element.addClass('active');
-		};
+		}
 
-		var $grid = $('#characterGrid');
-		var $gridItem = $grid.children('.character-box');
-	};
+		// var $grid = $('#characterGrid');
+		// var $gridItem = $grid.children('.character-box');
+	}
 
 	$('#sort-name').click(function(){
 		ascendingOrDescendingFilter($(this));
@@ -1440,17 +1432,13 @@ var Custom = function(){
 			$checkbox.removeClass('fa-check').addClass('fa-times');
 		} else {
 			$checkbox.removeClass('fa-times').addClass('fa-check');
-		};
-	};
+		}
+	}
 	$('.add-extra-info').click(function(){
 		$this = $(this);
 		if($this.hasClass('add-info-grid')){
-			// $this.toggleClass('active');
-			// $this.find('.checkbox').removeClass;
 			toggleCheck($this);
-
 			$('body').toggleClass('show-extra-info');
-
 		}
 	});
 
@@ -1469,7 +1457,7 @@ var Custom = function(){
 	// 1529135239
 
 	// Generate 'new' circles
-	var generateCircles = function(endDate, target){
+	/* var generateCircles = function(endDate, target){
 		// Take the current date, and compare it to the target date
 		// If the current date is before the endDate, then add class of 'New' to the CARD in target
 		var currentEpochTime = Math.floor((new Date).getTime()/1000);
@@ -1478,5 +1466,5 @@ var Custom = function(){
 			$('.list-unstyled' + target).addClass('new');
 		}
 	};
-	generateCircles(1529135239, '.pikachu');
+	generateCircles(1529135239, '.pikachu'); */
 };
