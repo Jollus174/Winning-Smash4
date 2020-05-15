@@ -766,7 +766,7 @@ var Custom = function () {
 					$difficulty.find('.text-difficulty').text(diffClass);
 				} else {
 					// Hello Zelda
-					$character = $('.' + index + '.character-box');
+					$character = $('.' + i + '.character-box');
 					var airdodgeStart = $character.data('airdodgestart');
 					// var airdodgeEnd = $character.data('airdodgeend');
 
