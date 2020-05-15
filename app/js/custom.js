@@ -26,7 +26,7 @@
 
 /* global ga, killConfirmsJSON */
 
-var Custom = (function () {
+var Custom = function () {
 	'use strict';
 	// New debugger, will add to whenever necessary
 	var debug = {
@@ -477,7 +477,7 @@ var Custom = (function () {
 		var returnID = function (id) {
 			return document.getElementById(id);
 		};
-		returnID('characterModal').offsetWidth = returnID('characterModal').offsetWidth;
+		returnID('characterModal').width = returnID('characterModal').offsetWidth;
 		returnID('characterModal').classList.add('animate');
 
 		$charModal.find('.grid-percRange .minPerc').text(minPercent);
@@ -630,7 +630,7 @@ var Custom = (function () {
 			var characterIndex = $this.closest('.card-deck').data('index');
 			// console.log('character ID is: ' + characterIndex + ' the strange loopback begins here!');
 			var moveId = $this.attr('data-moveId'); // Needed for each loop below
-			var moveIndex = $this.attr('data-moveIndex');
+			var moveIndex = parseInt($this.attr('data-moveIndex'));
 			var characterName = $this.closest('.card-deck').data('charid');
 			var moveUrl = characterName + '-' + moveId;
 			$('#nav-title').text($this.closest('.card-deck').data('name'));
@@ -681,7 +681,7 @@ var Custom = (function () {
 
 			// console.log('char index is ' + characterIndex + ' and moveindex is ' + moveIndex);
 
-			$.each(killConfirmsJSON[characterIndex].moves[moveIndex].percents, function (value) {
+			$.each(killConfirmsJSON[characterIndex].moves[moveIndex].percents, function (i, value) {
 				// Push these min/max percent values to an array so I can calculate an average between all of them
 				// Need this to calculate difficulties in a uniform manner
 
@@ -694,10 +694,10 @@ var Custom = (function () {
 				maxPercentSum += maxPercent;
 			});
 
-			$.each(killConfirmsJSON[characterIndex].moves[moveIndex].percents, function (index, value) {
+			$.each(killConfirmsJSON[characterIndex].moves[moveIndex].percents, function (i, value) {
 				// this is good!
 				// https://stackoverflow.com/questions/4329092/multi-dimensional-associative-arrays-in-javascript
-				var $character = $('.' + index + '.character-box'),
+				var $character = $('.' + i + '.character-box'),
 					minPercent = value[0],
 					maxPercent = value[1],
 					specialInfo = value[2],
@@ -1514,4 +1514,4 @@ var Custom = (function () {
 		}
 	};
 	generateCircles(1529135239, '.pikachu'); */
-})();
+};
