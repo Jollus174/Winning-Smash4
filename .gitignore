@@ -4,4 +4,5 @@ firebase-debug.log
 firebase.json
 node_modules/
 public/
+app/css/*.css
 *.map
