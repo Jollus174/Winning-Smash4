@@ -131,13 +131,21 @@ var Custom = function () {
 		if (self.hasClass('asc')) {
 			$gridItem.sort(function (left, right) {
 				// Ascending order
-				return $(right).data('name') === $(left).data('name') ? 0 : $(right).data('name') < $(left).data('name') ? -1 : 1;
+				return $(right).data('name') === $(left).data('name')
+					? 0
+					: $(right).data('name') < $(left).data('name')
+					? -1
+					: 1;
 			});
 			$gridItem.detach().appendTo($grid);
 			reassignIndexes();
 		} else {
 			$gridItem.sort(function (left, right) {
-				return $(left).data('name') === $(right).data('name') ? 0 : $(left).data('name') < $(right).data('name') ? -1 : 1;
+				return $(left).data('name') === $(right).data('name')
+					? 0
+					: $(left).data('name') < $(right).data('name')
+					? -1
+					: 1;
 			});
 			$gridItem.detach().appendTo($grid);
 			reassignIndexes();
@@ -495,7 +503,9 @@ var Custom = function () {
 
 		var $charOverviewItem = $charModal.find('.characterOverview');
 		$charOverviewItem.find('li[data-ref="weight"]').html('Weight' + '<span class="value">' + weight + '</span>');
-		$charOverviewItem.find('li[data-ref="fallspeed"]').html('Fallspeed' + '<span class="value">' + fallspeed + '</span>');
+		$charOverviewItem
+			.find('li[data-ref="fallspeed"]')
+			.html('Fallspeed' + '<span class="value">' + fallspeed + '</span>');
 		$charOverviewItem.find('li[data-ref="airdodge"]').html('Airdodge' + '<span class="value">' + airdodge + '</span>');
 		$charOverviewItem.find('li[data-ref="gravity"]').html('Gravity' + '<span class="value">' + gravity + '</span>');
 
@@ -651,7 +661,9 @@ var Custom = function () {
 			if (btnCount > 1) {
 				$('body').addClass('multiple-moves fixed-navbar');
 
-				var $secondaryNavMenus = $('#secondarynav-topmenu .navbar-header .move-selector, #characterModal .secondarynav .move-selector');
+				var $secondaryNavMenus = $(
+					'#secondarynav-topmenu .navbar-header .move-selector, #characterModal .secondarynav .move-selector'
+				);
 				$secondaryNavMenus.empty();
 				// generate those dropdown items
 				$this
@@ -666,7 +678,13 @@ var Custom = function () {
 						var addActiveIfSameId = moveId === $this.attr('data-moveId') ? 'active' : '';
 
 						$secondaryNavMenus.append(
-							'<button class="btn btn-secondary btn-sm moveBtn ' + addActiveIfSameId + '" data-moveurl=' + moveUrl + '>' + name + '</button>'
+							'<button class="btn btn-secondary btn-sm moveBtn ' +
+								addActiveIfSameId +
+								'" data-moveurl=' +
+								moveUrl +
+								'>' +
+								name +
+								'</button>'
 						);
 					});
 			} else {
@@ -797,7 +815,14 @@ var Custom = function () {
 					.text(value);
 			});
 
-			var rageModifier = [self.data('rage50'), self.data('rage60'), self.data('rage80'), self.data('rage100'), self.data('rage125'), self.data('rage150')];
+			var rageModifier = [
+				self.data('rage50'),
+				self.data('rage60'),
+				self.data('rage80'),
+				self.data('rage100'),
+				self.data('rage125'),
+				self.data('rage150')
+			];
 
 			$('.modifiers-rage .col-4').each(function () {
 				var theIndex = $(this).index();
@@ -1371,7 +1396,8 @@ var Custom = function () {
 	});
 	$('.backButton').click(function () {
 		// Fix for in case About or Info is active
-		var activeMove = $('.card-body .moveBtn.active').attr('id') !== 'undefined' ? $('.card-body .moveBtn.active').attr('id') : '';
+		var activeMove =
+			$('.card-body .moveBtn.active').attr('id') !== 'undefined' ? $('.card-body .moveBtn.active').attr('id') : '';
 		changeUrl(activeMove);
 	});
 

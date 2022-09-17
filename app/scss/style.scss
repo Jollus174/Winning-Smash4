@@ -741,15 +741,11 @@ body.animating {
 	color: #fff !important;
 }
 
-// #sidebar {
-//     min-width: 250px;
-//     max-width: 250px;
-//     min-height: 100vh; /* Is at least equal to the viewport height */
-// }
-
-// #sidebar.active {
-//     margin-left: -250px;
-// }
+#sidebar {
+	.toggle-sidedrawer & {
+		display: none;
+	}
+}
 
 .special-info {
 	display: none;
@@ -2397,6 +2393,10 @@ tr.table-descs td {
 		position: relative !important;
 		margin: 0 0 0 220px;
 		min-height: 100vh;
+
+		.toggle-sidedrawer & {
+			margin-left: 0;
+		}
 	}
 
 	.navbar {
