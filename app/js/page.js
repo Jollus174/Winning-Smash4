@@ -5,23 +5,6 @@ var Page = (function () {
 		self.character = ko.observableArray([]);
 		self.killConfirm = ko.observableArray([]);
 		self.stage = ko.observableArray([]);
-
-		// Filter is finally bloody working. Ty based 'super cool'
-		// https://stackoverflow.com/questions/36283070/search-filter-with-knockoutjs
-		// Can't use this after all, as Knockout doesn't store the index numbers
-		// Refactored code is in custom.js
-		/*self.query = ko.observable('');
-
-		self.filterCharacters = ko.computed(function(){
-			var search = self.query().toLowerCase();
-			if(!search){
-				return self.character();
-			} else {
-				return ko.utils.arrayFilter(self.character(), function(item){
-					return item.name.toLowerCase().indexOf(search) !== -1;
-				});
-			}
-		})*/
 	}
 
 	return {

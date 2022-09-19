@@ -87,29 +87,29 @@ self.addEventListener('install', function (e) {
 			'/images/characters/webp/zelda.webp',
 			'/images/characters/webp/zerosuitsamus.webp',
 
-					'/images/stages/stage_bf.jpg',
-					'/images/stages/stage_dl.jpg',
-					'/images/stages/stage_fd.jpg',
-					'/images/stages/stage_ly.jpg',
-					'/images/stages/stage_sv.jpg',
-					'/images/stages/stage_tc.jpg',
+			'/images/stages/stage_bf.jpg',
+			'/images/stages/stage_dl.jpg',
+			'/images/stages/stage_fd.jpg',
+			'/images/stages/stage_ly.jpg',
+			'/images/stages/stage_sv.jpg',
+			'/images/stages/stage_tc.jpg',
 
-					'/images/spinner.svg',
-					'/images/stripe.png',
-					'/images/credits.jpg',
-					'/images/progressive-web-app.jpg',
-					'/images/icon-search.svg',
-					'/images/icon-search-active.svg',
-					'/images/logo-winning-at-smash4.png',
+			'/images/spinner.svg',
+			'/images/stripe.png',
+			'/images/credits.jpg',
+			'/images/progressive-web-app.jpg',
+			'/images/icon-search.svg',
+			'/images/icon-search-active.svg',
+			'/images/logo-winning-at-smash4.png',
 
-					'/css/style.min.css',
+			'/css/style.min.css',
 
-					'/js/main.min.js',
+			'/js/main.min.js',
 
-					'/api/kill-confirms.json',
-					'/api/stage-list.json',
+			'/api/kill-confirms.json',
+			'/api/stage-list.json',
 			'/api/char-attrs-complete.json'
-				])
+		])
 	);
 });
 
