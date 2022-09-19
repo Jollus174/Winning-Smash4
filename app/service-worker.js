@@ -1,5 +1,11 @@
+'use strict';
 // use a cacheName for cache versioning
-var cacheName = ['v3-1-2:static'];
+var cacheName = 'v3-1-3:static';
+
+var addResourcesToCache = async (resources) => {
+	var cache = await caches.open(cacheName);
+	await cache.addAll(resources);
+};
 
 // during the install phase you usually want to cache static assets
 self.addEventListener('install', function (e) {
@@ -13,75 +19,73 @@ self.addEventListener('install', function (e) {
 	// });
 	console.log(cacheName[0] + ' is now installing');
 	e.waitUntil(
-		caches.open(cacheName).then(function (cache) {
-			return cache
-				.addAll([
-					'./',
-					'./offline.html',
-					'/images/characters/png/bayonetta.png',
-					'/images/characters/png/bowser.png',
-					'/images/characters/png/bowserjr.png',
-					'/images/characters/png/cfalcon.png',
-					'/images/characters/png/charizard.png',
-					'/images/characters/png/cloud.png',
-					'/images/characters/png/cloudlimit.png',
-					'/images/characters/png/corrin.png',
-					'/images/characters/png/darkpit.png',
-					'/images/characters/png/diddykong.png',
-					'/images/characters/png/donkeykong.png',
-					'/images/characters/png/drmario.png',
-					'/images/characters/png/duckhunt.png',
-					'/images/characters/png/falco.png',
-					'/images/characters/png/fox.png',
-					'/images/characters/png/gameandwatch.png',
-					'/images/characters/png/ganondorf.png',
-					'/images/characters/png/greninja.png',
-					'/images/characters/png/ike.png',
-					'/images/characters/png/jigglypuff.png',
-					'/images/characters/png/kingdedede.png',
-					'/images/characters/png/kirby.png',
-					'/images/characters/png/link.png',
-					'/images/characters/png/littlemac.png',
-					'/images/characters/png/lucario.png',
-					'/images/characters/png/lucas.png',
-					'/images/characters/png/lucina.png',
-					'/images/characters/png/luigi.png',
-					'/images/characters/png/mario.png',
-					'/images/characters/png/marth.png',
-					'/images/characters/png/megaman.png',
-					'/images/characters/png/metaknight.png',
-					'/images/characters/png/mewtwo.png',
-					'/images/characters/png/miibrawler.png',
-					'/images/characters/png/miigunner.png',
-					'/images/characters/png/miiswordfighter.png',
-					'/images/characters/png/ness.png',
-					'/images/characters/png/olimar.png',
-					'/images/characters/png/pacman.png',
-					'/images/characters/png/palutena.png',
-					'/images/characters/png/peach.png',
-					'/images/characters/png/pikachu.png',
-					'/images/characters/png/pit.png',
-					'/images/characters/png/rob.png',
-					'/images/characters/png/robin.png',
-					'/images/characters/png/rosalina.png',
-					'/images/characters/png/roy.png',
-					'/images/characters/png/ryu.png',
-					'/images/characters/png/samus.png',
-					'/images/characters/png/sheik.png',
-					'/images/characters/png/shulk.png',
-					'/images/characters/png/shulkbuster.png',
-					'/images/characters/png/shulkjump.png',
-					'/images/characters/png/shulkshield.png',
-					'/images/characters/png/shulksmash.png',
-					'/images/characters/png/shulkspeed.png',
-					'/images/characters/png/sonic.png',
-					'/images/characters/png/toonlink.png',
-					'/images/characters/png/villager.png',
-					'/images/characters/png/wario.png',
-					'/images/characters/png/wiifittrainer.png',
-					'/images/characters/png/yoshi.png',
-					'/images/characters/png/zelda.png',
-					'/images/characters/png/zerosuitsamus.png',
+		addResourcesToCache([
+			'/',
+			'/offline.html',
+			'/images/characters/webp/bayonetta.webp',
+			'/images/characters/webp/bowser.webp',
+			'/images/characters/webp/bowserjr.webp',
+			'/images/characters/webp/cfalcon.webp',
+			'/images/characters/webp/charizard.webp',
+			'/images/characters/webp/cloud.webp',
+			'/images/characters/webp/cloudlimit.webp',
+			'/images/characters/webp/corrin.webp',
+			'/images/characters/webp/darkpit.webp',
+			'/images/characters/webp/diddykong.webp',
+			'/images/characters/webp/donkeykong.webp',
+			'/images/characters/webp/drmario.webp',
+			'/images/characters/webp/duckhunt.webp',
+			'/images/characters/webp/falco.webp',
+			'/images/characters/webp/fox.webp',
+			'/images/characters/webp/gameandwatch.webp',
+			'/images/characters/webp/ganondorf.webp',
+			'/images/characters/webp/greninja.webp',
+			'/images/characters/webp/ike.webp',
+			'/images/characters/webp/jigglypuff.webp',
+			'/images/characters/webp/kingdedede.webp',
+			'/images/characters/webp/kirby.webp',
+			'/images/characters/webp/link.webp',
+			'/images/characters/webp/littlemac.webp',
+			'/images/characters/webp/lucario.webp',
+			'/images/characters/webp/lucas.webp',
+			'/images/characters/webp/lucina.webp',
+			'/images/characters/webp/luigi.webp',
+			'/images/characters/webp/mario.webp',
+			'/images/characters/webp/marth.webp',
+			'/images/characters/webp/megaman.webp',
+			'/images/characters/webp/metaknight.webp',
+			'/images/characters/webp/mewtwo.webp',
+			'/images/characters/webp/miibrawler.webp',
+			'/images/characters/webp/miigunner.webp',
+			'/images/characters/webp/miiswordfighter.webp',
+			'/images/characters/webp/ness.webp',
+			'/images/characters/webp/olimar.webp',
+			'/images/characters/webp/pacman.webp',
+			'/images/characters/webp/palutena.webp',
+			'/images/characters/webp/peach.webp',
+			'/images/characters/webp/pikachu.webp',
+			'/images/characters/webp/pit.webp',
+			'/images/characters/webp/rob.webp',
+			'/images/characters/webp/robin.webp',
+			'/images/characters/webp/rosalina.webp',
+			'/images/characters/webp/roy.webp',
+			'/images/characters/webp/ryu.webp',
+			'/images/characters/webp/samus.webp',
+			'/images/characters/webp/sheik.webp',
+			'/images/characters/webp/shulk.webp',
+			'/images/characters/webp/shulkbuster.webp',
+			'/images/characters/webp/shulkjump.webp',
+			'/images/characters/webp/shulkshield.webp',
+			'/images/characters/webp/shulksmash.webp',
+			'/images/characters/webp/shulkspeed.webp',
+			'/images/characters/webp/sonic.webp',
+			'/images/characters/webp/toonlink.webp',
+			'/images/characters/webp/villager.webp',
+			'/images/characters/webp/wario.webp',
+			'/images/characters/webp/wiifittrainer.webp',
+			'/images/characters/webp/yoshi.webp',
+			'/images/characters/webp/zelda.webp',
+			'/images/characters/webp/zerosuitsamus.webp',
 
 					'/images/stages/stage_bf.jpg',
 					'/images/stages/stage_dl.jpg',
@@ -104,19 +108,8 @@ self.addEventListener('install', function (e) {
 
 					'/api/kill-confirms.json',
 					'/api/stage-list.json',
-					'/api/char-attrs-complete.json',
-
-					'/fonts/FontAwesome.otf',
-					'/fonts/fontawesome-webfont.eot',
-					'/fonts/fontawesome-webfont.svg',
-					'/fonts/fontawesome-webfont.ttf',
-					'/fonts/fontawesome-webfont.woff',
-					'/fonts/fontawesome-webfont.woff2'
+			'/api/char-attrs-complete.json'
 				])
-				.then(function () {
-					self.skipWaiting();
-				});
-		})
 	);
 });
 
