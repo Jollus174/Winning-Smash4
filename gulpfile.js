@@ -54,7 +54,7 @@ gulp.task('sass', function () {
 gulp.task('images', function () {
 	return (
 		gulp
-			.src('app/images/**/*.+(png|jpg|gif|svg)')
+			.src('app/images/**/*.+(png|jpg|gif|svg|webp)')
 			// Caching images that have run through imagemin
 			.pipe(
 				cache(
@@ -109,7 +109,16 @@ gulp.task('movereset', function () {
   runSequence('task-one', 'task-two', 'task-three', callback);
 });*/
 gulp.task('build', function () {
-	runSequence('clean:public', ['sass', 'images', 'fonts', 'jsonminify', 'useref', 'movemanifest', 'moveserviceworker', 'movereset']);
+	runSequence('clean:public', [
+		'sass',
+		'images',
+		'fonts',
+		'jsonminify',
+		'useref',
+		'movemanifest',
+		'moveserviceworker',
+		'movereset'
+	]);
 });
 
 gulp.task('default', function () {
