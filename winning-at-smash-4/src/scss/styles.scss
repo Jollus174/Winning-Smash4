@@ -1,0 +1,23 @@
+@import "../../node_modules/bootstrap/scss/mixins";
+@import "../../node_modules/bootstrap/scss/bootstrap-grid";
+@import "../../node_modules/bootstrap/scss/bootstrap-reboot";
+@import "../../node_modules/bootstrap/scss/bootstrap-utilities";
+@import "../../node_modules/bootstrap/scss/root";
+
+@import "../../node_modules/bootstrap/scss/buttons";
+@import "../../node_modules/bootstrap/scss/card";
+@import "../../node_modules/bootstrap/scss/images";
+@import "../../node_modules/bootstrap/scss/type";
+
+@import "../../node_modules/font-awesome/scss/font-awesome";
+
+
+@import "0-settings/variables";
+
+@import "3-objects/structure";
+@import "3-objects/cards";
+@import "3-objects/buttons";
+
+@import "4-global-components/header";
+@import "4-global-components/sidebar";
+@import "4-global-components/tiles";

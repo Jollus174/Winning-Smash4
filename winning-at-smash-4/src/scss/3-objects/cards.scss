@@ -1,0 +1,72 @@
+.card {
+	height: 100%;
+
+	.card-image {
+		position: relative;
+		padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
+		background-color: var(--card-image-bg-color, $white);
+
+		img {
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: none;
+			object-position: right;
+			opacity: 0.5;
+		}
+	}
+
+	.card-body {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-start;
+		justify-content: flex-start;
+		gap: 0.5rem;
+	}
+
+	.btn {
+		position: relative;
+		font-weight: 700;
+
+		span {
+			position: relative;
+			z-index: 1;
+		}
+
+		&:hover,
+		&:focus-visible {
+			&::after {
+				background-color: rgba($black, 0.2);
+			}
+		}
+
+		&:active {
+			&::after {
+				background-color: rgba($black, 0.3);
+			}
+		}
+
+		&::after {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: transparent;
+			pointer-events: none;
+			transition: background-color 0.2s ease;
+		}
+	}
+}
+
+.card-title {
+	position: relative;
+	z-index: 1;
+
+	.card-light & {
+		color: $white;
+	}
+}
