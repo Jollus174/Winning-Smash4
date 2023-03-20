@@ -5,9 +5,9 @@ const CharacterMoveCards = ({ moveCards }) => {
 		<div className="tiles">
 			<div className="row">
 				{moveCards.map((character) => (
-					<div className="col-sm-6 col-md-4 tile-col" key={moveCards.charId}>
+					<div className="col-sm-6 col-md-4 tile-col" key={'card-' + character.charId}>
 						<div className="card">
-							<div class="card-image" style={{ '--card-image-bg-color': 'rgb(' + character.cardColor + ')' }}>
+							<div className="card-image" style={{ '--card-image-bg-color': 'rgb(' + character.cardColor + ')' }}>
 								<img src={'/images/characters/webp/' + character.charId + '.webp'} alt="{character.name}" />
 								<h2 className={`card-title ${character.textScheme === 'light' ? 'text-light' : 'text-dark'}`}>
 									{character.name}
@@ -17,8 +17,8 @@ const CharacterMoveCards = ({ moveCards }) => {
 								{character.moves.map((move) => (
 									<button
 										type="button"
-										class="btn btn-primary btn-sm"
-										key={move.moveId}
+										className="btn btn-primary btn-sm"
+										key={'card-' + move.moveId}
 										style={{
 											'--bs-btn-bg': 'rgb(' + character.btnColor + ')',
 											'--bs-btn-hover-bg': 'var(--bs-btn-bg)',

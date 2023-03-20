@@ -2,27 +2,27 @@ import React from 'react';
 
 const Sidebar = ({ moveCards }) => {
 	return (
-		<aside class="d-none d-lg-block sidebar">
+		<aside className="d-none d-lg-block sidebar">
 			<nav id="sidebar">
-				<div class="sidebar-header">
+				<div className="sidebar-header">
 					<a href="/">
 						<img className="img-fluid" src="/images/logo-winning-at-smash4.png" alt="Winning a Smash 4 logo" />
 					</a>
 				</div>
-				<ul class="list-unstyled">
+				<ul className="list-unstyled">
 					{moveCards.map((character) => (
 						<li
-							class="character-item"
-							key={'sidebar-' + moveCards.charId}
+							className="character-item"
+							key={'sidebar-' + character.charId}
 							style={{ '--item-color': character.cardColor }}
 						>
 							<div className={`character-header ${character.textScheme === 'light' ? 'text-light' : 'text-dark'}`}>
 								{character.name}
 							</div>
-							<ul class="list-unstyled">
+							<ul className="list-unstyled">
 								{character.moves.map((move) => (
-									<li key={'sidebar-' + move.id}>
-										<button type="button" class="btn" dangerouslySetInnerHTML={{ __html: move.moveName }}></button>
+									<li key={'sidebar-' + move.moveId}>
+										<button type="button" className="btn" dangerouslySetInnerHTML={{ __html: move.moveName }}></button>
 									</li>
 								))}
 							</ul>
