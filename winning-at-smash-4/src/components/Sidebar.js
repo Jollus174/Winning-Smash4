@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Sidebar = ({ moveCards }) => {
+const Sidebar = ({ sidebarOpen, moveCards }) => {
 	return (
-		<aside className="d-none d-lg-block sidebar">
+		<aside className={`d-none sidebar ${sidebarOpen ? 'd-lg-block' : ''}`}>
 			<nav id="sidebar">
 				<div className="sidebar-header">
 					<a href="/">

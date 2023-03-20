@@ -6,6 +6,7 @@ import CharacterMoveCards from './components/CharacterMoveCards';
 function App() {
 	const [mounted, setMounted] = useState(false);
 	const [loading, setLoading] = useState(false);
+	const [sidebarOpen, setSidebarOpen] = useState(true);
 	const [charAttrs, setCharAttrs] = useState([]);
 	const [killConfirms, setKillConfirms] = useState([]);
 	const [stageList, setStageList] = useState([]);
@@ -58,20 +59,20 @@ function App() {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-  return (
+	return (
 		<div>
 			<h1 className="visually-hidden">
 				A Super Smash Bros. for Wii U Progressive Web App for calculating kill confirm ranges.
 			</h1>
 			<div className="d-flex">
-				{loading ? 'Is loading' : <Sidebar moveCards={killConfirms} />}
+				{loading ? 'Is loading' : <Sidebar sidebarOpen={sidebarOpen} moveCards={killConfirms} />}
 				<div className="d-flex flex-column">
-					{loading ? 'Is loading' : <Header />}
+					{loading ? 'Is loading' : <Header setSidebarOpen={setSidebarOpen} sidebarOpen={sidebarOpen} />}
 					<main>{loading ? 'Is loading' : <CharacterMoveCards moveCards={killConfirms} />}</main>
 				</div>
 			</div>
-    </div>
-  );
+		</div>
+	);
 }
 
 export default App;
