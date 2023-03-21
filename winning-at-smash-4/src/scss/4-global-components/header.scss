@@ -1,9 +1,4 @@
 .header {
-	position: sticky;
-	top: 0;
-	z-index: 2;
-	display: flex;
-	align-items: center;
 	background-color: $orange;
 	padding: 0.5rem 1rem;
 	gap: 1rem;
@@ -23,20 +18,14 @@
 
 		a {
 			color: $white;
-			text-decoration: none;
+			text-decoration: underline;
+			text-decoration-color: transparent;
+			transition: text-decoration-color 0.2s ease;
 
 			&:hover,
 			&:focus-visible {
-				text-decoration: underline;
+				text-decoration-color: $white;
 			}
 		}
-	}
-
-	.btn {
-		--bs-btn-border-color: #{transparentize($black, 0.9)};
-		--bs-btn-border-width: 1px;
-		--bs-btn-color: #{transparentize($black, 0.5)};
-		--bs-btn-hover-bg: #{transparentize($white, 0.9)};
-		--bs-btn-hover-border-color: var(--bs-btn-border-color);
 	}
 }

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import CharacterMoveCards from './components/CharacterMoveCards';
+import CharacterTiles from './components/CharacterTiles';
 
 function App() {
 	const [mounted, setMounted] = useState(false);
@@ -10,6 +11,9 @@ function App() {
 	const [charAttrs, setCharAttrs] = useState([]);
 	const [killConfirms, setKillConfirms] = useState([]);
 	const [stageList, setStageList] = useState([]);
+
+	const [selectedCharacter, setSelectedCharacter] = useState({});
+	const [selectedKillConfirm, setSelectedKillConfirm] = useState({});
 
 	const getData = async (url) => {
 		return await fetch(url)
@@ -52,6 +56,18 @@ function App() {
 		if (!mounted) {
 			setMounted(true);
 			setInitialData();
+
+			// First we get the viewport height and we multiple it by 1% to get a value for a vh unit
+			let vh = window.innerHeight * 0.01;
+			// Then we set the value in the --vh custom property to the root of the document
+			document.documentElement.style.setProperty('--vh', vh + 'px');
+
+			// We listen to the resize event
+			window.addEventListener('resize', () => {
+				// We execute the same script as before
+				vh = window.innerHeight * 0.01;
+				document.documentElement.style.setProperty('--vh', vh + 'px');
+			});
 		} else {
 			console.log('has already mounted!');
 		}
@@ -60,15 +76,47 @@ function App() {
 	}, []);
 
 	return (
-		<div>
+		<div className="app-grid">
 			<h1 className="visually-hidden">
 				A Super Smash Bros. for Wii U Progressive Web App for calculating kill confirm ranges.
 			</h1>
-			<div className="d-flex">
-				{loading ? 'Is loading' : <Sidebar sidebarOpen={sidebarOpen} moveCards={killConfirms} />}
-				<div className="d-flex flex-column">
-					{loading ? 'Is loading' : <Header setSidebarOpen={setSidebarOpen} sidebarOpen={sidebarOpen} />}
-					<main>{loading ? 'Is loading' : <CharacterMoveCards moveCards={killConfirms} />}</main>
+			{/* Flex on mobile with Pikachu open causes issues with Move Select buttons and x overscroll */}
+			<div className="d-md-flex h-100">
+				{loading ? (
+					'Is loading'
+				) : (
+					<Sidebar
+						sidebarOpen={sidebarOpen}
+						moveCards={killConfirms}
+						setSelectedCharacter={setSelectedCharacter}
+						setSelectedKillConfirm={setSelectedKillConfirm}
+					/>
+				)}
+				<div className="d-flex flex-column main-grid">
+					{loading ? (
+						'Is loading'
+					) : (
+						<Header setSidebarOpen={setSidebarOpen} sidebarOpen={sidebarOpen} selectedCharacter={selectedCharacter} />
+					)}
+					<main>
+						{loading ? (
+							'Is loading'
+						) : (
+							<>
+								<CharacterMoveCards
+									moveCards={killConfirms}
+									setSelectedCharacter={setSelectedCharacter}
+									setSelectedKillConfirm={setSelectedKillConfirm}
+								/>
+								<CharacterTiles
+									charAttrs={charAttrs}
+									setCharAttrs={setCharAttrs}
+									selectedCharacter={selectedCharacter}
+									selectedKillConfirm={selectedKillConfirm}
+								/>
+							</>
+						)}
+					</main>
 				</div>
 			</div>
 		</div>

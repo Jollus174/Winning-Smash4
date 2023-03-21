@@ -1,6 +1,11 @@
 import React from 'react';
 
-const Sidebar = ({ sidebarOpen, moveCards }) => {
+const Sidebar = ({ sidebarOpen, moveCards, setSelectedCharacter, setSelectedKillConfirm }) => {
+	const confirmSelectedKillConfirm = (character, move) => {
+		setSelectedCharacter(character);
+		setSelectedKillConfirm(move);
+	};
+
 	return (
 		<aside className={`d-none sidebar ${sidebarOpen ? 'd-lg-block' : ''}`}>
 			<nav id="sidebar">
@@ -22,7 +27,12 @@ const Sidebar = ({ sidebarOpen, moveCards }) => {
 							<ul className="list-unstyled">
 								{character.moves.map((move) => (
 									<li key={'sidebar-' + move.moveId}>
-										<button type="button" className="btn" dangerouslySetInnerHTML={{ __html: move.moveName }}></button>
+										<button
+											type="button"
+											className="btn"
+											dangerouslySetInnerHTML={{ __html: move.moveName }}
+											onClick={() => confirmSelectedKillConfirm(character, move)}
+										></button>
 									</li>
 								))}
 							</ul>
