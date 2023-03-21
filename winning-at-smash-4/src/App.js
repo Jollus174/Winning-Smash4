@@ -111,7 +111,9 @@ function App() {
 								<CharacterTiles
 									charAttrs={charAttrs}
 									setCharAttrs={setCharAttrs}
+									setSelectedCharacter={setSelectedCharacter}
 									selectedCharacter={selectedCharacter}
+									setSelectedKillConfirm={setSelectedKillConfirm}
 									selectedKillConfirm={selectedKillConfirm}
 								/>
 							</>

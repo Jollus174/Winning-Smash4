@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-const MoveButtons = ({ selectedCharacter, selectedKillConfirm }) => {
+const MoveButtons = ({ selectedCharacter, setSelectedKillConfirm, selectedKillConfirm }) => {
 	if (!selectedCharacter.moves || selectedCharacter.moves.length < 2)
 		return (
 			<>
@@ -16,8 +16,9 @@ const MoveButtons = ({ selectedCharacter, selectedKillConfirm }) => {
 				{selectedCharacter.moves.map((move) => (
 					<button
 						type="button"
-						className="btn btn-primary btn-sm"
+						className={`btn btn-primary btn-sm ${move.moveId === selectedKillConfirm.moveId ? 'active' : ''}`}
 						style={{ '--btn-bg': selectedCharacter.btnColor }}
+						onClick={() => setSelectedKillConfirm(move)}
 						key={'move-btn-' + move.moveId}
 					>
 						<span dangerouslySetInnerHTML={{ __html: move.moveName }} />
@@ -87,7 +88,14 @@ const Tiles = (props) => {
 	);
 };
 
-const CharacterTiles = ({ charAttrs, setCharAttrs, selectedCharacter, selectedKillConfirm }) => {
+const CharacterTiles = ({
+	charAttrs,
+	setCharAttrs,
+	setSelectedCharacter,
+	selectedCharacter,
+	setSelectedKillConfirm,
+	selectedKillConfirm
+}) => {
 	const [showAdditionalCharacterInfo, setShowAdditionalCharacterInfo] = useState(false);
 
 	// TODO: this would be a 'tri-nary' state? Could be ascending / descending / null
@@ -111,6 +119,10 @@ const CharacterTiles = ({ charAttrs, setCharAttrs, selectedCharacter, selectedKi
 					className={`btn btn-secondary btn-sm ${
 						selectedCharacter.textScheme === 'light' ? 'text-light' : 'text-dark'
 					}`}
+					onClick={() => {
+						setSelectedCharacter({});
+						setSelectedKillConfirm({});
+					}}
 				>
 					<span className="visually-hidden">Back</span>
 					<svg className="icon-arrowback" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -118,7 +130,11 @@ const CharacterTiles = ({ charAttrs, setCharAttrs, selectedCharacter, selectedKi
 						<path className="pathfill" d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path>
 					</svg>
 				</button>
-				<MoveButtons selectedCharacter={selectedCharacter} selectedKillConfirm={selectedKillConfirm} />
+				<MoveButtons
+					selectedCharacter={selectedCharacter}
+					setSelectedKillConfirm={setSelectedKillConfirm}
+					selectedKillConfirm={selectedKillConfirm}
+				/>
 
 				<button type="button" className="btn btn-primary btn-sm ms-auto">
 					<i className="fa fa-info-circle" aria-hidden="true"></i>
