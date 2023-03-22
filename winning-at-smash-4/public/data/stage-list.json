@@ -1,92 +1,120 @@
-[{
-    "name": "Final Destination",
-    "className": "stage-fd",
-    "imageFile": "stage_fd.jpg",
-    "colour": "#424d98",
-    "tables": [
-    	{
-    		"stagePartName": "FD Normal",
-    		"stagePartRef": "fdNormal"
-    	}
-	]
-},
 {
-    "name": "Battlefield",
-    "className": "stage-bf",
-    "imageFile": "stage_bf.jpg",
-    "colour": "#698b9c",
-    "tables": [
-    	{
-    		"stagePartName": "BF Normal",
-    		"stagePartRef": "bfNormal"
-		},
-		{
-			"stagePartName": "BF Low Plat<span class='hidden-sm-down'>form</span>",
-			"stagePartRef": "bfLowPlat"
-		},
-		{
-			"stagePartName": "BF Top Plat<span class='hidden-sm-down'>form</span>",
-			"stagePartRef": "bfTopPlat"
-		}
-	]
-},
-{
-    "name": "Dreamland",
-    "className": "stage-dl",
-    "imageFile": "stage_dl.jpg",
-    "colour": "#2ab156",
-    "tables": [
-    	{
-    		"stagePartName": "DL Normal",
-    		"stagePartRef": "dlNormal"
-		},
-		{
-			"stagePartName": "DL Low Plat<span class='hidden-sm-down'>form</span>",
-			"stagePartRef": "dlLowPlat"
-		},
-		{
-			"stagePartName": "DL Top Plat<span class='hidden-sm-down'>form</span>",
-			"stagePartRef": "dlTopPlat"
-		}
-	]
-},
-{
-    "name": "Smashville",
-    "className": "stage-sv",
-    "imageFile": "stage_sv.jpg",
-    "colour": "#eeb463",
-    "tables": [
-    	{
-    		"stagePartName": "SV Normal",
-    		"stagePartRef": "svNormal"
-		},
-		{
-			"stagePartName": "SV Plat<span class='hidden-sm-down'>form</span>",
-			"stagePartRef": "svPlat"
-		}
-	]
-},
-{
-    "name": "Town & City",
-    "className": "stage-tc",
-    "imageFile": "stage_tc.jpg",
-    "colour": "#ad7252",
-    "tables": [
-    	{
-    		"stagePartName": "TC Normal",
-    		"stagePartRef": "tcNormal"
-		},
-		{
-			"stagePartName": "TC Low Plat<span class='hidden-sm-down'>form</span>",
-			"stagePartRef": "tcLowPlat"
-		},
-		{
-			"stagePartName": "TC Side Plat<span class='hidden-sm-down'>form</span>",
-			"stagePartRef": "tcSidePlat"
-		},
-		{
-			"stagePartName": "TC Top Plat<span class='hidden-sm-down'>form</span>",
-			"stagePartRef": "tcTopPlat"
-		}
-	]
-}]
+	"final-destination": {
+		"name": "Final Destination",
+		"className": "stage-fd",
+		"imageFile": "stage_fd.jpg",
+		"color": "#424d98",
+		"tables": [
+			{
+				"stagePartName": "FD Normal",
+				"stagePartRef": "fdNormal",
+				"min": 0,
+				"max": 0
+			}
+		]
+	},
+	"battlefield": {
+		"name": "Battlefield",
+		"className": "stage-bf",
+		"imageFile": "stage_bf.jpg",
+		"color": "#698b9c",
+		"tables": [
+			{
+				"stagePartName": "BF Normal",
+				"stagePartRef": "bfNormal",
+				"min": 0,
+				"max": 0
+			},
+			{
+				"stagePartName": "BF Low Plat<span class='hidden-sm-down'>form</span>",
+				"stagePartRef": "bfLowPlat",
+				"min": 0,
+				"max": 0
+			},
+			{
+				"stagePartName": "BF Top Plat<span class='hidden-sm-down'>form</span>",
+				"stagePartRef": "bfTopPlat",
+				"min": 0,
+				"max": 0
+			}
+		]
+	},
+	"dreamland": {
+		"name": "Dreamland",
+		"className": "stage-dl",
+		"imageFile": "stage_dl.jpg",
+		"color": "#2ab156",
+		"tables": [
+			{
+				"stagePartName": "DL Normal",
+				"stagePartRef": "dlNormal",
+				"min": 0,
+				"max": 0
+			},
+			{
+				"stagePartName": "DL Low Plat<span class='hidden-sm-down'>form</span>",
+				"stagePartRef": "dlLowPlat",
+				"min": 0,
+				"max": 0
+			},
+			{
+				"stagePartName": "DL Top Plat<span class='hidden-sm-down'>form</span>",
+				"stagePartRef": "dlTopPlat",
+				"min": 0,
+				"max": 0
+			}
+		]
+	},
+	"smashville": {
+		"name": "Smashville",
+		"className": "stage-sv",
+		"imageFile": "stage_sv.jpg",
+		"color": "#eeb463",
+		"tables": [
+			{
+				"stagePartName": "SV Normal",
+				"stagePartRef": "svNormal",
+				"min": 0,
+				"max": 0
+			},
+			{
+				"stagePartName": "SV Plat<span class='hidden-sm-down'>form</span>",
+				"stagePartRef": "svPlat",
+				"min": 0,
+				"max": 0
+			}
+		]
+	},
+	"town-and-city": {
+		"name": "Town & City",
+		"className": "stage-tc",
+		"imageFile": "stage_tc.jpg",
+		"color": "#ad7252",
+		"tables": [
+			{
+				"stagePartName": "TC Normal",
+				"stagePartRef": "tcNormal",
+				"min": 0,
+				"max": 0
+			},
+			{
+				"stagePartName": "TC Low Plat<span class='hidden-sm-down'>form</span>",
+				"stagePartRef": "tcLowPlat",
+				"min": 0,
+				"max": 0
+			},
+			{
+				"stagePartName": "TC Side Plat<span class='hidden-sm-down'>form</span>",
+				"stagePartRef": "tcSidePlat",
+				"min": 0,
+				"max": 0
+			},
+			{
+				"stagePartName": "TC Top Plat<span class='hidden-sm-down'>form</span>",
+				"stagePartRef": "tcTopPlat",
+				"min": 0,
+				"max": 0
+			}
+		]
+	}
+}

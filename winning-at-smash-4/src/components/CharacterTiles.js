@@ -53,8 +53,7 @@ const Tiles = (props) => {
 							type="button"
 							className="btn character-tile"
 							style={{
-								'--tile-bg-color': 'rgb(' + character.charColor + ')',
-								'--tile-image-position': character.imagePosition
+								'--tile-bg-color': 'rgb(' + character.charColor + ')'
 							}}
 							onClick={openCharacterModal}
 						>
@@ -98,12 +97,104 @@ const CharacterTiles = ({
 }) => {
 	const [showAdditionalCharacterInfo, setShowAdditionalCharacterInfo] = useState(false);
 
-	// TODO: this would be a 'tri-nary' state? Could be ascending / descending / null
-	const [sortByName, setSortByName] = useState(false);
-	const [sortByWeight, setSortByWeight] = useState(false);
-	const [sortByDifficulty, setSortByDifficulty] = useState(false);
-	const [sortByFallspeed, setSortByFallspeed] = useState(false);
-	const [sortByGravity, setSortByGravity] = useState(false);
+	// these sorters exist in a sort of 'tri-nary' state. 0 means off (sort not in action), 1 means sort descending, -1 means sort ascending
+	// only one can be in action, so clicking one sets the others back to 0
+	const [sortByName, setSortByName] = useState(1);
+	const [sortByWeight, setSortByWeight] = useState(0);
+	const [sortByDifficulty, setSortByDifficulty] = useState(0);
+	const [sortByFallspeed, setSortByFallspeed] = useState(0);
+	const [sortByGravity, setSortByGravity] = useState(0);
+
+	const handleSortByName = () => {
+		const newCharAttrs = [...charAttrs];
+
+		setSortByWeight(0);
+		setSortByDifficulty(0);
+		setSortByFallspeed(0);
+		setSortByGravity(0);
+
+		if (sortByName === 0 || sortByName === -1) {
+			setSortByName(1);
+			newCharAttrs.sort((a, b) => (a.name < b.name ? -1 : a.name > b.name ? 1 : 0));
+		} else if (sortByName === 1) {
+			setSortByName(-1);
+			newCharAttrs.sort((a, b) => (a.name > b.name ? -1 : a.name < b.name ? 1 : 0));
+		}
+		setCharAttrs(newCharAttrs);
+	};
+
+	const handleSortByWeight = () => {
+		const newCharAttrs = [...charAttrs];
+
+		setSortByName(0);
+		setSortByDifficulty(0);
+		setSortByFallspeed(0);
+		setSortByGravity(0);
+
+		if (sortByWeight === 0 || sortByWeight === -1) {
+			newCharAttrs.sort((a, b) => a.weight - b.weight);
+			setSortByWeight(1);
+		} else if (sortByWeight === 1) {
+			newCharAttrs.sort((a, b) => b.weight - a.weight);
+			setSortByWeight(-1);
+		}
+		setCharAttrs(newCharAttrs);
+	};
+
+	const handleSortByDifficulty = () => {
+		const newCharAttrs = [...charAttrs];
+
+		setSortByName(0);
+		setSortByWeight(0);
+		setSortByFallspeed(0);
+		setSortByGravity(0);
+
+		if (sortByDifficulty === 0 || sortByDifficulty === -1) {
+			// TODO: look into this one closer, especially with invalid percents and 'N/A'
+			newCharAttrs.sort((a, b) => a.percents.end - a.percents.start - (b.percents.end - b.percents.start));
+			setSortByDifficulty(1);
+		} else if (sortByDifficulty === 1) {
+			newCharAttrs.sort((a, b) => b.percents.end - b.percents.start - (a.percents.end - a.percents.start));
+			setSortByDifficulty(-1);
+		}
+		setCharAttrs(newCharAttrs);
+	};
+
+	const handleSortByFallspeed = () => {
+		const newCharAttrs = [...charAttrs];
+
+		setSortByName(0);
+		setSortByWeight(0);
+		setSortByDifficulty(0);
+		setSortByGravity(0);
+
+		if (sortByFallspeed === 0 || sortByFallspeed === -1) {
+			newCharAttrs.sort((a, b) => a.fallspeed - b.fallspeed);
+			setSortByFallspeed(1);
+		} else if (sortByFallspeed === 1) {
+			newCharAttrs.sort((a, b) => b.fallspeed - a.fallspeed);
+			setSortByFallspeed(-1);
+		}
+		setCharAttrs(newCharAttrs);
+	};
+
+	const handleSortByGravity = () => {
+		const newCharAttrs = [...charAttrs];
+
+		setSortByName(0);
+		setSortByWeight(0);
+		setSortByDifficulty(0);
+		setSortByFallspeed(0);
+
+		if (sortByGravity === 0 || sortByGravity === -1) {
+			newCharAttrs.sort((a, b) => a.gravity - b.gravity);
+			setSortByGravity(1);
+		} else if (sortByGravity === 1) {
+			newCharAttrs.sort((a, b) => b.gravity - a.gravity);
+			setSortByGravity(-1);
+		}
+		setCharAttrs(newCharAttrs);
+	};
 
 	return (
 		<div
@@ -149,30 +240,46 @@ const CharacterTiles = ({
 						<button
 							type="button"
 							className="d-none d-md-inline-block btn btn-primary btn-sm"
-							onClick={() => setSortByName(!sortByName)}
+							onClick={handleSortByName}
 						>
 							<span>
-								Name <i className={`fa ms-1 ${sortByName ? 'fa-caret-up' : 'fa-caret-down'}`} aria-hidden="true"></i>
+								Name{' '}
+								{sortByName !== 0 ? (
+									<i
+										className={`fa ms-1 ${sortByName === -1 ? 'fa-caret-up' : 'fa-caret-down'}`}
+										aria-hidden="true"
+									></i>
+								) : null}
 							</span>
 						</button>
 						<button
 							type="button"
 							className="d-none d-md-inline-block btn btn-primary btn-sm"
-							onClick={() => setSortByWeight(!sortByWeight)}
+							onClick={handleSortByWeight}
 						>
 							<span>
 								Weight{' '}
-								<i className={`fa ms-1 ${sortByWeight ? 'fa-caret-up' : 'fa-caret-down'}`} aria-hidden="true"></i>
+								{sortByWeight !== 0 ? (
+									<i
+										className={`fa ms-1 ${sortByWeight === -1 ? 'fa-caret-up' : 'fa-caret-down'}`}
+										aria-hidden="true"
+									></i>
+								) : null}
 							</span>
 						</button>
 						<button
 							type="button"
 							className="d-none d-md-inline-block btn btn-primary btn-sm"
-							onClick={() => setSortByDifficulty(!sortByDifficulty)}
+							onClick={handleSortByDifficulty}
 						>
 							<span>
 								Difficulty
-								<i className={`fa ms-1 ${sortByDifficulty ? 'fa-caret-up' : 'fa-caret-down'}`} aria-hidden="true"></i>
+								{sortByDifficulty !== 0 ? (
+									<i
+										className={`fa ms-1 ${sortByDifficulty === -1 ? 'fa-caret-up' : 'fa-caret-down'}`}
+										aria-hidden="true"
+									></i>
+								) : null}
 							</span>
 						</button>
 						<button
@@ -206,15 +313,25 @@ const CharacterTiles = ({
 						</button>
 						<ul className="dropdown-menu" aria-labelledby="dropdown-more">
 							<li>
-								<button type="button" className="dropdown-item" onClick={() => setSortByFallspeed(!sortByFallspeed)}>
+								<button type="button" className="dropdown-item" onClick={handleSortByFallspeed}>
 									<span>Fallspeed</span>
-									<i className={`fa ms-1 ${sortByFallspeed ? 'fa-caret-up' : 'fa-caret-down'}`} aria-hidden="true"></i>
+									{sortByFallspeed !== 0 ? (
+										<i
+											className={`fa ms-1 ${sortByFallspeed === -1 ? 'fa-caret-up' : 'fa-caret-down'}`}
+											aria-hidden="true"
+										></i>
+									) : null}
 								</button>
 							</li>
 							<li>
-								<button type="button" className="dropdown-item" onClick={() => setSortByGravity(!sortByGravity)}>
+								<button type="button" className="dropdown-item" onClick={handleSortByGravity}>
 									<span>Gravity</span>
-									<i className={`fa ms-1 ${sortByGravity ? 'fa-caret-up' : 'fa-caret-down'}`} aria-hidden="true"></i>
+									{sortByGravity !== 0 ? (
+										<i
+											className={`fa ms-1 ${sortByGravity === -1 ? 'fa-caret-up' : 'fa-caret-down'}`}
+											aria-hidden="true"
+										></i>
+									) : null}
 								</button>
 							</li>
 							<li>
