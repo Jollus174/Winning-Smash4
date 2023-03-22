@@ -110,7 +110,6 @@
 			width: 100%;
 			height: calc(100% + 10px);
 			object-fit: none;
-			object-position: var(--tile-image-position, left);
 			transition: transform 0.2s ease;
 		}
 
