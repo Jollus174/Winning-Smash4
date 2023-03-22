@@ -47,7 +47,7 @@ const InfoBox = ({ selectedKillConfirm }) => {
 };
 
 const Tiles = (props) => {
-	const { charAttrs, showAdditionalCharacterInfo } = props;
+	const { charAttrs, showAdditionalCharacterInfo, filter } = props;
 
 	const PercentsDifference = ({ percents }) => {
 		return (
@@ -66,10 +66,13 @@ const Tiles = (props) => {
 		);
 	};
 
+	const filteredCharAttrs =
+		filter !== '' ? charAttrs.filter((char) => char.name.toLowerCase().includes(filter.toLowerCase())) : charAttrs;
+
 	return (
 		<div>
 			<div className="row row-character-tile">
-				{charAttrs.map((character, i) => (
+				{filteredCharAttrs.map((character, i) => (
 					<div className="col-6 col-md-4 col-lg-3 col-character-tile" key={'character-' + character.charIndex}>
 						<button
 							type="button"
@@ -125,6 +128,7 @@ const CharacterTiles = ({
 	setSortByGravity
 }) => {
 	const [showAdditionalCharacterInfo, setShowAdditionalCharacterInfo] = useState(false);
+	const [filter, setFilter] = useState('');
 
 	const handleSortByName = () => {
 		const newCharAttrs = [...charAttrs];
@@ -266,7 +270,12 @@ const CharacterTiles = ({
 
 			<div className="tiles">
 				<div className="d-flex align-items-center character-filterbar">
-					<input type="search" className="form-control input-filter" placeholder="Filter..." />
+					<input
+						type="text"
+						className="form-control input-filter"
+						placeholder="Filter..."
+						onKeyUp={(e) => setFilter(e.target.value)}
+					/>
 					<div className="btn-group">
 						<button
 							type="button"
@@ -382,7 +391,7 @@ const CharacterTiles = ({
 					</div>
 				</div>
 				<InfoBox selectedKillConfirm={selectedKillConfirm} />
-				<Tiles charAttrs={charAttrs} showAdditionalCharacterInfo={showAdditionalCharacterInfo} />
+				<Tiles charAttrs={charAttrs} showAdditionalCharacterInfo={showAdditionalCharacterInfo} filter={filter} />
 			</div>
 		</div>
 	);
