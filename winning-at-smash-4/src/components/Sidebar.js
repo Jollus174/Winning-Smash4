@@ -1,11 +1,6 @@
 import React from 'react';
 
-const Sidebar = ({ sidebarOpen, moveCards, setSelectedCharacter, setSelectedKillConfirm }) => {
-	const confirmSelectedKillConfirm = (character, move) => {
-		setSelectedCharacter(character);
-		setSelectedKillConfirm(move);
-	};
-
+const Sidebar = ({ sidebarOpen, moveCards, confirmSelectedKillConfirm }) => {
 	return (
 		<aside className={`d-none sidebar ${sidebarOpen ? 'd-lg-block' : ''}`}>
 			<nav id="sidebar">

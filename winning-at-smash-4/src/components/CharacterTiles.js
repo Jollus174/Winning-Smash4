@@ -1,6 +1,11 @@
 import React from 'react';
 import { useState } from 'react';
-const MoveButtons = ({ selectedCharacter, setSelectedKillConfirm, selectedKillConfirm }) => {
+
+const openCharacterModal = () => {
+	console.log('opening character modal!');
+};
+
+const MoveButtons = ({ selectedCharacter, selectedKillConfirm, confirmSelectedKillConfirm }) => {
 	if (!selectedCharacter.moves || selectedCharacter.moves.length < 2)
 		return (
 			<>
@@ -18,7 +23,7 @@ const MoveButtons = ({ selectedCharacter, setSelectedKillConfirm, selectedKillCo
 						type="button"
 						className={`btn btn-primary btn-sm ${move.moveId === selectedKillConfirm.moveId ? 'active' : ''}`}
 						style={{ '--btn-bg': selectedCharacter.btnColor }}
-						onClick={() => setSelectedKillConfirm(move)}
+						onClick={() => confirmSelectedKillConfirm(selectedCharacter, move)}
 						key={'move-btn-' + move.moveId}
 					>
 						<span dangerouslySetInnerHTML={{ __html: move.moveName }} />
@@ -42,7 +47,24 @@ const InfoBox = ({ selectedKillConfirm }) => {
 };
 
 const Tiles = (props) => {
-	const { charAttrs, setCharAttrs, selectedKillConfirm, showAdditionalCharacterInfo } = props;
+	const { charAttrs, showAdditionalCharacterInfo } = props;
+
+	const PercentsDifference = ({ percents }) => {
+		return (
+			<>
+				<div className="item grid-percent-range">
+					{percents.start} - {percents.end}%
+				</div>
+
+				<div className="d-flex align-items-center grid-difficulty">
+					<div className={`item easy ${percents.diffClass}`}>
+						{percents.diffText} - {percents.percDiff}%
+					</div>
+					{percents.distance ? <div className="item special-info">{percents.distance}</div> : null}
+				</div>
+			</>
+		);
+	};
 
 	return (
 		<div>
@@ -60,11 +82,7 @@ const Tiles = (props) => {
 							<img src={'/images/characters/webp/' + character.id + '.webp'} alt={'character.name'} />
 							<div className="character-index">{i + 1}</div>
 							<div className="character-info">
-								<div className="item grid-percent-range">85 - 107%</div>
-								<div className="d-flex align-items-center grid-difficulty">
-									<div className="item easy">Easy - 23%</div>
-									<div className="item special-info">Close</div>
-								</div>
+								<PercentsDifference percents={character.percents} />
 								{showAdditionalCharacterInfo ? (
 									<>
 										<div className="item-extra grid-additional-info">
@@ -93,17 +111,20 @@ const CharacterTiles = ({
 	setSelectedCharacter,
 	selectedCharacter,
 	setSelectedKillConfirm,
-	selectedKillConfirm
+	selectedKillConfirm,
+	confirmSelectedKillConfirm,
+	sortByName,
+	setSortByName,
+	sortByWeight,
+	setSortByWeight,
+	sortByDifficulty,
+	setSortByDifficulty,
+	sortByFallspeed,
+	setSortByFallspeed,
+	sortByGravity,
+	setSortByGravity
 }) => {
 	const [showAdditionalCharacterInfo, setShowAdditionalCharacterInfo] = useState(false);
-
-	// these sorters exist in a sort of 'tri-nary' state. 0 means off (sort not in action), 1 means sort descending, -1 means sort ascending
-	// only one can be in action, so clicking one sets the others back to 0
-	const [sortByName, setSortByName] = useState(1);
-	const [sortByWeight, setSortByWeight] = useState(0);
-	const [sortByDifficulty, setSortByDifficulty] = useState(0);
-	const [sortByFallspeed, setSortByFallspeed] = useState(0);
-	const [sortByGravity, setSortByGravity] = useState(0);
 
 	const handleSortByName = () => {
 		const newCharAttrs = [...charAttrs];
@@ -149,13 +170,23 @@ const CharacterTiles = ({
 		setSortByFallspeed(0);
 		setSortByGravity(0);
 
-		if (sortByDifficulty === 0 || sortByDifficulty === -1) {
-			// TODO: look into this one closer, especially with invalid percents and 'N/A'
-			newCharAttrs.sort((a, b) => a.percents.end - a.percents.start - (b.percents.end - b.percents.start));
-			setSortByDifficulty(1);
-		} else if (sortByDifficulty === 1) {
-			newCharAttrs.sort((a, b) => b.percents.end - b.percents.start - (a.percents.end - a.percents.start));
-			setSortByDifficulty(-1);
+		if (selectedCharacter.charId !== 'zelda' && selectedKillConfirm.moveId !== 'dthrow-up-air') {
+			if (sortByDifficulty === 0 || sortByDifficulty === -1) {
+				newCharAttrs.sort((a, b) => a.percents.percDiff - b.percents.percDiff);
+				setSortByDifficulty(1);
+			} else if (sortByDifficulty === 1) {
+				newCharAttrs.sort((a, b) => b.percents.percDiff - a.percents.percDiff);
+				setSortByDifficulty(-1);
+			}
+		} else {
+			// different difficulty sorting for smelly Zelda
+			if (sortByDifficulty === 0 || sortByDifficulty === -1) {
+				newCharAttrs.sort((a, b) => a.airdodgeStart - b.airdodgeStart);
+				setSortByDifficulty(1);
+			} else if (sortByDifficulty === 1) {
+				newCharAttrs.sort((a, b) => b.airdodgeStart - a.airdodgeStart);
+				setSortByDifficulty(-1);
+			}
 		}
 		setCharAttrs(newCharAttrs);
 	};
@@ -223,8 +254,8 @@ const CharacterTiles = ({
 				</button>
 				<MoveButtons
 					selectedCharacter={selectedCharacter}
-					setSelectedKillConfirm={setSelectedKillConfirm}
 					selectedKillConfirm={selectedKillConfirm}
+					confirmSelectedKillConfirm={confirmSelectedKillConfirm}
 				/>
 
 				<button type="button" className="btn btn-primary btn-sm ms-auto">
@@ -351,12 +382,7 @@ const CharacterTiles = ({
 					</div>
 				</div>
 				<InfoBox selectedKillConfirm={selectedKillConfirm} />
-				<Tiles
-					charAttrs={charAttrs}
-					setCharAttrs={setCharAttrs}
-					selectedKillConfirm={selectedKillConfirm}
-					showAdditionalCharacterInfo={showAdditionalCharacterInfo}
-				/>
+				<Tiles charAttrs={charAttrs} showAdditionalCharacterInfo={showAdditionalCharacterInfo} />
 			</div>
 		</div>
 	);

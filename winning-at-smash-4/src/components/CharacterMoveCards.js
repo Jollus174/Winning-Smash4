@@ -1,11 +1,6 @@
 import React from 'react';
 
-const CharacterMoveCards = ({ moveCards, setSelectedCharacter, setSelectedKillConfirm }) => {
-	const confirmSelectedKillConfirm = (character, move) => {
-		setSelectedCharacter(character);
-		setSelectedKillConfirm(move);
-	};
-
+const CharacterMoveCards = ({ moveCards, confirmSelectedKillConfirm }) => {
 	return (
 		<div className="character-move-cards">
 			<div className="row">

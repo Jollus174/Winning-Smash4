@@ -1,6 +1,6 @@
 [
 	{
-		"charIndex": "0",
+		"charIndex": 0,
 		"name": "Bayonetta",
 		"id": "bayonetta",
 		"percents": {
@@ -8,16 +8,16 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "84",
-		"fallspeed": "1.77",
-		"gravity": "0.12",
-		"airdodgeStart": "1",
-		"airdodgeEnd": "27",
+		"weight": 84,
+		"fallspeed": 1.77,
+		"gravity": 0.12,
+		"airdodgeStart": 1,
+		"airdodgeEnd": 27,
 		"charColor": "167, 159, 229",
 		"imagePosition": "rightImage"
 	},
 	{
-		"charIndex": "1",
+		"charIndex": 1,
 		"name": "Bowser",
 		"id": "bowser",
 		"percents": {
@@ -25,16 +25,16 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "130",
-		"fallspeed": "1.39",
-		"gravity": "0.11",
-		"airdodgeStart": "4",
-		"airdodgeEnd": "29",
+		"weight": 130,
+		"fallspeed": 1.39,
+		"gravity": 0.11,
+		"airdodgeStart": 4,
+		"airdodgeEnd": 29,
 		"charColor": "50, 118, 92",
 		"imagePosition": "rightImage"
 	},
 	{
-		"charIndex": "2",
+		"charIndex": 2,
 		"name": "Bowser Jr.",
 		"id": "bowser-jr",
 		"percents": {
@@ -42,16 +42,16 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "108",
-		"fallspeed": "1.65",
-		"gravity": "0.092",
-		"airdodgeStart": "3",
-		"airdodgeEnd": "28",
+		"weight": 108,
+		"fallspeed": 1.65,
+		"gravity": 0.092,
+		"airdodgeStart": 3,
+		"airdodgeEnd": 28,
 		"charColor": "207, 206, 55",
 		"imagePosition": "leftImage"
 	},
 	{
-		"charIndex": "3",
+		"charIndex": 3,
 		"name": "Captain Falcon",
 		"id": "captain-falcon",
 		"percents": {
@@ -59,16 +59,16 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "104",
-		"fallspeed": "1.837",
-		"gravity": "0.12",
-		"airdodgeStart": "3",
-		"airdodgeEnd": "28",
+		"weight": 104,
+		"fallspeed": 1.837,
+		"gravity": 0.12,
+		"airdodgeStart": 3,
+		"airdodgeEnd": 28,
 		"charColor": "144, 136, 226",
 		"imagePosition": "rightImage"
 	},
 	{
-		"charIndex": "4",
+		"charIndex": 4,
 		"name": "Charizard",
 		"id": "charizard",
 		"percents": {
@@ -76,15 +76,15 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "116",
-		"fallspeed": "1.4",
-		"gravity": "0.11",
-		"airdodgeStart": "3",
-		"airdodgeEnd": "28",
+		"weight": 116,
+		"fallspeed": 1.4,
+		"gravity": 0.11,
+		"airdodgeStart": 3,
+		"airdodgeEnd": 28,
 		"charColor": "246, 102, 36"
 	},
 	{
-		"charIndex": "5",
+		"charIndex": 5,
 		"name": "Cloud",
 		"id": "cloud",
 		"percents": {
@@ -92,15 +92,15 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "100",
-		"fallspeed": "1.68",
-		"gravity": "0.098",
-		"airdodgeStart": "3",
-		"airdodgeEnd": "28",
+		"weight": 100,
+		"fallspeed": 1.68,
+		"gravity": 0.098,
+		"airdodgeStart": 3,
+		"airdodgeEnd": 28,
 		"charColor": "0, 150, 132"
 	},
 	{
-		"charIndex": "6",
+		"charIndex": 6,
 		"name": "Cloud - Limit",
 		"id": "cloud-limit",
 		"percents": {
@@ -108,15 +108,15 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "100",
-		"fallspeed": "1.848",
-		"gravity": "0.1078",
-		"airdodgeStart": "3",
-		"airdodgeEnd": "28",
+		"weight": 100,
+		"fallspeed": 1.848,
+		"gravity": 0.1078,
+		"airdodgeStart": 3,
+		"airdodgeEnd": 28,
 		"charColor": "0, 150, 132"
 	},
 	{
-		"charIndex": "7",
+		"charIndex": 7,
 		"name": "Corrin",
 		"id": "corrin",
 		"percents": {
@@ -124,16 +124,16 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "98",
-		"fallspeed": "1.65",
-		"gravity": "0.092",
-		"airdodgeStart": "3",
-		"airdodgeEnd": "27",
+		"weight": 98,
+		"fallspeed": 1.65,
+		"gravity": 0.092,
+		"airdodgeStart": 3,
+		"airdodgeEnd": 27,
 		"charColor": "115, 49, 49",
 		"imagePosition": "leftImage"
 	},
 	{
-		"charIndex": "8",
+		"charIndex": 8,
 		"name": "Dark Pit",
 		"id": "dark-pit",
 		"percents": {
@@ -141,16 +141,16 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "96",
-		"fallspeed": "1.48",
-		"gravity": "0.081",
-		"airdodgeStart": "2",
-		"airdodgeEnd": "26",
+		"weight": 96,
+		"fallspeed": 1.48,
+		"gravity": 0.081,
+		"airdodgeStart": 2,
+		"airdodgeEnd": 26,
 		"charColor": "175, 108, 233",
 		"imagePosition": "rightImage"
 	},
 	{
-		"charIndex": "9",
+		"charIndex": 9,
 		"name": "Diddy Kong",
 		"id": "diddy-kong",
 		"percents": {
@@ -158,16 +158,16 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "93",
-		"fallspeed": "1.75",
-		"gravity": "0.105",
-		"airdodgeStart": "2",
-		"airdodgeEnd": "26",
+		"weight": 93,
+		"fallspeed": 1.75,
+		"gravity": 0.105,
+		"airdodgeStart": 2,
+		"airdodgeEnd": 26,
 		"charColor": "147, 35, 36",
 		"imagePosition": "rightImage"
 	},
 	{
-		"charIndex": "10",
+		"charIndex": 10,
 		"name": "Donkey Kong",
 		"id": "donkey-kong",
 		"percents": {
@@ -175,16 +175,16 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "122",
-		"fallspeed": "1.63",
-		"gravity": "0.08505",
-		"airdodgeStart": "4",
-		"airdodgeEnd": "29",
+		"weight": 122,
+		"fallspeed": 1.63,
+		"gravity": 0.08505,
+		"airdodgeStart": 4,
+		"airdodgeEnd": 29,
 		"charColor": "254, 218, 0",
 		"imagePosition": "rightImage"
 	},
 	{
-		"charIndex": "11",
+		"charIndex": 11,
 		"name": "Dr. Mario",
 		"id": "dr-mario",
 		"percents": {
@@ -192,15 +192,15 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "98",
-		"fallspeed": "1.5",
-		"gravity": "0.08715",
-		"airdodgeStart": "3",
-		"airdodgeEnd": "27",
+		"weight": 98,
+		"fallspeed": 1.5,
+		"gravity": 0.08715,
+		"airdodgeStart": 3,
+		"airdodgeEnd": 27,
 		"charColor": "215, 41, 53"
 	},
 	{
-		"charIndex": "12",
+		"charIndex": 12,
 		"name": "Duck Hunt",
 		"id": "duck-hunt",
 		"percents": {
@@ -208,15 +208,15 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "91",
-		"fallspeed": "1.65",
-		"gravity": "0.076",
-		"airdodgeStart": "2",
-		"airdodgeEnd": "25",
+		"weight": 91,
+		"fallspeed": 1.65,
+		"gravity": 0.076,
+		"airdodgeStart": 2,
+		"airdodgeEnd": 25,
 		"charColor": "147, 90, 51"
 	},
 	{
-		"charIndex": "13",
+		"charIndex": 13,
 		"name": "Falco",
 		"id": "falco",
 		"percents": {
@@ -224,16 +224,16 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "82",
-		"fallspeed": "1.8",
-		"gravity": "0.13",
-		"airdodgeStart": "2",
-		"airdodgeEnd": "26",
+		"weight": 82,
+		"fallspeed": 1.8,
+		"gravity": 0.13,
+		"airdodgeStart": 2,
+		"airdodgeEnd": 26,
 		"charColor": "82, 177, 227",
 		"imagePosition": "rightImage"
 	},
 	{
-		"charIndex": "14",
+		"charIndex": 14,
 		"name": "Fox",
 		"id": "fox",
 		"percents": {
@@ -241,16 +241,16 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "79",
-		"fallspeed": "2.05",
-		"gravity": "0.19",
-		"airdodgeStart": "2",
-		"airdodgeEnd": "25",
+		"weight": 79,
+		"fallspeed": 2.05,
+		"gravity": 0.19,
+		"airdodgeStart": 2,
+		"airdodgeEnd": 25,
 		"charColor": "3, 106, 201",
 		"imagePosition": "leftImage"
 	},
 	{
-		"charIndex": "15",
+		"charIndex": 15,
 		"name": "Ganondorf",
 		"id": "ganondorf",
 		"percents": {
@@ -258,15 +258,15 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "113",
-		"fallspeed": "1.65",
-		"gravity": "0.10784",
-		"airdodgeStart": "4",
-		"airdodgeEnd": "29",
+		"weight": 113,
+		"fallspeed": 1.65,
+		"gravity": 0.10784,
+		"airdodgeStart": 4,
+		"airdodgeEnd": 29,
 		"charColor": "125, 120, 152"
 	},
 	{
-		"charIndex": "16",
+		"charIndex": 16,
 		"name": "Greninja",
 		"id": "greninja",
 		"percents": {
@@ -274,15 +274,15 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "94",
-		"fallspeed": "1.85",
-		"gravity": "0.18",
-		"airdodgeStart": "2",
-		"airdodgeEnd": "26",
+		"weight": 94,
+		"fallspeed": 1.85,
+		"gravity": 0.18,
+		"airdodgeStart": 2,
+		"airdodgeEnd": 26,
 		"charColor": "80, 115, 169"
 	},
 	{
-		"charIndex": "17",
+		"charIndex": 17,
 		"name": "Ike",
 		"id": "ike",
 		"percents": {
@@ -290,16 +290,16 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "107",
-		"fallspeed": "1.65",
-		"gravity": "0.092",
-		"airdodgeStart": "3",
-		"airdodgeEnd": "28",
+		"weight": 107,
+		"fallspeed": 1.65,
+		"gravity": 0.092,
+		"airdodgeStart": 3,
+		"airdodgeEnd": 28,
 		"charColor": "196, 71, 55",
 		"imagePosition": "rightImage"
 	},
 	{
-		"charIndex": "18",
+		"charIndex": 18,
 		"name": "Jigglypuff",
 		"id": "jigglypuff",
 		"percents": {
@@ -307,15 +307,15 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "68",
-		"fallspeed": "0.98",
-		"gravity": "0.05309",
-		"airdodgeStart": "4",
-		"airdodgeEnd": "29",
+		"weight": 68,
+		"fallspeed": 0.98,
+		"gravity": 0.05309,
+		"airdodgeStart": 4,
+		"airdodgeEnd": 29,
 		"charColor": "242, 131, 234"
 	},
 	{
-		"charIndex": "19",
+		"charIndex": 19,
 		"name": "King Dedede",
 		"id": "king-dedede",
 		"percents": {
@@ -323,15 +323,15 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "119",
-		"fallspeed": "1.95",
-		"gravity": "0.08788",
-		"airdodgeStart": "4",
-		"airdodgeEnd": "29",
+		"weight": 119,
+		"fallspeed": 1.95,
+		"gravity": 0.08788,
+		"airdodgeStart": 4,
+		"airdodgeEnd": 29,
 		"charColor": "255, 233, 102"
 	},
 	{
-		"charIndex": "20",
+		"charIndex": 20,
 		"name": "Kirby",
 		"id": "kirby",
 		"percents": {
@@ -339,15 +339,15 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "79",
-		"fallspeed": "1.23",
-		"gravity": "0.06405",
-		"airdodgeStart": "3",
-		"airdodgeEnd": "27",
+		"weight": 79,
+		"fallspeed": 1.23,
+		"gravity": 0.06405,
+		"airdodgeStart": 3,
+		"airdodgeEnd": 27,
 		"charColor": "229, 147, 154"
 	},
 	{
-		"charIndex": "21",
+		"charIndex": 21,
 		"name": "Link",
 		"id": "link",
 		"percents": {
@@ -355,15 +355,15 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "104",
-		"fallspeed": "1.6",
-		"gravity": "0.096",
-		"airdodgeStart": "3",
-		"airdodgeEnd": "28",
+		"weight": 104,
+		"fallspeed": 1.6,
+		"gravity": 0.096,
+		"airdodgeStart": 3,
+		"airdodgeEnd": 28,
 		"charColor": "190, 209, 99"
 	},
 	{
-		"charIndex": "22",
+		"charIndex": 22,
 		"name": "Little Mac",
 		"id": "little-mac",
 		"percents": {
@@ -371,15 +371,15 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "82",
-		"fallspeed": "1.8",
-		"gravity": "0.08",
-		"airdodgeStart": "2",
-		"airdodgeEnd": "25",
+		"weight": 82,
+		"fallspeed": 1.8,
+		"gravity": 0.08,
+		"airdodgeStart": 2,
+		"airdodgeEnd": 25,
 		"charColor": "57, 119, 90"
 	},
 	{
-		"charIndex": "23",
+		"charIndex": 23,
 		"name": "Lucario",
 		"id": "lucario",
 		"percents": {
@@ -387,15 +387,15 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "99",
-		"fallspeed": "1.68",
-		"gravity": "0.084",
-		"airdodgeStart": "2",
-		"airdodgeEnd": "25",
+		"weight": 99,
+		"fallspeed": 1.68,
+		"gravity": 0.084,
+		"airdodgeStart": 2,
+		"airdodgeEnd": 25,
 		"charColor": "174, 228, 255"
 	},
 	{
-		"charIndex": "24",
+		"charIndex": 24,
 		"name": "Lucas",
 		"id": "lucas",
 		"percents": {
@@ -403,15 +403,15 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "94",
-		"fallspeed": "1.37",
-		"gravity": "0.09",
-		"airdodgeStart": "3",
-		"airdodgeEnd": "28",
+		"weight": 94,
+		"fallspeed": 1.37,
+		"gravity": 0.09,
+		"airdodgeStart": 3,
+		"airdodgeEnd": 28,
 		"charColor": "240, 95, 27"
 	},
 	{
-		"charIndex": "25",
+		"charIndex": 25,
 		"name": "Lucina",
 		"id": "lucina",
 		"percents": {
@@ -419,15 +419,15 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "90",
-		"fallspeed": "1.58",
-		"gravity": "0.075",
-		"airdodgeStart": "3",
-		"airdodgeEnd": "27",
+		"weight": 90,
+		"fallspeed": 1.58,
+		"gravity": 0.075,
+		"airdodgeStart": 3,
+		"airdodgeEnd": 27,
 		"charColor": "116, 167, 202"
 	},
 	{
-		"charIndex": "26",
+		"charIndex": 26,
 		"name": "Luigi",
 		"id": "luigi",
 		"percents": {
@@ -435,15 +435,15 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "97",
-		"fallspeed": "1.25",
-		"gravity": "0.075",
-		"airdodgeStart": "3",
-		"airdodgeEnd": "27",
+		"weight": 97,
+		"fallspeed": 1.25,
+		"gravity": 0.075,
+		"airdodgeStart": 3,
+		"airdodgeEnd": 27,
 		"charColor": "65, 167, 50"
 	},
 	{
-		"charIndex": "27",
+		"charIndex": 27,
 		"name": "Mario",
 		"id": "mario",
 		"percents": {
@@ -451,15 +451,15 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "98",
-		"fallspeed": "1.5",
-		"gravity": "0.08715",
-		"airdodgeStart": "3",
-		"airdodgeEnd": "27",
+		"weight": 98,
+		"fallspeed": 1.5,
+		"gravity": 0.08715,
+		"airdodgeStart": 3,
+		"airdodgeEnd": 27,
 		"charColor": "170, 44, 48"
 	},
 	{
-		"charIndex": "28",
+		"charIndex": 28,
 		"name": "Marth",
 		"id": "marth",
 		"percents": {
@@ -467,15 +467,15 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "90",
-		"fallspeed": "1.58",
-		"gravity": "0.075",
-		"airdodgeStart": "3",
-		"airdodgeEnd": "27",
+		"weight": 90,
+		"fallspeed": 1.58,
+		"gravity": 0.075,
+		"airdodgeStart": 3,
+		"airdodgeEnd": 27,
 		"charColor": "62, 170, 204"
 	},
 	{
-		"charIndex": "29",
+		"charIndex": 29,
 		"name": "Mega Man",
 		"id": "mega-man",
 		"percents": {
@@ -483,15 +483,15 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "102",
-		"fallspeed": "1.8",
-		"gravity": "0.1071",
-		"airdodgeStart": "3",
-		"airdodgeEnd": "28",
+		"weight": 102,
+		"fallspeed": 1.8,
+		"gravity": 0.1071,
+		"airdodgeStart": 3,
+		"airdodgeEnd": 28,
 		"charColor": "88, 160, 191"
 	},
 	{
-		"charIndex": "30",
+		"charIndex": 30,
 		"name": "Meta Knight",
 		"id": "meta-knight",
 		"percents": {
@@ -499,15 +499,15 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "80",
-		"fallspeed": "1.66",
-		"gravity": "0.11",
-		"airdodgeStart": "2",
-		"airdodgeEnd": "25",
+		"weight": 80,
+		"fallspeed": 1.66,
+		"gravity": 0.11,
+		"airdodgeStart": 2,
+		"airdodgeEnd": 25,
 		"charColor": "45, 61, 122"
 	},
 	{
-		"charIndex": "31",
+		"charIndex": 31,
 		"name": "Mewtwo",
 		"id": "mewtwo",
 		"percents": {
@@ -515,16 +515,16 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "74",
-		"fallspeed": "1.5",
-		"gravity": "0.082",
-		"airdodgeStart": "2",
-		"airdodgeEnd": "24",
+		"weight": 74,
+		"fallspeed": 1.5,
+		"gravity": 0.082,
+		"airdodgeStart": 2,
+		"airdodgeEnd": 24,
 		"charColor": "128, 84, 195",
 		"imagePosition": "leftImage"
 	},
 	{
-		"charIndex": "32",
+		"charIndex": 32,
 		"name": "Mii Brawler",
 		"id": "mii-brawler",
 		"percents": {
@@ -532,15 +532,15 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "100",
-		"fallspeed": "1.7",
-		"gravity": "0.1",
-		"airdodgeStart": "3",
-		"airdodgeEnd": "27",
+		"weight": 100,
+		"fallspeed": 1.7,
+		"gravity": 0.1,
+		"airdodgeStart": 3,
+		"airdodgeEnd": 27,
 		"charColor": "205, 126, 44"
 	},
 	{
-		"charIndex": "33",
+		"charIndex": 33,
 		"name": "Mii Gunner",
 		"id": "mii-gunner",
 		"percents": {
@@ -548,15 +548,15 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "100",
-		"fallspeed": "1.7",
-		"gravity": "0.08715",
-		"airdodgeStart": "3",
-		"airdodgeEnd": "27",
+		"weight": 100,
+		"fallspeed": 1.7,
+		"gravity": 0.08715,
+		"airdodgeStart": 3,
+		"airdodgeEnd": 27,
 		"charColor": "205, 126, 44"
 	},
 	{
-		"charIndex": "34",
+		"charIndex": 34,
 		"name": "Mii Swordfighter",
 		"id": "mii-swordfighter",
 		"percents": {
@@ -564,15 +564,15 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "100",
-		"fallspeed": "1.7",
-		"gravity": "0.096",
-		"airdodgeStart": "3",
-		"airdodgeEnd": "28",
+		"weight": 100,
+		"fallspeed": 1.7,
+		"gravity": 0.096,
+		"airdodgeStart": 3,
+		"airdodgeEnd": 28,
 		"charColor": "205, 126, 44"
 	},
 	{
-		"charIndex": "35",
+		"charIndex": 35,
 		"name": "Mr. Game and Watch",
 		"id": "game-and-watch",
 		"percents": {
@@ -580,15 +580,15 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "75",
-		"fallspeed": "1.24",
-		"gravity": "0.08",
-		"airdodgeStart": "2",
-		"airdodgeEnd": "26",
+		"weight": 75,
+		"fallspeed": 1.24,
+		"gravity": 0.08,
+		"airdodgeStart": 2,
+		"airdodgeEnd": 26,
 		"charColor": "136, 137, 132"
 	},
 	{
-		"charIndex": "36",
+		"charIndex": 36,
 		"name": "Ness",
 		"id": "ness",
 		"percents": {
@@ -596,15 +596,15 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "94",
-		"fallspeed": "1.31",
-		"gravity": "0.077",
-		"airdodgeStart": "3",
-		"airdodgeEnd": "28",
+		"weight": 94,
+		"fallspeed": 1.31,
+		"gravity": 0.077,
+		"airdodgeStart": 3,
+		"airdodgeEnd": 28,
 		"charColor": "171, 45, 48"
 	},
 	{
-		"charIndex": "37",
+		"charIndex": 37,
 		"name": "Olimar",
 		"id": "olimar",
 		"percents": {
@@ -612,15 +612,15 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "79",
-		"fallspeed": "1.35",
-		"gravity": "0.068",
-		"airdodgeStart": "3",
-		"airdodgeEnd": "27",
+		"weight": 79,
+		"fallspeed": 1.35,
+		"gravity": 0.068,
+		"airdodgeStart": 3,
+		"airdodgeEnd": 27,
 		"charColor": "195, 241, 169"
 	},
 	{
-		"charIndex": "38",
+		"charIndex": 38,
 		"name": "Pac-Man",
 		"id": "pacman",
 		"percents": {
@@ -628,15 +628,15 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "95",
-		"fallspeed": "1.35",
-		"gravity": "0.072",
-		"airdodgeStart": "3",
-		"airdodgeEnd": "27",
+		"weight": 95,
+		"fallspeed": 1.35,
+		"gravity": 0.072,
+		"airdodgeStart": 3,
+		"airdodgeEnd": 27,
 		"charColor": "222, 160, 58"
 	},
 	{
-		"charIndex": "39",
+		"charIndex": 39,
 		"name": "Palutena",
 		"id": "palutena",
 		"percents": {
@@ -644,15 +644,15 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "91",
-		"fallspeed": "1.4",
-		"gravity": "0.105",
-		"airdodgeStart": "3",
-		"airdodgeEnd": "28",
+		"weight": 91,
+		"fallspeed": 1.4,
+		"gravity": 0.105,
+		"airdodgeStart": 3,
+		"airdodgeEnd": 28,
 		"charColor": "76, 226, 235"
 	},
 	{
-		"charIndex": "40",
+		"charIndex": 40,
 		"name": "Peach",
 		"id": "peach",
 		"percents": {
@@ -660,15 +660,15 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "89",
-		"fallspeed": "1.15",
-		"gravity": "0.068",
-		"airdodgeStart": "3",
-		"airdodgeEnd": "28",
+		"weight": 89,
+		"fallspeed": 1.15,
+		"gravity": 0.068,
+		"airdodgeStart": 3,
+		"airdodgeEnd": 28,
 		"charColor": "254, 198, 243"
 	},
 	{
-		"charIndex": "41",
+		"charIndex": 41,
 		"name": "Pikachu",
 		"id": "pikachu",
 		"percents": {
@@ -676,15 +676,15 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "79",
-		"fallspeed": "1.55",
-		"gravity": "0.095",
-		"airdodgeStart": "2",
-		"airdodgeEnd": "25",
+		"weight": 79,
+		"fallspeed": 1.55,
+		"gravity": 0.095,
+		"airdodgeStart": 2,
+		"airdodgeEnd": 25,
 		"charColor": "216, 165, 10"
 	},
 	{
-		"charIndex": "42",
+		"charIndex": 42,
 		"name": "Pit",
 		"id": "pit",
 		"percents": {
@@ -692,16 +692,16 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "96",
-		"fallspeed": "1.48",
-		"gravity": "0.081",
-		"airdodgeStart": "2",
-		"airdodgeEnd": "26",
+		"weight": 96,
+		"fallspeed": 1.48,
+		"gravity": 0.081,
+		"airdodgeStart": 2,
+		"airdodgeEnd": 26,
 		"charColor": "112, 181, 215",
 		"imagePosition": "leftImage"
 	},
 	{
-		"charIndex": "43",
+		"charIndex": 43,
 		"name": "R.O.B.",
 		"id": "rob",
 		"percents": {
@@ -709,15 +709,15 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "106",
-		"fallspeed": "1.6",
-		"gravity": "0.09",
-		"airdodgeStart": "3",
-		"airdodgeEnd": "27",
+		"weight": 106,
+		"fallspeed": 1.6,
+		"gravity": 0.09,
+		"airdodgeStart": 3,
+		"airdodgeEnd": 27,
 		"charColor": "178, 185, 191"
 	},
 	{
-		"charIndex": "44",
+		"charIndex": 44,
 		"name": "Robin",
 		"id": "robin",
 		"percents": {
@@ -725,15 +725,15 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "95",
-		"fallspeed": "1.5",
-		"gravity": "0.089",
-		"airdodgeStart": "3",
-		"airdodgeEnd": "28",
+		"weight": 95,
+		"fallspeed": 1.5,
+		"gravity": 0.089,
+		"airdodgeStart": 3,
+		"airdodgeEnd": 28,
 		"charColor": "206, 130, 222"
 	},
 	{
-		"charIndex": "45",
+		"charIndex": 45,
 		"name": "Rosa and Luma",
 		"id": "rosalina-and-luma",
 		"percents": {
@@ -741,16 +741,16 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "77",
-		"fallspeed": "1.2",
-		"gravity": "0.062",
-		"airdodgeStart": "3",
-		"airdodgeEnd": "27",
+		"weight": 77,
+		"fallspeed": 1.2,
+		"gravity": 0.062,
+		"airdodgeStart": 3,
+		"airdodgeEnd": 27,
 		"charColor": "76, 226, 235",
 		"imagePosition": "rightImage"
 	},
 	{
-		"charIndex": "46",
+		"charIndex": 46,
 		"name": "Roy",
 		"id": "roy",
 		"percents": {
@@ -758,15 +758,15 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "95",
-		"fallspeed": "1.8",
-		"gravity": "0.114",
-		"airdodgeStart": "3",
-		"airdodgeEnd": "27",
+		"weight": 95,
+		"fallspeed": 1.8,
+		"gravity": 0.114,
+		"airdodgeStart": 3,
+		"airdodgeEnd": 27,
 		"charColor": "92, 185, 77"
 	},
 	{
-		"charIndex": "47",
+		"charIndex": 47,
 		"name": "Ryu",
 		"id": "ryu",
 		"percents": {
@@ -774,15 +774,15 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "103",
-		"fallspeed": "1.6",
-		"gravity": "0.12",
-		"airdodgeStart": "4",
-		"airdodgeEnd": "25",
+		"weight": 103,
+		"fallspeed": 1.6,
+		"gravity": 0.12,
+		"airdodgeStart": 4,
+		"airdodgeEnd": 25,
 		"charColor": "224, 68, 71"
 	},
 	{
-		"charIndex": "48",
+		"charIndex": 48,
 		"name": "Samus",
 		"id": "samus",
 		"percents": {
@@ -790,15 +790,15 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "108",
-		"fallspeed": "1.3",
-		"gravity": "0.077",
-		"airdodgeStart": "3",
-		"airdodgeEnd": "27",
+		"weight": 108,
+		"fallspeed": 1.3,
+		"gravity": 0.077,
+		"airdodgeStart": 3,
+		"airdodgeEnd": 27,
 		"charColor": "51, 63, 88"
 	},
 	{
-		"charIndex": "49",
+		"charIndex": 49,
 		"name": "Sheik",
 		"id": "sheik",
 		"percents": {
@@ -806,15 +806,15 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "81",
-		"fallspeed": "1.75",
-		"gravity": "0.15",
-		"airdodgeStart": "2",
-		"airdodgeEnd": "25",
+		"weight": 81,
+		"fallspeed": 1.75,
+		"gravity": 0.15,
+		"airdodgeStart": 2,
+		"airdodgeEnd": 25,
 		"charColor": "120, 108, 215"
 	},
 	{
-		"charIndex": "50",
+		"charIndex": 50,
 		"name": "Shulk",
 		"id": "shulk",
 		"percents": {
@@ -822,16 +822,16 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "102",
-		"fallspeed": "1.5",
-		"gravity": "0.085",
-		"airdodgeStart": "3",
-		"airdodgeEnd": "28",
+		"weight": 102,
+		"fallspeed": 1.5,
+		"gravity": 0.085,
+		"airdodgeStart": 3,
+		"airdodgeEnd": 28,
 		"charColor": "229, 91, 121",
 		"imagePosition": "rightImage"
 	},
 	{
-		"charIndex": "51",
+		"charIndex": 51,
 		"name": "Shulk - Buster",
 		"id": "shulk-buster",
 		"percents": {
@@ -839,16 +839,16 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "102",
-		"fallspeed": "1.5",
-		"gravity": "0.085",
-		"airdodgeStart": "3",
-		"airdodgeEnd": "28",
+		"weight": 102,
+		"fallspeed": 1.5,
+		"gravity": 0.085,
+		"airdodgeStart": 3,
+		"airdodgeEnd": 28,
 		"charColor": "229, 91, 121",
 		"imagePosition": "rightImage"
 	},
 	{
-		"charIndex": "52",
+		"charIndex": 52,
 		"name": "Shulk - Jump",
 		"id": "shulk-jump",
 		"percents": {
@@ -856,16 +856,16 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "102",
-		"fallspeed": "1.83",
-		"gravity": "0.085",
-		"airdodgeStart": "3",
-		"airdodgeEnd": "28",
+		"weight": 102,
+		"fallspeed": 1.83,
+		"gravity": 0.085,
+		"airdodgeStart": 3,
+		"airdodgeEnd": 28,
 		"charColor": "229, 91, 121",
 		"imagePosition": "rightImage"
 	},
 	{
-		"charIndex": "53",
+		"charIndex": 53,
 		"name": "Shulk - Shield",
 		"id": "shulk-shield",
 		"percents": {
@@ -873,16 +873,16 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "102",
-		"fallspeed": "1.5",
-		"gravity": "0.085",
-		"airdodgeStart": "3",
-		"airdodgeEnd": "28",
+		"weight": 102,
+		"fallspeed": 1.5,
+		"gravity": 0.085,
+		"airdodgeStart": 3,
+		"airdodgeEnd": 28,
 		"charColor": "229, 91, 121",
 		"imagePosition": "rightImage"
 	},
 	{
-		"charIndex": "54",
+		"charIndex": 54,
 		"name": "Shulk - Smash",
 		"id": "shulk-smash",
 		"percents": {
@@ -890,16 +890,16 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "102",
-		"fallspeed": "1.5",
-		"gravity": "0.085",
-		"airdodgeStart": "3",
-		"airdodgeEnd": "28",
+		"weight": 102,
+		"fallspeed": 1.5,
+		"gravity": 0.085,
+		"airdodgeStart": 3,
+		"airdodgeEnd": 28,
 		"charColor": "229, 91, 121",
 		"imagePosition": "rightImage"
 	},
 	{
-		"charIndex": "55",
+		"charIndex": 55,
 		"name": "Sonic",
 		"id": "sonic",
 		"percents": {
@@ -907,15 +907,15 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "94",
-		"fallspeed": "1.45",
-		"gravity": "0.09",
-		"airdodgeStart": "2",
-		"airdodgeEnd": "25",
+		"weight": 94,
+		"fallspeed": 1.45,
+		"gravity": 0.09,
+		"airdodgeStart": 2,
+		"airdodgeEnd": 25,
 		"charColor": "87, 157, 242"
 	},
 	{
-		"charIndex": "56",
+		"charIndex": 56,
 		"name": "Toon Link",
 		"id": "toon-link",
 		"percents": {
@@ -923,15 +923,15 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "93",
-		"fallspeed": "1.28",
-		"gravity": "0.079",
-		"airdodgeStart": "2",
-		"airdodgeEnd": "25",
+		"weight": 93,
+		"fallspeed": 1.28,
+		"gravity": 0.079,
+		"airdodgeStart": 2,
+		"airdodgeEnd": 25,
 		"charColor": "152, 212, 75"
 	},
 	{
-		"charIndex": "57",
+		"charIndex": 57,
 		"name": "Villager",
 		"id": "villager",
 		"percents": {
@@ -939,15 +939,15 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "97",
-		"fallspeed": "1.32",
-		"gravity": "0.078",
-		"airdodgeStart": "3",
-		"airdodgeEnd": "28",
+		"weight": 97,
+		"fallspeed": 1.32,
+		"gravity": 0.078,
+		"airdodgeStart": 3,
+		"airdodgeEnd": 28,
 		"charColor": "59, 172, 108"
 	},
 	{
-		"charIndex": "58",
+		"charIndex": 58,
 		"name": "Wario",
 		"id": "wario",
 		"percents": {
@@ -955,15 +955,15 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "107",
-		"fallspeed": "1.61",
-		"gravity": "0.092",
-		"airdodgeStart": "3",
-		"airdodgeEnd": "27",
+		"weight": 107,
+		"fallspeed": 1.61,
+		"gravity": 0.092,
+		"airdodgeStart": 3,
+		"airdodgeEnd": 27,
 		"charColor": "254, 203, 76"
 	},
 	{
-		"charIndex": "59",
+		"charIndex": 59,
 		"name": "Wii Fit Trainer",
 		"id": "wii-fit-trainer",
 		"percents": {
@@ -971,15 +971,15 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "96",
-		"fallspeed": "1.3",
-		"gravity": "0.09",
-		"airdodgeStart": "2",
-		"airdodgeEnd": "26",
+		"weight": 96,
+		"fallspeed": 1.3,
+		"gravity": 0.09,
+		"airdodgeStart": 2,
+		"airdodgeEnd": 26,
 		"charColor": "134, 215, 118"
 	},
 	{
-		"charIndex": "60",
+		"charIndex": 60,
 		"name": "Yoshi",
 		"id": "yoshi",
 		"percents": {
@@ -987,15 +987,15 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "104",
-		"fallspeed": "1.29",
-		"gravity": "0.08",
-		"airdodgeStart": "3",
-		"airdodgeEnd": "28",
+		"weight": 104,
+		"fallspeed": 1.29,
+		"gravity": 0.08,
+		"airdodgeStart": 3,
+		"airdodgeEnd": 28,
 		"charColor": "77, 149, 64"
 	},
 	{
-		"charIndex": "61",
+		"charIndex": 61,
 		"name": "Zelda",
 		"id": "zelda",
 		"percents": {
@@ -1003,16 +1003,16 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "85",
-		"fallspeed": "1.35",
-		"gravity": "0.071",
-		"airdodgeStart": "3",
-		"airdodgeEnd": "28",
+		"weight": 85,
+		"fallspeed": 1.35,
+		"gravity": 0.071,
+		"airdodgeStart": 3,
+		"airdodgeEnd": 28,
 		"charColor": "170, 116, 186",
 		"imagePosition": "rightImage"
 	},
 	{
-		"charIndex": "62",
+		"charIndex": 62,
 		"name": "Zero Suit Samus",
 		"id": "zero-suit-samus",
 		"percents": {
@@ -1020,11 +1020,11 @@
 			"end": 0,
 			"distance": null
 		},
-		"weight": "80",
-		"fallspeed": "1.7",
-		"gravity": "0.12",
-		"airdodgeStart": "2",
-		"airdodgeEnd": "25",
+		"weight": 80,
+		"fallspeed": 1.7,
+		"gravity": 0.12,
+		"airdodgeStart": 2,
+		"airdodgeEnd": 25,
 		"charColor": "0, 90, 170"
 	}
 ]

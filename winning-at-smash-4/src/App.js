@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import CharacterMoveCards from './components/CharacterMoveCards';
 import CharacterTiles from './components/CharacterTiles';
+import { Dropdown, Modal } from 'bootstrap';
 
 function App() {
 	const [mounted, setMounted] = useState(false);
@@ -14,6 +15,98 @@ function App() {
 
 	const [selectedCharacter, setSelectedCharacter] = useState({});
 	const [selectedKillConfirm, setSelectedKillConfirm] = useState({});
+
+	// these sorters exist in a sort of 'tri-nary' state. 0 means off (sort not in action), 1 means sort descending, -1 means sort ascending
+	// only one can be in action, so clicking one sets the others back to 0
+	const [sortByName, setSortByName] = useState(1);
+	const [sortByWeight, setSortByWeight] = useState(0);
+	const [sortByDifficulty, setSortByDifficulty] = useState(0);
+	const [sortByFallspeed, setSortByFallspeed] = useState(0);
+	const [sortByGravity, setSortByGravity] = useState(0);
+
+	const confirmSelectedKillConfirm = (character, move) => {
+		// updating base character attributes with the percents and stage info from the kill confirm
+		const updatedCharAttrs = [...charAttrs];
+		const percDiffs = [];
+		for (const char of updatedCharAttrs) {
+			const percDiff = move.percents[char.id].end - move.percents[char.id].start;
+			char.percents = {
+				...move.percents[char.id],
+				percDiff
+			};
+
+			if (percDiff !== 0) percDiffs.push(percDiff);
+		}
+
+		// calculating an average between percent differences to determine the 'difficulty' of the kill confirm on each character
+		// since the total range changes between character to character, there can't be an absolute value for determining this - an average must be taken of all start/end differences for that particular kill confirm
+		const sumOfPercDiffs = percDiffs.reduce((a, b) => a + b);
+		const percentAverage = sumOfPercDiffs / percDiffs.length;
+
+		// now calculate the percents to iterate by. Assuming there are 5 difficulty levels, take sum and divide by midway for average. So sum / 2.5
+		// this calculates how much to iterate each percent by
+		const diffIterator = Math.floor(percentAverage / 2.5);
+
+		for (const char of updatedCharAttrs) {
+			const diffObj = {
+				diffClass: '',
+				diffText: ''
+			};
+			if (character.charId !== 'zelda' && move.moveId !== 'dthrow-up-air') {
+				if (0 <= char.percents.percDiff && char.percents.percDiff <= diffIterator) {
+					diffObj.diffText = 'Very Hard';
+					diffObj.diffClass = 'very-hard';
+				} else if (diffIterator <= char.percents.percDiff && char.percents.percDiff <= diffIterator * 2) {
+					diffObj.diffText = 'Hard';
+					diffObj.diffClass = 'hard';
+				} else if (diffIterator * 2 <= char.percents.percDiff && char.percents.percDiff <= diffIterator * 3) {
+					diffObj.diffText = 'Average';
+					diffObj.diffClass = 'average';
+				} else if (diffIterator * 3 <= char.percents.percDiff && char.percents.percDiff <= diffIterator * 4) {
+					diffObj.diffText = 'Easy';
+					diffObj.diffClass = 'easy';
+				} else if (diffIterator * 4 <= char.percents.percDiff) {
+					diffObj.diffText = 'Very Easy';
+					diffObj.diffClass = 'very-easy';
+				} else {
+					diffObj.diffText = 'Blah';
+					diffObj.diffClass = 'blah';
+				}
+			} else {
+				// alternative difficulty just for Zelda based on the victim's airdodge frames (thanks Zelda)
+				if (char.airdodgeStart === 1) {
+					diffObj.diffText = 'Very Hard';
+					diffObj.diffClass = 'very-hard';
+				} else if (char.airdodgeStart === 2) {
+					diffObj.diffText = 'Hard';
+					diffObj.diffClass = 'hard';
+				} else if (char.airdodgeStart === 3) {
+					diffObj.diffText = 'Average';
+					diffObj.diffClass = 'average';
+				} else if (char.airdodgeStart === 4) {
+					diffObj.diffText = 'Easy';
+					diffObj.diffClass = 'easy';
+				}
+			}
+
+			char.percents.diffText = diffObj.diffText;
+			char.percents.diffClass = diffObj.diffClass;
+		}
+
+
+		updatedCharAttrs.sort((a, b) => (a.name < b.name ? -1 : a.name > b.name ? 1 : 0));
+
+		setCharAttrs(updatedCharAttrs);
+		setSelectedCharacter(character);
+		setSelectedKillConfirm(move);
+
+		// resetting sorters
+		setSortByName(1);
+		setSortByWeight(0);
+		setSortByDifficulty(0);
+		setSortByFallspeed(0);
+		setSortByGravity(0);
+	};
 
 	const getData = async (url) => {
 		return await fetch(url)
@@ -88,8 +181,7 @@ function App() {
 					<Sidebar
 						sidebarOpen={sidebarOpen}
 						moveCards={killConfirms}
-						setSelectedCharacter={setSelectedCharacter}
-						setSelectedKillConfirm={setSelectedKillConfirm}
+						confirmSelectedKillConfirm={confirmSelectedKillConfirm}
 					/>
 				)}
 				<div className="d-flex flex-column main-grid">
@@ -103,11 +195,7 @@ function App() {
 							'Is loading'
 						) : (
 							<>
-								<CharacterMoveCards
-									moveCards={killConfirms}
-									setSelectedCharacter={setSelectedCharacter}
-									setSelectedKillConfirm={setSelectedKillConfirm}
-								/>
+								<CharacterMoveCards moveCards={killConfirms} confirmSelectedKillConfirm={confirmSelectedKillConfirm} />
 								<CharacterTiles
 									charAttrs={charAttrs}
 									setCharAttrs={setCharAttrs}
@@ -115,7 +203,19 @@ function App() {
 									selectedCharacter={selectedCharacter}
 									setSelectedKillConfirm={setSelectedKillConfirm}
 									selectedKillConfirm={selectedKillConfirm}
+									confirmSelectedKillConfirm={confirmSelectedKillConfirm}
+									sortByName={sortByName}
+									setSortByName={setSortByName}
+									sortByWeight={sortByWeight}
+									setSortByWeight={setSortByWeight}
+									sortByDifficulty={sortByDifficulty}
+									setSortByDifficulty={setSortByDifficulty}
+									sortByFallspeed={sortByFallspeed}
+									setSortByFallspeed={setSortByFallspeed}
+									sortByGravity={sortByGravity}
+									setSortByGravity={setSortByGravity}
 								/>
+								<ModalStagePercents stageList={stageList} />
 							</>
 						)}
 					</main>
