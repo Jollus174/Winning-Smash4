@@ -43,7 +43,8 @@ const InfoBox = ({ selectedKillConfirm }) => {
 };
 
 const Tiles = (props) => {
-	const { charAttrs, filteredCharAttrs, showAdditionalCharacterInfo, setSelectedCharacterModal } = props;
+	const { charAttrs, filteredCharAttrs, showAdditionalCharacterInfo, setSelectedCharacterModal, sortDescending } =
+		props;
 
 	return (
 		<div>
@@ -71,7 +72,7 @@ const Tiles = (props) => {
 								}
 							>
 								<img src={`/images/characters/webp/${character.id}.webp`} alt={'character.name'} />
-								<div className="character-index">{i + 1}</div>
+								<div className="character-index">{sortDescending ? i + 1 : charAttrs.length - i}</div>
 								<div className="character-info">
 									<div className="item grid-percent-range">
 										{character.percents.start} - {character.percents.end}%
@@ -142,6 +143,8 @@ const CharacterTiles = ({
 		setFilteredCharAttrs(filteredChars);
 	};
 
+	const [sortDescending, setSortDescending] = useState(true);
+
 	const handleSortByName = () => {
 		const newCharAttrs = [...charAttrs];
 
@@ -152,9 +155,11 @@ const CharacterTiles = ({
 
 		if (sortByName === 0 || sortByName === -1) {
 			setSortByName(1);
+			setSortDescending(true);
 			newCharAttrs.sort((a, b) => (a.name < b.name ? -1 : a.name > b.name ? 1 : 0));
 		} else if (sortByName === 1) {
 			setSortByName(-1);
+			setSortDescending(false);
 			newCharAttrs.sort((a, b) => (a.name > b.name ? -1 : a.name < b.name ? 1 : 0));
 		}
 		setCharAttrs(newCharAttrs);
@@ -169,11 +174,13 @@ const CharacterTiles = ({
 		setSortByGravity(0);
 
 		if (sortByWeight === 0 || sortByWeight === -1) {
-			newCharAttrs.sort((a, b) => a.weight - b.weight);
 			setSortByWeight(1);
+			setSortDescending(true);
+			newCharAttrs.sort((a, b) => a.weight - b.weight);
 		} else if (sortByWeight === 1) {
-			newCharAttrs.sort((a, b) => b.weight - a.weight);
 			setSortByWeight(-1);
+			setSortDescending(false);
+			newCharAttrs.sort((a, b) => b.weight - a.weight);
 		}
 		setCharAttrs(newCharAttrs);
 	};
@@ -188,20 +195,24 @@ const CharacterTiles = ({
 
 		if (selectedCharacter.charId !== 'zelda' && selectedKillConfirm.moveId !== 'dthrow-up-air') {
 			if (sortByDifficulty === 0 || sortByDifficulty === -1) {
-				newCharAttrs.sort((a, b) => a.percents.percDiff - b.percents.percDiff);
 				setSortByDifficulty(1);
+				setSortDescending(true);
+				newCharAttrs.sort((a, b) => a.percents.percDiff - b.percents.percDiff);
 			} else if (sortByDifficulty === 1) {
-				newCharAttrs.sort((a, b) => b.percents.percDiff - a.percents.percDiff);
 				setSortByDifficulty(-1);
+				setSortDescending(false);
+				newCharAttrs.sort((a, b) => b.percents.percDiff - a.percents.percDiff);
 			}
 		} else {
 			// different difficulty sorting for smelly Zelda
 			if (sortByDifficulty === 0 || sortByDifficulty === -1) {
-				newCharAttrs.sort((a, b) => a.airdodgeStart - b.airdodgeStart);
 				setSortByDifficulty(1);
+				setSortDescending(true);
+				newCharAttrs.sort((a, b) => a.airdodgeStart - b.airdodgeStart);
 			} else if (sortByDifficulty === 1) {
-				newCharAttrs.sort((a, b) => b.airdodgeStart - a.airdodgeStart);
 				setSortByDifficulty(-1);
+				setSortDescending(false);
+				newCharAttrs.sort((a, b) => b.airdodgeStart - a.airdodgeStart);
 			}
 		}
 		setCharAttrs(newCharAttrs);
@@ -216,11 +227,13 @@ const CharacterTiles = ({
 		setSortByGravity(0);
 
 		if (sortByFallspeed === 0 || sortByFallspeed === -1) {
-			newCharAttrs.sort((a, b) => a.fallspeed - b.fallspeed);
 			setSortByFallspeed(1);
+			setSortDescending(true);
+			newCharAttrs.sort((a, b) => a.fallspeed - b.fallspeed);
 		} else if (sortByFallspeed === 1) {
-			newCharAttrs.sort((a, b) => b.fallspeed - a.fallspeed);
 			setSortByFallspeed(-1);
+			setSortDescending(false);
+			newCharAttrs.sort((a, b) => b.fallspeed - a.fallspeed);
 		}
 		setCharAttrs(newCharAttrs);
 	};
@@ -234,11 +247,13 @@ const CharacterTiles = ({
 		setSortByFallspeed(0);
 
 		if (sortByGravity === 0 || sortByGravity === -1) {
-			newCharAttrs.sort((a, b) => a.gravity - b.gravity);
 			setSortByGravity(1);
+			setSortDescending(true);
+			newCharAttrs.sort((a, b) => a.gravity - b.gravity);
 		} else if (sortByGravity === 1) {
-			newCharAttrs.sort((a, b) => b.gravity - a.gravity);
 			setSortByGravity(-1);
+			setSortDescending(false);
+			newCharAttrs.sort((a, b) => b.gravity - a.gravity);
 		}
 		setCharAttrs(newCharAttrs);
 	};
