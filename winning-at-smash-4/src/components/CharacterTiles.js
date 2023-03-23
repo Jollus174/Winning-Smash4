@@ -48,55 +48,63 @@ const Tiles = (props) => {
 	return (
 		<div>
 			<div className="row row-character-tile">
-				{charAttrs.map((character, i) => (
-					<div
-						className={`col-6 col-md-4 col-lg-3 col-character-tile ${
-							filteredCharAttrs.find((char) => char.id === character.id) ? '' : 'd-none'
-						}`}
-						key={'character-' + character.charIndex}
-					>
-						<button
-							type="button"
-							className="btn character-tile"
-							data-bs-toggle="modal"
-							data-bs-target="#modal-stage"
-							style={{
-								'--tile-bg-color': 'rgb(' + character.charColor + ')'
-							}}
-							onClick={() => setSelectedCharacterModal(character)}
-						>
-							<img src={`/images/characters/webp/${character.id}.webp`} alt={'character.name'} />
-							<div className="character-index">{i + 1}</div>
-							<div className="character-info">
-								<div className="item grid-percent-range">
-									{character.percents.start} - {character.percents.end}%
-								</div>
+				{charAttrs.map((character, i) => {
+					const characterValid = character.percents.percDiff !== 0;
 
-								<div className="d-flex align-items-center grid-difficulty">
-									<div className={`item easy ${character.percents.diffClass}`}>
-										{character.percents.diffText} - {character.percents.percDiff}%
+					return (
+						<div
+							className={`col-6 col-md-4 col-lg-3 col-character-tile ${
+								filteredCharAttrs.find((char) => char.id === character.id) ? '' : 'd-none'
+							}`}
+							key={'character-' + character.charIndex}
+						>
+							<button
+								type="button"
+								className={`btn character-tile ${characterValid ? '' : 'invalid'}`}
+								data-bs-toggle={characterValid ? 'modal' : ''}
+								data-bs-target={characterValid ? '#modal-stage' : ''}
+								style={{
+									'--tile-bg-color': 'rgb(' + character.charColor + ')'
+								}}
+								onClick={() =>
+									characterValid ? setSelectedCharacterModal(character) : console.log('toggle the info modal instead')
+								}
+							>
+								<img src={`/images/characters/webp/${character.id}.webp`} alt={'character.name'} />
+								<div className="character-index">{i + 1}</div>
+								<div className="character-info">
+									<div className="item grid-percent-range">
+										{character.percents.start} - {character.percents.end}%
 									</div>
-									{character.percents.distance ? (
-										<div className="item special-info">{character.percents.distance}</div>
+
+									<div className="d-flex align-items-center grid-difficulty">
+										<div className={`item easy ${character.percents.diffClass}`}>
+											{character.percents.diffText} - {character.percents.percDiff}%
+										</div>
+										{character.percents.distance ? (
+											<div className="item special-info">{character.percents.distance}</div>
+										) : null}
+									</div>
+									{showAdditionalCharacterInfo ? (
+										<>
+											<div className="item-extra grid-additional-info">
+												<span className="font-weight-normal">Fallspeed -</span> {character.fallspeed}
+											</div>
+											<div className="item-extra grid-additional-info">
+												<span className="font-weight-normal">Gravity -</span> {character.gravity}
+											</div>
+										</>
 									) : null}
 								</div>
-								{showAdditionalCharacterInfo ? (
-									<>
-										<div className="item-extra grid-additional-info">
-											<span className="font-weight-normal">Fallspeed -</span> {character.fallspeed}
-										</div>
-										<div className="item-extra grid-additional-info">
-											<span className="font-weight-normal">Gravity -</span> {character.gravity}
-										</div>
-									</>
-								) : null}
-							</div>
-							<div className="character-name">
-								<h3 className="h6 m-0 text-center">{character.name}</h3>
-							</div>
-						</button>
-					</div>
-				))}
+								<div className="character-name">
+									<h3 className="h6 m-0 text-center">{character.name}</h3>
+								</div>
+
+								{!characterValid ? <div className="text-invalid text-uppercase">N/A - Check Info</div> : null}
+							</button>
+						</div>
+					);
+				})}
 			</div>
 		</div>
 	);
