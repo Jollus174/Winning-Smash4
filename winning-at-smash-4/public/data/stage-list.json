@@ -1,117 +1,117 @@
 {
 	"final-destination": {
+		"id": "stage-fd",
 		"name": "Final Destination",
-		"className": "stage-fd",
 		"imageFile": "stage_fd.jpg",
 		"color": "#424d98",
 		"tables": [
 			{
+				"id": "fd-normal",
 				"stagePartName": "FD Normal",
-				"stagePartRef": "fdNormal",
 				"min": 0,
-				"max": 0
+				"max": 50
 			}
 		]
 	},
 	"battlefield": {
+		"id": "stage-bf",
 		"name": "Battlefield",
-		"className": "stage-bf",
 		"imageFile": "stage_bf.jpg",
 		"color": "#698b9c",
 		"tables": [
 			{
+				"id": "bf-normal",
 				"stagePartName": "BF Normal",
-				"stagePartRef": "bfNormal",
 				"min": 0,
 				"max": 0
 			},
 			{
-				"stagePartName": "BF Low Plat<span class='hidden-sm-down'>form</span>",
-				"stagePartRef": "bfLowPlat",
+				"id": "bf-low-plat",
+				"stagePartName": "BF Low Platform",
 				"min": 0,
 				"max": 0
 			},
 			{
-				"stagePartName": "BF Top Plat<span class='hidden-sm-down'>form</span>",
-				"stagePartRef": "bfTopPlat",
+				"id": "bf-top-plat",
+				"stagePartName": "BF Top Platform",
 				"min": 0,
 				"max": 0
 			}
 		]
 	},
 	"dreamland": {
+		"id": "stage-dl",
 		"name": "Dreamland",
-		"className": "stage-dl",
 		"imageFile": "stage_dl.jpg",
 		"color": "#2ab156",
 		"tables": [
 			{
+				"id": "dl-normal",
 				"stagePartName": "DL Normal",
-				"stagePartRef": "dlNormal",
 				"min": 0,
 				"max": 0
 			},
 			{
-				"stagePartName": "DL Low Plat<span class='hidden-sm-down'>form</span>",
-				"stagePartRef": "dlLowPlat",
+				"id": "dl-low-plat",
+				"stagePartName": "DL Low Platform",
 				"min": 0,
 				"max": 0
 			},
 			{
-				"stagePartName": "DL Top Plat<span class='hidden-sm-down'>form</span>",
-				"stagePartRef": "dlTopPlat",
+				"id": "dl-top-plat",
+				"stagePartName": "DL Top Platform",
 				"min": 0,
 				"max": 0
 			}
 		]
 	},
 	"smashville": {
+		"id": "stage-sv",
 		"name": "Smashville",
-		"className": "stage-sv",
 		"imageFile": "stage_sv.jpg",
 		"color": "#eeb463",
 		"tables": [
 			{
+				"id": "sv-normal",
 				"stagePartName": "SV Normal",
-				"stagePartRef": "svNormal",
 				"min": 0,
 				"max": 0
 			},
 			{
-				"stagePartName": "SV Plat<span class='hidden-sm-down'>form</span>",
-				"stagePartRef": "svPlat",
+				"id": "sv-plat",
+				"stagePartName": "SV Platform",
 				"min": 0,
 				"max": 0
 			}
 		]
 	},
 	"town-and-city": {
+		"id": "stage-tc",
 		"name": "Town & City",
-		"className": "stage-tc",
 		"imageFile": "stage_tc.jpg",
 		"color": "#ad7252",
 		"tables": [
 			{
+				"id": "tc-normal",
 				"stagePartName": "TC Normal",
-				"stagePartRef": "tcNormal",
 				"min": 0,
 				"max": 0
 			},
 			{
-				"stagePartName": "TC Low Plat<span class='hidden-sm-down'>form</span>",
-				"stagePartRef": "tcLowPlat",
+				"id": "tc-low-plat",
+				"stagePartName": "TC Low Platform",
 				"min": 0,
 				"max": 0
 			},
 			{
-				"stagePartName": "TC Side Plat<span class='hidden-sm-down'>form</span>",
-				"stagePartRef": "tcSidePlat",
+				"id": "tc-side-plat",
+				"stagePartName": "TC Side Platform",
 				"min": 0,
 				"max": 0
 			},
 			{
-				"stagePartName": "TC Top Plat<span class='hidden-sm-down'>form</span>",
-				"stagePartRef": "tcTopPlat",
+				"id": "tc-top-plat",
+				"stagePartName": "TC Top Platform",
 				"min": 0,
 				"max": 0
 			}

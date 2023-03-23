@@ -1,0 +1,75 @@
+.modal {
+	--bs-modal-border-color: #{$white};
+	--bs-modal-border-width: 3px;
+	--bs-modal-border-radius: 0;
+	--bs-modal-header-padding-x: 0;
+	--bs-modal-header-padding-y: 0;
+
+	.modal-header {
+		display: block;
+	}
+
+	.modal-content {
+		max-height: calc(var(--vh, 1vh) * 90);
+	}
+
+	.btn-prev,
+	.btn-next {
+		--bs-btn-padding-x: 6px;
+		--bs-btn-padding-y: 14px;
+		--bs-btn-font-size: 1.5rem;
+		--bs-btn-border-radius: 0;
+		position: absolute;
+		top: 50%;
+		z-index: 1200;
+		transform: translateY(-50%);
+
+	}
+
+	.btn-prev {
+		left: -35px;
+	}
+
+	.btn-next {
+		right: -35px;
+	}
+}
+
+.modal-backdrop {
+	transition: background-color 0.2s ease;
+}
+
+.modal-stage-list {
+	--bs-modal-header-padding: 0;
+	.modal-content {
+		max-height: calc(var(--vh, 1vh) * 90);
+	}
+
+	.modal-body {
+		overflow: auto;
+	}
+
+	.rage-modifier {
+		padding: 1rem;
+		background-color: #e8e8e8;
+
+		.rage-modifier-title {
+			font-size: 14px;
+			font-weight: 700;
+			letter-spacing: 2px;
+		}
+
+		.btn-group {
+			justify-content: center;
+		}
+
+		.btn {
+			--bs-btn-padding-x: 6px;
+			--bs-btn-hover-color: var(--bs-btn-color);
+			--bs-btn-focus-color: var(--bs-btn-color);
+			--bs-btn-active-bg: #ff6951;
+			--bs-btn-active-color: #{$white};
+			--bs-btn-font-size: 13px;
+		}
+	}
+}

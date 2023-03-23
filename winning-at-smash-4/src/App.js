@@ -11,10 +11,14 @@ function App() {
 	const [sidebarOpen, setSidebarOpen] = useState(true);
 	const [charAttrs, setCharAttrs] = useState([]);
 	const [killConfirms, setKillConfirms] = useState([]);
-	const [stageList, setStageList] = useState([]);
+	const [stageList, setStageList] = useState({});
 
 	const [selectedCharacter, setSelectedCharacter] = useState({});
 	const [selectedKillConfirm, setSelectedKillConfirm] = useState({});
+
+	const [selectedCharacterModal, setSelectedCharacterModal] = useState({});
+
+	const [filteredCharAttrs, setFilteredCharAttrs] = useState([]);
 
 	// these sorters exist in a sort of 'tri-nary' state. 0 means off (sort not in action), 1 means sort descending, -1 means sort ascending
 	// only one can be in action, so clicking one sets the others back to 0
@@ -24,7 +28,7 @@ function App() {
 	const [sortByFallspeed, setSortByFallspeed] = useState(0);
 	const [sortByGravity, setSortByGravity] = useState(0);
 
-	const confirmSelectedKillConfirm = (character, move) => {
+	const handleSelectedKillConfirm = (character, move) => {
 		// updating base character attributes with the percents and stage info from the kill confirm
 		const updatedCharAttrs = [...charAttrs];
 		const percDiffs = [];
@@ -35,6 +39,7 @@ function App() {
 				percDiff
 			};
 
+			// discluding percDiffs of 0 so they don't skew the difficulty curve calculations lower down
 			if (percDiff !== 0) percDiffs.push(percDiff);
 		}
 
@@ -130,12 +135,12 @@ function App() {
 
 		Promise.all(Object.values(requests))
 			.then((responses) => {
-				// console.log(responses);
 				const [charAttrs, killConfirms, stageList] = responses;
 
 				setCharAttrs(charAttrs);
 				setKillConfirms(killConfirms);
 				setStageList(stageList);
+				setFilteredCharAttrs(charAttrs);
 
 				setLoading(false);
 			})
@@ -181,7 +186,7 @@ function App() {
 					<Sidebar
 						sidebarOpen={sidebarOpen}
 						moveCards={killConfirms}
-						confirmSelectedKillConfirm={confirmSelectedKillConfirm}
+						handleSelectedKillConfirm={handleSelectedKillConfirm}
 					/>
 				)}
 				<div className="d-flex flex-column main-grid">
@@ -195,7 +200,7 @@ function App() {
 							'Is loading'
 						) : (
 							<>
-								<CharacterMoveCards moveCards={killConfirms} confirmSelectedKillConfirm={confirmSelectedKillConfirm} />
+								<CharacterMoveCards moveCards={killConfirms} handleSelectedKillConfirm={handleSelectedKillConfirm} />
 								<CharacterTiles
 									charAttrs={charAttrs}
 									setCharAttrs={setCharAttrs}
@@ -203,7 +208,7 @@ function App() {
 									selectedCharacter={selectedCharacter}
 									setSelectedKillConfirm={setSelectedKillConfirm}
 									selectedKillConfirm={selectedKillConfirm}
-									confirmSelectedKillConfirm={confirmSelectedKillConfirm}
+									handleSelectedKillConfirm={handleSelectedKillConfirm}
 									sortByName={sortByName}
 									setSortByName={setSortByName}
 									sortByWeight={sortByWeight}
@@ -214,8 +219,18 @@ function App() {
 									setSortByFallspeed={setSortByFallspeed}
 									sortByGravity={sortByGravity}
 									setSortByGravity={setSortByGravity}
+									setSelectedCharacterModal={setSelectedCharacterModal}
+									setFilteredCharAttrs={setFilteredCharAttrs}
+									filteredCharAttrs={filteredCharAttrs}
 								/>
-								<ModalStagePercents stageList={stageList} />
+								<ModalStagePercents
+									stageList={stageList}
+									selectedCharacter={selectedCharacter}
+									selectedCharacterModal={selectedCharacterModal}
+									setSelectedCharacterModal={setSelectedCharacterModal}
+									handleSelectedKillConfirm={handleSelectedKillConfirm}
+									filteredCharAttrs={filteredCharAttrs}
+								/>
 							</>
 						)}
 					</main>

@@ -1,11 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 
-const openCharacterModal = () => {
-	console.log('opening character modal!');
-};
-
-const MoveButtons = ({ selectedCharacter, selectedKillConfirm, confirmSelectedKillConfirm }) => {
+const MoveButtons = ({ selectedCharacter, selectedKillConfirm, handleSelectedKillConfirm }) => {
 	if (!selectedCharacter.moves || selectedCharacter.moves.length < 2)
 		return (
 			<>
@@ -23,7 +19,7 @@ const MoveButtons = ({ selectedCharacter, selectedKillConfirm, confirmSelectedKi
 						type="button"
 						className={`btn btn-primary btn-sm ${move.moveId === selectedKillConfirm.moveId ? 'active' : ''}`}
 						style={{ '--btn-bg': selectedCharacter.btnColor }}
-						onClick={() => confirmSelectedKillConfirm(selectedCharacter, move)}
+						onClick={() => handleSelectedKillConfirm(selectedCharacter, move)}
 						key={'move-btn-' + move.moveId}
 					>
 						<span dangerouslySetInnerHTML={{ __html: move.moveName }} />
@@ -47,27 +43,7 @@ const InfoBox = ({ selectedKillConfirm }) => {
 };
 
 const Tiles = (props) => {
-	const { charAttrs, showAdditionalCharacterInfo, filter } = props;
-
-	const PercentsDifference = ({ percents }) => {
-		return (
-			<>
-				<div className="item grid-percent-range">
-					{percents.start} - {percents.end}%
-				</div>
-
-				<div className="d-flex align-items-center grid-difficulty">
-					<div className={`item easy ${percents.diffClass}`}>
-						{percents.diffText} - {percents.percDiff}%
-					</div>
-					{percents.distance ? <div className="item special-info">{percents.distance}</div> : null}
-				</div>
-			</>
-		);
-	};
-
-	const filteredCharAttrs =
-		filter !== '' ? charAttrs.filter((char) => char.name.toLowerCase().includes(filter.toLowerCase())) : charAttrs;
+	const { filteredCharAttrs, showAdditionalCharacterInfo, setSelectedCharacterModal } = props;
 
 	return (
 		<div>
@@ -77,15 +53,28 @@ const Tiles = (props) => {
 						<button
 							type="button"
 							className="btn character-tile"
+							data-bs-toggle="modal"
+							data-bs-target="#modal-stage"
 							style={{
 								'--tile-bg-color': 'rgb(' + character.charColor + ')'
 							}}
-							onClick={openCharacterModal}
+							onClick={() => setSelectedCharacterModal(character)}
 						>
-							<img src={'/images/characters/webp/' + character.id + '.webp'} alt={'character.name'} />
+							<img src={`/images/characters/webp/${character.id}.webp`} alt={'character.name'} />
 							<div className="character-index">{i + 1}</div>
 							<div className="character-info">
-								<PercentsDifference percents={character.percents} />
+								<div className="item grid-percent-range">
+									{character.percents.start} - {character.percents.end}%
+								</div>
+
+								<div className="d-flex align-items-center grid-difficulty">
+									<div className={`item easy ${character.percents.diffClass}`}>
+										{character.percents.diffText} - {character.percents.percDiff}%
+									</div>
+									{character.percents.distance ? (
+										<div className="item special-info">{character.percents.distance}</div>
+									) : null}
+								</div>
 								{showAdditionalCharacterInfo ? (
 									<>
 										<div className="item-extra grid-additional-info">
@@ -115,7 +104,7 @@ const CharacterTiles = ({
 	selectedCharacter,
 	setSelectedKillConfirm,
 	selectedKillConfirm,
-	confirmSelectedKillConfirm,
+	handleSelectedKillConfirm,
 	sortByName,
 	setSortByName,
 	sortByWeight,
@@ -125,10 +114,20 @@ const CharacterTiles = ({
 	sortByFallspeed,
 	setSortByFallspeed,
 	sortByGravity,
-	setSortByGravity
+	setSortByGravity,
+	setSelectedCharacterModal,
+	setFilteredCharAttrs,
+	filteredCharAttrs
 }) => {
 	const [showAdditionalCharacterInfo, setShowAdditionalCharacterInfo] = useState(false);
-	const [filter, setFilter] = useState('');
+
+	const handleFilter = (value) => {
+		let filteredChars = charAttrs;
+		if (value !== '') {
+			filteredChars = charAttrs.filter((char) => char.name.toLowerCase().includes(value.toLowerCase()));
+		}
+		setFilteredCharAttrs(filteredChars);
+	};
 
 	const handleSortByName = () => {
 		const newCharAttrs = [...charAttrs];
@@ -259,7 +258,7 @@ const CharacterTiles = ({
 				<MoveButtons
 					selectedCharacter={selectedCharacter}
 					selectedKillConfirm={selectedKillConfirm}
-					confirmSelectedKillConfirm={confirmSelectedKillConfirm}
+					handleSelectedKillConfirm={handleSelectedKillConfirm}
 				/>
 
 				<button type="button" className="btn btn-primary btn-sm ms-auto">
@@ -274,7 +273,7 @@ const CharacterTiles = ({
 						type="text"
 						className="form-control input-filter"
 						placeholder="Filter..."
-						onKeyUp={(e) => setFilter(e.target.value)}
+						onKeyUp={(e) => handleFilter(e.target.value)}
 					/>
 					<div className="btn-group">
 						<button
@@ -391,7 +390,11 @@ const CharacterTiles = ({
 					</div>
 				</div>
 				<InfoBox selectedKillConfirm={selectedKillConfirm} />
-				<Tiles charAttrs={charAttrs} showAdditionalCharacterInfo={showAdditionalCharacterInfo} filter={filter} />
+				<Tiles
+					filteredCharAttrs={filteredCharAttrs}
+					showAdditionalCharacterInfo={showAdditionalCharacterInfo}
+					setSelectedCharacterModal={setSelectedCharacterModal}
+				/>
 			</div>
 		</div>
 	);

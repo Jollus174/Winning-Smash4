@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CharacterMoveCards = ({ moveCards, confirmSelectedKillConfirm }) => {
+const CharacterMoveCards = ({ moveCards, handleSelectedKillConfirm }) => {
 	return (
 		<div className="character-move-cards">
 			<div className="row">
@@ -21,7 +21,7 @@ const CharacterMoveCards = ({ moveCards, confirmSelectedKillConfirm }) => {
 											className="btn btn-primary btn-sm"
 											key={'card-' + move.moveId}
 											style={{ '--btn-bg': character.btnColor }}
-											onClick={() => confirmSelectedKillConfirm(character, move)}
+											onClick={() => handleSelectedKillConfirm(character, move)}
 										>
 											<span dangerouslySetInnerHTML={{ __html: move.moveName }} />
 										</button>
