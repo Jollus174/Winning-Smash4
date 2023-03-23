@@ -43,13 +43,18 @@ const InfoBox = ({ selectedKillConfirm }) => {
 };
 
 const Tiles = (props) => {
-	const { filteredCharAttrs, showAdditionalCharacterInfo, setSelectedCharacterModal } = props;
+	const { charAttrs, filteredCharAttrs, showAdditionalCharacterInfo, setSelectedCharacterModal } = props;
 
 	return (
 		<div>
 			<div className="row row-character-tile">
-				{filteredCharAttrs.map((character, i) => (
-					<div className="col-6 col-md-4 col-lg-3 col-character-tile" key={'character-' + character.charIndex}>
+				{charAttrs.map((character, i) => (
+					<div
+						className={`col-6 col-md-4 col-lg-3 col-character-tile ${
+							filteredCharAttrs.find((char) => char.id === character.id) ? '' : 'd-none'
+						}`}
+						key={'character-' + character.charIndex}
+					>
 						<button
 							type="button"
 							className="btn character-tile"
@@ -391,6 +396,7 @@ const CharacterTiles = ({
 				</div>
 				<InfoBox selectedKillConfirm={selectedKillConfirm} />
 				<Tiles
+					charAttrs={charAttrs}
 					filteredCharAttrs={filteredCharAttrs}
 					showAdditionalCharacterInfo={showAdditionalCharacterInfo}
 					setSelectedCharacterModal={setSelectedCharacterModal}
