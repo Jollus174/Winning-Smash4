@@ -80,8 +80,15 @@ const ModalStagePercents = ({
 
 	const handleKeyPress = (e) => {
 		const { key } = e;
-		if (key === 'ArrowLeft') goToPrevCharacter();
-		if (key === 'ArrowRight') goToNextCharacter();
+		if (key === 'ArrowLeft') {
+			// for some reason this doesn't work properly, but imitating a click on the DOM element does. Whack.
+			// goToPrevCharacter();
+			document.querySelector('#btn-prev').click();
+		}
+		if (key === 'ArrowRight') {
+			// goToNextCharacter();
+			document.querySelector('#btn-next').click();
+		}
 		if (key === '1' || key === '8' || key === '9' || key === '0') setActiveRage('rage0');
 		if (key === '2') setActiveRage('rage50');
 		if (key === '3') setActiveRage('rage60');
@@ -228,11 +235,11 @@ const ModalStagePercents = ({
 								))}
 							</div>
 						</div>
-						<button type="button" className="btn btn-secondary btn-prev" onClick={goToPrevCharacter}>
+						<button type="button" id="btn-prev" className="btn btn-secondary btn-prev" onClick={goToPrevCharacter}>
 							<span className="visually-hidden">Previous character</span>
 							<i className="fa fa-angle-left" aria-hidden="true"></i>
 						</button>
-						<button type="button" className="btn btn-secondary btn-next" onClick={goToNextCharacter}>
+						<button type="button" id="btn-next" className="btn btn-secondary btn-next" onClick={goToNextCharacter}>
 							<span className="visually-hidden">Next character</span>
 							<i className="fa fa-angle-right" aria-hidden="true"></i>
 						</button>
