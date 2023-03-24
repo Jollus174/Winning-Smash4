@@ -41,9 +41,6 @@
 
 .modal-stage-list {
 	--bs-modal-header-padding: 0;
-	.modal-content {
-		max-height: calc(var(--vh, 1vh) * 90);
-	}
 
 	.modal-body {
 		overflow: auto;

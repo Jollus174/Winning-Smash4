@@ -3,7 +3,6 @@ import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import CharacterMoveCards from './components/CharacterMoveCards';
 import CharacterTiles from './components/CharacterTiles';
-import { Dropdown, Modal } from 'bootstrap';
 
 function App() {
 	const [mounted, setMounted] = useState(false);
@@ -124,48 +123,47 @@ function App() {
 			});
 	};
 
-	const setInitialData = () => {
-		setLoading(true);
-		const baseURL = 'http://localhost:3000';
-		const requests = {
-			charAttrs: getData(`${baseURL}/data/char-attrs.json`),
-			killConfirms: getData(`${baseURL}/data/kill-confirms.json`),
-			stageList: getData(`${baseURL}/data/stage-list.json`)
-		};
-
-		Promise.all(Object.values(requests))
-			.then((responses) => {
-				const [charAttrs, killConfirms, stageList] = responses;
-
-				setCharAttrs(charAttrs);
-				setKillConfirms(killConfirms);
-				setStageList(stageList);
-				setFilteredCharAttrs(charAttrs);
-
-				setLoading(false);
-			})
-			.catch((err) => {
-				console.error('The app failed to load.', err);
-			});
-	};
-
 	// empty array means executes only once
 	useEffect(() => {
+		// TODO: set loading spinners
 		if (!mounted) {
 			setMounted(true);
-			setInitialData();
 
-			// First we get the viewport height and we multiple it by 1% to get a value for a vh unit
-			let vh = window.innerHeight * 0.01;
-			// Then we set the value in the --vh custom property to the root of the document
-			document.documentElement.style.setProperty('--vh', vh + 'px');
+			// set initial data
+			setLoading(true);
+			const baseURL = 'http://localhost:3000';
+			const requests = {
+				charAttrs: getData(`${baseURL}/data/char-attrs.json`),
+				killConfirms: getData(`${baseURL}/data/kill-confirms.json`),
+				stageList: getData(`${baseURL}/data/stage-list.json`)
+			};
 
-			// We listen to the resize event
-			window.addEventListener('resize', () => {
-				// We execute the same script as before
-				vh = window.innerHeight * 0.01;
+			Promise.all(Object.values(requests))
+				.then((responses) => {
+					const [charAttrs, killConfirms, stageList] = responses;
+
+					setCharAttrs(charAttrs);
+					setKillConfirms(killConfirms);
+					setStageList(stageList);
+					setFilteredCharAttrs(charAttrs);
+
+					setLoading(false);
+				})
+				.catch((err) => {
+					console.error('The app failed to load.', err);
+				});
+
+			// set resize listeners
+			const resizeHandler = () => {
+				// first we get the viewport height and we multiple it by 1% to get a value for a vh unit
+				const vh = window.innerHeight * 0.01;
+				// then we set the value in the --vh custom property to the root of the document
 				document.documentElement.style.setProperty('--vh', vh + 'px');
-			});
+			};
+
+			resizeHandler();
+			// we listen to the resize event and execute the same script as before
+			window.addEventListener('resize', resizeHandler);
 		} else {
 			console.log('has already mounted!');
 		}
@@ -208,6 +206,7 @@ function App() {
 									selectedCharacter={selectedCharacter}
 									setSelectedKillConfirm={setSelectedKillConfirm}
 									selectedKillConfirm={selectedKillConfirm}
+									stageList={stageList}
 									handleSelectedKillConfirm={handleSelectedKillConfirm}
 									sortByName={sortByName}
 									setSortByName={setSortByName}
@@ -219,16 +218,9 @@ function App() {
 									setSortByFallspeed={setSortByFallspeed}
 									sortByGravity={sortByGravity}
 									setSortByGravity={setSortByGravity}
-									setSelectedCharacterModal={setSelectedCharacterModal}
-									setFilteredCharAttrs={setFilteredCharAttrs}
-									filteredCharAttrs={filteredCharAttrs}
-								/>
-								<ModalStagePercents
-									stageList={stageList}
-									selectedCharacter={selectedCharacter}
 									selectedCharacterModal={selectedCharacterModal}
 									setSelectedCharacterModal={setSelectedCharacterModal}
-									handleSelectedKillConfirm={handleSelectedKillConfirm}
+									setFilteredCharAttrs={setFilteredCharAttrs}
 									filteredCharAttrs={filteredCharAttrs}
 								/>
 							</>

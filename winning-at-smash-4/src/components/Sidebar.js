@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Sidebar = ({ sidebarOpen, moveCards, handleSelectedKillConfirm }) => {
 	return (
 		<aside className={`d-none sidebar ${sidebarOpen ? 'd-lg-block' : ''}`}>

@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Header = ({ setSidebarOpen, sidebarOpen, selectedCharacter }) => {
 	return (
 		<header className="d-flex align-items-center header text-light">

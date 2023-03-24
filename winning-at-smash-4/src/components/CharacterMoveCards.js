@@ -1,5 +1,3 @@
-import React from 'react';
-
 const CharacterMoveCards = ({ moveCards, handleSelectedKillConfirm }) => {
 	return (
 		<div className="character-move-cards">

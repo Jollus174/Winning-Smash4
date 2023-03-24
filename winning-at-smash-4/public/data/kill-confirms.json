@@ -12,18 +12,22 @@
 				"moveName": "Up Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air",
 				"moveId": "up-throw-up-air",
 
-				"info": [
-					"Bowser's kill confirm is known as the <strong>Koo-Pah</strong>, <strong>Bow-Wow</strong>, or <strong>Show Time</strong>. An Up Throw from Bowser will true combo into his Up Air between certain percents and will kill the victim regardless of DI.",
-					"If the victim has no DI or DI's the throw in, the move min-% kill threshold will increase to <em>1-5% earlier</em>.",
-					"If they have no DI or DI the throw out, the max-% kill threshold will increase to <em>1-4% later</em>.",
-					"The calculator assumes the victim is DI-ing the move optimally, with them <strong>DI-ing out the Up Throw</strong>, and <strong>DI-ing away the Up Air</strong>."
-				],
-				"giphy": ["https://giphy.com/embed/3oFzm4XhnWq9vSZtIc", "https://www.youtube.com/watch?v=W3sgCRc13sk"],
-
-				"spreadsheetLink": "https://docs.google.com/spreadsheets/d/1bGbb7fiX1W0Oer58yf6Kcwtx_zgxg--WYGrUpxTjRpk",
-				"spreadsheetMethod": "",
-				"creditLink": "https://twitter.com/TheVonDk",
-				"creditName": "Poke",
+				"info": {
+					"text": [
+						"Bowser's kill confirm is known as the <strong>Koo-Pah</strong>, <strong>Bow-Wow</strong>, or <strong>Show Time</strong>. An Up Throw from Bowser will true combo into his Up Air between certain percents and will kill the victim regardless of DI.",
+						"If the victim has no DI or DI's the throw in, the move min-% kill threshold will increase to <em>1-5% earlier</em>.",
+						"If they have no DI or DI the throw out, the max-% kill threshold will increase to <em>1-4% later</em>.",
+						"The calculator assumes the victim is DI-ing the move optimally, with them <strong>DI-ing out the Up Throw</strong>, and <strong>DI-ing away the Up Air</strong>."
+					],
+					"giphy": {
+						"giphyUrl": "https://giphy.com/embed/3oFzm4XhnWq9vSZtIc",
+						"youtubeUrl": "https://www.youtube.com/watch?v=W3sgCRc13sk"
+					},
+					"spreadsheetLink": "https://docs.google.com/spreadsheets/d/1bGbb7fiX1W0Oer58yf6Kcwtx_zgxg--WYGrUpxTjRpk",
+					"spreadsheetMethod": "",
+					"creditLink": "https://twitter.com/TheVonDk",
+					"creditName": "Poke"
+				},
 
 				"specialInfo": "",
 
@@ -130,18 +134,22 @@
 				"moveName": "Cargo Up Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air",
 				"moveId": "cargo-up-throw-up-air",
 
-				"info": [
-					"This confirm is known among Donkey Kong specialists as <strong>Aerial Cargo Up Throw Up Air (ACUT)</strong>, the <strong>DKO</strong>, or to most Western players, as the <strong>Ding Dong</strong>.",
-					"DK's cargo Up Throw sends the opponent at 92 degrees and Up Air sends the opponent at 90 degrees, so there isn't a favourable way to DI, especially since DK swings his head in an arc with his Up Air.",
-					"However, if you're slightly above your KO range, make sure NOT TO DI the Cargo up toss. The reason is that DI-ing Cargo up toss to the left / right takes away slightly from the vertical component, so you remain closer to DK than you should, and this will allow him to KO you at fraudulent %'s.",
-					"Poke's chart assumes that you DI the cargo toss and the Up Air at min-%'s, and that you <i>do not DI</i> the cargo toss at max-%'s. So if you DI the cargo toss at max-%, <strong>you effectively increase your KO range.</strong>"
-				],
-				"giphy": ["https://giphy.com/embed/xT1R9YAchWK3aiJAhq", "https://www.youtube.com/watch?v=JlcIN-MKGCk"],
-
-				"spreadsheetLink": "https://docs.google.com/spreadsheets/d/1OvUy2gsTrUj96cAHSkSIZHGnUaaS-UrX6SdFKyctNmU",
-				"spreadsheetMethod": "",
-				"creditLink": "https://twitter.com/TheVonDk",
-				"creditName": "Poke",
+				"info": {
+					"text": [
+						"This confirm is known among Donkey Kong specialists as <strong>Aerial Cargo Up Throw Up Air (ACUT)</strong>, the <strong>DKO</strong>, or to most Western players, as the <strong>Ding Dong</strong>.",
+						"DK's cargo Up Throw sends the opponent at 92 degrees and Up Air sends the opponent at 90 degrees, so there isn't a favourable way to DI, especially since DK swings his head in an arc with his Up Air.",
+						"However, if you're slightly above your KO range, make sure NOT TO DI the Cargo up toss. The reason is that DI-ing Cargo up toss to the left / right takes away slightly from the vertical component, so you remain closer to DK than you should, and this will allow him to KO you at fraudulent %'s.",
+						"Poke's chart assumes that you DI the cargo toss and the Up Air at min-%'s, and that you <i>do not DI</i> the cargo toss at max-%'s. So if you DI the cargo toss at max-%, <strong>you effectively increase your KO range.</strong>"
+					],
+					"giphy": {
+						"giphyUrl": "https://giphy.com/embed/xT1R9YAchWK3aiJAhq",
+						"youtubeUrl": "https://www.youtube.com/watch?v=JlcIN-MKGCk"
+					},
+					"spreadsheetLink": "https://docs.google.com/spreadsheets/d/1OvUy2gsTrUj96cAHSkSIZHGnUaaS-UrX6SdFKyctNmU",
+					"spreadsheetMethod": "",
+					"creditLink": "https://twitter.com/TheVonDk",
+					"creditName": "Poke"
+				},
 
 				"specialInfo": "",
 
@@ -248,19 +256,22 @@
 				"moveName": "Down Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air",
 				"moveId": "down-throw-up-air",
 
-				"info": [
-					"This kill confirm consists of a Down Throw, which Lucas can follow-up with an Up Air to kill. It's sometimes known as the <strong>Snake &amp; Bake</strong> or <strong>PK Hoo-Hah</strong>, after Diddy Kong's pre-patch Up Air confirm.",
-					"If the victim has no DI or DI's the throw in, the move min-% kill threshold will increase to <em>1-3% earlier</em>, with the max-% unaffected.",
-					"If they have no DI or DI the Down Throw or Up Air out, the max-% kill threshold will increase to <em>1-10% later</em>, with the min-% unaffected.",
-					"The calculator assumes the victim is DI-ing the move optimally, with them <strong>DI-ing out the Down Throw</strong>, and <strong>DI-ing out the Up Air</strong>."
-				],
-
-				"giphy": ["https://giphy.com/embed/3ohc0PUZMNWWHEWKmA", "https://www.youtube.com/watch?v=QP2hMnR66eg"],
-
-				"spreadsheetLink": "https://docs.google.com/spreadsheets/d/1VNYNt0JFe7ak02Db_Ds1Y1QdoK7muOaPSqqd0c5JOUs",
-				"spreadsheetMethod": "",
-				"creditLink": "https://twitter.com/Tihit212",
-				"creditName": "Taiheta",
+				"info": {
+					"text": [
+						"This kill confirm consists of a Down Throw, which Lucas can follow-up with an Up Air to kill. It's sometimes known as the <strong>Snake &amp; Bake</strong> or <strong>PK Hoo-Hah</strong>, after Diddy Kong's pre-patch Up Air confirm.",
+						"If the victim has no DI or DI's the throw in, the move min-% kill threshold will increase to <em>1-3% earlier</em>, with the max-% unaffected.",
+						"If they have no DI or DI the Down Throw or Up Air out, the max-% kill threshold will increase to <em>1-10% later</em>, with the min-% unaffected.",
+						"The calculator assumes the victim is DI-ing the move optimally, with them <strong>DI-ing out the Down Throw</strong>, and <strong>DI-ing out the Up Air</strong>."
+					],
+					"giphy": {
+						"giphyUrl": "https://giphy.com/embed/3ohc0PUZMNWWHEWKmA",
+						"youtubeUrl": "https://www.youtube.com/watch?v=QP2hMnR66eg"
+					},
+					"spreadsheetLink": "https://docs.google.com/spreadsheets/d/1VNYNt0JFe7ak02Db_Ds1Y1QdoK7muOaPSqqd0c5JOUs",
+					"spreadsheetMethod": "",
+					"creditLink": "https://twitter.com/Tihit212",
+					"creditName": "Taiheta"
+				},
 
 				"specialInfo": "",
 
@@ -365,18 +376,22 @@
 				"moveName": "Down Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air",
 				"moveId": "down-throw-up-air",
 
-				"info": [
-					"Mr. Game & Watch's <strong>Toot Toot</strong> kill confirm is complex, as it consists of a Down Throw and then Up Throw multi-hit, both hits of which can be DI'd.",
-					"If the victim has no DI or DI's the throw in, the move min-% kill threshold will increase to <em>1-5% earlier</em>.",
-					"If they have no DI or DI the throw out, the max-% kill threshold will increase to <em>1-10% later</em>.",
-					"The calculator assumes that the victim is DI-ing the move optimally, with them <strong>DI-ing out the Down Throw</strong>, and <strong>DI-ing out both hits of the up air</strong>."
-				],
-				"giphy": ["https://giphy.com/embed/xULW8n9ACGvGXbE3ok", "https://www.youtube.com/watch?v=AXeykQaviE4"],
-
-				"spreadsheetLink": "https://docs.google.com/spreadsheets/d/1AxpLDkDltkjAND819JrbgfIgPH_pjkeFPhjpzXPDgP0/",
-				"spreadsheetMethod": "",
-				"creditLink": "https://twitter.com/houseoffastfood",
-				"creditName": "Mickey",
+				"info": {
+					"text": [
+						"Mr. Game & Watch's <strong>Toot Toot</strong> kill confirm is complex, as it consists of a Down Throw and then Up Throw multi-hit, both hits of which can be DI'd.",
+						"If the victim has no DI or DI's the throw in, the move min-% kill threshold will increase to <em>1-5% earlier</em>.",
+						"If they have no DI or DI the throw out, the max-% kill threshold will increase to <em>1-10% later</em>.",
+						"The calculator assumes that the victim is DI-ing the move optimally, with them <strong>DI-ing out the Down Throw</strong>, and <strong>DI-ing out both hits of the up air</strong>."
+					],
+					"giphy": {
+						"giphyUrl": "https://giphy.com/embed/xULW8n9ACGvGXbE3ok",
+						"youtubeUrl": "https://www.youtube.com/watch?v=AXeykQaviE4"
+					},
+					"spreadsheetLink": "https://docs.google.com/spreadsheets/d/1AxpLDkDltkjAND819JrbgfIgPH_pjkeFPhjpzXPDgP0/",
+					"spreadsheetMethod": "",
+					"creditLink": "https://twitter.com/houseoffastfood",
+					"creditName": "Mickey"
+				},
 
 				"specialInfo": "",
 
@@ -488,24 +503,28 @@
 				"moveName": "Up Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Thunder (Backward DI)",
 				"moveId": "up-throw-thunder-bdi",
 
-				"info": [
-					"<strong>A GIF collection of different setups and DIs can be viewed through <a href='https://imgur.com/a/j3ekG' target='_blank' rel='noopener'>here</a>.",
-					"These results were labbed against the opponent's airdodge, but there are some extreme cases where jumping will reduce the combo window further than airdodging. View the spreadsheet above for more info.",
-					"Because of the nature of the game's hitstun calculations and launch speed, there are deadzones in between this combo's 'true' percents. These are listed as follows:",
-					"<strong>Little Mac:</strong> 116-125% :: 96-105% (100 rage) :: 83-92% (150 rage)",
-					"<strong>Shulk:</strong> 136-138% :: 113-116% (100 rage) :: 99-101% (150 rage)",
-					"<strong>Shulk (Buster):</strong> 132-137% :: 110-115% (100 rage) :: 95-100% (150 rage)",
-					"<strong>Shulk (Jump):</strong> 126-129% :: 104-108% (100 rage) :: 90-93% (150 rage)",
-					"<strong>Shulk (Shield):</strong> 215-220% :: 186-192% (100 rage) :: 167-173% (150 rage)",
-					"<strong>Shulk (Smash):</strong> 118-119% :: 97-99% (100 rage) :: 83-85% (150 rage)"
-				],
+				"info": {
+					"text": [
+						"<strong>A GIF collection of different setups and DIs can be viewed through <a href='https://imgur.com/a/j3ekG' target='_blank' rel='noopener'>here</a>.",
+						"These results were labbed against the opponent's airdodge, but there are some extreme cases where jumping will reduce the combo window further than airdodging. View the spreadsheet above for more info.",
+						"Because of the nature of the game's hitstun calculations and launch speed, there are deadzones in between this combo's 'true' percents. These are listed as follows:",
+						"<strong>Little Mac:</strong> 116-125% :: 96-105% (100 rage) :: 83-92% (150 rage)",
+						"<strong>Shulk:</strong> 136-138% :: 113-116% (100 rage) :: 99-101% (150 rage)",
+						"<strong>Shulk (Buster):</strong> 132-137% :: 110-115% (100 rage) :: 95-100% (150 rage)",
+						"<strong>Shulk (Jump):</strong> 126-129% :: 104-108% (100 rage) :: 90-93% (150 rage)",
+						"<strong>Shulk (Shield):</strong> 215-220% :: 186-192% (100 rage) :: 167-173% (150 rage)",
+						"<strong>Shulk (Smash):</strong> 118-119% :: 97-99% (100 rage) :: 83-85% (150 rage)"
+					],
 
-				"giphy": ["https://giphy.com/embed/1BhDgxLRnr0Smjfg0l", ""],
-
-				"spreadsheetLink": "https://docs.google.com/spreadsheets/d/18cuJYFSAsserv-yDggpbPv7QFLA62V3kneu86scL6EM",
-				"spreadsheetMethod": "https://docs.google.com/document/d/17TiS0CGt1h08FEuOln9kBfAQYk81K0QX6Pc3kXS15pI",
-				"creditLink": "https://twitter.com/Proctavia_SSB",
-				"creditName": "Proctavia_SSB",
+					"giphy": {
+						"giphyUrl": "https://giphy.com/embed/1BhDgxLRnr0Smjfg0l",
+						"youtubeUrl": ""
+					},
+					"spreadsheetLink": "https://docs.google.com/spreadsheets/d/18cuJYFSAsserv-yDggpbPv7QFLA62V3kneu86scL6EM",
+					"spreadsheetMethod": "https://docs.google.com/document/d/17TiS0CGt1h08FEuOln9kBfAQYk81K0QX6Pc3kXS15pI",
+					"creditLink": "https://twitter.com/Proctavia_SSB",
+					"creditName": "Proctavia_SSB"
+				},
 
 				"specialInfo": "<strong>IMPORTANT</strong> Due to the nature of this combo, there are several deadzones within the kill percents where it's no longer true. Check the <a class='info' href=''>info section</a> for more.<br>Since this isn't strictly a kill confirm, only Final Destination is included as a stage, and the percents listed are the percents that this combo is simply 'true', not when it kills.<br>Also included within the character grid is how far Pikachu needs to run to connect this combo.",
 
@@ -600,23 +619,27 @@
 				"moveName": "Up Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Thunder (Forward DI)",
 				"moveId": "up-throw-thunder-fdi",
 
-				"info": [
-					"<strong>A GIF collection of different setups and DIs can be viewed through <a href='https://imgur.com/a/j3ekG' target='_blank' rel='noopener'>here</a>.",
-					"These results were labbed against the opponent's airdodge, but there are some extreme cases where jumping will reduce the combo window further than airdodging. View the spreadsheet above for more info.",
-					"This combo will not be true on <strong>Diddy Kong</strong> or <strong>Sonic</strong> with Forward DI because of hurtbox shift, knockback, and other factors. Worth noting is that this combo is still a 50/50.",
-					"Because of the nature of the game's hitstun calculations and launch speed, there are deadzones in between this combo's 'true' percents. These are listed as follows:",
-					"<strong>Corrin:</strong> 132-133% :: 110-112% (100 rage) :: 95-97% (150 rage)",
-					"<strong>Lucario:</strong> 126-129% :: 104-108% (100 rage) :: 90-94% (150 rage)",
-					"<strong>Meta Knight:</strong> 114-115% :: 94-96% (100 rage) :: 81-83% (150 rage)",
-					"<strong>Ryu:</strong> 121-127% :: 99-106% (100 rage) :: 85-92% (150 rage)"
-				],
+				"info": {
+					"text": [
+						"<strong>A GIF collection of different setups and DIs can be viewed through <a href='https://imgur.com/a/j3ekG' target='_blank' rel='noopener'>here</a>.",
+						"These results were labbed against the opponent's airdodge, but there are some extreme cases where jumping will reduce the combo window further than airdodging. View the spreadsheet above for more info.",
+						"This combo will not be true on <strong>Diddy Kong</strong> or <strong>Sonic</strong> with Forward DI because of hurtbox shift, knockback, and other factors. Worth noting is that this combo is still a 50/50.",
+						"Because of the nature of the game's hitstun calculations and launch speed, there are deadzones in between this combo's 'true' percents. These are listed as follows:",
+						"<strong>Corrin:</strong> 132-133% :: 110-112% (100 rage) :: 95-97% (150 rage)",
+						"<strong>Lucario:</strong> 126-129% :: 104-108% (100 rage) :: 90-94% (150 rage)",
+						"<strong>Meta Knight:</strong> 114-115% :: 94-96% (100 rage) :: 81-83% (150 rage)",
+						"<strong>Ryu:</strong> 121-127% :: 99-106% (100 rage) :: 85-92% (150 rage)"
+					],
 
-				"giphy": ["https://giphy.com/embed/42waw3Y7dAjlWulyRB", ""],
-
-				"spreadsheetLink": "https://docs.google.com/spreadsheets/d/18cuJYFSAsserv-yDggpbPv7QFLA62V3kneu86scL6EM",
-				"spreadsheetMethod": "https://docs.google.com/document/d/17TiS0CGt1h08FEuOln9kBfAQYk81K0QX6Pc3kXS15pI",
-				"creditLink": "https://twitter.com/Proctavia_SSB",
-				"creditName": "Proctavia_SSB",
+					"giphy": {
+						"giphyUrl": "https://giphy.com/embed/42waw3Y7dAjlWulyRB",
+						"youtubeUrl": ""
+					},
+					"spreadsheetLink": "https://docs.google.com/spreadsheets/d/18cuJYFSAsserv-yDggpbPv7QFLA62V3kneu86scL6EM",
+					"spreadsheetMethod": "https://docs.google.com/document/d/17TiS0CGt1h08FEuOln9kBfAQYk81K0QX6Pc3kXS15pI",
+					"creditLink": "https://twitter.com/Proctavia_SSB",
+					"creditName": "Proctavia_SSB"
+				},
 
 				"specialInfo": "<strong>IMPORTANT</strong> Due to the nature of this combo, there are several deadzones within the kill percents where it's no longer true. Check the <a class='info' href=''>info section</a> for more.<br>Since this isn't strictly a kill confirm, only Final Destination is included as a stage, and the percents listed are the percents that this combo is simply 'true', not when it kills.<br>Also included within the character grid is how far Pikachu needs to run to connect this combo.",
 
@@ -721,21 +744,25 @@
 				"moveName": "Down Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air",
 				"moveId": "dthrow-up-air",
 
-				"info": [
-					"Robin's <strong>Checkmate</strong> kill confirm consists of a Down Throw followed-up with a strong hit Up Air with the Levin Sword between certain percents.",
-					"If the victim has no DI or DI's the Up Air up, the max-% kill threshold will increase to <em>4-6% later</em>, with the min-% unaffected.",
-					"The calculator assumes that the victim is DI-ing the move optimally, with them <strong>DI-ing out the Down Throw</strong>, and <strong>DI-ing in Up Air</strong>.",
-					"Robin normally cannot Checkmate Bowser or Charizard, because of their heavy weight and Robin's 7 frame (!) jump squat.",
-					"It's possible for Robin to do if they double jump off a stage ledge or platform. If Robin can catch these two characters at the ledge, their KO ranges are:<br><strong>Bowser: 108 - 126%</strong><br><strong>Charizard: 99 - 113%</strong>",
-					"More information on this can be viewed <a href='https://www.youtube.com/watch?v=sP9svcfxu_o&t=49s' target='_blank' rel='noopener'>here</a>."
-				],
+				"info": {
+					"text": [
+						"Robin's <strong>Checkmate</strong> kill confirm consists of a Down Throw followed-up with a strong hit Up Air with the Levin Sword between certain percents.",
+						"If the victim has no DI or DI's the Up Air up, the max-% kill threshold will increase to <em>4-6% later</em>, with the min-% unaffected.",
+						"The calculator assumes that the victim is DI-ing the move optimally, with them <strong>DI-ing out the Down Throw</strong>, and <strong>DI-ing in Up Air</strong>.",
+						"Robin normally cannot Checkmate Bowser or Charizard, because of their heavy weight and Robin's 7 frame (!) jump squat.",
+						"It's possible for Robin to do if they double jump off a stage ledge or platform. If Robin can catch these two characters at the ledge, their KO ranges are:<br><strong>Bowser: 108 - 126%</strong><br><strong>Charizard: 99 - 113%</strong>",
+						"More information on this can be viewed <a href='https://www.youtube.com/watch?v=sP9svcfxu_o&t=49s' target='_blank' rel='noopener'>here</a>."
+					],
 
-				"giphy": ["https://giphy.com/embed/l0HUmuMwBtdOQdZrG", "https://www.youtube.com/watch?v=MuYO0LM_4ac"],
-
-				"spreadsheetLink": "https://docs.google.com/spreadsheets/d/18cuJYFSAsserv-yDggpbPv7QFLA62V3kneu86scL6EM",
-				"spreadsheetMethod": "",
-				"creditLink": "https://twitter.com/robinlabteam",
-				"creditName": "The Robin Lab Team",
+					"giphy": {
+						"giphyUrl": "https://giphy.com/embed/l0HUmuMwBtdOQdZrG",
+						"youtubeUrl": "https://www.youtube.com/watch?v=MuYO0LM_4ac"
+					},
+					"spreadsheetLink": "https://docs.google.com/spreadsheets/d/18cuJYFSAsserv-yDggpbPv7QFLA62V3kneu86scL6EM",
+					"spreadsheetMethod": "",
+					"creditLink": "https://twitter.com/robinlabteam",
+					"creditName": "The Robin Lab Team"
+				},
 
 				"specialInfo": "",
 
@@ -839,23 +866,27 @@
 				"moveName": "Down Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air",
 				"moveId": "dthrow-up-air",
 
-				"info": [
-					"This confirm is performed after a Down Throw, quick dash back, and an Up Air.",
-					"The percent range of this move can vary greatly depending on the opponent's weight, fallspeed and DI.",
-					"After a character is launched, their gravity still applies, slowing their vertical ascent until the reduction equals their falling speed.",
-					"As a result, characters with higher falling speed have their vertical knockback reduced for longer, improving their vertical endurance while also hampering their ability to recover from horizontal blows.",
-					"So because of that, <strong>if a character with high fallspeed DI's behind Zelda, they can escape the down throw window a bit earlier than if they DI'ed away from her (which would send them straight up, because Down Throw sends at 100 degrees default).",
-					"Also worth mentioning is Bayonetta is extremely difficult to perform this combo on, due to her frame 1 airdodge that requires Zelda to make two frame perfect inputs:",
-					"Buffer Turn (F9 - F19) → <strong>Dash (F20 - F21) → Jump (F21 - F22)</strong> → Buffer Up Air (F21-27)",
-					"For further reading, including failsafe methods such as the Triangle Jump that cover all DI options, see <a href='https://twitter.com/BanZelda/status/954410695625289728' target='_blank' rel='noopener'>Dia's tweet here</a>."
-				],
+				"info": {
+					"text": [
+						"This confirm is performed after a Down Throw, quick dash back, and an Up Air.",
+						"The percent range of this move can vary greatly depending on the opponent's weight, fallspeed and DI.",
+						"After a character is launched, their gravity still applies, slowing their vertical ascent until the reduction equals their falling speed.",
+						"As a result, characters with higher falling speed have their vertical knockback reduced for longer, improving their vertical endurance while also hampering their ability to recover from horizontal blows.",
+						"So because of that, <strong>if a character with high fallspeed DI's behind Zelda, they can escape the down throw window a bit earlier than if they DI'ed away from her (which would send them straight up, because Down Throw sends at 100 degrees default).",
+						"Also worth mentioning is Bayonetta is extremely difficult to perform this combo on, due to her frame 1 airdodge that requires Zelda to make two frame perfect inputs:",
+						"Buffer Turn (F9 - F19) → <strong>Dash (F20 - F21) → Jump (F21 - F22)</strong> → Buffer Up Air (F21-27)",
+						"For further reading, including failsafe methods such as the Triangle Jump that cover all DI options, see <a href='https://twitter.com/BanZelda/status/954410695625289728' target='_blank' rel='noopener'>Dia's tweet here</a>."
+					],
 
-				"giphy": ["https://giphy.com/embed/3o751XGmDHkHBxbgwE", ""],
-
-				"spreadsheetLink": "https://docs.google.com/spreadsheets/d/1zd5Ky1MR9ECFCtKRlfyQ77YNT9gAZ7GNXJkqZGVgmoI",
-				"spreadsheetMethod": "",
-				"creditLink": "",
-				"creditName": "Xelda",
+					"giphy": {
+						"giphyUrl": "https://giphy.com/embed/3o751XGmDHkHBxbgwE",
+						"youtubeUrl": ""
+					},
+					"spreadsheetLink": "https://docs.google.com/spreadsheets/d/1zd5Ky1MR9ECFCtKRlfyQ77YNT9gAZ7GNXJkqZGVgmoI",
+					"spreadsheetMethod": "",
+					"creditLink": "",
+					"creditName": "Xelda"
+				},
 
 				"specialInfo": "In Zelda's case, difficulty is determined by the victim's airdodge frame, not by the kill confirm window.",
 

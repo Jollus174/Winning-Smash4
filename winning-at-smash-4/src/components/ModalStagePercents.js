@@ -1,9 +1,11 @@
-import React from 'react';
 import { useState } from 'react';
+import { Modal } from 'react-bootstrap';
 
 const ModalStagePercents = ({
 	stageList,
 	selectedCharacter,
+	modalShowStageList,
+	setModalShowStageList,
 	selectedCharacterModal,
 	setSelectedCharacterModal,
 	handleSelectedKillConfirm,
@@ -89,27 +91,37 @@ const ModalStagePercents = ({
 		if (key === '7') setActiveRage('rage150');
 	};
 
+	const handleModalShow = () => {
+		document.addEventListener('keydown', handleKeyPress);
+	};
+
+	const handleModalHide = () => {
+		setModalShowStageList(false);
+		setSelectedCharacterModal({});
+		document.removeEventListener('keydown', handleKeyPress);
+	};
+
 	return (
 		// TODO: set up the aria- stuff since these modals will have slightly different content each time
 		// https://getbootstrap.com/docs/5.2/components/modal/#varying-modal-content
 		<>
-			<style>
-				{`
-					.modal-backdrop {
-						--bs-backdrop-bg: rgb(${selectedCharacterModal.charColor});
-						--bs-backdrop-opacity: 0.95;
-					}
-				`}
-			</style>
-			<div
+			<Modal
 				className="modal modal-stage-list"
-				id="modal-stage"
-				tabIndex="-1"
 				aria-labelledby="character-name"
-				aria-hidden="true"
-				onKeyDown={handleKeyPress}
+				show={modalShowStageList}
+				onShow={handleModalShow}
+				onHide={handleModalHide}
+				animation={false}
 				style={{ '--bs-backdrop-bg': 'rgb(' + selectedCharacterModal.charColor + ')' }}
 			>
+				<style>
+					{`
+						.modal-backdrop {
+							--bs-backdrop-bg: rgb(${selectedCharacterModal.charColor});
+							--bs-backdrop-opacity: 0.95;
+						}
+					`}
+				</style>
 				<div className="modal-dialog modal-dialog-centered">
 					<div className="modal-content">
 						<div className="modal-header">
@@ -226,7 +238,7 @@ const ModalStagePercents = ({
 						</button>
 					</div>
 				</div>
-			</div>
+			</Modal>
 		</>
 	);
 };
