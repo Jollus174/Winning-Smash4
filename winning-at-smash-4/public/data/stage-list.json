@@ -1,24 +1,24 @@
-{
-	"final-destination": {
+[
+	{
 		"id": "stage-fd",
 		"name": "Final Destination",
 		"imageFile": "stage_fd.jpg",
 		"color": "#424d98",
-		"tables": [
+		"stagePositions": [
 			{
 				"id": "fd-normal",
 				"stagePartName": "FD Normal",
 				"min": 0,
-				"max": 50
+				"max": 0
 			}
 		]
 	},
-	"battlefield": {
+	{
 		"id": "stage-bf",
 		"name": "Battlefield",
 		"imageFile": "stage_bf.jpg",
 		"color": "#698b9c",
-		"tables": [
+		"stagePositions": [
 			{
 				"id": "bf-normal",
 				"stagePartName": "BF Normal",
@@ -26,25 +26,25 @@
 				"max": 0
 			},
 			{
-				"id": "bf-low-plat",
+				"id": "bf-low-platform",
 				"stagePartName": "BF Low Platform",
 				"min": 0,
 				"max": 0
 			},
 			{
-				"id": "bf-top-plat",
+				"id": "bf-top-platform",
 				"stagePartName": "BF Top Platform",
 				"min": 0,
 				"max": 0
 			}
 		]
 	},
-	"dreamland": {
+	{
 		"id": "stage-dl",
 		"name": "Dreamland",
 		"imageFile": "stage_dl.jpg",
 		"color": "#2ab156",
-		"tables": [
+		"stagePositions": [
 			{
 				"id": "dl-normal",
 				"stagePartName": "DL Normal",
@@ -52,25 +52,25 @@
 				"max": 0
 			},
 			{
-				"id": "dl-low-plat",
+				"id": "dl-low-platform",
 				"stagePartName": "DL Low Platform",
 				"min": 0,
 				"max": 0
 			},
 			{
-				"id": "dl-top-plat",
+				"id": "dl-top-platform",
 				"stagePartName": "DL Top Platform",
 				"min": 0,
 				"max": 0
 			}
 		]
 	},
-	"smashville": {
+	{
 		"id": "stage-sv",
 		"name": "Smashville",
 		"imageFile": "stage_sv.jpg",
 		"color": "#eeb463",
-		"tables": [
+		"stagePositions": [
 			{
 				"id": "sv-normal",
 				"stagePartName": "SV Normal",
@@ -78,19 +78,19 @@
 				"max": 0
 			},
 			{
-				"id": "sv-plat",
+				"id": "sv-platform",
 				"stagePartName": "SV Platform",
 				"min": 0,
 				"max": 0
 			}
 		]
 	},
-	"town-and-city": {
+	{
 		"id": "stage-tc",
 		"name": "Town & City",
 		"imageFile": "stage_tc.jpg",
 		"color": "#ad7252",
-		"tables": [
+		"stagePositions": [
 			{
 				"id": "tc-normal",
 				"stagePartName": "TC Normal",
@@ -98,23 +98,23 @@
 				"max": 0
 			},
 			{
-				"id": "tc-low-plat",
+				"id": "tc-low-platform",
 				"stagePartName": "TC Low Platform",
 				"min": 0,
 				"max": 0
 			},
 			{
-				"id": "tc-side-plat",
+				"id": "tc-side-platform",
 				"stagePartName": "TC Side Platform",
 				"min": 0,
 				"max": 0
 			},
 			{
-				"id": "tc-top-plat",
+				"id": "tc-top-platform",
 				"stagePartName": "TC Top Platform",
 				"min": 0,
 				"max": 0
 			}
 		]
 	}
-}
+]

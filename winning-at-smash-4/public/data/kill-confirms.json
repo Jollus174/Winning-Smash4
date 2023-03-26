@@ -31,27 +31,69 @@
 
 				"specialInfo": "",
 
-				"rage50": "[-2, -6]",
-				"rage60": "[-4, -8]",
-				"rage80": "[-8, -12]",
-				"rage100": "[-12, -16]",
-				"rage125": "[-17, -22]",
-				"rage150": "[-19, -25]",
+				"rage0": { "start": 0, "end": 0 },
+				"rage50": { "start": -2, "end": -6 },
+				"rage60": { "start": -4, "end": -8 },
+				"rage80": { "start": -8, "end": -12 },
+				"rage100": { "start": -12, "end": -16 },
+				"rage125": { "start": -17, "end": -22 },
+				"rage150": { "start": -19, "end": -25 },
 
-				"bfNormalMin": 4,
-				"bfLowPlatMin": -5,
-				"bfTopPlatMin": -15,
+				"stageList": [
+					{
+						"id": "fd-normal",
+						"stagePositionModifier": 0
+					},
+					{
+						"id": "bf-normal",
+						"stagePositionModifier": 4
+					},
+					{
+						"id": "bf-low-platform",
+						"stagePositionModifier": -5
+					},
+					{
+						"id": "bf-top-platform",
+						"stagePositionModifier": -15
+					},
+					{
+						"id": "dl-normal",
+						"stagePositionModifier": 0
+					},
+					{
+						"id": "dl-low-platform",
+						"stagePositionModifier": -13
+					},
+					{
+						"id": "dl-top-platform",
+						"stagePositionModifier": -23
+					},
+					{
+						"id": "sv-normal",
+						"stagePositionModifier": 1
+					},
+					{
+						"id": "sv-platform",
+						"stagePositionModifier": -12
+					},
 
-				"dlLowPlatMin": -13,
-				"dlTopPlatMin": -23,
-
-				"svNormalMin": 1,
-				"svPlatMin": -12,
-
-				"tcNormalMin": -4,
-				"tcLowPlatMin": -22,
-				"tcSidePlatMin": -27,
-				"tcTopPlatMin": -39,
+					{
+						"id": "tc-normal",
+						"stagePositionModifier": -4
+					},
+					{
+						"id": "tc-low-platform",
+						"stagePositionModifier": -22
+					},
+					{
+						"id": "tc-side-platform",
+						"stagePositionModifier": -27
+					},
+					{
+						"id": "tc-top-platform",
+						"stagePositionModifier": -39
+					}
+				],
 
 				"percents": {
 					"bayonetta": { "start": 85, "end": 107 },
@@ -153,27 +195,69 @@
 
 				"specialInfo": "",
 
-				"rage50": "[-2, -5]",
-				"rage60": "[-5, -9]",
-				"rage80": "[-9, -16]",
-				"rage100": "[-12, -22]",
-				"rage125": "[-14, -27]",
-				"rage150": "[-18, -33]",
+				"rage0": { "start": 0, "end": 0 },
+				"rage50": { "start": -2, "end": -5 },
+				"rage60": { "start": -5, "end": -9 },
+				"rage80": { "start": -9, "end": -16 },
+				"rage100": { "start": -12, "end": -22 },
+				"rage125": { "start": -14, "end": -27 },
+				"rage150": { "start": -18, "end": -33 },
 
-				"bfNormalMin": 7,
-				"bfLowPlatMin": -7,
-				"bfTopPlatMin": -20,
+				"stageList": [
+					{
+						"id": "fd-normal",
+						"stagePositionModifier": 0
+					},
+					{
+						"id": "bf-normal",
+						"stagePositionModifier": 7
+					},
+					{
+						"id": "bf-low-platform",
+						"stagePositionModifier": -7
+					},
+					{
+						"id": "bf-top-platform",
+						"stagePositionModifier": -20
+					},
+					{
+						"id": "dl-normal",
+						"stagePositionModifier": 0
+					},
+					{
+						"id": "dl-low-platform",
+						"stagePositionModifier": -15
+					},
+					{
+						"id": "dl-top-platform",
+						"stagePositionModifier": -26
+					},
+					{
+						"id": "sv-normal",
+						"stagePositionModifier": 1
+					},
+					{
+						"id": "sv-platform",
+						"stagePositionModifier": -14
+					},
 
-				"dlLowPlatMin": -15,
-				"dlTopPlatMin": -26,
-
-				"svNormalMin": 1,
-				"svPlatMin": -14,
-
-				"tcNormalMin": -4,
-				"tcLowPlatMin": -20,
-				"tcSidePlatMin": -25,
-				"tcTopPlatMin": -41,
+					{
+						"id": "tc-normal",
+						"stagePositionModifier": -4
+					},
+					{
+						"id": "tc-low-platform",
+						"stagePositionModifier": -20
+					},
+					{
+						"id": "tc-side-platform",
+						"stagePositionModifier": -25
+					},
+					{
+						"id": "tc-top-platform",
+						"stagePositionModifier": -41
+					}
+				],
 
 				"percents": {
 					"bayonetta": { "start": 72, "end": 104 },
@@ -275,24 +359,69 @@
 
 				"specialInfo": "",
 
-				"rage50": "[-5, -9]",
-				"rage60": "[-8, -18]",
-				"rage80": "[-13, -28]",
-				"rage100": "[-17, -36]",
-				"rage125": "[-22, -48]",
-				"rage150": "[-28, -62]",
+				"rage0": { "start": 0, "end": 0 },
+				"rage50": { "start": -5, "end": -9 },
+				"rage60": { "start": -8, "end": -18 },
+				"rage80": { "start": -13, "end": -28 },
+				"rage100": { "start": -17, "end": -36 },
+				"rage125": { "start": -22, "end": -48 },
+				"rage150": { "start": -28, "end": -62 },
 
-				"bfNormalMin": 4,
-				"bfLowPlatMin": -5,
-				"bfTopPlatMin": -15,
-				"dlLowPlatMin": -9,
-				"dlTopPlatMin": -24,
-				"svNormalMin": 1,
-				"svPlatMin": -11,
-				"tcNormalMin": -4,
-				"tcLowPlatMin": -17,
-				"tcSidePlatMin": -26,
-				"tcTopPlatMin": -35,
+				"stageList": [
+					{
+						"id": "fd-normal",
+						"stagePositionModifier": 0
+					},
+					{
+						"id": "bf-normal",
+						"stagePositionModifier": 4
+					},
+					{
+						"id": "bf-low-platform",
+						"stagePositionModifier": -5
+					},
+					{
+						"id": "bf-top-platform",
+						"stagePositionModifier": -15
+					},
+					{
+						"id": "dl-normal",
+						"stagePositionModifier": 0
+					},
+					{
+						"id": "dl-low-platform",
+						"stagePositionModifier": -9
+					},
+					{
+						"id": "dl-top-platform",
+						"stagePositionModifier": -24
+					},
+					{
+						"id": "sv-normal",
+						"stagePositionModifier": 1
+					},
+					{
+						"id": "sv-platform",
+						"stagePositionModifier": -11
+					},
+
+					{
+						"id": "tc-normal",
+						"stagePositionModifier": -4
+					},
+					{
+						"id": "tc-low-platform",
+						"stagePositionModifier": -17
+					},
+					{
+						"id": "tc-side-platform",
+						"stagePositionModifier": -26
+					},
+					{
+						"id": "tc-top-platform",
+						"stagePositionModifier": -35
+					}
+				],
 
 				"percents": {
 					"bayonetta": { "start": 106, "end": 149 },
@@ -395,31 +524,81 @@
 
 				"specialInfo": "",
 
-				"rage50": "[-6, -6]",
-				"rage60": "[-8, -9]",
-				"rage80": "[-14, -15]",
-				"rage100": "[-18, -20]",
-				"rage125": "[-23, -25]",
-				"rage150": "[-30, -32]",
+				"rage0": { "start": 0, "end": 0 },
+				"rage50": { "start": -6, "end": -6 },
+				"rage60": { "start": -8, "end": -9 },
+				"rage80": { "start": -14, "end": -15 },
+				"rage100": { "start": -18, "end": -20 },
+				"rage125": { "start": -23, "end": -25 },
+				"rage150": { "start": -30, "end": -32 },
 
-				"bfNormalMin": 6,
-				"bfLowPlatMin": -5,
-				"bfTopPlatMin": -14,
+				"stageList": [
+					{
+						"id": "fd-normal",
+						"stagePositionModifier": 0
+					},
+					{
+						"id": "bf-normal",
+						"stagePositionModifier": 6
+					},
+					{
+						"id": "bf-low-platform",
+						"stagePositionModifier": -5
+					},
+					{
+						"id": "bf-top-platform",
+						"stagePositionModifier": -14
+					},
+					{
+						"id": "dl-normal",
+						"stagePositionModifier": 0
+					},
+					{
+						"id": "dl-low-platform",
+						"stagePositionModifier": -11
+					},
+					{
+						"id": "dl-top-platform",
+						"stagePositionModifier": -23
+					},
+					{
+						"id": "sv-normal",
+						"stagePositionModifier": 1
+					},
+					{
+						"id": "sv-platform",
+						"stagePositionModifier": -11
+					},
 
-				"dlLowPlatMin": -11,
-				"dlTopPlatMin": -23,
-
-				"svNormalMin": 1,
-				"svPlatMin": -11,
-
-				"tcNormalMin": -2,
-				"tcLowPlatMin": -13,
-				"tcSidePlatMin": -22,
-				"tcTopPlatMin": -33,
-
-				"lylatNormalMin": 0,
-				"lylatSidePlatMin": -13,
-				"lylatMidPlatMin": -10,
+					{
+						"id": "tc-normal",
+						"stagePositionModifier": -2
+					},
+					{
+						"id": "tc-low-platform",
+						"stagePositionModifier": -13
+					},
+					{
+						"id": "tc-side-platform",
+						"stagePositionModifier": -22
+					},
+					{
+						"id": "tc-top-platform",
+						"stagePositionModifier": -33
+					},
+					{
+						"id": "lylat-normal",
+						"stagePositionModifier": 0
+					},
+					{
+						"id": "lylat-side-platform",
+						"stagePositionModifier": -13
+					},
+					{
+						"id": "lylat-mid-platform",
+						"stagePositionModifier": -10
+					}
+				],
 
 				"percents": {
 					"bayonetta": { "start": 96, "end": 105 },
@@ -528,24 +707,69 @@
 
 				"specialInfo": "<strong>IMPORTANT</strong> Due to the nature of this combo, there are several deadzones within the kill percents where it's no longer true. Check the <a class='info' href=''>info section</a> for more.<br>Since this isn't strictly a kill confirm, only Final Destination is included as a stage, and the percents listed are the percents that this combo is simply 'true', not when it kills.<br>Also included within the character grid is how far Pikachu needs to run to connect this combo.",
 
-				"rage50": "[-8, -9]",
-				"rage60": "[-10, -12]",
-				"rage80": "[-14, -16]",
-				"rage100": "[-18, -22]",
-				"rage125": "[-24, -29]",
-				"rage150": "[-30, -37]",
+				"rage0": { "start": 0, "end": 0 },
+				"rage50": { "start": -8, "end": -9 },
+				"rage60": { "start": -10, "end": -12 },
+				"rage80": { "start": -14, "end": -16 },
+				"rage100": { "start": -18, "end": -22 },
+				"rage125": { "start": -24, "end": -29 },
+				"rage150": { "start": -30, "end": -37 },
 
-				"bfNormalMin": 5,
-				"bfLowPlatMin": -5,
-				"bfTopPlatMin": -13,
-				"dlLowPlatMin": -11,
-				"dlTopPlatMin": -21,
-				"svNormalMin": 1,
-				"svPlatMin": -10,
-				"tcNormalMin": -3,
-				"tcLowPlatMin": -14,
-				"tcSidePlatMin": -13,
-				"tcTopPlatMin": -25,
+				"stageList": [
+					{
+						"id": "fd-normal",
+						"stagePositionModifier": 0
+					},
+					{
+						"id": "bf-normal",
+						"stagePositionModifier": 5
+					},
+					{
+						"id": "bf-low-platform",
+						"stagePositionModifier": -5
+					},
+					{
+						"id": "bf-top-platform",
+						"stagePositionModifier": -13
+					},
+					{
+						"id": "dl-normal",
+						"stagePositionModifier": 0
+					},
+					{
+						"id": "dl-low-platform",
+						"stagePositionModifier": -11
+					},
+					{
+						"id": "dl-top-platform",
+						"stagePositionModifier": -21
+					},
+					{
+						"id": "sv-normal",
+						"stagePositionModifier": 1
+					},
+					{
+						"id": "sv-platform",
+						"stagePositionModifier": -10
+					},
+
+					{
+						"id": "tc-normal",
+						"stagePositionModifier": -3
+					},
+					{
+						"id": "tc-low-platform",
+						"stagePositionModifier": -14
+					},
+					{
+						"id": "tc-side-platform",
+						"stagePositionModifier": -13
+					},
+					{
+						"id": "tc-top-platform",
+						"stagePositionModifier": -25
+					}
+				],
 
 				"percents": {
 					"bayonetta": { "start": 119, "end": 138, "distance": "Mid-Far" },
@@ -643,24 +867,69 @@
 
 				"specialInfo": "<strong>IMPORTANT</strong> Due to the nature of this combo, there are several deadzones within the kill percents where it's no longer true. Check the <a class='info' href=''>info section</a> for more.<br>Since this isn't strictly a kill confirm, only Final Destination is included as a stage, and the percents listed are the percents that this combo is simply 'true', not when it kills.<br>Also included within the character grid is how far Pikachu needs to run to connect this combo.",
 
-				"rage50": "[-8, -9]",
-				"rage60": "[-10, -12]",
-				"rage80": "[-14, -16]",
-				"rage100": "[-18, -22]",
-				"rage125": "[-24, -29]",
-				"rage150": "[-30, -37]",
+				"rage0": { "start": 0, "end": 0 },
+				"rage50": { "start": -8, "end": -9 },
+				"rage60": { "start": -10, "end": -12 },
+				"rage80": { "start": -14, "end": -16 },
+				"rage100": { "start": -18, "end": -22 },
+				"rage125": { "start": -24, "end": -29 },
+				"rage150": { "start": -30, "end": -37 },
 
-				"bfNormalMin": 5,
-				"bfLowPlatMin": -5,
-				"bfTopPlatMin": -13,
-				"dlLowPlatMin": -11,
-				"dlTopPlatMin": -21,
-				"svNormalMin": 1,
-				"svPlatMin": -10,
-				"tcNormalMin": -3,
-				"tcLowPlatMin": -14,
-				"tcSidePlatMin": -13,
-				"tcTopPlatMin": -25,
+				"stageList": [
+					{
+						"id": "fd-normal",
+						"stagePositionModifier": 0
+					},
+					{
+						"id": "bf-normal",
+						"stagePositionModifier": 5
+					},
+					{
+						"id": "bf-low-platform",
+						"stagePositionModifier": -5
+					},
+					{
+						"id": "bf-top-platform",
+						"stagePositionModifier": -13
+					},
+					{
+						"id": "dl-normal",
+						"stagePositionModifier": 0
+					},
+					{
+						"id": "dl-low-platform",
+						"stagePositionModifier": -11
+					},
+					{
+						"id": "dl-top-platform",
+						"stagePositionModifier": -21
+					},
+					{
+						"id": "sv-normal",
+						"stagePositionModifier": 1
+					},
+					{
+						"id": "sv-platform",
+						"stagePositionModifier": -10
+					},
+
+					{
+						"id": "tc-normal",
+						"stagePositionModifier": -3
+					},
+					{
+						"id": "tc-low-platform",
+						"stagePositionModifier": -14
+					},
+					{
+						"id": "tc-side-platform",
+						"stagePositionModifier": -13
+					},
+					{
+						"id": "tc-top-platform",
+						"stagePositionModifier": -25
+					}
+				],
 
 				"percents": {
 					"bayonetta": { "start": 119, "end": 136, "distance": "Mid-Far" },
@@ -766,24 +1035,69 @@
 
 				"specialInfo": "",
 
-				"rage50": "[-4, -4]",
-				"rage60": "[-6, -6]",
-				"rage80": "[-13, -13]",
-				"rage100": "[-16, -16]",
-				"rage125": "[-22, -22]",
-				"rage150": "[-28, -28]",
+				"rage0": { "start": 0, "end": 0 },
+				"rage50": { "start": -4, "end": -4 },
+				"rage60": { "start": -6, "end": -6 },
+				"rage80": { "start": -13, "end": -13 },
+				"rage100": { "start": -16, "end": -16 },
+				"rage125": { "start": -22, "end": -22 },
+				"rage150": { "start": -28, "end": -28 },
 
-				"bfNormalMin": 5,
-				"bfLowPlatMin": -5,
-				"bfTopPlatMin": -13,
-				"dlLowPlatMin": -11,
-				"dlTopPlatMin": -21,
-				"svNormalMin": 1,
-				"svPlatMin": -10,
-				"tcNormalMin": -3,
-				"tcLowPlatMin": -14,
-				"tcSidePlatMin": -13,
-				"tcTopPlatMin": -25,
+				"stageList": [
+					{
+						"id": "fd-normal",
+						"stagePositionModifier": 0
+					},
+					{
+						"id": "bf-normal",
+						"stagePositionModifier": 5
+					},
+					{
+						"id": "bf-low-platform",
+						"stagePositionModifier": -5
+					},
+					{
+						"id": "bf-top-platform",
+						"stagePositionModifier": -13
+					},
+					{
+						"id": "dl-normal",
+						"stagePositionModifier": 0
+					},
+					{
+						"id": "dl-low-platform",
+						"stagePositionModifier": -11
+					},
+					{
+						"id": "dl-top-platform",
+						"stagePositionModifier": -21
+					},
+					{
+						"id": "sv-normal",
+						"stagePositionModifier": 1
+					},
+					{
+						"id": "sv-platform",
+						"stagePositionModifier": -10
+					},
+
+					{
+						"id": "tc-normal",
+						"stagePositionModifier": -3
+					},
+					{
+						"id": "tc-low-platform",
+						"stagePositionModifier": -14
+					},
+					{
+						"id": "tc-side-platform",
+						"stagePositionModifier": -13
+					},
+					{
+						"id": "tc-top-platform",
+						"stagePositionModifier": -25
+					}
+				],
 
 				"percents": {
 					"bayonetta": { "start": 93, "end": 114 },
@@ -890,27 +1204,69 @@
 
 				"specialInfo": "In Zelda's case, difficulty is determined by the victim's airdodge frame, not by the kill confirm window.",
 
-				"rage50": "[-3, -8]",
-				"rage60": "[-6, -18]",
-				"rage80": "[-11, -36]",
-				"rage100": "[-14, -59]",
-				"rage125": "[-19, -69]",
-				"rage150": "[-25, -85]",
+				"rage0": { "start": 0, "end": 0 },
+				"rage50": { "start": -3, "end": -8 },
+				"rage60": { "start": -6, "end": -18 },
+				"rage80": { "start": -11, "end": -36 },
+				"rage100": { "start": -14, "end": -59 },
+				"rage125": { "start": -19, "end": -69 },
+				"rage150": { "start": -25, "end": -85 },
 
-				"bfNormalMin": 7,
-				"bfLowPlatMin": -7,
-				"bfTopPlatMin": -20,
+				"stageList": [
+					{
+						"id": "fd-normal",
+						"stagePositionModifier": 0
+					},
+					{
+						"id": "bf-normal",
+						"stagePositionModifier": 7
+					},
+					{
+						"id": "bf-low-platform",
+						"stagePositionModifier": -7
+					},
+					{
+						"id": "bf-top-platform",
+						"stagePositionModifier": -20
+					},
+					{
+						"id": "dl-normal",
+						"stagePositionModifier": 0
+					},
+					{
+						"id": "dl-low-platform",
+						"stagePositionModifier": -15
+					},
+					{
+						"id": "dl-top-platform",
+						"stagePositionModifier": -26
+					},
+					{
+						"id": "sv-normal",
+						"stagePositionModifier": 1
+					},
+					{
+						"id": "sv-platform",
+						"stagePositionModifier": -14
+					},
 
-				"dlLowPlatMin": -15,
-				"dlTopPlatMin": -26,
-
-				"svNormalMin": 1,
-				"svPlatMin": -14,
-
-				"tcNormalMin": -4,
-				"tcLowPlatMin": -20,
-				"tcSidePlatMin": -25,
-				"tcTopPlatMin": -41,
+					{
+						"id": "tc-normal",
+						"stagePositionModifier": -4
+					},
+					{
+						"id": "tc-low-platform",
+						"stagePositionModifier": -20
+					},
+					{
+						"id": "tc-side-platform",
+						"stagePositionModifier": -25
+					},
+					{
+						"id": "tc-top-platform",
+						"stagePositionModifier": -41
+					}
+				],
 
 				"percents": {
 					"bayonetta": { "start": 83, "end": 142 },

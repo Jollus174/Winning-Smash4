@@ -51,12 +51,14 @@ const Tiles = (props) => {
 		setSelectedCharacterModal,
 		sortDescending,
 		setModalShowStageList,
-		setModalShowInfo
+		setModalShowInfo,
+		refreshStageList
 	} = props;
 
 	const handleOpenModal = (character, characterValid) => {
 		if (characterValid) {
 			setSelectedCharacterModal(character);
+			refreshStageList(character);
 			setModalShowStageList(true);
 		} else {
 			setModalShowInfo(true);
@@ -139,6 +141,7 @@ const CharacterTiles = ({
 	selectedKillConfirm,
 	handleSelectedKillConfirm,
 	stageList,
+	setStageList,
 	sortByName,
 	setSortByName,
 	sortByWeight,
@@ -156,6 +159,7 @@ const CharacterTiles = ({
 }) => {
 	const [modalShowStageList, setModalShowStageList] = useState(false);
 	const [modalShowInfo, setModalShowInfo] = useState(false);
+	const [activeRage, setActiveRage] = useState('rage0');
 	const [showAdditionalCharacterInfoInGrid, setShowAdditionalCharacterInfoInGridInGrid] = useState(false);
 
 	const handleFilter = (value) => {
@@ -279,6 +283,22 @@ const CharacterTiles = ({
 			newCharAttrs.sort((a, b) => b.gravity - a.gravity);
 		}
 		setCharAttrs(newCharAttrs);
+	};
+
+	const refreshStageList = (character) => {
+		// spreading in selected kill confirm percents to each stage, based on the selected character modal
+		const updatedStageList = [...stageList];
+		for (const stage of updatedStageList) {
+			for (const stagePosition of stage.stagePositions) {
+				const killConfirmStageData = selectedKillConfirm.stageList.find(
+					(stageModifier) => stageModifier.id === stagePosition.id
+				);
+				const { stagePositionModifier = 0 } = killConfirmStageData;
+				stagePosition.min = selectedKillConfirm.percents[character.id].start + stagePositionModifier;
+				// I guess in the app I could only use the stage data people provided. There were no modifiers for init max % on each stage
+			}
+		}
+		setStageList(updatedStageList);
 	};
 
 	return (
@@ -456,6 +476,8 @@ const CharacterTiles = ({
 						setModalShowStageList={setModalShowStageList}
 						setModalShowInfo={setModalShowInfo}
 						sortDescending={sortDescending}
+						selectedKillConfirm={selectedKillConfirm}
+						refreshStageList={refreshStageList}
 					/>
 				</div>
 			</div>
@@ -467,8 +489,11 @@ const CharacterTiles = ({
 				selectedCharacterModal={selectedCharacterModal}
 				setSelectedCharacterModal={setSelectedCharacterModal}
 				selectedKillConfirm={selectedKillConfirm}
+				activeRage={activeRage}
+				setActiveRage={setActiveRage}
 				handleSelectedKillConfirm={handleSelectedKillConfirm}
 				filteredCharAttrs={filteredCharAttrs}
+				refreshStageList={refreshStageList}
 			/>
 			<ModalInfo
 				selectedCharacter={selectedCharacter}

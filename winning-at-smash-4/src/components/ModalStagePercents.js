@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Modal } from 'react-bootstrap';
 
 const ModalStagePercents = ({
@@ -9,20 +8,25 @@ const ModalStagePercents = ({
 	selectedCharacterModal,
 	setSelectedCharacterModal,
 	selectedKillConfirm,
+	activeRage,
+	setActiveRage,
 	handleSelectedKillConfirm,
-	filteredCharAttrs
+	filteredCharAttrs,
+	refreshStageList
 }) => {
-	// rage50, rage60, rage80, etc
-	const [activeRage, setActiveRage] = useState('rage0');
-
 	if (!Object.keys(selectedCharacterModal).length) return;
+
+	const handleSetActiveRage = (rageValue) => {
+		setActiveRage(rageValue);
+		refreshStageList(selectedCharacterModal);
+	};
 
 	const RageButton = ({ text, value }) => {
 		return (
 			<button
 				type="button"
 				className={`btn btn-secondary ${activeRage === value ? 'active' : ''}`}
-				onClick={() => setActiveRage(value)}
+				onClick={() => handleSetActiveRage(value)}
 			>
 				{text}%
 			</button>
@@ -50,6 +54,8 @@ const ModalStagePercents = ({
 				return closureLoop(counter);
 			} else {
 				setSelectedCharacterModal(prevCharacter);
+				setActiveRage('rage-0');
+				refreshStageList(prevCharacter, selectedKillConfirm);
 			}
 		};
 
@@ -75,6 +81,8 @@ const ModalStagePercents = ({
 				return closureLoop(counter);
 			} else {
 				setSelectedCharacterModal(nextCharacter);
+				setActiveRage('rage-0');
+				refreshStageList(nextCharacter, selectedKillConfirm);
 			}
 		};
 
@@ -92,13 +100,13 @@ const ModalStagePercents = ({
 			// goToNextCharacter();
 			document.querySelector('#btn-next').click();
 		}
-		if (key === '1' || key === '8' || key === '9' || key === '0') setActiveRage('rage0');
-		if (key === '2') setActiveRage('rage50');
-		if (key === '3') setActiveRage('rage60');
-		if (key === '4') setActiveRage('rage80');
-		if (key === '5') setActiveRage('rage100');
-		if (key === '6') setActiveRage('rage125');
-		if (key === '7') setActiveRage('rage150');
+		if (key === '1' || key === '8' || key === '9' || key === '0') handleSetActiveRage('rage0');
+		if (key === '2') handleSetActiveRage('rage50');
+		if (key === '3') handleSetActiveRage('rage60');
+		if (key === '4') handleSetActiveRage('rage80');
+		if (key === '5') handleSetActiveRage('rage100');
+		if (key === '6') handleSetActiveRage('rage125');
+		if (key === '7') handleSetActiveRage('rage150');
 	};
 
 	const handleModalShow = () => {
@@ -108,6 +116,7 @@ const ModalStagePercents = ({
 	const handleModalHide = () => {
 		setModalShowStageList(false);
 		setSelectedCharacterModal({});
+		setActiveRage('rage0');
 		document.removeEventListener('keydown', handleKeyPress);
 	};
 
@@ -218,7 +227,7 @@ const ModalStagePercents = ({
 				</div>
 				<div className="modal-body">
 					<section className="stages">
-						{Object.values(stageList).map((stage) => (
+						{stageList.map((stage) => (
 							<div className="stage" style={{ '--stage-color': stage.color }} key={stage.id}>
 								<div className="stage-title text-center text-uppercase">
 									<h5 className="h6">{stage.name}</h5>
@@ -229,17 +238,17 @@ const ModalStagePercents = ({
 											<img className="img-fluid" src={`/images/stages/${stage.imageFile}`} alt={'stage.name'} />
 										</div>
 										<div className="col-md-9 col-tables">
-											{stage.tables.map((table) => (
+											{stage.stagePositions.map((stagePosition) => (
 												<table
 													className="table table-bordered table-sm"
 													cellPadding="0"
 													cellSpacing="0"
 													border="0"
-													key={table.id}
+													key={stagePosition.id}
 												>
 													<thead>
 														<tr>
-															<th colSpan="3">{table.stagePartName}</th>
+															<th colSpan="3">{stagePosition.stagePartName}</th>
 														</tr>
 													</thead>
 													<tbody>
@@ -249,11 +258,13 @@ const ModalStagePercents = ({
 															<th>Window</th>
 														</tr>
 														<tr>
-															<td>{`${table.min}%`}</td>
-															<td>{`${table.max}%`}</td>
+															<td>{`${stagePosition.min}%`}</td>
+															<td>{`${stagePosition.max}%`}</td>
 															{/* would be nice to use a 'calculatePercDiff()' function for this instead */}
 															<td className="cell-window">
-																{table.max - table.min > 0 ? `±${table.max - table.min}` : `N/A`}
+																{stagePosition.max - stagePosition.min > 0
+																	? `±${stagePosition.max - stagePosition.min + 1}`
+																	: `N/A`}
 															</td>
 														</tr>
 													</tbody>
