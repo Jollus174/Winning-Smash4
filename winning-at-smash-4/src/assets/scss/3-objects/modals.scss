@@ -44,6 +44,7 @@
 	--bs-modal-header-padding: 0;
 	--bs-modal-border-radius: 0;
 	--bs-modal-inner-border-radius: 0;
+	--bs-modal-border-width: 3px;
 
 	.modal-header {
 		position: relative;
@@ -58,10 +59,6 @@
 			left: 0;
 			background-color: transparentize($black, 0.7);
 		}
-	}
-
-	.modal-content {
-		border-width: 3px 2px;
 	}
 
 	.character-info-section {
@@ -150,14 +147,19 @@
 
 		.btn-group {
 			justify-content: center;
+			gap: 6px;
 		}
 
 		.btn {
-			--bs-btn-padding-x: 6px;
+			--bs-btn-padding-x: 3px;
+			--bs-btn-padding-y: 4px;
 			--bs-btn-hover-color: var(--bs-btn-color);
 			--bs-btn-focus-color: var(--bs-btn-color);
 			--bs-btn-active-bg: #ff6951;
+			--bs-btn-active-border-color: var(--bs-btn-active-bg);
 			--bs-btn-active-color: #{$white};
+			--bs-btn-bg: #{$white};
+			--bs-btn-border-color: #bfbfbf;
 			--bs-btn-font-size: 13px;
 		}
 	}
@@ -169,16 +171,26 @@
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
-		gap: 10px;
+		gap: 6px;
 		width: 50px;
+
+		.legend-key {
+			background: transparentize($white, 0.9);
+			display: inline-block;
+			padding: 4px 6px;
+			border-radius: 4px;
+
+			&.legend-key-keyboard {
+				padding: 1px 6px 2px;
+			}
+		}
 
 		path {
 			fill: currentColor;
 			transition: fill 0.2s ease;
 		}
 
-		.legend-key-escape {
-			display: inline-block;
+		.icon-key-escape {
 			background-color: currentColor;
 			border-radius: 3px;
 			font-size: 11px;

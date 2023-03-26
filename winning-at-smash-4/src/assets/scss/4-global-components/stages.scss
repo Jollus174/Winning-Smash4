@@ -16,6 +16,10 @@
 
 	.row-stage-details {
 		--bs-gutter-x: 1rem;
+
+		img {
+			width: 100%;
+		}
 	}
 
 	.col-tables {
@@ -31,10 +35,19 @@
 			background-color: transparentize($black, 0.95);
 		}
 
-		tbody th {
-			font-size: 13px;
-			font-weight: 700;
-			text-transform: uppercase;
+		tbody {
+			th {
+				font-size: 13px;
+				font-weight: 700;
+				text-transform: uppercase;
+			}
+
+			td {
+				&.cell-window {
+					width: 80px;
+					background-image: repeating-linear-gradient(135deg, #{$white}, #{$white} 2px, #efefef 2px, #efefef 4px);
+				}
+			}
 		}
 	}
 }
