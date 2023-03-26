@@ -13,32 +13,32 @@
 	}
 }
 
-.character-tiles {
-	.character-topbar {
-		gap: 1rem;
-		padding: 0.5rem 1rem;
-		background-color: rgb(var(--card-color));
-		transition: background-color 0.2s ease;
+.character-topbar {
+	gap: 1rem;
+	padding: 0.5rem 1rem;
+	background-color: rgb(var(--card-color));
+	transition: background-color 0.2s ease;
 
-		.btn {
-			--btn-bg: var(--btn-color);
-			flex-shrink: 0;
-		}
-
-		.move-buttons-wrapper {
-			display: flex;
-			overflow: hidden;
-		}
-
-		.move-buttons {
-			overflow-x: auto;
-
-			.btn {
-				white-space: nowrap;
-			}
-		}
+	.btn {
+		--btn-bg: var(--btn-color);
+		flex-shrink: 0;
 	}
 
+	.move-buttons-wrapper {
+		display: flex;
+		overflow: hidden;
+	}
+
+	.move-buttons {
+		overflow-x: auto;
+
+		.btn {
+			white-space: nowrap;
+		}
+	}
+}
+
+.character-tiles {
 	.row-character-tile,
 	.col-character-tile {
 		--bs-gutter-x: 0.5rem;
@@ -72,6 +72,7 @@
 	.character-tile {
 		--bs-btn-bg: var(--tile-bg-color, $white);
 		--bs-btn-hover-bg: var(--bs-btn-bg);
+		--bs-btn-active-bg: var(--bs-btn-bg);
 		--bs-btn-border-width: 0;
 		--bs-btn-border-radius: 0;
 		position: relative;
@@ -123,16 +124,6 @@
 			font-weight: 700;
 		}
 
-		img {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: calc(100% + 10px);
-			object-fit: none;
-			transition: transform 0.2s ease;
-		}
-
 		.character-index {
 			position: absolute;
 			top: 0;
@@ -144,74 +135,91 @@
 			color: transparentize($white, 0.5);
 			font-size: 12px;
 		}
-
-		.character-info {
-			position: absolute;
-			top: 4px;
-			left: 4px;
-			z-index: 2;
-			display: flex;
-			flex-direction: column;
-			align-items: flex-start;
-			gap: 2px;
-			color: $white;
-			font-size: 12px;
-			font-weight: 700;
-			text-transform: uppercase;
-
-			.item {
-				padding: 1px 4px;
-				border-radius: 3px;
-			}
-
-			.item-extra {
-				background-color: #333;
-				text-transform: none;
-				padding: 1px 4px;
-				border-radius: 3px;
-			}
-
-			.grid-difficulty {
-				gap: 3px;
-			}
-
-			.grid-percent-range {
-				background-color: #e03838;
-				border: 1px solid $white;
-				font-size: 14px;
-			}
-
-			.special-info {
-				background-color: #f34abf;
-			}
-		}
-
-		.very-easy {
-			background-color: #8bc34a;
-		}
-		.easy {
-			background-color: #4caf50;
-		}
-		.average {
-			background-color: #ffeb3b;
-			color: transparentize($black, 0.13);
-		}
-		.hard {
-			background-color: #ef6c00;
-		}
-		.very-hard {
-			background-color: #dd2c00;
-		}
-
-		.character-name {
-			position: absolute;
-			left: 0;
-			bottom: 0;
-			z-index: 2;
-			width: 100%;
-			background-color: transparentize($black, 0.4);
-			color: $white;
-			padding: 1px 0;
-		}
 	}
+}
+
+.character-image {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: calc(100% + 5px);
+	object-fit: none;
+	opacity: 0.3;
+	transition-property: transform, opacity;
+	transition-duration: 0.2s;
+	transition-timing-function: ease;
+
+	@include media-breakpoint-up(lg) {
+		opacity: 1;
+	}
+}
+
+.character-info {
+	position: absolute;
+	top: 4px;
+	left: 4px;
+	z-index: 2;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 2px;
+	color: $white;
+	font-size: 12px;
+	font-weight: 700;
+	text-transform: uppercase;
+
+	.item {
+		padding: 1px 4px;
+		border-radius: 3px;
+	}
+
+	.item-extra {
+		background-color: #333;
+		text-transform: none;
+		padding: 1px 4px;
+		border-radius: 3px;
+	}
+
+	.grid-difficulty {
+		gap: 3px;
+	}
+
+	.grid-percent-range {
+		background-color: #e03838;
+		border: 1px solid $white;
+		font-size: 14px;
+	}
+
+	.special-info {
+		background-color: #f34abf;
+	}
+}
+
+.very-easy {
+	background-color: #8bc34a;
+}
+.easy {
+	background-color: #4caf50;
+}
+.average {
+	background-color: #ffeb3b;
+	color: transparentize($black, 0.13);
+}
+.hard {
+	background-color: #ef6c00;
+}
+.very-hard {
+	background-color: #dd2c00;
+}
+
+.character-name {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	z-index: 2;
+	width: 100%;
+	background-color: transparentize($black, 0.4);
+	color: $white;
+	padding: 1px 0;
 }

@@ -1,6 +1,6 @@
 import { Modal } from 'react-bootstrap';
 
-const ModalInfo = ({ selectedKillConfirm, modalShowInfo, setModalShowInfo }) => {
+const ModalInfo = ({ selectedCharacter, selectedKillConfirm, modalShowInfo, setModalShowInfo }) => {
 	const handleModalHide = () => {
 		setModalShowInfo(false);
 		console.log('closing show info!');
@@ -8,7 +8,7 @@ const ModalInfo = ({ selectedKillConfirm, modalShowInfo, setModalShowInfo }) => 
 
 	if (!Object.keys(selectedKillConfirm).length) return null;
 
-	const { name, info } = selectedKillConfirm;
+	const { info } = selectedKillConfirm;
 
 	return (
 		// TODO: set up the aria- stuff since these modals will have slightly different content each time
@@ -25,11 +25,13 @@ const ModalInfo = ({ selectedKillConfirm, modalShowInfo, setModalShowInfo }) => 
 					<div className="modal-body">
 						{info.giphy.youtubeUrl ? (
 							<a href={info.giphy.youtubeUrl} target="_blank" rel="noreferrer">
-								<iframe src={info.giphy.giphyUrl} title={`${name} kill confirm Giphy`}></iframe>
+								<div className="ratio ratio-16x9 mb-3">
+									<iframe src={info.giphy.giphyUrl} title={`${selectedCharacter.name} kill confirm Giphy`}></iframe>
+								</div>
 							</a>
 						) : (
-							<div>
-								<iframe src={info.giphy.giphyUrl} title={`${name} kill confirm Giphy`}></iframe>
+							<div className="ratio ratio-16x9 mb-3">
+								<iframe src={info.giphy.giphyUrl} title={`${selectedCharacter.name} kill confirm Giphy`}></iframe>
 							</div>
 						)}
 						<div className="alert alert-secondary">
@@ -43,7 +45,8 @@ const ModalInfo = ({ selectedKillConfirm, modalShowInfo, setModalShowInfo }) => 
 							)}{' '}
 							for the{' '}
 							<a href={info.spreadsheetLink} target="_blank" rel="noreferrer">
-								{name} <span dangerouslySetInnerHTML={{ __html: selectedKillConfirm.moveName }} /> spreadsheet
+								{selectedCharacter.name} <span dangerouslySetInnerHTML={{ __html: selectedKillConfirm.moveName }} />{' '}
+								spreadsheet
 							</a>
 							{info.spreadsheetMethod ? (
 								<span>

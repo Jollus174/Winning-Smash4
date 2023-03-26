@@ -86,7 +86,11 @@ const Tiles = (props) => {
 									handleOpenModal(character, characterValid);
 								}}
 							>
-								<img src={`/images/characters/webp/${character.id}.webp`} alt={'character.name'} />
+								<img
+									src={`/images/characters/webp/${character.id}.webp`}
+									alt={character.name}
+									className="character-image"
+								/>
 								<div className="character-index">{sortDescending ? i + 1 : charAttrs.length - i}</div>
 								<div className="character-info">
 									<div className="item grid-percent-range">
@@ -462,10 +466,12 @@ const CharacterTiles = ({
 				selectedCharacter={selectedCharacter}
 				selectedCharacterModal={selectedCharacterModal}
 				setSelectedCharacterModal={setSelectedCharacterModal}
+				selectedKillConfirm={selectedKillConfirm}
 				handleSelectedKillConfirm={handleSelectedKillConfirm}
 				filteredCharAttrs={filteredCharAttrs}
 			/>
 			<ModalInfo
+				selectedCharacter={selectedCharacter}
 				selectedKillConfirm={selectedKillConfirm}
 				modalShowInfo={modalShowInfo}
 				setModalShowInfo={setModalShowInfo}
