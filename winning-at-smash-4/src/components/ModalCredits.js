@@ -1,7 +1,7 @@
 import { Modal } from 'react-bootstrap';
 import { useHistory } from 'react-router';
 
-const ModalCredits = ({ modalShowCredits, killConfirms }) => {
+const ModalCredits = ({ killConfirms }) => {
 	const history = useHistory();
 
 	const handleModalHide = () => {
@@ -11,8 +11,8 @@ const ModalCredits = ({ modalShowCredits, killConfirms }) => {
 	return (
 		<Modal
 			className="modal modal-info"
-			aria-labelledby=""
-			show={modalShowCredits}
+			aria-labelledby="#modal-credits-title"
+			show={true}
 			onHide={handleModalHide}
 			centered={true}
 			animation={false}
@@ -24,7 +24,7 @@ const ModalCredits = ({ modalShowCredits, killConfirms }) => {
 				</svg>
 			</button>
 			<div className="modal-body">
-				<h2>Credits</h2>
+				<h2 id="modal-credits-title">Credits</h2>
 				{killConfirms.map((killConfirm) => (
 					<p key={killConfirm.charId}>
 						{killConfirm.moves.map((move, i) => (
@@ -124,7 +124,7 @@ const ModalCredits = ({ modalShowCredits, killConfirms }) => {
 				<p>Thanks to Nintendo, Namco Bandai, and Sora for developing Super Smash Bros. for Wii U.</p>
 
 				<p>
-					<img class="img-fluid" src="/images/credits.jpg" alt="Winning at Smash 4 Credits" />
+					<img class="img-fluid" src="/images/credits.jpg" alt="Winning at Smash 4 Credits" width="545" height="306" />
 				</p>
 			</div>
 		</Modal>

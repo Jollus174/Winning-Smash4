@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-const Header = ({ setSidebarOpen, sidebarOpen, selectedCharacter, setModalShowCredits }) => {
+const Header = ({ setSidebarOpen, sidebarOpen, selectedCharacter }) => {
 	return (
 		<header className="d-flex align-items-center header text-light">
 			<button

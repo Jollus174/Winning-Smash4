@@ -6,6 +6,7 @@ import CharacterMoveCards from './components/CharacterMoveCards';
 import CharacterTiles from './components/CharacterTiles';
 import ModalStagePercents from './components/ModalStagePercents';
 import ModalInfo from './components/ModalInfo';
+import ModalAbout from './components/ModalAbout';
 import ModalCredits from './components/ModalCredits';
 
 function App() {
@@ -34,7 +35,6 @@ function App() {
 	const [modalShowStageList, setModalShowStageList] = useState(false);
 	const [modalShowInfo, setModalShowInfo] = useState(false);
 	const [activeRage, setActiveRage] = useState('rage0');
-	const [modalShowCredits, setModalShowCredits] = useState(false);
 
 	const handleSelectedKillConfirm = (character, move) => {
 		// updating base character attributes with the percents and stage info from the kill confirm
@@ -224,12 +224,7 @@ function App() {
 					{loading ? (
 						'Is loading'
 					) : (
-						<Header
-							setSidebarOpen={setSidebarOpen}
-							sidebarOpen={sidebarOpen}
-							selectedCharacter={selectedCharacter}
-							setModalShowCredits={setModalShowCredits}
-						/>
+						<Header setSidebarOpen={setSidebarOpen} sidebarOpen={sidebarOpen} selectedCharacter={selectedCharacter} />
 					)}
 					<main>
 						{loading ? (
@@ -283,8 +278,11 @@ function App() {
 									modalShowInfo={modalShowInfo}
 									setModalShowInfo={setModalShowInfo}
 								/>
+								<Route exact path="/about">
+									<ModalAbout modalShowAbout={true} />
+								</Route>
 								<Route exact path="/credits">
-									<ModalCredits modalShowCredits={true} killConfirms={killConfirms} />
+									<ModalCredits killConfirms={killConfirms} />
 								</Route>
 							</>
 						)}
