@@ -1,6 +1,6 @@
 @import "../../../node_modules/bootstrap/scss/mixins";
-@import "../../../node_modules/bootstrap/scss/bootstrap-grid";
 @import "../../../node_modules/bootstrap/scss/bootstrap-reboot";
+@import "../../../node_modules/bootstrap/scss/bootstrap-grid";
 @import "../../../node_modules/bootstrap/scss/bootstrap-utilities";
 @import "../../../node_modules/bootstrap/scss/root";
 
@@ -16,7 +16,12 @@
 
 @import "../../../node_modules/bootstrap/scss/helpers/ratio";
 
-@import "../../../node_modules/font-awesome/scss/font-awesome";
+@import "../../../node_modules/font-awesome/scss/variables";
+@import "../../../node_modules/font-awesome/scss/mixins";
+@import "../../../node_modules/font-awesome/scss/path";
+@import "../../../node_modules/font-awesome/scss/core";
+@import "../../../node_modules/font-awesome/scss/icons";
+@import "../../../node_modules/font-awesome/scss/screen-reader";
 
 @import "0-settings/variables";
 

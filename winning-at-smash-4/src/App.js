@@ -73,8 +73,8 @@ function App() {
 					diffObj.diffText = 'Very Easy';
 					diffObj.diffClass = 'very-easy';
 				} else {
-					diffObj.diffText = 'Blah';
-					diffObj.diffClass = 'blah';
+					diffObj.diffText = '';
+					diffObj.diffClass = '';
 				}
 			} else {
 				// alternative difficulty just for Zelda based on the victim's airdodge frames (thanks Zelda)
@@ -96,7 +96,6 @@ function App() {
 			char.percents.diffText = diffObj.diffText;
 			char.percents.diffClass = diffObj.diffClass;
 		}
-
 
 		updatedCharAttrs.sort((a, b) => (a.name < b.name ? -1 : a.name > b.name ? 1 : 0));
 
@@ -207,6 +206,7 @@ function App() {
 									setSelectedKillConfirm={setSelectedKillConfirm}
 									selectedKillConfirm={selectedKillConfirm}
 									stageList={stageList}
+									setStageList={setStageList}
 									handleSelectedKillConfirm={handleSelectedKillConfirm}
 									sortByName={sortByName}
 									setSortByName={setSortByName}

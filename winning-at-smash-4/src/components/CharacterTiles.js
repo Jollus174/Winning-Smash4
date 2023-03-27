@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Dropdown } from 'react-bootstrap';
 import ModalStagePercents from './ModalStagePercents';
 import ModalInfo from './ModalInfo';
 
@@ -224,11 +225,11 @@ const CharacterTiles = ({
 			if (sortByDifficulty === 0 || sortByDifficulty === -1) {
 				setSortByDifficulty(1);
 				setSortDescending(true);
-				newCharAttrs.sort((a, b) => a.percents.percDiff - b.percents.percDiff);
+				newCharAttrs.sort((a, b) => b.percents.percDiff - a.percents.percDiff);
 			} else if (sortByDifficulty === 1) {
 				setSortByDifficulty(-1);
 				setSortDescending(false);
-				newCharAttrs.sort((a, b) => b.percents.percDiff - a.percents.percDiff);
+				newCharAttrs.sort((a, b) => a.percents.percDiff - b.percents.percDiff);
 			}
 		} else {
 			// different difficulty sorting for smelly Zelda
@@ -294,11 +295,36 @@ const CharacterTiles = ({
 					(stageModifier) => stageModifier.id === stagePosition.id
 				);
 				const { stagePositionModifier = 0 } = killConfirmStageData;
-				stagePosition.min = selectedKillConfirm.percents[character.id].start + stagePositionModifier;
+
+				// const rageModifierStart = selectedKillConfirm[activeRage].start || 0;
+				// const rageModifierEnd = selectedKillConfirm[activeRage].end || 0;
+				// console.log(rageModifierStart);
+				// console.log(rageModifierEnd);
+				const rageModifierStart = 0;
+				const rageModifierEnd = 0;
+
+				stagePosition.min =
+					selectedKillConfirm.percents[character.id].start + stagePositionModifier + rageModifierStart;
 				// I guess in the app I could only use the stage data people provided. There were no modifiers for init max % on each stage
+				stagePosition.max = selectedKillConfirm.percents[character.id].end + rageModifierEnd;
 			}
 		}
 		setStageList(updatedStageList);
+	};
+
+	const ItemSortBy = (props) => {
+		const { text, sortParameter } = props;
+		return (
+			<span>
+				<span>{text}</span>{' '}
+				<i
+					className={`fa ms-1 ${
+						sortParameter === 0 ? 'd-none' : sortParameter === -1 ? 'fa-caret-up' : 'fa-caret-down'
+					}`}
+					aria-hidden="true"
+				></i>
+			</span>
+		);
 	};
 
 	return (
@@ -359,112 +385,102 @@ const CharacterTiles = ({
 								className="d-none d-md-inline-block btn btn-primary btn-sm"
 								onClick={handleSortByName}
 							>
-								<span>
-									Name
-									{sortByName !== 0 ? (
-										<i
-											className={`fa ms-1 ${sortByName === -1 ? 'fa-caret-up' : 'fa-caret-down'}`}
-											aria-hidden="true"
-										></i>
-									) : null}
-								</span>
+								<ItemSortBy text="Name" sortParameter={sortByName} />
 							</button>
 							<button
 								type="button"
 								className="d-none d-md-inline-block btn btn-primary btn-sm"
 								onClick={handleSortByWeight}
 							>
-								<span>
-									Weight
-									{sortByWeight !== 0 ? (
-										<i
-											className={`fa ms-1 ${sortByWeight === -1 ? 'fa-caret-up' : 'fa-caret-down'}`}
-											aria-hidden="true"
-										></i>
-									) : null}
-								</span>
+								<ItemSortBy text="Weight" sortParameter={sortByWeight} />
 							</button>
 							<button
 								type="button"
 								className="d-none d-md-inline-block btn btn-primary btn-sm"
 								onClick={handleSortByDifficulty}
 							>
-								<span>
-									Difficulty
-									{sortByDifficulty !== 0 ? (
-										<i
-											className={`fa ms-1 ${sortByDifficulty === -1 ? 'fa-caret-up' : 'fa-caret-down'}`}
-											aria-hidden="true"
-										></i>
-									) : null}
-								</span>
+								<ItemSortBy text="Difficulty" sortParameter={sortByDifficulty} />
 							</button>
-							<button
-								type="button"
-								id="dropdown-more"
-								className="btn btn-primary btn-sm dropdown-toggle"
-								data-bs-toggle="dropdown"
-								data-bs-auto-close="outside"
-								aria-expanded="false"
-							>
-								<span className="d-none d-md-inline">
-									<span className="visually-hidden">More</span>
-									<i className="fa fa-caret-down" aria-hidden="true"></i>
-								</span>
-								<span className="d-flex align-items-center d-md-none">
-									Sort
-									<svg
-										id="icon-filter"
-										className="ms-1"
-										height="24"
-										viewBox="0 0 24 24"
-										width="24"
-										xmlns="http://www.w3.org/2000/svg"
-									>
-										<path
-											className="pathfill"
-											d="M14 5h8v2h-8zm0 5.5h8v2h-8zm0 5.5h8v2h-8zM2 11.5C2 15.08 4.92 18 8.5 18H9v2l3-3-3-3v2h-.5C6.02 16 4 13.98 4 11.5S6.02 7 8.5 7H12V5H8.5C4.92 5 2 7.92 2 11.5z"
-										></path>
-									</svg>
-								</span>
-							</button>
-							<ul className="dropdown-menu" aria-labelledby="dropdown-more">
-								<li>
-									<button type="button" className="dropdown-item" onClick={handleSortByFallspeed}>
-										<span>Fallspeed</span>
-										{sortByFallspeed !== 0 ? (
-											<i
-												className={`fa ms-1 ${sortByFallspeed === -1 ? 'fa-caret-up' : 'fa-caret-down'}`}
-												aria-hidden="true"
-											></i>
-										) : null}
-									</button>
-								</li>
-								<li>
-									<button type="button" className="dropdown-item" onClick={handleSortByGravity}>
-										<span>Gravity</span>
-										{sortByGravity !== 0 ? (
-											<i
-												className={`fa ms-1 ${sortByGravity === -1 ? 'fa-caret-up' : 'fa-caret-down'}`}
-												aria-hidden="true"
-											></i>
-										) : null}
-									</button>
-								</li>
-								<li>
-									<button
+							<Dropdown autoClose="outside">
+								<Dropdown.Toggle id="dropdown-more" className="btn btn-primary btn-sm dropdown-toggle">
+									<span className="d-none d-md-inline">
+										<span className="visually-hidden">More</span>
+										<i className="fa fa-caret-down" aria-hidden="true"></i>
+									</span>
+									<span className="d-flex align-items-center d-md-none">
+										Sort
+										<svg
+											id="icon-filter"
+											className="ms-1"
+											height="24"
+											viewBox="0 0 24 24"
+											width="24"
+											xmlns="http://www.w3.org/2000/svg"
+										>
+											<path
+												className="pathfill"
+												d="M14 5h8v2h-8zm0 5.5h8v2h-8zm0 5.5h8v2h-8zM2 11.5C2 15.08 4.92 18 8.5 18H9v2l3-3-3-3v2h-.5C6.02 16 4 13.98 4 11.5S6.02 7 8.5 7H12V5H8.5C4.92 5 2 7.92 2 11.5z"
+											></path>
+										</svg>
+									</span>
+								</Dropdown.Toggle>
+								<Dropdown.Menu
+									style={{
+										'--bs-dropdown-bg': `rgb(${selectedCharacter.btnColor})`,
+										'--btn-color': `rgba(${
+											selectedCharacter.textScheme === 'light' ? 'var(--bs-light-rgb)' : 'var(--bs-dark-rgb)'
+										}, var(--bs-text-opacity))`
+									}}
+								>
+									<Dropdown.Item
+										as="button"
 										type="button"
-										className="dropdown-item"
+										className="btn btn-primary d-md-none"
+										onClick={handleSortByName}
+									>
+										<ItemSortBy text="Name" sortParameter={sortByName} />
+									</Dropdown.Item>
+									<hr className="d-md-none dropdown-divider" />
+									<Dropdown.Item
+										as="button"
+										type="button"
+										className="btn btn-primary d-md-none"
+										onClick={handleSortByWeight}
+									>
+										<ItemSortBy text="Weight" sortParameter={sortByWeight} />
+									</Dropdown.Item>
+									<hr className="d-md-none dropdown-divider" />
+									<Dropdown.Item
+										as="button"
+										type="button"
+										className="btn btn-primary d-md-none"
+										onClick={handleSortByDifficulty}
+									>
+										<ItemSortBy text="Difficulty" sortParameter={sortByDifficulty} />
+									</Dropdown.Item>
+									<hr className="d-md-none dropdown-divider" />
+									<Dropdown.Item as="button" type="button" className="btn btn-primary" onClick={handleSortByFallspeed}>
+										<ItemSortBy text="Fallspeed" sortParameter={sortByFallspeed} />
+									</Dropdown.Item>
+									<hr className="dropdown-divider" />
+									<Dropdown.Item as="button" type="button" className="btn btn-primary" onClick={handleSortByGravity}>
+										<ItemSortBy text="Gravity" sortParameter={sortByGravity} />
+									</Dropdown.Item>
+									<hr className="dropdown-divider" />
+									<Dropdown.Item
+										as="button"
+										type="button"
+										className="btn btn-primary btn-show-additional-info"
 										onClick={() => setShowAdditionalCharacterInfoInGridInGrid(!showAdditionalCharacterInfoInGrid)}
 									>
-										Show Additional Character Info
+										<span>Show Additional Character Info</span>{' '}
 										<i
 											className={`fa ms-1 ${showAdditionalCharacterInfoInGrid ? 'fa-check' : 'fa-times'}`}
 											aria-hidden="true"
 										></i>
-									</button>
-								</li>
-							</ul>
+									</Dropdown.Item>
+								</Dropdown.Menu>
+							</Dropdown>
 						</div>
 					</div>
 					<InfoBox selectedKillConfirm={selectedKillConfirm} />

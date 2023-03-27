@@ -31,13 +31,15 @@
 
 				"specialInfo": "",
 
-				"rage0": { "start": 0, "end": 0 },
-				"rage50": { "start": -2, "end": -6 },
-				"rage60": { "start": -4, "end": -8 },
-				"rage80": { "start": -8, "end": -12 },
-				"rage100": { "start": -12, "end": -16 },
-				"rage125": { "start": -17, "end": -22 },
-				"rage150": { "start": -19, "end": -25 },
+				"rageModifiers": [
+					{ "id": "rage0", "amount": 0, "start": 0, "end": 0 },
+					{ "id": "rage50", "amount": 50, "start": -2, "end": -6 },
+					{ "id": "rage60", "amount": 60, "start": -4, "end": -8 },
+					{ "id": "rage80", "amount": 80, "start": -8, "end": -12 },
+					{ "id": "rage100", "amount": 100, "start": -12, "end": -16 },
+					{ "id": "rage125", "amount": 125, "start": -17, "end": -22 },
+					{ "id": "rage150", "amount": 150, "start": -19, "end": -25 }
+				],
 
 				"stageList": [
 					{
@@ -195,13 +197,15 @@
 
 				"specialInfo": "",
 
-				"rage0": { "start": 0, "end": 0 },
-				"rage50": { "start": -2, "end": -5 },
-				"rage60": { "start": -5, "end": -9 },
-				"rage80": { "start": -9, "end": -16 },
-				"rage100": { "start": -12, "end": -22 },
-				"rage125": { "start": -14, "end": -27 },
-				"rage150": { "start": -18, "end": -33 },
+				"rageModifiers": [
+					{ "id": "rage0", "amount": 0, "start": 0, "end": 0 },
+					{ "id": "rage50", "amount": 50, "start": -2, "end": -5 },
+					{ "id": "rage60", "amount": 60, "start": -5, "end": -9 },
+					{ "id": "rage80", "amount": 80, "start": -9, "end": -16 },
+					{ "id": "rage100", "amount": 100, "start": -12, "end": -22 },
+					{ "id": "rage125", "amount": 125, "start": -14, "end": -27 },
+					{ "id": "rage150", "amount": 150, "start": -18, "end": -33 }
+				],
 
 				"stageList": [
 					{
@@ -359,13 +363,15 @@
 
 				"specialInfo": "",
 
-				"rage0": { "start": 0, "end": 0 },
-				"rage50": { "start": -5, "end": -9 },
-				"rage60": { "start": -8, "end": -18 },
-				"rage80": { "start": -13, "end": -28 },
-				"rage100": { "start": -17, "end": -36 },
-				"rage125": { "start": -22, "end": -48 },
-				"rage150": { "start": -28, "end": -62 },
+				"rageModifiers": [
+					{ "id": "rage0", "amount": 0, "start": 0, "end": 0 },
+					{ "id": "rage50", "amount": 50, "start": -5, "end": -9 },
+					{ "id": "rage60", "amount": 60, "start": -8, "end": -18 },
+					{ "id": "rage80", "amount": 80, "start": -13, "end": -28 },
+					{ "id": "rage100", "amount": 100, "start": -17, "end": -36 },
+					{ "id": "rage125", "amount": 125, "start": -22, "end": -48 },
+					{ "id": "rage150", "amount": 150, "start": -28, "end": -62 }
+				],
 
 				"stageList": [
 					{
@@ -524,13 +530,15 @@
 
 				"specialInfo": "",
 
-				"rage0": { "start": 0, "end": 0 },
-				"rage50": { "start": -6, "end": -6 },
-				"rage60": { "start": -8, "end": -9 },
-				"rage80": { "start": -14, "end": -15 },
-				"rage100": { "start": -18, "end": -20 },
-				"rage125": { "start": -23, "end": -25 },
-				"rage150": { "start": -30, "end": -32 },
+				"rageModifiers": [
+					{ "id": "rage0", "amount": 0, "start": 0, "end": 0 },
+					{ "id": "rage50", "amount": 50, "start": -6, "end": -6 },
+					{ "id": "rage60", "amount": 60, "start": -8, "end": -9 },
+					{ "id": "rage80", "amount": 80, "start": -14, "end": -15 },
+					{ "id": "rage100", "amount": 100, "start": -18, "end": -20 },
+					{ "id": "rage125", "amount": 125, "start": -23, "end": -25 },
+					{ "id": "rage150", "amount": 150, "start": -30, "end": -32 }
+				],
 
 				"stageList": [
 					{
@@ -707,13 +715,15 @@
 
 				"specialInfo": "<strong>IMPORTANT</strong> Due to the nature of this combo, there are several deadzones within the kill percents where it's no longer true. Check the <a class='info' href=''>info section</a> for more.<br>Since this isn't strictly a kill confirm, only Final Destination is included as a stage, and the percents listed are the percents that this combo is simply 'true', not when it kills.<br>Also included within the character grid is how far Pikachu needs to run to connect this combo.",
 
-				"rage0": { "start": 0, "end": 0 },
-				"rage50": { "start": -8, "end": -9 },
-				"rage60": { "start": -10, "end": -12 },
-				"rage80": { "start": -14, "end": -16 },
-				"rage100": { "start": -18, "end": -22 },
-				"rage125": { "start": -24, "end": -29 },
-				"rage150": { "start": -30, "end": -37 },
+				"rageModifiers": [
+					{ "id": "rage0", "amount": 0, "start": 0, "end": 0 },
+					{ "id": "rage50", "amount": 50, "start": -8, "end": -9 },
+					{ "id": "rage60", "amount": 60, "start": -10, "end": -12 },
+					{ "id": "rage80", "amount": 80, "start": -14, "end": -16 },
+					{ "id": "rage100", "amount": 100, "start": -18, "end": -22 },
+					{ "id": "rage125", "amount": 125, "start": -24, "end": -29 },
+					{ "id": "rage150", "amount": 150, "start": -30, "end": -37 }
+				],
 
 				"stageList": [
 					{
@@ -867,13 +877,15 @@
 
 				"specialInfo": "<strong>IMPORTANT</strong> Due to the nature of this combo, there are several deadzones within the kill percents where it's no longer true. Check the <a class='info' href=''>info section</a> for more.<br>Since this isn't strictly a kill confirm, only Final Destination is included as a stage, and the percents listed are the percents that this combo is simply 'true', not when it kills.<br>Also included within the character grid is how far Pikachu needs to run to connect this combo.",
 
-				"rage0": { "start": 0, "end": 0 },
-				"rage50": { "start": -8, "end": -9 },
-				"rage60": { "start": -10, "end": -12 },
-				"rage80": { "start": -14, "end": -16 },
-				"rage100": { "start": -18, "end": -22 },
-				"rage125": { "start": -24, "end": -29 },
-				"rage150": { "start": -30, "end": -37 },
+				"rageModifiers": [
+					{ "id": "rage0", "amount": 0, "start": 0, "end": 0 },
+					{ "id": "rage50", "amount": 50, "start": -8, "end": -9 },
+					{ "id": "rage60", "amount": 60, "start": -10, "end": -12 },
+					{ "id": "rage80", "amount": 80, "start": -14, "end": -16 },
+					{ "id": "rage100", "amount": 100, "start": -18, "end": -22 },
+					{ "id": "rage125", "amount": 125, "start": -24, "end": -29 },
+					{ "id": "rage150", "amount": 150, "start": -30, "end": -37 }
+				],
 
 				"stageList": [
 					{
@@ -1035,13 +1047,15 @@
 
 				"specialInfo": "",
 
-				"rage0": { "start": 0, "end": 0 },
-				"rage50": { "start": -4, "end": -4 },
-				"rage60": { "start": -6, "end": -6 },
-				"rage80": { "start": -13, "end": -13 },
-				"rage100": { "start": -16, "end": -16 },
-				"rage125": { "start": -22, "end": -22 },
-				"rage150": { "start": -28, "end": -28 },
+				"rageModifiers": [
+					{ "id": "rage0", "amount": 0, "start": 0, "end": 0 },
+					{ "id": "rage50", "amount": 50, "start": -4, "end": -4 },
+					{ "id": "rage60", "amount": 60, "start": -6, "end": -6 },
+					{ "id": "rage80", "amount": 80, "start": -13, "end": -13 },
+					{ "id": "rage100", "amount": 100, "start": -16, "end": -16 },
+					{ "id": "rage125", "amount": 125, "start": -22, "end": -22 },
+					{ "id": "rage150", "amount": 150, "start": -28, "end": -28 }
+				],
 
 				"stageList": [
 					{
@@ -1204,13 +1218,15 @@
 
 				"specialInfo": "In Zelda's case, difficulty is determined by the victim's airdodge frame, not by the kill confirm window.",
 
-				"rage0": { "start": 0, "end": 0 },
-				"rage50": { "start": -3, "end": -8 },
-				"rage60": { "start": -6, "end": -18 },
-				"rage80": { "start": -11, "end": -36 },
-				"rage100": { "start": -14, "end": -59 },
-				"rage125": { "start": -19, "end": -69 },
-				"rage150": { "start": -25, "end": -85 },
+				"rageModifiers": [
+					{ "id": "rage0", "amount": 0, "start": 0, "end": 0 },
+					{ "id": "rage50", "amount": 50, "start": -3, "end": -8 },
+					{ "id": "rage60", "amount": 60, "start": -6, "end": -18 },
+					{ "id": "rage80", "amount": 80, "start": -11, "end": -36 },
+					{ "id": "rage100", "amount": 100, "start": -14, "end": -59 },
+					{ "id": "rage125", "amount": 125, "start": -19, "end": -69 },
+					{ "id": "rage150", "amount": 150, "start": -25, "end": -85 }
+				],
 
 				"stageList": [
 					{

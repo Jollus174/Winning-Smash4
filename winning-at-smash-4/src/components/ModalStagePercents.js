@@ -18,19 +18,8 @@ const ModalStagePercents = ({
 
 	const handleSetActiveRage = (rageValue) => {
 		setActiveRage(rageValue);
-		refreshStageList(selectedCharacterModal);
-	};
-
-	const RageButton = ({ text, value }) => {
-		return (
-			<button
-				type="button"
-				className={`btn btn-secondary ${activeRage === value ? 'active' : ''}`}
-				onClick={() => handleSetActiveRage(value)}
-			>
-				{text}%
-			</button>
-		);
+		// TODO: if we want the DOM ticker thing, it'd be here
+		// refreshStageList(selectedCharacterModal);
 	};
 
 	// checking filtered characters, and making sure they have a diff percent greater than 0
@@ -54,7 +43,7 @@ const ModalStagePercents = ({
 				return closureLoop(counter);
 			} else {
 				setSelectedCharacterModal(prevCharacter);
-				setActiveRage('rage-0');
+				setActiveRage('rage0');
 				refreshStageList(prevCharacter, selectedKillConfirm);
 			}
 		};
@@ -81,7 +70,7 @@ const ModalStagePercents = ({
 				return closureLoop(counter);
 			} else {
 				setSelectedCharacterModal(nextCharacter);
-				setActiveRage('rage-0');
+				setActiveRage('rage0');
 				refreshStageList(nextCharacter, selectedKillConfirm);
 			}
 		};
@@ -144,6 +133,19 @@ const ModalStagePercents = ({
 						}
 					`}
 				</style>
+				<button
+					type="button"
+					className={`btn btn-sm btn-close ${
+						selectedCharacterModal.textScheme === 'dark' ? 'text-dark' : 'text-light'
+					}`}
+					aria-label="Close"
+					onClick={handleModalHide}
+				>
+					<svg className="icon-arrowback" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+						<path d="M0 0h24v24H0z" fill="none"></path>
+						<path className="pathfill" d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path>
+					</svg>
+				</button>
 				<div className="modal-header">
 					{selectedCharacter.moves.length > 1 ? (
 						<div className="character-topbar">
@@ -213,17 +215,18 @@ const ModalStagePercents = ({
 					<section className="rage-modifier text-center">
 						<h3 className="rage-modifier-title text-uppercase">{selectedCharacterModal.name} Rage Modifier</h3>
 						<div className="btn-group">
-							<RageButton text={'0'} value={'rage0'} />
-							<RageButton text={'50'} value={'rage50'} />
-							<RageButton text={'60'} value={'rage60'} />
-							<RageButton text={'80'} value={'rage80'} />
-							<RageButton text={'100'} value={'rage100'} />
-							<RageButton text={'125'} value={'rage125'} />
-							<RageButton text={'150'} value={'rage150'} />
+							{selectedKillConfirm.rageModifiers.map((rageModifier) => (
+								<button
+									type="button"
+									className={`btn btn-secondary ${activeRage === rageModifier.id ? 'active' : ''}`}
+									key={rageModifier.id}
+									onClick={() => handleSetActiveRage(rageModifier.id)}
+								>
+									{rageModifier.amount}%
+								</button>
+							))}
 						</div>
 					</section>
-					{/* TODO: include 'Close' button */}
-					{/* <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> */}
 				</div>
 				<div className="modal-body">
 					<section className="stages">
@@ -235,7 +238,7 @@ const ModalStagePercents = ({
 								<div className="stage-details">
 									<div className="row row-stage-details">
 										<div className="col-md-3">
-											<img className="img-fluid" src={`/images/stages/${stage.imageFile}`} alt={'stage.name'} />
+											<img className="img-fluid" src={`/images/stages/${stage.imageFile}`} alt={stage.name} />
 										</div>
 										<div className="col-md-9 col-tables">
 											{stage.stagePositions.map((stagePosition) => (
@@ -260,7 +263,6 @@ const ModalStagePercents = ({
 														<tr>
 															<td>{`${stagePosition.min}%`}</td>
 															<td>{`${stagePosition.max}%`}</td>
-															{/* would be nice to use a 'calculatePercDiff()' function for this instead */}
 															<td className="cell-window">
 																{stagePosition.max - stagePosition.min > 0
 																	? `±${stagePosition.max - stagePosition.min + 1}`

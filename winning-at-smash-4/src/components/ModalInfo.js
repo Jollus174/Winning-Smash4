@@ -3,7 +3,6 @@ import { Modal } from 'react-bootstrap';
 const ModalInfo = ({ selectedCharacter, selectedKillConfirm, modalShowInfo, setModalShowInfo }) => {
 	const handleModalHide = () => {
 		setModalShowInfo(false);
-		console.log('closing show info!');
 	};
 
 	if (!Object.keys(selectedKillConfirm).length) return null;
@@ -21,6 +20,12 @@ const ModalInfo = ({ selectedCharacter, selectedKillConfirm, modalShowInfo, setM
 			centered={true}
 			animation={false}
 		>
+			<button type="button" className="btn btn-sm btn-close" aria-label="Close" onClick={handleModalHide}>
+				<svg className="icon-arrowback" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+					<path d="M0 0h24v24H0z" fill="none"></path>
+					<path className="pathfill" d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path>
+				</svg>
+			</button>
 			<div className="modal-body">
 				{info.giphy.youtubeUrl ? (
 					<a href={info.giphy.youtubeUrl} target="_blank" rel="noreferrer">
