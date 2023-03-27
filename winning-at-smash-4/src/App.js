@@ -1,8 +1,12 @@
 import { useEffect, useState } from 'react';
+import { Link, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import CharacterMoveCards from './components/CharacterMoveCards';
 import CharacterTiles from './components/CharacterTiles';
+import ModalStagePercents from './components/ModalStagePercents';
+import ModalInfo from './components/ModalInfo';
+import ModalCredits from './components/ModalCredits';
 
 function App() {
 	const [mounted, setMounted] = useState(false);
@@ -10,7 +14,7 @@ function App() {
 	const [sidebarOpen, setSidebarOpen] = useState(true);
 	const [charAttrs, setCharAttrs] = useState([]);
 	const [killConfirms, setKillConfirms] = useState([]);
-	const [stageList, setStageList] = useState({});
+	const [stageList, setStageList] = useState([]);
 
 	const [selectedCharacter, setSelectedCharacter] = useState({});
 	const [selectedKillConfirm, setSelectedKillConfirm] = useState({});
@@ -26,6 +30,11 @@ function App() {
 	const [sortByDifficulty, setSortByDifficulty] = useState(0);
 	const [sortByFallspeed, setSortByFallspeed] = useState(0);
 	const [sortByGravity, setSortByGravity] = useState(0);
+
+	const [modalShowStageList, setModalShowStageList] = useState(false);
+	const [modalShowInfo, setModalShowInfo] = useState(false);
+	const [activeRage, setActiveRage] = useState('rage0');
+	const [modalShowCredits, setModalShowCredits] = useState(false);
 
 	const handleSelectedKillConfirm = (character, move) => {
 		// updating base character attributes with the percents and stage info from the kill confirm
@@ -111,6 +120,32 @@ function App() {
 		setSortByGravity(0);
 	};
 
+	const refreshStageList = (character) => {
+		// spreading in selected kill confirm percents to each stage, based on the selected character modal
+		const updatedStageList = [...stageList];
+		for (const stage of updatedStageList) {
+			for (const stagePosition of stage.stagePositions) {
+				const killConfirmStageData = selectedKillConfirm.stageList.find(
+					(stageModifier) => stageModifier.id === stagePosition.id
+				);
+				const { stagePositionModifier = 0 } = killConfirmStageData;
+
+				// const rageModifierStart = selectedKillConfirm[activeRage].start || 0;
+				// const rageModifierEnd = selectedKillConfirm[activeRage].end || 0;
+				// console.log(rageModifierStart);
+				// console.log(rageModifierEnd);
+				const rageModifierStart = 0;
+				const rageModifierEnd = 0;
+
+				stagePosition.min =
+					selectedKillConfirm.percents[character.id].start + stagePositionModifier + rageModifierStart;
+				// I guess in the app I could only use the stage data people provided. There were no modifiers for init max % on each stage
+				stagePosition.max = selectedKillConfirm.percents[character.id].end + rageModifierEnd;
+			}
+		}
+		setStageList(updatedStageList);
+	};
+
 	const getData = async (url) => {
 		return await fetch(url)
 			.then((response) => response.json())
@@ -175,7 +210,6 @@ function App() {
 			<h1 className="visually-hidden">
 				A Super Smash Bros. for Wii U Progressive Web App for calculating kill confirm ranges.
 			</h1>
-			{/* Flex on mobile with Pikachu open causes issues with Move Select buttons and x overscroll */}
 			<div className="d-md-flex h-100">
 				{loading ? (
 					'Is loading'
@@ -190,7 +224,12 @@ function App() {
 					{loading ? (
 						'Is loading'
 					) : (
-						<Header setSidebarOpen={setSidebarOpen} sidebarOpen={sidebarOpen} selectedCharacter={selectedCharacter} />
+						<Header
+							setSidebarOpen={setSidebarOpen}
+							sidebarOpen={sidebarOpen}
+							selectedCharacter={selectedCharacter}
+							setModalShowCredits={setModalShowCredits}
+						/>
 					)}
 					<main>
 						{loading ? (
@@ -205,8 +244,6 @@ function App() {
 									selectedCharacter={selectedCharacter}
 									setSelectedKillConfirm={setSelectedKillConfirm}
 									selectedKillConfirm={selectedKillConfirm}
-									stageList={stageList}
-									setStageList={setStageList}
 									handleSelectedKillConfirm={handleSelectedKillConfirm}
 									sortByName={sortByName}
 									setSortByName={setSortByName}
@@ -222,7 +259,33 @@ function App() {
 									setSelectedCharacterModal={setSelectedCharacterModal}
 									setFilteredCharAttrs={setFilteredCharAttrs}
 									filteredCharAttrs={filteredCharAttrs}
+									setModalShowInfo={setModalShowInfo}
+									setModalShowStageList={setModalShowStageList}
+									refreshStageList={refreshStageList}
 								/>
+								<ModalStagePercents
+									stageList={stageList}
+									modalShowStageList={modalShowStageList}
+									setModalShowStageList={setModalShowStageList}
+									selectedCharacter={selectedCharacter}
+									selectedCharacterModal={selectedCharacterModal}
+									setSelectedCharacterModal={setSelectedCharacterModal}
+									selectedKillConfirm={selectedKillConfirm}
+									activeRage={activeRage}
+									setActiveRage={setActiveRage}
+									handleSelectedKillConfirm={handleSelectedKillConfirm}
+									filteredCharAttrs={filteredCharAttrs}
+									refreshStageList={refreshStageList}
+								/>
+								<ModalInfo
+									selectedCharacter={selectedCharacter}
+									selectedKillConfirm={selectedKillConfirm}
+									modalShowInfo={modalShowInfo}
+									setModalShowInfo={setModalShowInfo}
+								/>
+								<Route exact path="/credits">
+									<ModalCredits modalShowCredits={true} killConfirms={killConfirms} />
+								</Route>
 							</>
 						)}
 					</main>

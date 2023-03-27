@@ -1,7 +1,5 @@
 import { useState } from 'react';
 import { Dropdown } from 'react-bootstrap';
-import ModalStagePercents from './ModalStagePercents';
-import ModalInfo from './ModalInfo';
 
 const MoveButtons = ({ selectedCharacter, selectedKillConfirm, handleSelectedKillConfirm }) => {
 	if (!selectedCharacter.moves || selectedCharacter.moves.length < 2)
@@ -141,8 +139,6 @@ const CharacterTiles = ({
 	setSelectedKillConfirm,
 	selectedKillConfirm,
 	handleSelectedKillConfirm,
-	stageList,
-	setStageList,
 	sortByName,
 	setSortByName,
 	sortByWeight,
@@ -153,14 +149,13 @@ const CharacterTiles = ({
 	setSortByFallspeed,
 	sortByGravity,
 	setSortByGravity,
-	selectedCharacterModal,
 	setSelectedCharacterModal,
 	setFilteredCharAttrs,
-	filteredCharAttrs
+	filteredCharAttrs,
+	setModalShowInfo,
+	setModalShowStageList,
+	refreshStageList
 }) => {
-	const [modalShowStageList, setModalShowStageList] = useState(false);
-	const [modalShowInfo, setModalShowInfo] = useState(false);
-	const [activeRage, setActiveRage] = useState('rage0');
 	const [showAdditionalCharacterInfoInGrid, setShowAdditionalCharacterInfoInGridInGrid] = useState(false);
 
 	const handleFilter = (value) => {
@@ -284,32 +279,6 @@ const CharacterTiles = ({
 			newCharAttrs.sort((a, b) => b.gravity - a.gravity);
 		}
 		setCharAttrs(newCharAttrs);
-	};
-
-	const refreshStageList = (character) => {
-		// spreading in selected kill confirm percents to each stage, based on the selected character modal
-		const updatedStageList = [...stageList];
-		for (const stage of updatedStageList) {
-			for (const stagePosition of stage.stagePositions) {
-				const killConfirmStageData = selectedKillConfirm.stageList.find(
-					(stageModifier) => stageModifier.id === stagePosition.id
-				);
-				const { stagePositionModifier = 0 } = killConfirmStageData;
-
-				// const rageModifierStart = selectedKillConfirm[activeRage].start || 0;
-				// const rageModifierEnd = selectedKillConfirm[activeRage].end || 0;
-				// console.log(rageModifierStart);
-				// console.log(rageModifierEnd);
-				const rageModifierStart = 0;
-				const rageModifierEnd = 0;
-
-				stagePosition.min =
-					selectedKillConfirm.percents[character.id].start + stagePositionModifier + rageModifierStart;
-				// I guess in the app I could only use the stage data people provided. There were no modifiers for init max % on each stage
-				stagePosition.max = selectedKillConfirm.percents[character.id].end + rageModifierEnd;
-			}
-		}
-		setStageList(updatedStageList);
 	};
 
 	const ItemSortBy = (props) => {
@@ -497,26 +466,6 @@ const CharacterTiles = ({
 					/>
 				</div>
 			</div>
-			<ModalStagePercents
-				stageList={stageList}
-				modalShowStageList={modalShowStageList}
-				setModalShowStageList={setModalShowStageList}
-				selectedCharacter={selectedCharacter}
-				selectedCharacterModal={selectedCharacterModal}
-				setSelectedCharacterModal={setSelectedCharacterModal}
-				selectedKillConfirm={selectedKillConfirm}
-				activeRage={activeRage}
-				setActiveRage={setActiveRage}
-				handleSelectedKillConfirm={handleSelectedKillConfirm}
-				filteredCharAttrs={filteredCharAttrs}
-				refreshStageList={refreshStageList}
-			/>
-			<ModalInfo
-				selectedCharacter={selectedCharacter}
-				selectedKillConfirm={selectedKillConfirm}
-				modalShowInfo={modalShowInfo}
-				setModalShowInfo={setModalShowInfo}
-			/>
 		</>
 	);
 };

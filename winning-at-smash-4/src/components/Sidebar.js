@@ -1,11 +1,13 @@
+import { Link } from 'react-router-dom';
+
 const Sidebar = ({ sidebarOpen, moveCards, handleSelectedKillConfirm }) => {
 	return (
 		<aside className={`d-none sidebar ${sidebarOpen ? 'd-lg-block' : ''}`}>
 			<nav id="sidebar">
 				<div className="sidebar-header">
-					<a href="/">
+					<Link to="/">
 						<img className="img-fluid" src="/images/logo-winning-at-smash4.png" alt="Winning a Smash 4 logo" />
-					</a>
+					</Link>
 				</div>
 				<ul className="list-unstyled">
 					{moveCards.map((character) => (

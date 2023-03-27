@@ -1,4 +1,6 @@
-const Header = ({ setSidebarOpen, sidebarOpen, selectedCharacter }) => {
+import { Link } from 'react-router-dom';
+
+const Header = ({ setSidebarOpen, sidebarOpen, selectedCharacter, setModalShowCredits }) => {
 	return (
 		<header className="d-flex align-items-center header text-light">
 			<button
@@ -13,9 +15,9 @@ const Header = ({ setSidebarOpen, sidebarOpen, selectedCharacter }) => {
 			</h2>
 
 			<nav className="nav">
-				<a href="/about">About</a>
-				<a href="/credits">Credits</a>
-				<a href="/feedback">
+				<Link to="/about">About</Link>
+				<Link to="/credits">Credits</Link>
+				<a href="https://github.com/Jollus174/Winning-Smash4/issues" target="_blank" rel="noreferrer">
 					Feedback<i className="fa fa-external-link ms-2" style={{ fontSize: '75%' }} aria-hidden="true"></i>
 				</a>
 			</nav>

@@ -11,6 +11,11 @@
 		--bs-gutter-x: 1rem;
 		margin-bottom: var(--bs-gutter-x);
 	}
+
+	.card {
+		--bs-card-border-radius: 3px;
+		--bs-border-color-translucent: rgba(0, 0, 0, 0.1);
+	}
 }
 
 .character-topbar {
