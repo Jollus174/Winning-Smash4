@@ -1,5 +1,7 @@
+// TODO: unused /* globals */ ?
+
 import { useEffect, useState } from 'react';
-import { Link, Route } from 'react-router-dom';
+import { Link, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import CharacterMoveCards from './components/CharacterMoveCards';
@@ -217,73 +219,61 @@ function App() {
 					<Sidebar
 						sidebarOpen={sidebarOpen}
 						moveCards={killConfirms}
-						handleSelectedKillConfirm={handleSelectedKillConfirm}
+						// handleSelectedKillConfirm={handleSelectedKillConfirm}
 					/>
 				)}
 				<div className="d-flex flex-column main-grid">
 					{loading ? (
 						'Is loading'
 					) : (
-						<Header setSidebarOpen={setSidebarOpen} sidebarOpen={sidebarOpen} selectedCharacter={selectedCharacter} />
+						<Header
+							setSidebarOpen={setSidebarOpen}
+							sidebarOpen={sidebarOpen}
+							selectedCharacter={selectedCharacter}
+							setModalShowAbout={setModalShowAbout}
+							setModalShowCredits={setModalShowCredits}
+						/>
 					)}
 					<main>
 						{loading ? (
 							'Is loading'
 						) : (
 							<>
-								<CharacterMoveCards moveCards={killConfirms} handleSelectedKillConfirm={handleSelectedKillConfirm} />
-								<CharacterTiles
-									charAttrs={charAttrs}
-									setCharAttrs={setCharAttrs}
-									setSelectedCharacter={setSelectedCharacter}
-									selectedCharacter={selectedCharacter}
-									setSelectedKillConfirm={setSelectedKillConfirm}
-									selectedKillConfirm={selectedKillConfirm}
-									handleSelectedKillConfirm={handleSelectedKillConfirm}
-									sortByName={sortByName}
-									setSortByName={setSortByName}
-									sortByWeight={sortByWeight}
-									setSortByWeight={setSortByWeight}
-									sortByDifficulty={sortByDifficulty}
-									setSortByDifficulty={setSortByDifficulty}
-									sortByFallspeed={sortByFallspeed}
-									setSortByFallspeed={setSortByFallspeed}
-									sortByGravity={sortByGravity}
-									setSortByGravity={setSortByGravity}
-									selectedCharacterModal={selectedCharacterModal}
-									setSelectedCharacterModal={setSelectedCharacterModal}
-									setFilteredCharAttrs={setFilteredCharAttrs}
-									filteredCharAttrs={filteredCharAttrs}
-									setModalShowInfo={setModalShowInfo}
-									setModalShowStageList={setModalShowStageList}
-									refreshStageList={refreshStageList}
-								/>
-								<ModalStagePercents
-									stageList={stageList}
-									modalShowStageList={modalShowStageList}
-									setModalShowStageList={setModalShowStageList}
-									selectedCharacter={selectedCharacter}
-									selectedCharacterModal={selectedCharacterModal}
-									setSelectedCharacterModal={setSelectedCharacterModal}
-									selectedKillConfirm={selectedKillConfirm}
-									activeRage={activeRage}
-									setActiveRage={setActiveRage}
-									handleSelectedKillConfirm={handleSelectedKillConfirm}
-									filteredCharAttrs={filteredCharAttrs}
-									refreshStageList={refreshStageList}
-								/>
-								<ModalInfo
-									selectedCharacter={selectedCharacter}
-									selectedKillConfirm={selectedKillConfirm}
-									modalShowInfo={modalShowInfo}
-									setModalShowInfo={setModalShowInfo}
-								/>
-								<Route exact path="/about">
-									<ModalAbout modalShowAbout={true} />
+								<CharacterMoveCards killConfirms={killConfirms} selectedKillConfirm={selectedKillConfirm} />
+								<Route path={`/:characterId/:moveId`}>
+									<CharacterTiles
+										killConfirms={killConfirms}
+										stageList={stageList}
+										charAttrs={charAttrs}
+										setCharAttrs={setCharAttrs}
+										setSelectedCharacter={setSelectedCharacter}
+										selectedCharacter={selectedCharacter}
+										setSelectedKillConfirm={setSelectedKillConfirm}
+										selectedKillConfirm={selectedKillConfirm}
+										// handleSelectedKillConfirm={handleSelectedKillConfirm}
+										sortByName={sortByName}
+										setSortByName={setSortByName}
+										sortByWeight={sortByWeight}
+										setSortByWeight={setSortByWeight}
+										sortByDifficulty={sortByDifficulty}
+										setSortByDifficulty={setSortByDifficulty}
+										sortByFallspeed={sortByFallspeed}
+										setSortByFallspeed={setSortByFallspeed}
+										sortByGravity={sortByGravity}
+										setSortByGravity={setSortByGravity}
+										selectedCharacterModal={selectedCharacterModal}
+										setSelectedCharacterModal={setSelectedCharacterModal}
+										setFilteredCharAttrs={setFilteredCharAttrs}
+										filteredCharAttrs={filteredCharAttrs}
+										refreshStageList={refreshStageList}
+									/>
 								</Route>
-								<Route exact path="/credits">
-									<ModalCredits killConfirms={killConfirms} />
-								</Route>
+								<ModalAbout modalShowAbout={modalShowAbout} setModalShowAbout={setModalShowAbout} />
+								<ModalCredits
+									modalShowCredits={modalShowCredits}
+									setModalShowCredits={setModalShowCredits}
+									killConfirms={killConfirms}
+								/>
 							</>
 						)}
 					</main>

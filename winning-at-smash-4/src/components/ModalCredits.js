@@ -124,7 +124,13 @@ const ModalCredits = ({ killConfirms }) => {
 				<p>Thanks to Nintendo, Namco Bandai, and Sora for developing Super Smash Bros. for Wii U.</p>
 
 				<p>
-					<img class="img-fluid" src="/images/credits.jpg" alt="Winning at Smash 4 Credits" width="545" height="306" />
+					<img
+						className="img-fluid"
+						src="/images/credits.jpg"
+						alt="Winning at Smash 4 Credits"
+						width="545"
+						height="306"
+					/>
 				</p>
 			</div>
 		</Modal>

@@ -49,7 +49,7 @@ const ModalAbout = () => {
 					to see how rage scaling affects victims in different ways.
 				</p>
 
-				<h2>Downloading the Web App</h2>
+				<h3>Downloading the Web App</h3>
 
 				<p>
 					This is an open-source{' '}
@@ -64,7 +64,7 @@ const ModalAbout = () => {
 
 				<p>
 					<img
-						class="img-fluid"
+						className="img-fluid"
 						src="images/progressive-web-app.jpg"
 						alt="Progressive Web App Installation"
 						width="545"
@@ -78,7 +78,7 @@ const ModalAbout = () => {
 					automatically download it upon opening the app, and it will be present the next time it's started up.
 				</p>
 
-				<h2>Feedback / Bug Reports</h2>
+				<h3>Feedback / Bug Reports</h3>
 
 				<p>
 					The latest builds are pushed to the{' '}

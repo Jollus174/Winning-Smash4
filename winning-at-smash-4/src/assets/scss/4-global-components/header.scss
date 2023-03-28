@@ -13,13 +13,17 @@
 
 	.nav {
 		display: flex;
+		align-items: center;
 		gap: 1rem;
 		margin-left: auto;
 
-		a {
+		a,
+		.btn {
 			color: $white;
+			padding: 0;
 			text-decoration: underline;
 			text-decoration-color: transparent;
+			box-shadow: none;
 			transition: text-decoration-color 0.2s ease;
 
 			&:hover,
