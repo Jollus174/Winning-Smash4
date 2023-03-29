@@ -128,8 +128,7 @@ function App() {
 				const updatedKillConfirmCharacters = killConfirmToSet.characters.map((kcCharacter) => {
 					const percDiff = kcCharacter.end - kcCharacter.start;
 					const percents = {
-						start: kcCharacter.start,
-						end: kcCharacter.end,
+						...kcCharacter,
 						percDiff
 					};
 
@@ -156,7 +155,7 @@ function App() {
 						difficultyText: ''
 					};
 					if (characterToSet.id !== 'zelda' && killConfirmToSet.id !== 'dthrow-up-air') {
-						if (0 <= kcCharacter.percDiff && kcCharacter.percents.percDiff <= diffIterator) {
+						if (0 <= kcCharacter.percents.percDiff && kcCharacter.percents.percDiff <= diffIterator) {
 							diffObj.difficultyText = 'Very Hard';
 							diffObj.difficultyClass = 'very-hard';
 						} else if (
@@ -228,8 +227,9 @@ function App() {
 				) : (
 					<Sidebar
 						sidebarOpen={sidebarOpen}
-						moveCards={killConfirms}
-						// handleSelectedKillConfirm={handleSelectedKillConfirm}
+						killConfirms={killConfirms}
+						selectedCharacter={selectedCharacter}
+						selectedKillConfirm={selectedKillConfirm}
 					/>
 				)}
 				<div className="d-flex flex-column main-grid">

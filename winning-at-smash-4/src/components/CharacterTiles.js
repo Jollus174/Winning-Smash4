@@ -23,7 +23,7 @@ const MoveButtons = ({ selectedCharacter, selectedKillConfirm }) => {
 				{selectedCharacter.moves.map((move) => (
 					<Link
 						to={`/${characterId}/${move.id}`}
-						className={`btn btn-primary btn-sm ${move.id === id ? 'active' : ''}`}
+						className={`btn btn-primary btn-sm ${move.id === selectedKillConfirm.id ? 'active' : ''}`}
 						style={{ '--btn-bg': selectedCharacter.btnColor }}
 						key={'move-btn-' + move.id}
 					>

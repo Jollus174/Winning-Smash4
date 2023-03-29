@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-const Sidebar = ({ sidebarOpen, moveCards }) => {
+const Sidebar = ({ sidebarOpen, killConfirms, selectedCharacter, selectedKillConfirm }) => {
 	return (
 		<aside className={`d-none sidebar ${sidebarOpen ? 'd-lg-block' : ''}`}>
 			<nav id="sidebar">
@@ -10,7 +10,7 @@ const Sidebar = ({ sidebarOpen, moveCards }) => {
 					</Link>
 				</div>
 				<ul className="list-unstyled">
-					{moveCards.map((character) => (
+					{killConfirms.map((character) => (
 						<li
 							className="character-item"
 							key={'sidebar-' + character.id}
@@ -24,7 +24,9 @@ const Sidebar = ({ sidebarOpen, moveCards }) => {
 									<li key={'sidebar-' + move.id}>
 										<Link
 											to={`/${character.id}/${move.id}`}
-											className="btn"
+											className={`btn ${
+												character.id === selectedCharacter.id && move.id === selectedKillConfirm.id ? 'active' : ''
+											}`}
 											dangerouslySetInnerHTML={{ __html: move.name }}
 										></Link>
 									</li>
