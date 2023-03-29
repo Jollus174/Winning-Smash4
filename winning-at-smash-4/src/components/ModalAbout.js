@@ -1,18 +1,15 @@
 import { Modal } from 'react-bootstrap';
-import { useHistory } from 'react-router';
 
-const ModalAbout = () => {
-	const history = useHistory();
-
+const ModalAbout = ({ modalShowAbout, setModalShowAbout }) => {
 	const handleModalHide = () => {
-		history.push('/');
+		setModalShowAbout(false);
 	};
 
 	return (
 		<Modal
 			className="modal modal-info"
 			aria-labelledby="#modal-about-title"
-			show={true}
+			show={modalShowAbout}
 			onHide={handleModalHide}
 			centered={true}
 			animation={false}

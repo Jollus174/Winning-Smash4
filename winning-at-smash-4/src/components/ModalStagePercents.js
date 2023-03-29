@@ -1,4 +1,6 @@
+import { useState, useEffect } from 'react';
 import { Modal } from 'react-bootstrap';
+import { Link, useHistory, useParams } from 'react-router-dom';
 
 const ModalStagePercents = ({
 	stageList,

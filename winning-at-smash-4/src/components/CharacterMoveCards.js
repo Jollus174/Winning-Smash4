@@ -1,12 +1,14 @@
-const CharacterMoveCards = ({ moveCards, handleSelectedKillConfirm }) => {
+import { Link } from 'react-router-dom';
+
+const CharacterMoveCards = ({ killConfirms, selectedKillConfirm }) => {
 	return (
 		<div className="character-move-cards">
 			<div className="row">
-				{moveCards.map((character) => (
-					<div className="col-sm-6 col-md-4 character-move-card-col" key={'card-' + character.charId}>
+				{killConfirms.map((character) => (
+					<div className="col-sm-6 col-md-4 character-move-card-col" key={'card-' + character.id}>
 						<div className="card">
 							<div className="card-image" style={{ '--card-image-bg-color': 'rgb(' + character.cardColor + ')' }}>
-								<img src={'/images/characters/webp/' + character.charId + '.webp'} alt="{character.name}" />
+								<img src={'/images/characters/webp/' + character.id + '.webp'} alt="{character.name}" />
 								<h2 className={`card-title ${character.textScheme === 'light' ? 'text-light' : 'text-dark'}`}>
 									{character.name}
 								</h2>
@@ -14,15 +16,14 @@ const CharacterMoveCards = ({ moveCards, handleSelectedKillConfirm }) => {
 							<div className="card-body">
 								<div className="btn-group">
 									{character.moves.map((move) => (
-										<button
-											type="button"
-											className="btn btn-primary btn-sm"
-											key={'card-' + move.moveId}
+										<Link
+											to={`/${character.id}/${move.id}`}
+											className={`btn btn-primary btn-sm ${selectedKillConfirm.id === move.id ? 'active' : ''}`}
+											key={'card-' + move.id}
 											style={{ '--btn-bg': character.btnColor }}
-											onClick={() => handleSelectedKillConfirm(character, move)}
 										>
-											<span dangerouslySetInnerHTML={{ __html: move.moveName }} />
-										</button>
+											<span dangerouslySetInnerHTML={{ __html: move.name }} />
+										</Link>
 									))}
 								</div>
 							</div>

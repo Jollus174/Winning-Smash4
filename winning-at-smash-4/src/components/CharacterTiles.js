@@ -1,13 +1,19 @@
-import { useState } from 'react';
-import { Dropdown } from 'react-bootstrap';
+import { useState, useEffect } from 'react';
+import { Link, useRouteMatch, useParams, Route } from 'react-router-dom';
 
-const MoveButtons = ({ selectedCharacter, selectedKillConfirm, handleSelectedKillConfirm }) => {
+import { Dropdown } from 'react-bootstrap';
+import ModalStagePercents from './ModalStagePercents';
+import ModalInfo from './ModalInfo';
+
+const MoveButtons = ({ selectedCharacter, selectedKillConfirm }) => {
+	const { characterId, id } = useParams();
+
 	if (!selectedCharacter.moves || selectedCharacter.moves.length < 2)
 		return (
 			<>
 				<h2
 					className={`h6 m-0 font-weight-normal ${selectedCharacter.textScheme === 'light' ? 'text-light' : ''}`}
-					dangerouslySetInnerHTML={{ __html: selectedKillConfirm.moveName }}
+					dangerouslySetInnerHTML={{ __html: selectedKillConfirm.name }}
 				/>
 			</>
 		);
@@ -15,15 +21,14 @@ const MoveButtons = ({ selectedCharacter, selectedKillConfirm, handleSelectedKil
 		<div className="move-buttons-wrapper">
 			<div className="btn-group move-buttons">
 				{selectedCharacter.moves.map((move) => (
-					<button
-						type="button"
-						className={`btn btn-primary btn-sm ${move.moveId === selectedKillConfirm.moveId ? 'active' : ''}`}
+					<Link
+						to={`/${characterId}/${move.id}`}
+						className={`btn btn-primary btn-sm ${move.id === id ? 'active' : ''}`}
 						style={{ '--btn-bg': selectedCharacter.btnColor }}
-						onClick={() => handleSelectedKillConfirm(selectedCharacter, move)}
-						key={'move-btn-' + move.moveId}
+						key={'move-btn-' + move.id}
 					>
-						<span dangerouslySetInnerHTML={{ __html: move.moveName }} />
-					</button>
+						<span dangerouslySetInnerHTML={{ __html: move.name }} />
+					</Link>
 				))}
 			</div>
 		</div>
@@ -42,49 +47,28 @@ const InfoBox = ({ selectedKillConfirm }) => {
 	);
 };
 
-const Tiles = (props) => {
-	const {
-		charAttrs,
-		filteredCharAttrs,
-		showAdditionalCharacterInfoInGrid,
-		setSelectedCharacterModal,
-		sortDescending,
-		setModalShowStageList,
-		setModalShowInfo,
-		refreshStageList
-	} = props;
+const Tiles = ({ selectedKillConfirm, filteredKillConfirmCharacters, showAdditionalCharacterInfoInGrid, sortBy }) => {
+	const { url } = useRouteMatch();
 
-	const handleOpenModal = (character, characterValid) => {
-		if (characterValid) {
-			setSelectedCharacterModal(character);
-			refreshStageList(character);
-			setModalShowStageList(true);
-		} else {
-			setModalShowInfo(true);
-		}
-	};
+	const sortingDirection = sortBy.find((sort) => sort.sortingDirection !== null).sortingDirection;
 
 	return (
 		<div>
 			<div className="row row-character-tile">
-				{charAttrs.map((character, i) => {
+				{selectedKillConfirm.characters.map((character, i) => {
 					const characterValid = character.percents.percDiff !== 0;
-
 					return (
 						<div
 							className={`col-6 col-md-4 col-lg-3 col-character-tile ${
-								filteredCharAttrs.find((char) => char.id === character.id) ? '' : 'd-none'
+								filteredKillConfirmCharacters.find((char) => char.id === character.id) ? '' : 'd-none'
 							}`}
-							key={'character-' + character.charIndex}
+							key={'character-' + character.id}
 						>
-							<button
-								type="button"
+							<Link
+								to={`${url}/${characterValid ? character.id : 'info'}`}
 								className={`btn character-tile ${characterValid ? '' : 'invalid'}`}
 								style={{
 									'--tile-bg-color': 'rgb(' + character.charColor + ')'
-								}}
-								onClick={() => {
-									handleOpenModal(character, characterValid);
 								}}
 							>
 								<img
@@ -92,15 +76,17 @@ const Tiles = (props) => {
 									alt={character.name}
 									className="character-image"
 								/>
-								<div className="character-index">{sortDescending ? i + 1 : charAttrs.length - i}</div>
+								<div className="character-index">
+									{sortingDirection === 'descending' ? i + 1 : filteredKillConfirmCharacters.length - i}
+								</div>
 								<div className="character-info">
 									<div className="item grid-percent-range">
 										{character.percents.start} - {character.percents.end}%
 									</div>
 
 									<div className="d-flex align-items-center grid-difficulty">
-										<div className={`item easy ${character.percents.diffClass}`}>
-											{character.percents.diffText} - {character.percents.percDiff}%
+										<div className={`item easy ${character.percents.difficultyClass}`}>
+											{character.percents.difficultyText} - {character.percents.percDiff}%
 										</div>
 										{character.percents.distance ? (
 											<div className="item special-info">{character.percents.distance}</div>
@@ -122,7 +108,7 @@ const Tiles = (props) => {
 								</div>
 
 								{!characterValid ? <div className="text-invalid text-uppercase">N/A - Check Info</div> : null}
-							</button>
+							</Link>
 						</div>
 					);
 				})}
@@ -132,169 +118,159 @@ const Tiles = (props) => {
 };
 
 const CharacterTiles = ({
-	charAttrs,
-	setCharAttrs,
-	setSelectedCharacter,
 	selectedCharacter,
-	setSelectedKillConfirm,
 	selectedKillConfirm,
-	handleSelectedKillConfirm,
-	sortByName,
-	setSortByName,
-	sortByWeight,
-	setSortByWeight,
-	sortByDifficulty,
-	setSortByDifficulty,
-	sortByFallspeed,
-	setSortByFallspeed,
-	sortByGravity,
-	setSortByGravity,
+	setSelectedKillConfirm,
+	selectedCharacterModal,
 	setSelectedCharacterModal,
-	setFilteredCharAttrs,
-	filteredCharAttrs,
 	setModalShowInfo,
 	setModalShowStageList,
 	refreshStageList
 }) => {
 	const [showAdditionalCharacterInfoInGrid, setShowAdditionalCharacterInfoInGridInGrid] = useState(false);
+	const [activeRage, setActiveRage] = useState('rage0');
 
-	const handleFilter = (value) => {
-		let filteredChars = charAttrs;
-		if (value !== '') {
-			filteredChars = charAttrs.filter((char) => char.name.toLowerCase().includes(value.toLowerCase()));
+	const [filteredKillConfirmCharacters, setFilteredKillConfirmCharacters] = useState(selectedKillConfirm.characters);
+	const [sortBy, setSortBy] = useState([
+		{ id: 'name', name: 'Name', sortingDirection: 'descending' },
+		{ id: 'weight', name: 'Weight', sortingDirection: null },
+		{ id: 'difficulty', name: 'Difficulty', sortingDirection: null },
+		{ id: 'fallspeed', name: 'Fallspeed', sortingDirection: null },
+		{ id: 'gravity', name: 'Gravity', sortingDirection: null }
+	]);
+
+	const [filterText, setFilterText] = useState('');
+
+	const { url } = useRouteMatch();
+
+	useEffect(() => {
+		// filtering characters based on the filter input
+		let filteredChars = selectedKillConfirm.characters;
+		if (filterText !== '') {
+			filteredChars = selectedKillConfirm.characters.filter((char) =>
+				char.name.toLowerCase().includes(filterText.toLowerCase())
+			);
 		}
-		setFilteredCharAttrs(filteredChars);
-	};
 
-	const [sortDescending, setSortDescending] = useState(true);
+		setFilteredKillConfirmCharacters(filteredChars);
+	}, [filterText, sortBy, selectedKillConfirm]);
 
-	const handleSortByName = () => {
-		const newCharAttrs = [...charAttrs];
+	const handleSort = (sortId) => {
+		const newKcCharacters = [...selectedKillConfirm.characters];
+		let newSortBy = {};
+		newSortBy = sortBy.map((sort) => {
+			return { ...sort, sortingDirection: null };
+		});
 
-		setSortByWeight(0);
-		setSortByDifficulty(0);
-		setSortByFallspeed(0);
-		setSortByGravity(0);
+		if (sortId === 'name') {
+			const sortByName = sortBy.find((sort) => sort.id === 'name');
+			let { sortingDirection } = sortByName;
 
-		if (sortByName === 0 || sortByName === -1) {
-			setSortByName(1);
-			setSortDescending(true);
-			newCharAttrs.sort((a, b) => (a.name < b.name ? -1 : a.name > b.name ? 1 : 0));
-		} else if (sortByName === 1) {
-			setSortByName(-1);
-			setSortDescending(false);
-			newCharAttrs.sort((a, b) => (a.name > b.name ? -1 : a.name < b.name ? 1 : 0));
-		}
-		setCharAttrs(newCharAttrs);
-	};
-
-	const handleSortByWeight = () => {
-		const newCharAttrs = [...charAttrs];
-
-		setSortByName(0);
-		setSortByDifficulty(0);
-		setSortByFallspeed(0);
-		setSortByGravity(0);
-
-		if (sortByWeight === 0 || sortByWeight === -1) {
-			setSortByWeight(1);
-			setSortDescending(true);
-			newCharAttrs.sort((a, b) => a.weight - b.weight);
-		} else if (sortByWeight === 1) {
-			setSortByWeight(-1);
-			setSortDescending(false);
-			newCharAttrs.sort((a, b) => b.weight - a.weight);
-		}
-		setCharAttrs(newCharAttrs);
-	};
-
-	const handleSortByDifficulty = () => {
-		const newCharAttrs = [...charAttrs];
-
-		setSortByName(0);
-		setSortByWeight(0);
-		setSortByFallspeed(0);
-		setSortByGravity(0);
-
-		if (selectedCharacter.charId !== 'zelda' && selectedKillConfirm.moveId !== 'dthrow-up-air') {
-			if (sortByDifficulty === 0 || sortByDifficulty === -1) {
-				setSortByDifficulty(1);
-				setSortDescending(true);
-				newCharAttrs.sort((a, b) => b.percents.percDiff - a.percents.percDiff);
-			} else if (sortByDifficulty === 1) {
-				setSortByDifficulty(-1);
-				setSortDescending(false);
-				newCharAttrs.sort((a, b) => a.percents.percDiff - b.percents.percDiff);
+			if (sortingDirection === null || sortingDirection === 'ascending') {
+				newKcCharacters.sort((a, b) => (a.name < b.name ? -1 : a.name > b.name ? 1 : 0));
+				sortingDirection = 'descending';
+			} else {
+				newKcCharacters.sort((a, b) => (a.name > b.name ? -1 : a.name < b.name ? 1 : 0));
+				sortingDirection = 'ascending';
 			}
-		} else {
-			// different difficulty sorting for smelly Zelda
-			if (sortByDifficulty === 0 || sortByDifficulty === -1) {
-				setSortByDifficulty(1);
-				setSortDescending(true);
-				newCharAttrs.sort((a, b) => a.airdodgeStart - b.airdodgeStart);
-			} else if (sortByDifficulty === 1) {
-				setSortByDifficulty(-1);
-				setSortDescending(false);
-				newCharAttrs.sort((a, b) => b.airdodgeStart - a.airdodgeStart);
+
+			newSortBy.find((sort) => sort.id === 'name').sortingDirection = sortingDirection;
+		}
+
+		if (sortId === 'weight') {
+			const sortByWeight = sortBy.find((sort) => sort.id === 'weight');
+			let { sortingDirection } = sortByWeight;
+
+			if (sortingDirection === null || sortingDirection === 'ascending') {
+				newKcCharacters.sort((a, b) => (a.weight < b.weight ? -1 : a.weight > b.weight ? 1 : 0));
+				sortingDirection = 'descending';
+			} else {
+				newKcCharacters.sort((a, b) => (a.weight > b.weight ? -1 : a.weight < b.weight ? 1 : 0));
+				sortingDirection = 'ascending';
 			}
+
+			newSortBy.find((sort) => sort.id === 'weight').sortingDirection = sortingDirection;
 		}
-		setCharAttrs(newCharAttrs);
+
+		if (sortId === 'difficulty') {
+			const sortByDifficulty = sortBy.find((sort) => sort.id === 'difficulty');
+			let { sortingDirection } = sortByDifficulty;
+
+			if (selectedCharacter.id !== 'zelda' && selectedKillConfirm.id !== 'dthrow-up-air') {
+				if (sortingDirection === null || sortingDirection === 'ascending') {
+					newKcCharacters.sort((a, b) => b.percents.percDiff - a.percents.percDiff);
+					sortingDirection = 'descending';
+				} else {
+					newKcCharacters.sort((a, b) => a.percents.percDiff - b.percents.percDiff);
+					sortingDirection = 'ascending';
+				}
+			} else {
+				// different difficulty sorting for smelly Zelda
+				if (sortingDirection === null || sortingDirection === 'ascending') {
+					newKcCharacters.sort((a, b) => a.airdodgeStart - b.airdodgeStart);
+					sortingDirection = 'descending';
+				} else {
+					newKcCharacters.sort((a, b) => b.airdodgeStart - a.airdodgeStart);
+					sortingDirection = 'ascending';
+				}
+			}
+
+			newSortBy.find((sort) => sort.id === 'difficulty').sortingDirection = sortingDirection;
+		}
+
+		if (sortId === 'fallspeed') {
+			const sortByFallspeed = sortBy.find((sort) => sort.id === 'fallspeed');
+			let { sortingDirection } = sortByFallspeed;
+
+			if (sortingDirection === null || sortingDirection === 'ascending') {
+				newKcCharacters.sort((a, b) => (a.fallspeed < b.fallspeed ? -1 : a.fallspeed > b.fallspeed ? 1 : 0));
+				sortingDirection = 'descending';
+			} else {
+				newKcCharacters.sort((a, b) => (a.fallspeed > b.fallspeed ? -1 : a.fallspeed < b.fallspeed ? 1 : 0));
+				sortingDirection = 'ascending';
+			}
+
+			newSortBy.find((sort) => sort.id === 'fallspeed').sortingDirection = sortingDirection;
+		}
+
+		if (sortId === 'gravity') {
+			const sortByGravity = sortBy.find((sort) => sort.id === 'gravity');
+			let { sortingDirection } = sortByGravity;
+
+			if (sortingDirection === null || sortingDirection === 'ascending') {
+				newKcCharacters.sort((a, b) => (a.gravity < b.gravity ? -1 : a.gravity > b.gravity ? 1 : 0));
+				sortingDirection = 'descending';
+			} else {
+				newKcCharacters.sort((a, b) => (a.gravity > b.gravity ? -1 : a.gravity < b.gravity ? 1 : 0));
+				sortingDirection = 'ascending';
+			}
+
+			newSortBy.find((sort) => sort.id === 'gravity').sortingDirection = sortingDirection;
+		}
+
+		setSortBy(newSortBy);
+		setSelectedKillConfirm({ ...selectedKillConfirm, characters: newKcCharacters });
 	};
 
-	const handleSortByFallspeed = () => {
-		const newCharAttrs = [...charAttrs];
+	const ItemSortBy = ({ sortBy, sortParameter }) => {
+		const newSortBy = sortBy.find((s) => s.id === sortParameter);
+		if (!newSortBy) return null;
 
-		setSortByName(0);
-		setSortByWeight(0);
-		setSortByDifficulty(0);
-		setSortByGravity(0);
-
-		if (sortByFallspeed === 0 || sortByFallspeed === -1) {
-			setSortByFallspeed(1);
-			setSortDescending(true);
-			newCharAttrs.sort((a, b) => a.fallspeed - b.fallspeed);
-		} else if (sortByFallspeed === 1) {
-			setSortByFallspeed(-1);
-			setSortDescending(false);
-			newCharAttrs.sort((a, b) => b.fallspeed - a.fallspeed);
-		}
-		setCharAttrs(newCharAttrs);
-	};
-
-	const handleSortByGravity = () => {
-		const newCharAttrs = [...charAttrs];
-
-		setSortByName(0);
-		setSortByWeight(0);
-		setSortByDifficulty(0);
-		setSortByFallspeed(0);
-
-		if (sortByGravity === 0 || sortByGravity === -1) {
-			setSortByGravity(1);
-			setSortDescending(true);
-			newCharAttrs.sort((a, b) => a.gravity - b.gravity);
-		} else if (sortByGravity === 1) {
-			setSortByGravity(-1);
-			setSortDescending(false);
-			newCharAttrs.sort((a, b) => b.gravity - a.gravity);
-		}
-		setCharAttrs(newCharAttrs);
-	};
-
-	const ItemSortBy = (props) => {
-		const { text, sortParameter } = props;
+		const { name, sortingDirection } = newSortBy;
 		return (
 			<span>
-				<span>{text}</span>{' '}
+				<span>{name}</span>{' '}
 				<i
 					className={`fa ms-1 ${
-						sortParameter === 0 ? 'd-none' : sortParameter === -1 ? 'fa-caret-up' : 'fa-caret-down'
+						!sortingDirection ? 'd-none' : sortingDirection === 'ascending' ? 'fa-caret-up' : 'fa-caret-down'
 					}`}
 					aria-hidden="true"
 				></i>
 			</span>
 		);
 	};
+
+	if (!selectedKillConfirm || !Object.keys(selectedKillConfirm).length) return;
 
 	return (
 		<>
@@ -306,15 +282,11 @@ const CharacterTiles = ({
 				}}
 			>
 				<nav className="d-flex align-items-center character-topbar">
-					<button
-						type="button"
+					<Link
+						to="/"
 						className={`btn btn-secondary btn-sm ${
 							selectedCharacter.textScheme === 'light' ? 'text-light' : 'text-dark'
 						}`}
-						onClick={() => {
-							setSelectedCharacter({});
-							setSelectedKillConfirm({});
-						}}
 					>
 						<span className="visually-hidden">Back</span>
 						<svg
@@ -327,17 +299,13 @@ const CharacterTiles = ({
 							<path d="M0 0h24v24H0z" fill="none"></path>
 							<path className="pathfill" d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path>
 						</svg>
-					</button>
-					<MoveButtons
-						selectedCharacter={selectedCharacter}
-						selectedKillConfirm={selectedKillConfirm}
-						handleSelectedKillConfirm={handleSelectedKillConfirm}
-					/>
+					</Link>
+					<MoveButtons selectedCharacter={selectedCharacter} selectedKillConfirm={selectedKillConfirm} />
 
-					<button type="button" className="btn btn-primary btn-sm ms-auto" onClick={() => setModalShowInfo(true)}>
+					<Link to={`${url}/info`} className="btn btn-primary btn-sm ms-auto">
 						<i className="fa fa-info-circle" aria-hidden="true"></i>
 						<span className="d-none d-md-inline ms-2">More Information</span>
-					</button>
+					</Link>
 				</nav>
 
 				<div className="tiles">
@@ -346,29 +314,29 @@ const CharacterTiles = ({
 							type="text"
 							className="form-control input-filter"
 							placeholder="Filter..."
-							onKeyUp={(e) => handleFilter(e.target.value)}
+							onKeyUp={(e) => setFilterText(e.target.value)}
 						/>
 						<div className="btn-group">
 							<button
 								type="button"
 								className="d-none d-md-inline-block btn btn-primary btn-sm"
-								onClick={handleSortByName}
+								onClick={() => handleSort('name')}
 							>
-								<ItemSortBy text="Name" sortParameter={sortByName} />
+								<ItemSortBy sortBy={sortBy} sortParameter="name" />
 							</button>
 							<button
 								type="button"
 								className="d-none d-md-inline-block btn btn-primary btn-sm"
-								onClick={handleSortByWeight}
+								onClick={() => handleSort('weight')}
 							>
-								<ItemSortBy text="Weight" sortParameter={sortByWeight} />
+								<ItemSortBy sortBy={sortBy} sortParameter="weight" />
 							</button>
 							<button
 								type="button"
 								className="d-none d-md-inline-block btn btn-primary btn-sm"
-								onClick={handleSortByDifficulty}
+								onClick={() => handleSort('difficulty')}
 							>
-								<ItemSortBy text="Difficulty" sortParameter={sortByDifficulty} />
+								<ItemSortBy sortBy={sortBy} sortParameter="difficulty" />
 							</button>
 							<Dropdown autoClose="outside">
 								<Dropdown.Toggle id="dropdown-more" className="btn btn-primary btn-sm dropdown-toggle">
@@ -405,35 +373,45 @@ const CharacterTiles = ({
 										as="button"
 										type="button"
 										className="btn btn-primary d-md-none"
-										onClick={handleSortByName}
+										onClick={() => handleSort('name')}
 									>
-										<ItemSortBy text="Name" sortParameter={sortByName} />
+										<ItemSortBy sortBy={sortBy} sortParameter="name" />
 									</Dropdown.Item>
 									<hr className="d-md-none dropdown-divider" />
 									<Dropdown.Item
 										as="button"
 										type="button"
 										className="btn btn-primary d-md-none"
-										onClick={handleSortByWeight}
+										onClick={() => handleSort('weight')}
 									>
-										<ItemSortBy text="Weight" sortParameter={sortByWeight} />
+										<ItemSortBy sortBy={sortBy} sortParameter="weight" />
 									</Dropdown.Item>
 									<hr className="d-md-none dropdown-divider" />
 									<Dropdown.Item
 										as="button"
 										type="button"
 										className="btn btn-primary d-md-none"
-										onClick={handleSortByDifficulty}
+										onClick={() => handleSort('difficulty')}
 									>
-										<ItemSortBy text="Difficulty" sortParameter={sortByDifficulty} />
+										<ItemSortBy sortBy={sortBy} sortParameter="difficulty" />
 									</Dropdown.Item>
 									<hr className="d-md-none dropdown-divider" />
-									<Dropdown.Item as="button" type="button" className="btn btn-primary" onClick={handleSortByFallspeed}>
-										<ItemSortBy text="Fallspeed" sortParameter={sortByFallspeed} />
+									<Dropdown.Item
+										as="button"
+										type="button"
+										className="btn btn-primary"
+										onClick={() => handleSort('fallspeed')}
+									>
+										<ItemSortBy sortBy={sortBy} sortParameter="fallspeed" />
 									</Dropdown.Item>
 									<hr className="dropdown-divider" />
-									<Dropdown.Item as="button" type="button" className="btn btn-primary" onClick={handleSortByGravity}>
-										<ItemSortBy text="Gravity" sortParameter={sortByGravity} />
+									<Dropdown.Item
+										as="button"
+										type="button"
+										className="btn btn-primary"
+										onClick={() => handleSort('gravity')}
+									>
+										<ItemSortBy sortBy={sortBy} sortParameter="gravity" />
 									</Dropdown.Item>
 									<hr className="dropdown-divider" />
 									<Dropdown.Item
@@ -453,17 +431,18 @@ const CharacterTiles = ({
 						</div>
 					</div>
 					<InfoBox selectedKillConfirm={selectedKillConfirm} />
-					<Tiles
-						charAttrs={charAttrs}
-						filteredCharAttrs={filteredCharAttrs}
-						showAdditionalCharacterInfoInGrid={showAdditionalCharacterInfoInGrid}
-						setSelectedCharacterModal={setSelectedCharacterModal}
-						setModalShowStageList={setModalShowStageList}
-						setModalShowInfo={setModalShowInfo}
-						sortDescending={sortDescending}
-						selectedKillConfirm={selectedKillConfirm}
-						refreshStageList={refreshStageList}
-					/>
+					{filteredKillConfirmCharacters.length ? (
+						<Tiles
+							selectedKillConfirm={selectedKillConfirm}
+							filteredKillConfirmCharacters={filteredKillConfirmCharacters}
+							showAdditionalCharacterInfoInGrid={showAdditionalCharacterInfoInGrid}
+							setSelectedCharacterModal={setSelectedCharacterModal}
+							setModalShowStageList={setModalShowStageList}
+							setModalShowInfo={setModalShowInfo}
+							sortBy={sortBy}
+							refreshStageList={refreshStageList}
+						/>
+					) : null}
 				</div>
 			</div>
 		</>

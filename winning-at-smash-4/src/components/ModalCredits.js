@@ -1,18 +1,15 @@
 import { Modal } from 'react-bootstrap';
-import { useHistory } from 'react-router';
 
-const ModalCredits = ({ killConfirms }) => {
-	const history = useHistory();
-
+const ModalCredits = ({ modalShowCredits, setModalShowCredits, killConfirms }) => {
 	const handleModalHide = () => {
-		history.push('/');
+		setModalShowCredits(false);
 	};
 
 	return (
 		<Modal
 			className="modal modal-info"
 			aria-labelledby="#modal-credits-title"
-			show={true}
+			show={modalShowCredits}
 			onHide={handleModalHide}
 			centered={true}
 			animation={false}
@@ -26,9 +23,9 @@ const ModalCredits = ({ killConfirms }) => {
 			<div className="modal-body">
 				<h2 id="modal-credits-title">Credits</h2>
 				{killConfirms.map((killConfirm) => (
-					<p key={killConfirm.charId}>
+					<p key={killConfirm.id}>
 						{killConfirm.moves.map((move, i) => (
-							<span key={move.moveId}>
+							<span key={move.id}>
 								{move.info.creditLink ? (
 									<a href={move.info.creditLink} target="_blank" rel="noreferrer">
 										{move.info.creditName}
@@ -38,7 +35,7 @@ const ModalCredits = ({ killConfirms }) => {
 								)}{' '}
 								for the{' '}
 								<a href={move.info.spreadsheetLink} target="_blank" rel="noreferrer">
-									<span dangerouslySetInnerHTML={{ __html: move.moveName }} /> spreadsheet
+									<span dangerouslySetInnerHTML={{ __html: move.name }} /> spreadsheet
 								</a>
 								{move.info.spreadsheetMethod ? (
 									<>

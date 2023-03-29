@@ -6,8 +6,6 @@ import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import CharacterMoveCards from './components/CharacterMoveCards';
 import CharacterTiles from './components/CharacterTiles';
-import ModalStagePercents from './components/ModalStagePercents';
-import ModalInfo from './components/ModalInfo';
 import ModalAbout from './components/ModalAbout';
 import ModalCredits from './components/ModalCredits';
 
@@ -24,103 +22,10 @@ function App() {
 
 	const [selectedCharacterModal, setSelectedCharacterModal] = useState({});
 
-	const [filteredCharAttrs, setFilteredCharAttrs] = useState([]);
+	const [modalShowAbout, setModalShowAbout] = useState(false);
+	const [modalShowCredits, setModalShowCredits] = useState(false);
 
-	// these sorters exist in a sort of 'tri-nary' state. 0 means off (sort not in action), 1 means sort descending, -1 means sort ascending
-	// only one can be in action, so clicking one sets the others back to 0
-	const [sortByName, setSortByName] = useState(1);
-	const [sortByWeight, setSortByWeight] = useState(0);
-	const [sortByDifficulty, setSortByDifficulty] = useState(0);
-	const [sortByFallspeed, setSortByFallspeed] = useState(0);
-	const [sortByGravity, setSortByGravity] = useState(0);
-
-	const [modalShowStageList, setModalShowStageList] = useState(false);
-	const [modalShowInfo, setModalShowInfo] = useState(false);
-	const [activeRage, setActiveRage] = useState('rage0');
-
-	const handleSelectedKillConfirm = (character, move) => {
-		// updating base character attributes with the percents and stage info from the kill confirm
-		const updatedCharAttrs = [...charAttrs];
-		const percDiffs = [];
-		for (const char of updatedCharAttrs) {
-			const percDiff = move.percents[char.id].end - move.percents[char.id].start;
-			char.percents = {
-				...move.percents[char.id],
-				percDiff
-			};
-
-			// discluding percDiffs of 0 so they don't skew the difficulty curve calculations lower down
-			if (percDiff !== 0) percDiffs.push(percDiff);
-		}
-
-		// calculating an average between percent differences to determine the 'difficulty' of the kill confirm on each character
-		// since the total range changes between character to character, there can't be an absolute value for determining this - an average must be taken of all start/end differences for that particular kill confirm
-		const sumOfPercDiffs = percDiffs.reduce((a, b) => a + b);
-		const percentAverage = sumOfPercDiffs / percDiffs.length;
-
-		// now calculate the percents to iterate by. Assuming there are 5 difficulty levels, take sum and divide by midway for average. So sum / 2.5
-		// this calculates how much to iterate each percent by
-		const diffIterator = Math.floor(percentAverage / 2.5);
-
-		for (const char of updatedCharAttrs) {
-			const diffObj = {
-				diffClass: '',
-				diffText: ''
-			};
-			if (character.charId !== 'zelda' && move.moveId !== 'dthrow-up-air') {
-				if (0 <= char.percents.percDiff && char.percents.percDiff <= diffIterator) {
-					diffObj.diffText = 'Very Hard';
-					diffObj.diffClass = 'very-hard';
-				} else if (diffIterator <= char.percents.percDiff && char.percents.percDiff <= diffIterator * 2) {
-					diffObj.diffText = 'Hard';
-					diffObj.diffClass = 'hard';
-				} else if (diffIterator * 2 <= char.percents.percDiff && char.percents.percDiff <= diffIterator * 3) {
-					diffObj.diffText = 'Average';
-					diffObj.diffClass = 'average';
-				} else if (diffIterator * 3 <= char.percents.percDiff && char.percents.percDiff <= diffIterator * 4) {
-					diffObj.diffText = 'Easy';
-					diffObj.diffClass = 'easy';
-				} else if (diffIterator * 4 <= char.percents.percDiff) {
-					diffObj.diffText = 'Very Easy';
-					diffObj.diffClass = 'very-easy';
-				} else {
-					diffObj.diffText = '';
-					diffObj.diffClass = '';
-				}
-			} else {
-				// alternative difficulty just for Zelda based on the victim's airdodge frames (thanks Zelda)
-				if (char.airdodgeStart === 1) {
-					diffObj.diffText = 'Very Hard';
-					diffObj.diffClass = 'very-hard';
-				} else if (char.airdodgeStart === 2) {
-					diffObj.diffText = 'Hard';
-					diffObj.diffClass = 'hard';
-				} else if (char.airdodgeStart === 3) {
-					diffObj.diffText = 'Average';
-					diffObj.diffClass = 'average';
-				} else if (char.airdodgeStart === 4) {
-					diffObj.diffText = 'Easy';
-					diffObj.diffClass = 'easy';
-				}
-			}
-
-			char.percents.diffText = diffObj.diffText;
-			char.percents.diffClass = diffObj.diffClass;
-		}
-
-		updatedCharAttrs.sort((a, b) => (a.name < b.name ? -1 : a.name > b.name ? 1 : 0));
-
-		setCharAttrs(updatedCharAttrs);
-		setSelectedCharacter(character);
-		setSelectedKillConfirm(move);
-
-		// resetting sorters
-		setSortByName(1);
-		setSortByWeight(0);
-		setSortByDifficulty(0);
-		setSortByFallspeed(0);
-		setSortByGravity(0);
-	};
+	// TODO: fallback if character doesn't exist
 
 	const refreshStageList = (character) => {
 		// spreading in selected kill confirm percents to each stage, based on the selected character modal
@@ -159,6 +64,8 @@ function App() {
 			});
 	};
 
+	const location = useLocation();
+
 	// empty array means executes only once
 	useEffect(() => {
 		// TODO: set loading spinners
@@ -178,10 +85,10 @@ function App() {
 				.then((responses) => {
 					const [charAttrs, killConfirms, stageList] = responses;
 
+					// TODO: this could become one giant object to prevent 2 of these 3 re-renders
 					setCharAttrs(charAttrs);
 					setKillConfirms(killConfirms);
 					setStageList(stageList);
-					setFilteredCharAttrs(charAttrs);
 
 					setLoading(false);
 				})
@@ -206,6 +113,109 @@ function App() {
 		// page changes
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
+
+	// for updating the 'global' state with a selected character, killConfirm and selectedCharacterModal
+	useEffect(() => {
+		const [, characterId, killConfirmId, selectedCharacterModal] = location.pathname.split('/');
+		const characterToSet = killConfirms.find((killConfirm) => killConfirm.id === characterId);
+		if (characterToSet) {
+			setSelectedCharacter(characterToSet);
+
+			const killConfirmToSet = characterToSet.moves.find((killConfirm) => killConfirm.id === killConfirmId);
+			if (killConfirmToSet) {
+				// generating a new object for each character in the kill confirm, that includes static data from char attrs and some calculated stuff
+				const percDiffs = [];
+				const updatedKillConfirmCharacters = killConfirmToSet.characters.map((kcCharacter) => {
+					const percDiff = kcCharacter.end - kcCharacter.start;
+					const percents = {
+						start: kcCharacter.start,
+						end: kcCharacter.end,
+						percDiff
+					};
+
+					// including raw data from the charAttrs.json file for each character
+					const selectedCharAttrs = charAttrs.find((char) => char.id === kcCharacter.id);
+					const updatedCharAttrs = { ...selectedCharAttrs, percents };
+					// discluding percDiffs of 0 so they don't skew the difficulty curve calculations lower down
+					if (percDiff !== 0) percDiffs.push(percDiff);
+					return { ...updatedCharAttrs, ...kcCharacter };
+				});
+
+				// calculating an average between percent differences to determine the 'difficulty' of the kill confirm on each character
+				// since the total range changes between character to character, there can't be an absolute value for determining this - an average must be taken of all start/end differences for that particular kill confirm
+				const sumOfPercDiffs = percDiffs.reduce((a, b) => a + b);
+				const percentAverage = sumOfPercDiffs / percDiffs.length;
+
+				// now calculate the percents to iterate by. Assuming there are 5 difficulty levels, take sum and divide by midway for average. So sum / 2.5
+				// this calculates how much to iterate each percent by
+				const diffIterator = Math.floor(percentAverage / 2.5);
+
+				for (const kcCharacter of updatedKillConfirmCharacters) {
+					const diffObj = {
+						difficultyClass: '',
+						difficultyText: ''
+					};
+					if (characterToSet.id !== 'zelda' && killConfirmToSet.id !== 'dthrow-up-air') {
+						if (0 <= kcCharacter.percDiff && kcCharacter.percents.percDiff <= diffIterator) {
+							diffObj.difficultyText = 'Very Hard';
+							diffObj.difficultyClass = 'very-hard';
+						} else if (
+							diffIterator <= kcCharacter.percents.percDiff &&
+							kcCharacter.percents.percDiff <= diffIterator * 2
+						) {
+							diffObj.difficultyText = 'Hard';
+							diffObj.difficultyClass = 'hard';
+						} else if (
+							diffIterator * 2 <= kcCharacter.percents.percDiff &&
+							kcCharacter.percents.percDiff <= diffIterator * 3
+						) {
+							diffObj.difficultyText = 'Average';
+							diffObj.difficultyClass = 'average';
+						} else if (
+							diffIterator * 3 <= kcCharacter.percents.percDiff &&
+							kcCharacter.percents.percDiff <= diffIterator * 4
+						) {
+							diffObj.difficultyText = 'Easy';
+							diffObj.difficultyClass = 'easy';
+						} else if (diffIterator * 4 <= kcCharacter.percents.percDiff) {
+							diffObj.difficultyText = 'Very Easy';
+							diffObj.difficultyClass = 'very-easy';
+						} else {
+							diffObj.difficultyText = '';
+							diffObj.difficultyClass = '';
+						}
+					} else {
+						// alternative difficulty just for Zelda based on the victim's airdodge frames (thanks Zelda)
+						if (kcCharacter.airdodgeStart === 1) {
+							diffObj.difficultyText = 'Very Hard';
+							diffObj.difficultyClass = 'very-hard';
+						} else if (kcCharacter.airdodgeStart === 2) {
+							diffObj.difficultyText = 'Hard';
+							diffObj.difficultyClass = 'hard';
+						} else if (kcCharacter.airdodgeStart === 3) {
+							diffObj.difficultyText = 'Average';
+							diffObj.difficultyClass = 'average';
+						} else if (kcCharacter.airdodgeStart === 4) {
+							diffObj.difficultyText = 'Easy';
+							diffObj.difficultyClass = 'easy';
+						}
+					}
+
+					kcCharacter.percents.difficultyText = diffObj.difficultyText;
+					kcCharacter.percents.difficultyClass = diffObj.difficultyClass;
+				}
+
+				updatedKillConfirmCharacters.sort((a, b) => (a.name < b.name ? -1 : a.name > b.name ? 1 : 0));
+
+				const updatedKillConfirmData = { ...killConfirmToSet, characters: updatedKillConfirmCharacters };
+				setSelectedKillConfirm(updatedKillConfirmData);
+
+				// const selectedCharacterModalToSet = characterToSet.moves.find((killConfirm) => killConfirm.id === killConfirmId);
+				// if (kill)
+				// setSelectedCharacterModal
+			}
+		}
+	}, [killConfirms, charAttrs, location]);
 
 	return (
 		<div className="app-grid">
@@ -241,32 +251,21 @@ function App() {
 							<>
 								<CharacterMoveCards killConfirms={killConfirms} selectedKillConfirm={selectedKillConfirm} />
 								<Route path={`/:characterId/:moveId`}>
-									<CharacterTiles
-										killConfirms={killConfirms}
-										stageList={stageList}
-										charAttrs={charAttrs}
-										setCharAttrs={setCharAttrs}
-										setSelectedCharacter={setSelectedCharacter}
-										selectedCharacter={selectedCharacter}
-										setSelectedKillConfirm={setSelectedKillConfirm}
-										selectedKillConfirm={selectedKillConfirm}
-										// handleSelectedKillConfirm={handleSelectedKillConfirm}
-										sortByName={sortByName}
-										setSortByName={setSortByName}
-										sortByWeight={sortByWeight}
-										setSortByWeight={setSortByWeight}
-										sortByDifficulty={sortByDifficulty}
-										setSortByDifficulty={setSortByDifficulty}
-										sortByFallspeed={sortByFallspeed}
-										setSortByFallspeed={setSortByFallspeed}
-										sortByGravity={sortByGravity}
-										setSortByGravity={setSortByGravity}
-										selectedCharacterModal={selectedCharacterModal}
-										setSelectedCharacterModal={setSelectedCharacterModal}
-										setFilteredCharAttrs={setFilteredCharAttrs}
-										filteredCharAttrs={filteredCharAttrs}
-										refreshStageList={refreshStageList}
-									/>
+									{Object.keys(selectedKillConfirm).length ? (
+										<CharacterTiles
+											killConfirms={killConfirms}
+											setSelectedKillConfirm={setSelectedKillConfirm}
+											stageList={stageList}
+											charAttrs={charAttrs}
+											setCharAttrs={setCharAttrs}
+											setSelectedCharacter={setSelectedCharacter}
+											selectedCharacter={selectedCharacter}
+											selectedKillConfirm={selectedKillConfirm}
+											selectedCharacterModal={selectedCharacterModal}
+											setSelectedCharacterModal={setSelectedCharacterModal}
+											refreshStageList={refreshStageList}
+										/>
+									) : null}
 								</Route>
 								<ModalAbout modalShowAbout={modalShowAbout} setModalShowAbout={setModalShowAbout} />
 								<ModalCredits

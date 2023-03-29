@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-const Sidebar = ({ sidebarOpen, moveCards, handleSelectedKillConfirm }) => {
+const Sidebar = ({ sidebarOpen, moveCards }) => {
 	return (
 		<aside className={`d-none sidebar ${sidebarOpen ? 'd-lg-block' : ''}`}>
 			<nav id="sidebar">
@@ -13,7 +13,7 @@ const Sidebar = ({ sidebarOpen, moveCards, handleSelectedKillConfirm }) => {
 					{moveCards.map((character) => (
 						<li
 							className="character-item"
-							key={'sidebar-' + character.charId}
+							key={'sidebar-' + character.id}
 							style={{ '--item-color': character.cardColor }}
 						>
 							<div className={`character-header ${character.textScheme === 'light' ? 'text-light' : 'text-dark'}`}>
@@ -21,13 +21,12 @@ const Sidebar = ({ sidebarOpen, moveCards, handleSelectedKillConfirm }) => {
 							</div>
 							<ul className="list-unstyled">
 								{character.moves.map((move) => (
-									<li key={'sidebar-' + move.moveId}>
-										<button
-											type="button"
+									<li key={'sidebar-' + move.id}>
+										<Link
+											to={`/${character.id}/${move.id}`}
 											className="btn"
-											dangerouslySetInnerHTML={{ __html: move.moveName }}
-											onClick={() => handleSelectedKillConfirm(character, move)}
-										></button>
+											dangerouslySetInnerHTML={{ __html: move.name }}
+										></Link>
 									</li>
 								))}
 							</ul>

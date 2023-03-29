@@ -1,13 +1,8 @@
 [
 	{
-		"charIndex": 0,
 		"name": "Bayonetta",
 		"id": "bayonetta",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 84,
 		"fallspeed": 1.77,
 		"gravity": 0.12,
@@ -18,14 +13,9 @@
 		"imagePosition": "rightImage"
 	},
 	{
-		"charIndex": 1,
 		"name": "Bowser",
 		"id": "bowser",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 130,
 		"fallspeed": 1.39,
 		"gravity": 0.11,
@@ -36,14 +26,9 @@
 		"imagePosition": "rightImage"
 	},
 	{
-		"charIndex": 2,
 		"name": "Bowser Jr.",
 		"id": "bowser-jr",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 108,
 		"fallspeed": 1.65,
 		"gravity": 0.092,
@@ -54,14 +39,9 @@
 		"imagePosition": "leftImage"
 	},
 	{
-		"charIndex": 3,
 		"name": "Captain Falcon",
 		"id": "captain-falcon",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 104,
 		"fallspeed": 1.837,
 		"gravity": 0.12,
@@ -72,14 +52,9 @@
 		"imagePosition": "rightImage"
 	},
 	{
-		"charIndex": 4,
 		"name": "Charizard",
 		"id": "charizard",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 116,
 		"fallspeed": 1.4,
 		"gravity": 0.11,
@@ -89,14 +64,9 @@
 		"textScheme": "light"
 	},
 	{
-		"charIndex": 5,
 		"name": "Cloud",
 		"id": "cloud",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 100,
 		"fallspeed": 1.68,
 		"gravity": 0.098,
@@ -106,14 +76,9 @@
 		"textScheme": "light"
 	},
 	{
-		"charIndex": 6,
 		"name": "Cloud - Limit",
 		"id": "cloud-limit",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 100,
 		"fallspeed": 1.848,
 		"gravity": 0.1078,
@@ -123,14 +88,9 @@
 		"textScheme": "light"
 	},
 	{
-		"charIndex": 7,
 		"name": "Corrin",
 		"id": "corrin",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 98,
 		"fallspeed": 1.65,
 		"gravity": 0.092,
@@ -141,14 +101,9 @@
 		"imagePosition": "leftImage"
 	},
 	{
-		"charIndex": 8,
 		"name": "Dark Pit",
 		"id": "dark-pit",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 96,
 		"fallspeed": 1.48,
 		"gravity": 0.081,
@@ -159,14 +114,9 @@
 		"imagePosition": "rightImage"
 	},
 	{
-		"charIndex": 9,
 		"name": "Diddy Kong",
 		"id": "diddy-kong",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 93,
 		"fallspeed": 1.75,
 		"gravity": 0.105,
@@ -177,14 +127,9 @@
 		"imagePosition": "rightImage"
 	},
 	{
-		"charIndex": 10,
 		"name": "Donkey Kong",
 		"id": "donkey-kong",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 122,
 		"fallspeed": 1.63,
 		"gravity": 0.08505,
@@ -195,14 +140,9 @@
 		"imagePosition": "rightImage"
 	},
 	{
-		"charIndex": 11,
 		"name": "Dr. Mario",
 		"id": "dr-mario",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 98,
 		"fallspeed": 1.5,
 		"gravity": 0.08715,
@@ -212,14 +152,9 @@
 		"textScheme": "light"
 	},
 	{
-		"charIndex": 12,
 		"name": "Duck Hunt",
 		"id": "duck-hunt",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 91,
 		"fallspeed": 1.65,
 		"gravity": 0.076,
@@ -229,14 +164,9 @@
 		"textScheme": "light"
 	},
 	{
-		"charIndex": 13,
 		"name": "Falco",
 		"id": "falco",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 82,
 		"fallspeed": 1.8,
 		"gravity": 0.13,
@@ -247,14 +177,9 @@
 		"imagePosition": "rightImage"
 	},
 	{
-		"charIndex": 14,
 		"name": "Fox",
 		"id": "fox",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 79,
 		"fallspeed": 2.05,
 		"gravity": 0.19,
@@ -265,14 +190,9 @@
 		"imagePosition": "leftImage"
 	},
 	{
-		"charIndex": 15,
 		"name": "Ganondorf",
 		"id": "ganondorf",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 113,
 		"fallspeed": 1.65,
 		"gravity": 0.10784,
@@ -282,14 +202,9 @@
 		"textScheme": "light"
 	},
 	{
-		"charIndex": 16,
 		"name": "Greninja",
 		"id": "greninja",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 94,
 		"fallspeed": 1.85,
 		"gravity": 0.18,
@@ -299,14 +214,9 @@
 		"textScheme": "light"
 	},
 	{
-		"charIndex": 17,
 		"name": "Ike",
 		"id": "ike",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 107,
 		"fallspeed": 1.65,
 		"gravity": 0.092,
@@ -317,14 +227,9 @@
 		"imagePosition": "rightImage"
 	},
 	{
-		"charIndex": 18,
 		"name": "Jigglypuff",
 		"id": "jigglypuff",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 68,
 		"fallspeed": 0.98,
 		"gravity": 0.05309,
@@ -334,14 +239,9 @@
 		"textScheme": "light"
 	},
 	{
-		"charIndex": 19,
 		"name": "King Dedede",
 		"id": "king-dedede",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 119,
 		"fallspeed": 1.95,
 		"gravity": 0.08788,
@@ -351,14 +251,9 @@
 		"textScheme": "dark"
 	},
 	{
-		"charIndex": 20,
 		"name": "Kirby",
 		"id": "kirby",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 79,
 		"fallspeed": 1.23,
 		"gravity": 0.06405,
@@ -368,14 +263,9 @@
 		"textScheme": "light"
 	},
 	{
-		"charIndex": 21,
 		"name": "Link",
 		"id": "link",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 104,
 		"fallspeed": 1.6,
 		"gravity": 0.096,
@@ -385,14 +275,9 @@
 		"textScheme": "dark"
 	},
 	{
-		"charIndex": 22,
 		"name": "Little Mac",
 		"id": "little-mac",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 82,
 		"fallspeed": 1.8,
 		"gravity": 0.08,
@@ -402,14 +287,9 @@
 		"textScheme": "light"
 	},
 	{
-		"charIndex": 23,
 		"name": "Lucario",
 		"id": "lucario",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 99,
 		"fallspeed": 1.68,
 		"gravity": 0.084,
@@ -419,14 +299,9 @@
 		"textScheme": "dark"
 	},
 	{
-		"charIndex": 24,
 		"name": "Lucas",
 		"id": "lucas",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 94,
 		"fallspeed": 1.37,
 		"gravity": 0.09,
@@ -436,14 +311,9 @@
 		"textScheme": "light"
 	},
 	{
-		"charIndex": 25,
 		"name": "Lucina",
 		"id": "lucina",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 90,
 		"fallspeed": 1.58,
 		"gravity": 0.075,
@@ -453,14 +323,9 @@
 		"textScheme": "light"
 	},
 	{
-		"charIndex": 26,
 		"name": "Luigi",
 		"id": "luigi",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 97,
 		"fallspeed": 1.25,
 		"gravity": 0.075,
@@ -470,14 +335,9 @@
 		"textScheme": "light"
 	},
 	{
-		"charIndex": 27,
 		"name": "Mario",
 		"id": "mario",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 98,
 		"fallspeed": 1.5,
 		"gravity": 0.08715,
@@ -487,14 +347,9 @@
 		"textScheme": "light"
 	},
 	{
-		"charIndex": 28,
 		"name": "Marth",
 		"id": "marth",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 90,
 		"fallspeed": 1.58,
 		"gravity": 0.075,
@@ -504,14 +359,9 @@
 		"textScheme": "light"
 	},
 	{
-		"charIndex": 29,
 		"name": "Mega Man",
 		"id": "mega-man",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 102,
 		"fallspeed": 1.8,
 		"gravity": 0.1071,
@@ -521,14 +371,9 @@
 		"textScheme": "light"
 	},
 	{
-		"charIndex": 30,
 		"name": "Meta Knight",
 		"id": "meta-knight",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 80,
 		"fallspeed": 1.66,
 		"gravity": 0.11,
@@ -538,14 +383,9 @@
 		"textScheme": "light"
 	},
 	{
-		"charIndex": 31,
 		"name": "Mewtwo",
 		"id": "mewtwo",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 74,
 		"fallspeed": 1.5,
 		"gravity": 0.082,
@@ -556,14 +396,9 @@
 		"imagePosition": "leftImage"
 	},
 	{
-		"charIndex": 32,
 		"name": "Mii Brawler",
 		"id": "mii-brawler",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 100,
 		"fallspeed": 1.7,
 		"gravity": 0.1,
@@ -573,14 +408,9 @@
 		"textScheme": "light"
 	},
 	{
-		"charIndex": 33,
 		"name": "Mii Gunner",
 		"id": "mii-gunner",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 100,
 		"fallspeed": 1.7,
 		"gravity": 0.08715,
@@ -590,14 +420,9 @@
 		"textScheme": "light"
 	},
 	{
-		"charIndex": 34,
 		"name": "Mii Swordfighter",
 		"id": "mii-swordfighter",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 100,
 		"fallspeed": 1.7,
 		"gravity": 0.096,
@@ -607,14 +432,9 @@
 		"textScheme": "light"
 	},
 	{
-		"charIndex": 35,
 		"name": "Mr. Game and Watch",
 		"id": "game-and-watch",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 75,
 		"fallspeed": 1.24,
 		"gravity": 0.08,
@@ -624,14 +444,9 @@
 		"textScheme": "light"
 	},
 	{
-		"charIndex": 36,
 		"name": "Ness",
 		"id": "ness",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 94,
 		"fallspeed": 1.31,
 		"gravity": 0.077,
@@ -641,14 +456,9 @@
 		"textScheme": "light"
 	},
 	{
-		"charIndex": 37,
 		"name": "Olimar",
 		"id": "olimar",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 79,
 		"fallspeed": 1.35,
 		"gravity": 0.068,
@@ -658,14 +468,9 @@
 		"textScheme": "dark"
 	},
 	{
-		"charIndex": 38,
 		"name": "Pac-Man",
 		"id": "pacman",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 95,
 		"fallspeed": 1.35,
 		"gravity": 0.072,
@@ -675,14 +480,9 @@
 		"textScheme": "light"
 	},
 	{
-		"charIndex": 39,
 		"name": "Palutena",
 		"id": "palutena",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 91,
 		"fallspeed": 1.4,
 		"gravity": 0.105,
@@ -692,14 +492,9 @@
 		"textScheme": "dark"
 	},
 	{
-		"charIndex": 40,
 		"name": "Peach",
 		"id": "peach",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 89,
 		"fallspeed": 1.15,
 		"gravity": 0.068,
@@ -709,14 +504,9 @@
 		"textScheme": "dark"
 	},
 	{
-		"charIndex": 41,
 		"name": "Pikachu",
 		"id": "pikachu",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 79,
 		"fallspeed": 1.55,
 		"gravity": 0.095,
@@ -726,14 +516,9 @@
 		"textScheme": "light"
 	},
 	{
-		"charIndex": 42,
 		"name": "Pit",
 		"id": "pit",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 96,
 		"fallspeed": 1.48,
 		"gravity": 0.081,
@@ -744,14 +529,9 @@
 		"imagePosition": "leftImage"
 	},
 	{
-		"charIndex": 43,
 		"name": "R.O.B.",
 		"id": "rob",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 106,
 		"fallspeed": 1.6,
 		"gravity": 0.09,
@@ -761,14 +541,9 @@
 		"textScheme": "light"
 	},
 	{
-		"charIndex": 44,
 		"name": "Robin",
 		"id": "robin",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 95,
 		"fallspeed": 1.5,
 		"gravity": 0.089,
@@ -778,14 +553,9 @@
 		"textScheme": "light"
 	},
 	{
-		"charIndex": 45,
 		"name": "Rosa and Luma",
 		"id": "rosalina-and-luma",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 77,
 		"fallspeed": 1.2,
 		"gravity": 0.062,
@@ -796,14 +566,9 @@
 		"imagePosition": "rightImage"
 	},
 	{
-		"charIndex": 46,
 		"name": "Roy",
 		"id": "roy",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 95,
 		"fallspeed": 1.8,
 		"gravity": 0.114,
@@ -813,14 +578,9 @@
 		"textScheme": "light"
 	},
 	{
-		"charIndex": 47,
 		"name": "Ryu",
 		"id": "ryu",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 103,
 		"fallspeed": 1.6,
 		"gravity": 0.12,
@@ -830,14 +590,9 @@
 		"textScheme": "light"
 	},
 	{
-		"charIndex": 48,
 		"name": "Samus",
 		"id": "samus",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 108,
 		"fallspeed": 1.3,
 		"gravity": 0.077,
@@ -847,14 +602,9 @@
 		"textScheme": "light"
 	},
 	{
-		"charIndex": 49,
 		"name": "Sheik",
 		"id": "sheik",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 81,
 		"fallspeed": 1.75,
 		"gravity": 0.15,
@@ -864,14 +614,9 @@
 		"textScheme": "light"
 	},
 	{
-		"charIndex": 50,
 		"name": "Shulk",
 		"id": "shulk",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 102,
 		"fallspeed": 1.5,
 		"gravity": 0.085,
@@ -882,14 +627,9 @@
 		"imagePosition": "rightImage"
 	},
 	{
-		"charIndex": 51,
 		"name": "Shulk - Buster",
 		"id": "shulk-buster",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 102,
 		"fallspeed": 1.5,
 		"gravity": 0.085,
@@ -900,14 +640,9 @@
 		"imagePosition": "rightImage"
 	},
 	{
-		"charIndex": 52,
 		"name": "Shulk - Jump",
 		"id": "shulk-jump",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 102,
 		"fallspeed": 1.83,
 		"gravity": 0.085,
@@ -918,14 +653,9 @@
 		"imagePosition": "rightImage"
 	},
 	{
-		"charIndex": 53,
 		"name": "Shulk - Shield",
 		"id": "shulk-shield",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 102,
 		"fallspeed": 1.5,
 		"gravity": 0.085,
@@ -936,14 +666,9 @@
 		"imagePosition": "rightImage"
 	},
 	{
-		"charIndex": 54,
 		"name": "Shulk - Smash",
 		"id": "shulk-smash",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 102,
 		"fallspeed": 1.5,
 		"gravity": 0.085,
@@ -954,14 +679,9 @@
 		"imagePosition": "rightImage"
 	},
 	{
-		"charIndex": 55,
 		"name": "Sonic",
 		"id": "sonic",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 94,
 		"fallspeed": 1.45,
 		"gravity": 0.09,
@@ -971,14 +691,9 @@
 		"textScheme": "light"
 	},
 	{
-		"charIndex": 56,
 		"name": "Toon Link",
 		"id": "toon-link",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 93,
 		"fallspeed": 1.28,
 		"gravity": 0.079,
@@ -988,14 +703,9 @@
 		"textScheme": "dark"
 	},
 	{
-		"charIndex": 57,
 		"name": "Villager",
 		"id": "villager",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 97,
 		"fallspeed": 1.32,
 		"gravity": 0.078,
@@ -1005,14 +715,9 @@
 		"textScheme": "light"
 	},
 	{
-		"charIndex": 58,
 		"name": "Wario",
 		"id": "wario",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 107,
 		"fallspeed": 1.61,
 		"gravity": 0.092,
@@ -1022,14 +727,9 @@
 		"textScheme": "dark"
 	},
 	{
-		"charIndex": 59,
 		"name": "Wii Fit Trainer",
 		"id": "wii-fit-trainer",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 96,
 		"fallspeed": 1.3,
 		"gravity": 0.09,
@@ -1039,14 +739,9 @@
 		"textScheme": "dark"
 	},
 	{
-		"charIndex": 60,
 		"name": "Yoshi",
 		"id": "yoshi",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 104,
 		"fallspeed": 1.29,
 		"gravity": 0.08,
@@ -1056,14 +751,9 @@
 		"textScheme": "light"
 	},
 	{
-		"charIndex": 61,
 		"name": "Zelda",
 		"id": "zelda",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 85,
 		"fallspeed": 1.35,
 		"gravity": 0.071,
@@ -1074,14 +764,9 @@
 		"imagePosition": "rightImage"
 	},
 	{
-		"charIndex": 62,
 		"name": "Zero Suit Samus",
 		"id": "zero-suit-samus",
-		"percents": {
-			"start": 0,
-			"end": 0,
-			"distance": null
-		},
+		"percents": {},
 		"weight": 80,
 		"fallspeed": 1.7,
 		"gravity": 0.12,

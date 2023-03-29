@@ -1,11 +1,11 @@
 import { Modal } from 'react-bootstrap';
+import { useHistory } from 'react-router';
 
-const ModalInfo = ({ selectedCharacter, selectedKillConfirm, modalShowInfo, setModalShowInfo }) => {
+const ModalInfo = ({ url, selectedCharacter, selectedKillConfirm }) => {
+	const history = useHistory();
 	const handleModalHide = () => {
-		setModalShowInfo(false);
+		history.push(url);
 	};
-
-	if (!Object.keys(selectedKillConfirm).length) return null;
 
 	const { info } = selectedKillConfirm;
 
@@ -15,7 +15,7 @@ const ModalInfo = ({ selectedCharacter, selectedKillConfirm, modalShowInfo, setM
 		<Modal
 			className="modal modal-info"
 			aria-labelledby=""
-			show={modalShowInfo}
+			show={true}
 			onHide={handleModalHide}
 			centered={true}
 			animation={false}
@@ -49,8 +49,7 @@ const ModalInfo = ({ selectedCharacter, selectedKillConfirm, modalShowInfo, setM
 					)}{' '}
 					for the{' '}
 					<a href={info.spreadsheetLink} target="_blank" rel="noreferrer">
-						{selectedCharacter.name} <span dangerouslySetInnerHTML={{ __html: selectedKillConfirm.moveName }} />{' '}
-						spreadsheet
+						{selectedCharacter.name} <span dangerouslySetInnerHTML={{ __html: selectedKillConfirm.name }} /> spreadsheet
 					</a>
 					{info.spreadsheetMethod ? (
 						<span>
