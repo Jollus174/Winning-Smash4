@@ -26,6 +26,11 @@
 		border: 0;
 	}
 
+	.modal-dialog,
+	.modal-content {
+		height: 100%;
+	}
+
 	.modal-content {
 		max-height: calc(var(--vh, 1vh) * 90);
 	}

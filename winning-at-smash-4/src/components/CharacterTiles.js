@@ -371,7 +371,9 @@ const CharacterTiles = ({
 				) : null}
 			</Route>
 			<Route exact path={`${url}/info`}>
-				<ModalInfo url={url} selectedCharacter={selectedCharacter} selectedKillConfirm={selectedKillConfirm} />
+				{selectedKillConfirm && Object.keys(selectedKillConfirm).length ? (
+					<ModalInfo url={url} selectedCharacter={selectedCharacter} selectedKillConfirm={selectedKillConfirm} />
+				) : null}
 			</Route>
 		</>
 	);

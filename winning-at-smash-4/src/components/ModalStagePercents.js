@@ -1,5 +1,7 @@
+import { useState, useEffect } from 'react';
 import { Modal } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
+import { CSSTransition } from 'react-transition-group';
 
 const ModalStagePercents = (props) => {
 	const {
@@ -18,60 +20,79 @@ const ModalStagePercents = (props) => {
 		setActiveRage(rageValue);
 	};
 
-	// checking filtered characters, and making sure they have a diff percent greater than 0
-	// if they don't, then get check the next one, and so on
-	const goToPrevCharacter = () => {
+	const [mounted, setMounted] = useState(false);
+	const [prevCharacter, setPrevCharacter] = useState({});
+	const [nextCharacter, setNextCharacter] = useState({});
+
+	useEffect(() => {
+		if (!mounted) {
+			setMounted(true);
+		}
+
+		getPrevCharacter();
+		getNextCharacter();
+	}, [selectedCharacterModal]);
+
+	const getPrevCharacter = async () => {
 		let counter = 1;
 
-		// keep searching through previous characters until one is found that's valid ie. percDiff is NOT 0
-		const closureLoop = () => {
-			const findPrevCharacter = (i) => {
-				const currentCharIndex = filteredCharAttrs.findIndex((char) => char.id === selectedCharacterModal.id);
-				// either get the previous valid character via index or count backwrds from the end of the characters array
-				return currentCharIndex !== 0
-					? filteredCharAttrs[currentCharIndex - i]
-					: filteredCharAttrs[filteredCharAttrs.length - 1 + (i - 1)];
+		const result = await new Promise((resolve) => {
+			// keep searching through previous characters until one is found that's valid ie. percDiff is NOT 0
+			const closureLoop = () => {
+				const findPrevCharacter = (i) => {
+					const currentCharIndex = filteredKillConfirmCharacters.findIndex(
+						(char) => char.id === selectedCharacterModal.id
+					);
+					// either get the previous valid character via index or count backwards from the end of the characters array
+					return currentCharIndex !== 0
+						? filteredKillConfirmCharacters[currentCharIndex - i]
+						: filteredKillConfirmCharacters[filteredKillConfirmCharacters.length - 1 + (i - 1)];
+				};
+
+				const prevCharacter = findPrevCharacter(counter);
+				if (prevCharacter.percents.percDiff === 0) {
+					counter++;
+					return closureLoop(counter);
+				} else {
+					resolve(prevCharacter);
+				}
 			};
 
-			const prevCharacter = findPrevCharacter(counter);
-			if (prevCharacter.percents.percDiff === 0) {
-				counter++;
-				return closureLoop(counter);
-			} else {
-				setSelectedCharacterModal(prevCharacter);
-				setActiveRage('rage0');
-				refreshStageList(prevCharacter, selectedKillConfirm);
-			}
-		};
+			closureLoop();
+		});
 
-		closureLoop();
+		setPrevCharacter(result);
 	};
 
-	const goToNextCharacter = () => {
+	const getNextCharacter = async () => {
 		let counter = 1;
 
-		const closureLoop = () => {
-			const findNextCharacter = (i) => {
-				const currentCharIndex = filteredCharAttrs.findIndex((char) => char.id === selectedCharacterModal.id);
+		const result = await new Promise((resolve) => {
+			const closureLoop = () => {
+				const findNextCharacter = (i) => {
+					const currentCharIndex = filteredKillConfirmCharacters.findIndex(
+						(char) => char.id === selectedCharacterModal.id
+					);
 
-				// either get the next valid character via index or count forwards from the start of the characters array
-				return currentCharIndex !== filteredCharAttrs.length - 1
-					? filteredCharAttrs[currentCharIndex + i]
-					: filteredCharAttrs[0 + (i - 1)];
+					// either get the next valid character via index or count forwards from the start of the characters array
+					return currentCharIndex !== filteredKillConfirmCharacters.length - 1
+						? filteredKillConfirmCharacters[currentCharIndex + i]
+						: filteredKillConfirmCharacters[0 + (i - 1)];
+				};
+
+				const nextCharacter = findNextCharacter(counter);
+				if (nextCharacter.percents.percDiff === 0) {
+					counter++;
+					return closureLoop(counter);
+				} else {
+					resolve(nextCharacter);
+				}
 			};
 
-			const nextCharacter = findNextCharacter(counter);
-			if (nextCharacter.percents.percDiff === 0) {
-				counter++;
-				return closureLoop(counter);
-			} else {
-				setSelectedCharacterModal(nextCharacter);
-				setActiveRage('rage0');
-				refreshStageList(nextCharacter, selectedKillConfirm);
-			}
-		};
+			closureLoop();
+		});
 
-		closureLoop();
+		setNextCharacter(result);
 	};
 
 	const handleKeyPress = (e) => {
@@ -205,7 +226,7 @@ const ModalStagePercents = (props) => {
 					</section>
 
 					<section className="rage-modifier text-center">
-						<h3 className="rage-modifier-title text-uppercase">{selectedCharacterModal.name} Rage Modifier</h3>
+						<h3 className="rage-modifier-title text-uppercase">{selectedCharacter.name} Rage Modifier</h3>
 						<div className="btn-group">
 							{selectedCharacterModal.rageModifiers.map((rageModifier) => (
 								<button
@@ -222,62 +243,67 @@ const ModalStagePercents = (props) => {
 				</div>
 				<div className="modal-body">
 					<section className="stages">
-						{selectedCharacterModal.stageList.map((stage) => (
-							<div className="stage" style={{ '--stage-color': stage.color }} key={stage.id}>
-								<div className="stage-title text-center text-uppercase">
-									<h5 className="h6">{stage.name}</h5>
-								</div>
-								<div className="stage-details">
-									<div className="row row-stage-details">
-										<div className="col-md-3">
-											<img className="img-fluid" src={`/images/stages/${stage.imageFile}`} alt={stage.name} />
-										</div>
-										<div className="col-md-9 col-tables">
-											{stage.stagePositions.map((stagePosition) => (
-												<table
-													className="table table-bordered table-sm"
-													cellPadding="0"
-													cellSpacing="0"
-													border="0"
-													key={stagePosition.id}
-												>
-													<thead>
-														<tr>
-															<th colSpan="3">{stagePosition.stagePartName}</th>
-														</tr>
-													</thead>
-													<tbody>
-														<tr>
-															<th>Min %</th>
-															<th>Max %</th>
-															<th>Window</th>
-														</tr>
-														<tr>
-															<td>{`${stagePosition.min <= stagePosition.max ? stagePosition.min + '%' : 'N/A'}`}</td>
-															<td>{`${stagePosition.min <= stagePosition.max ? stagePosition.max + '%' : 'N/A'}`}</td>
-															<td className="cell-window">
-																{stagePosition.min <= stagePosition.max
-																	? `±${stagePosition.max - stagePosition.min + 1}`
-																	: `-`}
-															</td>
-														</tr>
-													</tbody>
-												</table>
-											))}
+						{selectedCharacterModal.stageList.map((stage, i) => (
+							<CSSTransition
+								in={mounted}
+								timeout={{ enter: 1000 * (i + 1) }}
+								classNames="csstrans-fade"
+								mountOnEnter
+								unmountOnExit
+								key={stage.id}
+							>
+								<div className="stage" style={{ '--stage-color': stage.color }}>
+									<div className="stage-title text-center text-uppercase">
+										<h5 className="h6">{stage.name}</h5>
+									</div>
+									<div className="stage-details">
+										<div className="row row-stage-details">
+											<div className="col-md-3">
+												<img className="img-fluid" src={`/images/stages/${stage.imageFile}`} alt={stage.name} />
+											</div>
+											<div className="col-md-9 col-tables">
+												{stage.stagePositions.map((stagePosition) => (
+													<table
+														className="table table-bordered table-sm"
+														cellPadding="0"
+														cellSpacing="0"
+														border="0"
+														key={stagePosition.id}
+													>
+														<thead>
+															<tr>
+																<th colSpan="3">{stagePosition.stagePartName}</th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr>
+																<th>Min %</th>
+																<th>Max %</th>
+																<th>Window</th>
+															</tr>
+															<tr>
+																<td>{`${stagePosition.min <= stagePosition.max ? stagePosition.min + '%' : 'N/A'}`}</td>
+																<td>{`${stagePosition.min <= stagePosition.max ? stagePosition.max + '%' : 'N/A'}`}</td>
+																<td className="cell-window">
+																	{stagePosition.min <= stagePosition.max
+																		? `±${stagePosition.max - stagePosition.min + 1}`
+																		: `-`}
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												))}
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
+							</CSSTransition>
 						))}
 					</section>
 				</div>
 				<nav>
 					<Link
-						to={`${url}/${
-							filteredKillConfirmCharacters[
-								filteredKillConfirmCharacters.findIndex((char) => char.id === selectedCharacterModal.id)
-							].id
-						}`}
+						to={`${url}/${prevCharacter.id}`}
 						id="btn-prev"
 						className={`btn btn-secondary btn-prev ${
 							selectedCharacterModal.textScheme === 'dark' ? 'text-dark' : 'text-light'

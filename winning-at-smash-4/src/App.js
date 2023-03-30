@@ -1,7 +1,7 @@
 // TODO: unused /* globals */ ?
 
 import { useEffect, useState } from 'react';
-import { Link, Route, useLocation } from 'react-router-dom';
+import { Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import CharacterMoveCards from './components/CharacterMoveCards';

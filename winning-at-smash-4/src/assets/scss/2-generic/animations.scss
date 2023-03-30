@@ -1,0 +1,50 @@
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes fadeOut {
+	0% {
+		opacity: 1;
+	}
+
+	to {
+		opacity: 0;
+	}
+}
+
+.csstrans-fade-exit {
+	opacity: 0;
+	animation-name: fadeOut;
+	animation-duration: 0.6s;
+	animation-fill-mode: both;
+}
+
+.csstrans-fade-enter,
+.csstrans-fade-appear {
+	opacity: 1;
+	animation-name: fadeIn;
+	animation-duration: 0.6s;
+	animation-fill-mode: both;
+}
+
+.spinner-fade-exit {
+	opacity: 0;
+	animation-name: fadeOut;
+	animation-duration: 0.6s;
+	animation-fill-mode: both;
+}
+
+.spinner-fade-enter,
+.spinner-fade-appear {
+	opacity: 1;
+	animation-name: fadeIn;
+	animation-duration: 0.7s;
+	animation-fill-mode: both;
+	animation-delay: 0.7s;
+}
