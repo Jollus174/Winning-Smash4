@@ -42,30 +42,6 @@ function App() {
 
 	// TODO: fallback if character doesn't exist
 
-	const refreshStageList = (character) => {
-		// spreading in selected kill confirm percents to each stage, based on the selected character modal
-		// const updatedStageList = [...stageList];
-		// for (const stage of updatedStageList) {
-		// 	for (const stagePosition of stage.stagePositions) {
-		// 		const killConfirmStageData = selectedKillConfirm.stageList.find(
-		// 			(stageModifier) => stageModifier.id === stagePosition.id
-		// 		);
-		// 		const { stagePositionModifier = 0 } = killConfirmStageData;
-		// 		// const rageModifierStart = selectedKillConfirm[activeRage].start || 0;
-		// 		// const rageModifierEnd = selectedKillConfirm[activeRage].end || 0;
-		// 		// console.log(rageModifierStart);
-		// 		// console.log(rageModifierEnd);
-		// 		const rageModifierStart = 0;
-		// 		const rageModifierEnd = 0;
-		// 		stagePosition.min =
-		// 			selectedKillConfirm.percents[character.id].start + stagePositionModifier + rageModifierStart;
-		// 		// I guess in the app I could only use the stage data people provided. There were no modifiers for init max % on each stage
-		// 		stagePosition.max = selectedKillConfirm.percents[character.id].end + rageModifierEnd;
-		// 	}
-		// }
-		// setStageList(updatedStageList);
-	};
-
 	const getData = async (url) => {
 		return await fetch(url)
 			.then((response) => response.json())
