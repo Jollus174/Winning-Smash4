@@ -12,45 +12,56 @@ import ModalCredits from './components/ModalCredits';
 function App() {
 	const [mounted, setMounted] = useState(false);
 	const [loading, setLoading] = useState(false);
-	const [sidebarOpen, setSidebarOpen] = useState(true);
-	const [charAttrs, setCharAttrs] = useState([]);
-	const [killConfirms, setKillConfirms] = useState([]);
-	const [stageList, setStageList] = useState([]);
 
-	const [selectedCharacter, setSelectedCharacter] = useState({});
-	const [selectedKillConfirm, setSelectedKillConfirm] = useState({});
+	const [appData, setAppData] = useState({
+		killConfirms: [],
+		stageList: [],
+		charAttrs: []
+	});
 
-	const [selectedCharacterModal, setSelectedCharacterModal] = useState({});
+	const [appSelections, setAppSelections] = useState({
+		selectedCharacter: {},
+		selectedKillConfirm: {},
+		selectedCharacterModal: {}
+	});
+
+	const [sortBy, setSortBy] = useState([
+		{ id: 'name', name: 'Name', sortingDirection: 'descending' },
+		{ id: 'weight', name: 'Weight', sortingDirection: null },
+		{ id: 'difficulty', name: 'Difficulty', sortingDirection: null },
+		{ id: 'fallspeed', name: 'Fallspeed', sortingDirection: null },
+		{ id: 'gravity', name: 'Gravity', sortingDirection: null }
+	]);
 
 	const [modalShowAbout, setModalShowAbout] = useState(false);
 	const [modalShowCredits, setModalShowCredits] = useState(false);
+
+	const [sidebarOpen, setSidebarOpen] = useState(true);
 
 	// TODO: fallback if character doesn't exist
 
 	const refreshStageList = (character) => {
 		// spreading in selected kill confirm percents to each stage, based on the selected character modal
-		const updatedStageList = [...stageList];
-		for (const stage of updatedStageList) {
-			for (const stagePosition of stage.stagePositions) {
-				const killConfirmStageData = selectedKillConfirm.stageList.find(
-					(stageModifier) => stageModifier.id === stagePosition.id
-				);
-				const { stagePositionModifier = 0 } = killConfirmStageData;
-
-				// const rageModifierStart = selectedKillConfirm[activeRage].start || 0;
-				// const rageModifierEnd = selectedKillConfirm[activeRage].end || 0;
-				// console.log(rageModifierStart);
-				// console.log(rageModifierEnd);
-				const rageModifierStart = 0;
-				const rageModifierEnd = 0;
-
-				stagePosition.min =
-					selectedKillConfirm.percents[character.id].start + stagePositionModifier + rageModifierStart;
-				// I guess in the app I could only use the stage data people provided. There were no modifiers for init max % on each stage
-				stagePosition.max = selectedKillConfirm.percents[character.id].end + rageModifierEnd;
-			}
-		}
-		setStageList(updatedStageList);
+		// const updatedStageList = [...stageList];
+		// for (const stage of updatedStageList) {
+		// 	for (const stagePosition of stage.stagePositions) {
+		// 		const killConfirmStageData = selectedKillConfirm.stageList.find(
+		// 			(stageModifier) => stageModifier.id === stagePosition.id
+		// 		);
+		// 		const { stagePositionModifier = 0 } = killConfirmStageData;
+		// 		// const rageModifierStart = selectedKillConfirm[activeRage].start || 0;
+		// 		// const rageModifierEnd = selectedKillConfirm[activeRage].end || 0;
+		// 		// console.log(rageModifierStart);
+		// 		// console.log(rageModifierEnd);
+		// 		const rageModifierStart = 0;
+		// 		const rageModifierEnd = 0;
+		// 		stagePosition.min =
+		// 			selectedKillConfirm.percents[character.id].start + stagePositionModifier + rageModifierStart;
+		// 		// I guess in the app I could only use the stage data people provided. There were no modifiers for init max % on each stage
+		// 		stagePosition.max = selectedKillConfirm.percents[character.id].end + rageModifierEnd;
+		// 	}
+		// }
+		// setStageList(updatedStageList);
 	};
 
 	const getData = async (url) => {
@@ -84,11 +95,12 @@ function App() {
 			Promise.all(Object.values(requests))
 				.then((responses) => {
 					const [charAttrs, killConfirms, stageList] = responses;
-
-					// TODO: this could become one giant object to prevent 2 of these 3 re-renders
-					setCharAttrs(charAttrs);
-					setKillConfirms(killConfirms);
-					setStageList(stageList);
+					const newAppData = {
+						charAttrs,
+						killConfirms,
+						stageList
+					};
+					setAppData(newAppData);
 
 					setLoading(false);
 				})
@@ -117,9 +129,15 @@ function App() {
 	// for updating the 'global' state with a selected character, killConfirm and selectedCharacterModal
 	useEffect(() => {
 		const [, characterId, killConfirmId, selectedCharacterModal] = location.pathname.split('/');
+		const { killConfirms, charAttrs } = appData;
+		const updatedSelections = {
+			selectedCharacter: {},
+			selectedKillConfirm: {},
+			selectedCharacterModal: {}
+		};
 		const characterToSet = killConfirms.find((killConfirm) => killConfirm.id === characterId);
 		if (characterToSet) {
-			setSelectedCharacter(characterToSet);
+			updatedSelections.selectedCharacter = { ...characterToSet };
 
 			const killConfirmToSet = characterToSet.moves.find((killConfirm) => killConfirm.id === killConfirmId);
 			if (killConfirmToSet) {
@@ -204,17 +222,76 @@ function App() {
 					kcCharacter.percents.difficultyClass = diffObj.difficultyClass;
 				}
 
-				updatedKillConfirmCharacters.sort((a, b) => (a.name < b.name ? -1 : a.name > b.name ? 1 : 0));
+				// sorting characters
+				const currentSort = sortBy.find((sort) => sort.sortingDirection !== null);
+				if (currentSort) {
+					if (currentSort.id === 'name') {
+						if (currentSort.sortingDirection === null || currentSort.sortingDirection === 'descending') {
+							updatedKillConfirmCharacters.sort((a, b) => (a.name < b.name ? -1 : a.name > b.name ? 1 : 0));
+						} else {
+							updatedKillConfirmCharacters.sort((a, b) => (a.name > b.name ? -1 : a.name < b.name ? 1 : 0));
+						}
+					}
+
+					if (currentSort.id === 'weight') {
+						if (currentSort.sortingDirection === null || currentSort.sortingDirection === 'descending') {
+							updatedKillConfirmCharacters.sort((a, b) => (a.weight < b.weight ? -1 : a.weight > b.weight ? 1 : 0));
+						} else {
+							updatedKillConfirmCharacters.sort((a, b) => (a.weight > b.weight ? -1 : a.weight < b.weight ? 1 : 0));
+						}
+					}
+
+					if (currentSort.id === 'difficulty') {
+						if (characterToSet.id !== 'zelda' && killConfirmToSet.id !== 'dthrow-up-air') {
+							if (currentSort.sortingDirection === null || currentSort.sortingDirection === 'descending') {
+								updatedKillConfirmCharacters.sort((a, b) => b.percents.percDiff - a.percents.percDiff);
+							} else {
+								updatedKillConfirmCharacters.sort((a, b) => a.percents.percDiff - b.percents.percDiff);
+							}
+						} else {
+							// different difficulty sorting for smelly Zelda
+							if (currentSort.sortingDirection === null || currentSort.sortingDirection === 'descending') {
+								updatedKillConfirmCharacters.sort((a, b) => a.airdodgeStart - b.airdodgeStart);
+							} else {
+								updatedKillConfirmCharacters.sort((a, b) => b.airdodgeStart - a.airdodgeStart);
+							}
+						}
+					}
+
+					if (currentSort.id === 'fallspeed') {
+						if (currentSort.sortingDirection === null || currentSort.sortingDirection === 'descending') {
+							updatedKillConfirmCharacters.sort((a, b) =>
+								a.fallspeed < b.fallspeed ? -1 : a.fallspeed > b.fallspeed ? 1 : 0
+							);
+						} else {
+							updatedKillConfirmCharacters.sort((a, b) =>
+								a.fallspeed > b.fallspeed ? -1 : a.fallspeed < b.fallspeed ? 1 : 0
+							);
+						}
+					}
+
+					if (currentSort.id === 'gravity') {
+						if (currentSort.sortingDirection === null || currentSort.sortingDirection === 'descending') {
+							updatedKillConfirmCharacters.sort((a, b) => (a.gravity < b.gravity ? -1 : a.gravity > b.gravity ? 1 : 0));
+						} else {
+							updatedKillConfirmCharacters.sort((a, b) => (a.gravity > b.gravity ? -1 : a.gravity < b.gravity ? 1 : 0));
+						}
+					}
+				}
 
 				const updatedKillConfirmData = { ...killConfirmToSet, characters: updatedKillConfirmCharacters };
-				setSelectedKillConfirm(updatedKillConfirmData);
+				updatedSelections.selectedKillConfirm = { ...updatedKillConfirmData };
 
-				// const selectedCharacterModalToSet = characterToSet.moves.find((killConfirm) => killConfirm.id === killConfirmId);
-				// if (kill)
-				// setSelectedCharacterModal
+				const characterModalToSet = updatedKillConfirmData.characters.find(
+					(kcCharacter) => kcCharacter.id === selectedCharacterModal
+				);
+				if (characterModalToSet) {
+					updatedSelections.selectedCharacterModal = { ...characterModalToSet };
+				}
 			}
 		}
-	}, [killConfirms, charAttrs, location]);
+		setAppSelections(updatedSelections);
+	}, [appData, location, sortBy]);
 
 	return (
 		<div className="app-grid">
@@ -227,9 +304,9 @@ function App() {
 				) : (
 					<Sidebar
 						sidebarOpen={sidebarOpen}
-						killConfirms={killConfirms}
-						selectedCharacter={selectedCharacter}
-						selectedKillConfirm={selectedKillConfirm}
+						killConfirms={appData.killConfirms}
+						selectedCharacter={appSelections.selectedCharacter}
+						selectedKillConfirm={appSelections.selectedKillConfirm}
 					/>
 				)}
 				<div className="d-flex flex-column main-grid">
@@ -239,7 +316,7 @@ function App() {
 						<Header
 							setSidebarOpen={setSidebarOpen}
 							sidebarOpen={sidebarOpen}
-							selectedCharacter={selectedCharacter}
+							selectedCharacter={appSelections.selectedCharacter}
 							setModalShowAbout={setModalShowAbout}
 							setModalShowCredits={setModalShowCredits}
 						/>
@@ -249,29 +326,28 @@ function App() {
 							'Is loading'
 						) : (
 							<>
-								<CharacterMoveCards killConfirms={killConfirms} selectedKillConfirm={selectedKillConfirm} />
+								<CharacterMoveCards
+									killConfirms={appData.killConfirms}
+									selectedKillConfirm={appSelections.selectedKillConfirm}
+								/>
 								<Route path={`/:characterId/:moveId`}>
-									{Object.keys(selectedKillConfirm).length ? (
-										<CharacterTiles
-											killConfirms={killConfirms}
-											setSelectedKillConfirm={setSelectedKillConfirm}
-											stageList={stageList}
-											charAttrs={charAttrs}
-											setCharAttrs={setCharAttrs}
-											setSelectedCharacter={setSelectedCharacter}
-											selectedCharacter={selectedCharacter}
-											selectedKillConfirm={selectedKillConfirm}
-											selectedCharacterModal={selectedCharacterModal}
-											setSelectedCharacterModal={setSelectedCharacterModal}
-											refreshStageList={refreshStageList}
-										/>
-									) : null}
+									<CharacterTiles
+										killConfirms={appData.killConfirms}
+										stageList={appData.stageList}
+										charAttrs={appData.charAttrs}
+										selectedCharacter={appSelections.selectedCharacter}
+										selectedKillConfirm={appSelections.selectedKillConfirm}
+										selectedCharacterModal={appSelections.selectedCharacterModal}
+										refreshStageList={refreshStageList}
+										sortBy={sortBy}
+										setSortBy={setSortBy}
+									/>
 								</Route>
 								<ModalAbout modalShowAbout={modalShowAbout} setModalShowAbout={setModalShowAbout} />
 								<ModalCredits
 									modalShowCredits={modalShowCredits}
 									setModalShowCredits={setModalShowCredits}
-									killConfirms={killConfirms}
+									killConfirms={appData.killConfirms}
 								/>
 							</>
 						)}

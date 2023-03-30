@@ -155,12 +155,12 @@ const ModalStagePercents = ({
 								{selectedCharacter.moves.map((move) => (
 									<button
 										type="button"
-										className={`btn btn-primary btn-sm ${selectedKillConfirm.moveId === move.moveId ? 'active' : ''}`}
+										className={`btn btn-primary btn-sm ${selectedKillConfirm.id === move.id ? 'active' : ''}`}
 										style={{ '--bs-btn-bg': 'rgb(' + selectedCharacterModal.charColor + ')' }}
 										onClick={() => handleSelectedKillConfirm(selectedCharacter, move)}
-										key={move.moveId}
+										key={move.id}
 									>
-										<span dangerouslySetInnerHTML={{ __html: move.moveName }} />
+										<span dangerouslySetInnerHTML={{ __html: move.name }} />
 									</button>
 								))}
 							</div>
@@ -178,8 +178,8 @@ const ModalStagePercents = ({
 									{selectedCharacterModal.percents.start} - {selectedCharacterModal.percents.end}%
 								</div>
 								<div className="d-flex flex-column align-items-start grid-difficulty">
-									<div className={`item easy ${selectedCharacterModal.percents.diffClass}`}>
-										{selectedCharacterModal.percents.diffText} - {selectedCharacterModal.percents.percDiff}%
+									<div className={`item easy ${selectedCharacterModal.percents.difficultyClass}`}>
+										{selectedCharacterModal.percents.difficultyText} - {selectedCharacterModal.percents.percDiff}%
 									</div>
 									{selectedCharacterModal.percents.distance ? (
 										<div className="item special-info">{selectedCharacterModal.percents.distance}</div>
@@ -232,7 +232,7 @@ const ModalStagePercents = ({
 				</div>
 				<div className="modal-body">
 					<section className="stages">
-						{stageList.map((stage) => (
+						{selectedKillConfirm.stageList.map((stage) => (
 							<div className="stage" style={{ '--stage-color': stage.color }} key={stage.id}>
 								<div className="stage-title text-center text-uppercase">
 									<h5 className="h6">{stage.name}</h5>

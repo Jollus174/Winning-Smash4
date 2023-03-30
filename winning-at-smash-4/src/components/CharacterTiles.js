@@ -6,8 +6,6 @@ import ModalStagePercents from './ModalStagePercents';
 import ModalInfo from './ModalInfo';
 
 const MoveButtons = ({ selectedCharacter, selectedKillConfirm }) => {
-	const { characterId, id } = useParams();
-
 	if (!selectedCharacter.moves || selectedCharacter.moves.length < 2)
 		return (
 			<>
@@ -22,7 +20,7 @@ const MoveButtons = ({ selectedCharacter, selectedKillConfirm }) => {
 			<div className="btn-group move-buttons">
 				{selectedCharacter.moves.map((move) => (
 					<Link
-						to={`/${characterId}/${move.id}`}
+						to={`/${selectedCharacter.id}/${move.id}`}
 						className={`btn btn-primary btn-sm ${move.id === selectedKillConfirm.id ? 'active' : ''}`}
 						style={{ '--btn-bg': selectedCharacter.btnColor }}
 						key={'move-btn-' + move.id}
@@ -120,24 +118,18 @@ const Tiles = ({ selectedKillConfirm, filteredKillConfirmCharacters, showAdditio
 const CharacterTiles = ({
 	selectedCharacter,
 	selectedKillConfirm,
-	setSelectedKillConfirm,
 	selectedCharacterModal,
 	setSelectedCharacterModal,
 	setModalShowInfo,
 	setModalShowStageList,
-	refreshStageList
+	refreshStageList,
+	sortBy,
+	setSortBy
 }) => {
 	const [showAdditionalCharacterInfoInGrid, setShowAdditionalCharacterInfoInGridInGrid] = useState(false);
 	const [activeRage, setActiveRage] = useState('rage0');
 
 	const [filteredKillConfirmCharacters, setFilteredKillConfirmCharacters] = useState(selectedKillConfirm.characters);
-	const [sortBy, setSortBy] = useState([
-		{ id: 'name', name: 'Name', sortingDirection: 'descending' },
-		{ id: 'weight', name: 'Weight', sortingDirection: null },
-		{ id: 'difficulty', name: 'Difficulty', sortingDirection: null },
-		{ id: 'fallspeed', name: 'Fallspeed', sortingDirection: null },
-		{ id: 'gravity', name: 'Gravity', sortingDirection: null }
-	]);
 
 	const [filterText, setFilterText] = useState('');
 
@@ -156,100 +148,14 @@ const CharacterTiles = ({
 	}, [filterText, sortBy, selectedKillConfirm]);
 
 	const handleSort = (sortId) => {
-		const newKcCharacters = [...selectedKillConfirm.characters];
-		let newSortBy = {};
+		let newSortBy = [];
+		let sortingDirection = sortBy.find((sort) => sort.id === sortId).sortingDirection;
+		sortingDirection = sortingDirection === null || sortingDirection === 'ascending' ? 'descending' : 'ascending';
 		newSortBy = sortBy.map((sort) => {
 			return { ...sort, sortingDirection: null };
 		});
-
-		if (sortId === 'name') {
-			const sortByName = sortBy.find((sort) => sort.id === 'name');
-			let { sortingDirection } = sortByName;
-
-			if (sortingDirection === null || sortingDirection === 'ascending') {
-				newKcCharacters.sort((a, b) => (a.name < b.name ? -1 : a.name > b.name ? 1 : 0));
-				sortingDirection = 'descending';
-			} else {
-				newKcCharacters.sort((a, b) => (a.name > b.name ? -1 : a.name < b.name ? 1 : 0));
-				sortingDirection = 'ascending';
-			}
-
-			newSortBy.find((sort) => sort.id === 'name').sortingDirection = sortingDirection;
-		}
-
-		if (sortId === 'weight') {
-			const sortByWeight = sortBy.find((sort) => sort.id === 'weight');
-			let { sortingDirection } = sortByWeight;
-
-			if (sortingDirection === null || sortingDirection === 'ascending') {
-				newKcCharacters.sort((a, b) => (a.weight < b.weight ? -1 : a.weight > b.weight ? 1 : 0));
-				sortingDirection = 'descending';
-			} else {
-				newKcCharacters.sort((a, b) => (a.weight > b.weight ? -1 : a.weight < b.weight ? 1 : 0));
-				sortingDirection = 'ascending';
-			}
-
-			newSortBy.find((sort) => sort.id === 'weight').sortingDirection = sortingDirection;
-		}
-
-		if (sortId === 'difficulty') {
-			const sortByDifficulty = sortBy.find((sort) => sort.id === 'difficulty');
-			let { sortingDirection } = sortByDifficulty;
-
-			if (selectedCharacter.id !== 'zelda' && selectedKillConfirm.id !== 'dthrow-up-air') {
-				if (sortingDirection === null || sortingDirection === 'ascending') {
-					newKcCharacters.sort((a, b) => b.percents.percDiff - a.percents.percDiff);
-					sortingDirection = 'descending';
-				} else {
-					newKcCharacters.sort((a, b) => a.percents.percDiff - b.percents.percDiff);
-					sortingDirection = 'ascending';
-				}
-			} else {
-				// different difficulty sorting for smelly Zelda
-				if (sortingDirection === null || sortingDirection === 'ascending') {
-					newKcCharacters.sort((a, b) => a.airdodgeStart - b.airdodgeStart);
-					sortingDirection = 'descending';
-				} else {
-					newKcCharacters.sort((a, b) => b.airdodgeStart - a.airdodgeStart);
-					sortingDirection = 'ascending';
-				}
-			}
-
-			newSortBy.find((sort) => sort.id === 'difficulty').sortingDirection = sortingDirection;
-		}
-
-		if (sortId === 'fallspeed') {
-			const sortByFallspeed = sortBy.find((sort) => sort.id === 'fallspeed');
-			let { sortingDirection } = sortByFallspeed;
-
-			if (sortingDirection === null || sortingDirection === 'ascending') {
-				newKcCharacters.sort((a, b) => (a.fallspeed < b.fallspeed ? -1 : a.fallspeed > b.fallspeed ? 1 : 0));
-				sortingDirection = 'descending';
-			} else {
-				newKcCharacters.sort((a, b) => (a.fallspeed > b.fallspeed ? -1 : a.fallspeed < b.fallspeed ? 1 : 0));
-				sortingDirection = 'ascending';
-			}
-
-			newSortBy.find((sort) => sort.id === 'fallspeed').sortingDirection = sortingDirection;
-		}
-
-		if (sortId === 'gravity') {
-			const sortByGravity = sortBy.find((sort) => sort.id === 'gravity');
-			let { sortingDirection } = sortByGravity;
-
-			if (sortingDirection === null || sortingDirection === 'ascending') {
-				newKcCharacters.sort((a, b) => (a.gravity < b.gravity ? -1 : a.gravity > b.gravity ? 1 : 0));
-				sortingDirection = 'descending';
-			} else {
-				newKcCharacters.sort((a, b) => (a.gravity > b.gravity ? -1 : a.gravity < b.gravity ? 1 : 0));
-				sortingDirection = 'ascending';
-			}
-
-			newSortBy.find((sort) => sort.id === 'gravity').sortingDirection = sortingDirection;
-		}
-
+		newSortBy.find((sort) => sort.id === sortId).sortingDirection = sortingDirection;
 		setSortBy(newSortBy);
-		setSelectedKillConfirm({ ...selectedKillConfirm, characters: newKcCharacters });
 	};
 
 	const ItemSortBy = ({ sortBy, sortParameter }) => {
@@ -270,7 +176,9 @@ const CharacterTiles = ({
 		);
 	};
 
-	if (!selectedKillConfirm || !Object.keys(selectedKillConfirm).length) return;
+	// hmmm ?
+	// console.log(selectedKillConfirm);
+	// if (!selectedKillConfirm || !Object.keys(selectedKillConfirm).length > 0) return null;
 
 	return (
 		<>
@@ -431,7 +339,7 @@ const CharacterTiles = ({
 						</div>
 					</div>
 					<InfoBox selectedKillConfirm={selectedKillConfirm} />
-					{filteredKillConfirmCharacters.length ? (
+					{filteredKillConfirmCharacters && filteredKillConfirmCharacters.length ? (
 						<Tiles
 							selectedKillConfirm={selectedKillConfirm}
 							filteredKillConfirmCharacters={filteredKillConfirmCharacters}
@@ -445,6 +353,28 @@ const CharacterTiles = ({
 					) : null}
 				</div>
 			</div>
+			<Route path={`${url}/:selectedCharacterModalId`}>
+				{filteredKillConfirmCharacters &&
+				filteredKillConfirmCharacters.length &&
+				selectedCharacterModal &&
+				Object.keys(selectedCharacterModal).length &&
+				selectedKillConfirm &&
+				Object.keys(selectedKillConfirm).length ? (
+					<ModalStagePercents
+						url={url}
+						selectedCharacter={selectedCharacter}
+						selectedCharacterModal={selectedCharacterModal}
+						selectedKillConfirm={selectedKillConfirm}
+						activeRage={activeRage}
+						setActiveRage={setActiveRage}
+						filteredKillConfirmCharacters={filteredKillConfirmCharacters}
+						refreshStageList={refreshStageList}
+					/>
+				) : null}
+			</Route>
+			<Route exact path={`${url}/info`}>
+				<ModalInfo url={url} selectedCharacter={selectedCharacter} selectedKillConfirm={selectedKillConfirm} />
+			</Route>
 		</>
 	);
 };
