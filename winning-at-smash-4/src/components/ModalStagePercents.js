@@ -110,8 +110,7 @@ const ModalStagePercents = (props) => {
 			<Modal
 				className="modal modal-stage-list"
 				aria-labelledby="character-name"
-				show={modalShowStageList}
-				onShow={handleModalShow}
+				show={true}
 				onHide={handleModalHide}
 				centered={true}
 				animation={false}
@@ -145,15 +144,14 @@ const ModalStagePercents = (props) => {
 						<div className="character-topbar">
 							<div className="btn-group">
 								{selectedCharacter.moves.map((move) => (
-									<button
-										type="button"
+									<Link
+										to={`../../${selectedCharacter.id}/${move.id}/${selectedCharacterModal.id}`}
 										className={`btn btn-primary btn-sm ${selectedKillConfirm.id === move.id ? 'active' : ''}`}
 										style={{ '--bs-btn-bg': 'rgb(' + selectedCharacterModal.charColor + ')' }}
-										onClick={() => handleSelectedKillConfirm(selectedCharacter, move)}
 										key={move.id}
 									>
 										<span dangerouslySetInnerHTML={{ __html: move.name }} />
-									</button>
+									</Link>
 								))}
 							</div>
 						</div>
