@@ -122,12 +122,12 @@ const CharacterTiles = ({
 	setSelectedCharacterModal,
 	setModalShowInfo,
 	setModalShowStageList,
-	refreshStageList,
+	activeRage,
+	setActiveRage,
 	sortBy,
 	setSortBy
 }) => {
 	const [showAdditionalCharacterInfoInGrid, setShowAdditionalCharacterInfoInGridInGrid] = useState(false);
-	const [activeRage, setActiveRage] = useState('rage0');
 
 	const [filteredKillConfirmCharacters, setFilteredKillConfirmCharacters] = useState(selectedKillConfirm.characters);
 
@@ -348,7 +348,6 @@ const CharacterTiles = ({
 							setModalShowStageList={setModalShowStageList}
 							setModalShowInfo={setModalShowInfo}
 							sortBy={sortBy}
-							refreshStageList={refreshStageList}
 						/>
 					) : null}
 				</div>
@@ -368,7 +367,6 @@ const CharacterTiles = ({
 						activeRage={activeRage}
 						setActiveRage={setActiveRage}
 						filteredKillConfirmCharacters={filteredKillConfirmCharacters}
-						refreshStageList={refreshStageList}
 					/>
 				) : null}
 			</Route>

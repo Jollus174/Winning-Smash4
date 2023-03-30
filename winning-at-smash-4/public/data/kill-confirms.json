@@ -729,55 +729,6 @@
 					{
 						"id": "fd-normal",
 						"stagePositionModifier": 0
-					},
-					{
-						"id": "bf-normal",
-						"stagePositionModifier": 5
-					},
-					{
-						"id": "bf-low-platform",
-						"stagePositionModifier": -5
-					},
-					{
-						"id": "bf-top-platform",
-						"stagePositionModifier": -13
-					},
-					{
-						"id": "dl-normal",
-						"stagePositionModifier": 0
-					},
-					{
-						"id": "dl-low-platform",
-						"stagePositionModifier": -11
-					},
-					{
-						"id": "dl-top-platform",
-						"stagePositionModifier": -21
-					},
-					{
-						"id": "sv-normal",
-						"stagePositionModifier": 1
-					},
-					{
-						"id": "sv-platform",
-						"stagePositionModifier": -10
-					},
-
-					{
-						"id": "tc-normal",
-						"stagePositionModifier": -3
-					},
-					{
-						"id": "tc-low-platform",
-						"stagePositionModifier": -14
-					},
-					{
-						"id": "tc-side-platform",
-						"stagePositionModifier": -13
-					},
-					{
-						"id": "tc-top-platform",
-						"stagePositionModifier": -25
 					}
 				],
 
@@ -891,55 +842,6 @@
 					{
 						"id": "fd-normal",
 						"stagePositionModifier": 0
-					},
-					{
-						"id": "bf-normal",
-						"stagePositionModifier": 5
-					},
-					{
-						"id": "bf-low-platform",
-						"stagePositionModifier": -5
-					},
-					{
-						"id": "bf-top-platform",
-						"stagePositionModifier": -13
-					},
-					{
-						"id": "dl-normal",
-						"stagePositionModifier": 0
-					},
-					{
-						"id": "dl-low-platform",
-						"stagePositionModifier": -11
-					},
-					{
-						"id": "dl-top-platform",
-						"stagePositionModifier": -21
-					},
-					{
-						"id": "sv-normal",
-						"stagePositionModifier": 1
-					},
-					{
-						"id": "sv-platform",
-						"stagePositionModifier": -10
-					},
-
-					{
-						"id": "tc-normal",
-						"stagePositionModifier": -3
-					},
-					{
-						"id": "tc-low-platform",
-						"stagePositionModifier": -14
-					},
-					{
-						"id": "tc-side-platform",
-						"stagePositionModifier": -13
-					},
-					{
-						"id": "tc-top-platform",
-						"stagePositionModifier": -25
 					}
 				],
 

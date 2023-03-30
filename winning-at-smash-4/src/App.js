@@ -33,6 +33,8 @@ function App() {
 		{ id: 'gravity', name: 'Gravity', sortingDirection: null }
 	]);
 
+	const [activeRage, setActiveRage] = useState('rage0');
+
 	const [modalShowAbout, setModalShowAbout] = useState(false);
 	const [modalShowCredits, setModalShowCredits] = useState(false);
 
@@ -220,6 +222,41 @@ function App() {
 
 					kcCharacter.percents.difficultyText = diffObj.difficultyText;
 					kcCharacter.percents.difficultyClass = diffObj.difficultyClass;
+
+					// Am also spreading the stage data from stage-list into each character
+					// can't do this from stageList.json... some characters like Pikachu don't have stage data for all stages. Gah.
+					// A flatMap can be used to skip over stages we don't want to include in the modal. Convenient.
+					// https://stackoverflow.com/a/55260552/9045925
+					const kcStagePositions = killConfirmToSet.stageList.map((stage) => stage.id);
+					const updatedStageListData = appData.stageList.flatMap((stage) => {
+						// skipping stages that don't have an equivalent stage in the killConfirm stage modifier data
+						if (!stage.stagePositions.find((kcStage) => kcStagePositions.includes(kcStage.id))) {
+							return [];
+						}
+						if (stage.stagePositions.find((stagePosition) => stagePosition.id === 1));
+
+						const newStagePositions = stage.stagePositions.map((stagePosition) => {
+							const newStagePosition = { ...stagePosition };
+							const killConfirmStageData = killConfirmToSet.stageList.find(
+								(stageModifier) => stageModifier.id === newStagePosition.id
+							);
+							const { stagePositionModifier = 0 } = killConfirmStageData;
+
+							const rageModifier = killConfirmToSet.rageModifiers.find((rageM) => rageM.id === activeRage);
+							const rageModifierStart = rageModifier.start;
+							const rageModifierEnd = rageModifier.end;
+
+							newStagePosition.min = kcCharacter.percents.start + stagePositionModifier + rageModifierStart;
+							// I guess in the app I could only use the stage data people provided. There were no modifiers for init max % on each stage
+							newStagePosition.max = kcCharacter.percents.end + rageModifierEnd;
+							// console.log(newStagePosition.min);
+							return newStagePosition;
+						});
+						return { ...stage, stagePositions: newStagePositions };
+					});
+
+					kcCharacter.rageModifiers = [...killConfirmToSet.rageModifiers];
+					kcCharacter.stageList = updatedStageListData;
 				}
 
 				// sorting characters
@@ -291,7 +328,7 @@ function App() {
 			}
 		}
 		setAppSelections(updatedSelections);
-	}, [appData, location, sortBy]);
+	}, [appData, location, sortBy, activeRage]);
 
 	return (
 		<div className="app-grid">
@@ -338,7 +375,8 @@ function App() {
 										selectedCharacter={appSelections.selectedCharacter}
 										selectedKillConfirm={appSelections.selectedKillConfirm}
 										selectedCharacterModal={appSelections.selectedCharacterModal}
-										refreshStageList={refreshStageList}
+										activeRage={activeRage}
+										setActiveRage={setActiveRage}
 										sortBy={sortBy}
 										setSortBy={setSortBy}
 									/>

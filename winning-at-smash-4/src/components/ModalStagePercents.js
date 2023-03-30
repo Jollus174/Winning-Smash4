@@ -1,27 +1,21 @@
-import { useState, useEffect } from 'react';
 import { Modal } from 'react-bootstrap';
-import { Link, useHistory, useParams } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
-const ModalStagePercents = ({
-	stageList,
-	selectedCharacter,
-	modalShowStageList,
-	setModalShowStageList,
-	selectedCharacterModal,
-	setSelectedCharacterModal,
-	selectedKillConfirm,
-	activeRage,
-	setActiveRage,
-	handleSelectedKillConfirm,
-	filteredCharAttrs,
-	refreshStageList
-}) => {
-	if (!Object.keys(selectedCharacterModal).length) return;
+const ModalStagePercents = (props) => {
+	const {
+		url,
+		selectedCharacter,
+		selectedKillConfirm,
+		selectedCharacterModal,
+		activeRage,
+		setActiveRage,
+		filteredKillConfirmCharacters
+	} = props;
+
+	const history = useHistory();
 
 	const handleSetActiveRage = (rageValue) => {
 		setActiveRage(rageValue);
-		// TODO: if we want the DOM ticker thing, it'd be here
-		// refreshStageList(selectedCharacterModal);
 	};
 
 	// checking filtered characters, and making sure they have a diff percent greater than 0
@@ -105,10 +99,8 @@ const ModalStagePercents = ({
 	};
 
 	const handleModalHide = () => {
-		setModalShowStageList(false);
-		setSelectedCharacterModal({});
-		setActiveRage('rage0');
-		document.removeEventListener('keydown', handleKeyPress);
+		// document.removeEventListener('keydown', handleKeyPress);
+		history.push(url);
 	};
 
 	return (
@@ -217,7 +209,7 @@ const ModalStagePercents = ({
 					<section className="rage-modifier text-center">
 						<h3 className="rage-modifier-title text-uppercase">{selectedCharacterModal.name} Rage Modifier</h3>
 						<div className="btn-group">
-							{selectedKillConfirm.rageModifiers.map((rageModifier) => (
+							{selectedCharacterModal.rageModifiers.map((rageModifier) => (
 								<button
 									type="button"
 									className={`btn btn-secondary ${activeRage === rageModifier.id ? 'active' : ''}`}
@@ -232,7 +224,7 @@ const ModalStagePercents = ({
 				</div>
 				<div className="modal-body">
 					<section className="stages">
-						{selectedKillConfirm.stageList.map((stage) => (
+						{selectedCharacterModal.stageList.map((stage) => (
 							<div className="stage" style={{ '--stage-color': stage.color }} key={stage.id}>
 								<div className="stage-title text-center text-uppercase">
 									<h5 className="h6">{stage.name}</h5>
@@ -263,12 +255,12 @@ const ModalStagePercents = ({
 															<th>Window</th>
 														</tr>
 														<tr>
-															<td>{`${stagePosition.min}%`}</td>
-															<td>{`${stagePosition.max}%`}</td>
+															<td>{`${stagePosition.min <= stagePosition.max ? stagePosition.min + '%' : 'N/A'}`}</td>
+															<td>{`${stagePosition.min <= stagePosition.max ? stagePosition.max + '%' : 'N/A'}`}</td>
 															<td className="cell-window">
-																{stagePosition.max - stagePosition.min > 0
+																{stagePosition.min <= stagePosition.max
 																	? `±${stagePosition.max - stagePosition.min + 1}`
-																	: `N/A`}
+																	: `-`}
 															</td>
 														</tr>
 													</tbody>
@@ -282,28 +274,30 @@ const ModalStagePercents = ({
 					</section>
 				</div>
 				<nav>
-					<button
-						type="button"
+					<Link
+						to={`${url}/${
+							filteredKillConfirmCharacters[
+								filteredKillConfirmCharacters.findIndex((char) => char.id === selectedCharacterModal.id)
+							].id
+						}`}
 						id="btn-prev"
 						className={`btn btn-secondary btn-prev ${
 							selectedCharacterModal.textScheme === 'dark' ? 'text-dark' : 'text-light'
 						}`}
-						onClick={goToPrevCharacter}
 					>
 						<span className="visually-hidden">Previous character</span>
 						<i className="fa fa-angle-left" aria-hidden="true"></i>
-					</button>
-					<button
-						type="button"
+					</Link>
+					<Link
+						to={`${url}/${nextCharacter.id}`}
 						id="btn-next"
 						className={`btn btn-secondary btn-next ${
 							selectedCharacterModal.textScheme === 'dark' ? 'text-dark' : 'text-light'
 						}`}
-						onClick={goToNextCharacter}
 					>
 						<span className="visually-hidden">Next character</span>
 						<i className="fa fa-angle-right" aria-hidden="true"></i>
-					</button>
+					</Link>
 				</nav>
 
 				<div
