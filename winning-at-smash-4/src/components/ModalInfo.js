@@ -18,6 +18,7 @@ const ModalInfo = ({ url, selectedCharacter, selectedKillConfirm }) => {
 			show={true}
 			onHide={handleModalHide}
 			centered={true}
+			scrollable={true}
 			animation={false}
 		>
 			<button type="button" className="btn btn-sm btn-close" aria-label="Close" onClick={handleModalHide}>

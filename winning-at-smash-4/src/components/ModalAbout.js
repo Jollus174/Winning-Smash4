@@ -12,6 +12,7 @@ const ModalAbout = ({ modalShowAbout, setModalShowAbout }) => {
 			show={modalShowAbout}
 			onHide={handleModalHide}
 			centered={true}
+			scrollable={true}
 			animation={false}
 		>
 			<button type="button" className="btn btn-sm btn-close" aria-label="Close" onClick={handleModalHide}>
@@ -62,7 +63,7 @@ const ModalAbout = ({ modalShowAbout, setModalShowAbout }) => {
 				<p>
 					<img
 						className="img-fluid"
-						src="images/progressive-web-app.jpg"
+						src="/images/progressive-web-app.jpg"
 						alt="Progressive Web App Installation"
 						width="545"
 						height="484"

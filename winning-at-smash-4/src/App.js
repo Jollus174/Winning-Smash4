@@ -339,10 +339,12 @@ function App() {
 							'Is loading'
 						) : (
 							<>
-								<CharacterMoveCards
-									killConfirms={appData.killConfirms}
-									selectedKillConfirm={appSelections.selectedKillConfirm}
-								/>
+								<Route exact path={`/`}>
+									<CharacterMoveCards
+										killConfirms={appData.killConfirms}
+										selectedKillConfirm={appSelections.selectedKillConfirm}
+									/>
+								</Route>
 								<Route path={`/:characterId/:moveId`}>
 									<CharacterTiles
 										killConfirms={appData.killConfirms}

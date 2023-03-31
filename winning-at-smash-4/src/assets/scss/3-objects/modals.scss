@@ -5,6 +5,7 @@
 	--bs-modal-header-padding-x: 0;
 	--bs-modal-header-padding-y: 0;
 	--bs-modal-width: 600px;
+	--bs-modal-margin: 4rem;
 
 	.modal-header {
 		display: block;
@@ -26,17 +27,9 @@
 		border: 0;
 	}
 
-	.modal-dialog,
 	.modal-content {
 		height: 100%;
-	}
-
-	.modal-content {
-		max-height: calc(var(--vh, 1vh) * 90);
-	}
-
-	.modal-body {
-		overflow: auto;
+		overflow: visible; // to fix arrows + close not showing for modal-staging
 	}
 
 	.btn-prev,
