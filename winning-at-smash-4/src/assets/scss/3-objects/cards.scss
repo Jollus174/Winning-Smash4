@@ -14,8 +14,11 @@
 			width: 100%;
 			height: 100%;
 			object-fit: none;
-			object-position: right;
 			opacity: 0.5;
+
+			@include media-breakpoint-up(md) {
+				object-position: right;
+			}
 		}
 	}
 

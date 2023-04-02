@@ -1,6 +1,9 @@
 .sidebar {
-	width: 220px;
+	position: relative;
+	z-index: 1;
 	flex-shrink: 0;
+	width: 220px;
+	background-color: $white;
 	overflow: auto;
 
 	ul {

@@ -5,7 +5,7 @@ const CharacterMoveCards = ({ killConfirms, selectedKillConfirm }) => {
 		<div className="character-move-cards">
 			<div className="row">
 				{killConfirms.map((character) => (
-					<div className="col-sm-6 col-md-4 character-move-card-col" key={'card-' + character.id}>
+					<div className="col-sm-6 col-md-4 col-character-move-card" key={'card-' + character.id}>
 						<div className="card">
 							<div className="card-image" style={{ '--card-image-bg-color': 'rgb(' + character.cardColor + ')' }}>
 								<img src={'/images/characters/webp/' + character.id + '.webp'} alt="{character.name}" />

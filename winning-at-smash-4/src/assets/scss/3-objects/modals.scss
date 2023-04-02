@@ -5,7 +5,11 @@
 	--bs-modal-header-padding-x: 0;
 	--bs-modal-header-padding-y: 0;
 	--bs-modal-width: 600px;
-	--bs-modal-margin: 4rem;
+	--bs-modal-margin: 3rem;
+
+	@include media-breakpoint-up(sm) {
+		--bs-modal-margin: 4rem;
+	}
 
 	.modal-header {
 		display: block;
@@ -132,7 +136,7 @@
 
 	.character-name {
 		position: static;
-		padding: 4px 6px;
+		padding: 0 6px;
 		width: auto;
 		border-radius: 3px;
 	}

@@ -12,24 +12,38 @@
 	}
 
 	.nav {
-		display: flex;
-		align-items: center;
-		gap: 1rem;
 		margin-left: auto;
 
-		a,
-		.btn {
-			color: $white;
-			padding: 0;
-			text-decoration: underline;
-			text-decoration-color: transparent;
-			box-shadow: none;
-			transition: text-decoration-color 0.2s ease;
+		.nav-links {
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+		}
 
-			&:hover,
-			&:focus-visible {
-				text-decoration-color: $white;
+		.nav-links {
+			a,
+			.btn {
+				color: $white;
+				padding: 0;
+				text-decoration: underline;
+				text-decoration-color: transparent;
+				box-shadow: none;
+				transition: text-decoration-color 0.2s ease;
+
+				&:hover,
+				&:focus-visible {
+					text-decoration-color: $white;
+				}
 			}
+		}
+	}
+
+	.btn-secondary {
+		padding: 0.2rem 0.5rem;
+		color: $white;
+
+		&::after {
+			display: none;
 		}
 	}
 }

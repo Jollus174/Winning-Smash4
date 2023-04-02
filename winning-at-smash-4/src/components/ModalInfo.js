@@ -69,47 +69,49 @@ const ModalInfo = ({ url, selectedCharacter, selectedKillConfirm }) => {
 					<p dangerouslySetInnerHTML={{ __html: para }} key={i} />
 				))}
 
-				<div class="stages text-center">
-					<div className="stage" style={{ '--stage-color': '#ff6f00' }}>
-						<div class="stage-title text-uppercase">
-							<h3 class="h6">Stage Modifiers</h3>
-						</div>
-						<h6 class="label">Add to Min% window</h6>
-						<div class="container-fluid">
-							<div class="row">
-								{selectedKillConfirm.stageList.map((stage) => (
-									<div class="col-6 col-sm-4 col-md-3">
-										<table class="table table-bordered table-sm">
-											<thead>
-												<tr>
-													<th>
-														<label>{stage.name}</label>
-													</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td>{stage.stagePositionModifier}</td>
-												</tr>
-											</tbody>
-										</table>
-									</div>
-								))}
+				<div className="stages text-center">
+					{selectedKillConfirm.stageList.length > 1 ? (
+						<div className="stage" style={{ '--stage-color': '#ff6f00' }}>
+							<div className="stage-title text-uppercase">
+								<h3 className="h6">Stage Modifiers</h3>
+							</div>
+							<h6 className="label">Add to Min% window</h6>
+							<div className="container-fluid">
+								<div className="row">
+									{selectedKillConfirm.stageList.map((stage) => (
+										<div className="col-6 col-sm-4 col-md-3" key={stage.id}>
+											<table className="table table-bordered table-sm">
+												<thead>
+													<tr>
+														<th>
+															<label>{stage.name}</label>
+														</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>{stage.stagePositionModifier}</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									))}
+								</div>
 							</div>
 						</div>
-					</div>
+					) : null}
 					<div className="stage" style={{ '--stage-color': '#cc2727' }}>
-						<div class="stage-title text-uppercase">
-							<h3 class="h6">Rage Modifiers</h3>
+						<div className="stage-title text-uppercase">
+							<h3 className="h6">Rage Modifiers</h3>
 						</div>
-						<h4 class="label">Add to Min% / Max% window</h4>
-						<div class="container-fluid">
-							<div class="row">
+						<h4 className="label">Add to Min% / Max% window</h4>
+						<div className="container-fluid">
+							<div className="row">
 								{selectedKillConfirm.rageModifiers
 									.filter((rm) => rm.id !== 'rage0')
 									.map((rageModifier) => (
-										<div class="col-4 col-md-2">
-											<table class="table table-bordered table-sm">
+										<div className="col-4 col-md-2" key={rageModifier.id}>
+											<table className="table table-bordered table-sm">
 												<thead>
 													<tr>
 														<th>

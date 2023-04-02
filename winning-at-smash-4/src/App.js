@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { Route, useLocation } from 'react-router-dom';
+import { CSSTransition } from 'react-transition-group';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import CharacterMoveCards from './components/CharacterMoveCards';
@@ -19,11 +20,15 @@ function App() {
 		charAttrs: []
 	});
 
-	const [appSelections, setAppSelections] = useState({
+	const [defaultSelections, setDefaultSelections] = useState({
 		selectedCharacter: {},
 		selectedKillConfirm: {},
-		selectedCharacterModal: {}
+		selectedCharacterModal: {},
+		hasSelectedCharacter: false,
+		hasSelectedKillConfirm: false,
+		hasSelectedCharacterModal: false
 	});
+	const [appSelections, setAppSelections] = useState({ ...defaultSelections });
 
 	const [sortBy, setSortBy] = useState([
 		{ id: 'name', name: 'Name', sortingDirection: 'descending' },
@@ -104,19 +109,20 @@ function App() {
 	// for updating the 'global' state with a selected character, killConfirm and selectedCharacterModal
 	useEffect(() => {
 		const [, characterId, killConfirmId, selectedCharacterModal] = location.pathname.split('/');
+
 		const { killConfirms, charAttrs } = appData;
 		const updatedSelections = {
-			selectedCharacter: {},
-			selectedKillConfirm: {},
-			selectedCharacterModal: {}
+			...defaultSelections
 		};
 
 		const characterToSet = killConfirms.find((killConfirm) => killConfirm.id === characterId);
 		if (characterToSet) {
 			updatedSelections.selectedCharacter = { ...characterToSet };
+			updatedSelections.hasSelectedCharacter = true;
 
 			const killConfirmToSet = characterToSet.moves.find((killConfirm) => killConfirm.id === killConfirmId);
 			if (killConfirmToSet) {
+				updatedSelections.hasSelectedKillConfirm = true;
 				// generating a new object for each character in the kill confirm, that includes static data from char attrs and some calculated stuff
 				const percDiffs = [];
 				let updatedKillConfirmCharacters = killConfirmToSet.characters.map((kcCharacter) => {
@@ -299,12 +305,13 @@ function App() {
 					(kcCharacter) => kcCharacter.id === selectedCharacterModal
 				);
 				if (characterModalToSet) {
+					updatedSelections.hasSelectedCharacterModal = true;
 					updatedSelections.selectedCharacterModal = { ...characterModalToSet };
 				}
 			}
 		}
 		setAppSelections(updatedSelections);
-	}, [appData, location, sortBy, activeRage]);
+	}, [appData, defaultSelections, location, sortBy, activeRage]);
 
 	return (
 		<div className="app-grid">
@@ -336,8 +343,10 @@ function App() {
 							setModalShowCredits={setModalShowCredits}
 						/>
 					)}
-					<main>
-						<Route exact path={`/`}>
+					<main
+						className={`${Object.keys(appSelections.selectedKillConfirm).length > 0 ? 'show-character-tiles' : ''}`}
+					>
+						<div className="main-grid-wrapper">
 							{loading ? (
 								'Move cards is loading'
 							) : (
@@ -346,31 +355,39 @@ function App() {
 									selectedKillConfirm={appSelections.selectedKillConfirm}
 								/>
 							)}
-						</Route>
-						{loading ? null : (
-							<>
-								<Route path={`/:characterId/:moveId`}>
-									<CharacterTiles
+							{loading ? null : (
+								<>
+									<CSSTransition
+										in={Object.keys(appSelections.selectedKillConfirm).length > 0}
+										timeout={1000}
+										classNames="csstrans-fade"
+										mountOnEnter
+										unmountOnExit
+									>
+										<Route path={`/:characterId/:moveId`}>
+											<CharacterTiles
+												killConfirms={appData.killConfirms}
+												stageList={appData.stageList}
+												charAttrs={appData.charAttrs}
+												selectedCharacter={appSelections.selectedCharacter}
+												selectedKillConfirm={appSelections.selectedKillConfirm}
+												selectedCharacterModal={appSelections.selectedCharacterModal}
+												activeRage={activeRage}
+												setActiveRage={setActiveRage}
+												sortBy={sortBy}
+												setSortBy={setSortBy}
+											/>
+										</Route>
+									</CSSTransition>
+									<ModalAbout modalShowAbout={modalShowAbout} setModalShowAbout={setModalShowAbout} />
+									<ModalCredits
+										modalShowCredits={modalShowCredits}
+										setModalShowCredits={setModalShowCredits}
 										killConfirms={appData.killConfirms}
-										stageList={appData.stageList}
-										charAttrs={appData.charAttrs}
-										selectedCharacter={appSelections.selectedCharacter}
-										selectedKillConfirm={appSelections.selectedKillConfirm}
-										selectedCharacterModal={appSelections.selectedCharacterModal}
-										activeRage={activeRage}
-										setActiveRage={setActiveRage}
-										sortBy={sortBy}
-										setSortBy={setSortBy}
 									/>
-								</Route>
-								<ModalAbout modalShowAbout={modalShowAbout} setModalShowAbout={setModalShowAbout} />
-								<ModalCredits
-									modalShowCredits={modalShowCredits}
-									setModalShowCredits={setModalShowCredits}
-									killConfirms={appData.killConfirms}
-								/>
-							</>
-						)}
+								</>
+							)}
+						</div>
 					</main>
 				</div>
 			</div>

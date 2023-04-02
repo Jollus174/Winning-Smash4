@@ -1,15 +1,46 @@
+// TODO: Prettier space-between-blocks
+// TODD: Prettier ::after
+// TODO: Prettier spaces between classes
+// TODO: sort out repeated classes
+
 .main-grid {
 	width: 100%;
+	height: calc(var(--vh, 1vh) * 100);
+	overflow: hidden;
 
 	main {
-		overflow-y: auto;
+		transition: transform 400ms ease;
+
+		&.show-character-tiles {
+			transform: translateX(-100%);
+		}
+
+		&,
+		.main-grid-wrapper {
+			height: 100%;
+		}
+	}
+
+	.main-grid-wrapper {
+		position: relative;
+		width: 100%;
 	}
 }
 
+.character-move-cards,
+.character-tiles {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow-y: auto;
+}
+
 .character-move-cards {
+	left: 0;
 	padding: 1rem;
 
-	.character-move-card-col {
+	.col-character-move-card {
 		--bs-gutter-x: 1rem;
 		margin-bottom: var(--bs-gutter-x);
 	}
@@ -21,6 +52,8 @@
 }
 
 .character-tiles {
+	left: 100%;
+
 	.row-character-tile,
 	.col-character-tile {
 		--bs-gutter-x: 0.5rem;
