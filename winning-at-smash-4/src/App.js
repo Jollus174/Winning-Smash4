@@ -11,7 +11,7 @@ import ModalCredits from './components/ModalCredits';
 
 function App() {
 	const [mounted, setMounted] = useState(false);
-	const [loading, setLoading] = useState(false);
+	const [loading, setLoading] = useState(true);
 
 	const [appData, setAppData] = useState({
 		killConfirms: [],
@@ -61,9 +61,7 @@ function App() {
 		if (!mounted) {
 			setMounted(true);
 
-			// set initial data
-			setLoading(true);
-			const baseURL = 'http://localhost:3000';
+			const baseURL = window.location.origin;
 			const requests = {
 				charAttrs: getData(`${baseURL}/data/char-attrs.json`),
 				killConfirms: getData(`${baseURL}/data/kill-confirms.json`),
@@ -79,7 +77,6 @@ function App() {
 						stageList
 					};
 					setAppData(newAppData);
-
 					setLoading(false);
 				})
 				.catch((err) => {
@@ -113,6 +110,7 @@ function App() {
 			selectedKillConfirm: {},
 			selectedCharacterModal: {}
 		};
+
 		const characterToSet = killConfirms.find((killConfirm) => killConfirm.id === characterId);
 		if (characterToSet) {
 			updatedSelections.selectedCharacter = { ...characterToSet };
@@ -121,7 +119,7 @@ function App() {
 			if (killConfirmToSet) {
 				// generating a new object for each character in the kill confirm, that includes static data from char attrs and some calculated stuff
 				const percDiffs = [];
-				const updatedKillConfirmCharacters = killConfirmToSet.characters.map((kcCharacter) => {
+				let updatedKillConfirmCharacters = killConfirmToSet.characters.map((kcCharacter) => {
 					const percDiff = kcCharacter.end - kcCharacter.start;
 					const percents = {
 						...kcCharacter,
@@ -136,6 +134,63 @@ function App() {
 					return { ...updatedCharAttrs, ...kcCharacter };
 				});
 
+				// sorting characters
+				const currentSort = sortBy.find((sort) => sort.sortingDirection !== null);
+				if (currentSort) {
+					if (currentSort.id === 'name') {
+						if (currentSort.sortingDirection === null || currentSort.sortingDirection === 'descending') {
+							updatedKillConfirmCharacters.sort((a, b) => (a.name < b.name ? -1 : a.name > b.name ? 1 : 0));
+						} else {
+							updatedKillConfirmCharacters.sort((a, b) => (a.name > b.name ? -1 : a.name < b.name ? 1 : 0));
+						}
+					}
+
+					if (currentSort.id === 'weight') {
+						if (currentSort.sortingDirection === null || currentSort.sortingDirection === 'descending') {
+							updatedKillConfirmCharacters.sort((a, b) => (a.weight < b.weight ? -1 : a.weight > b.weight ? 1 : 0));
+						} else {
+							updatedKillConfirmCharacters.sort((a, b) => (a.weight > b.weight ? -1 : a.weight < b.weight ? 1 : 0));
+						}
+					}
+
+					if (currentSort.id === 'difficulty') {
+						if (characterToSet.id === 'zelda' && killConfirmToSet.id === 'dthrow-up-air') {
+							// different difficulty sorting for smelly Zelda
+							if (currentSort.sortingDirection === null || currentSort.sortingDirection === 'descending') {
+								updatedKillConfirmCharacters.sort((a, b) => a.airdodgeStart - b.airdodgeStart);
+							} else {
+								updatedKillConfirmCharacters.sort((a, b) => b.airdodgeStart - a.airdodgeStart);
+							}
+						} else {
+							if (currentSort.sortingDirection === null || currentSort.sortingDirection === 'descending') {
+								updatedKillConfirmCharacters.sort((a, b) => b.percents.percDiff - a.percents.percDiff);
+							} else {
+								updatedKillConfirmCharacters.sort((a, b) => a.percents.percDiff - b.percents.percDiff);
+							}
+						}
+					}
+
+					if (currentSort.id === 'fallspeed') {
+						if (currentSort.sortingDirection === null || currentSort.sortingDirection === 'descending') {
+							updatedKillConfirmCharacters.sort((a, b) =>
+								a.fallspeed < b.fallspeed ? -1 : a.fallspeed > b.fallspeed ? 1 : 0
+							);
+						} else {
+							updatedKillConfirmCharacters.sort((a, b) =>
+								a.fallspeed > b.fallspeed ? -1 : a.fallspeed < b.fallspeed ? 1 : 0
+							);
+						}
+					}
+
+					if (currentSort.id === 'gravity') {
+						if (currentSort.sortingDirection === null || currentSort.sortingDirection === 'descending') {
+							updatedKillConfirmCharacters.sort((a, b) => (a.gravity < b.gravity ? -1 : a.gravity > b.gravity ? 1 : 0));
+						} else {
+							updatedKillConfirmCharacters.sort((a, b) => (a.gravity > b.gravity ? -1 : a.gravity < b.gravity ? 1 : 0));
+						}
+					}
+				}
+
 				// calculating an average between percent differences to determine the 'difficulty' of the kill confirm on each character
 				// since the total range changes between character to character, there can't be an absolute value for determining this - an average must be taken of all start/end differences for that particular kill confirm
 				const sumOfPercDiffs = percDiffs.reduce((a, b) => a + b);
@@ -145,12 +200,29 @@ function App() {
 				// this calculates how much to iterate each percent by
 				const diffIterator = Math.floor(percentAverage / 2.5);
 
+				let counter = currentSort.sortingDirection === 'descending' ? 1 : updatedKillConfirmCharacters.length;
 				for (const kcCharacter of updatedKillConfirmCharacters) {
 					const diffObj = {
 						difficultyClass: '',
 						difficultyText: ''
 					};
-					if (characterToSet.id !== 'zelda' && killConfirmToSet.id !== 'dthrow-up-air') {
+					kcCharacter.charIndex = counter;
+					if (characterToSet.id === 'zelda' && killConfirmToSet.id === 'dthrow-up-air') {
+						// alternative difficulty just for Zelda based on the victim's airdodge frames (thanks Zelda)
+						if (kcCharacter.airdodgeStart === 1) {
+							diffObj.difficultyText = 'Very Hard';
+							diffObj.difficultyClass = 'very-hard';
+						} else if (kcCharacter.airdodgeStart === 2) {
+							diffObj.difficultyText = 'Hard';
+							diffObj.difficultyClass = 'hard';
+						} else if (kcCharacter.airdodgeStart === 3) {
+							diffObj.difficultyText = 'Average';
+							diffObj.difficultyClass = 'average';
+						} else if (kcCharacter.airdodgeStart === 4) {
+							diffObj.difficultyText = 'Easy';
+							diffObj.difficultyClass = 'easy';
+						}
+					} else {
 						if (0 <= kcCharacter.percents.percDiff && kcCharacter.percents.percDiff <= diffIterator) {
 							diffObj.difficultyText = 'Very Hard';
 							diffObj.difficultyClass = 'very-hard';
@@ -178,21 +250,6 @@ function App() {
 						} else {
 							diffObj.difficultyText = '';
 							diffObj.difficultyClass = '';
-						}
-					} else {
-						// alternative difficulty just for Zelda based on the victim's airdodge frames (thanks Zelda)
-						if (kcCharacter.airdodgeStart === 1) {
-							diffObj.difficultyText = 'Very Hard';
-							diffObj.difficultyClass = 'very-hard';
-						} else if (kcCharacter.airdodgeStart === 2) {
-							diffObj.difficultyText = 'Hard';
-							diffObj.difficultyClass = 'hard';
-						} else if (kcCharacter.airdodgeStart === 3) {
-							diffObj.difficultyText = 'Average';
-							diffObj.difficultyClass = 'average';
-						} else if (kcCharacter.airdodgeStart === 4) {
-							diffObj.difficultyText = 'Easy';
-							diffObj.difficultyClass = 'easy';
 						}
 					}
 
@@ -225,7 +282,6 @@ function App() {
 							newStagePosition.min = kcCharacter.percents.start + stagePositionModifier + rageModifierStart;
 							// I guess in the app I could only use the stage data people provided. There were no modifiers for init max % on each stage
 							newStagePosition.max = kcCharacter.percents.end + rageModifierEnd;
-							// console.log(newStagePosition.min);
 							return newStagePosition;
 						});
 						return { ...stage, stagePositions: newStagePositions };
@@ -233,63 +289,7 @@ function App() {
 
 					kcCharacter.rageModifiers = [...killConfirmToSet.rageModifiers];
 					kcCharacter.stageList = updatedStageListData;
-				}
-
-				// sorting characters
-				const currentSort = sortBy.find((sort) => sort.sortingDirection !== null);
-				if (currentSort) {
-					if (currentSort.id === 'name') {
-						if (currentSort.sortingDirection === null || currentSort.sortingDirection === 'descending') {
-							updatedKillConfirmCharacters.sort((a, b) => (a.name < b.name ? -1 : a.name > b.name ? 1 : 0));
-						} else {
-							updatedKillConfirmCharacters.sort((a, b) => (a.name > b.name ? -1 : a.name < b.name ? 1 : 0));
-						}
-					}
-
-					if (currentSort.id === 'weight') {
-						if (currentSort.sortingDirection === null || currentSort.sortingDirection === 'descending') {
-							updatedKillConfirmCharacters.sort((a, b) => (a.weight < b.weight ? -1 : a.weight > b.weight ? 1 : 0));
-						} else {
-							updatedKillConfirmCharacters.sort((a, b) => (a.weight > b.weight ? -1 : a.weight < b.weight ? 1 : 0));
-						}
-					}
-
-					if (currentSort.id === 'difficulty') {
-						if (characterToSet.id !== 'zelda' && killConfirmToSet.id !== 'dthrow-up-air') {
-							if (currentSort.sortingDirection === null || currentSort.sortingDirection === 'descending') {
-								updatedKillConfirmCharacters.sort((a, b) => b.percents.percDiff - a.percents.percDiff);
-							} else {
-								updatedKillConfirmCharacters.sort((a, b) => a.percents.percDiff - b.percents.percDiff);
-							}
-						} else {
-							// different difficulty sorting for smelly Zelda
-							if (currentSort.sortingDirection === null || currentSort.sortingDirection === 'descending') {
-								updatedKillConfirmCharacters.sort((a, b) => a.airdodgeStart - b.airdodgeStart);
-							} else {
-								updatedKillConfirmCharacters.sort((a, b) => b.airdodgeStart - a.airdodgeStart);
-							}
-						}
-					}
-
-					if (currentSort.id === 'fallspeed') {
-						if (currentSort.sortingDirection === null || currentSort.sortingDirection === 'descending') {
-							updatedKillConfirmCharacters.sort((a, b) =>
-								a.fallspeed < b.fallspeed ? -1 : a.fallspeed > b.fallspeed ? 1 : 0
-							);
-						} else {
-							updatedKillConfirmCharacters.sort((a, b) =>
-								a.fallspeed > b.fallspeed ? -1 : a.fallspeed < b.fallspeed ? 1 : 0
-							);
-						}
-					}
-
-					if (currentSort.id === 'gravity') {
-						if (currentSort.sortingDirection === null || currentSort.sortingDirection === 'descending') {
-							updatedKillConfirmCharacters.sort((a, b) => (a.gravity < b.gravity ? -1 : a.gravity > b.gravity ? 1 : 0));
-						} else {
-							updatedKillConfirmCharacters.sort((a, b) => (a.gravity > b.gravity ? -1 : a.gravity < b.gravity ? 1 : 0));
-						}
-					}
+					counter = currentSort.sortingDirection === 'descending' ? counter + 1 : counter - 1;
 				}
 
 				const updatedKillConfirmData = { ...killConfirmToSet, characters: updatedKillConfirmCharacters };
@@ -312,19 +312,21 @@ function App() {
 				A Super Smash Bros. for Wii U Progressive Web App for calculating kill confirm ranges.
 			</h1>
 			<div className="d-md-flex h-100">
-				{loading ? (
-					'Is loading'
-				) : (
-					<Sidebar
-						sidebarOpen={sidebarOpen}
-						killConfirms={appData.killConfirms}
-						selectedCharacter={appSelections.selectedCharacter}
-						selectedKillConfirm={appSelections.selectedKillConfirm}
-					/>
-				)}
+				<aside className={`d-none sidebar ${sidebarOpen ? 'd-lg-block' : ''}`}>
+					{loading ? (
+						'Sidebar is loading'
+					) : (
+						<Sidebar
+							sidebarOpen={sidebarOpen}
+							killConfirms={appData.killConfirms}
+							selectedCharacter={appSelections.selectedCharacter}
+							selectedKillConfirm={appSelections.selectedKillConfirm}
+						/>
+					)}
+				</aside>
 				<div className="d-flex flex-column main-grid">
 					{loading ? (
-						'Is loading'
+						'Header is loading'
 					) : (
 						<Header
 							setSidebarOpen={setSidebarOpen}
@@ -335,16 +337,18 @@ function App() {
 						/>
 					)}
 					<main>
-						{loading ? (
-							'Is loading'
-						) : (
+						<Route exact path={`/`}>
+							{loading ? (
+								'Move cards is loading'
+							) : (
+								<CharacterMoveCards
+									killConfirms={appData.killConfirms}
+									selectedKillConfirm={appSelections.selectedKillConfirm}
+								/>
+							)}
+						</Route>
+						{loading ? null : (
 							<>
-								<Route exact path={`/`}>
-									<CharacterMoveCards
-										killConfirms={appData.killConfirms}
-										selectedKillConfirm={appSelections.selectedKillConfirm}
-									/>
-								</Route>
 								<Route path={`/:characterId/:moveId`}>
 									<CharacterTiles
 										killConfirms={appData.killConfirms}

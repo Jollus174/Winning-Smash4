@@ -172,11 +172,20 @@ const ModalStagePercents = (props) => {
 						</div>
 					) : null}
 					<section className="character-info-section">
-						<img
-							src={`/images/characters/webp/${selectedCharacterModal.id}.webp`}
-							alt={selectedCharacterModal.name}
-							className="character-image"
-						/>
+						<CSSTransition
+							in={mounted}
+							timeout={{ enter: 1000 }}
+							classNames="csstrans-slideFromRight"
+							mountOnEnter
+							unmountOnExit
+						>
+							<img
+								src={`/images/characters/webp/${selectedCharacterModal.id}.webp`}
+								alt={selectedCharacterModal.name}
+								className="character-image"
+								style={{ '--amount': '200px' }}
+							/>
+						</CSSTransition>
 						<div className="character-info-wrapper">
 							<div className="character-info">
 								<div className="item grid-percent-range">
@@ -184,7 +193,7 @@ const ModalStagePercents = (props) => {
 								</div>
 								<div className="d-flex flex-column align-items-start grid-difficulty">
 									<div className={`item easy ${selectedCharacterModal.percents.difficultyClass}`}>
-										{selectedCharacterModal.percents.difficultyText} - {selectedCharacterModal.percents.percDiff}%
+										{selectedCharacterModal.percents.difficultyText} - {selectedCharacterModal.percents.percDiff + 1}%
 									</div>
 									{selectedCharacterModal.percents.distance ? (
 										<div className="item special-info">{selectedCharacterModal.percents.distance}</div>
@@ -195,27 +204,35 @@ const ModalStagePercents = (props) => {
 								<h3 className="h6 m-0 text-uppercase">{selectedCharacterModal.name}</h3>
 							</div>
 						</div>
-						<ul
-							className={`list-unstyled m-0 more-info ${
-								selectedCharacterModal.textScheme === 'dark' ? 'text-dark' : 'text-light'
-							}`}
+						<CSSTransition
+							in={mounted}
+							timeout={{ enter: 1000 }}
+							classNames="csstrans-slideFromRight"
+							mountOnEnter
+							unmountOnExit
 						>
-							<li>
-								<span>Weight</span> <span>{selectedCharacterModal.weight}</span>
-							</li>
-							<li>
-								<span>Fallspeed</span> <span>{selectedCharacterModal.fallspeed}</span>
-							</li>
-							<li>
-								<span>Airdodge</span>{' '}
-								<span>
-									{selectedCharacterModal.airdodgeStart} - {selectedCharacterModal.airdodgeEnd}
-								</span>
-							</li>
-							<li>
-								<span>Gravity</span> <span>{selectedCharacterModal.gravity}</span>
-							</li>
-						</ul>
+							<ul
+								className={`list-unstyled m-0 more-info ${
+									selectedCharacterModal.textScheme === 'dark' ? 'text-dark' : 'text-light'
+								}`}
+							>
+								<li>
+									<span>Weight</span> <span>{selectedCharacterModal.weight}</span>
+								</li>
+								<li>
+									<span>Fallspeed</span> <span>{selectedCharacterModal.fallspeed}</span>
+								</li>
+								<li>
+									<span>Airdodge</span>{' '}
+									<span>
+										{selectedCharacterModal.airdodgeStart} - {selectedCharacterModal.airdodgeEnd}
+									</span>
+								</li>
+								<li>
+									<span>Gravity</span> <span>{selectedCharacterModal.gravity}</span>
+								</li>
+							</ul>
+						</CSSTransition>
 					</section>
 					<section className="rage-modifier text-center">
 						<h3 className="rage-modifier-title text-uppercase">{selectedCharacter.name} Rage Modifier</h3>
@@ -238,57 +255,62 @@ const ModalStagePercents = (props) => {
 						{selectedCharacterModal.stageList.map((stage, i) => (
 							<CSSTransition
 								in={mounted}
-								timeout={{ enter: 1000 * (i + 1) }}
+								timeout={{ enter: 200 * (i + 2) }}
 								classNames="csstrans-fade"
 								mountOnEnter
-								unmountOnExit
 								key={stage.id}
 							>
-								<div className="stage" style={{ '--stage-color': stage.color }}>
-									<div className="stage-title text-center text-uppercase">
-										<h5 className="h6">{stage.name}</h5>
-									</div>
-									<div className="stage-details">
-										<div className="row row-stage-details">
-											<div className="col-md-3">
-												<img className="img-fluid" src={`/images/stages/${stage.imageFile}`} alt={stage.name} />
-											</div>
-											<div className="col-md-9 col-tables">
-												{stage.stagePositions.map((stagePosition) => (
-													<table
-														className="table table-bordered table-sm"
-														cellPadding="0"
-														cellSpacing="0"
-														border="0"
-														key={stagePosition.id}
-													>
-														<thead>
-															<tr>
-																<th colSpan="3">{stagePosition.stagePartName}</th>
-															</tr>
-														</thead>
-														<tbody>
-															<tr>
-																<th>Min %</th>
-																<th>Max %</th>
-																<th>Window</th>
-															</tr>
-															<tr>
-																<td>{`${stagePosition.min <= stagePosition.max ? stagePosition.min + '%' : 'N/A'}`}</td>
-																<td>{`${stagePosition.min <= stagePosition.max ? stagePosition.max + '%' : 'N/A'}`}</td>
-																<td className="cell-window">
-																	{stagePosition.min <= stagePosition.max
-																		? `±${stagePosition.max - stagePosition.min + 1}`
-																		: `-`}
-																</td>
-															</tr>
-														</tbody>
-													</table>
-												))}
+								<>
+									<div className="stage" style={{ '--stage-color': stage.color, '--delay': `${200 * i}ms` }}>
+										<div className="stage-title text-center text-uppercase">
+											<h5 className="h6">{stage.name}</h5>
+										</div>
+										<div className="stage-details">
+											<div className="row row-stage-details">
+												<div className="col-md-3">
+													<img className="img-fluid" src={`/images/stages/${stage.imageFile}`} alt={stage.name} />
+												</div>
+												<div className="col-md-9 col-tables">
+													{stage.stagePositions.map((stagePosition) => (
+														<table
+															className="table table-bordered table-sm"
+															cellPadding="0"
+															cellSpacing="0"
+															border="0"
+															key={stagePosition.id}
+														>
+															<thead>
+																<tr>
+																	<th colSpan="3">{stagePosition.stagePartName}</th>
+																</tr>
+															</thead>
+															<tbody>
+																<tr>
+																	<th>Min %</th>
+																	<th>Max %</th>
+																	<th>Window</th>
+																</tr>
+																<tr>
+																	<td>{`${
+																		stagePosition.min <= stagePosition.max ? stagePosition.min + '%' : 'N/A'
+																	}`}</td>
+																	<td>{`${
+																		stagePosition.min <= stagePosition.max ? stagePosition.max + '%' : 'N/A'
+																	}`}</td>
+																	<td className="cell-window">
+																		{stagePosition.min <= stagePosition.max
+																			? `±${stagePosition.max - stagePosition.min + 1}`
+																			: `-`}
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+													))}
+												</div>
 											</div>
 										</div>
 									</div>
-								</div>
+								</>
 							</CSSTransition>
 						))}
 					</section>

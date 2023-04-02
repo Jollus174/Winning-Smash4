@@ -87,6 +87,7 @@
 		background-color: var(--btn-color);
 		color: $white;
 		overflow: hidden;
+		height: 126px; // fixed height because the content transitions in
 	}
 
 	.character-info-wrapper {
@@ -125,6 +126,7 @@
 		left: 0;
 		width: auto;
 		height: 100%;
+		object-fit: contain;
 		object-position: left center;
 	}
 

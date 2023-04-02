@@ -74,9 +74,7 @@ const Tiles = ({ selectedKillConfirm, filteredKillConfirmCharacters, showAdditio
 									alt={character.name}
 									className="character-image"
 								/>
-								<div className="character-index">
-									{sortingDirection === 'descending' ? i + 1 : filteredKillConfirmCharacters.length - i}
-								</div>
+								<div className="character-index">{character.charIndex}</div>
 								<div className="character-info">
 									<div className="item grid-percent-range">
 										{character.percents.start} - {character.percents.end}%
@@ -84,7 +82,7 @@ const Tiles = ({ selectedKillConfirm, filteredKillConfirmCharacters, showAdditio
 
 									<div className="d-flex align-items-center grid-difficulty">
 										<div className={`item easy ${character.percents.difficultyClass}`}>
-											{character.percents.difficultyText} - {character.percents.percDiff}%
+											{character.percents.difficultyText} - {character.percents.percDiff + 1}%
 										</div>
 										{character.percents.distance ? (
 											<div className="item special-info">{character.percents.distance}</div>
