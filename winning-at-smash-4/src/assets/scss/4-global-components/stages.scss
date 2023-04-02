@@ -22,31 +22,31 @@
 		}
 	}
 
-	.col-tables {
-		table {
-			--bs-border-color: #dfdfdf;
+	table {
+		--bs-border-color: #dfdfdf;
 
-			&:last-child {
+		&:last-child {
+			.modal-stage-list & {
 				margin-bottom: 0;
 			}
 		}
+	}
 
-		thead th {
-			background-color: transparentize($black, 0.95);
+	thead th {
+		background-color: transparentize($black, 0.95);
+	}
+
+	tbody {
+		th {
+			font-size: 13px;
+			font-weight: 700;
+			text-transform: uppercase;
 		}
 
-		tbody {
-			th {
-				font-size: 13px;
-				font-weight: 700;
-				text-transform: uppercase;
-			}
-
-			td {
-				&.cell-window {
-					width: 80px;
-					background-image: repeating-linear-gradient(135deg, #{$white}, #{$white} 2px, #efefef 2px, #efefef 4px);
-				}
+		td {
+			&.cell-window {
+				width: 80px;
+				background-image: repeating-linear-gradient(135deg, #{$white}, #{$white} 2px, #efefef 2px, #efefef 4px);
 			}
 		}
 	}

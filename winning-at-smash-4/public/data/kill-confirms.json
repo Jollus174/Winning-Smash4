@@ -44,55 +44,68 @@
 				"stageList": [
 					{
 						"id": "fd-normal",
+						"name": "FD Normal",
 						"stagePositionModifier": 0
 					},
 					{
 						"id": "bf-normal",
+						"name": "BF Normal",
 						"stagePositionModifier": 4
 					},
 					{
 						"id": "bf-low-platform",
+						"name": "BF Low Plat",
 						"stagePositionModifier": -5
 					},
 					{
 						"id": "bf-top-platform",
+						"name": "BF Top Plat",
 						"stagePositionModifier": -15
 					},
 					{
 						"id": "dl-normal",
+						"name": "DL Normal",
 						"stagePositionModifier": 0
 					},
 					{
 						"id": "dl-low-platform",
+						"name": "DL Low Plat",
 						"stagePositionModifier": -13
 					},
 					{
 						"id": "dl-top-platform",
+						"name": "DL Top Plat",
 						"stagePositionModifier": -23
 					},
 					{
 						"id": "sv-normal",
+						"name": "SV Normal",
 						"stagePositionModifier": 1
 					},
 					{
 						"id": "sv-platform",
+						"name": "SV Plat",
 						"stagePositionModifier": -12
 					},
 
 					{
 						"id": "tc-normal",
+						"name": "TC Normal",
 						"stagePositionModifier": -4
 					},
 					{
 						"id": "tc-low-platform",
+						"name": "TC Low Plat",
 						"stagePositionModifier": -22
 					},
 					{
 						"id": "tc-side-platform",
+						"name": "TC Side Plat",
 						"stagePositionModifier": -27
 					},
 					{
 						"id": "tc-top-platform",
+						"name": "TC Top Plat",
 						"stagePositionModifier": -39
 					}
 				],
@@ -210,55 +223,68 @@
 				"stageList": [
 					{
 						"id": "fd-normal",
+						"name": "FD Normal",
 						"stagePositionModifier": 0
 					},
 					{
 						"id": "bf-normal",
+						"name": "BF Normal",
 						"stagePositionModifier": 7
 					},
 					{
 						"id": "bf-low-platform",
+						"name": "BF Low Plat",
 						"stagePositionModifier": -7
 					},
 					{
 						"id": "bf-top-platform",
+						"name": "BF Top Plat",
 						"stagePositionModifier": -20
 					},
 					{
 						"id": "dl-normal",
+						"name": "DL Normal",
 						"stagePositionModifier": 0
 					},
 					{
 						"id": "dl-low-platform",
+						"name": "DL Low Plat",
 						"stagePositionModifier": -15
 					},
 					{
 						"id": "dl-top-platform",
+						"name": "DL Top Plat",
 						"stagePositionModifier": -26
 					},
 					{
 						"id": "sv-normal",
+						"name": "SV Normal",
 						"stagePositionModifier": 1
 					},
 					{
 						"id": "sv-platform",
+						"name": "SV Plat",
 						"stagePositionModifier": -14
 					},
 
 					{
 						"id": "tc-normal",
+						"name": "TC Normal",
 						"stagePositionModifier": -4
 					},
 					{
 						"id": "tc-low-platform",
+						"name": "TC Low Plat",
 						"stagePositionModifier": -20
 					},
 					{
 						"id": "tc-side-platform",
+						"name": "TC Side Plat",
 						"stagePositionModifier": -25
 					},
 					{
 						"id": "tc-top-platform",
+						"name": "TC Top Plat",
 						"stagePositionModifier": -41
 					}
 				],
@@ -376,55 +402,68 @@
 				"stageList": [
 					{
 						"id": "fd-normal",
+						"name": "FD Normal",
 						"stagePositionModifier": 0
 					},
 					{
 						"id": "bf-normal",
+						"name": "BF Normal",
 						"stagePositionModifier": 4
 					},
 					{
 						"id": "bf-low-platform",
+						"name": "BF Low Plat",
 						"stagePositionModifier": -5
 					},
 					{
 						"id": "bf-top-platform",
+						"name": "BF Top Plat",
 						"stagePositionModifier": -15
 					},
 					{
 						"id": "dl-normal",
+						"name": "DL Normal",
 						"stagePositionModifier": 0
 					},
 					{
 						"id": "dl-low-platform",
+						"name": "DL Low Plat",
 						"stagePositionModifier": -9
 					},
 					{
 						"id": "dl-top-platform",
+						"name": "DL Top Plat",
 						"stagePositionModifier": -24
 					},
 					{
 						"id": "sv-normal",
+						"name": "SV Normal",
 						"stagePositionModifier": 1
 					},
 					{
 						"id": "sv-platform",
+						"name": "SV Plat",
 						"stagePositionModifier": -11
 					},
 
 					{
 						"id": "tc-normal",
+						"name": "TC Normal",
 						"stagePositionModifier": -4
 					},
 					{
 						"id": "tc-low-platform",
+						"name": "TC Low Plat",
 						"stagePositionModifier": -17
 					},
 					{
 						"id": "tc-side-platform",
+						"name": "TC Side Plat",
 						"stagePositionModifier": -26
 					},
 					{
 						"id": "tc-top-platform",
+						"name": "TC Top Plat",
 						"stagePositionModifier": -35
 					}
 				],
@@ -543,68 +582,69 @@
 				"stageList": [
 					{
 						"id": "fd-normal",
+						"name": "FD Normal",
 						"stagePositionModifier": 0
 					},
 					{
 						"id": "bf-normal",
+						"name": "BF Normal",
 						"stagePositionModifier": 6
 					},
 					{
 						"id": "bf-low-platform",
+						"name": "BF Low Plat",
 						"stagePositionModifier": -5
 					},
 					{
 						"id": "bf-top-platform",
+						"name": "BF Top Plat",
 						"stagePositionModifier": -14
 					},
 					{
 						"id": "dl-normal",
+						"name": "DL Normal",
 						"stagePositionModifier": 0
 					},
 					{
 						"id": "dl-low-platform",
+						"name": "DL Low Plat",
 						"stagePositionModifier": -11
 					},
 					{
 						"id": "dl-top-platform",
+						"name": "DL Top Plat",
 						"stagePositionModifier": -23
 					},
 					{
 						"id": "sv-normal",
+						"name": "SV Normal",
 						"stagePositionModifier": 1
 					},
 					{
 						"id": "sv-platform",
+						"name": "SV Plat",
 						"stagePositionModifier": -11
 					},
 
 					{
 						"id": "tc-normal",
+						"name": "TC Normal",
 						"stagePositionModifier": -2
 					},
 					{
 						"id": "tc-low-platform",
+						"name": "TC Low Plat",
 						"stagePositionModifier": -13
 					},
 					{
 						"id": "tc-side-platform",
+						"name": "TC Side Plat",
 						"stagePositionModifier": -22
 					},
 					{
 						"id": "tc-top-platform",
+						"name": "TC Top Plat",
 						"stagePositionModifier": -33
-					},
-					{
-						"id": "lylat-normal",
-						"stagePositionModifier": 0
-					},
-					{
-						"id": "lylat-side-platform",
-						"stagePositionModifier": -13
-					},
-					{
-						"id": "lylat-mid-platform",
-						"stagePositionModifier": -10
 					}
 				],
 
@@ -728,6 +768,7 @@
 				"stageList": [
 					{
 						"id": "fd-normal",
+						"name": "FD Normal",
 						"stagePositionModifier": 0
 					}
 				],
@@ -841,6 +882,7 @@
 				"stageList": [
 					{
 						"id": "fd-normal",
+						"name": "FD Normal",
 						"stagePositionModifier": 0
 					}
 				],
@@ -962,55 +1004,68 @@
 				"stageList": [
 					{
 						"id": "fd-normal",
+						"name": "FD Normal",
 						"stagePositionModifier": 0
 					},
 					{
 						"id": "bf-normal",
+						"name": "BF Normal",
 						"stagePositionModifier": 5
 					},
 					{
 						"id": "bf-low-platform",
+						"name": "BF Low Plat",
 						"stagePositionModifier": -5
 					},
 					{
 						"id": "bf-top-platform",
+						"name": "BF Top Plat",
 						"stagePositionModifier": -13
 					},
 					{
 						"id": "dl-normal",
+						"name": "DL Normal",
 						"stagePositionModifier": 0
 					},
 					{
 						"id": "dl-low-platform",
+						"name": "DL Low Plat",
 						"stagePositionModifier": -11
 					},
 					{
 						"id": "dl-top-platform",
+						"name": "DL Top Plat",
 						"stagePositionModifier": -21
 					},
 					{
 						"id": "sv-normal",
+						"name": "SV Normal",
 						"stagePositionModifier": 1
 					},
 					{
 						"id": "sv-platform",
+						"name": "SV Plat",
 						"stagePositionModifier": -10
 					},
 
 					{
 						"id": "tc-normal",
+						"name": "TC Normal",
 						"stagePositionModifier": -3
 					},
 					{
 						"id": "tc-low-platform",
+						"name": "TC Low Plat",
 						"stagePositionModifier": -14
 					},
 					{
 						"id": "tc-side-platform",
+						"name": "TC Side Plat",
 						"stagePositionModifier": -13
 					},
 					{
 						"id": "tc-top-platform",
+						"name": "TC Top Plat",
 						"stagePositionModifier": -25
 					}
 				],
@@ -1133,55 +1188,68 @@
 				"stageList": [
 					{
 						"id": "fd-normal",
+						"name": "FD Normal",
 						"stagePositionModifier": 0
 					},
 					{
 						"id": "bf-normal",
+						"name": "BF Normal",
 						"stagePositionModifier": 7
 					},
 					{
 						"id": "bf-low-platform",
+						"name": "BF Low Plat",
 						"stagePositionModifier": -7
 					},
 					{
 						"id": "bf-top-platform",
+						"name": "BF Top Plat",
 						"stagePositionModifier": -20
 					},
 					{
 						"id": "dl-normal",
+						"name": "DL Normal",
 						"stagePositionModifier": 0
 					},
 					{
 						"id": "dl-low-platform",
+						"name": "DL Low Plat",
 						"stagePositionModifier": -15
 					},
 					{
 						"id": "dl-top-platform",
+						"name": "DL Top Plat",
 						"stagePositionModifier": -26
 					},
 					{
 						"id": "sv-normal",
+						"name": "SV Normal",
 						"stagePositionModifier": 1
 					},
 					{
 						"id": "sv-platform",
+						"name": "SV Plat",
 						"stagePositionModifier": -14
 					},
 
 					{
 						"id": "tc-normal",
+						"name": "TC Normal",
 						"stagePositionModifier": -4
 					},
 					{
 						"id": "tc-low-platform",
+						"name": "TC Low Plat",
 						"stagePositionModifier": -20
 					},
 					{
 						"id": "tc-side-platform",
+						"name": "TC Side Plat",
 						"stagePositionModifier": -25
 					},
 					{
 						"id": "tc-top-platform",
+						"name": "TC Top Plat",
 						"stagePositionModifier": -41
 					}
 				],

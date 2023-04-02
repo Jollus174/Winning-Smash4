@@ -68,6 +68,69 @@ const ModalInfo = ({ url, selectedCharacter, selectedKillConfirm }) => {
 					// the order of these will never change, so am using the index as the key
 					<p dangerouslySetInnerHTML={{ __html: para }} key={i} />
 				))}
+
+				<div class="stages text-center">
+					<div className="stage" style={{ '--stage-color': '#ff6f00' }}>
+						<div class="stage-title text-uppercase">
+							<h3 class="h6">Stage Modifiers</h3>
+						</div>
+						<h6 class="label">Add to Min% window</h6>
+						<div class="container-fluid">
+							<div class="row">
+								{selectedKillConfirm.stageList.map((stage) => (
+									<div class="col-6 col-sm-4 col-md-3">
+										<table class="table table-bordered table-sm">
+											<thead>
+												<tr>
+													<th>
+														<label>{stage.name}</label>
+													</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>{stage.stagePositionModifier}</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								))}
+							</div>
+						</div>
+					</div>
+					<div className="stage" style={{ '--stage-color': '#cc2727' }}>
+						<div class="stage-title text-uppercase">
+							<h3 class="h6">Rage Modifiers</h3>
+						</div>
+						<h4 class="label">Add to Min% / Max% window</h4>
+						<div class="container-fluid">
+							<div class="row">
+								{selectedKillConfirm.rageModifiers
+									.filter((rm) => rm.id !== 'rage0')
+									.map((rageModifier) => (
+										<div class="col-4 col-md-2">
+											<table class="table table-bordered table-sm">
+												<thead>
+													<tr>
+														<th>
+															<label>Rage {rageModifier.amount}</label>
+														</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>
+															{rageModifier.start} {rageModifier.end}
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									))}
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</Modal>
 	);
