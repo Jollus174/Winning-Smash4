@@ -77,7 +77,7 @@ const Tiles = ({ selectedKillConfirm, filteredKillConfirmCharacters, showAdditio
 										{character.percents.start} - {character.percents.end}%
 									</div>
 
-									<div className="d-flex align-items-center grid-difficulty">
+									<div className="d-flex flex-wrap align-items-center grid-difficulty">
 										<div className={`item easy ${character.percents.difficultyClass}`}>
 											{character.percents.difficultyText} - {character.percents.percDiff + 1}%
 										</div>

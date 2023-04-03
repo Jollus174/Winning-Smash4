@@ -8,6 +8,7 @@
 	}
 
 	.title {
+		width: 100%;
 		font-weight: 400;
 	}
 
@@ -28,6 +29,7 @@
 				text-decoration: underline;
 				text-decoration-color: transparent;
 				box-shadow: none;
+				white-space: nowrap;
 				transition: text-decoration-color 0.2s ease;
 
 				&:hover,

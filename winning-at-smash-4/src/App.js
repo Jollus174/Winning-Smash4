@@ -343,43 +343,34 @@ function App() {
 			</h1>
 			<div className="d-md-flex h-100">
 				<aside className={`d-none sidebar ${sidebarOpen ? 'd-lg-block' : ''}`}>
-					{loading ? (
-						'Sidebar is loading'
-					) : (
-						<Sidebar
-							sidebarOpen={sidebarOpen}
-							killConfirms={appData.killConfirms}
-							selectedCharacter={appSelections.selectedCharacter}
-							selectedKillConfirm={appSelections.selectedKillConfirm}
-						/>
-					)}
+					<Sidebar
+						loading={loading}
+						sidebarOpen={sidebarOpen}
+						killConfirms={appData.killConfirms}
+						selectedCharacter={appSelections.selectedCharacter}
+						selectedKillConfirm={appSelections.selectedKillConfirm}
+					/>
 				</aside>
 				<div className="d-flex flex-column main-grid">
-					{loading ? (
-						'Header is loading'
-					) : (
-						<Header
-							setSidebarOpen={setSidebarOpen}
-							sidebarOpen={sidebarOpen}
-							selectedCharacter={appSelections.selectedCharacter}
-							setModalShowAbout={setModalShowAbout}
-							setModalShowCredits={setModalShowCredits}
-						/>
-					)}
+					<Header
+						loading={loading}
+						setSidebarOpen={setSidebarOpen}
+						sidebarOpen={sidebarOpen}
+						selectedCharacter={appSelections.selectedCharacter}
+						setModalShowAbout={setModalShowAbout}
+						setModalShowCredits={setModalShowCredits}
+					/>
 					<main
 						className={`${
 							appSelections.hasSelectedCharacter && appSelections.hasSelectedKillConfirm ? 'show-character-tiles' : ''
 						}`}
 					>
 						<div className="main-grid-wrapper">
-							{loading ? (
-								'Move cards is loading'
-							) : (
-								<CharacterMoveCards
-									killConfirms={appData.killConfirms}
-									selectedKillConfirm={appSelections.selectedKillConfirm}
-								/>
-							)}
+							<CharacterMoveCards
+								loading={loading}
+								killConfirms={appData.killConfirms}
+								selectedKillConfirm={appSelections.selectedKillConfirm}
+							/>
 							{loading ? null : (
 								<>
 									<CSSTransition

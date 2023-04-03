@@ -1,6 +1,14 @@
+import Skeleton from 'react-loading-skeleton';
 import { Dropdown } from 'react-bootstrap';
 
-const Header = ({ setSidebarOpen, sidebarOpen, selectedCharacter, setModalShowAbout, setModalShowCredits }) => {
+const Header = ({
+	loading,
+	setSidebarOpen,
+	sidebarOpen,
+	selectedCharacter,
+	setModalShowAbout,
+	setModalShowCredits
+}) => {
 	return (
 		<header className="d-flex align-items-center header text-light">
 			<button
@@ -10,8 +18,14 @@ const Header = ({ setSidebarOpen, sidebarOpen, selectedCharacter, setModalShowAb
 			>
 				<i className="fa fa-bars" aria-hidden="true"></i>
 			</button>
-			<h2 className="h4 font-weight-normal">
-				{selectedCharacter && selectedCharacter.name ? selectedCharacter.name : 'Select a Kill Confirm'}
+			<h2 className="title h4">
+				{loading ? (
+					<Skeleton />
+				) : selectedCharacter && selectedCharacter.name ? (
+					selectedCharacter.name
+				) : (
+					'Select a Kill Confirm'
+				)}
 			</h2>
 
 			<nav className="nav">
