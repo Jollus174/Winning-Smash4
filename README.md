@@ -1,12 +1,8 @@
-# Winning at Smash 4
+# Getting Started with Create React App
 
-A Progressive Web App for effective kill confirms in Super Smash Bros. for Wii U.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-# Installation
-
-## Download dependencies
-
-To automatically installed all required packages, run `npm install`
+## Available Scripts
 
 In the project directory, you can run:
 
@@ -49,30 +45,26 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-## Developing and build creation
+### Code Splitting
 
-To make edits and automatically compile SASS commands, use `gulp`
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-To create a build, use `gulp build`
+### Analyzing the Bundle Size
 
-# Credits
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-<a href="https://twitter.com/TheVonDk" target="_blank" rel="noopener">Poke</a> for labbing the kill confirms for <a href="https://docs.google.com/spreadsheets/d/1OvUy2gsTrUj96cAHSkSIZHGnUaaS-UrX6SdFKyctNmU/edit#gid=932844731" target="_blank" rel="noopener">Donkey Kong</a> and <a href="https://docs.google.com/spreadsheets/d/1bGbb7fiX1W0Oer58yf6Kcwtx_zgxg--WYGrUpxTjRpk/edit#gid=432871589" target="_blank" rel="noopener">Bowser</a>.
+### Making a Progressive Web App
 
-<a href="https://twitter.com/houseoffastfood" target="_blank" rel="noopener">Mickey</a> for the <a href="https://docs.google.com/spreadsheets/d/1AxpLDkDltkjAND819JrbgfIgPH_pjkeFPhjpzXPDgP0/edit#gid=0" target="_blank" rel="noopener">G &amp; W Toot-Toot spreadsheet</a>.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-<a href="https://twitter.com/Tihit212" target="_blank" rel="noopener">Taiheita</a> for the <a href="https://docs.google.com/spreadsheets/d/1wIHQkV-RTsKBQq9_aBrP2yE9B55gCeN2cbilx3InPYo/edit#gid=1136269350" target="_blank" rel="noopener">Lucas Down Throw > Up Air spreadsheet</a>.
+### Advanced Configuration
 
-<a href="https://twitter.com/Proctavia_SSB" target="_blank" rel="noopener">Proctavia_SSB</a> for the <a href="https://docs.google.com/spreadsheets/d/18cuJYFSAsserv-yDggpbPv7QFLA62V3kneu86scL6EM" target="_blank" rel="noopener">Pikachu Up Throw Thunder (Backward DI) spreadsheet</a>, the <a href="https://docs.google.com/spreadsheets/d/18cuJYFSAsserv-yDggpbPv7QFLA62V3kneu86scL6EM" target="_blank" rel="noopener">Pikachu Up Throw Thunder (Forward DI) spreadsheet</a>, and <a href="https://docs.google.com/document/d/17TiS0CGt1h08FEuOln9kBfAQYk81K0QX6Pc3kXS15pI" target="_blank" rel="noopener">methodology</a> for both.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-The <a href="https://twitter.com/robinlabteam" target="_blank" rel="noopener">Robin Lab Team</a> for the <a href="https://docs.google.com/spreadsheets/d/1VNYNt0JFe7ak02Db_Ds1Y1QdoK7muOaPSqqd0c5JOUs/edit#gid=0" target="_blank" rel="noopener">Robin Checkmate spreadsheet</a>.
+### Deployment
 
-Xelda for the <a href="https://docs.google.com/spreadsheets/d/1zd5Ky1MR9ECFCtKRlfyQ77YNT9gAZ7GNXJkqZGVgmoI/edit#gid=511032032" target="_blank" rel="noopener">Zelda Down Throw > Up Air spreadsheet</a>. <a href="https://twitter.com/BanZelda" target="_blank" rel="noopener">Dia</a> for the <a href="https://docs.google.com/spreadsheets/d/1DJ6nOhD5csa5xEgPvgCXMXKR-Gsy_WwbtJARkbCxTIA/edit#gid=0" target="_blank" rel="noopener">Zelda Kill Percents spreadsheet (WIP)</a>.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-<a href="https://twitter.com/unwnded?lang=en" target="_blank" rel="noopener">Extra</a>, <a href="https://twitter.com/Dsafunky1" target="_blank" rel="noopener">Denz</a>, <a href="https://twitter.com/Havok_96" target="_blank" rel="noopener">Havok</a> and <a href="https://twitter.com/JPiskopos" target="_blank" rel="noopener">Piski</a> for labbing assistance.
+### `npm run build` fails to minify
 
-Special thanks to smashers <a href="https://twitter.com/cayiika" target="_blank" rel="noopener">Cayika</a>, <a href="https://twitter.com/Gurpwnder" target="_blank" rel="noopener">Gurpinder</a>, Gale, BJN39, eta3372.
-
-Shoutouts to <a href="https://twitter.com/frappesnowland" target="_blank" rel="noopener">Shiva</a> for images help and <a href="https://twitter.com/KuroganeHammer" target="_blank" rel="noopener">Kurogane Hammer</a> for data help.
-
-Thanks to Nintendo, Namco Bandai, and Sora for developing Super Smash Bros. for Wii U.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
