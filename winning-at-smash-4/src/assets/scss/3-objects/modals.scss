@@ -142,8 +142,14 @@
 	}
 
 	.more-info {
-		position: relative;
-		z-index: 1;
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 2;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
 		width: 150px;
 		padding: 10px 10px 10px 0;
 		font-weight: 700;
@@ -157,7 +163,7 @@
 	.rage-modifier {
 		position: relative;
 		z-index: 1;
-		padding: 1rem;
+		padding: 1rem 0.25rem;
 		background-color: #e8e8e8;
 
 		.rage-modifier-title {
@@ -183,7 +189,7 @@
 			--bs-btn-active-color: #{$white};
 			--bs-btn-bg: #{$white};
 			--bs-btn-border-color: #bfbfbf;
-			--bs-btn-font-size: 13px;
+			--bs-btn-font-size: 12px;
 		}
 	}
 
