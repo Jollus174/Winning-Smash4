@@ -9,7 +9,7 @@ const Card = ({ loading, selectedKillConfirm, character }) => (
 					<Skeleton height={100} />
 				) : (
 					<>
-						<img src={'/images/characters/webp/' + character.id + '.webp'} alt="{character.name}" />
+						<img src={'/images/characters/webp/' + character.id + '.webp'} alt={character.name} />
 						<h2 className={`card-title ${character.textScheme === 'light' ? 'text-light' : 'text-dark'}`}>
 							{character.name}
 						</h2>

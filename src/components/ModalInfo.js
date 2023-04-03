@@ -53,7 +53,7 @@ const ModalInfo = ({ url, selectedCharacter, selectedKillConfirm }) => {
 					<a href={info.spreadsheetLink} target="_blank" rel="noreferrer">
 						{selectedCharacter.name} <span dangerouslySetInnerHTML={{ __html: selectedKillConfirm.name }} /> spreadsheet
 					</a>
-					{info.spreadsheetMethod ? (
+					{info.spreadsheetMethod && (
 						<span>
 							{' '}
 							and{' '}
@@ -61,7 +61,7 @@ const ModalInfo = ({ url, selectedCharacter, selectedKillConfirm }) => {
 								methodology
 							</a>
 						</span>
-					) : null}
+					)}
 					.
 				</div>
 
@@ -71,7 +71,7 @@ const ModalInfo = ({ url, selectedCharacter, selectedKillConfirm }) => {
 				))}
 
 				<div className="stages text-center">
-					{selectedKillConfirm.stageList.length > 1 ? (
+					{selectedKillConfirm.stageList.length > 1 && (
 						<div className="stage" style={{ '--stage-color': '#ff6f00' }}>
 							<div className="stage-title text-uppercase">
 								<h3 className="h6">Stage Modifiers</h3>
@@ -100,7 +100,7 @@ const ModalInfo = ({ url, selectedCharacter, selectedKillConfirm }) => {
 								</div>
 							</div>
 						</div>
-					) : null}
+					)}
 					<div className="stage" style={{ '--stage-color': '#cc2727' }}>
 						<div className="stage-title text-uppercase">
 							<h3 className="h6">Rage Modifiers</h3>

@@ -150,7 +150,7 @@ const ModalStagePercents = (props) => {
 				</svg>
 			</button>
 			<div className="modal-header">
-				{selectedCharacter.moves.length > 1 ? (
+				{selectedCharacter.moves.length > 1 && (
 					<div className="character-topbar">
 						<div className="btn-group">
 							{selectedCharacter.moves.map((move) => (
@@ -165,7 +165,7 @@ const ModalStagePercents = (props) => {
 							))}
 						</div>
 					</div>
-				) : null}
+				)}
 				<section className="character-info-section">
 					<CSSTransition
 						in={mounted}
@@ -190,9 +190,9 @@ const ModalStagePercents = (props) => {
 								<div className={`item easy ${selectedCharacterModal.percents.difficultyClass}`}>
 									{selectedCharacterModal.percents.difficultyText} - {selectedCharacterModal.percents.percDiff + 1}%
 								</div>
-								{selectedCharacterModal.percents.distance ? (
+								{selectedCharacterModal.percents.distance && (
 									<div className="item special-info">{selectedCharacterModal.percents.distance}</div>
-								) : null}
+								)}
 							</div>
 						</div>
 						<div id="character-name" className="character-name">

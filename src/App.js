@@ -371,7 +371,7 @@ function App() {
 								killConfirms={appData.killConfirms}
 								selectedKillConfirm={appSelections.selectedKillConfirm}
 							/>
-							{loading ? null : (
+							{!loading && (
 								<>
 									<CSSTransition
 										in={appSelections.hasSelectedCharacter}

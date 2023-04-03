@@ -5,16 +5,7 @@ import ModalStagePercents from './ModalStagePercents';
 import ModalInfo from './ModalInfo';
 
 const MoveButtons = ({ selectedCharacter, selectedKillConfirm }) => {
-	if (!selectedCharacter.moves || selectedCharacter.moves.length < 2)
-		return (
-			<>
-				<h2
-					className={`h6 m-0 font-weight-normal ${selectedCharacter.textScheme === 'light' ? 'text-light' : ''}`}
-					dangerouslySetInnerHTML={{ __html: selectedKillConfirm.name }}
-				/>
-			</>
-		);
-	return (
+	return selectedCharacter.moves && selectedCharacter.moves.length > 1 ? (
 		<div className="move-buttons-wrapper">
 			<div className="btn-group move-buttons">
 				{selectedCharacter.moves.map((move) => (
@@ -29,17 +20,10 @@ const MoveButtons = ({ selectedCharacter, selectedKillConfirm }) => {
 				))}
 			</div>
 		</div>
-	);
-};
-
-const InfoBox = ({ selectedKillConfirm }) => {
-	if (!selectedKillConfirm.specialInfo) return null;
-
-	return (
-		<div
-			className="alert alert-info"
-			role="alert"
-			dangerouslySetInnerHTML={{ __html: selectedKillConfirm.specialInfo }}
+	) : (
+		<h2
+			className={`h6 m-0 font-weight-normal ${selectedCharacter.textScheme === 'light' ? 'text-light' : ''}`}
+			dangerouslySetInnerHTML={{ __html: selectedKillConfirm.name }}
 		/>
 	);
 };
@@ -81,11 +65,11 @@ const Tiles = ({ selectedKillConfirm, filteredKillConfirmCharacters, showAdditio
 										<div className={`item easy ${character.percents.difficultyClass}`}>
 											{character.percents.difficultyText} - {character.percents.percDiff + 1}%
 										</div>
-										{character.percents.distance ? (
+										{character.percents.distance && (
 											<div className="item special-info">{character.percents.distance}</div>
-										) : null}
+										)}
 									</div>
-									{showAdditionalCharacterInfoInGrid ? (
+									{showAdditionalCharacterInfoInGrid && (
 										<>
 											<div className="item-extra grid-additional-info">
 												<span className="font-weight-normal">Fallspeed -</span> {character.fallspeed}
@@ -94,13 +78,13 @@ const Tiles = ({ selectedKillConfirm, filteredKillConfirmCharacters, showAdditio
 												<span className="font-weight-normal">Gravity -</span> {character.gravity}
 											</div>
 										</>
-									) : null}
+									)}
 								</div>
 								<div className="character-name">
 									<h3 className="h6 m-0 text-center">{character.name}</h3>
 								</div>
 
-								{!characterValid ? <div className="text-invalid text-uppercase">N/A - Check Info</div> : null}
+								{!characterValid && <div className="text-invalid text-uppercase">N/A - Check Info</div>}
 							</Link>
 						</div>
 					);
@@ -175,7 +159,7 @@ const CharacterTiles = ({
 
 	return (
 		<>
-			{selectedCharacter ? (
+			{selectedCharacter && (
 				<div
 					className={'d-flex flex-column character-tiles'}
 					style={{
@@ -332,8 +316,16 @@ const CharacterTiles = ({
 								</Dropdown>
 							</div>
 						</div>
-						<InfoBox selectedKillConfirm={selectedKillConfirm} />
-						{hasSelectedCharacter && hasFilteredKillConfirmCharacters ? (
+
+						{selectedKillConfirm.specialInfo && (
+							<div
+								className="alert alert-info"
+								role="alert"
+								dangerouslySetInnerHTML={{ __html: selectedKillConfirm.specialInfo }}
+							/>
+						)}
+
+						{hasSelectedCharacter && hasFilteredKillConfirmCharacters && (
 							<Tiles
 								selectedKillConfirm={selectedKillConfirm}
 								filteredKillConfirmCharacters={filteredKillConfirmCharacters}
@@ -343,12 +335,12 @@ const CharacterTiles = ({
 								setModalShowInfo={setModalShowInfo}
 								sortBy={sortBy}
 							/>
-						) : null}
+						)}
 					</div>
 				</div>
-			) : null}
+			)}
 			<Route path={`${url}/:selectedCharacterModalId`}>
-				{hasSelectedCharacter && hasFilteredKillConfirmCharacters && hasSelectedCharacterModal ? (
+				{hasSelectedCharacter && hasFilteredKillConfirmCharacters && hasSelectedCharacterModal && (
 					<ModalStagePercents
 						url={url}
 						selectedCharacter={selectedCharacter}
@@ -358,12 +350,12 @@ const CharacterTiles = ({
 						setActiveRage={setActiveRage}
 						filteredKillConfirmCharacters={filteredKillConfirmCharacters}
 					/>
-				) : null}
+				)}
 			</Route>
 			<Route exact path={`${url}/info`}>
-				{hasSelectedCharacter ? (
+				{hasSelectedCharacter && (
 					<ModalInfo url={url} selectedCharacter={selectedCharacter} selectedKillConfirm={selectedKillConfirm} />
-				) : null}
+				)}
 			</Route>
 		</>
 	);
