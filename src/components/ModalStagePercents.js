@@ -34,25 +34,17 @@ const ModalStagePercents = (props) => {
 	}, [selectedCharacterModal]);
 
 	const getPrevCharacter = async () => {
-		let counter = 1;
+		const currentCharIndex = filteredKillConfirmCharacters.findIndex((char) => char.id === selectedCharacterModal.id);
+		let newCharIndex = currentCharIndex;
 
 		const result = await new Promise((resolve) => {
 			// keep searching through previous characters until one is found that's valid ie. percDiff is NOT 0
 			const closureLoop = () => {
-				const findPrevCharacter = (i) => {
-					const currentCharIndex = filteredKillConfirmCharacters.findIndex(
-						(char) => char.id === selectedCharacterModal.id
-					);
-					// either get the previous valid character via index or count backwards from the end of the characters array
-					return currentCharIndex !== 0
-						? filteredKillConfirmCharacters[currentCharIndex - i]
-						: filteredKillConfirmCharacters[filteredKillConfirmCharacters.length - 1 + (i - 1)];
-				};
+				newCharIndex = newCharIndex !== 0 ? newCharIndex - 1 : filteredKillConfirmCharacters.length - 1;
+				const prevCharacter = filteredKillConfirmCharacters[newCharIndex];
 
-				const prevCharacter = findPrevCharacter(counter);
 				if (prevCharacter.percents.percDiff === 0) {
-					counter++;
-					return closureLoop(counter);
+					return closureLoop();
 				} else {
 					resolve(prevCharacter);
 				}
@@ -65,25 +57,17 @@ const ModalStagePercents = (props) => {
 	};
 
 	const getNextCharacter = async () => {
-		let counter = 1;
+		const currentCharIndex = filteredKillConfirmCharacters.findIndex((char) => char.id === selectedCharacterModal.id);
+		let newCharIndex = currentCharIndex;
 
 		const result = await new Promise((resolve) => {
+			// either get the next valid character via index or count forwards from the start of the characters array
 			const closureLoop = () => {
-				const findNextCharacter = (i) => {
-					const currentCharIndex = filteredKillConfirmCharacters.findIndex(
-						(char) => char.id === selectedCharacterModal.id
-					);
+				newCharIndex = newCharIndex !== filteredKillConfirmCharacters.length - 1 ? newCharIndex + 1 : 0;
+				const nextCharacter = filteredKillConfirmCharacters[newCharIndex];
 
-					// either get the next valid character via index or count forwards from the start of the characters array
-					return currentCharIndex !== filteredKillConfirmCharacters.length - 1
-						? filteredKillConfirmCharacters[currentCharIndex + i]
-						: filteredKillConfirmCharacters[0 + (i - 1)];
-				};
-
-				const nextCharacter = findNextCharacter(counter);
 				if (nextCharacter.percents.percDiff === 0) {
-					counter++;
-					return closureLoop(counter);
+					return closureLoop();
 				} else {
 					resolve(nextCharacter);
 				}
@@ -132,11 +116,11 @@ const ModalStagePercents = (props) => {
 		>
 			<style>
 				{`
-						.modal-backdrop {
-							--bs-backdrop-bg: rgb(${selectedCharacterModal.charColor});
-							--bs-backdrop-opacity: 0.95;
-						}
-					`}
+					.modal-backdrop {
+						--bs-backdrop-bg: rgb(${selectedCharacterModal.charColor});
+						--bs-backdrop-opacity: 0.95;
+					}
+				`}
 			</style>
 			<button
 				type="button"
@@ -335,8 +319,7 @@ const ModalStagePercents = (props) => {
 			<div
 				className={`legend-keys d-none d-md-flex ${
 					selectedCharacterModal.textScheme === 'dark' ? 'text-dark' : 'text-light'
-				}
-							`}
+				}`}
 			></div>
 		</Modal>
 	);

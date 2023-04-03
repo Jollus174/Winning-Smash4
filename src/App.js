@@ -321,7 +321,7 @@ function App() {
 							const characterModalToSet = updatedKillConfirmData.characters.find(
 								(kcCharacter) => kcCharacter.id === selectedCharacterModal
 							);
-							if (!characterModalToSet) {
+							if (!characterModalToSet && selectedCharacterModal !== 'info') {
 								updatedSelections.selectedCharacterModalValid = false;
 							} else {
 								updatedSelections.selectedCharacterModalValid = true;

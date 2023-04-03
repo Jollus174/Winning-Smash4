@@ -6,7 +6,7 @@ const Sidebar = ({ loading, killConfirms, selectedCharacter, selectedKillConfirm
 		<nav id="sidebar">
 			<div className="sidebar-header">
 				<Link to="/">
-					<img className="img-fluid" src="/images/logo-winning-at-smash4.png" alt="Winning a Smash 4 logo" />
+					<img className="img-fluid" src="/images/logo-winning-at-smash4.png" alt="Winning at Smash 4 logo" />
 				</Link>
 			</div>
 			{loading ? (
