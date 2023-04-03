@@ -10,11 +10,9 @@ const ModalInfo = ({ url, selectedCharacter, selectedKillConfirm }) => {
 	const { info } = selectedKillConfirm;
 
 	return (
-		// TODO: set up the aria- stuff since these modals will have slightly different content each time
-		// https://getbootstrap.com/docs/5.2/components/modal/#varying-modal-content
 		<Modal
 			className="modal modal-info"
-			aria-labelledby=""
+			aria-labelledby="#modal-info-title"
 			show={true}
 			onHide={handleModalHide}
 			centered={true}
@@ -28,6 +26,9 @@ const ModalInfo = ({ url, selectedCharacter, selectedKillConfirm }) => {
 				</svg>
 			</button>
 			<div className="modal-body">
+				<h2 id="modal-info-title" className="visually-hidden">
+					{selectedCharacter.name} <span dangerouslySetInnerHTML={{ __html: selectedKillConfirm.name }} /> - Info
+				</h2>
 				{info.giphy.youtubeUrl ? (
 					<a href={info.giphy.youtubeUrl} target="_blank" rel="noreferrer">
 						<div className="ratio ratio-16x9 mb-3">
