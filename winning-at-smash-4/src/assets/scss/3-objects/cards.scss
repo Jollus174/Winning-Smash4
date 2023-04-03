@@ -1,0 +1,44 @@
+.card {
+	height: 100%;
+	overflow: hidden;
+
+	.card-image {
+		position: relative;
+		padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
+		background-color: var(--card-image-bg-color, $white);
+
+		img {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: none;
+			opacity: 0.5;
+
+			@include media-breakpoint-up(md) {
+				object-position: right;
+			}
+		}
+	}
+
+	.card-body {
+		.btn-group {
+			flex-wrap: wrap;
+		}
+	}
+
+	.btn {
+		--btn-active-darken: 0.2;
+		font-weight: 700;
+	}
+}
+
+.card-title {
+	position: relative;
+	z-index: 1;
+
+	.card-light & {
+		color: $white;
+	}
+}

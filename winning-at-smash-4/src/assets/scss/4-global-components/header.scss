@@ -1,0 +1,51 @@
+.header {
+	background-color: $orange;
+	padding: 0.5rem 1rem;
+	gap: 1rem;
+
+	* {
+		margin: 0;
+	}
+
+	.title {
+		width: 100%;
+		font-weight: 400;
+	}
+
+	.nav {
+		margin-left: auto;
+
+		.nav-links {
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+		}
+
+		.nav-links {
+			a,
+			.btn {
+				color: $white;
+				padding: 0;
+				text-decoration: underline;
+				text-decoration-color: transparent;
+				box-shadow: none;
+				white-space: nowrap;
+				transition: text-decoration-color 0.2s ease;
+
+				&:hover,
+				&:focus-visible {
+					text-decoration-color: $white;
+				}
+			}
+		}
+	}
+
+	.btn-secondary {
+		padding: 0.2rem 0.5rem;
+		color: $white;
+
+		&::after {
+			display: none;
+		}
+	}
+}

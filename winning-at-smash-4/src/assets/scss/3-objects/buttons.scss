@@ -1,0 +1,77 @@
+.btn {
+	svg {
+		.pathfill {
+			fill: currentColor;
+		}
+	}
+}
+
+.btn-primary {
+	--bs-btn-bg: rgb(var(--btn-bg, --bs-primary-rgb));
+	--bs-btn-hover-bg: var(--bs-btn-bg);
+	--bs-btn-active-bg: var(--bs-btn-bg);
+	--bs-btn-focus-shadow-rgb: var(--btn-bg);
+	--bs-btn-border-width: 0;
+	position: relative;
+	overflow: hidden;
+
+	--btn-darken: 0;
+	--btn-darken-hover: 0.2;
+	--btn-darken-active: 0.3;
+	--btn-active-darken: 0.1;
+
+	span,
+	i {
+		position: relative;
+		z-index: 1;
+	}
+
+	&.active {
+		&::after {
+			background-color: rgba($black, var(--btn-active-darken));
+		}
+	}
+
+	&:hover,
+	&:focus-visible {
+		&::after {
+			background-color: rgba($black, var(--btn-darken-hover));
+		}
+	}
+
+	&:active {
+		&::after {
+			background-color: rgba($black, var(--btn-darken-active));
+		}
+	}
+
+	&::after {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		border: 0;
+		background-color: rgba($black, var(--btn-darken));
+		pointer-events: none;
+		transition: background-color 0.2s ease;
+	}
+}
+
+.btn-secondary {
+	--bs-btn-bg: transparent;
+	--bs-btn-border-color: #{transparentize($black, 0.9)};
+	--bs-btn-border-width: 1px;
+	--bs-btn-color: #{transparentize($black, 0.5)};
+	--bs-btn-hover-bg: #{transparentize($white, 0.9)};
+	--bs-btn-hover-border-color: var(--bs-btn-border-color);
+	--bs-btn-active-bg: #{transparentize($white, 0.8)};
+	--bs-btn-active-border-color: var(--bs-btn-border-color);
+}
+
+.btn-group {
+	display: flex;
+	gap: 8px;
+}

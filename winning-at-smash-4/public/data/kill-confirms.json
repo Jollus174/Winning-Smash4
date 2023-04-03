@@ -1,0 +1,1325 @@
+[
+	{
+		"index": 0,
+		"name": "Bowser",
+		"id": "bowser",
+		"btnColor": "35, 82, 64",
+		"cardColor": "50, 118, 92",
+		"textScheme": "light",
+		"moves": [
+			{
+				"index": 0,
+				"name": "Up Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air",
+				"id": "up-throw-up-air",
+
+				"info": {
+					"text": [
+						"Bowser's kill confirm is known as the <strong>Koo-Pah</strong>, <strong>Bow-Wow</strong>, or <strong>Show Time</strong>. An Up Throw from Bowser will true combo into his Up Air between certain percents and will kill the victim regardless of DI.",
+						"If the victim has no DI or DI's the throw in, the move min-% kill threshold will increase to <em>1-5% earlier</em>.",
+						"If they have no DI or DI the throw out, the max-% kill threshold will increase to <em>1-4% later</em>.",
+						"The calculator assumes the victim is DI-ing the move optimally, with them <strong>DI-ing out the Up Throw</strong>, and <strong>DI-ing away the Up Air</strong>."
+					],
+					"giphy": {
+						"giphyUrl": "https://giphy.com/embed/3oFzm4XhnWq9vSZtIc",
+						"youtubeUrl": "https://www.youtube.com/watch?v=W3sgCRc13sk"
+					},
+					"spreadsheetLink": "https://docs.google.com/spreadsheets/d/1bGbb7fiX1W0Oer58yf6Kcwtx_zgxg--WYGrUpxTjRpk",
+					"spreadsheetMethod": "",
+					"creditLink": "https://twitter.com/TheVonDk",
+					"creditName": "Poke"
+				},
+
+				"specialInfo": "",
+
+				"rageModifiers": [
+					{ "id": "rage0", "amount": 0, "start": 0, "end": 0 },
+					{ "id": "rage50", "amount": 50, "start": -2, "end": -6 },
+					{ "id": "rage60", "amount": 60, "start": -4, "end": -8 },
+					{ "id": "rage80", "amount": 80, "start": -8, "end": -12 },
+					{ "id": "rage100", "amount": 100, "start": -12, "end": -16 },
+					{ "id": "rage125", "amount": 125, "start": -17, "end": -22 },
+					{ "id": "rage150", "amount": 150, "start": -19, "end": -25 }
+				],
+
+				"stageList": [
+					{
+						"id": "fd-normal",
+						"name": "FD Normal",
+						"stagePositionModifier": 0
+					},
+					{
+						"id": "bf-normal",
+						"name": "BF Normal",
+						"stagePositionModifier": 4
+					},
+					{
+						"id": "bf-low-platform",
+						"name": "BF Low Plat",
+						"stagePositionModifier": -5
+					},
+					{
+						"id": "bf-top-platform",
+						"name": "BF Top Plat",
+						"stagePositionModifier": -15
+					},
+					{
+						"id": "dl-normal",
+						"name": "DL Normal",
+						"stagePositionModifier": 0
+					},
+					{
+						"id": "dl-low-platform",
+						"name": "DL Low Plat",
+						"stagePositionModifier": -13
+					},
+					{
+						"id": "dl-top-platform",
+						"name": "DL Top Plat",
+						"stagePositionModifier": -23
+					},
+					{
+						"id": "sv-normal",
+						"name": "SV Normal",
+						"stagePositionModifier": 1
+					},
+					{
+						"id": "sv-platform",
+						"name": "SV Plat",
+						"stagePositionModifier": -12
+					},
+
+					{
+						"id": "tc-normal",
+						"name": "TC Normal",
+						"stagePositionModifier": -4
+					},
+					{
+						"id": "tc-low-platform",
+						"name": "TC Low Plat",
+						"stagePositionModifier": -22
+					},
+					{
+						"id": "tc-side-platform",
+						"name": "TC Side Plat",
+						"stagePositionModifier": -27
+					},
+					{
+						"id": "tc-top-platform",
+						"name": "TC Top Plat",
+						"stagePositionModifier": -39
+					}
+				],
+
+				"characters": [
+					{ "id": "bayonetta", "start": 85, "end": 107 },
+					{ "id": "bowser", "start": 100, "end": 116 },
+					{ "id": "bowser-jr", "start": 97, "end": 125 },
+					{ "id": "captain-falcon", "start": 97, "end": 130 },
+					{ "id": "charizard", "start": 92, "end": 111 },
+					{ "id": "cloud", "start": 93, "end": 114 },
+					{ "id": "cloud-limit", "start": 96, "end": 118 },
+					{ "id": "corrin", "start": 91, "end": 116 },
+					{ "id": "dark-pit", "start": 87, "end": 103 },
+					{ "id": "diddy-kong", "start": 89, "end": 110 },
+					{ "id": "donkey-kong", "start": 106, "end": 132 },
+					{ "id": "dr-mario", "start": 89, "end": 104 },
+					{ "id": "duck-hunt", "start": 89, "end": 102 },
+					{ "id": "falco", "start": 83, "end": 100 },
+					{ "id": "fox", "start": 80, "end": 100 },
+					{ "id": "ganondorf", "start": 90, "end": 127 },
+					{ "id": "game-and-watch", "start": 71, "end": 84 },
+					{ "id": "greninja", "start": 83, "end": 100 },
+					{ "id": "ike", "start": 96, "end": 122 },
+					{ "id": "jigglypuff", "start": 66, "end": 80 },
+					{ "id": "king-dedede", "start": 110, "end": 139 },
+					{ "id": "kirby", "start": 75, "end": 94 },
+					{ "id": "link", "start": 93, "end": 112 },
+					{ "id": "little-mac", "start": 87, "end": 106 },
+					{ "id": "lucario", "start": 93, "end": 113 },
+					{ "id": "lucas", "start": 83, "end": 97 },
+					{ "id": "lucina", "start": 87, "end": 105 },
+					{ "id": "luigi", "start": 84, "end": 95 },
+					{ "id": "mario", "start": 89, "end": 104 },
+					{ "id": "marth", "start": 87, "end": 105 },
+					{ "id": "mega-man", "start": 95, "end": 113 },
+					{ "id": "meta-knight", "start": 78, "end": 97 },
+					{ "id": "mewtwo", "start": 76, "end": 96 },
+					{ "id": "mii-brawler", "start": 88, "end": 109 },
+					{ "id": "mii-gunner", "start": 85, "end": 98 },
+					{ "id": "mii-swordfighter", "start": 87, "end": 98 },
+					{ "id": "ness", "start": 83, "end": 98 },
+					{ "id": "olimar", "start": 77, "end": 88 },
+					{ "id": "pacman", "start": 85, "end": 95 },
+					{ "id": "palutena", "start": 81, "end": 100 },
+					{ "id": "peach", "start": 79, "end": 90 },
+					{ "id": "pikachu", "start": 77, "end": 92 },
+					{ "id": "pit", "start": 87, "end": 103 },
+					{ "id": "rob", "start": 94, "end": 115 },
+					{ "id": "robin", "start": 87, "end": 106 },
+					{ "id": "rosalina-and-luma", "start": 73, "end": 85 },
+					{ "id": "roy", "start": 92, "end": 114 },
+					{ "id": "ryu", "start": 91, "end": 111 },
+					{ "id": "samus", "start": 91, "end": 109 },
+					{ "id": "sheik", "start": 79, "end": 99 },
+					{ "id": "shulk", "start": 91, "end": 114 },
+					{ "id": "shulk-buster", "start": 90, "end": 113 },
+					{ "id": "shulk-jump", "start": 92, "end": 122 },
+					{ "id": "shulk-shield", "start": 147, "end": 184 },
+					{ "id": "shulk-smash", "start": 79, "end": 99 },
+					{ "id": "sonic", "start": 86, "end": 100 },
+					{ "id": "toon-link", "start": 82, "end": 91 },
+					{ "id": "villager", "start": 85, "end": 94 },
+					{ "id": "wario", "start": 93, "end": 109 },
+					{ "id": "wii-fit-trainer", "start": 82, "end": 98 },
+					{ "id": "yoshi", "start": 87, "end": 99 },
+					{ "id": "zelda", "start": 79, "end": 96 },
+					{ "id": "zero-suit-samus", "start": 82, "end": 105 }
+				]
+			}
+		]
+	},
+	{
+		"index": 1,
+		"name": "Donkey Kong",
+		"id": "donkey-kong",
+		"btnColor": "203, 174, 0",
+		"cardColor": "254, 218, 0",
+		"textScheme": "dark",
+		"moves": [
+			{
+				"index": 0,
+				"name": "Cargo Up Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air",
+				"id": "cargo-up-throw-up-air",
+
+				"info": {
+					"text": [
+						"This confirm is known among Donkey Kong specialists as <strong>Aerial Cargo Up Throw Up Air (ACUT)</strong>, the <strong>DKO</strong>, or to most Western players as the <strong>Ding Dong</strong>.",
+						"DK's cargo Up Throw sends the opponent at 92 degrees and Up Air sends the opponent at 90 degrees, so there isn't a favourable way to DI, especially since DK swings his head in an arc with his Up Air.",
+						"However, if you're slightly above your KO range, make sure NOT TO DI the Cargo up toss. The reason is that DI-ing Cargo up toss to the left / right takes away slightly from the vertical component, so you remain closer to DK than you should, and this will allow him to KO you at fraudulent %'s.",
+						"Poke's chart assumes that you DI the cargo toss and the Up Air at min-%'s, and that you <i>do not DI</i> the cargo toss at max-%'s. So if you DI the cargo toss at max-%, <strong>you effectively increase your KO range.</strong>"
+					],
+					"giphy": {
+						"giphyUrl": "https://giphy.com/embed/xT1R9YAchWK3aiJAhq",
+						"youtubeUrl": "https://www.youtube.com/watch?v=JlcIN-MKGCk"
+					},
+					"spreadsheetLink": "https://docs.google.com/spreadsheets/d/1OvUy2gsTrUj96cAHSkSIZHGnUaaS-UrX6SdFKyctNmU",
+					"spreadsheetMethod": "",
+					"creditLink": "https://twitter.com/TheVonDk",
+					"creditName": "Poke"
+				},
+
+				"specialInfo": "",
+
+				"rageModifiers": [
+					{ "id": "rage0", "amount": 0, "start": 0, "end": 0 },
+					{ "id": "rage50", "amount": 50, "start": -2, "end": -5 },
+					{ "id": "rage60", "amount": 60, "start": -5, "end": -9 },
+					{ "id": "rage80", "amount": 80, "start": -9, "end": -16 },
+					{ "id": "rage100", "amount": 100, "start": -12, "end": -22 },
+					{ "id": "rage125", "amount": 125, "start": -14, "end": -27 },
+					{ "id": "rage150", "amount": 150, "start": -18, "end": -33 }
+				],
+
+				"stageList": [
+					{
+						"id": "fd-normal",
+						"name": "FD Normal",
+						"stagePositionModifier": 0
+					},
+					{
+						"id": "bf-normal",
+						"name": "BF Normal",
+						"stagePositionModifier": 7
+					},
+					{
+						"id": "bf-low-platform",
+						"name": "BF Low Plat",
+						"stagePositionModifier": -7
+					},
+					{
+						"id": "bf-top-platform",
+						"name": "BF Top Plat",
+						"stagePositionModifier": -20
+					},
+					{
+						"id": "dl-normal",
+						"name": "DL Normal",
+						"stagePositionModifier": 0
+					},
+					{
+						"id": "dl-low-platform",
+						"name": "DL Low Plat",
+						"stagePositionModifier": -15
+					},
+					{
+						"id": "dl-top-platform",
+						"name": "DL Top Plat",
+						"stagePositionModifier": -26
+					},
+					{
+						"id": "sv-normal",
+						"name": "SV Normal",
+						"stagePositionModifier": 1
+					},
+					{
+						"id": "sv-platform",
+						"name": "SV Plat",
+						"stagePositionModifier": -14
+					},
+
+					{
+						"id": "tc-normal",
+						"name": "TC Normal",
+						"stagePositionModifier": -4
+					},
+					{
+						"id": "tc-low-platform",
+						"name": "TC Low Plat",
+						"stagePositionModifier": -20
+					},
+					{
+						"id": "tc-side-platform",
+						"name": "TC Side Plat",
+						"stagePositionModifier": -25
+					},
+					{
+						"id": "tc-top-platform",
+						"name": "TC Top Plat",
+						"stagePositionModifier": -41
+					}
+				],
+
+				"characters": [
+					{ "id": "bayonetta", "start": 72, "end": 104 },
+					{ "id": "bowser", "start": 84, "end": 96 },
+					{ "id": "bowser-jr", "start": 79, "end": 111 },
+					{ "id": "captain-falcon", "start": 85, "end": 116 },
+					{ "id": "charizard", "start": 76, "end": 90 },
+					{ "id": "cloud", "start": 78, "end": 103 },
+					{ "id": "cloud-limit", "start": 79, "end": 107 },
+					{ "id": "corrin", "start": 76, "end": 96 },
+					{ "id": "dark-pit", "start": 72, "end": 91 },
+					{ "id": "diddy-kong", "start": 75, "end": 96 },
+					{ "id": "donkey-kong", "start": 88, "end": 113 },
+					{ "id": "dr-mario", "start": 74, "end": 89 },
+					{ "id": "duck-hunt", "start": 74, "end": 90 },
+					{ "id": "falco", "start": 69, "end": 88 },
+					{ "id": "fox", "start": 67, "end": 89 },
+					{ "id": "game-and-watch", "start": 58, "end": 67 },
+					{ "id": "ganondorf", "start": 83, "end": 111 },
+					{ "id": "greninja", "start": 68, "end": 89 },
+					{ "id": "ike", "start": 82, "end": 107 },
+					{ "id": "jigglypuff", "start": 56, "end": 65 },
+					{ "id": "king-dedede", "start": 91, "end": 121 },
+					{ "id": "kirby", "start": 62, "end": 75 },
+					{ "id": "link", "start": 78, "end": 95 },
+					{ "id": "little-mac", "start": 73, "end": 95 },
+					{ "id": "lucario", "start": 79, "end": 105 },
+					{ "id": "lucas", "start": 69, "end": 81 },
+					{ "id": "lucina", "start": 73, "end": 91 },
+					{ "id": "luigi", "start": 70, "end": 77 },
+					{ "id": "mario", "start": 74, "end": 89 },
+					{ "id": "marth", "start": 73, "end": 91 },
+					{ "id": "mega-man", "start": 81, "end": 100 },
+					{ "id": "meta-knight", "start": 66, "end": 85 },
+					{ "id": "mewtwo", "start": 64, "end": 86 },
+					{ "id": "mii-brawler", "start": 74, "end": 95 },
+					{ "id": "mii-gunner", "start": 73, "end": 85 },
+					{ "id": "mii-swordfighter", "start": 76, "end": 86 },
+					{ "id": "ness", "start": 69, "end": 83 },
+					{ "id": "olimar", "start": 64, "end": 73 },
+					{ "id": "pacman", "start": 69, "end": 80 },
+					{ "id": "palutena", "start": 68, "end": 83 },
+					{ "id": "peach", "start": 66, "end": 72 },
+					{ "id": "pikachu", "start": 64, "end": 75 },
+					{ "id": "pit", "start": 72, "end": 91 },
+					{ "id": "rob", "start": 80, "end": 98 },
+					{ "id": "robin", "start": 73, "end": 91 },
+					{ "id": "rosalina-and-luma", "start": 63, "end": 71 },
+					{ "id": "roy", "start": 77, "end": 99 },
+					{ "id": "ryu", "start": 77, "end": 99 },
+					{ "id": "samus", "start": 76, "end": 93 },
+					{ "id": "sheik", "start": 65, "end": 90 },
+					{ "id": "shulk", "start": 76, "end": 96 },
+					{ "id": "shulk-buster", "start": 76, "end": 89 },
+					{ "id": "shulk-jump", "start": 76, "end": 105 },
+					{ "id": "shulk-shield", "start": 134, "end": 176 },
+					{ "id": "shulk-smash", "start": 67, "end": 80 },
+					{ "id": "sonic", "start": 71, "end": 86 },
+					{ "id": "toon-link", "start": 69, "end": 72 },
+					{ "id": "villager", "start": 71, "end": 78 },
+					{ "id": "wario", "start": 78, "end": 96 },
+					{ "id": "wii-fit-trainer", "start": 69, "end": 84 },
+					{ "id": "yoshi", "start": 72, "end": 83 },
+					{ "id": "zelda", "start": 66, "end": 79 },
+					{ "id": "zero-suit-samus", "start": 67, "end": 93 }
+				]
+			}
+		]
+	},
+	{
+		"index": 2,
+		"name": "Lucas",
+		"id": "lucas",
+		"btnColor": "203, 74, 13",
+		"cardColor": "240, 95, 27",
+		"textScheme": "light",
+		"moves": [
+			{
+				"index": 0,
+				"name": "Down Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air",
+				"id": "down-throw-up-air",
+
+				"info": {
+					"text": [
+						"This kill confirm consists of a Down Throw, which Lucas can follow-up with an Up Air to kill. It's sometimes known as the <strong>Snake &amp; Bake</strong> or <strong>PK Hoo-Hah</strong>, after Diddy Kong's pre-patch Up Air confirm.",
+						"If the victim has no DI or DI's the throw in, the move min-% kill threshold will increase to <em>1-3% earlier</em>, with the max-% unaffected.",
+						"If they have no DI or DI the Down Throw or Up Air out, the max-% kill threshold will increase to <em>1-10% later</em>, with the min-% unaffected.",
+						"The calculator assumes the victim is DI-ing the move optimally, with them <strong>DI-ing out the Down Throw</strong>, and <strong>DI-ing out the Up Air</strong>."
+					],
+					"giphy": {
+						"giphyUrl": "https://giphy.com/embed/3ohc0PUZMNWWHEWKmA",
+						"youtubeUrl": "https://www.youtube.com/watch?v=QP2hMnR66eg"
+					},
+					"spreadsheetLink": "https://docs.google.com/spreadsheets/d/1VNYNt0JFe7ak02Db_Ds1Y1QdoK7muOaPSqqd0c5JOUs",
+					"spreadsheetMethod": "",
+					"creditLink": "https://twitter.com/Tihit212",
+					"creditName": "Taiheta"
+				},
+
+				"specialInfo": "",
+
+				"rageModifiers": [
+					{ "id": "rage0", "amount": 0, "start": 0, "end": 0 },
+					{ "id": "rage50", "amount": 50, "start": -5, "end": -9 },
+					{ "id": "rage60", "amount": 60, "start": -8, "end": -18 },
+					{ "id": "rage80", "amount": 80, "start": -13, "end": -28 },
+					{ "id": "rage100", "amount": 100, "start": -17, "end": -36 },
+					{ "id": "rage125", "amount": 125, "start": -22, "end": -48 },
+					{ "id": "rage150", "amount": 150, "start": -28, "end": -62 }
+				],
+
+				"stageList": [
+					{
+						"id": "fd-normal",
+						"name": "FD Normal",
+						"stagePositionModifier": 0
+					},
+					{
+						"id": "bf-normal",
+						"name": "BF Normal",
+						"stagePositionModifier": 4
+					},
+					{
+						"id": "bf-low-platform",
+						"name": "BF Low Plat",
+						"stagePositionModifier": -5
+					},
+					{
+						"id": "bf-top-platform",
+						"name": "BF Top Plat",
+						"stagePositionModifier": -15
+					},
+					{
+						"id": "dl-normal",
+						"name": "DL Normal",
+						"stagePositionModifier": 0
+					},
+					{
+						"id": "dl-low-platform",
+						"name": "DL Low Plat",
+						"stagePositionModifier": -9
+					},
+					{
+						"id": "dl-top-platform",
+						"name": "DL Top Plat",
+						"stagePositionModifier": -24
+					},
+					{
+						"id": "sv-normal",
+						"name": "SV Normal",
+						"stagePositionModifier": 1
+					},
+					{
+						"id": "sv-platform",
+						"name": "SV Plat",
+						"stagePositionModifier": -11
+					},
+
+					{
+						"id": "tc-normal",
+						"name": "TC Normal",
+						"stagePositionModifier": -4
+					},
+					{
+						"id": "tc-low-platform",
+						"name": "TC Low Plat",
+						"stagePositionModifier": -17
+					},
+					{
+						"id": "tc-side-platform",
+						"name": "TC Side Plat",
+						"stagePositionModifier": -26
+					},
+					{
+						"id": "tc-top-platform",
+						"name": "TC Top Plat",
+						"stagePositionModifier": -35
+					}
+				],
+
+				"characters": [
+					{ "id": "bayonetta", "start": 106, "end": 149 },
+					{ "id": "bowser", "start": 127, "end": 163 },
+					{ "id": "bowser-jr", "start": 116, "end": 166 },
+					{ "id": "captain-falcon", "start": 121, "end": 178 },
+					{ "id": "charizard", "start": 118, "end": 152 },
+					{ "id": "cloud", "start": 117, "end": 151 },
+					{ "id": "cloud-limit", "start": 120, "end": 161 },
+					{ "id": "corrin", "start": 114, "end": 160 },
+					{ "id": "dark-pit", "start": 111, "end": 150 },
+					{ "id": "diddy-kong", "start": 112, "end": 154 },
+					{ "id": "donkey-kong", "start": 129, "end": 179 },
+					{ "id": "dr-mario", "start": 112, "end": 149 },
+					{ "id": "duck-hunt", "start": 112, "end": 150 },
+					{ "id": "falco", "start": 104, "end": 144 },
+					{ "id": "fox", "start": 101, "end": 145 },
+					{ "id": "ganondorf", "start": 121, "end": 163 },
+					{ "id": "game-and-watch", "start": 92, "end": 121 },
+					{ "id": "greninja", "start": 105, "end": 144 },
+					{ "id": "ike", "start": 121, "end": 164 },
+					{ "id": "jigglypuff", "start": 85, "end": 102 },
+					{ "id": "king-dedede", "start": 136, "end": 191 },
+					{ "id": "kirby", "start": 95, "end": 123 },
+					{ "id": "link", "start": 116, "end": 158 },
+					{ "id": "little-mac", "start": 108, "end": 159 },
+					{ "id": "lucario", "start": 117, "end": 158 },
+					{ "id": "lucas", "start": 106, "end": 141 },
+					{ "id": "lucina", "start": 110, "end": 155 },
+					{ "id": "luigi", "start": 107, "end": 131 },
+					{ "id": "mario", "start": 112, "end": 149 },
+					{ "id": "marth", "start": 110, "end": 155 },
+					{ "id": "mega-man", "start": 121, "end": 175 },
+					{ "id": "meta-knight", "start": 100, "end": 145 },
+					{ "id": "mewtwo", "start": 96, "end": 132 },
+					{ "id": "mii-brawler", "start": 0, "end": 0 },
+					{ "id": "mii-gunner", "start": 0, "end": 0 },
+					{ "id": "mii-swordfighter", "start": 0, "end": 0 },
+					{ "id": "ness", "start": 106, "end": 138 },
+					{ "id": "olimar", "start": 99, "end": 130 },
+					{ "id": "pacman", "start": 108, "end": 139 },
+					{ "id": "palutena", "start": 103, "end": 134 },
+					{ "id": "peach", "start": 101, "end": 126 },
+					{ "id": "pikachu", "start": 99, "end": 134 },
+					{ "id": "pit", "start": 111, "end": 150 },
+					{ "id": "rob", "start": 119, "end": 167 },
+					{ "id": "robin", "start": 110, "end": 154 },
+					{ "id": "rosalina-and-luma", "start": 94, "end": 125 },
+					{ "id": "roy", "start": 115, "end": 167 },
+					{ "id": "ryu", "start": 114, "end": 162 },
+					{ "id": "samus", "start": 115, "end": 150 },
+					{ "id": "sheik", "start": 99, "end": 136 },
+					{ "id": "shulk", "start": 115, "end": 156 },
+					{ "id": "shulk-buster", "start": 112, "end": 154 },
+					{ "id": "shulk-jump", "start": 117, "end": 175 },
+					{ "id": "shulk-shield", "start": 175, "end": 281 },
+					{ "id": "shulk-smash", "start": 101, "end": 125 },
+					{ "id": "sonic", "start": 108, "end": 139 },
+					{ "id": "toon-link", "start": 105, "end": 136 },
+					{ "id": "villager", "start": 109, "end": 134 },
+					{ "id": "wario", "start": 119, "end": 163 },
+					{ "id": "wii-fit-trainer", "start": 106, "end": 133 },
+					{ "id": "yoshi", "start": 111, "end": 141 },
+					{ "id": "zelda", "start": 102, "end": 132 },
+					{ "id": "zero-suit-samus", "start": 103, "end": 141 }
+				]
+			}
+		]
+	},
+
+	{
+		"index": 3,
+		"name": "Mr. Game & Watch",
+		"id": "game-and-watch",
+		"btnColor": "112, 111, 106",
+		"cardColor": "138, 137, 131",
+		"textScheme": "light",
+		"moves": [
+			{
+				"index": 0,
+				"name": "Down Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air",
+				"id": "down-throw-up-air",
+
+				"info": {
+					"text": [
+						"Mr. Game & Watch's <strong>Toot Toot</strong> kill confirm is complex, as it consists of a Down Throw and then Up Throw multi-hit, both hits of which can be DI'd.",
+						"If the victim has no DI or DI's the throw in, the move min-% kill threshold will increase to <em>1-5% earlier</em>.",
+						"If they have no DI or DI the throw out, the max-% kill threshold will increase to <em>1-10% later</em>.",
+						"The calculator assumes that the victim is DI-ing the move optimally, with them <strong>DI-ing out the Down Throw</strong>, and <strong>DI-ing out both hits of the up air</strong>."
+					],
+					"giphy": {
+						"giphyUrl": "https://giphy.com/embed/xULW8n9ACGvGXbE3ok",
+						"youtubeUrl": "https://www.youtube.com/watch?v=AXeykQaviE4"
+					},
+					"spreadsheetLink": "https://docs.google.com/spreadsheets/d/1AxpLDkDltkjAND819JrbgfIgPH_pjkeFPhjpzXPDgP0/",
+					"spreadsheetMethod": "",
+					"creditLink": "https://twitter.com/houseoffastfood",
+					"creditName": "Mickey"
+				},
+
+				"specialInfo": "",
+
+				"rageModifiers": [
+					{ "id": "rage0", "amount": 0, "start": 0, "end": 0 },
+					{ "id": "rage50", "amount": 50, "start": -6, "end": -6 },
+					{ "id": "rage60", "amount": 60, "start": -8, "end": -9 },
+					{ "id": "rage80", "amount": 80, "start": -14, "end": -15 },
+					{ "id": "rage100", "amount": 100, "start": -18, "end": -20 },
+					{ "id": "rage125", "amount": 125, "start": -23, "end": -25 },
+					{ "id": "rage150", "amount": 150, "start": -30, "end": -32 }
+				],
+
+				"stageList": [
+					{
+						"id": "fd-normal",
+						"name": "FD Normal",
+						"stagePositionModifier": 0
+					},
+					{
+						"id": "bf-normal",
+						"name": "BF Normal",
+						"stagePositionModifier": 6
+					},
+					{
+						"id": "bf-low-platform",
+						"name": "BF Low Plat",
+						"stagePositionModifier": -5
+					},
+					{
+						"id": "bf-top-platform",
+						"name": "BF Top Plat",
+						"stagePositionModifier": -14
+					},
+					{
+						"id": "dl-normal",
+						"name": "DL Normal",
+						"stagePositionModifier": 0
+					},
+					{
+						"id": "dl-low-platform",
+						"name": "DL Low Plat",
+						"stagePositionModifier": -11
+					},
+					{
+						"id": "dl-top-platform",
+						"name": "DL Top Plat",
+						"stagePositionModifier": -23
+					},
+					{
+						"id": "sv-normal",
+						"name": "SV Normal",
+						"stagePositionModifier": 1
+					},
+					{
+						"id": "sv-platform",
+						"name": "SV Plat",
+						"stagePositionModifier": -11
+					},
+
+					{
+						"id": "tc-normal",
+						"name": "TC Normal",
+						"stagePositionModifier": -2
+					},
+					{
+						"id": "tc-low-platform",
+						"name": "TC Low Plat",
+						"stagePositionModifier": -13
+					},
+					{
+						"id": "tc-side-platform",
+						"name": "TC Side Plat",
+						"stagePositionModifier": -22
+					},
+					{
+						"id": "tc-top-platform",
+						"name": "TC Top Plat",
+						"stagePositionModifier": -33
+					}
+				],
+
+				"characters": [
+					{ "id": "bayonetta", "start": 96, "end": 105 },
+					{ "id": "bowser", "start": 111, "end": 116 },
+					{ "id": "bowser-jr", "start": 104, "end": 123 },
+					{ "id": "captain-falcon", "start": 111, "end": 124 },
+					{ "id": "charizard", "start": 103, "end": 109 },
+					{ "id": "cloud", "start": 105, "end": 111 },
+					{ "id": "cloud-limit", "start": 109, "end": 121 },
+					{ "id": "corrin", "start": 102, "end": 117 },
+					{ "id": "dark-pit", "start": 97, "end": 111 },
+					{ "id": "diddy-kong", "start": 101, "end": 115 },
+					{ "id": "donkey-kong", "start": 114, "end": 121 },
+					{ "id": "dr-mario", "start": 98, "end": 109 },
+					{ "id": "duck-hunt", "start": 99, "end": 108 },
+					{ "id": "falco", "start": 94, "end": 107 },
+					{ "id": "fox", "start": 94, "end": 105 },
+					{ "id": "game-and-watch", "start": 79, "end": 91 },
+					{ "id": "ganondorf", "start": 109, "end": 116 },
+					{ "id": "greninja", "start": 96, "end": 113 },
+					{ "id": "ike", "start": 108, "end": 120 },
+					{ "id": "jigglypuff", "start": 73, "end": 81 },
+					{ "id": "king-dedede", "start": 123, "end": 142 },
+					{ "id": "kirby", "start": 83, "end": 91 },
+					{ "id": "link", "start": 104, "end": 116 },
+					{ "id": "little-mac", "start": 97, "end": 110 },
+					{ "id": "lucario", "start": 105, "end": 115 },
+					{ "id": "lucas", "start": 92, "end": 101 },
+					{ "id": "lucina", "start": 96, "end": 104 },
+					{ "id": "luigi", "start": 92, "end": 98 },
+					{ "id": "mario", "start": 98, "end": 107 },
+					{ "id": "marth", "start": 96, "end": 104 },
+					{ "id": "mega-man", "start": 108, "end": 116 },
+					{ "id": "meta-knight", "start": 88, "end": 101 },
+					{ "id": "mewtwo", "start": 86, "end": 101 },
+					{ "id": "mii-brawler", "start": 104, "end": 116 },
+					{ "id": "mii-gunner", "start": 97, "end": 104 },
+					{ "id": "mii-swordfighter", "start": 100, "end": 110 },
+					{ "id": "ness", "start": 92, "end": 96 },
+					{ "id": "olimar", "start": 85, "end": 88 },
+					{ "id": "pacman", "start": 93, "end": 96 },
+					{ "id": "palutena", "start": 91, "end": 103 },
+					{ "id": "peach", "start": 87, "end": 90 },
+					{ "id": "pikachu", "start": 86, "end": 102 },
+					{ "id": "pit", "start": 97, "end": 111 },
+					{ "id": "rob", "start": 105, "end": 113 },
+					{ "id": "robin", "start": 95, "end": 109 },
+					{ "id": "rosalina-and-luma", "start": 81, "end": 83 },
+					{ "id": "roy", "start": 104, "end": 119 },
+					{ "id": "ryu", "start": 103, "end": 118 },
+					{ "id": "samus", "start": 101, "end": 102 },
+					{ "id": "sheik", "start": 89, "end": 106 },
+					{ "id": "shulk", "start": 102, "end": 112 },
+					{ "id": "shulk-buster", "start": 100, "end": 114 },
+					{ "id": "shulk-jump", "start": 105, "end": 123 },
+					{ "id": "shulk-shield", "start": 168, "end": 178 },
+					{ "id": "shulk-smash", "start": 87, "end": 98 },
+					{ "id": "sonic", "start": 96, "end": 105 },
+					{ "id": "toon-link", "start": 88, "end": 91 },
+					{ "id": "villager", "start": 94, "end": 101 },
+					{ "id": "wario", "start": 103, "end": 121 },
+					{ "id": "wii-fit-trainer", "start": 92, "end": 102 },
+					{ "id": "yoshi", "start": 96, "end": 102 },
+					{ "id": "zelda", "start": 88, "end": 95 },
+					{ "id": "zero-suit-samus", "start": 92, "end": 105 }
+				]
+			}
+		]
+	},
+
+	{
+		"index": 4,
+		"name": "Pikachu",
+		"id": "pikachu",
+		"btnColor": "167, 128, 8",
+		"cardColor": "216, 165, 10",
+		"textScheme": "light",
+		"moves": [
+			{
+				"index": 0,
+				"name": "Up Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Thunder (Backward DI)",
+				"id": "up-throw-thunder-bdi",
+
+				"info": {
+					"text": [
+						"<strong>A GIF collection of different setups and DIs can be viewed through <a href='https://imgur.com/a/j3ekG' target='_blank' rel='noopener'>here</a>.",
+						"These results were labbed against the opponent's airdodge, but there are some extreme cases where jumping will reduce the combo window further than airdodging. View the spreadsheet above for more info.",
+						"Because of the nature of the game's hitstun calculations and launch speed, there are deadzones in between this combo's 'true' percents. These are listed as follows:",
+						"<strong>Little Mac:</strong> 116-125% :: 96-105% (100 rage) :: 83-92% (150 rage)",
+						"<strong>Shulk:</strong> 136-138% :: 113-116% (100 rage) :: 99-101% (150 rage)",
+						"<strong>Shulk (Buster):</strong> 132-137% :: 110-115% (100 rage) :: 95-100% (150 rage)",
+						"<strong>Shulk (Jump):</strong> 126-129% :: 104-108% (100 rage) :: 90-93% (150 rage)",
+						"<strong>Shulk (Shield):</strong> 215-220% :: 186-192% (100 rage) :: 167-173% (150 rage)",
+						"<strong>Shulk (Smash):</strong> 118-119% :: 97-99% (100 rage) :: 83-85% (150 rage)"
+					],
+
+					"giphy": {
+						"giphyUrl": "https://giphy.com/embed/1BhDgxLRnr0Smjfg0l",
+						"youtubeUrl": ""
+					},
+					"spreadsheetLink": "https://docs.google.com/spreadsheets/d/18cuJYFSAsserv-yDggpbPv7QFLA62V3kneu86scL6EM",
+					"spreadsheetMethod": "https://docs.google.com/document/d/17TiS0CGt1h08FEuOln9kBfAQYk81K0QX6Pc3kXS15pI",
+					"creditLink": "https://twitter.com/Proctavia_SSB",
+					"creditName": "Proctavia_SSB"
+				},
+
+				"specialInfo": "<strong>IMPORTANT</strong> Due to the nature of this combo, there are several deadzones within the kill percents where it's no longer true. Check the <a href='#/pikachu/up-throw-thunder-bdi/info' class='info'>info section</a> for more.<br>Since this isn't strictly a kill confirm, only Final Destination is included as a stage, and the percents listed are the percents that this combo is simply 'true', not when it kills.<br>Also included within the character grid is how far Pikachu needs to run to connect this combo.",
+
+				"rageModifiers": [
+					{ "id": "rage0", "amount": 0, "start": 0, "end": 0 },
+					{ "id": "rage50", "amount": 50, "start": -8, "end": -9 },
+					{ "id": "rage60", "amount": 60, "start": -10, "end": -12 },
+					{ "id": "rage80", "amount": 80, "start": -14, "end": -16 },
+					{ "id": "rage100", "amount": 100, "start": -18, "end": -22 },
+					{ "id": "rage125", "amount": 125, "start": -24, "end": -29 },
+					{ "id": "rage150", "amount": 150, "start": -30, "end": -37 }
+				],
+
+				"stageList": [
+					{
+						"id": "fd-normal",
+						"name": "FD Normal",
+						"stagePositionModifier": 0
+					}
+				],
+
+				"characters": [
+					{ "id": "bayonetta", "start": 119, "end": 138, "distance": "Mid-Far" },
+					{ "id": "bowser", "start": 87, "end": 154, "distance": "Instant" },
+					{ "id": "bowser-jr", "start": 107, "end": 154, "distance": "Mid-Far" },
+					{ "id": "captain-falcon", "start": 129, "end": 156, "distance": "Far" },
+					{ "id": "charizard", "start": 87, "end": 142, "distance": "Mid-Close" },
+					{ "id": "cloud", "start": 106, "end": 146, "distance": "Medium" },
+					{ "id": "cloud-limit", "start": 115, "end": 150, "distance": "Medium" },
+					{ "id": "corrin", "start": 100, "end": 143, "distance": "Mid-Close" },
+					{ "id": "dark-pit", "start": 102, "end": 129, "distance": "Mid-Close" },
+					{ "id": "diddy-kong", "start": 103, "end": 139, "distance": "Far" },
+					{ "id": "donkey-kong", "start": 93, "end": 161, "distance": "Mid-Close" },
+					{ "id": "dr-mario", "start": 97, "end": 127, "distance": "Medium" },
+					{ "id": "duck-hunt", "start": 91, "end": 140, "distance": "Mid-Close" },
+					{ "id": "falco", "start": 91, "end": 129, "distance": "Medium" },
+					{ "id": "fox", "start": 95, "end": 125, "distance": "Medium" },
+					{ "id": "game-and-watch", "start": 70, "end": 108, "distance": "Close" },
+					{ "id": "ganondorf", "start": 110, "end": 154, "distance": "Medium" },
+					{ "id": "greninja", "start": 98, "end": 134, "distance": "Far" },
+					{ "id": "ike", "start": 107, "end": 152, "distance": "Mid-Close" },
+					{ "id": "jigglypuff", "start": 72, "end": 110, "distance": "Mid-Close" },
+					{ "id": "king-dedede", "start": 110, "end": 169, "distance": "Mid-Close" },
+					{ "id": "kirby", "start": 87, "end": 121, "distance": "Mid-Far" },
+					{ "id": "link", "start": 109, "end": 145, "distance": "Medium" },
+					{ "id": "little-mac", "start": 108, "end": 140, "distance": "Mid-Far" },
+					{ "id": "lucario", "start": 107, "end": 147, "distance": "Mid-Close" },
+					{ "id": "lucas", "start": 90, "end": 125, "distance": "Mid-Close" },
+					{ "id": "lucina", "start": 90, "end": 135, "distance": "Close" },
+					{ "id": "luigi", "start": 86, "end": 121, "distance": "Close" },
+					{ "id": "mario", "start": 97, "end": 129, "distance": "Mid-Close" },
+					{ "id": "marth", "start": 89, "end": 138, "distance": "Mid-Close" },
+					{ "id": "mega-man", "start": 107, "end": 150, "distance": "Mid-Close" },
+					{ "id": "meta-knight", "start": 96, "end": 123, "distance": "Mid-Close" },
+					{ "id": "mewtwo", "start": 87, "end": 120, "distance": "Instant" },
+					{ "id": "mii-brawler", "start": 107, "end": 144, "distance": "Mid-Far" },
+					{ "id": "mii-gunner", "start": 87, "end": 137, "distance": "Medium" },
+					{ "id": "mii-swordfighter", "start": 102, "end": 141, "distance": "Medium" },
+					{ "id": "ness", "start": 86, "end": 125, "distance": "Mid-Close" },
+					{ "id": "olimar", "start": 80, "end": 115, "distance": "Mid-Close" },
+					{ "id": "pacman", "start": 85, "end": 128, "distance": "Mid-Close" },
+					{ "id": "palutena", "start": 85, "end": 123, "distance": "Mid-Close" },
+					{ "id": "peach", "start": 79, "end": 117, "distance": "Mid-Close" },
+					{ "id": "pikachu", "start": 82, "end": 119, "distance": "Mid-Close" },
+					{ "id": "pit", "start": 102, "end": 129, "distance": "Mid-Close" },
+					{ "id": "rob", "start": 86, "end": 144, "distance": "Instant" },
+					{ "id": "robin", "start": 90, "end": 137, "distance": "Mid-Close" },
+					{ "id": "rosalina-and-luma", "start": 75, "end": 113, "distance": "Close" },
+					{ "id": "roy", "start": 99, "end": 145, "distance": "Medium" },
+					{ "id": "ryu", "start": 94, "end": 148, "distance": "Medium" },
+					{ "id": "samus", "start": 87, "end": 145, "distance": "Instant" },
+					{ "id": "sheik", "start": 105, "end": 126, "distance": "Far" },
+					{ "id": "shulk", "start": 92, "end": 141, "distance": "Close" },
+					{ "id": "shulk-buster", "start": 92, "end": 140, "distance": "Mid-Close" },
+					{ "id": "shulk-jump", "start": 104, "end": 152, "distance": "Medium" },
+					{ "id": "shulk-shield", "start": 160, "end": 224, "distance": "Mid-Close" },
+					{ "id": "shulk-smash", "start": 76, "end": 122, "distance": "Mid-Close" },
+					{ "id": "sonic", "start": 91, "end": 127, "distance": "Medium" },
+					{ "id": "toon-link", "start": 89, "end": 121, "distance": "Mid-Close" },
+					{ "id": "villager", "start": 88, "end": 126, "distance": "Mid-Close" },
+					{ "id": "wario", "start": 98, "end": 137, "distance": "Mid-Close" },
+					{ "id": "wii-fit-trainer", "start": 90, "end": 127, "distance": "Mid-Close" },
+					{ "id": "yoshi", "start": 88, "end": 134, "distance": "Close" },
+					{ "id": "zelda", "start": 83, "end": 124, "distance": "Mid-Close" },
+					{ "id": "zero-suit-samus", "start": 104, "end": 133, "distance": "Mid-Far" }
+				]
+			},
+
+			{
+				"index": 1,
+				"name": "Up Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Thunder (Forward DI)",
+				"id": "up-throw-thunder-fdi",
+
+				"info": {
+					"text": [
+						"<strong>A GIF collection of different setups and DIs can be viewed through <a href='https://imgur.com/a/j3ekG' target='_blank' rel='noopener'>here</a>.",
+						"These results were labbed against the opponent's airdodge, but there are some extreme cases where jumping will reduce the combo window further than airdodging. View the spreadsheet above for more info.",
+						"This combo will not be true on <strong>Diddy Kong</strong> or <strong>Sonic</strong> with Forward DI because of hurtbox shift, knockback, and other factors. Worth noting is that this combo is still a 50/50.",
+						"Because of the nature of the game's hitstun calculations and launch speed, there are deadzones in between this combo's 'true' percents. These are listed as follows:",
+						"<strong>Corrin:</strong> 132-133% :: 110-112% (100 rage) :: 95-97% (150 rage)",
+						"<strong>Lucario:</strong> 126-129% :: 104-108% (100 rage) :: 90-94% (150 rage)",
+						"<strong>Meta Knight:</strong> 114-115% :: 94-96% (100 rage) :: 81-83% (150 rage)",
+						"<strong>Ryu:</strong> 121-127% :: 99-106% (100 rage) :: 85-92% (150 rage)"
+					],
+
+					"giphy": {
+						"giphyUrl": "https://giphy.com/embed/42waw3Y7dAjlWulyRB",
+						"youtubeUrl": ""
+					},
+					"spreadsheetLink": "https://docs.google.com/spreadsheets/d/18cuJYFSAsserv-yDggpbPv7QFLA62V3kneu86scL6EM",
+					"spreadsheetMethod": "https://docs.google.com/document/d/17TiS0CGt1h08FEuOln9kBfAQYk81K0QX6Pc3kXS15pI",
+					"creditLink": "https://twitter.com/Proctavia_SSB",
+					"creditName": "Proctavia_SSB"
+				},
+
+				"specialInfo": "<strong>IMPORTANT</strong> Due to the nature of this combo, there are several deadzones within the kill percents where it's no longer true. Check the <a href='#/pikachu/up-throw-thunder-fdi/info' class='info'>info section</a> for more.<br>Since this isn't strictly a kill confirm, only Final Destination is included as a stage, and the percents listed are the percents that this combo is simply 'true', not when it kills.<br>Also included within the character grid is how far Pikachu needs to run to connect this combo.",
+
+				"rageModifiers": [
+					{ "id": "rage0", "amount": 0, "start": 0, "end": 0 },
+					{ "id": "rage50", "amount": 50, "start": -8, "end": -9 },
+					{ "id": "rage60", "amount": 60, "start": -10, "end": -12 },
+					{ "id": "rage80", "amount": 80, "start": -14, "end": -16 },
+					{ "id": "rage100", "amount": 100, "start": -18, "end": -22 },
+					{ "id": "rage125", "amount": 125, "start": -24, "end": -29 },
+					{ "id": "rage150", "amount": 150, "start": -30, "end": -37 }
+				],
+
+				"stageList": [
+					{
+						"id": "fd-normal",
+						"name": "FD Normal",
+						"stagePositionModifier": 0
+					}
+				],
+
+				"characters": [
+					{ "id": "bayonetta", "start": 119, "end": 136, "distance": "Mid-Far" },
+					{ "id": "bowser", "start": 87, "end": 144, "distance": "Instant" },
+					{ "id": "bowser-jr", "start": 134, "end": 145, "distance": "Mid-Far" },
+					{ "id": "captain-falcon", "start": 124, "end": 158, "distance": "Far" },
+					{ "id": "charizard", "start": 82, "end": 134, "distance": "Mid-Close" },
+					{ "id": "cloud", "start": 103, "end": 142, "distance": "Medium" },
+					{ "id": "cloud-limit", "start": 111, "end": 149, "distance": "Medium" },
+					{ "id": "corrin", "start": 104, "end": 134, "distance": "Mid-Close" },
+					{ "id": "dark-pit", "start": 93, "end": 128, "distance": "Mid-Close" },
+					{ "id": "diddy-kong", "start": 1, "end": 1, "distance": "Far" },
+					{ "id": "donkey-kong", "start": 98, "end": 160, "distance": "Mid-Close" },
+					{ "id": "dr-mario", "start": 92, "end": 130, "distance": "Medium" },
+					{ "id": "duck-hunt", "start": 92, "end": 129, "distance": "Mid-Close" },
+					{ "id": "falco", "start": 106, "end": 126, "distance": "Medium" },
+					{ "id": "fox", "start": 99, "end": 125, "distance": "Medium" },
+					{ "id": "game-and-watch", "start": 80, "end": 104, "distance": "Close" },
+					{ "id": "ganondorf", "start": 107, "end": 148, "distance": "Medium" },
+					{ "id": "greninja", "start": 106, "end": 130, "distance": "Far" },
+					{ "id": "ike", "start": 107, "end": 147, "distance": "Mid-Close" },
+					{ "id": "jigglypuff", "start": 72, "end": 106, "distance": "Mid-Close" },
+					{ "id": "king-dedede", "start": 116, "end": 169, "distance": "Mid-Close" },
+					{ "id": "kirby", "start": 87, "end": 120, "distance": "Mid-Far" },
+					{ "id": "link", "start": 100, "end": 139, "distance": "Medium" },
+					{ "id": "little-mac", "start": 98, "end": 143, "distance": "Mid-Far" },
+					{ "id": "lucario", "start": 112, "end": 145, "distance": "Mid-Close" },
+					{ "id": "lucas", "start": 95, "end": 122, "distance": "Mid-Close" },
+					{ "id": "lucina", "start": 95, "end": 121, "distance": "Close" },
+					{ "id": "luigi", "start": 83, "end": 120, "distance": "Close" },
+					{ "id": "mario", "start": 94, "end": 130, "distance": "Mid-Close" },
+					{ "id": "marth", "start": 94, "end": 122, "distance": "Mid-Close" },
+					{ "id": "mega-man", "start": 108, "end": 145, "distance": "Mid-Close" },
+					{ "id": "meta-knight", "start": 94, "end": 119, "distance": "Mid-Close" },
+					{ "id": "mewtwo", "start": 87, "end": 120, "distance": "Instant" },
+					{ "id": "mii-brawler", "start": 108, "end": 131, "distance": "Mid-Far" },
+					{ "id": "mii-gunner", "start": 92, "end": 126, "distance": "Medium" },
+					{ "id": "mii-swordfighter", "start": 102, "end": 123, "distance": "Medium" },
+					{ "id": "ness", "start": 93, "end": 122, "distance": "Mid-Close" },
+					{ "id": "olimar", "start": 79, "end": 114, "distance": "Mid-Close" },
+					{ "id": "pacman", "start": 90, "end": 119, "distance": "Mid-Close" },
+					{ "id": "palutena", "start": 88, "end": 115, "distance": "Mid-Close" },
+					{ "id": "peach", "start": 76, "end": 117, "distance": "Mid-Close" },
+					{ "id": "pikachu", "start": 93, "end": 116, "distance": "Mid-Close" },
+					{ "id": "pit", "start": 93, "end": 128, "distance": "Mid-Close" },
+					{ "id": "rob", "start": 90, "end": 141, "distance": "Instant" },
+					{ "id": "robin", "start": 104, "end": 116, "distance": "Mid-Close" },
+					{ "id": "rosalina-and-luma", "start": 79, "end": 115, "distance": "Close" },
+					{ "id": "roy", "start": 111, "end": 136, "distance": "Medium" },
+					{ "id": "ryu", "start": 96, "end": 141, "distance": "Medium" },
+					{ "id": "samus", "start": 84, "end": 140, "distance": "Instant" },
+					{ "id": "sheik", "start": 105, "end": 119, "distance": "Far" },
+					{ "id": "shulk", "start": 95, "end": 134, "distance": "Close" },
+					{ "id": "shulk-buster", "start": 95, "end": 134, "distance": "Mid-Close" },
+					{ "id": "shulk-jump", "start": 107, "end": 146, "distance": "Medium" },
+					{ "id": "shulk-shield", "start": 165, "end": 216, "distance": "Mid-Close" },
+					{ "id": "shulk-smash", "start": 79, "end": 115, "distance": "Mid-Close" },
+					{ "id": "sonic", "start": 1, "end": 1, "distance": "Medium" },
+					{ "id": "toon-link", "start": 83, "end": 115, "distance": "Mid-Close" },
+					{ "id": "villager", "start": 83, "end": 122, "distance": "Mid-Close" },
+					{ "id": "wario", "start": 97, "end": 141, "distance": "Mid-Close" },
+					{ "id": "wii-fit-trainer", "start": 87, "end": 126, "distance": "Mid-Close" },
+					{ "id": "yoshi", "start": 85, "end": 130, "distance": "Close" },
+					{ "id": "zelda", "start": 85, "end": 116, "distance": "Mid-Close" },
+					{ "id": "zero-suit-samus", "start": 113, "end": 129, "distance": "Mid-Far" }
+				]
+			}
+		]
+	},
+
+	{
+		"index": 5,
+		"name": "Robin",
+		"id": "robin",
+		"btnColor": "190, 90, 211",
+		"cardColor": "206, 130, 222",
+		"textScheme": "light",
+		"moves": [
+			{
+				"index": 0,
+				"name": "Down Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air",
+				"id": "dthrow-up-air",
+
+				"info": {
+					"text": [
+						"Robin's <strong>Checkmate</strong> kill confirm consists of a Down Throw followed-up with a strong hit Up Air with the Levin Sword between certain percents.",
+						"If the victim has no DI or DI's the Up Air up, the max-% kill threshold will increase to <em>4-6% later</em>, with the min-% unaffected.",
+						"The calculator assumes that the victim is DI-ing the move optimally, with them <strong>DI-ing out the Down Throw</strong>, and <strong>DI-ing in Up Air</strong>.",
+						"Robin normally cannot Checkmate Bowser or Charizard, because of their heavy weight and Robin's 7 frame (!) jump squat.",
+						"It's possible for Robin to do if they double jump off a stage ledge or platform. If Robin can catch these two characters at the ledge, their KO ranges are:<br><strong>Bowser: 108 - 126%</strong><br><strong>Charizard: 99 - 113%</strong>",
+						"More information on this can be viewed <a href='https://www.youtube.com/watch?v=sP9svcfxu_o&t=49s' target='_blank' rel='noopener'>here</a>."
+					],
+
+					"giphy": {
+						"giphyUrl": "https://giphy.com/embed/l0HUmuMwBtdOQdZrG",
+						"youtubeUrl": "https://www.youtube.com/watch?v=MuYO0LM_4ac"
+					},
+					"spreadsheetLink": "https://docs.google.com/spreadsheets/d/18cuJYFSAsserv-yDggpbPv7QFLA62V3kneu86scL6EM",
+					"spreadsheetMethod": "",
+					"creditLink": "https://twitter.com/robinlabteam",
+					"creditName": "The Robin Lab Team"
+				},
+
+				"specialInfo": "",
+
+				"rageModifiers": [
+					{ "id": "rage0", "amount": 0, "start": 0, "end": 0 },
+					{ "id": "rage50", "amount": 50, "start": -4, "end": -4 },
+					{ "id": "rage60", "amount": 60, "start": -6, "end": -6 },
+					{ "id": "rage80", "amount": 80, "start": -13, "end": -13 },
+					{ "id": "rage100", "amount": 100, "start": -16, "end": -16 },
+					{ "id": "rage125", "amount": 125, "start": -22, "end": -22 },
+					{ "id": "rage150", "amount": 150, "start": -28, "end": -28 }
+				],
+
+				"stageList": [
+					{
+						"id": "fd-normal",
+						"name": "FD Normal",
+						"stagePositionModifier": 0
+					},
+					{
+						"id": "bf-normal",
+						"name": "BF Normal",
+						"stagePositionModifier": 5
+					},
+					{
+						"id": "bf-low-platform",
+						"name": "BF Low Plat",
+						"stagePositionModifier": -5
+					},
+					{
+						"id": "bf-top-platform",
+						"name": "BF Top Plat",
+						"stagePositionModifier": -13
+					},
+					{
+						"id": "dl-normal",
+						"name": "DL Normal",
+						"stagePositionModifier": 0
+					},
+					{
+						"id": "dl-low-platform",
+						"name": "DL Low Plat",
+						"stagePositionModifier": -11
+					},
+					{
+						"id": "dl-top-platform",
+						"name": "DL Top Plat",
+						"stagePositionModifier": -21
+					},
+					{
+						"id": "sv-normal",
+						"name": "SV Normal",
+						"stagePositionModifier": 1
+					},
+					{
+						"id": "sv-platform",
+						"name": "SV Plat",
+						"stagePositionModifier": -10
+					},
+
+					{
+						"id": "tc-normal",
+						"name": "TC Normal",
+						"stagePositionModifier": -3
+					},
+					{
+						"id": "tc-low-platform",
+						"name": "TC Low Plat",
+						"stagePositionModifier": -14
+					},
+					{
+						"id": "tc-side-platform",
+						"name": "TC Side Plat",
+						"stagePositionModifier": -13
+					},
+					{
+						"id": "tc-top-platform",
+						"name": "TC Top Plat",
+						"stagePositionModifier": -25
+					}
+				],
+
+				"characters": [
+					{ "id": "bayonetta", "start": 93, "end": 114 },
+					{ "id": "bowser", "start": 1, "end": 1 },
+					{ "id": "bowser-jr", "start": 105, "end": 127 },
+					{ "id": "captain-falcon", "start": 107, "end": 128 },
+					{ "id": "charizard", "start": 1, "end": 1 },
+					{ "id": "cloud", "start": 103, "end": 128 },
+					{ "id": "cloud-limit", "start": 106, "end": 129 },
+					{ "id": "corrin", "start": 100, "end": 122 },
+					{ "id": "dark-pit", "start": 96, "end": 116 },
+					{ "id": "diddy-kong", "start": 98, "end": 117 },
+					{ "id": "donkey-kong", "start": 114, "end": 133 },
+					{ "id": "dr-mario", "start": 96, "end": 118 },
+					{ "id": "duck-hunt", "start": 98, "end": 110 },
+					{ "id": "falco", "start": 95, "end": 108 },
+					{ "id": "fox", "start": 88, "end": 108 },
+					{ "id": "game-and-watch", "start": 79, "end": 105 },
+					{ "id": "ganondorf", "start": 107, "end": 120 },
+					{ "id": "greninja", "start": 91, "end": 111 },
+					{ "id": "ike", "start": 107, "end": 124 },
+					{ "id": "jigglypuff", "start": 74, "end": 99 },
+					{ "id": "king-dedede", "start": 121, "end": 139 },
+					{ "id": "kirby", "start": 83, "end": 108 },
+					{ "id": "link", "start": 102, "end": 123 },
+					{ "id": "little-mac", "start": 95, "end": 117 },
+					{ "id": "lucario", "start": 104, "end": 124 },
+					{ "id": "lucas", "start": 91, "end": 111 },
+					{ "id": "lucina", "start": 93, "end": 117 },
+					{ "id": "luigi", "start": 94, "end": 112 },
+					{ "id": "mario", "start": 96, "end": 118 },
+					{ "id": "marth", "start": 95, "end": 117 },
+					{ "id": "mega-man", "start": 105, "end": 124 },
+					{ "id": "meta-knight", "start": 87, "end": 113 },
+					{ "id": "mewtwo", "start": 84, "end": 108 },
+					{ "id": "mii-brawler", "start": 102, "end": 120 },
+					{ "id": "mii-gunner", "start": 100, "end": 111 },
+					{ "id": "mii-swordfighter", "start": 103, "end": 117 },
+					{ "id": "ness", "start": 91, "end": 111 },
+					{ "id": "olimar", "start": 84, "end": 105 },
+					{ "id": "pacman", "start": 94, "end": 106 },
+					{ "id": "palutena", "start": 88, "end": 110 },
+					{ "id": "peach", "start": 86, "end": 106 },
+					{ "id": "pikachu", "start": 85, "end": 106 },
+					{ "id": "pit", "start": 96, "end": 116 },
+					{ "id": "rob", "start": 102, "end": 119 },
+					{ "id": "robin", "start": 95, "end": 115 },
+					{ "id": "rosalina-and-luma", "start": 82, "end": 101 },
+					{ "id": "roy", "start": 101, "end": 123 },
+					{ "id": "ryu", "start": 100, "end": 122 },
+					{ "id": "samus", "start": 99, "end": 116 },
+					{ "id": "sheik", "start": 86, "end": 106 },
+					{ "id": "shulk", "start": 100, "end": 123 },
+					{ "id": "shulk-buster", "start": 97, "end": 120 },
+					{ "id": "shulk-jump", "start": 103, "end": 123 },
+					{ "id": "shulk-shield", "start": 159, "end": 181 },
+					{ "id": "shulk-smash", "start": 87, "end": 106 },
+					{ "id": "sonic", "start": 95, "end": 114 },
+					{ "id": "toon-link", "start": 89, "end": 105 },
+					{ "id": "villager", "start": 94, "end": 111 },
+					{ "id": "wario", "start": 105, "end": 125 },
+					{ "id": "wii-fit-trainer", "start": 92, "end": 107 },
+					{ "id": "yoshi", "start": 96, "end": 117 },
+					{ "id": "zelda", "start": 87, "end": 108 },
+					{ "id": "zero-suit-samus", "start": 89, "end": 108 }
+				]
+			}
+		]
+	},
+	{
+		"index": 6,
+		"name": "Zelda",
+		"id": "zelda",
+		"btnColor": "148, 83, 168",
+		"cardColor": "170, 116, 186",
+		"textScheme": "light",
+		"moves": [
+			{
+				"index": 0,
+				"name": "Down Throw <i class='fa fa-long-arrow-right' aria-hidden='true'></i> Up Air",
+				"id": "dthrow-up-air",
+
+				"info": {
+					"text": [
+						"This confirm is performed after a Down Throw, quick dash back, and an Up Air.",
+						"The percent range of this move can vary greatly depending on the opponent's weight, fallspeed and DI.",
+						"After a character is launched, their gravity still applies, slowing their vertical ascent until the reduction equals their falling speed.",
+						"As a result, characters with higher falling speed have their vertical knockback reduced for longer, improving their vertical endurance while also hampering their ability to recover from horizontal blows.",
+						"So because of that, <strong>if a character with high fallspeed DI's behind Zelda, they can escape the down throw window a bit earlier than if they DI'ed away from her (which would send them straight up, because Down Throw sends at 100 degrees default).",
+						"Also worth mentioning is Bayonetta is extremely difficult to perform this combo on, due to her frame 1 airdodge that requires Zelda to make two frame perfect inputs:",
+						"Buffer Turn (F9 - F19) → <strong>Dash (F20 - F21) → Jump (F21 - F22)</strong> → Buffer Up Air (F21-27)",
+						"For further reading, including failsafe methods such as the Triangle Jump that cover all DI options, see <a href='https://twitter.com/BanZelda/status/954410695625289728' target='_blank' rel='noopener'>Dia's tweet here</a>."
+					],
+
+					"giphy": {
+						"giphyUrl": "https://giphy.com/embed/3o751XGmDHkHBxbgwE",
+						"youtubeUrl": ""
+					},
+					"spreadsheetLink": "https://docs.google.com/spreadsheets/d/1zd5Ky1MR9ECFCtKRlfyQ77YNT9gAZ7GNXJkqZGVgmoI",
+					"spreadsheetMethod": "",
+					"creditLink": "",
+					"creditName": "Xelda"
+				},
+
+				"specialInfo": "In Zelda's case, difficulty is determined by the victim's airdodge frame, not by the kill confirm window.",
+
+				"rageModifiers": [
+					{ "id": "rage0", "amount": 0, "start": 0, "end": 0 },
+					{ "id": "rage50", "amount": 50, "start": -3, "end": -8 },
+					{ "id": "rage60", "amount": 60, "start": -6, "end": -18 },
+					{ "id": "rage80", "amount": 80, "start": -11, "end": -36 },
+					{ "id": "rage100", "amount": 100, "start": -14, "end": -59 },
+					{ "id": "rage125", "amount": 125, "start": -19, "end": -69 },
+					{ "id": "rage150", "amount": 150, "start": -25, "end": -85 }
+				],
+
+				"stageList": [
+					{
+						"id": "fd-normal",
+						"name": "FD Normal",
+						"stagePositionModifier": 0
+					},
+					{
+						"id": "bf-normal",
+						"name": "BF Normal",
+						"stagePositionModifier": 7
+					},
+					{
+						"id": "bf-low-platform",
+						"name": "BF Low Plat",
+						"stagePositionModifier": -7
+					},
+					{
+						"id": "bf-top-platform",
+						"name": "BF Top Plat",
+						"stagePositionModifier": -20
+					},
+					{
+						"id": "dl-normal",
+						"name": "DL Normal",
+						"stagePositionModifier": 0
+					},
+					{
+						"id": "dl-low-platform",
+						"name": "DL Low Plat",
+						"stagePositionModifier": -15
+					},
+					{
+						"id": "dl-top-platform",
+						"name": "DL Top Plat",
+						"stagePositionModifier": -26
+					},
+					{
+						"id": "sv-normal",
+						"name": "SV Normal",
+						"stagePositionModifier": 1
+					},
+					{
+						"id": "sv-platform",
+						"name": "SV Plat",
+						"stagePositionModifier": -14
+					},
+
+					{
+						"id": "tc-normal",
+						"name": "TC Normal",
+						"stagePositionModifier": -4
+					},
+					{
+						"id": "tc-low-platform",
+						"name": "TC Low Plat",
+						"stagePositionModifier": -20
+					},
+					{
+						"id": "tc-side-platform",
+						"name": "TC Side Plat",
+						"stagePositionModifier": -25
+					},
+					{
+						"id": "tc-top-platform",
+						"name": "TC Top Plat",
+						"stagePositionModifier": -41
+					}
+				],
+
+				"characters": [
+					{ "id": "bayonetta", "start": 83, "end": 142 },
+					{ "id": "bowser", "start": 98, "end": 152 },
+					{ "id": "bowser-jr", "start": 90, "end": 173 },
+					{ "id": "captain-falcon", "start": 95, "end": 156 },
+					{ "id": "charizard", "start": 91, "end": 158 },
+					{ "id": "cloud", "start": 91, "end": 140 },
+					{ "id": "cloud-limit", "start": 95, "end": 155 },
+					{ "id": "corrin", "start": 89, "end": 145 },
+					{ "id": "dark-pit", "start": 86, "end": 132 },
+					{ "id": "diddy-kong", "start": 88, "end": 143 },
+					{ "id": "donkey-kong", "start": 102, "end": 194 },
+					{ "id": "dr-mario", "start": 87, "end": 124 },
+					{ "id": "duck-hunt", "start": 88, "end": 150 },
+					{ "id": "falco", "start": 81, "end": 132 },
+					{ "id": "fox", "start": 78, "end": 113 },
+					{ "id": "game-and-watch", "start": 69, "end": 113 },
+					{ "id": "ganondorf", "start": 95, "end": 172 },
+					{ "id": "greninja", "start": 81, "end": 112 },
+					{ "id": "ike", "start": 95, "end": 171 },
+					{ "id": "jigglypuff", "start": 64, "end": 97 },
+					{ "id": "king-dedede", "start": 109, "end": 200 },
+					{ "id": "kirby", "start": 73, "end": 121 },
+					{ "id": "link", "start": 92, "end": 140 },
+					{ "id": "little-mac", "start": 85, "end": 139 },
+					{ "id": "lucario", "start": 92, "end": 158 },
+					{ "id": "lucas", "start": 82, "end": 130 },
+					{ "id": "lucina", "start": 86, "end": 139 },
+					{ "id": "luigi", "start": 82, "end": 106 },
+					{ "id": "mario", "start": 87, "end": 134 },
+					{ "id": "marth", "start": 85, "end": 139 },
+					{ "id": "mega-man", "start": 95, "end": 169 },
+					{ "id": "meta-knight", "start": 77, "end": 132 },
+					{ "id": "mewtwo", "start": 84, "end": 108 },
+					{ "id": "mii-brawler", "start": 0, "end": 0 },
+					{ "id": "mii-gunner", "start": 0, "end": 0 },
+					{ "id": "mii-swordfighter", "start": 0, "end": 0 },
+					{ "id": "ness", "start": 82, "end": 138 },
+					{ "id": "olimar", "start": 76, "end": 114 },
+					{ "id": "pacman", "start": 84, "end": 134 },
+					{ "id": "palutena", "start": 78, "end": 111 },
+					{ "id": "peach", "start": 77, "end": 119 },
+					{ "id": "pikachu", "start": 76, "end": 129 },
+					{ "id": "pit", "start": 86, "end": 132 },
+					{ "id": "rob", "start": 92, "end": 188 },
+					{ "id": "robin", "start": 86, "end": 148 },
+					{ "id": "rosalina-and-luma", "start": 71, "end": 83 },
+					{ "id": "roy", "start": 91, "end": 159 },
+					{ "id": "ryu", "start": 89, "end": 134 },
+					{ "id": "samus", "start": 90, "end": 126 },
+					{ "id": "sheik", "start": 75, "end": 104 },
+					{ "id": "shulk", "start": 89, "end": 135 },
+					{ "id": "shulk-buster", "start": 87, "end": 134 },
+					{ "id": "shulk-jump", "start": 90, "end": 135 },
+					{ "id": "shulk-shield", "start": 150, "end": 358 },
+					{ "id": "shulk-smash", "start": 76, "end": 103 },
+					{ "id": "sonic", "start": 84, "end": 122 },
+					{ "id": "toon-link", "start": 80, "end": 114 },
+					{ "id": "villager", "start": 84, "end": 120 },
+					{ "id": "wario", "start": 93, "end": 149 },
+					{ "id": "wii-fit-trainer", "start": 81, "end": 122 },
+					{ "id": "yoshi", "start": 86, "end": 133 },
+					{ "id": "zelda", "start": 78, "end": 125 },
+					{ "id": "zero-suit-samus", "start": 79, "end": 139 }
+				]
+			}
+		]
+	}
+]

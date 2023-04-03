@@ -1,0 +1,45 @@
+@import "../../../node_modules/bootstrap/scss/mixins";
+@import "../../../node_modules/bootstrap/scss/bootstrap-reboot";
+@import "../../../node_modules/bootstrap/scss/bootstrap-grid";
+@import "../../../node_modules/bootstrap/scss/bootstrap-utilities";
+@import "../../../node_modules/bootstrap/scss/root";
+
+@import "../../../node_modules/bootstrap/scss/alert";
+@import "../../../node_modules/bootstrap/scss/buttons";
+@import "../../../node_modules/bootstrap/scss/card";
+@import "../../../node_modules/bootstrap/scss/dropdown";
+@import "../../../node_modules/bootstrap/scss/forms";
+@import "../../../node_modules/bootstrap/scss/images";
+@import "../../../node_modules/bootstrap/scss/modal";
+@import "../../../node_modules/bootstrap/scss/tables";
+@import "../../../node_modules/bootstrap/scss/toasts";
+@import "../../../node_modules/bootstrap/scss/type";
+
+@import "../../../node_modules/bootstrap/scss/helpers/ratio";
+
+@import "../../../node_modules/font-awesome/scss/variables";
+@import "../../../node_modules/font-awesome/scss/mixins";
+@import "../../../node_modules/font-awesome/scss/path";
+@import "../../../node_modules/font-awesome/scss/core";
+@import "../../../node_modules/font-awesome/scss/icons";
+@import "../../../node_modules/font-awesome/scss/screen-reader";
+
+@import "../../../node_modules/react-loading-skeleton/dist/skeleton.css";
+
+@import "0-settings/variables";
+
+@import "2-generic/animations";
+@import "2-generic/structure";
+@import "2-generic/typography";
+
+@import "3-objects/cards";
+@import "3-objects/buttons";
+@import "3-objects/dropdown";
+@import "3-objects/modals";
+@import "3-objects/toasts";
+
+@import "4-global-components/header";
+@import "4-global-components/sidebar";
+@import "4-global-components/main-grid";
+@import "4-global-components/stages";
+@import "4-global-components/modal-info";

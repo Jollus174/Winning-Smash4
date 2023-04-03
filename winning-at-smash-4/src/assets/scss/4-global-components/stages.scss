@@ -1,0 +1,53 @@
+.stages {
+	.stage {
+		border: 1px solid var(--stage-color);
+		border-radius: 3px;
+		margin-bottom: 20px;
+	}
+
+	.stage-title {
+		background-color: var(--stage-color);
+		color: $white;
+	}
+
+	.stage-details {
+		padding: 8px 16px 16px;
+	}
+
+	.row-stage-details {
+		--bs-gutter-x: 1rem;
+
+		img {
+			width: 100%;
+		}
+	}
+
+	table {
+		--bs-border-color: #dfdfdf;
+
+		&:last-child {
+			.modal-stage-list & {
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	thead th {
+		background-color: transparentize($black, 0.95);
+	}
+
+	tbody {
+		th {
+			font-size: 13px;
+			font-weight: 700;
+			text-transform: uppercase;
+		}
+
+		td {
+			&.cell-window {
+				width: 80px;
+				background-image: repeating-linear-gradient(135deg, #{$white}, #{$white} 2px, #efefef 2px, #efefef 4px);
+			}
+		}
+	}
+}

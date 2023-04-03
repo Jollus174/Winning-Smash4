@@ -1,0 +1,120 @@
+[
+	{
+		"id": "stage-fd",
+		"name": "Final Destination",
+		"imageFile": "stage_fd.jpg",
+		"color": "#424d98",
+		"stagePositions": [
+			{
+				"id": "fd-normal",
+				"stagePartName": "FD Normal",
+				"min": 0,
+				"max": 0
+			}
+		]
+	},
+	{
+		"id": "stage-bf",
+		"name": "Battlefield",
+		"imageFile": "stage_bf.jpg",
+		"color": "#698b9c",
+		"stagePositions": [
+			{
+				"id": "bf-normal",
+				"stagePartName": "BF Normal",
+				"min": 0,
+				"max": 0
+			},
+			{
+				"id": "bf-low-platform",
+				"stagePartName": "BF Low Platform",
+				"min": 0,
+				"max": 0
+			},
+			{
+				"id": "bf-top-platform",
+				"stagePartName": "BF Top Platform",
+				"min": 0,
+				"max": 0
+			}
+		]
+	},
+	{
+		"id": "stage-dl",
+		"name": "Dreamland",
+		"imageFile": "stage_dl.jpg",
+		"color": "#2ab156",
+		"stagePositions": [
+			{
+				"id": "dl-normal",
+				"stagePartName": "DL Normal",
+				"min": 0,
+				"max": 0
+			},
+			{
+				"id": "dl-low-platform",
+				"stagePartName": "DL Low Platform",
+				"min": 0,
+				"max": 0
+			},
+			{
+				"id": "dl-top-platform",
+				"stagePartName": "DL Top Platform",
+				"min": 0,
+				"max": 0
+			}
+		]
+	},
+	{
+		"id": "stage-sv",
+		"name": "Smashville",
+		"imageFile": "stage_sv.jpg",
+		"color": "#eeb463",
+		"stagePositions": [
+			{
+				"id": "sv-normal",
+				"stagePartName": "SV Normal",
+				"min": 0,
+				"max": 0
+			},
+			{
+				"id": "sv-platform",
+				"stagePartName": "SV Platform",
+				"min": 0,
+				"max": 0
+			}
+		]
+	},
+	{
+		"id": "stage-tc",
+		"name": "Town & City",
+		"imageFile": "stage_tc.jpg",
+		"color": "#ad7252",
+		"stagePositions": [
+			{
+				"id": "tc-normal",
+				"stagePartName": "TC Normal",
+				"min": 0,
+				"max": 0
+			},
+			{
+				"id": "tc-low-platform",
+				"stagePartName": "TC Low Platform",
+				"min": 0,
+				"max": 0
+			},
+			{
+				"id": "tc-side-platform",
+				"stagePartName": "TC Side Platform",
+				"min": 0,
+				"max": 0
+			},
+			{
+				"id": "tc-top-platform",
+				"stagePartName": "TC Top Platform",
+				"min": 0,
+				"max": 0
+			}
+		]
+	}
+]
