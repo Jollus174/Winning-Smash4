@@ -1,92 +1,68 @@
-import { useState, useEffect } from 'react';
+import React from 'react';
 import { Modal } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
+import {
+	UpdatedKillConfirm,
+	SelectedKillConfirm,
+	SelectedCharacterModal,
+	UpdatedCharacter,
+	ActiveRage
+} from '../types';
 
-const ModalStagePercents = (props) => {
-	const {
-		url,
-		selectedCharacter,
-		selectedKillConfirm,
-		selectedCharacterModal,
-		activeRage,
-		setActiveRage,
-		filteredKillConfirmCharacters
-	} = props;
+interface ModalStagePercentsTypes {
+	url: string;
+	selectedCharacter: UpdatedKillConfirm;
+	selectedKillConfirm: SelectedKillConfirm;
+	selectedCharacterModal: SelectedCharacterModal;
+	activeRage: ActiveRage;
+	setActiveRage: React.Dispatch<React.SetStateAction<ActiveRage>>;
+	filteredKillConfirmCharacters: UpdatedCharacter[];
+}
 
+const ModalStagePercents: React.FC<ModalStagePercentsTypes> = ({
+	url,
+	selectedCharacter,
+	selectedKillConfirm,
+	selectedCharacterModal,
+	activeRage,
+	setActiveRage,
+	filteredKillConfirmCharacters
+}) => {
 	const history = useHistory();
 
-	const handleSetActiveRage = (rageValue) => {
+	const handleSetActiveRage = (rageValue: ActiveRage) => {
 		setActiveRage(rageValue);
 	};
 
-	const [mounted, setMounted] = useState(false);
-	const [prevCharacter, setPrevCharacter] = useState({});
-	const [nextCharacter, setNextCharacter] = useState({});
+	// skip over N/A characters with a percDiff of 0 when using the prev/next buttons
+	const filteredValidKillConfirmCharacters = filteredKillConfirmCharacters.filter(
+		(char) => char.percents.percDiff !== 0
+	);
 
-	useEffect(() => {
+	const currentCharIndex =
+		filteredValidKillConfirmCharacters.findIndex((char) => char.id === selectedCharacterModal.id) || 0;
+	const prevCharIndex = currentCharIndex !== 0 ? currentCharIndex - 1 : filteredValidKillConfirmCharacters.length - 1;
+	const nextCharIndex = currentCharIndex !== filteredValidKillConfirmCharacters.length - 1 ? currentCharIndex + 1 : 0;
+
+	const filteredPrevValidCharacter = filteredValidKillConfirmCharacters[prevCharIndex];
+	const filteredNextValidCharacter = filteredValidKillConfirmCharacters[nextCharIndex];
+
+	const [mounted, setMounted] = React.useState(false);
+	const [animateElements, setAnimateElements] = React.useState(false);
+
+	React.useEffect(() => {
 		if (!mounted) {
 			setMounted(true);
 		}
-
-		getPrevCharacter();
-		getNextCharacter();
+		// need DOM to update first
+		setTimeout(() => {
+			setAnimateElements(true);
+		}, 0);
 	}, [selectedCharacterModal]);
 
-	const getPrevCharacter = async () => {
-		const currentCharIndex = filteredKillConfirmCharacters.findIndex((char) => char.id === selectedCharacterModal.id);
-		let newCharIndex = currentCharIndex;
-
-		const result = await new Promise((resolve) => {
-			// keep searching through previous characters until one is found that's valid ie. percDiff is NOT 0
-			const closureLoop = () => {
-				newCharIndex = newCharIndex !== 0 ? newCharIndex - 1 : filteredKillConfirmCharacters.length - 1;
-				const prevCharacter = filteredKillConfirmCharacters[newCharIndex];
-
-				if (prevCharacter.percents.percDiff === 0) {
-					return closureLoop();
-				} else {
-					resolve(prevCharacter);
-				}
-			};
-
-			closureLoop();
-		});
-
-		setPrevCharacter(result);
-	};
-
-	const getNextCharacter = async () => {
-		const currentCharIndex = filteredKillConfirmCharacters.findIndex((char) => char.id === selectedCharacterModal.id);
-		let newCharIndex = currentCharIndex;
-
-		const result = await new Promise((resolve) => {
-			// either get the next valid character via index or count forwards from the start of the characters array
-			const closureLoop = () => {
-				newCharIndex = newCharIndex !== filteredKillConfirmCharacters.length - 1 ? newCharIndex + 1 : 0;
-				const nextCharacter = filteredKillConfirmCharacters[newCharIndex];
-
-				if (nextCharacter.percents.percDiff === 0) {
-					return closureLoop();
-				} else {
-					resolve(nextCharacter);
-				}
-			};
-
-			closureLoop();
-		});
-
-		setNextCharacter(result);
-	};
-
-	const handleKeyPress = (e) => {
+	const handleKeyPress = (e: KeyboardEvent) => {
 		const { key } = e;
-		if (key === 'ArrowLeft') {
-			history.push(`${url}/${prevCharacter.id}`);
-		}
-		if (key === 'ArrowRight') {
-			history.push(`${url}/${nextCharacter.id}`);
-		}
 		if (key === '1' || key === '8' || key === '9' || key === '0') handleSetActiveRage('rage0');
 		if (key === '2') handleSetActiveRage('rage50');
 		if (key === '3') handleSetActiveRage('rage60');
@@ -97,8 +73,15 @@ const ModalStagePercents = (props) => {
 	};
 
 	const handleModalHide = () => {
-		history.push(url);
+		setAnimateElements(false);
+		setMounted(false);
+		// perform DOM updates, then hide the modal. This is for the animation
+		setTimeout(() => {
+			history.push(url);
+		}, 0);
 	};
+
+	if (!filteredPrevValidCharacter || !filteredNextValidCharacter) return null;
 
 	return (
 		<Modal
@@ -111,7 +94,7 @@ const ModalStagePercents = (props) => {
 			animation={false}
 			onKeyDown={handleKeyPress}
 			style={{
-				'--btn-color': 'rgb(' + selectedCharacterModal.charColor + ')'
+				['--btn-color' as string]: `rgb(${selectedCharacterModal.charColor})`
 			}}
 		>
 			<style>
@@ -141,7 +124,7 @@ const ModalStagePercents = (props) => {
 								<Link
 									to={`../../${selectedCharacter.id}/${move.id}/${selectedCharacterModal.id}`}
 									className={`btn btn-primary btn-sm ${selectedKillConfirm.id === move.id ? 'active' : ''}`}
-									style={{ '--bs-btn-bg': 'rgb(' + selectedCharacterModal.charColor + ')' }}
+									style={{ ['--bs-btn-bg' as string]: 'rgb(' + selectedCharacterModal.charColor + ')' }}
 									key={move.id}
 								>
 									<span dangerouslySetInnerHTML={{ __html: move.name }} />
@@ -152,7 +135,7 @@ const ModalStagePercents = (props) => {
 				)}
 				<section className="character-info-section">
 					<CSSTransition
-						in={mounted}
+						in={animateElements}
 						timeout={{ enter: 1000 }}
 						classNames="csstrans-slideFromRight"
 						mountOnEnter
@@ -162,7 +145,7 @@ const ModalStagePercents = (props) => {
 							src={`/images/characters/webp/${selectedCharacterModal.id}.webp`}
 							alt={selectedCharacterModal.name}
 							className="character-image"
-							style={{ '--amount': '200px' }}
+							style={{ ['--amount' as string]: '200px' }}
 						/>
 					</CSSTransition>
 					<div className="character-info-wrapper">
@@ -184,7 +167,7 @@ const ModalStagePercents = (props) => {
 						</div>
 					</div>
 					<CSSTransition
-						in={mounted}
+						in={animateElements}
 						timeout={{ enter: 1000 }}
 						classNames="csstrans-slideFromRight"
 						mountOnEnter
@@ -221,7 +204,7 @@ const ModalStagePercents = (props) => {
 								type="button"
 								className={`btn btn-secondary ${activeRage === rageModifier.id ? 'active' : ''}`}
 								key={rageModifier.id}
-								onClick={() => handleSetActiveRage(rageModifier.id)}
+								onClick={() => handleSetActiveRage(rageModifier.id as ActiveRage)}
 							>
 								{rageModifier.amount}%
 							</button>
@@ -237,66 +220,67 @@ const ModalStagePercents = (props) => {
 				<section className="stages">
 					{selectedCharacterModal.stageList.map((stage, i) => (
 						<CSSTransition
-							in={mounted}
+							in={animateElements}
 							timeout={{ enter: 200 * (i + 2) }}
 							classNames="csstrans-fade"
 							mountOnEnter
 							key={stage.id}
 						>
-							<>
-								<div className="stage" style={{ '--stage-color': stage.color, '--delay': `${200 * i}ms` }}>
-									<div className="stage-title text-center text-uppercase">
-										<h5 className="h6">{stage.name}</h5>
-									</div>
-									<div className="stage-details">
-										<div className="row row-stage-details">
-											<div className="col-md-3">
-												<img className="img-fluid" src={`/images/stages/${stage.imageFile}`} alt={stage.name} />
-											</div>
-											<div className="col-md-9 col-tables">
-												{stage.stagePositions.map((stagePosition) => (
-													<table
-														className="table table-bordered table-sm"
-														cellPadding="0"
-														cellSpacing="0"
-														border="0"
-														key={stagePosition.id}
-													>
-														<thead>
-															<tr>
-																<th colSpan="3">{stagePosition.stagePartName}</th>
-															</tr>
-														</thead>
-														<tbody>
-															<tr>
-																<th>Min %</th>
-																<th>Max %</th>
-																<th>Window</th>
-															</tr>
-															<tr>
-																<td>{`${stagePosition.min <= stagePosition.max ? stagePosition.min + '%' : 'N/A'}`}</td>
-																<td>{`${stagePosition.min <= stagePosition.max ? stagePosition.max + '%' : 'N/A'}`}</td>
-																<td className="cell-window">
-																	{stagePosition.min <= stagePosition.max
-																		? `±${stagePosition.max - stagePosition.min + 1}`
-																		: `-`}
-																</td>
-															</tr>
-														</tbody>
-													</table>
-												))}
-											</div>
+							<div
+								className="stage"
+								style={{ ['--stage-color' as string]: stage.color, ['--delay' as string]: `${200 * i}ms` }}
+							>
+								<div className="stage-title text-center text-uppercase">
+									<h5 className="h6">{stage.name}</h5>
+								</div>
+								<div className="stage-details">
+									<div className="row row-stage-details">
+										<div className="col-md-3">
+											<img className="img-fluid" src={`/images/stages/${stage.imageFile}`} alt={stage.name} />
+										</div>
+										<div className="col-md-9 col-tables">
+											{stage.stagePositions.map((stagePosition) => (
+												<table
+													className="table table-bordered table-sm"
+													cellPadding="0"
+													cellSpacing="0"
+													border={0}
+													key={stagePosition.id}
+												>
+													<thead>
+														<tr>
+															<th colSpan={3}>{stagePosition.stagePartName}</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<th>Min %</th>
+															<th>Max %</th>
+															<th>Window</th>
+														</tr>
+														<tr>
+															<td>{`${stagePosition.min <= stagePosition.max ? stagePosition.min + '%' : 'N/A'}`}</td>
+															<td>{`${stagePosition.min <= stagePosition.max ? stagePosition.max + '%' : 'N/A'}`}</td>
+															<td className="cell-window">
+																{stagePosition.min <= stagePosition.max
+																	? `±${stagePosition.max - stagePosition.min + 1}`
+																	: `-`}
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											))}
 										</div>
 									</div>
 								</div>
-							</>
+							</div>
 						</CSSTransition>
 					))}
 				</section>
 			</div>
 			<nav>
 				<Link
-					to={`${url}/${prevCharacter.id}`}
+					to={`${url}/${filteredPrevValidCharacter.id}`}
 					id="btn-prev"
 					className={`btn btn-secondary btn-prev ${
 						selectedCharacterModal.textScheme === 'dark' ? 'text-dark' : 'text-light'
@@ -306,7 +290,7 @@ const ModalStagePercents = (props) => {
 					<i className="fa fa-angle-left" aria-hidden="true"></i>
 				</Link>
 				<Link
-					to={`${url}/${nextCharacter.id}`}
+					to={`${url}/${filteredNextValidCharacter.id}`}
 					id="btn-next"
 					className={`btn btn-secondary btn-next ${
 						selectedCharacterModal.textScheme === 'dark' ? 'text-dark' : 'text-light'

@@ -1,6 +1,4 @@
-// TODO: unused /* globals */ ?
-
-import { useEffect, useState } from 'react';
+import React from 'react';
 import { Route, useLocation } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 import Header from './components/Header';
@@ -10,46 +8,47 @@ import CharacterTiles from './components/CharacterTiles';
 import ModalAbout from './components/ModalAbout';
 import ModalCredits from './components/ModalCredits';
 import { Toast } from 'react-bootstrap';
+import { defaultAppSelections, defaultSorting } from './defaultData';
+import {
+	Character,
+	KillConfirm,
+	Move,
+	UpdatedCharacter,
+	Sort,
+	Stage,
+	AppSelections,
+	SelectedKillConfirm,
+	SelectedCharacterModal,
+	ActiveRage,
+	UpdatedKillConfirm
+} from './types';
 
 function App() {
-	const [mounted, setMounted] = useState(false);
-	const [loading, setLoading] = useState(true);
+	const [mounted, setMounted] = React.useState(false);
+	const [loading, setLoading] = React.useState(true);
 
-	const [appData, setAppData] = useState({
+	const [appData, setAppData] = React.useState<{
+		killConfirms: Array<KillConfirm>;
+		stageList: Array<Stage>;
+		charAttrs: Array<Character>;
+	}>({
 		killConfirms: [],
 		stageList: [],
 		charAttrs: []
 	});
 
-	const [defaultSelections, setDefaultSelections] = useState({
-		selectedCharacter: {},
-		selectedKillConfirm: {},
-		selectedCharacterModal: {},
-		hasSelectedCharacter: false,
-		hasSelectedKillConfirm: false,
-		hasSelectedCharacterModal: false,
-		selectedCharacterValid: true,
-		selectedKillConfirmValid: true,
-		selectedCharacterModalValid: true
-	});
-	const [appSelections, setAppSelections] = useState({ ...defaultSelections });
+	const [appSelections, setAppSelections] = React.useState<AppSelections>({ ...defaultAppSelections });
 
-	const [sortBy, setSortBy] = useState([
-		{ id: 'name', name: 'Name', sortingDirection: 'descending' },
-		{ id: 'weight', name: 'Weight', sortingDirection: null },
-		{ id: 'difficulty', name: 'Difficulty', sortingDirection: null },
-		{ id: 'fallspeed', name: 'Fallspeed', sortingDirection: null },
-		{ id: 'gravity', name: 'Gravity', sortingDirection: null }
-	]);
+	const [sortBy, setSortBy] = React.useState<Array<Sort>>([...defaultSorting]);
 
-	const [activeRage, setActiveRage] = useState('rage0');
+	const [activeRage, setActiveRage] = React.useState<ActiveRage>('rage0');
 
-	const [modalShowAbout, setModalShowAbout] = useState(false);
-	const [modalShowCredits, setModalShowCredits] = useState(false);
+	const [modalShowAbout, setModalShowAbout] = React.useState(false);
+	const [modalShowCredits, setModalShowCredits] = React.useState(false);
 
-	const [sidebarOpen, setSidebarOpen] = useState(true);
+	const [sidebarOpen, setSidebarOpen] = React.useState(true);
 
-	const getData = async (url) => {
+	const getData = async (url: string) => {
 		return await fetch(url)
 			.then((response) => response.json())
 			.then((responseJSON) => {
@@ -63,8 +62,7 @@ function App() {
 	const location = useLocation();
 
 	// empty array means executes only once
-	useEffect(() => {
-		// TODO: set loading spinners
+	React.useEffect(() => {
 		if (!mounted) {
 			setMounted(true);
 
@@ -109,18 +107,19 @@ function App() {
 	}, []);
 
 	// for updating the 'global' state with a selected character, killConfirm and selectedCharacterModal
-	useEffect(() => {
+	React.useEffect(() => {
 		const [, characterId, killConfirmId, selectedCharacterModal] = window.location.hash
 			? window.location.hash.split('/')
 			: '';
 
-		const { killConfirms, charAttrs } = appData;
-		const updatedSelections = {
-			...defaultSelections
-		};
+		const killConfirms: KillConfirm[] = appData.killConfirms;
+		const charAttrs: Character[] = appData.charAttrs;
+		const updatedSelections: AppSelections = { ...defaultAppSelections };
 
 		if (characterId) {
-			const characterToSet = killConfirms.find((killConfirm) => killConfirm.id === characterId);
+			const characterToSet = (killConfirms as UpdatedKillConfirm[]).find(
+				(killConfirm) => killConfirm.id === characterId
+			)!;
 			if (!characterToSet) {
 				updatedSelections.selectedCharacterValid = false;
 			} else {
@@ -129,31 +128,33 @@ function App() {
 				updatedSelections.selectedCharacterValid = true;
 
 				if (killConfirmId) {
-					const killConfirmToSet = characterToSet.moves.find((killConfirm) => killConfirm.id === killConfirmId);
+					const killConfirmToSet: Move = characterToSet.moves.find((killConfirm) => killConfirm.id === killConfirmId)!;
 					if (!killConfirmToSet) {
 						updatedSelections.selectedKillConfirmValid = false;
 					} else {
 						updatedSelections.hasSelectedKillConfirm = true;
 						updatedSelections.selectedKillConfirmValid = true;
 						// generating a new object for each character in the kill confirm, that includes static data from char attrs and some calculated stuff
-						const percDiffs = [];
-						let updatedKillConfirmCharacters = killConfirmToSet.characters.map((kcCharacter) => {
+						const percDiffs: number[] = [];
+						const updatedKillConfirmCharacters: UpdatedCharacter[] = killConfirmToSet.characters.map((kcCharacter) => {
 							const percDiff = kcCharacter.end - kcCharacter.start;
 							const percents = {
-								...kcCharacter,
-								percDiff
+								start: kcCharacter.start,
+								end: kcCharacter.end,
+								percDiff: kcCharacter.end - kcCharacter.start
 							};
 
 							// including raw data from the charAttrs.json file for each character
-							const selectedCharAttrs = charAttrs.find((char) => char.id === kcCharacter.id);
+							const selectedCharAttrs: Character = charAttrs.find((char) => char.id === kcCharacter.id)!;
 							const updatedCharAttrs = { ...selectedCharAttrs, percents };
 							// discluding percDiffs of 0 so they don't skew the difficulty curve calculations lower down
 							if (percDiff !== 0) percDiffs.push(percDiff);
+
 							return { ...updatedCharAttrs, ...kcCharacter };
 						});
 
 						// sorting characters
-						const currentSort = sortBy.find((sort) => sort.sortingDirection !== null);
+						const currentSort: Sort = sortBy.find((sort) => sort.sortingDirection !== null) as Sort;
 						if (currentSort) {
 							if (currentSort.id === 'name') {
 								if (currentSort.sortingDirection === null || currentSort.sortingDirection === 'descending') {
@@ -224,103 +225,98 @@ function App() {
 
 						let counter = currentSort.sortingDirection === 'descending' ? 1 : updatedKillConfirmCharacters.length;
 						for (const kcCharacter of updatedKillConfirmCharacters) {
-							const diffObj = {
-								difficultyClass: '',
-								difficultyText: ''
-							};
 							kcCharacter.charIndex = counter;
 							if (characterToSet.id === 'zelda' && killConfirmToSet.id === 'dthrow-up-air') {
 								// alternative difficulty just for Zelda based on the victim's airdodge frames (thanks Zelda)
 								if (kcCharacter.airdodgeStart === 1) {
-									diffObj.difficultyText = 'Very Hard';
-									diffObj.difficultyClass = 'very-hard';
+									kcCharacter.percents.difficultyText = 'Very Hard';
+									kcCharacter.percents.difficultyClass = 'very-hard';
 								} else if (kcCharacter.airdodgeStart === 2) {
-									diffObj.difficultyText = 'Hard';
-									diffObj.difficultyClass = 'hard';
+									kcCharacter.percents.difficultyText = 'Hard';
+									kcCharacter.percents.difficultyClass = 'hard';
 								} else if (kcCharacter.airdodgeStart === 3) {
-									diffObj.difficultyText = 'Average';
-									diffObj.difficultyClass = 'average';
+									kcCharacter.percents.difficultyText = 'Average';
+									kcCharacter.percents.difficultyClass = 'average';
 								} else if (kcCharacter.airdodgeStart === 4) {
-									diffObj.difficultyText = 'Easy';
-									diffObj.difficultyClass = 'easy';
+									kcCharacter.percents.difficultyText = 'Easy';
+									kcCharacter.percents.difficultyClass = 'easy';
 								}
 							} else {
 								if (0 <= kcCharacter.percents.percDiff && kcCharacter.percents.percDiff <= diffIterator) {
-									diffObj.difficultyText = 'Very Hard';
-									diffObj.difficultyClass = 'very-hard';
+									kcCharacter.percents.difficultyText = 'Very Hard';
+									kcCharacter.percents.difficultyClass = 'very-hard';
 								} else if (
 									diffIterator <= kcCharacter.percents.percDiff &&
 									kcCharacter.percents.percDiff <= diffIterator * 2
 								) {
-									diffObj.difficultyText = 'Hard';
-									diffObj.difficultyClass = 'hard';
+									kcCharacter.percents.difficultyText = 'Hard';
+									kcCharacter.percents.difficultyClass = 'hard';
 								} else if (
 									diffIterator * 2 <= kcCharacter.percents.percDiff &&
 									kcCharacter.percents.percDiff <= diffIterator * 3
 								) {
-									diffObj.difficultyText = 'Average';
-									diffObj.difficultyClass = 'average';
+									kcCharacter.percents.difficultyText = 'Average';
+									kcCharacter.percents.difficultyClass = 'average';
 								} else if (
 									diffIterator * 3 <= kcCharacter.percents.percDiff &&
 									kcCharacter.percents.percDiff <= diffIterator * 4
 								) {
-									diffObj.difficultyText = 'Easy';
-									diffObj.difficultyClass = 'easy';
+									kcCharacter.percents.difficultyText = 'Easy';
+									kcCharacter.percents.difficultyClass = 'easy';
 								} else if (diffIterator * 4 <= kcCharacter.percents.percDiff) {
-									diffObj.difficultyText = 'Very Easy';
-									diffObj.difficultyClass = 'very-easy';
+									kcCharacter.percents.difficultyText = 'Very Easy';
+									kcCharacter.percents.difficultyClass = 'very-easy';
 								} else {
-									diffObj.difficultyText = '';
-									diffObj.difficultyClass = '';
+									kcCharacter.percents.difficultyText = '';
+									kcCharacter.percents.difficultyClass = '';
 								}
 							}
-
-							kcCharacter.percents.difficultyText = diffObj.difficultyText;
-							kcCharacter.percents.difficultyClass = diffObj.difficultyClass;
 
 							// Am also spreading the stage data from stage-list into each character
 							// can't do this from stageList.json... some characters like Pikachu don't have stage data for all stages. Gah.
 							// A flatMap can be used to skip over stages we don't want to include in the modal. Convenient.
 							// https://stackoverflow.com/a/55260552/9045925
 							const kcStagePositions = killConfirmToSet.stageList.map((stage) => stage.id);
-							const updatedStageListData = appData.stageList.flatMap((stage) => {
+							const updatedStageListData: Array<Stage> = [];
+							for (const stage of appData.stageList) {
 								// skipping stages that don't have an equivalent stage in the killConfirm stage modifier data
 								if (!stage.stagePositions.find((kcStage) => kcStagePositions.includes(kcStage.id))) {
-									return [];
+									continue;
 								}
-								if (stage.stagePositions.find((stagePosition) => stagePosition.id === 1));
 
 								const newStagePositions = stage.stagePositions.map((stagePosition) => {
 									const newStagePosition = { ...stagePosition };
 									const killConfirmStageData = killConfirmToSet.stageList.find(
 										(stageModifier) => stageModifier.id === newStagePosition.id
-									);
+									)!;
 									const { stagePositionModifier = 0 } = killConfirmStageData;
 
-									const rageModifier = killConfirmToSet.rageModifiers.find((rageM) => rageM.id === activeRage);
-									const rageModifierStart = rageModifier.start;
-									const rageModifierEnd = rageModifier.end;
+									const rageModifier = killConfirmToSet.rageModifiers.find((rageM) => rageM.id === activeRage)!;
 
-									newStagePosition.min = kcCharacter.percents.start + stagePositionModifier + rageModifierStart;
+									newStagePosition.min = kcCharacter.percents.start + stagePositionModifier + rageModifier.start;
 									// I guess in the app I could only use the stage data people provided. There were no modifiers for init max % on each stage
-									newStagePosition.max = kcCharacter.percents.end + rageModifierEnd;
+									newStagePosition.max = kcCharacter.percents.end + rageModifier.end;
 									return newStagePosition;
 								});
-								return { ...stage, stagePositions: newStagePositions };
-							});
+
+								updatedStageListData.push({ ...stage, stagePositions: newStagePositions });
+							}
 
 							kcCharacter.rageModifiers = [...killConfirmToSet.rageModifiers];
 							kcCharacter.stageList = updatedStageListData;
 							counter = currentSort.sortingDirection === 'descending' ? counter + 1 : counter - 1;
 						}
 
-						const updatedKillConfirmData = { ...killConfirmToSet, characters: updatedKillConfirmCharacters };
+						const updatedKillConfirmData: SelectedKillConfirm = {
+							...killConfirmToSet,
+							characters: updatedKillConfirmCharacters
+						};
 						updatedSelections.selectedKillConfirm = { ...updatedKillConfirmData };
 
 						if (selectedCharacterModal) {
-							const characterModalToSet = updatedKillConfirmData.characters.find(
+							const characterModalToSet: SelectedCharacterModal = updatedKillConfirmData.characters.find(
 								(kcCharacter) => kcCharacter.id === selectedCharacterModal
-							);
+							)!;
 							if (!characterModalToSet && selectedCharacterModal !== 'info') {
 								updatedSelections.selectedCharacterModalValid = false;
 							} else {
@@ -334,7 +330,7 @@ function App() {
 			}
 		}
 		setAppSelections(updatedSelections);
-	}, [appData, defaultSelections, location, sortBy, activeRage]);
+	}, [appData, location, sortBy, activeRage]);
 
 	return (
 		<div className="app-grid">
@@ -345,7 +341,6 @@ function App() {
 				<aside className={`d-none sidebar ${sidebarOpen ? 'd-lg-block' : ''}`}>
 					<Sidebar
 						loading={loading}
-						sidebarOpen={sidebarOpen}
 						killConfirms={appData.killConfirms}
 						selectedCharacter={appSelections.selectedCharacter}
 						selectedKillConfirm={appSelections.selectedKillConfirm}
@@ -382,9 +377,6 @@ function App() {
 									>
 										<Route path={`/:characterId/:moveId`}>
 											<CharacterTiles
-												killConfirms={appData.killConfirms}
-												stageList={appData.stageList}
-												charAttrs={appData.charAttrs}
 												selectedCharacter={appSelections.selectedCharacter}
 												selectedKillConfirm={appSelections.selectedKillConfirm}
 												selectedCharacterModal={appSelections.selectedCharacterModal}

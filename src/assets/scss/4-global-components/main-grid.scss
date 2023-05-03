@@ -208,19 +208,20 @@
 }
 
 .character-image {
+	--opacity: 0.3;
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: calc(100% + 5px);
 	object-fit: none;
-	opacity: 0.3;
+	opacity: var(--opacity);
 	transition-property: transform, opacity;
 	transition-duration: 0.2s;
 	transition-timing-function: ease;
 
 	@include media-breakpoint-up(lg) {
-		opacity: 1;
+		--opacity: 1;
 	}
 }
 

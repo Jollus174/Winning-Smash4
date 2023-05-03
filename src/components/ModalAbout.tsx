@@ -1,6 +1,12 @@
+import React from 'react';
 import { Modal } from 'react-bootstrap';
 
-const ModalAbout = ({ modalShowAbout, setModalShowAbout }) => {
+interface ModalAboutTypes {
+	modalShowAbout: boolean;
+	setModalShowAbout: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const ModalAbout: React.FC<ModalAboutTypes> = ({ modalShowAbout, setModalShowAbout }) => {
 	const handleModalHide = () => {
 		setModalShowAbout(false);
 	};
