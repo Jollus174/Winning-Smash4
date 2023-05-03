@@ -1,10 +1,31 @@
-import { useState, useEffect } from 'react';
+import React from 'react';
 import { Link, useRouteMatch, Route } from 'react-router-dom';
 import { Dropdown } from 'react-bootstrap';
 import ModalStagePercents from './ModalStagePercents';
 import ModalInfo from './ModalInfo';
+import {
+	KillConfirm,
+	SelectedKillConfirm,
+	Character,
+	SelectedCharacterModal,
+	ActiveRage,
+	Sort,
+	SortingParameter
+} from '../types';
 
-const MoveButtons = ({ selectedCharacter, selectedKillConfirm }) => {
+interface MoveButtonTypes {
+	selectedCharacter: KillConfirm;
+	selectedKillConfirm: SelectedKillConfirm;
+}
+
+interface TilesTypes {
+	selectedKillConfirm: SelectedKillConfirm;
+	filteredKillConfirmCharacters: Array<Character>;
+	showAdditionalCharacterInfoInGrid: boolean;
+	sortBy: Array<Sort>;
+}
+
+const MoveButtons: React.FC<MoveButtonTypes> = ({ selectedCharacter, selectedKillConfirm }) => {
 	return selectedCharacter.moves && selectedCharacter.moves.length > 1 ? (
 		<div className="move-buttons-wrapper">
 			<div className="btn-group move-buttons">
@@ -12,7 +33,7 @@ const MoveButtons = ({ selectedCharacter, selectedKillConfirm }) => {
 					<Link
 						to={`/${selectedCharacter.id}/${move.id}`}
 						className={`btn btn-primary btn-sm ${move.id === selectedKillConfirm.id ? 'active' : ''}`}
-						style={{ '--btn-bg': selectedCharacter.btnColor }}
+						style={{ ['--btn-bg' as string]: selectedCharacter.btnColor }}
 						key={'move-btn-' + move.id}
 					>
 						<span dangerouslySetInnerHTML={{ __html: move.name }} />
@@ -28,7 +49,12 @@ const MoveButtons = ({ selectedCharacter, selectedKillConfirm }) => {
 	);
 };
 
-const Tiles = ({ selectedKillConfirm, filteredKillConfirmCharacters, showAdditionalCharacterInfoInGrid, sortBy }) => {
+const Tiles: React.FC<TilesTypes> = ({
+	selectedKillConfirm,
+	filteredKillConfirmCharacters,
+	showAdditionalCharacterInfoInGrid,
+	sortBy
+}) => {
 	const { url } = useRouteMatch();
 
 	return (
@@ -47,7 +73,7 @@ const Tiles = ({ selectedKillConfirm, filteredKillConfirmCharacters, showAdditio
 								to={`${url}/${characterValid ? character.id : 'info'}`}
 								className={`btn character-tile ${characterValid ? '' : 'invalid'}`}
 								style={{
-									'--tile-bg-color': 'rgb(' + character.charColor + ')'
+									['--tile-bg-color' as string]: `rgb(${character.charColor})`
 								}}
 							>
 								<img
@@ -94,21 +120,30 @@ const Tiles = ({ selectedKillConfirm, filteredKillConfirmCharacters, showAdditio
 	);
 };
 
-const CharacterTiles = ({
+interface CharacterTilesTypes {
+	selectedCharacter: KillConfirm;
+	selectedKillConfirm: SelectedKillConfirm;
+	selectedCharacterModal: SelectedCharacterModal;
+	activeRage: ActiveRage;
+	setActiveRage: React.Dispatch<React.SetStateAction<ActiveRage>>;
+	sortBy: Array<Sort>;
+	setSortBy: React.Dispatch<React.SetStateAction<Array<Sort>>>;
+}
+
+const CharacterTiles: React.FC<CharacterTilesTypes> = ({
 	selectedCharacter,
 	selectedKillConfirm,
 	selectedCharacterModal,
-	setSelectedCharacterModal,
-	setModalShowInfo,
-	setModalShowStageList,
 	activeRage,
 	setActiveRage,
 	sortBy,
 	setSortBy
 }) => {
-	const [showAdditionalCharacterInfoInGrid, setShowAdditionalCharacterInfoInGridInGrid] = useState(false);
-	const [filteredKillConfirmCharacters, setFilteredKillConfirmCharacters] = useState(selectedKillConfirm.characters);
-	const [filterText, setFilterText] = useState('');
+	const [showAdditionalCharacterInfoInGrid, setShowAdditionalCharacterInfoInGridInGrid] = React.useState(false);
+	const [filteredKillConfirmCharacters, setFilteredKillConfirmCharacters] = React.useState(
+		selectedKillConfirm.characters
+	);
+	const [filterText, setFilterText] = React.useState('');
 
 	const { url } = useRouteMatch();
 
@@ -116,7 +151,7 @@ const CharacterTiles = ({
 	const hasFilteredKillConfirmCharacters = filteredKillConfirmCharacters && filteredKillConfirmCharacters.length;
 	const hasSelectedCharacterModal = selectedCharacterModal && Object.keys(selectedCharacterModal).length;
 
-	useEffect(() => {
+	React.useEffect(() => {
 		// filtering characters based on the filter input
 		let filteredChars = selectedKillConfirm.characters;
 		if (filterText !== '') {
@@ -128,18 +163,24 @@ const CharacterTiles = ({
 		setFilteredKillConfirmCharacters(filteredChars);
 	}, [filterText, sortBy, selectedKillConfirm]);
 
-	const handleSort = (sortId) => {
-		let newSortBy = [];
-		let sortingDirection = sortBy.find((sort) => sort.id === sortId).sortingDirection;
-		sortingDirection = sortingDirection === null || sortingDirection === 'ascending' ? 'descending' : 'ascending';
-		newSortBy = sortBy.map((sort) => {
-			return { ...sort, sortingDirection: null };
-		});
-		newSortBy.find((sort) => sort.id === sortId).sortingDirection = sortingDirection;
+	const handleSort = (sortId: string) => {
+		const currentSortingDirection = sortBy.find((sort) => sort.id === sortId)!.sortingDirection;
+		const newSortingDirection =
+			currentSortingDirection === null || currentSortingDirection === 'ascending' ? 'descending' : 'ascending';
+		const newSortBy = [];
+		for (const sort of sortBy) {
+			sort.sortingDirection = sort.id === sortId ? newSortingDirection : null;
+			newSortBy.push(sort);
+		}
 		setSortBy(newSortBy);
 	};
 
-	const ItemSortBy = ({ sortBy, sortParameter }) => {
+	interface ItemSortByTypes {
+		sortBy: Array<Sort>;
+		sortParameter: SortingParameter;
+	}
+
+	const ItemSortBy: React.FC<ItemSortByTypes> = ({ sortBy, sortParameter }) => {
 		const newSortBy = sortBy.find((s) => s.id === sortParameter);
 		if (!newSortBy) return null;
 
@@ -163,8 +204,8 @@ const CharacterTiles = ({
 				<div
 					className={'d-flex flex-column character-tiles'}
 					style={{
-						'--card-color': selectedCharacter.cardColor,
-						'--btn-color': selectedCharacter.btnColor
+						['--card-color' as string]: selectedCharacter.cardColor,
+						['--btn-color' as string]: selectedCharacter.btnColor
 					}}
 				>
 					<nav className="d-flex align-items-center character-topbar">
@@ -200,7 +241,10 @@ const CharacterTiles = ({
 								type="text"
 								className="form-control input-filter"
 								placeholder="Filter..."
-								onKeyUp={(e) => setFilterText(e.target.value)}
+								onKeyUp={(e) => {
+									const target = e.target as HTMLTextAreaElement;
+									setFilterText(target.value);
+								}}
 							/>
 							<div className="btn-group">
 								<button
@@ -249,8 +293,8 @@ const CharacterTiles = ({
 									</Dropdown.Toggle>
 									<Dropdown.Menu
 										style={{
-											'--bs-dropdown-bg': `rgb(${selectedCharacter.btnColor})`,
-											'--btn-color': `rgba(${
+											['--bs-dropdown-bg' as string]: `rgb(${selectedCharacter.btnColor})`,
+											['--btn-color' as string]: `rgba(${
 												selectedCharacter.textScheme === 'light' ? 'var(--bs-light-rgb)' : 'var(--bs-dark-rgb)'
 											}, var(--bs-text-opacity))`
 										}}
@@ -330,9 +374,6 @@ const CharacterTiles = ({
 								selectedKillConfirm={selectedKillConfirm}
 								filteredKillConfirmCharacters={filteredKillConfirmCharacters}
 								showAdditionalCharacterInfoInGrid={showAdditionalCharacterInfoInGrid}
-								setSelectedCharacterModal={setSelectedCharacterModal}
-								setModalShowStageList={setModalShowStageList}
-								setModalShowInfo={setModalShowInfo}
 								sortBy={sortBy}
 							/>
 						)}

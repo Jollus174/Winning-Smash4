@@ -1,7 +1,18 @@
+import React from 'react';
 import Skeleton from 'react-loading-skeleton';
 import { Dropdown } from 'react-bootstrap';
+import { KillConfirm } from '../types';
 
-const Header = ({
+interface HeaderTypes {
+	loading: boolean;
+	setSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
+	sidebarOpen: boolean;
+	selectedCharacter: KillConfirm;
+	setModalShowAbout: React.Dispatch<React.SetStateAction<boolean>>;
+	setModalShowCredits: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const Header: React.FC<HeaderTypes> = ({
 	loading,
 	setSidebarOpen,
 	sidebarOpen,

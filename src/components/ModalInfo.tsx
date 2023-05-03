@@ -1,7 +1,15 @@
+import React from 'react';
 import { Modal } from 'react-bootstrap';
 import { useHistory } from 'react-router';
+import { KillConfirm, MoveRageModifier, SelectedKillConfirm } from '../types';
 
-const ModalInfo = ({ url, selectedCharacter, selectedKillConfirm }) => {
+interface ModalInfoTypes {
+	url: string;
+	selectedCharacter: KillConfirm;
+	selectedKillConfirm: SelectedKillConfirm;
+}
+
+const ModalInfo: React.FC<ModalInfoTypes> = ({ url, selectedCharacter, selectedKillConfirm }) => {
 	const history = useHistory();
 	const handleModalHide = () => {
 		history.push(url);
@@ -65,14 +73,14 @@ const ModalInfo = ({ url, selectedCharacter, selectedKillConfirm }) => {
 					.
 				</div>
 
-				{info.text.map((para, i) => (
+				{info.text.map((para: string, i) => (
 					// the order of these will never change, so am using the index as the key
 					<p dangerouslySetInnerHTML={{ __html: para }} key={i} />
 				))}
 
 				<div className="stages text-center">
 					{selectedKillConfirm.stageList.length > 1 && (
-						<div className="stage" style={{ '--stage-color': '#ff6f00' }}>
+						<div className="stage" style={{ ['--stage-color' as string]: '#ff6f00' }}>
 							<div className="stage-title text-uppercase">
 								<h3 className="h6">Stage Modifiers</h3>
 							</div>
@@ -90,9 +98,8 @@ const ModalInfo = ({ url, selectedCharacter, selectedKillConfirm }) => {
 													</tr>
 												</thead>
 												<tbody>
-													<tr>
-														<td>{stage.stagePositionModifier}</td>
-													</tr>
+													{/* TODO: fix up */}
+													<tr>{/* <td>{stage.stagePositionModifier}</td> */}</tr>
 												</tbody>
 											</table>
 										</div>
@@ -101,7 +108,7 @@ const ModalInfo = ({ url, selectedCharacter, selectedKillConfirm }) => {
 							</div>
 						</div>
 					)}
-					<div className="stage" style={{ '--stage-color': '#cc2727' }}>
+					<div className="stage" style={{ ['--stage-color' as string]: '#cc2727' }}>
 						<div className="stage-title text-uppercase">
 							<h3 className="h6">Rage Modifiers</h3>
 						</div>
@@ -110,7 +117,7 @@ const ModalInfo = ({ url, selectedCharacter, selectedKillConfirm }) => {
 							<div className="row">
 								{selectedKillConfirm.rageModifiers
 									.filter((rm) => rm.id !== 'rage0')
-									.map((rageModifier) => (
+									.map((rageModifier: MoveRageModifier) => (
 										<div className="col-4 col-md-2" key={rageModifier.id}>
 											<table className="table table-bordered table-sm">
 												<thead>

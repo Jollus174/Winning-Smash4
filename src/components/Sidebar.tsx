@@ -1,7 +1,16 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import Skeleton from 'react-loading-skeleton';
+import { KillConfirm, Move, SelectedKillConfirm } from '../types';
 
-const Sidebar = ({ loading, killConfirms, selectedCharacter, selectedKillConfirm }) => {
+interface SidebarTypes {
+	loading: boolean;
+	killConfirms: Array<KillConfirm>;
+	selectedCharacter: KillConfirm;
+	selectedKillConfirm: SelectedKillConfirm;
+}
+
+const Sidebar: React.FC<SidebarTypes> = ({ loading, killConfirms, selectedCharacter, selectedKillConfirm }) => {
 	return (
 		<nav id="sidebar">
 			<div className="sidebar-header">
@@ -13,17 +22,17 @@ const Sidebar = ({ loading, killConfirms, selectedCharacter, selectedKillConfirm
 				<Skeleton count={7} height={100} />
 			) : (
 				<ul className="list-unstyled">
-					{killConfirms.map((character) => (
+					{killConfirms.map((character: KillConfirm) => (
 						<li
 							className="character-item"
 							key={'sidebar-' + character.id}
-							style={{ '--item-color': character.cardColor }}
+							style={{ ['--item-color' as string]: character.cardColor }}
 						>
 							<div className={`character-header ${character.textScheme === 'light' ? 'text-light' : 'text-dark'}`}>
 								{character.name}
 							</div>
 							<ul className="list-unstyled">
-								{character.moves.map((move) => (
+								{character.moves.map((move: Move) => (
 									<li key={'sidebar-' + move.id}>
 										<Link
 											to={`/${character.id}/${move.id}`}

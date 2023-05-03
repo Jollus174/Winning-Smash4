@@ -1,6 +1,14 @@
+import React from 'react';
 import { Modal } from 'react-bootstrap';
+import { KillConfirm, Move } from '../types';
 
-const ModalCredits = ({ modalShowCredits, setModalShowCredits, killConfirms }) => {
+interface ModalCreditsTypes {
+	modalShowCredits: boolean;
+	setModalShowCredits: React.Dispatch<React.SetStateAction<boolean>>;
+	killConfirms: Array<KillConfirm>;
+}
+
+const ModalCredits: React.FC<ModalCreditsTypes> = ({ modalShowCredits, setModalShowCredits, killConfirms }) => {
 	const handleModalHide = () => {
 		setModalShowCredits(false);
 	};
@@ -23,9 +31,9 @@ const ModalCredits = ({ modalShowCredits, setModalShowCredits, killConfirms }) =
 			</button>
 			<div className="modal-body">
 				<h2 id="modal-credits-title">Credits</h2>
-				{killConfirms.map((killConfirm) => (
+				{killConfirms.map((killConfirm: KillConfirm) => (
 					<p key={killConfirm.id}>
-						{killConfirm.moves.map((move, i) => (
+						{killConfirm.moves.map((move: Move) => (
 							<span key={move.id}>
 								{move.info.creditLink ? (
 									<a href={move.info.creditLink} target="_blank" rel="noreferrer">
@@ -38,12 +46,12 @@ const ModalCredits = ({ modalShowCredits, setModalShowCredits, killConfirms }) =
 								<a href={move.info.spreadsheetLink} target="_blank" rel="noreferrer">
 									<span dangerouslySetInnerHTML={{ __html: move.name }} /> spreadsheet
 								</a>
-								{move.info.spreadsheetMethod ? (
+								{move.info.spreadsheetMethod && (
 									<>
 										{' '}
 										and <a href={move.info.spreadsheetMethod}>methodology</a>
 									</>
-								) : null}
+								)}
 								.{' '}
 							</span>
 						))}
