@@ -117,7 +117,7 @@ function App() {
 		const updatedSelections: AppSelections = { ...defaultAppSelections };
 
 		if (characterId) {
-			const characterToSet: UpdatedKillConfirm = (killConfirms as UpdatedKillConfirm[]).find(
+			const characterToSet = (killConfirms as UpdatedKillConfirm[]).find(
 				(killConfirm) => killConfirm.id === characterId
 			)!;
 			if (!characterToSet) {

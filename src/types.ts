@@ -22,24 +22,24 @@ export interface UpdatedCharacter extends Character {
 		difficultyClass: DifficultyClass;
 		distance: Distance;
 	};
-	rageModifiers: Array<MoveRageModifier>;
-	stageList: Array<Stage>;
+	rageModifiers: MoveRageModifier[];
+	stageList: Stage[];
 }
 export interface SelectedCharacterModal extends UpdatedCharacter {}
 
 export interface KillConfirm {
-	characters: Array<Character>;
+	characters: Character[];
 	index: number;
 	name: string;
 	id: string;
 	btnColor: string;
 	cardColor: string;
 	textScheme: 'light' | 'dark';
-	moves: Array<Move>;
+	moves: Move[];
 }
 export interface UpdatedKillConfirm extends KillConfirm {
 	info: MoveInfo;
-	stageList: Array<Stage>;
+	stageList: Stage[];
 }
 
 export interface Move {
@@ -48,14 +48,14 @@ export interface Move {
 	id: string;
 	info: MoveInfo;
 	specialInfo: string;
-	rageModifiers: Array<MoveRageModifier>;
-	stageList: Array<MoveStageModifier>;
-	characters: Array<UpdatedCharacter>;
+	rageModifiers: MoveRageModifier[];
+	stageList: MoveStageModifier[];
+	characters: UpdatedCharacter[];
 }
 export interface SelectedKillConfirm extends Move {}
 
 export interface MoveInfo {
-	text: Array<string>;
+	text: string[];
 	giphy: {
 		giphyUrl: string;
 		youtubeUrl: string;
@@ -89,12 +89,7 @@ export interface Stage {
 	name: string;
 	imageFile: string;
 	color: string;
-	stagePositions: Array<{
-		id: string;
-		stagePartName: string;
-		min: number;
-		max: number;
-	}>;
+	stagePositions: { id: string; stagePartName: string; min: number; max: number }[];
 }
 
 export interface AppSelections {

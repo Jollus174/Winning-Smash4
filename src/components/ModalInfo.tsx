@@ -73,7 +73,7 @@ const ModalInfo: React.FC<ModalInfoTypes> = ({ url, selectedCharacter, selectedK
 					.
 				</div>
 
-				{info.text.map((para: string, i) => (
+				{info.text.map((para, i) => (
 					// the order of these will never change, so am using the index as the key
 					<p dangerouslySetInnerHTML={{ __html: para }} key={i} />
 				))}
