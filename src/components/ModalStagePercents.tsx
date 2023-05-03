@@ -2,11 +2,17 @@ import React from 'react';
 import { Modal } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
-import { KillConfirm, SelectedKillConfirm, SelectedCharacterModal, UpdatedCharacter, ActiveRage } from '../types';
+import {
+	UpdatedKillConfirm,
+	SelectedKillConfirm,
+	SelectedCharacterModal,
+	UpdatedCharacter,
+	ActiveRage
+} from '../types';
 
 interface ModalStagePercentsTypes {
 	url: string;
-	selectedCharacter: KillConfirm;
+	selectedCharacter: UpdatedKillConfirm;
 	selectedKillConfirm: SelectedKillConfirm;
 	selectedCharacterModal: SelectedCharacterModal;
 	activeRage: ActiveRage;

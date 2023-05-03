@@ -4,7 +4,7 @@ import { Dropdown } from 'react-bootstrap';
 import ModalStagePercents from './ModalStagePercents';
 import ModalInfo from './ModalInfo';
 import {
-	KillConfirm,
+	UpdatedKillConfirm,
 	SelectedKillConfirm,
 	Character,
 	SelectedCharacterModal,
@@ -14,7 +14,7 @@ import {
 } from '../types';
 
 interface MoveButtonTypes {
-	selectedCharacter: KillConfirm;
+	selectedCharacter: UpdatedKillConfirm;
 	selectedKillConfirm: SelectedKillConfirm;
 }
 
@@ -121,7 +121,7 @@ const Tiles: React.FC<TilesTypes> = ({
 };
 
 interface CharacterTilesTypes {
-	selectedCharacter: KillConfirm;
+	selectedCharacter: UpdatedKillConfirm;
 	selectedKillConfirm: SelectedKillConfirm;
 	selectedCharacterModal: SelectedCharacterModal;
 	activeRage: ActiveRage;

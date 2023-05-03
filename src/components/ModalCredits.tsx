@@ -1,6 +1,6 @@
 import React from 'react';
 import { Modal } from 'react-bootstrap';
-import { KillConfirm, Move } from '../types';
+import { KillConfirm } from '../types';
 
 interface ModalCreditsTypes {
 	modalShowCredits: boolean;
@@ -31,9 +31,9 @@ const ModalCredits: React.FC<ModalCreditsTypes> = ({ modalShowCredits, setModalS
 			</button>
 			<div className="modal-body">
 				<h2 id="modal-credits-title">Credits</h2>
-				{killConfirms.map((killConfirm: KillConfirm) => (
+				{killConfirms.map((killConfirm) => (
 					<p key={killConfirm.id}>
-						{killConfirm.moves.map((move: Move) => (
+						{killConfirm.moves.map((move) => (
 							<span key={move.id}>
 								{move.info.creditLink ? (
 									<a href={move.info.creditLink} target="_blank" rel="noreferrer">

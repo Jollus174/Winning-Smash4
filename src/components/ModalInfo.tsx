@@ -1,11 +1,11 @@
 import React from 'react';
 import { Modal } from 'react-bootstrap';
 import { useHistory } from 'react-router';
-import { KillConfirm, MoveRageModifier, SelectedKillConfirm } from '../types';
+import { MoveRageModifier, SelectedKillConfirm, UpdatedKillConfirm } from '../types';
 
 interface ModalInfoTypes {
 	url: string;
-	selectedCharacter: KillConfirm;
+	selectedCharacter: UpdatedKillConfirm;
 	selectedKillConfirm: SelectedKillConfirm;
 }
 

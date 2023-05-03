@@ -13,6 +13,19 @@ export interface Character {
 	start: number;
 	end: number;
 }
+export interface UpdatedCharacter extends Character {
+	percents: {
+		percDiff: number;
+		start: number;
+		end: number;
+		difficultyText: DifficultyText;
+		difficultyClass: DifficultyClass;
+		distance: Distance;
+	};
+	rageModifiers: Array<MoveRageModifier>;
+	stageList: Array<Stage>;
+}
+export interface SelectedCharacterModal extends UpdatedCharacter {}
 
 export interface KillConfirm {
 	characters: Array<Character>;
@@ -23,6 +36,8 @@ export interface KillConfirm {
 	cardColor: string;
 	textScheme: 'light' | 'dark';
 	moves: Array<Move>;
+}
+export interface UpdatedKillConfirm extends KillConfirm {
 	info: MoveInfo;
 	stageList: Array<Stage>;
 }
@@ -37,6 +52,7 @@ export interface Move {
 	stageList: Array<MoveStageModifier>;
 	characters: Array<UpdatedCharacter>;
 }
+export interface SelectedKillConfirm extends Move {}
 
 export interface MoveInfo {
 	text: Array<string>;
@@ -68,19 +84,6 @@ export type DifficultyText = 'Very Hard' | 'Hard' | 'Average' | 'Easy' | 'Very E
 export type DifficultyClass = 'very-hard' | 'hard' | 'average' | 'easy' | 'very-easy' | '';
 export type Distance = 'Far' | 'Mid-Far' | 'Medium' | 'Mid-Close' | 'Close' | 'Instant' | '';
 
-export interface UpdatedCharacter extends Character {
-	percents: {
-		percDiff: number;
-		start: number;
-		end: number;
-		difficultyText: DifficultyText;
-		difficultyClass: DifficultyClass;
-		distance: Distance;
-	};
-	rageModifiers: Array<MoveRageModifier>;
-	stageList: Array<Stage>;
-}
-
 export interface Stage {
 	id: string;
 	name: string;
@@ -94,11 +97,8 @@ export interface Stage {
 	}>;
 }
 
-export interface SelectedCharacterModal extends UpdatedCharacter {}
-export interface SelectedKillConfirm extends Move {}
-
 export interface AppSelections {
-	selectedCharacter: KillConfirm;
+	selectedCharacter: UpdatedKillConfirm;
 	selectedKillConfirm: SelectedKillConfirm;
 	selectedCharacterModal: SelectedCharacterModal;
 	hasSelectedCharacter: boolean;

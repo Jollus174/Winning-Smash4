@@ -19,7 +19,8 @@ import {
 	AppSelections,
 	SelectedKillConfirm,
 	SelectedCharacterModal,
-	ActiveRage
+	ActiveRage,
+	UpdatedKillConfirm
 } from './types';
 
 function App() {
@@ -111,12 +112,14 @@ function App() {
 			? window.location.hash.split('/')
 			: '';
 
-		const killConfirms: Array<KillConfirm> = appData.killConfirms;
-		const charAttrs: Array<Character> = appData.charAttrs;
+		const killConfirms: KillConfirm[] = appData.killConfirms;
+		const charAttrs: Character[] = appData.charAttrs;
 		const updatedSelections: AppSelections = { ...defaultAppSelections };
 
 		if (characterId) {
-			const characterToSet: KillConfirm = killConfirms.find((killConfirm) => killConfirm.id === characterId)!;
+			const characterToSet: UpdatedKillConfirm = (killConfirms as UpdatedKillConfirm[]).find(
+				(killConfirm) => killConfirm.id === characterId
+			)!;
 			if (!characterToSet) {
 				updatedSelections.selectedCharacterValid = false;
 			} else {
@@ -132,25 +135,23 @@ function App() {
 						updatedSelections.hasSelectedKillConfirm = true;
 						updatedSelections.selectedKillConfirmValid = true;
 						// generating a new object for each character in the kill confirm, that includes static data from char attrs and some calculated stuff
-						const percDiffs: Array<number> = [];
-						const updatedKillConfirmCharacters: Array<UpdatedCharacter> = killConfirmToSet.characters.map(
-							(kcCharacter) => {
-								const percDiff = kcCharacter.end - kcCharacter.start;
-								const percents = {
-									start: kcCharacter.start,
-									end: kcCharacter.end,
-									percDiff: kcCharacter.end - kcCharacter.start
-								};
+						const percDiffs: number[] = [];
+						const updatedKillConfirmCharacters: UpdatedCharacter[] = killConfirmToSet.characters.map((kcCharacter) => {
+							const percDiff = kcCharacter.end - kcCharacter.start;
+							const percents = {
+								start: kcCharacter.start,
+								end: kcCharacter.end,
+								percDiff: kcCharacter.end - kcCharacter.start
+							};
 
-								// including raw data from the charAttrs.json file for each character
-								const selectedCharAttrs: Character = charAttrs.find((char) => char.id === kcCharacter.id)!;
-								const updatedCharAttrs = { ...selectedCharAttrs, percents };
-								// discluding percDiffs of 0 so they don't skew the difficulty curve calculations lower down
-								if (percDiff !== 0) percDiffs.push(percDiff);
+							// including raw data from the charAttrs.json file for each character
+							const selectedCharAttrs: Character = charAttrs.find((char) => char.id === kcCharacter.id)!;
+							const updatedCharAttrs = { ...selectedCharAttrs, percents };
+							// discluding percDiffs of 0 so they don't skew the difficulty curve calculations lower down
+							if (percDiff !== 0) percDiffs.push(percDiff);
 
-								return { ...updatedCharAttrs, ...kcCharacter };
-							}
-						);
+							return { ...updatedCharAttrs, ...kcCharacter };
+						});
 
 						// sorting characters
 						const currentSort: Sort = sortBy.find((sort) => sort.sortingDirection !== null) as Sort;

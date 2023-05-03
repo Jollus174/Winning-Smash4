@@ -1,13 +1,13 @@
 import React from 'react';
 import Skeleton from 'react-loading-skeleton';
 import { Dropdown } from 'react-bootstrap';
-import { KillConfirm } from '../types';
+import { UpdatedKillConfirm } from '../types';
 
 interface HeaderTypes {
 	loading: boolean;
 	setSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
 	sidebarOpen: boolean;
-	selectedCharacter: KillConfirm;
+	selectedCharacter: UpdatedKillConfirm;
 	setModalShowAbout: React.Dispatch<React.SetStateAction<boolean>>;
 	setModalShowCredits: React.Dispatch<React.SetStateAction<boolean>>;
 }
