@@ -1,4 +1,4 @@
-import { AppSelections, MoveInfo, Sort } from './types';
+import { AppSelections, MoveInfo, Sort, UpdatedCharacter } from './types';
 
 const moveInfo: MoveInfo = {
 	text: [],
@@ -10,6 +10,32 @@ const moveInfo: MoveInfo = {
 	spreadsheetMethod: '',
 	creditLink: '',
 	creditName: ''
+};
+
+export const defaultUpdatedCharacter: UpdatedCharacter = {
+	name: '',
+	id: '',
+	charIndex: 0,
+	weight: 0,
+	fallspeed: 0,
+	gravity: 0,
+	airdodgeStart: 0,
+	airdodgeEnd: 0,
+	charColor: '',
+	textScheme: '',
+	imagePosition: '',
+	start: 0,
+	end: 0,
+	rageModifiers: [],
+	stageList: [],
+	percents: {
+		percDiff: 0,
+		start: 0,
+		end: 0,
+		difficultyText: '',
+		difficultyClass: '',
+		distance: ''
+	}
 };
 
 export const defaultAppSelections: AppSelections = {
@@ -36,29 +62,7 @@ export const defaultAppSelections: AppSelections = {
 		stageList: []
 	},
 	selectedCharacterModal: {
-		name: '',
-		id: '',
-		charIndex: 0,
-		weight: 0,
-		fallspeed: 0,
-		gravity: 0,
-		airdodgeStart: 0,
-		airdodgeEnd: 0,
-		charColor: '',
-		textScheme: '',
-		imagePosition: '',
-		start: 0,
-		end: 0,
-		rageModifiers: [],
-		stageList: [],
-		percents: {
-			percDiff: 0,
-			start: 0,
-			end: 0,
-			difficultyText: '',
-			difficultyClass: '',
-			distance: ''
-		}
+		...defaultUpdatedCharacter
 	},
 	hasSelectedCharacter: false,
 	hasSelectedKillConfirm: false,

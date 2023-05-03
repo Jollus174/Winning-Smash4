@@ -98,8 +98,9 @@ const ModalInfo: React.FC<ModalInfoTypes> = ({ url, selectedCharacter, selectedK
 													</tr>
 												</thead>
 												<tbody>
-													{/* TODO: fix up */}
-													<tr>{/* <td>{stage.stagePositionModifier}</td> */}</tr>
+													<tr>
+														<td>{stage.stagePositionModifier}</td>
+													</tr>
 												</tbody>
 											</table>
 										</div>

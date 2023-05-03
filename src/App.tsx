@@ -1,4 +1,3 @@
-// TODO: unused /* globals */ ?
 import React from 'react';
 import { Route, useLocation } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
@@ -63,7 +62,6 @@ function App() {
 
 	// empty array means executes only once
 	React.useEffect(() => {
-		// TODO: set loading spinners
 		if (!mounted) {
 			setMounted(true);
 
