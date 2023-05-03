@@ -330,7 +330,6 @@ function App() {
 				}
 			}
 		}
-		console.log(updatedSelections);
 		setAppSelections(updatedSelections);
 	}, [appData, location, sortBy, activeRage]);
 
