@@ -36,7 +36,7 @@
 
 	100% {
 		transform: translateX(0);
-		opacity: 1;
+		opacity: var(--opacity, 1);
 	}
 }
 
@@ -52,7 +52,7 @@
 
 .csstrans-slideFromRight-enter,
 .csstrans-slideFromRight-appear {
-	opacity: 1;
+	opacity: var(--opacity, 1);
 	animation-name: slideFromRight;
 	animation-duration: var(--duration, 0.6s);
 	animation-fill-mode: both;
